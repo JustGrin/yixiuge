@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>提现帐号</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<body id="u-body">
+
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="{:U('wap/member/index')}" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>提现帐号</span></div>
+    </header>
+     <form action="" role="form" id="form2" novalidate method="post" onSubmit="return false;">
+    <div class="ui-form ui-border-b">
+        <div class="ui-form-item ">
+            <label>所属银行</label>
+            <div class="ui-select disabled ">
+                <select id="blank_id" name="blank_id" class='ui-border-bi' >
+                    <option value="">请选择</option>
+                    <volist name="list" id="vo">
+                      <option value="{$vo.blank_id}" <if condition="$vo['blank_id'] eq $data['blank_id']">selected</if> >{$vo.blank_name}</option>
+                    </volist>
+                </select>
+            </div>
+        </div>
+        <div class="ui-form-item">
+            <label>银行卡号</label>
+            <input class='ui-border-bi' name="account_no" id="account_no" type="text" value="{$data.account_no}" maxlength="19">
+        </div>
+        <div class="ui-form-item ">
+            <label>开户名</label>
+            <input class='ui-border-bi' name="account_name" id="account_name" type="text" value="{$data.account_name}">
+        </div>
+        <div class="ui-form-item ">
+            <label>开户地址</label>
+             <input class='ui-border-bi' name="account_addr" id="account_addr" type="text" value="{$data.account_addr}">
+        </div>
+
+        <input name="id" id="id" type="hidden" value="{$data.id}">
+    </div>
+    <a href="javascript:void(0);" class="new-abtn-type new-mg-tb30 phone_log_btn">确认提交</a>
+
+  </form>
+  <include file="Public/wap_javascript" /> 
+    <!--微信分享-->    
+ <include file="Public/share_weixin" />
+
+        <script>
+jQuery(document).ready(function() {
+                //FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+    var dropdown=$("#dropdown").val();
+    var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+    blank_id:'required',
+   account_no: {
+                    required: true,
+                    number: true,
+                     minlength:16,
+                     maxlength:19
+                },
+    account_name: 'required',
+    account_addr: 'required'
+  },
+  messages: {
+       blank_id:'<span class="icon-warning icon_warning"></span>&nbsp;请选择所属银行',
+       account_no:{
+        required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入银行卡号',
+        number:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的银行卡号',
+        minlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的银行卡号',
+        maxlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的银行卡号'
+       },
+       account_name: '<span class="icon-warning icon_warning"></span>&nbsp;请输入开户名',
+       account_addr: '<span class="icon-warning icon_warning"></span>&nbsp;请输入开户开户地址'
+     
+  },
+   focusInvalid:false,
+  success: function(label) { 
+            // set  as text for IE 
+           // alert('ok'); 
+            //label.html(" ").addClass("checked"); 
+        }, 
+        /*执行ajaxsubmit  */ 
+        submitHandler: function(editform) { 
+
+            var options = { 
+                url :  "<?php echo U('Wap/Member/bank_account_add'); ?>", 
+                type : "post" , 
+                dataType:'json', 
+                target : "#loader", 
+                error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
+                onwait : "正在处理信息，请稍候...",
+                success: function(response){ 
+                       console.log(response);
+                    //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                    //$('#editform').hide(2000); 
+                    if(response.status==1){
+                        layer.msg("操作成功",{icon:6});
+                       window.location.href="<?php echo U('Wap/Member/bank_account'); ?>"; 
+                    }else{
+                        layer.msg(response.error,{icon:5});
+                    }
+                }
+            };
+            setTimeout((function(opt){
+                return function(){
+                    $('#form2').ajaxSubmit(opt);
+                }
+            })(options), 300); 
+            return false; 
+        }
+
+  });
+
+$('.phone_log_btn').click(function(){
+    $('#form2').submit();
+});
+
+
+
+});
+
+        </script> 
+</body>
+</html>

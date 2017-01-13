@@ -1,0 +1,203 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <!-- <h1 class="mainTitle">会员列表</h1> -->
+                            <span class="mainDescription">售后订单列表 </span>
+                        </div>
+                        <!-- <ol class="breadcrumb">
+                            <li>
+                                <span>Pages</span>
+                            </li>
+                            <li class="active">
+                                <span>Blank Page</span>
+                            </li>
+                        </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <style type="text/css">
+                    .class_hidden {
+                        display: none;
+                    }
+
+                    .panel-body {
+                        padding: 5px;
+                    }
+                    .panel-heading {
+                        padding: 5px;
+                        min-height: 25px;
+                    }
+                </style>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 margin-top-20">
+                        <div class="panel panel-white">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">筛选</h5>
+                            </div>
+                            <form role="form" class="form-inline">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="member_card" class="sr-only">
+                                            会员卡号
+                                        </label>
+
+                                        <input type="text" name="member_card" value="{$_GET.member_card}" id="member_card"
+                                               placeholder="会员卡号" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="order_sn" class="sr-only">
+                                            订单号
+                                        </label>
+
+                                        <input type="text" name="order_sn" value="{$_GET.order_sn}" id="order_sn"
+                                               placeholder="订单号" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="refund_sn" class="sr-only">
+                                            退单号
+                                        </label>
+                                        <input type="text" name="refund_sn" value="{$_GET.refund_sn}" id="refund_sn"
+                                               placeholder="退单号" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="refund_type" class="sr-only">
+                                            售后类型
+                                        </label>
+                                        <select class="form-control" id="refund_type" name="refund_type">
+                                            <option value="all"
+                                            <if condition="$_GET['refund_type'] =='all'">selected</if>
+                                            >全部类型</option>
+                                            <option value="0"
+                                            <if condition="$_GET['refund_type'] ==='0'">selected</if>
+                                            >换货</option>
+                                            <option value="1"
+                                            <if condition="$_GET['refund_type'] =='1'">selected</if>
+                                            >退款</option>
+                                            <option value="2"
+                                            <if condition="$_GET['refund_type'] =='2'">selected</if>
+                                            >未选择类型</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="refund_status" class="sr-only">
+                                            售后状态
+                                        </label>
+                                        <select class="form-control" id="refund_status" name="refund_status">
+                                            <option value="all"
+                                            <if condition="$_GET['refund_status'] =='all'">selected</if>
+                                            >全部状态</option>
+                                            <if condition="$_GET['refund_type'] ==='2'">
+                                                <volist name="status_arr" id="v" key="i">
+                                                    <option value="{$i - 1}"
+                                                    <if condition="$_GET['refund_status'] == $i -1">selected</if>
+                                                    >{$v}{$i-1}</option>
+                                                </volist>
+                                            </if>
+                                            <if condition="$_GET['refund_type'] ==='0'">
+                                                <option value="4"
+                                                <if condition="$_GET['refund_status'] =='4'">selected</if>
+                                                >商家已补发</option>
+                                                <option value="5"
+                                                <if condition="$_GET['refund_status'] =='5'">selected</if>
+                                                >买家已收货</option>
+                                            </if>
+                                            <if condition="$_GET['refund_type'] ==='1'">
+                                                <option value="6"
+                                                <if condition="$_GET['refund_status'] =='6'">selected</if>
+                                                >申请退款中</option>
+                                                <option value="5"
+                                                <if condition="$_GET['refund_status'] =='5'">selected</if>
+                                                >退款完成</option>
+                                            </if>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ">
+                                        <button class="btn btn-primary" type="submit">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover" id="sample-table-1">
+                <thead>
+                <tr>
+                    <th class="center">#</th>
+                    <th>商品图片</th>
+                    <th>商品名称</th>
+                    <th class="hidden-xs">会员卡号</th>
+                    <th>商品金额</th>
+                    <th>申请时间</th>
+                    <th>状态</th>
+                    <th>查看</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id='vo'>
+                    <tr>
+                        <td>退单编号:</td>
+                        <td colspan="">{$vo.refund_sn}</td>
+                        <td colspan="2">订单编号:{$vo.order_sn}</td>
+                    </tr>
+                    <tr>
+                        <td>#</td>
+                        <td class="center"><span><img src="{$vo.goods_image}" class="img-rounded" alt="image" style="width:64px;height:54px;"></span></td>
+                        <td>{$vo.goods_name}</td>
+                        <td>{$vo.member_card}</td>
+                        <td>{$vo.goods_price}</td>
+                        <td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+                        <td>
+                            {$vo.show_status}
+                            <if condition="$vo.un_read neq 0">
+                                {$vo.un_read}
+                            </if>
+                        </td>
+                        <td>
+                            <a href="{:U("Admin/goodsorder/Order_refDetail",array('id'=>$vo['ref_id']))}" class="btn
+                            btn-transparent btn-xs" tooltip="Edit" tooltip-placement="top" data-toggle="tooltip"
+                            data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="col-md-12 pages" align="center">{$page|default='暂无数据'}</div>
+                <!-- end: YOUR CONTENT HERE -->
+        </div>
+    </div>
+</div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

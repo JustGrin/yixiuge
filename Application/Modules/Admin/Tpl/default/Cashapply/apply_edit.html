@@ -1,0 +1,339 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+                                    <span class="mainDescription">提现申请信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+
+  <div class="form-group">
+        <label class="control-label">
+            当前可提现金额
+        </label>
+        ￥{$shop.balance}
+    </div>
+<div class="form-group">
+      <span class="symbol required" aria-required="true"></span>
+      提现金额大于<span style="color:red;" ><b>200</b></span>时才能提现
+    </div>
+
+<if condition="$shop['balance'] egt 200">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+
+
+
+
+      <div class="form-group">
+        <label class="control-label">
+            选择提现帐号 <span class="symbol required" aria-required="true"></span>
+        </label>
+        <select class="form-control" id="bank_account_id" name="bank_account_id">
+            <option value="">请选择</option>
+            <volist name="list" id="vo">
+            <option value="{$vo.id}" <if condition="$data.bank_account_id eq $vo['id']">selected</if> >{$vo.account_bank}-{$vo.account_addr}[({$vo.account_name}){$vo.account_no}]</option>
+            </volist>
+        </select>
+    </div>
+ 
+      <div class="form-group">
+        <label class="control-label">
+            提现金额
+        </label>
+        <input type="text" name="money" value="{$data.money}" id="money" placeholder="提现金额" class="form-control">
+    </div>
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</if>
+
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+		
+
+		<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+       <script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+       <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+{//新增}
+	<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+
+	$("#form2").validate({
+	  rules: {
+	   bank_account_id:"required",
+        money:{
+        required:true,
+        number:true,
+        min:200
+       }
+	  },
+	  messages: {
+	  bank_account_id: "请选择提现帐号",
+       money:{
+        required:'请输入提现金额',
+        number:'请输入正确的金额',
+        min:'提现金额不能小于200'
+       },
+	  }
+	  });
+	});
+		</script>
+
+<script>
+	
+    $(document).ready(function (e) {
+         ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+        	var id=$(this).attr('id');
+        	if(id =='head_photo'){
+        		//咯go 截取
+        		 ajaxFileUploadview('head_photo', 'goods_image', "{:U('admin/Imagecat/upload_ajax')}");
+        	}else{
+        		var goods_length=$(".goods_image_count").length;
+        		if(goods_length>=5){
+        			alert('图片最多上传5张');
+                //  var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                 // art.dialog('这是php点点通的教程', function () {alert('你点击确定了')},function(){alert('你点击取消了');});
+                   // dialog.lock().time(2).content("");
+        		}else{
+        			ajaxFileUpload('background',"{:U('admin/Imagecat/upload_ajax')}");
+        		}
+
+        		//
+        	}
+           
+        });
+
+        $('.goods_image_url').on('click','.delete_img', function () {
+        	if(confirm('您确定删除该图片？')){
+              $(this).parents('.fileinput').remove();
+        	}
+        });
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+      //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#goods_image").val(head_file);
+        //});   
+
+    }
+//文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#head_photo_src').attr('src',data.imgurl);
+                                    $('#image_path').val(data.imgurl);
+
+                                   /* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+  
+//文件上传带预览
+    function ajaxFileUpload(imgid,  url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: "head_photo_"+imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+
+                               var str_img=' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                 +' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                 +'   <img  src="'+data.imgurl+'" alt="" >'
+
+                                  +' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+				                 +'	<i class="glyphicon glyphicon-trash"></i>'
+				                 +'	<span>删除</span>'
+				                 +'</button>'
+
+                                 +'</div>'
+	                            
+				                 +'<input type="hidden" name="goods_image_url[]" id="photo_pic_background" value="'+data.imgurl+'">'
+                                 +' </div>';
+                                 $('.goods_image_url').append(str_img);
+                                  //  $('#photo_pic_'+imgid).val(data.imgurl);
+                                  //   $("#head_photo_src_"+imgid).attr('src', );
+                                  /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+                                      
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+</script>		
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

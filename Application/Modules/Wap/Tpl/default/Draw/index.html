@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link href="__PUBLIC__/wap/css/draw.css" rel="stylesheet" type="text/css" />
+   
+</head>
+
+<body>
+<div class="draw_frame" id="draw_frame">
+    <div class="draw_main">
+        <div class="draw_main_top">
+            <img src="__PUBLIC__/wap/img/a.png" />
+            <p>积分、话费、金币、折扣、商品等你免费来抽</p>
+        </div>
+
+        <div class="draw" >
+            <div class="back1" />
+                <img src="__PUBLIC__/wap/img/b.png" />
+            </div>
+            <div class="border1">
+                <div class="front1">
+                    <if condition="!empty($data)">
+                     <div class="draw_title">
+                       <p class="draw_title_type draw_type_name" >{$data.draw_type_name}</p>
+                       <p class="draw_title_type_data"  style="" > <span class="draw_num" style="font-size: 45px;">{$data.draw_num}</span>
+                        <span class="draw_value_unit">{$data.draw_value_unit}</span></p>
+                    </div>
+                    <else/>
+                      <div class="draw_title">
+                       <p class="draw_title_type draw_type_name" >--</p>
+                       <p class="draw_title_type_data"  style="" > <span class="draw_num" style="font-size: 45px;">--</span>
+                        <span class="draw_value_unit">--</span></p>
+                      </div>
+                    </if>
+                    <img src="__PUBLIC__/wap/img/c.png" />
+                </div>
+            </div>
+        </div>
+
+        <div class="sign">
+            <a href="javascript:void(0)" id="target"  onclick="go_draw()"><i><if condition="!empty($data)">已签到<else/>我要签到</if></i></a>
+        </div>
+    </div>
+</div>
+
+ <script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+ <if condition="!empty($data)">
+    <script type="text/javascript">
+    $(function(){
+        $("#target").click();
+       })
+        function go_draw(){
+           $(".border1").addClass('move');
+       }
+    </script>
+<else/>
+<script type="text/javascript">
+        function go_draw(){
+          layer.msg('正在抽奖....',{time: 100000});
+                    $.ajax({
+                      url: "{:U('wap/draw/get_draw')}",
+                      type:'get',
+                      dataType: 'json',
+                      success: function(data){
+                        if(data.status==1){
+                            layer.msg("签到成功", {icon: 6,time: 1500});
+                            $('.draw_type_name').html(data.draw.draw_type_name);
+                            $('.draw_num').html(data.draw.draw_num);
+                            $('.draw_value_unit').html(data.draw.draw_value_unit);
+                            $(".border1").addClass('move');
+                        }else{
+                          layer.msg(data.error, {icon: 5});
+                          //alert(data.error)
+                        }
+                      }
+                     });
+       }
+</script>
+  </if>  
+    <script type="text/javascript">
+        window.onload = function ()
+                {
+                    var h = $(window).height();//获取页面的高度
+                    document.getElementById("draw_frame").style.height = h + "px"
+                }
+    </script>
+</body>
+</html>

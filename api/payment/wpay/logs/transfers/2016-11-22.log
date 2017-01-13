@@ -1,0 +1,19 @@
+[2016-11-22 13:47:39][debug] 
+
+[2016-11-22 13:47:43][debug] 
+
+[2016-11-22 13:47:43][debug] 
+
+[2016-11-22 13:47:44][debug] 
+
+[2016-11-22 13:47:44][debug] 
+
+[2016-11-22 13:47:45][debug] 
+
+[2016-11-22 13:48:22][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+

@@ -1,0 +1,259 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									 <h1 class="mainTitle">会员分红</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					  <label for="member_name" class="sr-only">
+						盈利总额
+					  </label>
+						<input type="text" name="profit" value="{$_GET.profit}" id="profit" placeholder="盈利总额" class="form-control">
+				</div>
+			<div class="form-group  ">
+				<button class="btn btn-primary" type="submit">
+					计算
+				</button>
+			</div>
+         <input type="hidden"  id="dividend_payout_ratio" value="{$dividend_payout_ratio}">
+			
+		</div>
+ <div class="panel-body show_profit" style="display: none">
+	 <div class="form-group">
+		总利润：<span class="profit_p"></span>
+	 </div>
+ </div>
+<div class="panel-body show_profit" style="display: none">
+	<div class="form-group">
+		会员分红总额：总利润*{$dividend_payout_ratio*100}%=<span class="u_profit_all_p"></span>
+	</div>
+</div>
+<div class="panel-body show_profit" style="display: none">
+	<div class="form-group">
+		共100,000万股
+	</div>
+</div>
+<div class="panel-body show_profit" style="display: none">
+	<div class="form-group">
+		每万股分红金额：<span class="profit_one_p"></span>
+	</div>
+</div>
+
+
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>会员卡号</th>
+						<th>等级</th>
+						<th>电话</th>
+						<!--<th>余额</th>
+						<th>赠送余额</th>-->
+						<th>股份（万股）</th>
+						<th>分红金额</th>
+						<th>升级vip时间</th>
+
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"></td>
+						<td> 
+							<a href="{:U("Admin/Member/member_edit",array('id'=>$vo['id']))}" >
+							{$vo.member_card}
+						</a>
+						</td>
+						<td>{$vo.vip_name}	</td>
+						<td>{$vo.mobile}</td>
+						<!--<td>￥{$vo.balance|default='0'}	</td>
+						<td>￥{$vo.balance_give|default='0'}	</td>-->
+						<td>{$vo.vip_i_shares|default='0'}	</td>
+							<td>{$vo.profit_all|default='0'}	</td>
+
+						<td>{$vo.vip_time|date='Y-m-d',###}	</td>
+						
+
+
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='请输入盈利总额计算'}</div>
+<if condition="!empty($list['list'])">
+						<div class="col-lg-12 col-md-12 margin-top-20" >
+							<div class="panel panel-white">
+								<form id="form_balance" role="form" class="form-inline">
+									<div class="panel-body">
+										<div class="form-group">
+											<label for="order" class="sr-only">
+												时间
+											</label>
+											<select class="form-control" id="year" name="year">
+												<option value="0" >请选择年份</option>
+												<volist name="year_list" id="vo">
+													<option value="{$vo}">{$vo}</option>
+												</volist>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="order" class="sr-only">
+												时间
+											</label>
+											<select class="form-control" id="quarter" name="quarter">
+												<option value="0" >请选择季度</option>
+												<option value="1" >第一季度</option>
+												<option value="2" >第二季度</option>
+												<option value="3" >第三季度</option>
+												<option value="4" >第四季度</option>
+											</select>
+										</div>
+										<div class="form-group  ">
+											<button class="btn btn-primary btn_balance" type="button">
+												全部结算
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+</if>
+
+
+					<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+<script>
+	$(function(){
+		var all_profit_u=profit_one=0;
+		var profit=$('#profit').val();
+		var dividend_payout_ratio=$('#dividend_payout_ratio').val();
+		profit=parseFloat(profit);
+		all_profit_u=profit*dividend_payout_ratio;
+		all_profit_u=all_profit_u.toFixed(2);
+		profit_one=all_profit_u/100000;
+		profit_one=profit_one.toFixed(6);
+		if(profit>0){
+			$('.show_profit').show();
+			$('.profit_p').html(profit);
+			$('.u_profit_all_p').html(all_profit_u);
+			$('.profit_one_p').html(profit_one);
+		}else{
+			$('.show_profit').hide();
+		}
+
+		$('.btn_balance').click(function(){
+			var quarter=$('#quarter').val();
+			var profit=$('#profit').val();
+			var year=$('#year').val();
+			if(profit<=0){
+				return false;
+			}
+			if(dividend_payout_ratio<=0){
+				layer.msg("会员分红比例未设置。", {icon: 5,time:3000});
+				return false;
+			}
+			if(year<=0){
+				layer.msg("请选择年份。", {icon: 5,time:3000});
+				return false;
+			}
+			if(quarter<=0){
+				layer.msg("请选择季度。", {icon: 5,time:3000});
+				return false;
+			}
+
+			layer.msg("处理中请稍后");
+			$.ajax({
+				url: "{:U('admin/membervip/member_bonus')}",
+				type:'get',
+				data: {quarter:quarter,profit:profit,year:year},
+				dataType: 'json',
+				success: function(data){
+					if(data.status==1){
+						layer.msg("操作成功。", {icon: 6,time:1500}, function(){});
+					}else{
+						var error=data.error;
+						layer.msg(error, {icon: 5,time:3000}, function(){});
+					}
+				}
+			});
+
+
+		});
+	})
+</script>
+</body>
+</html>

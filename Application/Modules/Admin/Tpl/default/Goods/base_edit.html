@@ -1,0 +1,461 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">基地信息</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+                    <form action="__URL__/base_add" role="form" id="form2" novalidate="novalidate" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+                                        <li class="active">
+                                            <a data-toggle="tab" href="#panel_overview">
+                                                商品基本信息
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="panel_overview" class="tab-pane fade  in active">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            基地名称 <span class="symbol required"
+                                                                       aria-required="true"></span>
+                                                        </label>
+                                                        <input type="text" name="base_name" value="{$data.base_name}"
+                                                               id="goods_name" placeholder="基地名称" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            基地排序等级 <span class="symbol required"
+                                                                       aria-required="true"></span>
+                                                        </label>
+                                                        <input type="text" name="base_order" value="{$data.base_order}"
+                                                               id="base_order" placeholder="基地排序等级" class="form-control">
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="control-label">
+                                                            基地保证金 
+                                                        </label>
+                                                        <input type="text" name="pledge_money" value="{$data.pledge_money}"
+                                                               id="pledge_money" placeholder="基地保证金" class="form-control">
+                                                    </div>
+													<div class="form-group">
+                                                        <label class="control-label">
+                                                            基地可赠送积分 
+                                                        </label>
+                                                        <input type="text" name="base_points" value="{$data.base_points}"
+                                                               id="base_points" placeholder="基地可赠送积分" class="form-control">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            基地头像<span class="symbol required"
+                                                                      aria-required="true"></span>(300px*300px,图片大小不大于1M)
+                                                        </label>
+                                                        <br>
+
+                                                        <div class="upload_file">
+                                                            <label>
+                                                                <input type="file" name="base_photo"
+                                                                       class="upload_input" id="base_photo" value="{$data.base_logo}"
+                                                                       style="display:none;">
+
+                                                                <div class="fileinput fileinput-new"
+                                                                     data-provides="fileinput">
+                                                                    <div class="fileinput-new thumbnail"
+                                                                         id="show_photo_base">
+                                                                        <img id="base_photo_src"
+                                                                            src="{$data.base_logo}"
+                                                                             alt="">
+                                                                    </div>
+
+                                                                </div>
+                                                                点击图片上传
+                                                            </label>
+                                                            <input type="hidden" name="base_logo" id="base_logo"
+                                                                   value="{$data.base_logo}">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            状态
+                                                        </label>
+                                                        <div class="clip-radio radio-primary fa-hover Primary">
+                                                            <if condition="$data.base_id gt 0">
+                                                                <input type="radio" value="1" name="is_shelves"
+                                                                       id="id_no"
+                                                                <if condition="$data.is_shelves eq 1">
+                                                                    checked="checked"
+                                                                </if>
+                                                                >
+                                                                <label for="id_no">
+                                                                    签约
+                                                                </label>
+
+
+                                                                <input type="radio" value="0" name="is_shelves"
+                                                                       id="id_yes"
+                                                                <if condition="$data.is_shelves eq 0">
+                                                                    checked="checked"
+                                                                </if>
+                                                                >
+                                                                <label for="id_yes">
+                                                                    解约
+                                                                </label>
+                                                             <else/>
+                                                                <input type="radio" value="1" name="is_shelves"
+                                                                       id="id_no" checked="checked">
+                                                                <label for="id_no">
+                                                                    签约
+                                                                </label>
+
+                                                                <input type="radio" value="0" name="is_shelves"
+                                                                       id="id_yes">
+                                                                <label for="id_yes">
+                                                                    解约
+                                                                </label>
+
+                                                            </if>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="hidden" value="{$data.base_id}" name="base_id">
+                                <input class="btn btn-primary btn-wide pull-left" type="submit">
+                                </input>
+                            </div>
+
+                            <div class="col-md-8">
+                                <p>
+
+                                </p>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+
+
+<script>
+    var get_city_url = "{:U('wap/index/get_city')}";
+</script>
+<script src="__PUBLIC__/js/common.js"></script>
+<include file="Public/javascript_datepicker"/>
+
+<script>
+    jQuery(document).ready(function () {
+        //FormValidator.init();
+        jQuery.validator.addMethod("byteRangeLength", function (value) {
+            var dropdown = $("#dropdown").val();
+            var ret = true;
+            if (dropdown > 0) {
+                if (!value) {
+                    ret = false;
+                }
+            }
+            return ret;
+        });
+        $("#dropdown").change(function () {
+            var val = $(this).val();
+            if (val > 0) {
+                $(".menu_icons").hide();
+            } else {
+                $(".menu_icons").show();
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (e) {
+        ///上传商家logo
+        $('.upload_file').on('change', '.upload_input', function () {
+            var id = $(this).attr('id');
+            if(id == 'base_photo'){
+                ajaxFileUpload('base_photo', 'base_logo', "{:U('admin/Imagecat/upload_ajax')}");
+            }else {
+                var goods_length = $(".goods_image_count").length;
+                if (goods_length >= 5) {
+                    //	alert('图片最多上传5张');
+                    layer.msg('图片最多上传5张', {icon: 5});
+                    //  var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                    // art.dialog('这是php点点通的教程', function () {alert('你点击确定了')},function(){alert('你点击取消了');});
+                    // dialog.lock().time(2).content("");
+                } else {
+                    ajaxFileUploadMore('url', "{:U('admin/Imagecat/upload_ajax')}");
+                }
+            }
+        });
+
+        $('.goods_image_url').on('click', '.delete_img', function () {
+            if (confirm('您确定删除该图片？')) {
+                $(this).parents('.fileinput').remove();
+            }
+        });
+
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+        //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#photo_pic").val(head_file);
+        //});
+    }
+    //文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+            url: url,
+            secureuri: false,
+            fileElementId: imgid,
+            dataType: 'json',
+            data: {name: 'logan', id: 'id'},
+            success: function (data, status) {
+
+                if (typeof (data.error) != 'undefined') {
+
+                    if (data.error != '') {
+                        layer.msg(data.error, {icon: 5});
+                        //var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        //dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                    } else {
+
+                        var resp = data.msg;
+                        if (resp != '0000') {
+                            layer.msg(data.error, {icon: 5});
+                            //var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                            //dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            return false;
+                        } else {
+
+                            $('#head_photo_src').attr('src', data.imgurl);
+                            $('#photo_pic').val(data.imgurl);
+
+                            /* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                             title: '裁剪图片',
+                             width: '605px',
+                             height: '2900px'
+                             });*/
+
+                            //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                        }
+                    }
+                }
+            },
+            error: function (data, status, e) {
+                layer.msg(e, {icon: 5});
+                //var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                //dialog.time(3).content("<div class='tips'>" + e + "</div>");
+            }
+        })
+        return false;
+    }
+
+
+    //文件上传带预览
+    function ajaxFileUpload(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+            url: url,
+            secureuri: false,
+            fileElementId: imgid,
+            dataType: 'json',
+            data: {name: 'logan', id: 'id'},
+            success: function (data, status) {
+
+                if (typeof (data.error) != 'undefined') {
+
+                    if (data.error != '') {
+                        layer.msg(data.error, {icon: 5});
+                        // var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        // dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                    } else {
+
+                        var resp = data.msg;
+                        if (resp != '0000') {
+                            layer.msg(data.error, {icon: 5});
+                            // var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                            // dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            return false;
+                        } else {
+
+                            $("#" + hiddenid).val(data.imgurl);
+                            $("#" + imgid + '_src').attr('src', data.imgurl);
+//                                  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+//                                        title: '裁剪图片',
+//                                        width: '605px',
+//                                        height: '290px'
+//                                    });
+
+                            //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                        }
+                    }
+                }
+            },
+            error: function (data, status, e) {
+                //var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                // dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                layer.msg(e, {icon: 5});
+            }
+        })
+
+        return false;
+    }
+    //多文件上传带预览
+    function ajaxFileUploadMore(imgid, url) {
+
+        $.ajaxFileUpload({
+            url: url,
+            secureuri: false,
+            fileElementId: "head_photo_" + imgid,
+            dataType: 'json',
+            data: {name: 'logan', id: 'id'},
+            success: function (data, status) {
+                if (typeof (data.error) != 'undefined') {
+
+                    if (data.error != '') {
+                        layer.msg(data.error, {icon: 5});
+                        // var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        //dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                    } else {
+
+                        var resp = data.msg;
+                        if (resp != '0000') {
+                            layer.msg(data.error, {icon: 5});
+                            // var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                            // dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            return false;
+                        } else {
+
+
+                            var str_img = ' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                    + ' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                    + '   <img  src="' + data.imgurl + '" alt="" >'
+                                    + '<span  style="display: block;width: 150px;float: left;margin-top: -103px;margin-left: 200px;">排序： <input type="text" name="img_order[]" value="0" placeholder="排序" class="form-control valid" aria-required="true" aria-invalid="false"></span>'
+                                    + ' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+                                    + '	<i class="glyphicon glyphicon-trash"></i>'
+                                    + '	<span>删除</span>'
+                                    + '</button>'
+
+                                    + '</div>'
+
+                                    + '<input type="hidden" name="good_image_url[]"  class="goods_image_count"  value="' + data.imgurl + '">'
+                                    + ' </div>';
+                            $('.goods_image_url').append(str_img);
+                            //  $('#photo_pic_'+imgid).val(data.imgurl);
+                            //   $("#head_photo_src_"+imgid).attr('src', );
+                            /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                             title: '裁剪图片',
+                             width: '800px',
+                             height: '400px'
+                             });*/
+
+                            //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                        }
+
+
+                    }
+                }
+            },
+            error: function (data, status, e) {
+                layer.msg(e, {icon: 5});
+                //var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                // dialog.time(3).content("<div class='tips'>" + e + "</div>");
+            }
+        })
+
+        return false;
+    }
+    function setlatlng(longitude, latitude) {
+        art.dialog.data('longitude', longitude);
+        art.dialog.data('latitude', latitude);
+        art.dialog.open('<?php echo U('
+        Admin / Index / setmap
+        '); ?>', {
+            lock: false,
+            title: '设置经纬度',
+            width: 600,
+            height: 400,
+            yesText: '关闭',
+            background: '#000',
+            opacity: 0.87
+        }
+    )
+        ;
+    }
+</script>
+<!-- end: JavaScript Event Handlers for this page -->
+</body>
+</html>

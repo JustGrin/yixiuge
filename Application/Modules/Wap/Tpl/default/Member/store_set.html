@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>店铺设置</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="login">
+
+<div class="head">
+		<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+		<a href="#" class="md-login floatRgt">登录</a>
+		<h2 >店铺设置</h2>
+</div>
+<div class="page pdt10 member">
+<form id="member_name_form" class="mlogin">
+	<div class="list">
+		<div class="title">
+			<a href="{:U('wap/member/slide_image')}"><span>设置店铺首页滚动横图</span> <i class="iconfont floatRgt">&#xe611</i></a>
+		</div>
+	</div>
+	<div class="field">
+		<div class="label">昵称</div>
+		<div class="field-control">
+			<input type="text" class="input-required" name="member_name" placeholder="昵称/店铺名" value="{$member.member_name}" id="member_name">
+		</div>
+	</div>
+</form>
+	<div class="submit">
+		<button type="button" class="button" id="submit-btn">提 交</button>
+	</div>
+</div>
+<script>
+$('#submit-btn').click(function(){
+	$.ajax({
+		url: "<?php echo U('wap/member/member_name_set'); ?>",
+		type: "POST",
+		dataType: "JSON",
+		data: $('#member_name_form').serialize(),
+		success:function(res){
+			if(res.status == 1){
+				layer.msg("修改成功",{icon:6});
+			}else{
+				layer.msg(res.error,{icon:5});
+			}
+		},
+		error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}
+	});
+});
+</script>
+
+</body>
+</html>

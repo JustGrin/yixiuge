@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置中奖收货地址-{$webseting.web_title}</title>
+      <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/product.css"  rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/tip.css" >
+</head>
+<body>
+     <!--绑定头部-->    
+ <include file="Public/binding_head"/>
+    <!--绑定头部-->
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>设置中奖收货地址</span></div>
+    </header>
+
+    <div class="layout_body">
+     
+<form action="" role="form" id="form2" novalidate="novalidate" method="post" onSubmit="return false;">
+ 
+       <div class="ui-form ui-border-b">
+     
+            <div class="new-ct">
+             <if condition="!empty($now_address)">
+             <div class="new-addr">
+               <p class="new-tit new-p-re" style="font-size: 14px;">
+                          <span class="new-txt consignee">当前收货地址：</span>
+                </p>
+                 <li class="new-mu_l2 allress_chk address_box_0" data="0">
+                    <p class="new-tit new-p-re">
+                        <span class="new-txt consignee"> {$now_address.consignee}</span>
+                        <span class="new-txt-rd2 mobile">{$now_address.mobile}</span>
+                          <span class="new-txt-rd2 new-option-r address_show add_show_0"><span class="new-icon"></span></span>
+                    </p>
+                  <span class="new-mu_l2a new-p-re">
+                  <span class="new-mu_l2cw address_name">{$now_address.address_name} {$now_address.address}</span>
+                                 
+                   </span>
+               </li>
+             </div>
+            </if>
+        <div class="new-addr">
+            <ul class="new-mu_l2w">
+               <p class="new-tit new-p-re" style="font-size: 14px;">
+                          <span class="new-txt consignee">选择其他收货地址：</span>
+                </p>
+              <if condition="!empty($now_address)">
+                 <input type="hidden" name="address_id" id="address_id" value="0" /> 
+               <volist name="address" id="vo">
+
+                    <li class="new-mu_l2 allress_chk address_box_{$vo.address_id}" data="{$vo.address_id}">
+                      <p class="new-tit new-p-re">
+                          <span class="new-txt consignee"> {$vo.consignee}</span>
+                          <span class="new-txt-rd2 mobile">{$vo.mobile}</span>
+                         
+                              <span class="new-txt-rd2 new-option-r address_show add_show_{$vo.address_id}" style="display:none;"><span class="new-icon"></span></span>
+                           
+                      </p>
+                  <span class="new-mu_l2a new-p-re">
+                  <span class="new-mu_l2cw address_name">{$vo.address_name} {$vo.address}</span>
+                                 
+                   </span>
+                 </li>
+                  </volist>
+                 
+             <else/>
+                    <volist name="address" id="vo">
+
+                    <li class="new-mu_l2 allress_chk address_box_{$vo.address_id}" data="{$vo.address_id}">
+                      <p class="new-tit new-p-re">
+                          <span class="new-txt consignee"> {$vo.consignee}</span>
+                          <span class="new-txt-rd2 mobile">{$vo.mobile}</span>
+                         
+                        <if condition="$key eq 0">
+                             <span class="new-txt-rd2 new-option-r address_show add_show_{$vo.address_id}"><span class="new-icon"></span></span>
+                        <else/>
+                              <span class="new-txt-rd2 new-option-r address_show add_show_{$vo.address_id}" style="display:none;"><span class="new-icon"></span></span>
+                           </if>
+                           
+                      </p>
+                  <span class="new-mu_l2a new-p-re">
+                  <span class="new-mu_l2cw address_name">{$vo.address_name} {$vo.address}</span>
+                                 
+                   </span>
+                 </li>
+                  </volist>
+                     <input type="hidden" name="address_id" id="address_id" value="{$address.0.address_id}" /> 
+               </if>   
+            </ul>
+             <if condition="count($address) lt 5">
+                 <a href="{:U('wap/address/address_add',array('type'=>'draw'))}" class="new-abtn-type new-mg-tb30 phone_log_btn">添加新地址</a>
+              </if>
+        </div>
+    </div>
+    
+      
+    </div>
+  
+   
+   </form> 
+    </div>
+   <div style="height:50px;">
+   </div>
+  <div class="layout_footer">
+        <div class="normal">
+           <!--  <label class="all_check" checked="true">
+               <input type="checkbox" class="all_check check_box" checked="true">
+               <br>
+               <span>
+               全选
+               </span>
+           </label> -->
+            <div class="checkout_info">
+              
+             
+            </div>
+            <a onclick="javascript:void(0);" data-tpa="GOTO_CHECKOUT" class="btn_checkout">
+                提交
+            </a>
+        </div>
+   
+
+    </div>
+<include file="Public/footer" />
+<include file="Public/wap_javascript" />
+      <!--微信分享-->    
+ <include file="Public/share_weixin" />
+ 
+ <script type="text/javascript">
+   var  binding_is_check=0;// 重复再次弹出 1是 0否
+   var  binding_page='draw_address';// //当前页面名称 不可重复
+</script>  
+         <!--绑定-->    
+ <include file="Public/binding_phone"/>
+    <!--绑定-->
+    
+        <script>
+jQuery(document).ready(function() {
+ $('.allress_chk').click(function(){
+   var _this=$(this);
+   var address_id=_this.attr('data');
+   $('input[name="address_id"]').val(address_id);
+   $('.address_show').hide();
+   $('.add_show_'+address_id).show(); 
+ });
+
+                //FormValidator.init();
+var options = { 
+                url :  "<?php echo U('wap/draw/draw_address'); ?>", 
+                type : "post" , 
+                dataType:'json', 
+                target : "#loader", 
+                error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
+                onwait : "正在处理信息，请稍候...",
+                success: function(response){ 
+                       console.log(response);
+                    //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                    //$('#editform').hide(2000); 
+                    if(response.status==1){
+                      //alert(response.pay_sn);
+                        window.location.href=response.return_url;//; 
+                      // window.location.href="<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn="+response.pay_sn; 
+                    }else{
+                        //alert(response.error);
+                        if(response.error){
+                            layer.msg(response.error, {icon: 5}); 
+                        }else{
+                           layer.msg('信息错误', {icon: 5}); 
+                        }
+                        
+                    }
+                }
+            };
+
+$(".btn_checkout").click(function(){
+
+    var address_id=$("#address_id").val();
+       if(!address_id){
+         // alert("请选择收货地址");
+           layer.msg('请选择收货地址', {icon: 5}); 
+      }else{
+         setTimeout((function(opt){
+                return function(){
+                    $('#form2').ajaxSubmit(opt);
+                }
+            })(options), 300);  
+      }
+});
+
+
+var add_id=$('input[name="address_id"]').val();
+if(add_id){
+   $('.address_show').hide();
+   $('.add_show_'+add_id).show(); 
+ }
+});
+
+
+</script>     
+</body>
+</html>

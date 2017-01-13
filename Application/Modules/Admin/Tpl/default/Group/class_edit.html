@@ -1,0 +1,422 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">分类信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			分类名称 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写分类名称" class="form-control" value="{$data.class_name}" id="class_name" name="class_name">
+	</div>
+    
+    <div class="form-group">
+		<label class="control-label">
+			上级分类 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control" id="dropdown" name="pid">
+			<option value="">最上级</option>
+            <volist name="list" id="vo">
+			<option value="{$vo.id}" <if condition="$data.pid eq $vo['id']">selected</if> >{$vo.class_name}</option>
+		    </volist>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			分类介绍  
+		</label>
+		<input type="text" placeholder="填写分类介绍" class="form-control" value="{$data.class_des}" id="class_des" name="class_des">
+	</div>
+
+	 <div class="form-group">
+        <label class="control-label">
+            分类图标
+        </label> 
+        <br>
+       <div class="upload_file">
+           <label>
+         <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;"> 
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <img id="head_photo_src" src="{$data.class_icon}" alt="">
+                </div>
+            </div>
+           点击图片上传
+        </label>  
+                
+         </div>          
+          <input type="hidden" name="class_icon" id="imgpath" value="{$data.class_icon}">       
+     
+    </div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			状态 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control"   name="status">
+			<if condition="$data.id gt 0">
+			<option value="1" <if condition="$data.status eq 1">selected</if> >有效</option>
+            <option value="0" <if condition="$data.status eq 0">selected</if> >无效</option>
+            <else/>
+            <option value="1">有效</option>
+            <option value="0">无效</option>
+            </if>
+		</select>
+	</div>
+
+	<div class="form-group">
+        <label class="control-label">
+            
+        </label>
+        <div class="checkbox clip-check check-primary">
+        <input <if condition="$data['is_show_index'] eq 1">checked="" </if> type="checkbox" value="1" name="is_show_index" id="is_show_index" >
+            <label for="is_show_index" class="control-label">
+                在首页显示
+            </label>
+        </div>
+    </div>
+	
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+       <script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+       <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+       
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   class_name: "required"
+  },
+  messages: {
+   class_name: "请输入分类名称"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+
+<script>
+	
+    $(document).ready(function (e) {
+         ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+
+            ajaxFileUpload_one('head_photo','imgpath',"{:U('admin/Imagecat/upload_ajax')}");
+        	//var id=$(this).attr('id');
+        	//if(id =='head_photo'){
+        		//咯go 截取
+        	//	 ajaxFileUploadview('head_photo', 'imgpath', "{:U('admin/Imagecat/upload_ajax')}");
+        //	}else{
+        	//	var goods_length=$(".goods_image_count").length;
+        	//	if(goods_length>=5){
+        	//		alert('图片最多上传5张');
+                //  var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                 // art.dialog('这是php点点通的教程', function () {alert('你点击确定了')},function(){alert('你点击取消了');});
+                   // dialog.lock().time(2).content("");
+        	//	}else{
+        			
+        //		}
+
+        		//
+        //	}
+           
+        });
+
+        $('.goods_image_url').on('click','.delete_img', function () {
+        	if(confirm('您确定删除该图片？')){
+              $(this).parents('.fileinput').remove();
+        	}
+        });
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+      //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#goods_image").val(head_file);
+        //});   
+
+    }
+//文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#head_photo_src').attr('src',data.imgurl);
+                                    $('#image_path').val(data.imgurl);
+
+                                   /* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+  
+//文件上传带预览
+    function ajaxFileUpload(imgid,  url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: "head_photo_"+imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+
+                               var str_img=' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                 +' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                 +'   <img  src="'+data.imgurl+'" alt="" >'
+
+                                  +' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+				                 +'	<i class="glyphicon glyphicon-trash"></i>'
+				                 +'	<span>删除</span>'
+				                 +'</button>'
+
+                                 +'</div>'
+	                            
+				                 +'<input type="hidden" name="goods_image_url[]" id="photo_pic_background" value="'+data.imgurl+'">'
+                                 +' </div>';
+                                 $('.goods_image_url').append(str_img);
+                                  //  $('#photo_pic_'+imgid).val(data.imgurl);
+                                  //   $("#head_photo_src_"+imgid).attr('src', );
+                                  /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+                                      
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+    //文件上传带预览
+    function ajaxFileUpload_one(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+                                 $('#'+hiddenid).val(data.imgurl);
+                                 $('#'+imgid+'_src').attr('src',data.imgurl);
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+</script>	
+
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

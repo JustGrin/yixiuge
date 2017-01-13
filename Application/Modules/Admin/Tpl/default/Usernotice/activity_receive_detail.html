@@ -1,0 +1,209 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">订单信息</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    赠品领取信息
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    会员卡号：
+                                </label>
+                                {$data.member_card}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    会员名：
+                                </label>
+                                {$data.member_name}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    赠品:
+                                </label>
+                                <a href="{:U('wap/goods/goods_detail',array('id'=>$data['goods_id']))}">{$data.goods_name}</a>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    发货状态:
+                                </label>
+                                {$data['status']?'已发货':'未发货'}
+                            </div>
+                            <if condition="!empty($data['invoice_time']) && $data['invoice_time'] neq 0">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        发货时间:
+                                    </label>
+                                    {$data['invoice_time']|date="Y-m-d",###}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['invoice_no'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        快递单号:
+                                    </label>
+                                    {$data.invoice_no}
+                                </div>
+                            </if>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    收货人信息
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    收货人：
+                                </label>
+                                {$data.consignee}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    联系电话：
+                                </label>
+                                {$data.mobile}&nbsp;&nbsp;&nbsp;&nbsp;{$data.tel}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    省市:
+                                </label>
+                                {$data.address_name}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    地址：
+                                </label>
+                                {$data.address}
+                            </div>
+                            <if condition="!empty($data['zipcode'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        邮编：
+                                    </label>
+                                    {$data.zipcode}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['best_time'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        最佳送货时间：
+                                    </label>
+                                    {$data.best_time}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['sign_building'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        送货地址标志性建筑：
+                                    </label>
+                                    {$data.sign_building}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['email'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        email：
+                                    </label>
+                                    {$data.email}
+                                </div>
+                            </if>
+
+                        </div>
+                        <if condition="$data['status'] eq 0">
+                        <div class="col-md-4 col-md-offset-4 margin-top-25">
+                                <div class="form-group" style="text-align: center;">
+                                    <input type="button" value="为买家发货" class="btn btn-primary" id="confirm_delivery"/>
+                                </div>
+                        </div>
+                        </if>
+                    </div>
+                </div>
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script type="text/javascript">
+    $('#confirm_delivery').click(function () {    //确认发货
+        var content = '<form class="form" method="post" action="{:U('admin/usernotice/activity_receive_detail',array('id'=>$data['activity_id']))}">' +
+                '<div class="form-group margin-top-20" style="text-align:center;">' +
+//                '<input type="text" name="invoice_no_shop_name" placeholder="快递名称" style="display: block;width:170px;margin:10px auto;" />' +
+                '<input type="text" name="invoice_no" placeholder="请输入发货单号" style="display: block;width:170px;margin:10px auto;" />' +
+                '<button class="btn btn-primary btn-wide pull-left col-md-offset-4" type="submit" name="status" value="3">' +
+                '提交 <i class="fa fa-arrow-circle-right"></i> </button>' +
+                '</form>';
+        layer.open({
+            type: 1,
+            title: '请输快递信息',
+            shadeClose: true,
+            shift: 2,
+            shadeClose: true,
+            area: ['380px', '200px'],
+            content: content
+        });
+        $('.form').validate({
+            rules: {
+                invoice_no: "required"
+            },
+            messages: {
+                invoice_no: "请输入发货单号"
+            }
+        })
+    });
+</script>
+<!-- end: JavaScript Event Handlers for this page -->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">订单收益列表</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->							
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">会员卡号</th>
+						<th class="center">收货人</th>
+						<th class="center">货款总金额</th>
+						<th class="center">订单返利金额</th>
+						<th>订单利润</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr>
+						<td class="center">{$vo.member_card}<i/></td>
+						<td class="center">{$vo.consignee}<i/></td>
+						<td class="center">{$vo.order_amount}<i/></td>
+						<td class="center">{$vo.order_rebate}</td>
+						<td> {$vo['order_amount'] - $vo['order_rebate']}</td>
+						<td>
+								<a href="{:U("Admin/goodsorder/Order_detail",array('id'=>$vo['order_id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+						</td>											
+					</tr>
+					
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

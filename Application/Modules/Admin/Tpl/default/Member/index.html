@@ -1,0 +1,306 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									 <h1 class="mainTitle">会员列表</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					  <label for="member_name" class="sr-only">
+						姓名
+					  </label>
+						<input type="text" name="member_name" value="{$_GET.member_name}" id="member_name" placeholder="姓名" class="form-control">
+				</div>
+				<div class="form-group">
+					  <label for="mobile" class="sr-only">
+						电话
+					  </label>
+						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
+				</div>
+				<!--  <div class="form-group">
+									<label for="member_type" class="sr-only">
+										会员类型
+									</label>
+									<select class="form-control" id="member_type" name="member_type">
+										<option value="all" <if condition="$_GET['member_type'] =='all'">selected</if>>会员全部类型</option>
+										<option value="1" <if condition="$_GET['member_type'] ==1">selected</if>>商户会员</option>
+										<option value="0" <if condition="$_GET['member_type'] ==='0'">selected</if>>普通会员</option>
+									</select>
+								</div>	
+				
+								<div class="form-group">
+									<label for="member_status" class="sr-only">
+										认证
+									</label>
+									<select class="form-control" id="member_status" name="member_status">
+										<option value="all" <if condition="$_GET['member_status'] =='all'">selected</if>>全部认证</option>
+										<option value="1" <if condition="$_GET['member_status'] ==1">selected</if>>已认证</option>
+										<option value="0" <if condition="$_GET['member_status'] ==='0'">selected</if>>未认证</option>
+									</select>
+								</div> -->
+				<div class="form-group">
+					<label for="member_freeze" class="sr-only">
+						冻结
+					</label>
+					<select class="form-control" id="member_freeze" name="member_freeze">
+						<option value="all" <if condition="$_GET['member_freeze'] =='all'">selected</if>>全部状态</option>
+						<option value="1" <if condition="$_GET['member_freeze'] ==1">selected</if>>已冻结</option>
+						<option value="0" <if condition="$_GET['member_freeze'] ==='0'">selected</if>>未冻结</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="member_freeze" class="sr-only">
+						绑定
+					</label>
+					<select class="form-control" id="binding" name="binding">
+						<option value="0" <if condition="$_GET['binding'] =='0'">selected</if>>绑定</option>
+						<option value="1" <if condition="$_GET['binding'] ==1">selected</if>>已绑定</option>
+						<option value="2" <if condition="$_GET['binding'] ==2">selected</if>>未绑定</option>
+					</select>
+				</div>
+			<div class="form-group">
+				<label for="member_freeze" class="sr-only">
+					VIP
+				</label>
+				<select class="form-control" id="member_vip_type" name="member_vip_type">
+					<option value="all" <if condition="$_GET['member_vip_type'] =='all'">selected</if>>全部会员</option>
+					<option value="0" <if condition="$_GET['member_vip_type'] ==='0'">selected</if>>普通会员</option>
+					<option value="1" <if condition="$_GET['member_vip_type'] ==1">selected</if>>标准店铺</option>
+					<option value="2" <if condition="$_GET['member_vip_type'] ==2">selected</if>>高级店铺</option>
+					<option value="3" <if condition="$_GET['member_vip_type'] ==3">selected</if>>旗舰店</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+					<label for="order" class="sr-only">
+						排序
+					</label>
+					<select class="form-control" id="order" name="order">
+						<option value="" >排序</option>
+						<option value="balance" <if condition="$_GET['order'] =='balance'">selected</if>>余额</option>
+						<option value="balance_give" <if condition="$_GET['order'] =='balance_give'">selected</if>>赠送余额</option>
+						<option value="points" <if condition="$_GET['order'] =='points'">selected</if>>积分</option>
+						<option value="login_count" <if condition="$_GET['order'] =='login_count'">selected</if>>登录次数</option>
+						<option value="id" <if condition="$_GET['order'] =='id'">selected</if>>注册时间</option>
+						
+					</select>
+				</div>		
+
+			
+		</div>
+ <div class="panel-body">
+
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			状态
+		</label>
+	  <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+		--
+		 <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+
+	</div>
+<div class="form-group  " style="margin-top: -10px;">
+    <button class="btn btn-primary" type="submit">
+		提交
+	</button>
+	</div>
+
+
+ </div>
+ <div class="panel-body">
+
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			
+		</label>
+		<p>会员总人数{$all_count}人&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	</div>
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			
+		</label>
+		<p>今日注册人数{$all_today_count}人&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	</div>
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			
+		</label>
+		<p>今日绑定人数{$all_today_bin_count}人&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	</div>
+	
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			
+		</label>
+		<p>会员余额总数￥{$all_balance}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	</div>
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			
+		</label>
+		<p>会员赠送余额总数￥{$all_balance_give}</p>
+	</div>
+
+
+ </div>
+
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>会员卡号</th>
+						<th>会员名</th>
+						<th>等级</th>
+						<th>电话</th>
+						<th>余额</th>
+						<th>赠送余额</th>
+						<th>积分</th>
+						<th>登录次数</th>
+						<th>注册时间</th>
+
+						<!--<th>状态</th>-->
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"></td>
+						<td> 
+							<a href="{:U("Admin/Member/member_edit",array('id'=>$vo['id']))}" >
+							{$vo.member_card}
+						</a>
+						</td>
+						<td>{$vo.member_name}</td>
+						<td>{$vip_names[$vo['member_vip_type']]}</td>
+						<td>{$vo.mobile}</td>
+						<td>￥{$vo.balance|default='0'}	</td>
+						<td>￥{$vo.balance_give|default='0'}	</td>
+						<td>{$vo.points|default='0'}	</td>
+							<td>{$vo.login_count|default='0'}	</td>
+						
+						<td>{$vo.add_time|date="Y-m-d H:i",###}	</td>
+						
+						<!--<td>{$vo['member_freeze']?'<span style="color:red;">已冻结</span>':'未冻结'}	</td>-->
+
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<if condition="$vo.member_vip_type eq 0">
+								<a href="{:U('admin/member/set_member_vip')}?id={$vo.id}&type={$vo.member_vip_type}" class="btn
+                                        btn-transparent btn-xs" tooltip="Edit" tooltip-placement="top"
+								   data-toggle="tooltip" data-original-title="升为VIP"
+								   onclick="return confirm('确定将该会员升为VIP？')">
+									<i class="fa fa-level-up"></i>
+								</a>
+								<else/>
+								<a href="{:U('admin/member/set_member_vip')}?id={$vo.id}&type={$vo.member_vip_type}"
+								   class="btn
+                                        btn-transparent btn-xs" tooltip="Edit" tooltip-placement="top"
+								   data-toggle="tooltip" onclick="return confirm('确定将该会员降降为普通会员？')"
+								   data-original-title="降为普通会员"><i class="fa fa-level-down"></i></a>
+							</if>
+                             <if condition="(!empty($_SESSION['topadmin']))">
+								  {//管理员}
+									<a href="{:U("Admin/Member/member_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+									
+										<if condition="$vo.member_freeze eq 0">
+										<a href="{:U("Admin/Member/member_freeze",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove" onclick="return confirm('确定冻结该用户？')"  tooltip-placement="top" data-toggle="tooltip" data-original-title="冻结"><i class="fa fa-minus-square"></i></a>
+					                    <else/>
+					                     <a href="{:U("Admin/Member/member_freeze",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove" onclick="return confirm('确定解冻该用户？')" tooltip-placement="top" data-toggle="tooltip" data-original-title="解冻"><i class="fa fa-check-square"></i></a>
+										</if>
+				                 
+                              </if>
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+
+</body>
+</html>

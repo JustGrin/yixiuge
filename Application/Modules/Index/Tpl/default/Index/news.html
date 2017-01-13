@@ -1,0 +1,60 @@
+<include file="Public/header"/>
+
+	<section class="page_main_section no_padding_bottom">
+		<div class="container">
+			<section class="revel_section_dd no_padding_bottom">
+				<header>
+					<div class="revel_container">
+						<h3>企业动态</h3>
+					</div>
+				</header>
+			</section>			
+		</div>
+	</section>
+
+	<section class="page_main_section section_border_top">
+		<div class="container">
+			<div id="portfolio_single_column">
+               
+               <volist name="list['list']" id="vo">
+				<div class="portfolio_single_column_item">
+					<div class="row">
+						<div class="span6">
+							<img src="{:U('Index/Index/get_thumbs',array('w'=>520,'h'=>360))}?img={$vo.imgpath}" alt="">
+						</div>
+						<div class="span6">
+							<h2>
+								<a href="{:U('Index/Index/news_detail',array('id'=>$vo['id']))}">{$vo.title}</a>
+							</h2>
+							<p class="single_portfolio_meta">{$vo.add_time|date="Y-m-d",###}</p>
+							{$vo.abstrac}
+							<div class="post-readmore"> 
+								<a href="{:U('Index/Index/news_detail',array('id'=>$vo['id']))}" class="more-link">阅读详细</a>
+							</div>
+						</div>
+					</div>
+				</div>
+              </volist>
+
+
+			</div>
+		</div>
+	</section>
+
+	<section id="blog_pagination" class="clearfix">
+		<div class="container">
+			<div class="pagination pagination-centered">
+				{$list.page}
+				<!-- <a class="prev page-numbers" href="new_item.html">« 上一篇</a>
+				<span class="page-numbers current">1</span>
+				<a class="page-numbers" href="new_item.html">2</a>
+				<a class="next page-numbers" href="new_item.html">下一篇 »</a> -->
+			</div>
+		</div>
+	</section>
+
+	<include file="Public/footer"/>
+
+	
+</body>
+</html>

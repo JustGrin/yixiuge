@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>上传滚动图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <script src="__PUBLIC__/wap/js/flexible.js"></script>
+    <link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+       <!-- 截图框样式-->
+    <style>
+        .lazy_tip{position: absolute;margin-top: 35%;z-index: 1001;font-size: 25px;width: 100%;color: #4eaf7a;line-height: 30px;}
+        .lazy_cover {width: 100%;height: 100%;background-color: black;z-index: 1000;color: #4eaf7a;font-size: 25px;opacity: 0.7;position: fixed;top: 0;left: 0;}
+        .pic_edit {position: fixed;top: 58px;left: 0;width: 100%;height: 100%;z-index: 100;background:#e9e9e9; opacity:.8}
+        #clipArea {margin: 0 auto;height: 300px;background:#f2f2f2;}
+        #plan{ position:absolute;top:0;left:0; width:100%; clear:both; height:100%;display: none;
+            background: rgb(255, 255, 255);
+            vertical-align: baseline;
+            text-align: center;
+            line-height: 1.5;
+            padding-top: 25%;}
+        #plan canvas{clear:both;}
+    </style>
+</head>
+<body class="login">
+<div class="head">
+    <a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+
+    <h2 >设置店铺滚动图</h2>
+</div>
+
+<div class="lazy_tip" id="lazy_tip">
+    <span>1%</span><br>
+    载入中......
+</div>
+<div class="lazy_cover">
+</div>
+<div class="resource_lazy hide">
+</div>
+
+<div class="submit pic_edit">
+    <h2 style="color:#4eaf7a;"></h2>
+    <div id="clipArea">
+    </div>
+    <h4 class="mb2">来选择自己喜欢的照片到显示在店铺首页吧！</h4>
+    <label >
+        <button id="upload2" class="button btngreen mb2">相 册</button>
+        <input type="file" id="file" value="" style="opacity: 0;position: fixed;bottom: -100px">
+    </label>
+    <button id="clipBtn" class="button btngreen mb2">上传图片</button>
+    <button type="button" class="button btngray mb2" id="cancel">取 消</button>
+
+    <div id="plan" style="display:none">
+        <canvas id="myCanvas"></canvas>
+    </div>
+</div>
+<img src="" fileName="" id="hit" style="display:none;z-index: 9">
+<div style="height:30px;">
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+
+<script src="__PUBLIC__/h5cat/sonic.js"></script>
+<script src="__PUBLIC__/h5cat/comm.js"></script>
+<script src="__PUBLIC__/h5cat/hammer.js"></script>
+<script src="__PUBLIC__/h5cat/iscroll-zoom.js"></script>
+<script src="__PUBLIC__/h5cat/jquery.photoClip.js?v=1"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+<script>
+    var hammer = '';
+    var currentIndex = 0;
+    var body_width = $('body').width();
+    var body_height = $('body').height();
+
+    $("#clipArea").photoClip({
+        width: body_width*1,
+        height: body_width*0.6,
+        file: "#file",
+        view: "#hit",
+        ok: "#clipBtn",
+        loadStart: function () {
+            //console.log("照片读取中");
+            $('.lazy_tip span').text('');
+            $('.lazy_cover,.lazy_tip').show();
+        },
+        loadComplete: function () {
+            //console.log("照片读取完成");
+            $('.lazy_cover,.lazy_tip').hide();
+        },
+        clipFinish: function (dataURL) {
+            $('#hit').attr('src', dataURL);
+            saveImageInfo();
+        }
+    });
+
+    //图片上传
+    function saveImageInfo() {
+        var filename = $('#hit').attr('fileName');
+        var img_data = $('#hit').attr('src');
+        if(img_data==""){alert('null');}
+        //alert(filename+'|'+img_data);
+        render(img_data);
+
+        $.post("{:U('wap/index/upload_file_base64')}", {image: img_data}, function (data) {
+            if (data != 0) {
+                var image=data;
+                $.ajax({
+                    url: "<?php echo U('Wap/Member/slide_image'); ?>",
+                    type:'post',
+                    data: {slide_image:image},
+                    dataType: 'json',
+                    success: function(response){
+
+                        if(response.status==1){
+                            //window.location.href="<?php echo U('Wap/Member/setphoto'); ?>";
+
+                            layer.msg("上传成功",{icon:6,time:1500},function(){
+                                window.location.href="<?php echo U('Wap/Member/index_vip'); ?>";
+                            });
+                        }else{
+                            //console.log(response);
+                            layer.msg(response.error,{icon:5});
+                        }
+                    }
+                });
+
+            }else{
+                layer.msg("上传失败",{icon:5,time:1500});
+            }
+        });
+    }
+
+    /*获取文件拓展名*/
+    function getFileExt(str) {
+        var d = /\.[^\.]+$/.exec(str);
+        return d;
+    }
+
+    //图片上传结束
+    $(function () {
+        $('.pic_edit').on('click','#upload2', function () {
+            //图片上传按钮
+            $('#file').click();
+        });
+    })
+
+
+    function Close(){$('#plan').hide();}
+    //尺寸高720*宽1280
+    // 渲染 Image 缩放尺寸
+    function render(src){
+        var MAX_HEIGHT = 720;  //Image 缩放尺寸
+        var MAX_WIDTH   =1280;
+        // 创建一个 Image 对象
+        var image = new Image();
+
+        // 绑定 load 事件处理器，加载完成后执行
+        image.onload = function(){
+            // 获取 canvas DOM 对象
+            var canvas = document.getElementById("myCanvas");
+            // 如果高度超标
+            if(image.height > MAX_HEIGHT) {
+                // 宽度等比例缩放 *=
+                //image.width *= MAX_HEIGHT / image.height;
+                //image.height = MAX_HEIGHT;
+                image.width=MAX_WIDTH;
+                image.height=MAX_HEIGHT;
+            }
+            // 获取 canvas的 2d 环境对象,
+            // 可以理解Context是管理员，canvas是房子
+            var ctx = canvas.getContext("2d");
+            // canvas清屏
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.width = image.width;        // 重置canvas宽高
+            canvas.height = image.height;
+            // 将图像绘制到canvas上
+            ctx.drawImage(image, 0, 0, image.width, image.height);
+            // !!! 注意，image 没有加入到 dom之中
+
+            var dataurl = canvas.toDataURL("image/jpeg");
+            var imagedata =  encodeURIComponent(dataurl);
+            $('#plan').attr('data-src',dataurl);
+            $('#plan').show();
+        };
+        // 设置src属性，浏览器会自动加载。
+        // 记住必须先绑定render()事件，才能设置src属性，否则会出同步问题。
+        image.src = src;
+    };
+</script>
+<script>
+
+    $(document).ready(function (e) {
+        ///上传商家背景图
+        /* var dataURL= $('#textarea').val();
+         $('#hit').attr('src', dataURL);
+         saveImageInfo();*/
+
+    });
+
+</script>
+
+</body>
+</html>

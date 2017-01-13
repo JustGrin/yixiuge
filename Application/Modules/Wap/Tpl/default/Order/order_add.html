@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结算-{$webseting.web_title}</title>
+      <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/product.css"  rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:void(0)" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>结算</span></div>
+    </header>
+
+    <div class="layout_body">
+        <div class="touchweb_page-shopCart">
+            <div class="goods_box">
+
+
+             <volist name="list['goods_list']" id="vo">
+                <div class="goods_box-body">
+                    <div class="product_list">
+                        <div class="product_list_wrap">
+                            <!-- <input type="checkbox" class="check_box" id="32387504_0-2" checked=""> -->
+                            <div class="product_content">
+                                <div class="product_box">
+                                    <div class="product_pic" data-tpa="GOTO_PRODUCT_DETAIL">
+                                        <img  data-tpa="GOTO_PRODUCT_DETAIL" src="{:U('wap/index/get_thumbs',array('auto'=>64))}?img={$vo.goods_image}">
+                                    </div>
+                                    <a class="product_con" href="javascript:void(0);">
+                                        <span class="product_title" data-tpa="GOTO_PRODUCT_DETAIL">
+                                        {$vo.goods_name}</span>
+                                        <p class="product_from"></p>
+                                        <p class="cell_price">
+                                            <span class="sale_price">
+                                            ¥{$vo.all_pay_price}/
+                                            <s style="text-decoration: line-through;">¥{$vo.all_goods_price}</s>
+                                            
+                                            </span>
+                                        </p>
+                                    </a>
+                                    <div class="product_option">
+                                        <div class="tool_num">
+                                            <div class="computing_act">
+                                                <input type="button" value="-" class="reduce" onclick="">
+                                            </div>
+                                            <div class="computing_num">
+                                              数量:{$vo.num}
+                                            </div>
+                                            <div class="computing_act">
+                                                <input type="button" value="+" class="add">
+                                            </div>
+                                        </div>
+                                        <i class="icon-rabish" onclick="delCartItem('32387504_0-2')"></i>
+                                    </div> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </volist>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layout_footer">
+        <div class="normal">
+           <!--  <label class="all_check" checked="true">
+               <input type="checkbox" class="all_check check_box" checked="true">
+               <br>
+               <span>
+               全选
+               </span>
+           </label> -->
+            <div class="checkout_info">
+                <span>
+                    <span class="price"><s style="text-decoration: line-through;">¥{$list.tolal}</s></span>
+                    <br>
+                    <em>总价</em>
+                </span>
+                <span class="plus">/</span>
+                <span>
+                    <span class="price">¥ {$list.need_pay}</span>
+                    <br>
+                    <em>折后价</em>
+                </span>
+            </div>
+            <a onclick="javascript:void(0);" data-tpa="GOTO_CHECKOUT" class="btn_checkout">
+                结算({$list.all_num})
+            </a>
+        </div>
+   <!--      <div class="edit">
+       <label class="all_check" checked="true">
+           <input type="checkbox" class="check_box all_check" checked="true">
+           <span>
+           全选
+           </span>
+       </label>
+       <a href="javascript:;" class="btn_del">
+           删除
+       </a>
+   </div> -->
+    </div>
+   <form action="" role="form" id="form2" novalidate="novalidate" method="post" onSubmit="return false;">
+    <input type="hidden" name="shop_id" value="{$shop_id}">
+    <input type="hidden" name="good_id" value="{$good_id}">
+   </form> 
+  <script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/jquery.form.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+    
+        <script>
+jQuery(document).ready(function() {
+                //FormValidator.init();
+var options = { 
+                url :  "<?php echo U('wap/order/set_order'); ?>", 
+                type : "post" , 
+                dataType:'json', 
+                target : "#loader", 
+                error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
+                onwait : "正在处理信息，请稍候...",
+                success: function(response){ 
+                       console.log(response);
+                    //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                    //$('#editform').hide(2000); 
+                    if(response.status==1){
+                       window.location.href="<?php echo U('wap/order/order_pay'); ?>?pay_sn="+response.pay_sn; 
+                    }else{
+                        layer.msg(response.error,{icon:5});
+                    }
+                }
+            };
+
+$(".btn_checkout").click(function(){
+    var shop_id=$("input[name='shop_id']").val();
+    var good_id=$("input[name='good_id']").val();
+    if(!good_id || !shop_id){
+       layer.msg("商品信息错误",{icon:5});
+    }else{
+        setTimeout((function(opt){
+                return function(){
+                    $('#form2').ajaxSubmit(opt);
+                }
+            })(options), 300);  
+    }
+});
+
+
+
+});
+
+</script>     
+</body>
+</html>

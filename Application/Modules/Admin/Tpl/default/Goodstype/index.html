@@ -1,0 +1,113 @@
+<include file="Public/header"/>
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">&nbsp;&nbsp;分类管理</span>
+                        </div>
+                        <nav id="cl-effect-10" class="links cl-effect-10">
+                            <a data-hover="新增" href="{:U('admin/goodstype/type_edit')}"><span>新增</span></a>
+                        </nav>
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <style type="text/css">
+                    .class_hidden {
+                        display: none;
+                    }
+
+                </style>
+                <!-- 搜索类型开始-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 margin-top-20" >
+                        <div class="panel panel-white">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">筛选</h5>
+                            </div>
+                            <!-- 筛选查询 -->
+                            <form role="form" class="form-inline">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <input type="text" name="cat_name" id="cat_name" value="{$_GET.cat_name}" placeholder="类型名称" class="form-control">
+                                    </div>
+                                    &nbsp;
+                                    <button class="btn btn-primary" type="submit">
+                                        提交
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 搜索类型结束-->
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th width="120px">商品类型名称</th>
+                        <th>属性分组</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="typeList" id="v">
+                        <tr>
+                            <td>#</td>
+                            <td>{$v.cat_name}</td>
+                            <td>{$v.attr_group}</td>
+                            <td>{$v['enabled']?"可用":"不可用"}</td>
+                            <td>
+                                <a href="{:U("Admin/goodstype/attrList",array('cat_id'=>$v['cat_id']))}" class="btn btn-transparent btn-xs"
+                                tooltip="Edit" tooltip-placement="top" data-toggle="tooltip" data-original-title="属性列表"><i
+                                    class="fa fa-th-list"></i></a>
+                                <a href="{:U("Admin/goodstype/type_edit",array('id'=>$v['cat_id']))}" class="btn
+                                btn-transparent btn-xs" tooltip="Edit" tooltip-placement="top" data-toggle="tooltip"
+                                data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                <a href="{:U("Admin/goodstype/type_del",array('id'=>$v['cat_id']))}" class="btn
+                                btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"
+                                onclick="return confirm('确定删除该属性？')" tooltip-placement="top" data-toggle="tooltip"
+                                data-original-title="删除"><i class="fa fa-minus-square"></i></a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+    </div>
+                <if condition="empty($typeList)">
+                    暂无数据
+                </if>
+
+ <div class="col-md-12 pages" align="center">{$page}</div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

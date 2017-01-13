@@ -1,0 +1,158 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content" >
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">会员等级列表</h1>
+                            <span class="mainDescription">会员等级管理页面 </span>
+                        </div>
+                        <nav id="cl-effect-10" class="links cl-effect-10">
+                            <a data-hover="新增" href="{:U('admin/member/level_list_edit')}"><span>新增</span></a>
+                        </nav>
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <style type="text/css">
+                    .class_hidden{display:none;}
+
+                </style>
+
+
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+<!--                    levelName            varchar(50) comment '等级名称(标准店   高级店   旗舰店.....)',
+                    price                decimal comment '价格',
+                    award_standard       decimal comment '推荐标准店奖金',
+                    award_senior         decimal comment '高级店奖金',
+                    sale_self            decimal comment '自营店铺销售奖金百分比',
+                    sale_child           decimal comment '旗下连锁店铺销售奖金百分比',
+                    addChild2            decimal comment '增加二级连锁店获取奖金',
+                    upgrade_price        decimal comment '升级价格',
+                    upgrade_parm         int comment '升级参数1',
+                    upgrade_parm2        int comment '升级参数2',
+                    isShow               int comment '是否显示(0 否 1  是)',
+                    comment              varchar(500) comment '备注',-->
+                    <tr>
+                        <th class="center">#</th>
+                        <th class="hidden-xs">等级</th>
+                        <th>等级名称</th><th>价格</th>
+                        <th>推荐标准店奖金</th><th>高级店奖金</th><th>自营店铺销售奖金百分比</th>
+                        <th>旗下连锁店铺销售奖金百分比</th><th>旗下二级连锁店铺销售奖金百分比</th><th>增加二级连锁店获取奖金</th><th>升级价格</th>
+                        <th>升级参数1</th><th>升级参数2</th><th>是否显示</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist  name="menulist" id='vo' key='key'>
+                        <tr class="menu_p" data="{$vo.id}" data-type="0">
+                            <td class="center"></td>
+                            <td class="hidden-xs">{$vo.levelId}
+                            </td>
+                            <td>
+                                {$vo.levelName}
+                            </td>
+                            <td>
+                                {$vo['price']}
+                            </td>
+                            <td>
+                                {$vo.award_standard}
+                            </td>
+                            <td>
+                                {$vo.award_senior}
+                            </td>
+                            <td>
+                                {$vo.sale_self}
+                            </td>
+                            <td>
+                                {$vo.sale_child}
+                            </td>
+                            <td>
+                                {$vo.sale_child2}
+                            </td>
+                            <td>
+                                {$vo.addChild2}
+                            </td>
+
+                            <td>
+                                {$vo.upgrade_price}
+                            </td>
+                            <td>
+                                {$vo.upgrade_parm}
+                            </td>
+                            <td>
+                                {$vo.upgrade_parm2 }
+                            </td>
+                            <td>
+                                {$vo['isShow']?'显示':'隐藏'}
+                            </td>
+                            <td class="center">
+                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                    <a href="{:U("Admin/Member/level_list_edit",array('levelId'=>$vo['levelId']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </volist>
+
+
+                    </tbody>
+                </table>
+
+
+
+
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<script type="text/javascript">
+    $(function(){
+        $(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+                //当前展开  收起操作
+                $(".menu_p_c").hide();
+                $(this).attr("data-type",0);
+                $(".angle_down_"+data).show();
+                $(".angle_up_"+data).hide();
+            }else{
+                //当前收起 展开操作
+                $(".menu_p_c").hide();
+                $(".menu_p_"+data).show();
+                $(this).attr("data-type",1);
+                $(".angle_down_"+data).hide();
+                $(".angle_up_"+data).show();
+            }
+
+        });
+    });
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

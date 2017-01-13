@@ -1,0 +1,225 @@
+/*会员登录注册*/
+html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; height: 100%; z-index: 1; }
+body { background: #f0f0f0; height: 100%; }
+a { text-decoration: none !important }
+.mlogin { font-size: .42rem; }
+.mlogin .iconfont { font-size: .42rem; color: #6C6C6C; }
+.ft-left { float: left }
+.ft-right { float: right }
+.avatar { padding: .26666rem; }
+.avatar img { width: 100%; height: 100%; display: block; }
+.logo { width: 80%; margin: 2rem auto; height: 3rem; background: url(../images/public/logo.png) center center no-repeat; background-size: contain; position: relative; }
+.mlogin .field { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; border-bottom: 1px solid #DDD; padding: 0 .4rem; line-height: 1.2rem; color: #6C6C6C; background-color: #fff; text-align: left; position: relative }
+.submit h4 { font-weight: 100; color: #666; font-size: .4rem; line-height: 1rem; text-align: center; }
+.other-link { margin: 0.4rem 0.26rem; overflow: hidden; }
+.other-link a { color: #6ab42f; }
+.state { height: 4rem; text-align: center; line-height: 4rem; font-size: 1rem; border-bottom: 1px solid #e0e0e0; margin-bottom: .2rem; }
+.btngreen { background: #6ab42f; color: #fff; }
+.btngray { background: #999 !important; color: #fff; }
+.mb2 { margin-bottom: .2rem; }
+.code { background: #f6ad2b; color: #fff; padding: 0 .4rem; position: absolute; top: 0; border-bottom-left-radius: 1rem; border-top-left-radius: 1rem; right: 0 }
+/*会员中心*/
+.member .top { box-shadow: 0 0 4px rgba(0,0,0,0.2); }
+.member .mallbg { height: 6rem; background-size: cover; width: 100%; }
+.member .mall { padding-bottom: .8rem; background: #fff ; font-size: .36rem; position: relative; box-shadow: 0 0 .2rem rgba(0,0,0,0.04); height:3.2rem; }
+.member .mall.person{ height:1.8rem; background: #f2f2f2 ; padding-bottom: .2rem;}
+
+
+.member .mall a { color: #666; width: 100% }
+.member .mall i.num { font-size: .5rem; color: #333 }
+.member .mall .avatar, .member .mall .cart, .member .mall .share, .member .mall .points { width: 25%; text-align: center; line-height: .44rem; padding: .2rem 0; position: relative }
+.top .mall .cart b, .top .mall .share b { border-radius: .4rem; font-size: .3rem; background: #f60; position: absolute; top: 0; margin-left: .6rem; font-weight: 300; color: #fff; padding: 0 0.12rem; }
+.member .mall .avatar { width: 100%; }
+.member .mall .avatar span { background-position: center center; background-repeat: no-repeat; border: 0.1rem solid #fff; border-radius: 2rem; box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1); display: block; float: right; height: 3.6rem; left: 50%; margin-left: -1.85rem; position: absolute; top: -1.8rem; width: 3.6rem; }
+.member .mall .name { color: #666; font-size: 0.6rem; font-weight: 100; line-height: 1rem; text-align: center; padding-top: 2rem; }
+.member .mall .name b { vertical-align: middle }
+.member .mall .name a.store { color: #fff; background: #f6ad2b; padding-right: 1rem; margin-left: .2rem; }
+.member .mall .name a.btn1 { color: #fff; margin-left: -.8rem; }
+.member .mall .name a.up { background: #f60; }
+.member .mall .memberid { text-align: center; color: #999; font-size: .34rem; line-height: .6rem; }
+.member .mall i.code { position: absolute; font-size: 1rem; right: 0.2rem; top: 0.2rem; }
+.member .mall .share { border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; box-sizing: border-box }
+.member .shopinfo { background: #f6f6f6; }
+.member .shopinfo ul { margin: 0 auto; width: 90%; }
+.member .shopinfo li { width: 37%; float: left; text-align: center; margin: .4rem 0; font-size: .4rem; line-height: .6rem; border-right: 1px solid #e0e0e0; box-sizing: border-box; color: #666 }
+.member .shopinfo li:first-child { width: 26%; }
+.member .shopinfo li:last-child { border-right: none }
+.member .shopinfo li span { display: block; color: #999 }
+.step { background: #fff; border-bottom: 1px solid #f2f2f2 }
+.step li { width: 25%; float: left; font-size: .34rem; }
+.step li i { width: 100%; font-size: .8rem; display: block; color: #999 }
+.step li a { width: 100%; padding: .2rem 0; display: block; text-align: center; position: relative; color: #666 }
+.step li a b { border-radius: .4rem; font-size: .3rem; background: #f60; position: absolute; top: .2rem; font-weight: 300; color: #fff; padding: 0 0.12rem; left: 1.4rem; }
+.step li a.lfnum { padding-bottom:0}
+.step li a.lfnum span{ position:relative; top:-.2rem;}
+.step li a span i.num{ position:relative; top:0; font-size:.3rem; color:#666;}
+.list { background: #fff; }
+.last { background: #f0f0f0; }
+.list .title { height: 1.4rem; width: 100%; display: block; box-sizing: border-box; line-height: 1.4rem; border-bottom: 1px solid #f2f2f2; padding: 0 .4rem; font-size: .42rem; }
+.list .title i { margin-right: .2rem; }
+html body.login div.page.pdt10.member form#loginForm.mlogin div.list div.title a i.icon { font-size: 0.8rem; }
+.list .title span { display: inline; color: #666 }
+.list a div.title span{ vertical-align:top}
+html body.login div.page.pdt10.member form#loginForm.mlogin div.list div.title a span { vertical-align: top }
+.sharelist li { padding: 0 .2rem; margin-bottom: .2rem; }
+.sharelist li a { width: 100%; display: block; }
+.sharelist li a span { height: 3rem; display: block; border: 1px solid #e0e0e0; border-bottom: none }
+.sharelist li .title { height: 1rem; padding: 0 .4rem; position: relative; border-bottom-left-radius: .2rem; border-bottom-right-radius: .2rem; border: 1px solid #e0e0e0; border-top: none; background: #fff; }
+.sharelist li .title h4 { height: 1rem; line-height: 1rem; font-size: .4rem; padding-right: 1rem; box-sizing: border-box; overflow: hidden; color: #666 }
+.sharelist li .title b { position: absolute; right: 0.8rem; top: 0; line-height: 1rem; }
+.sharelist li .title b a { border-radius: .6rem; height: .6rem; text-align: center; background: #e0e0e0; line-height: .6rem; padding: 0 .2rem; margin-top: .2rem; display: block; }
+
+/*下级连锁店*/
+.storetype { border-bottom: 1px solid #e0e0e0; background: #fff }
+.storetype a { width: 35%; float: left; font-size: .4rem; color: #999; text-align: center; line-height: 1.2rem; display: inline-block; position: relative; }
+.storetype a.on { color: #6ab42f }
+.storetype a i { display: none; font-size: .3rem; }
+.storetype a.on i { display: block; position: absolute; right: .4rem; top: 0 }
+.storetype a:first-child { width: 30%; }
+.storetype a:nth-child(2) { border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; box-sizing: border-box; }
+.storelist .list li { padding: .2rem; position: relative; border-bottom: 1px solid #e0e0e0; }
+.storelist .list li .avatar { width: 1.6rem; height: 1.6rem; overflow: hidden; padding: 0; border-radius: 1rem; float: left }
+.storelist .list li .info { margin-left: .4rem; float: left }
+.storelist .list li .info h6 { font-size: 0.56rem; line-height: 1rem; }
+.storelist .list li .info h6 span.type { background: #f6ad2b; font-size: .4rem; line-height: .56rem; color: #fff; position: absolute; right: 0; top: .4rem; padding: .1rem .4rem .1rem .6rem; border-bottom-left-radius: 1rem; border-top-left-radius: 1rem; }
+.storelist .list li .info h6 span.type1 { background: #6ab42f; }
+.storelist .list li .info .tel { font-size: .4rem; }
+.storelist .list li .info .tel a { color: #06c }
+.storelist .list li .info .tel .time { position: absolute; right: .2rem; color: #999 }
+/*店铺升级*/
+.upstore { background: #fff none repeat scroll 0 0; border-bottom: 1px solid #e0e0e0; box-sizing: border-box; display: block; float: left; padding-bottom: .8rem; width: 100%; }
+.upstore h2 { font-size: .4rem; padding: .4rem 0; margin-bottom: .8rem; text-align: center; background: #6ab42f; color: #fff; }
+.upstore .type.brdlr { border-left: 1px solid #f2f2f2; border-right: 1px solid #f2f2f2 }
+.upstore .type { box-sizing: border-box; margin: 0 auto; text-align: center; width: 33.33%; }
+.upstore .type img { width: 100%; height: auto }
+.upstore .type h4 { font-size: .4rem; font-weight: 100; line-height: .6rem; color: #444 }
+.upstore .type span { display: block; font-size: .3rem; line-height: .5rem; }
+.upstore .type a.join { display: inline-block; height: .8rem; line-height: .8rem; border-radius: .4rem; background: #6ab42f; color: #fff; font-size: .34rem; padding: 0 .4rem; }
+.upstore .type a.atjoin { font-size: .4rem; line-height: .8rem; }
+.upstore .type a.join:active { background: #f6ad2b; }
+.up .info { padding: .4rem; background: #fff; background: #f2f2f2; }
+.up .info h6 { font-size: .4rem; padding-bottom: .4rem; border-bottom: 1px solid #e0e0e0; color: #444; }
+.up .info .store { border-bottom: 1px solid #e0e0e0; font-size: .3rem; padding: .4rem 0; line-height: .6rem; }
+.up .info .store h6 { border: none; font-size: .44rem; line-height: .8rem; padding: 0; font-weight: 100; }
+.up .info .store b { background: #f6ad2b; border-radius: 1rem; color: #fff; width: .6rem; height: .6rem; line-height: .6rem; display: inline-block; text-align: center; font-family: Arial; margin: 0 .1rem 0 .4rem; }
+.up .info .store p { padding: .4rem 0 }
+.up .info .store p { line-height: .8rem; font-size: .4rem }
+.member .shopinfo.person li { border-right: 1px solid #f2f2f2; box-sizing: border-box; color: #666; float: left; font-size: 0.4rem; line-height: 0.6rem; margin: .4rem 0; text-align: center; width: 30%; }
+.member .shopinfo.person li:last-child { border-right: none; }
+.member .shopinfo.person li:nth-child(2) { width: 40%; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; }
+.member .shopinfo.person li i { display: block; font-size: 1rem; color: #999; line-height: 1rem; }
+.member .shopinfo.person li span.num { font-size: .6rem; line-height: .8rem; }
+.member .step.person .field { border-bottom: 1px solid #e0e0e0 }
+.member .step.person .field li { padding: .4rem 0 }
+.member .list .title a { display: block; color: #666; }
+.member .step.person .list .title a i { color: #999 }
+.member .page .list .title i.icon { font-size: .8rem; }
+.member .step.person .list .title a i.icon { font-size: .8rem; }
+.member .step .list .title span { vertical-align: top }
+
+.member .page .list .title span { vertical-align: top }
+/*证书*/
+.cert { width: 320px; height: 532px; margin: 0 auto; position: relative; background: url(../images/public/cert.jpg) top center no-repeat; background-size: cover; }
+.cert span { color: #333 }
+.cert .name { font-size: 20px; left: 120px; position: absolute; top: 120px; }
+.cert .id { font-size: 14px; left: 120px; position: absolute; top: 250px; }
+.cert .type { font-size: 14px; left: 120px; position: absolute; top: 280px; }
+.cert .time { font-size: 14px; left: 120px; position: absolute; top: 315px; }
+/*底部分享*/
+.md-modal { min-width: 9rem; }
+.md-content { background: #fff !important; border-radius: .6rem; }
+.member #modal-3 .md-content .avatar { width: 100%; padding-bottom: 1rem; }
+.member #modal-3 .md-content .avatar span { background-position: center center; background-repeat: no-repeat; border: 0.1rem solid #fff; border-radius: 2rem; box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1); display: block; float: right; height: 3.6rem; left: 50%; margin-left: -1.85rem; position: absolute; top: -1.8rem; width: 3.6rem; }
+.member #modal-3 .md-content .info { padding: .8rem; }
+.member #modal-3 .md-content .info img { width: 100%; height: auto; }
+.member #modal-3 .md-content .name { color: #666; font-size: 0.46rem; font-weight: 100; text-align: center; padding-top: 1.2rem; padding-bottom: 0 }
+.member #modal-3 .md-content .name b { vertical-align: middle }
+.member #modal-3 .md-content .name a.store { color: #fff; background: #f6ad2b; font-size: .4rem; padding-right: 1rem; margin-left: .2rem; }
+.member #modal-3 .md-content .name a.btn1 { color: #fff; margin-left: -.8rem; font-size: .4rem; }
+.member #modal-3 .md-content .name a.up { background: #f60; }
+.member .md-overlay { background: rgba(0,0,0,0.8); }
+.member .md-modal { top: 60%; }
+.member .mlogin .field .moreline .address { background: #fff; }
+.addlist { padding: 0; }
+.addlist ul { padding: 0; margin-top: .2rem; }
+.addlist li { padding: .2rem; background: #fff; border-bottom: 1px solid #e0e0e0; position: relative; }
+li i.on { position: absolute; right: .4rem; top: .5rem; color: #fff; font-size: 1rem; }
+li.on { background: #6ab42f; color: #fff !important }
+li.on dt { color: #fff !important }
+dt { color: #999; font-weight: 300 }
+.addinfo { padding-right: 1.6rem; }
+.addinfo dl.name { height: .6rem; line-height: .6rem; font-size: .4rem; position: relative }
+.addinfo dl.name dt { width: 2rem; }
+.addinfo dl.name dd { position: absolute; left: 1.6rem; margin-top: -.6rem; }
+.addinfo dl.name dd.tel { right: 0; left: auto }
+.addinfo dl.add { line-height: .5rem; font-size: .34rem; }
+.addinfo dl.add dt { float: left; width: 1.72rem }
+.addinfo dl.add dd.addsub { float: left; font-size: .34rem; }
+/*确认订单*//*收货地址*/
+.address { position: relative; border-bottom: 1px solid#e0e0e0; background: #6ab42f; padding: .2rem; color: #fff; }
+.address .icon { float: left; font-size: 1rem; margin-top: 0.4rem; padding-right: 0.2rem; text-align: center; width: 1rem; }
+.address .addinfo { padding-right: 2rem; box-sizing: content-box; }
+.address .addedit { position: absolute; right: 0; top: .8rem; }
+.address .addedit a { background: #390 none repeat scroll 0 0; border-bottom-left-radius: 1rem; border-top-left-radius: 1rem; color: #fff; display: block; font-size: 0.34rem; padding: 0.2rem; }
+.address dt { font-weight: 300 }
+.address .addinfo dl.name { height: .6rem; line-height: .6rem; font-size: .4rem; position: relative }
+.address .addinfo dl.name dt { width: 3rem; color: #fff; }
+.address .addinfo dl.name dd { position: absolute; left: 2.46rem; margin-top: -.6rem; }
+.address .addinfo dl.name dd.tel { right: 0; left: auto }
+.address .addinfo dl.add { line-height: .5rem; font-size: .34rem; margin-left: 1.2rem; }
+.address .addinfo dl.add dt { float: left; width: 1.72rem; color: #fff; }
+.address .addinfo dl.add dd.addsub { float: left; font-size: .34rem; }
+.cartlist { margin-top: .2rem; }
+.cartlist .store { height: 1rem; line-height: 1rem; background: #fff; font-size: .4rem; padding: 0 .2rem }
+.cartlist li { background: #f5f5f5; position: relative; padding: .4rem .2rem; border-bottom: 1px solid #fff }
+.cartlist li .goodsimg { width: 2rem; height: 2rem; float: left; border: 1px solid #ddd }
+.cartlist li .goodsimg .img { width: 2rem; height: 2rem; }
+.cartlist li .info { box-sizing: border-box; display: block; height: 2rem; left: 0; padding: 0 .2rem 0 2.4rem; position: absolute; width: 100%; }
+.cartlist li.goods div.info .title { font-size: .4rem; color: #666; padding-right: .2rem; }
+.cartlist li.goods div.info .type { font-size: .34rem; color: #999; line-height: .4rem; margin: .02rem 0 .04rem 0; }
+.cartlist li.goods div.info .type span { margin-right: .2rem; }
+.cartlist li.goods div.info .discount { position: absolute; bottom: 0; border-radius: 2px; background: #f60; color: #fff; font-size: .3rem; padding: 0 .1rem; }
+.cartlist li.goods div.info .pay { position: absolute; right: 0; font-size: .4rem; padding-right: .2rem; margin-top: -.4rem; }
+.cartlist li.goods div.info .pay .qty { font-size: .34rem; }
+.payinfo { background: #fff; }
+.payinfo dl { height: 1.2rem; border-bottom: 1px solid #f0f0f0; line-height: 1.2rem; font-size: .4rem; position: relative; padding: 0 .2rem; font-weight: 300; }
+.payinfo .title { height: 1.2rem; border-bottom: 1px solid #e0e0e0; line-height: 1.2rem; font-size: .4rem; position: relative; padding: 0 .2rem; font-weight: 300; }
+.payinfo .pirce { padding: .4rem .2rem; }
+.payinfo .pirce p { height: .6rem; text-align: right; line-height: .6rem; font-size: .34rem; color: #666 }
+.payinfo .pirce p .num { font-size: .4rem; }
+.payinfo .pirce p.total { border-top: 1px solid#e0e0e0; margin-top: .4rem; padding-top: .4rem; font-size: .4rem; color: #333; }
+.payinfo .pirce p.total .num { font-size: .6rem; }
+.payinfo dl dt { width: 3rem; color: #999; }
+.payinfo dl dd { position: absolute; right: .2rem; margin-top: -1.2rem; color: #666 }
+.payinfo dl dd input { height: .8rem; width: 1.2rem; border: 1px solid #e0e0e0; -webkit-appearance: none; border-radius: 2px; padding: 0 .2rem; }
+.payment { height: 1.4rem; padding: 0 .2rem; }
+.payment div { width: 40%; text-align: center; line-height: 1.4rem; float: left; }
+.payment i { font-size: .8rem; }
+.pay .md-effect-2 .md-content { -webkit-transform: translateX(100%); -moz-transform: translateX(100%); -ms-transform: translateX(100%); transform: translateX(100%); opacity: 0; -webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); -moz-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); }
+.pay .md-show.md-effect-2 .md-content { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); opacity: 1; }
+.pay .md-modal { width: 100%; height: 100%; top: 0; left: 0; -webkit-transform: translateX(0) translateY(0); -moz-transform: translateX(0) translateY(0); -ms-transform: translateX(0) translateY(0); transform: translateX(0) translateY(0); }
+.pay .md-content > div { padding: 0 }
+.pay .md-effect-2 .md-content .submit { padding: 0 .4rem .4rem; }
+.pay .md-effect-2 .md-content { background: #f0f0f0; opacity: 1; color: #666; height: 100%; border-radius: 0 }
+.pay .md-effect-2 .md-content .addlist { padding: 0; }
+.pay .md-effect-2 .md-content ul { padding: 0; margin-top: .2rem; }
+.pay .md-effect-2 .md-content li { padding: .2rem; background: #fff; border-bottom: 1px solid #e0e0e0; position: relative; }
+.pay .md-effect-2 .md-content li i.on { position: absolute; right: .4rem; top: .5rem; color: #fff; font-size: 1rem; }
+.pay .md-effect-2 .md-content li.on { background: #6ab42f; color: #fff !important }
+.pay .md-effect-2 .md-content li.on dt { color: #fff !important }
+.pay .md-effect-2 .md-content dt { color: #999; font-weight: 300 }
+.pay .md-effect-2 .md-content .addinfo { padding-right: 1.6rem; }
+.pay .md-effect-2 .md-content .addinfo dl.name { height: .6rem; line-height: .6rem; font-size: .4rem; position: relative }
+.pay .md-effect-2 .md-content .addinfo dl.name dt { width: 2rem; }
+.pay .md-effect-2 .md-content .addinfo dl.name dd { position: absolute; left: 1.6rem; margin-top: -.6rem; }
+.pay .md-effect-2 .md-content .addinfo dl.name dd.tel { right: 0; left: auto }
+.pay .md-effect-2 .md-content .addinfo dl.add { line-height: .5rem; font-size: .34rem; }
+.pay .md-effect-2 .md-content .addinfo dl.add dt { float: left; width: 1.72rem }
+.pay .md-effect-2 .md-content .addinfo dl.add dd.addsub { float: left; font-size: .34rem; }
+/*银行账号管理*/
+.bankcard .cardlist{ padding:.4rem;}
+.bankcard .cardlist .card{ background:#fff; border-radius:.2rem; border:1px solid #e0e0e0; margin-bottom:.4rem; box-shadow:0 0 .2rem rgba(0,0,0,0.06)}
+.bankcard .cardlist .card .title{ line-height:1rem; height:1rem; border-bottom:1px solid #e0e0e0; font-size:.4rem; padding:0 .4rem;}
+.bankcard .cardlist .card .info{ padding:.4rem;}
+.bankcard .cardlist .card .add{ line-height:1rem; font-size:.4rem; padding-bottom:.4rem;}
+.bankcard .cardlist .card .option{ padding-top: 0.4rem;text-align:right; border-top:1px solid #f2f2f2; }

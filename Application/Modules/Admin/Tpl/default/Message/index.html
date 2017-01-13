@@ -1,0 +1,180 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8 ">
+									 <h1 class="mainTitle">留言管理列表</h1>
+									<span class="mainDescription">&nbsp;&nbsp;留言管理 </span>
+								</div>
+
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					  <label for="account" class="sr-only">
+						昵称
+					  </label>
+					  昵称:
+						<input type="text" name="title" value="{$_GET.title}" id="member_name" placeholder="昵称" class="form-control">
+				</div>
+				 <div class="form-group">
+					  <label for="account" class="sr-only">
+						电话
+					  </label>
+					  电话:
+						<input type="text" name="phone" value="{$_GET.phone}" id="phone" placeholder="电话" class="form-control">
+				</div> 
+				 <div class="form-group">
+					<label for="member_type" class="sr-only">
+						状态
+					</label>
+					状态：
+					<select class="form-control" id="status" name="status">
+<option value="all" <if condition="$_GET['status'] =='all'">selected</if>>全部</option>
+<option value="1" <if condition="$_GET['status'] ==1">selected</if>>已处理</option>
+<option value="0" <if condition="$_GET['status'] ==='0'">selected</if>>待处理</option>
+					</select>
+				</div>	
+
+		</div>
+ <div class="panel-body">
+
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			留言时间
+		</label>
+		留言时间：
+	  <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+		-
+		 <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+
+	</div>
+<div class="form-group  " style="margin-top: -10px;">
+    <button class="btn btn-primary" type="submit">
+		提交
+	</button>
+	</div>
+
+
+ </div>
+
+
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>昵称</th>
+						<th class="hidden-xs">电话</th>
+						<th>留言内容</th>
+						<th>留言时间</th>
+						<th>状态</th>
+						<th>处理意见</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"></td>
+						<td> 
+							{$vo.title}
+						</td>
+						<td class="hidden-xs">{$vo.phone}</td>
+						<td >{$vo.message|mbubstr_html=0,36}</td>
+						<td>{$vo.add_time|date="Y-m-d",###}	</td>
+						<td>{$status[$vo['status']]}</td>
+						<td>{$vo.remark|mbubstr_html=0,36}</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+                           	<a href="{:U("Admin/Message/message_detail",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+                             
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+         <include file="Public/javascript_datepicker"/>
+        
+	</body>
+</html>

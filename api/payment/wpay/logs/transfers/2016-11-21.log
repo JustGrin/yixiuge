@@ -1,0 +1,79 @@
+[2016-11-21 10:21:02][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+
+[2016-11-21 10:21:14][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+
+[2016-11-21 10:21:33][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 10:22:50][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 10:23:05][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 10:23:18][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 10:25:37][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 10:28:01][debug] 
+return_code:SUCCESS
+return_msg:真实姓名不一致.
+result_code:FAIL
+err_code:NAME_MISMATCH
+err_code_des:真实姓名不一致.
+
+[2016-11-21 10:53:23][debug] 
+return_code:SUCCESS
+return_msg:付款金额不能小于最低限额.
+result_code:FAIL
+err_code:AMOUNT_LIMIT
+err_code_des:付款金额不能小于最低限额.
+
+[2016-11-21 18:51:01][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+
+[2016-11-21 20:09:24][debug] 
+return_code:SUCCESS
+return_msg:参数错误:输入的用户openid有误.
+result_code:FAIL
+err_code:PARAM_ERROR
+err_code_des:参数错误:输入的用户openid有误.
+

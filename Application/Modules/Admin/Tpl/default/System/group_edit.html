@@ -1,0 +1,206 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-md-8 col-md-offset-5">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">&nbsp;分组信息</span>
+								</div>
+
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+	<div class="form-group">
+		<label class="control-label">
+			分组名称 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写分组名称" class="form-control" value="{$data.title}" id="title" name="title">
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			状态 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control"   name="status">
+			<if condition="$data.id gt 0">
+			<option value="1" <if condition="$data.status eq 1">selected</if> >有效</option>
+            <option value="0" <if condition="$data.status eq 0">selected</if> >无效</option>
+            <else/>
+            <option value="1">有效</option>
+            <option value="0">无效</option>
+            </if>
+		</select>
+	</div>
+
+
+	<div class="form-group " >
+		<label class="control-label">
+			菜单类型 <span >(超级管理员创建的菜单为系统菜单，商家创建的菜单为商家菜单)</span>
+		</label>
+		<div class="clip-radio radio-primary fa-hover Primary">
+           <if condition="$data.auid gt 0">
+			  商家菜单：商家名称:{$data.adm_name}  商家帐号：{$data.adm_account}
+             <else/>
+             系统菜单
+			</if>
+
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<label class="control-label">
+			菜单权限: <span ></span>
+		</label>
+
+	</div>
+<volist name="menulist" id='vo'>
+	<div class="form-group margin-left-20">
+
+
+		<div class="checkbox clip-check check-primary">
+		<input  <if condition="in_array($vo['id'],$menuarr)">checked</if> type="checkbox" value="{$vo.id}" name="menuarr[]" id="menu_{$vo.id}" class="chk chk_{$vo.id}">
+			<label for="menu_{$vo.id}" class="control-label">
+				{$vo.title}
+			</label>
+			</div>
+		<div class="checkbox clip-check check-primary margin-left-20 margin-bottom-20">
+
+			<volist name="vo['tree']" id='voo' >
+				<input <if condition="in_array($voo['id'],$menuarr)">checked</if> type="checkbox" value="{$voo.id}" class="chk_c chk_c_{$vo.id}" data="{$vo.id}" name="menuarr[]" id="menu_{$voo.id}">
+				<label for="menu_{$voo.id}">
+					{$voo.title}
+				</label>
+	       </volist>
+		</div>
+
+    </div>
+ </volist>
+
+
+
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-8 col-md-offset-5">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+
+$("#form2").validate({
+  rules: {
+   title: "required"
+  },
+  messages: {
+   title: "请输入分组名称"
+  }
+  });
+
+//一级菜单取消 取消下面的所有二级菜单
+$(".chk").change(function(){
+	var val=$(this).val();
+	var check=$(this).prop("checked");
+	//$("[name = chkItem]:checkbox").attr("checked", true);
+	if(check){
+	    //选中
+		//$(".chk_c_"+val).prop("checked", true);
+	}else{
+		//取消选中
+		$(".chk_c_"+val).prop("checked", false);
+	}
+});
+
+//二级菜单 选中 同时选中所属的一级菜单 
+//  取消  如果同级所有二级菜单都已取消 取消所属的一级菜单
+$(".chk_c").change(function(){
+	var val=$(this).attr("data");
+	var check=$(this).prop("checked");
+	//$("[name = chkItem]:checkbox").attr("checked", true);
+	if(check){
+	    //选中
+		$(".chk_"+val).prop("checked", true);
+	}else{
+		//取消选中
+		var check_c=false;
+		$(".chk_c_"+val).each(function(){
+			var check_c=$(this).prop("checked");
+            if(check_c){
+            	check_c=true;
+            	return ture;﻿
+            }
+		});
+		$(".chk_"+val).prop("checked", check_c);
+	}
+});
+
+});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

@@ -1,0 +1,211 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">管理员列表</h1>
+									<span class="mainDescription">&nbsp;&nbsp;管理员</span>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+									<a data-hover="新增" href="{:U('admin/system/manager_edit')}"><span>新增</span></a>
+								</nav>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					
+					  <label for="account" class="sr-only">
+						帐号
+					  </label>
+					  名称:
+						<input type="text" name="account" value="{$_GET.account}" id="account" placeholder="帐号" class="form-control">
+					
+				</div>
+				<div class="form-group">
+					<label for="name" class="sr-only">
+						名称
+					</label>
+					名称:
+					<input type="text" placeholder="名称" value="{$_GET.name}"  name="name" id="name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="mobile" class="sr-only">
+						电话
+					</label>
+					电话：
+					<input type="text" name="mobile" value="{$_GET.mobile}" placeholder="电话" id="mobile" class="form-control">
+				</div>
+				
+				
+				
+			
+		</div>
+		<div class="panel-body">
+			<if condition="$_SESSION['topadmin'] gt 0">
+              <div class="form-group">
+					<label for="type" class="sr-only">
+						类型
+					</label>
+					类型：
+					<select class="form-control" id="type" name="type">
+						<option value="all" <if condition="$_GET['type'] =='all'">selected</if>>全部</option>
+						<option value="1" <if condition="$_GET['type'] ==1">selected</if>>管理员</option>
+						<option value="0" <if condition="$_GET['type'] ==='0'">selected</if>>商家</option>
+					</select>
+				</div>
+			</if>
+			 <div class="form-group">
+					<label for="type" class="sr-only">
+						状态
+					</label>
+					状态：
+					<select class="form-control" id="status" name="status">
+						<option value="all" <if condition="$_GET['status'] =='all'">selected</if>>全部</option>
+						<option value="1" <if condition="$_GET['status'] ==1">selected</if>>正常</option>
+						<option value="0" <if condition="$_GET['status'] ==='0'">selected</if>>冻结</option>
+					</select>
+				</div>	
+			    <button class="btn btn-primary" type="submit">
+					提交
+				</button>
+		</div>
+		
+    </form>
+	</div>
+</div>
+		</div>								
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">帐号</th>
+						<th>名称</th>
+						<th class="hidden-xs">电话</th>
+						<th>类型</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr>
+						<td class="center">{$vo.account}<i/></td>
+						<td class="hidden-xs">{$vo.name}</td>
+						<td> {$vo.mobile}</td>
+						<td>
+						{$vo['type']?'管理员':'商家'}	
+						</td>
+						<td>
+						{$vo['status']?'正常':'冻结'}	
+						</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<if condition="($_SESSION['topadmin']==1)">
+								  {//自己的和所有账号的}
+								  
+								  <if condition="$vo['shop_count'] lt 1">
+								  	<a href="{:U("admin/shop/shop_edit",array('shop_id'=>$vo['fid']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="添加商家信息"><i class="fa fa-list-alt"></i></a>
+								  </if>	
+									<a href="{:U("Admin/System/manager_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+									<if condition="$vo['id']!=$_SESSION['auid']">
+										<if condition="$vo.status eq 1">
+										<a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove" onclick="return confirm('确定冻结该用户？')"  tooltip-placement="top" data-toggle="tooltip" data-original-title="冻结"><i class="fa fa-minus-square"></i></a>
+					                    <else/>
+					                     <a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove" onclick="return confirm('确定解冻该用户？')" tooltip-placement="top" data-toggle="tooltip" data-original-title="解冻"><i class="fa fa-check-square"></i></a>
+										</if>
+				                  </if>
+							<elseif condition="($_SESSION['topadmin']==2 )"/>
+							{//自己的和所有商家的}
+								<if condition="($_SESSION['auid']==$vo['id'] || $vo['type']==0)">
+	                                <a href="{:U("Admin/System/manager_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+	                            </if>
+	                              <if condition="$vo['type']==0">
+										<if condition="$vo.status eq 1">
+										<a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips"   onclick="return confirm('确定冻结该用户？')"><i class="fa fa-minus-square" tooltip-placement="top" data-toggle="tooltip" data-original-title="冻结"></i></a>
+					                    <else/>
+					                     <a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="解冻" onclick="return confirm('确定解冻该用户？')"><i class="fa fa-check-square"></i></a>
+										</if>
+				                  </if>
+                            <else/>
+                            {//自己的和所有子账号的 修改自己的 和修改子账号}
+	                            <if condition="($_SESSION['auid']==$vo['id'] || $vo['fid']==$_SESSION['auid'])">
+	                                <a href="{:U("Admin/System/manager_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+	                            </if>
+	                            {//不能冻结自己的帐号}
+	                            <if condition="$vo['fid']==$_SESSION['auid'] && $_SESSION['auid']!=$vo['id']">
+										<if condition="$vo.status eq 1">
+										<a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips"  tooltip-placement="top" data-toggle="tooltip" data-original-title="冻结" onclick="return confirm('确定冻结该用户？')"><i class="fa fa-minus-square"></i></a>
+					                    <else/>
+					                     <a href="{:U("Admin/System/manage_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips"  tooltip-placement="top" data-toggle="tooltip" data-original-title="解冻" onclick="return confirm('确定解冻该用户？')"><i class="fa fa-check-square"></i></a>
+										</if>
+				                  </if>
+							</if>
+	                  
+						</div>
+						</td>
+					</tr>
+					
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

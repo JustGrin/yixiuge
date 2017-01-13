@@ -1,0 +1,117 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">支付列表</h1>
+									<span class="mainDescription">支付管理页面 </span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+
+</style>
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<!-- <th>支付代码名称</th> -->
+						<th class="hidden-xs">支付名称</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="menulist" id='vo' key='key'>
+					<tr class="menu_p" data="{$vo.id}" data-type="0">
+						<td class="center"></td>
+						
+						<td class="hidden-xs">{$vo.payment_name}
+						</td>
+						<td>
+						{$vo['payment_state']?'启用':'禁用'}	
+						</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<a href="{:U("Admin/Payment/payment_edit",array('id'=>$vo['payment_id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							
+						</div>
+						</td>
+					</tr>
+					
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+<script type="text/javascript">
+	$(function(){
+		$(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+            	//当前展开  收起操作
+            	$(".menu_p_c").hide();
+            	$(this).attr("data-type",0);
+            	$(".angle_down_"+data).show();
+            	$(".angle_up_"+data).hide();
+            }else{
+               //当前收起 展开操作
+               $(".menu_p_c").hide();
+               $(".menu_p_"+data).show();
+               $(this).attr("data-type",1);
+               $(".angle_down_"+data).hide();
+               $(".angle_up_"+data).show();
+            }
+            
+		});
+	});
+</script>		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

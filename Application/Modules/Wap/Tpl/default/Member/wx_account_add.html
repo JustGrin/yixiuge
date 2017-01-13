@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{$_GET['id']?'修改':'添加'}提现账户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <script src="__PUBLIC__/wap/js/flexible.js"></script>
+    <link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="bankcard">
+<div class="head">
+    <a  href="javascript:history.go(-1);" class="md-close back">
+        <i class="iconfont">&#xe617</i>
+    </a>
+    <a href="#" class="md-login floatRgt">
+        登录
+    </a>
+    <h2 >认证微信提现账户</h2>
+</div>
+<div class="member">
+    <form id="withdraw" role="form" class="mlogin " action="" method="post" novalidate onSubmit="return false;">
+
+        <if condition="$member_id_card.empty neq 1">
+            <div class="field">
+                <div class="label">账户名</div>
+                <div class="field-control">
+                    <input class='input-required' name="account_name"   id="account_name" type="text" value="{$member_id_card.real_name}" readonly>
+
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">身份证号</div>
+                <div class="field-control">
+                    <input class='input-required num' name="ID_card"  id="ID_card" type="text" value="{$member_id_card.id_number}" readonly/>
+                    <div class="need">
+                        <if condition="$member_id_card.is_check eq 0">
+                            <a href="{:U('wap/Member/authentication')}" class="btn3 btnsF34">审核中。。</a>
+                            <elseif condition="$member_id_card.is_check eq 1" />
+                            <a href="{:U('wap/Member/authentication')}" class="btn1 btnsF34">修改</a>
+                            <else/>
+                            <a href="{:U('wap/Member/authentication')}" class="btn2 btnsF34">审核未通过</a>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+            <else/>
+            <div class="field">
+                <div class="label">身份认证</div>
+                <div class="field-control">
+                    <span class="num">{$member_id_card.msg} </span>
+                    <div class="need">
+                        <a href="{:U('wap/Member/authentication')}" class="btn1 btnsF34">去认证</a>
+                    </div>
+                </div>
+            </div>
+        </if>
+
+        <div class="field ">
+            <div class="label">
+                微信昵称
+            </div>
+            <div class="field-control">
+                <input class='input-required' name="wx_name"   id="wx_name" type="text" value="{$_SESSION['user_info']['nickname']}" readonly>
+            </div>
+        </div>
+        <input name="id" id="id" type="hidden" value="{$data.id}">
+        <div class="submit submitdown">
+            <a href="javascript:void(0);" class=" phone_log_btn ">
+                <button type="button" class="button " id="submit-btn">提 交</button>
+            </a>
+        </div>
+    </form>
+</div>
+<input value="{$member_id_card.is_check}" id="is_check" type="hidden">
+<input value="{$member_id_card.empty}" id="empty" type="hidden">
+<include file="Public/footer_new" />
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script>
+    var is_check=$('#is_check').val();
+    var empty=$('#empty').val();
+
+    jQuery(document).ready(function() {
+
+        //FormValidator.init();
+        jQuery.validator.addMethod("byteRangeLength", function(value) {
+            var dropdown=$("#dropdown").val();
+            var ret=true;
+            if(dropdown>0){
+                if(!value){
+                    ret=false;
+                }
+            }
+            return ret;
+        });
+
+        $("#withdraw").validate({
+            rules: {
+                ID_card:{
+                    required: true,
+                    IDcard:true
+                },
+                account_name: 'required',
+            },
+            messages: {
+                ID_card:{
+                    required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入身份证号码',
+                    IDcard:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的身份证号码'
+                },
+                account_name: '<span class="icon-warning icon_warning"></span>&nbsp;请输入开户名',
+            },
+            focusInvalid:false,
+            success: function(label) {
+                // set  as text for IE 
+                // alert('ok'); 
+                //label.html(" ").addClass("checked"); 
+            },
+            /*执行ajaxsubmit  */
+            submitHandler: function(editform) {
+
+                var options = {
+                    url :  "<?php echo U('Wap/Member/wx_account_add'); ?>",
+                    type : "post" ,
+                    dataType:'json',
+                    target : "#loader",
+                    error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});},
+                    onwait : "正在处理信息，请稍候...",
+                    success: function(response){
+                        console.log(response);
+                        console.log(response);
+                        //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                        //$('#editform').hide(2000); 
+                        if(response.status==1){
+                            // alert("操作成功");
+                            layer.msg('操作成功', {icon: 6,time:1500},function(){
+                                window.location.href="<?php echo U('Wap/Member/cashapply'); ?>";
+                            });
+                        }else{
+                            layer.msg(response.error, {icon: 5});
+                            // alert(response.error);
+                        }
+                    }
+                };
+                setTimeout((function(opt){
+                    return function(){
+                        $('#withdraw').ajaxSubmit(opt);
+                    }
+                })(options), 300);
+                return false;
+            }
+
+        });
+
+        $('.phone_log_btn').click(function(){
+            if (empty == 1){
+                layer.msg('您的用户信息未验证,请验证',{icon: 6,time:1500},function () {
+                    window.location.href="<?php echo U('wap/Member/authentication'); ?>";
+                });
+            }else {
+                if(is_check == 0){
+                    layer.msg('用户身份信息正在审核中,请耐心等待');
+                }else if(is_check == 1){
+                    $('#withdraw').submit();
+                }else if (is_check == 2){
+                    layer.msg('您的用户信息审核未通过,请修改',{icon: 6,time:1500},function () {
+                        window.location.href="<?php echo U('wap/Member/authentication'); ?>";
+                    });
+                }
+            }
+
+        });
+
+    });
+
+
+</script>
+<script>
+
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement('style')
+        msViewportStyle.appendChild(
+                document.createTextNode(
+                        '@-ms-viewport{width:auto!important}'
+                )
+        )
+        document.querySelector('head').appendChild(msViewportStyle)
+    }
+
+</script>
+</body>
+</html>

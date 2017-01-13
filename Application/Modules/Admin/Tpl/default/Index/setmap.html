@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>地图设置</title>
+<meta http-equiv="MSThemeCompatible" content="Yes">
+
+ <link rel="stylesheet" href="__PUBLIC__/bootstrap/vendor/artDialog/skins/default.css?4.1.7">
+<script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak={$mapak}"></script>
+<style type="text/css">
+body,html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+}
+.search-pane {
+	width: 90%;
+	margin: 5px 10px
+}
+.tab {height: 35px; margin:10px 0 0 0;background:#eee;border-bottom: 1px solid #d7dde6;}
+.tab ul{ height: 35px;}
+
+.tab ul li{ float:left; height:30px; border: 1px solid #d7dde6; background: #f6f6f6; font-size: 14px; line-height: 30px; margin: 4px 0 0 10px; display: inline; cursor: pointer; white-space: nowrap ;  padding:0 18px}
+.tab ul li.current{ background:#fff; font-weight:bold; line-height:28px; border-bottom:none; height:31px;padding:0 18px; cursor:default;}
+.tab ul li.last{border:none; margin-left:50px; background:none;}
+
+.oper{margin:20px 0; background:#f9fcff}
+.oper a{height:18px; line-height:18px; margin: 0 20px 0 0; font-size:14px}
+input.error,textarea.error{ border:1px solid #f00; } label.error,option.error{ color:#f00; } 
+.ftip{background:#fefbe4 ;border:1px solid #F3ECB9;padding:6px 20px 6px 10px;height:36px;font-size:14px; margin:10px; color:#993300; line-height:36px;}
+.ftip a{font-size:12px; float:right}
+.ftip a.normal{font-size:14px; float:none}
+
+</style>
+
+</head>
+<body style="background: #FFF;">
+
+
+	<div class="ftip" style="margin: 0">
+		输入地址后，点击“搜索”,也可自由选择坐标点-&gt;
+<a id="ok" href="###" style="font-size:18px;">已经设定好，关闭该页面</a>
+	</div>
+	<div class="search-pane">
+		<input type="text" name="shopaddress" id="shopaddress" class="px" style="width: 200px" value=""><input type="button" class="btnGrayS vm bigbtn" value="搜索" onclick="searchMap();">
+
+
+	</div>
+	<div id="dituContent" style="width: 100%; height: 310px; border: 1px solid rgb(204, 204, 204); margin-bottom: 20px; overflow: hidden; position: relative; z-index: 0; color: rgb(0, 0, 0); text-align: left; background-image: url(http://api.map.baidu.com/images/bg.png); background-color: rgb(243, 241, 236);"></div>
+	<input type="hidden" id="longitude" value="0">
+	<input type="hidden" id="latitude" value="0">
+	<div id="l-map"></div>
+	<script type="text/javascript">
+		if (art.dialog.data('longitude')) {
+			document.getElementById('longitude').value = art.dialog
+					.data('longitude');// 获取由主页面传递过来的数据
+			document.getElementById('latitude').value = art.dialog
+					.data('latitude');
+		};
+		// 关闭并返回数据到主页面
+		document.getElementById('ok').onclick = function() {
+			var origin = artDialog.open.origin;
+			var longitudeinput = origin.document.getElementById('longitude');
+			var latitudeinput = origin.document.getElementById('latitude');
+			longitudeinput.value = $('#longitude').attr('value');
+			latitudeinput.value = $('#latitude').attr('value');
+			art.dialog.close();
+		};
+	</script>
+	<script type="text/javascript">
+		//创建和初始化地图函数：
+		function initMap() {
+			var lngt = $('#longitude').val();
+			var latt = $('#latitude').val();
+			if (lngt == 0) {
+				lngt = '';
+			}
+			if (latt == 0) {
+				latt = '';
+			}
+
+			createMap(lngt, latt);//创建地图    setMapEvent();//设置地图事件
+			addMapControl();//向地图添加控件
+		}
+
+		//地图搜索
+		function searchMap() {
+			var area = document.getElementById("shopaddress").value; //得到地区
+			var ls = new BMap.LocalSearch(map);
+			ls.setSearchCompleteCallback(function(rs) {
+				if (ls.getStatus() == BMAP_STATUS_SUCCESS) {
+					var poi = rs.getPoi(0);
+					if (poi) {
+						createMap(poi.point.lng, poi.point.lat);//创建地图(经度poi.point.lng,纬度poi.point.lat)
+						$('#longitude').attr({
+							"value" : poi.point.lng
+						});
+						$('#latitude').attr({
+							"value" : poi.point.lat
+						});
+						setMapEvent();//设置地图事件
+						addMapControl();//向地图添加控件
+					}
+				}
+			});
+			ls.search(area);
+		}
+
+		//创建地图函数：
+		function createMap(x, y) {
+			var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+			var point = new BMap.Point(x, y);//定义一个中心点坐标
+
+			map.centerAndZoom(point, 20);//设定地图的中心点和坐标并将地图显示在地图容器中
+			var marker = new BMap.Marker(point); // 创建标注
+			map.addOverlay(marker); // 将标注添加到地图中
+			window.map = map;//将map变量存储在全局
+			/*
+			var shopname = $('#shopname').val();
+			if(!shopname){
+				shopname="微客巴巴信息技术中心";
+			}
+			var opts = {
+			  width : 200,     // 信息窗口宽度
+			  height: 100,     // 信息窗口高度
+			  title : shopname , // 信息窗口标题
+			}
+			var shopphone = $('#shopphone').val();
+			if(!shopphone){
+				shopphone="400-023-6181";
+			}
+			var shopaddress = $('#shopaddress').val();
+			if(!shopaddress){
+				shopaddress = "重庆市九龙坡区石桥铺华宇名都城";
+			}
+			var content = "电话：" +shopphone+ "<br>地址："+shopaddress ; 
+			var infoWindow = new BMap.InfoWindow(content, opts);  // 创建信息窗口对象
+			map.openInfoWindow(infoWindow,point); //开启信息窗口
+			 */
+			map.addEventListener("click", function(e) {
+				if (confirm("确认选择这个位置？")) {
+					var destPoint = e.point;
+					$('#longitude').attr({
+						"value" : destPoint.lng
+					});
+					$('#latitude').attr({
+						"value" : destPoint.lat
+					});
+					map.clearOverlays();
+					var marker1 = new BMap.Marker(destPoint);
+					map.addOverlay(marker1);
+					//确定选择 模拟点击确定
+					$('#ok').click();
+				}
+			});
+		}
+
+		//地图事件设置函数：
+		function setMapEvent() {
+			map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+			map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+			map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+			map.enableKeyboard();//启用键盘上下左右键移动地图
+		}
+
+		//地图控件添加函数：
+		function addMapControl() {
+			//向地图中添加缩放控件
+			var ctrl_nav = new BMap.NavigationControl({
+				anchor : BMAP_ANCHOR_TOP_LEFT,
+				type : BMAP_NAVIGATION_CONTROL_LARGE
+			});
+			map.addControl(ctrl_nav);
+			//向地图中添加缩略图控件
+			var ctrl_ove = new BMap.OverviewMapControl({
+				anchor : BMAP_ANCHOR_BOTTOM_RIGHT,
+				isOpen : 1
+			});
+			map.addControl(ctrl_ove);
+			//向地图中添加比例尺控件
+			var ctrl_sca = new BMap.ScaleControl({
+				anchor : BMAP_ANCHOR_BOTTOM_LEFT
+			});
+			map.addControl(ctrl_sca);
+		}
+
+		initMap();//创建和初始化地图
+	</script>
+
+	<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div>
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div></body></html>

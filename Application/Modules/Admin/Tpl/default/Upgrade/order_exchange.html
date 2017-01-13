@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>订单</title>
+	<meta http-equiv="MSThemeCompatible" content="Yes">
+	<link rel="stylesheet" href="/Public/bootstrap/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/Public/bootstrap/vendor/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/Public/bootstrap/assets/css/styles.css">
+</head>
+<body>
+	<div class="container-fluid container-fullw bg-white">
+	<if condition="$show_order['code'] eq 'unconfirmed'">
+	{//待确认}
+	<form action="" role="form" id="form3" novalidate="novalidate" method="post">
+		<div class="form-group"  align="center">
+			<label class="control-label">
+				<h4>订单确认</h4>
+			</label>
+		</div>
+		<div class="clip-radio radio-primary fa-hover Primary"  align="center">
+
+			<input type="radio" value="1" name="order_status" id="id_yes" checked="checked">
+			<label for="id_yes">
+				确认订单（备货中）
+			</label>
+			<input type="radio" value="0" name="order_status" id="id_on" >
+			<label for="id_on">
+				无效订单
+			</label>
+		</div>
+		<div style="padding-left: 90px">
+			<input type="hidden"  value="{$data.order_id}" name="order_id">
+			<button class="btn btn-primary btn-wide pull-left" type="button" onclick="setInvoicetwo({$data.order_id});">
+				提交 <i class="fa fa-arrow-circle-right"></i>
+			</button>
+		</div>
+	</form>
+	<elseif condition="$show_order['code'] eq 'nondelivery'"/>
+	{//未发货}
+	<form action="" role="form" id="form3" novalidate="novalidate" method="post">
+		<div class="form-group" align="center">
+			<label class="control-label">
+				<h4>订单发货</h4>
+			</label>
+		</div>
+		<div class="form-group" align="center">
+			<label class="control-label">
+				发货单号
+			</label>
+		<input type="text" placeholder="填写发货单号" class="form-control" value="" name="invoice_no" id="invoice_no" onblur="invoice();">
+		</div>
+		<div style="padding-left: 90px">
+			<input type="hidden"  value="1" name="shipping_status">
+			<input type="hidden"  value="{$data.order_id}" name="order_id">
+			<button class="btn btn-primary btn-wide pull-left" type="button" onclick="setInvoice({$data.order_id});">
+				提交 <i class="fa fa-arrow-circle-right"></i>
+			</button>
+		</div>
+	</form>
+</if>
+		</div>
+</center>
+	<include file="Public/javascript"/>
+
+	<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+	<script src="__PUBLIC__/js/jquery.form.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>  <!-- 小窗口js -->
+	<script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+
+	<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+	<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+	<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>  <!-- 窗口js -->
+	<script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>  <!-- 窗口js -->
+
+<!-- 通过ajax返回值来删除窗口	zm 2015.10.15 -->
+<script type="text/javascript">
+	function invoice(){
+		var val=document.getElementById("invoice_no").value;		
+		if(val==""){
+			$("span").empty();
+			$("#invoice_no").after("<span style='color:red'>发货单号不能为空</span>");
+		}else{
+			$("span").hide();
+		}
+	}
+	//验证发货单号
+	function setInvoice(id){
+		var origin = art.dialog.open.origin;  
+						
+		var val=document.getElementById("invoice_no").value;
+		$("span").empty();
+		if(val==""){
+				$("#invoice_no").after("<span style='color:red'>发货单号不能为空</span>");
+		}else{
+			var status=$("input[name='order_status']:checked").val();
+			var status=$("[name='shipping_status']").val();
+			var invoice_no=$("#invoice_no").val()
+	//		alert(status);
+			$.ajax({
+				url:"<?php echo U('Admin/upgrade/order_exchange'); ?>",
+				type:"post",
+				data:"shipping_status="+status+"&order_id="+id+"&invoice_no="+invoice_no,
+				dataType:"json",
+				success:function(data){
+
+					if(data.status==1){
+						layer.msg("配送成功。", {icon: 6,time:1500}, function(){
+							var origin = art.dialog.open.origin;
+							var nondelivery = origin.document.getElementById('delete_'+id);	
+							var name = origin.document.getElementById("name_"+id);
+							name.innerHTML = "已发货";				
+							nondelivery.parentNode.removeChild(nondelivery);  //删除由id获取的这个对象
+							art.dialog.close();  
+							// top.art.dialog({id : id}).close();  //通过id删除窗口							
+						});
+					}else{
+							layer.msg(data.error, {icon: 5,time:1500}, function(){
+							var win = art.dialog.open.origin;  
+							win.location.reload();  
+							top.art.dialog({id : id}).close();  //通过id删除窗口
+							// art.dialog.close();       //直接删除窗口
+						});
+				}
+			}
+		})
+	}
+}
+//确认订单 
+	function setInvoicetwo(id){
+			var status=$("input[name='order_status']:checked").val();
+			// var status2=$("[name='shipping_status']").val();
+	//		alert(status);
+			$.ajax({
+				url:"<?php echo U('Admin/upgrade/order_exchange'); ?>",
+				type:"post",
+				data:"order_status="+status+"&order_id="+id,
+				dataType:"json",
+				success:function(data){
+
+					if(data.status==1){
+						if(status==0){
+							layer.msg("取消成功", {icon: 1,time:1500}, function(){
+							window.location.href = "<?php echo U('Admin/upgrade/order_list');?>"
+							var origin = art.dialog.open.origin;  
+							var unconfirmed = origin.document.getElementById('unconfirmed_'+id);
+							var name = origin.document.getElementById("name_"+id);
+							unconfirmed.parentNode.removeChild(unconfirmed);
+							name.innerHTML = "已取消";
+							// top.art.dialog({id : id}).close();  //通过id删除窗口
+							art.dialog.close();  
+						});
+						}else{
+							layer.msg("确定成功。", {icon: 6,time:1500}, function(){
+								// window.location.href = "<?php echo U('Admin/goodsorder/index');?>"
+								var origin = art.dialog.open.origin;  
+								var unconfirmed = origin.document.getElementById('unconfirmed_'+id);	
+								var name = origin.document.getElementById("name_"+id);
+								$(unconfirmed).attr("data-original-title","配送");
+								unconfirmed.innerHTML='<i class="fa fa-truck"></i>';
+								name.innerHTML = "备货中";			
+								// origin.location.reload();  //刷新父页面
+								// top.art.dialog({id : id}).close();  //通过id删除窗口
+								art.dialog.close();  
+							});
+						}
+					}else{
+							layer.msg(data.error, {icon: 5,time:1500}, function(){
+							window.location.href = "<?php echo U('Admin/upgrade/order_list');?>"
+							var win = art.dialog.open.origin;  
+							win.location.reload();  
+							top.art.dialog({id : id}).close();  //通过id删除窗口
+							// art.dialog.close();       //直接删除窗口
+						});
+				}
+			}
+		})
+	}
+</script>
+
+</body>
+</html>
+

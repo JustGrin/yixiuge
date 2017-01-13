@@ -1,0 +1,69 @@
+
+<include file="Public/header"/>
+
+	<section class="page_main_section">
+		<div class="container">
+			<div class="row">
+				<div class="blog_category_index span8 content_with_left_sidebar">
+
+                   <volist name="list['list']" id="vo">
+					<div class="post post_wrapper clearfix">
+						<div class="post_content">
+							<h2>
+								<a href="{:U('Index/Index/shop_detail',array('id'=>$vo['shop_id']))}">{$vo.shop_name}</a>
+							</h2>
+							<div class="post_meta">
+								<span class="post_date">
+									<i class="entypo-location"></i>
+									{$vo.addr}
+								</span>
+							</div>
+							<!-- 698*366 -->
+							<img src="{$vo.background}" alt="">				
+							<p>{$vo.business}</p>
+							<div class="post-readmore"> 
+								<a href="{:U('Index/Index/shop_detail',array('id'=>$vo['shop_id']))}" class="more-link">查看详细</a>
+							</div>
+						</div>
+					</div>
+				   </volist>
+
+					
+
+					
+				</div>
+				<!-- end span8 main-content -->
+				<aside class="span4 sidebar sidebar_left">
+
+					<div class="widget widget_tag_cloud">
+						<div class="sidebar-widget-heading">
+							<h3>行业分类</h3>
+						</div>
+						<div class="tagcloud">
+							<a href="{:U('index/index/shop')}" title="2 topics">全部</a>
+							<volist name="class_list" id="vo">
+							 <a href="{:U('index/index/shop',array('type'=>$vo['id']))}" title="1 topics">{$vo.class_name}</a>
+							</volist>	
+						</div>
+					</div>
+				</aside><!-- end span4 sidebar -->
+			</div>
+			<!-- end row -->
+			<section id="blog_pagination" class="clearfix">
+				<div class="container">
+					<div class="pagination pagination-centered">
+						{$list.page}
+						<!-- <span class="page-numbers current">1</span>
+						<a class="page-numbers" href="blog-right-sidebar.html">2</a>
+						<a class="next page-numbers" href="blog-right-sidebar.html">Next »</a> -->
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+
+
+	<include file="Public/footer"/>
+	
+</body>
+</html>

@@ -1,0 +1,179 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<!-- <h1 class="mainTitle">会员列表</h1> -->
+									<span class="mainDescription">订单管理页面 </span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					  <label for="account" class="sr-only">
+						会员昵称
+					  </label>
+					  会员昵称:
+						<input type="text" name="member_name" value="{$_GET.member_name}" id="member_name" placeholder="会员昵称" class="form-control">
+				</div>
+				<!-- <div class="form-group">
+					  <label for="account" class="sr-only">
+						电话
+					  </label>
+					  电话:
+						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
+				</div> -->
+				 <div class="form-group">
+					<label for="member_type" class="sr-only">
+						订单类型
+					</label>
+					定单类型：
+					<select class="form-control" id="order_state" name="order_state">
+<option value="all" <if condition="$_GET['order_state'] =='all'">selected</if>>全部</option>
+<option value="10" <if condition="$_GET['order_state'] ==10">selected</if>>待付款</option>
+<option value="20" <if condition="$_GET['order_state'] =='20'">selected</if>>已付款</option>
+<option value="30" <if condition="$_GET['order_state'] =='30'">selected</if>>已完成</option>
+<option value="0" <if condition="$_GET['order_state'] ==='0'">selected</if>>已取消</option>
+					</select>
+				</div>	
+
+		</div>
+ <div class="panel-body">
+
+	<div class="form-group">
+		<label for="type" class="sr-only">
+			下单时间
+		</label>
+		下单时间：
+	  <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+		-
+		 <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+
+	</div>
+<div class="form-group  " style="margin-top: -10px;">
+    <button class="btn btn-primary" type="submit">
+		提交
+	</button>
+	</div>
+
+
+ </div>
+
+
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>订单编号</th>
+						<th class="hidden-xs">商家</th>
+						<th>会员名称</th>
+						<th>下单时间</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"></td>
+						<td> 
+							{$vo.pay_sn}
+						</td>
+						<td class="hidden-xs">{$vo.store_name}</td>
+						<td >{$vo.buyer_name}</td>
+						<td>{$vo.add_time|date="Y-m-d",###}	</td>
+						<td>{$order_state[$vo['order_state']]}</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+                           	<a href="{:U("Admin/Order/Order_detail",array('id'=>$vo['order_id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+                             
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+         <include file="Public/javascript_datepicker"/>
+        
+	</body>
+</html>

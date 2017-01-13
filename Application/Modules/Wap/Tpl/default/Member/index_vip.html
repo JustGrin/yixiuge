@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员中心--Vip</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/component.css" />
+</head>
+<body class="member">
+<div class="top">
+	<div class="mallbg" style=" background-image:url({$data.background_image|get_member_background_default})">
+		<div class="change_back_img" style="display: none">
+			更换背景图
+		</div>
+	</div>
+	<div class="mall"	>
+		<div class="avatar floatLft">
+			<a href="{:U('wap/member/setphoto')}">
+			<span style="background:url({$data.member_logo|get_member_logo_default}) #fff" class="bgcover"></span>
+			</a>
+		</div>
+		<div class="name">
+			<b>{$data.member_name}的店铺</b>
+			<a class="store btn2 btnsF34">{$vip_name}<if condition="$vip_i eq 3"><i class="flagship iconfont">&#xe662</i></if></a>
+			<if condition="$vip_i eq 1">
+				<a href="{:U('wap/start/shopkeeper_area')}" class="btn1 up btnsF34">
+				升级
+				</a>
+			</if>
+		</div>
+		<div class="memberid">
+			会员ID：
+			<a class="num">
+			{$data.member_card}
+			</a>
+		</div>
+	</div>
+	<div class="shopinfo">
+		<ul>
+			<li><a href="{:U('wap/member/fans',array('type'=>'recommend'))}">推荐人<span>{$MemberDetail.recommend_name}</span></a></li>
+			<li><a href="{:U('wap/member/fans',array('type'=>'1'))}">加盟店<span class="num green">{$MemberDetail.shar_r1}</span></a></li>
+			<li><a href="{:U('wap/member/fans',array('type'=>'num'))}">客户<span class="num green">{$MemberDetail.shar_r0}</span></a></li>
+		</ul>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<div class="page">
+<div class="step pdb2">
+	<ul class="pdt2">
+		<li>
+			<a href="{:U('wap/member/store_set')}">
+			<i class="iconfont">&#xe629</i><span>店铺设置</span>
+			</a>
+		</li>
+		<li>
+			<a href="{:U('wap/member/store_order')}">
+			<i class="iconfont">&#xe639</i><span>店铺订单</span>
+			</a>
+		</li>
+		<li>
+			<a href="{:U('wap/member/fans',array('type'=>'num'))}">
+<!--
+			<if condition="$MemberDetail['shar_r1']+$MemberDetail['shar_r2']"><b>{$MemberDetail['shar_r1']+$MemberDetail['shar_r2']}</b></if>
+-->
+			<i class="iconfont">&#xe636</i><span>客户关系</span>
+			</a>
+		</li>
+		<li>
+			<a href="{:U('wap/member/cashapply')}">
+			<b>
+			</b><i class="iconfont">&#xe638</i><span>提现</span>
+			</a>
+		</li>
+	</ul>
+
+		<ul>
+
+		<li> <a href="{:U('wap/lottery/index')}"><i class="iconfont">&#xe65b</i><span>刮刮抽大奖</span></a> </li>
+		<li> <a href="{:U('wap/member/show_shop_qrcode')}"  ><i class="iconfont">&#xe635</i><span>店铺二维码</span></a> </li>
+
+		<li><a class="lfnum"><i class="iconfont">&#xe63f</i><span>今日来访量<i class="num">{$data['today_page_view']?$data['today_page_view']:''}</i></span></a></li>
+		<li> <a href="{:U('wap/member/certificate')}"><i class="iconfont">&#xe640</i><span>授权证书</span></a> </li>
+
+	</ul>
+	<div class="clearfix">
+	</div>
+</div>
+<if condition="$vip_i eq 1">
+	<div class="list clearfix">
+		<a href="{:U('wap/start/shopkeeper_area',array('level'=>2))}">
+		<div class="title">
+			<i class="iconfont icon font8" style="color:#f05a49">&#xe622</i><span>升级到高级店铺</span><span class="floatRgt gray">
+			<i class="iconfont">&#xe611</i></span>
+		</div>
+		</a>
+	</div>
+</if>
+	<div class="list clearfix">
+		<a href="{:U('wap/member/index')}">
+		<div class="title">
+		<i class="iconfont icon" style="color:#f9960f">&#xe62e</i><span>个人管理中心</span> <i class="iconfont floatRgt">&#xe611</i>
+		</div>
+		</a>
+	</div>
+		<div class="list clearfix">
+		<a href="{:U('wap/Usernotice/seo_list')}">
+		<div class="title">
+		<i class="iconfont icon" style="color:#0ba7e4">&#xe625</i><span>推广工具</span> <i class="iconfont floatRgt">&#xe611</i>
+		</div>
+		</a>
+	</div>
+	
+	
+
+	
+	
+	</div>
+<include file="Public/footer_new" />
+<script type="text/javascript">
+		//点击背景获取上传背景的按钮
+		$('.mallbg').click(function () {
+			if($(".change_back_img").css("display")=="none"){
+				$(".change_back_img").show(200);
+			}else{
+				$(".change_back_img").hide();
+			}
+		});
+		//跳转至背景图上传页面
+		$(".change_back_img").click(function () {
+			window.location.href="<?php echo U('wap/member/setbackimg'); ?>"
+		});
+
+</script>
+</body>
+</html>

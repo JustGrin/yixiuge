@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>身份认证</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="bankcard">
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back">
+	<i class="iconfont">&#xe617</i>
+	</a>
+	<h2 >身份认证</h2>
+</div>
+<div class="page pdt10 member">
+	<form id="form2" class="mlogin " action="" method="post" role="form" onSubmit="return false;">
+		<div class="field">
+			<div class="label">
+				真实姓名
+			</div>
+			<div class="field-control">
+				<span class="num">
+				<input class="input-required"  id="real_name" name="real_name" value="{$data.real_name}" placeholder="请输入您的真实姓名" />
+				</span>
+			</div>
+		</div>
+		<div class="field" style="display: none">
+			<div class="label">
+				身份证号
+			</div>
+			<div class="field-control">
+				<span class="num">
+				<input class="input-required" id='ID_card' name="ID_card" value="{$data.id_number}" placeholder="请输入您自己准确的身份证号码！"/>
+				</span>
+			</div>
+		</div>
+		<div class="field"  style="display: none">
+			<div class="label" style="width:3rem;">
+				身份证正面照
+			</div>
+			<div class="field-control upload_file">
+				<label>
+				<input type="file" name="front_photo"
+					   class="upload_input" id="front_photo" value="11111"
+					   style="display:none;">
+				<img id="front_photo_src" src="{$data.id_card_front}">
+				<div class="need front_photo_btn">
+						<a class="btn1 btnsF34" <if condition="$phone.front eq 1"> style='display:none' </if> >
+							上传
+						</a>
+						<a class="btn2 btnsF34" <if condition="$phone.front eq 0"> style='display:none' </if>>
+							更改
+						</a>
+				</div>
+				</label>
+			</div>
+			<input type="hidden" name="id_card_front" id="id_card_front" value="{$data.id_card_front}1111">
+		</div>
+
+		<div class="field"  style="display: none">
+			<div class="label" style="width:3rem;">
+				身份证正面照
+			</div>
+			<div class="field-control upload_file">
+				<label>
+					<input type="file" name="back_photo"
+						   class="upload_input" id="back_photo" value=""
+						   style="display:none;">
+					<img id="back_photo_src" src="{$data.id_card_back}">
+					<div class="need back_photo_btn">
+						<a class="btn1 btnsF34" <if condition="$phone.back eq 1"> style='display:none' </if>>
+							上传
+						</a>
+						<a class="btn2 btnsF34" <if condition="$phone.back eq 0"> style='display:none' </if>>
+							更改
+						</a>
+					</div>
+				</label>
+			</div>
+			<input type="hidden" name="id_card_back" id="id_card_back" value="{$data.id_card_back}1111">
+		</div>
+
+		<div class="tip">
+			*请输入您自己的真实姓名<!--和身份证号码-->，<span class="red">输入有误会影响到提现功能！</span>
+		</div>
+		<if condition="$data.is_check eq 2">
+			<div class="field">
+				<div class="label">
+					不通过原因
+				</div>
+				<div class="field-control">
+					<span class="num">{$data.reson}</span>
+				</div>
+			</div>
+		</if>
+		<div class="submit">
+			<button type="button" class="button" id="submit-btn">提 交</button>
+		</div>
+	</form>
+
+</div>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+<script>
+	$(document).ready(function (e) {
+		///上传身份证号码
+		$('.upload_file').on('change', '.upload_input', function () {
+			var id = $(this).attr('id');
+			if (id == 'back_photo') {
+				ajaxFileUpload('back_photo', 'id_card_back', "{:U('admin/Imagecat/upload_ajax')}");
+			}else if(id == 'front_photo'){
+				ajaxFileUpload('front_photo', 'id_card_front', "{:U('admin/Imagecat/upload_ajax')}");
+			}
+		});
+	});
+
+
+
+	//文件上传带预览
+	function ajaxFileUpload(imgid, hiddenid, url) {
+
+		$.ajaxFileUpload({
+			url: url,
+			secureuri: false,
+			fileElementId: imgid,
+			dataType: 'json',
+			data: {name: 'logan', id: 'id'},
+			success: function (data, status) {
+
+				if (typeof (data.error) != 'undefined') {
+
+					if (data.error != '') {
+						layer.msg(data.error, {icon: 5});
+						// var dialog = art.dialog({title: false, fixed: true, padding: 0});
+						// dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+					} else {
+
+						var resp = data.msg;
+						if (resp != '0000') {
+							layer.msg(data.error, {icon: 5});
+							// var dialog = art.dialog({title: false, fixed: true, padding: 0});
+							// dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+							return false;
+						} else {
+							$("." + imgid + '_btn ').find('.btn1').hide();
+							$("." + imgid + '_btn ').find('.btn2').show();
+							$("#" + hiddenid).val(data.imgurl);
+							$("#" + imgid + '_src').attr('src', data.imgurl);
+						}
+					}
+				}
+			},
+			error: function (data, status, e) {
+				//var dialog = art.dialog({title: false, fixed: true, padding: 0});
+				// dialog.time(3).content("<div class='tips'>" + e + "</div>");
+				layer.msg(e, {icon: 5});
+			}
+		})
+
+		return false;
+	}
+	//多文件上传带预览
+
+</script>
+<script>
+$(function(){
+	jQuery.validator.addMethod ("checkType",function(value){
+		var re =/^[\u4e00-\u9fa5]*$/.test($("#real_name").val());
+		var ret = false;
+		if(re){
+			ret = true;
+		}
+		return ret;
+	});
+	$("#form2").validate({
+		rules: {
+			real_name:{
+				required:true,
+				checkType:true
+			},
+/*			id_card_front:'required',
+			id_card_back:'required',
+			ID_card:{
+				required: true,
+				IDcard:true
+			}*/
+		},
+		messages: {
+/*			ID_card:{
+				required:'<span></span>&nbsp;请输入身份证号码',
+				IDcard:'<span></span>&nbsp;请输入正确的身份证号码'
+			},*/
+			real_name: {
+				required:'<span></span>&nbsp;请输入真实姓名',
+				checkType:'<span class="icon-warning icon_warning"></span>&nbsp;用户名只能输入中文'
+			}
+		/*	id_card_front: '<span></span>&nbsp;请上传身份证正面照',
+			id_card_back: '<span></span>&nbsp;请上传身份证背面照'*/
+
+		},
+		focusInvalid:false,
+		success: function(label) {
+
+		},
+		/*执行ajaxsubmit  */
+		submitHandler: function(editform) {
+
+			var options = {
+				url:"<?php echo U('Wap/member/authentication'); ?>",
+				type : "post" ,
+				dataType:'json',
+				target : "#loader",
+				error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});},
+				onwait : "正在处理信息，请稍候...",
+				success : function(res){
+					console.log(res);
+					if(res.status){
+					layer.msg('提交成功',{icon:6,time: 1500},function(){
+							window.location.href=document.referrer;
+						});
+					}else{
+						layer.msg(res.error, {icon: 5});
+					}
+				}
+			};
+			setTimeout((function(opt){
+				return function(){
+					$('#form2').ajaxSubmit(opt);
+				}
+
+			})(options), 300);
+			return false;
+		}
+
+	});
+
+	$('#submit-btn').click(function(){
+		$('#form2').submit();
+	});
+
+});
+</script>
+</body>
+</html>

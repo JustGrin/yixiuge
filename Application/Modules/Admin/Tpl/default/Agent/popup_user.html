@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<include file="Public/header"/>
+<body>
+<div class="row">
+    <div class="col-lg-12 col-md-12 margin-top-20">
+        <div class="panel panel-white form-inline">
+            <form action="" method="get">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="sr-only">
+                            用户名
+                        </label>
+                        <input type="text" name="member_name" placeholder="用户名" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">
+                            会员卡号
+                        </label>
+                        <input type="text" name="member_card" placeholder="会员卡号" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">
+                            手机号
+                        </label>
+                        <input type="text" name="mobile" placeholder="手机号" class="form-control">
+                    </div>
+                    <div class="form-group ">
+                        <button class="btn btn-primary" type="submit">
+                            提交
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th class="center">#</th>
+        <th class="center">用户名</th>
+        <th class="center">会员卡号</th>
+        <th class="center">手机号</th>
+        <th class="center">认证情况</th>
+        <th class="center">冻结情况</th>
+        <th class="center">操作</th>
+    </tr>
+    </thead>
+    <tbody class="more_html">
+        <volist name="list" id="vo">
+            <tr>
+                <td class="center">#</td>
+                <td class="center">{$vo.member_name}</td>
+                <td class="center">{$vo.member_card}</td>
+                <td class="center">{$vo.mobile}</td>
+                <td class="center">{$vo['member_status']?'已认证':'未认证'}</td>
+                <td class="center">{$vo['member_freeze']?'已冻结':'未冻结'}</td>
+                <td class="center" onclick="returning_data({$vo['id']},\'{$vo['member_card']}\')">
+                    <button type="button" class="btn btn-primary">
+                        选择
+                    </button>
+                </td>
+            </tr>
+        </volist>
+    </tbody>
+</table>
+<div class="row" style="text-align: center">{$page}</div>
+<script>
+    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+    function returning_data(id,member_name){
+        parent.$('#member_id').val(id);
+        parent.$('#member_card').val(member_name);
+        parent.layer.close(index);
+    }
+</script>
+</body>
+</html>

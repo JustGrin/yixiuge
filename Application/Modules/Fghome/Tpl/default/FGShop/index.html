@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FG峰购商城</title>
+<link href="__PUBLIC__/fghome/css/style.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/fghome/css/icons.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.fly.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body class="mall">
+<include file="Public/header"/>
+<div class="mallban2 min">
+  <div class="banner1 ">
+    <div class="clearfix"></div>
+  </div>
+  
+</div>
+<div class="dis">
+<div class="layout">
+  <div class="all the ">
+	<ul class="l jptjdis ">
+	  <volist name="goods" id="val">
+		  <li class="lay1 ">
+			<div class="hb txtcenter radius shadow">
+			  <div class="product radius1" style="background-image: url({$val.goods_img});"></div>
+			  <div class="erweima radius1" style="background-image: url({$val.qrcode});"></div>
+			  <h4 class="b2title1 f18a gary4">{$val.goods_name}</h4>
+			  <h4 class="b2title f18a">{$val.subtitle}</h4>
+			  <h4 class="price f24 green " >￥{$val.unit_price}元/kg</h4>
+			  <div class="form1"> <img src="{$val.base_logo}"><span>{$val.base_name}</span> </div>
+			</div>
+		  </li>
+	  </volist>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="mallban1 txtcenter min bgwhite">
+  <div class="mallwra txtcenter layout "> <img class="mallbanicon" src="__PUBLIC__/fghome/imgs/icon/mall1.png" >
+    <h4 class="f30 green malltitle">如何定义绿色健康农产品？</h4>
+  </div>
+  <h6 class="f18b gary9 entxt ">How to define green and healthy agricultural products</h6>
+  <div class="ban1con layout">
+    <p class="f14 gary6"> 绿色健康的农产品是指遵循可持续发展原则 ，按照特定生产方式生产，即允许在生长过程中限时、限量、限品种使用安全性较高的化肥和农药，经专门机构认定，无污染的安全、优质、<br>
+      营养农产品，绿色健康食品具有的附加值，还可以帮助减少土地、水等的污染程度。<br>
+      在“习近平主持政治局会议，审议“健康中国2030”规划纲要”中指出：健康是促进人的全面发展的必然要求，是经济社会发展的基础条件，是民族昌盛和国家富强的重要标志，也是广<br>
+      大人民群众的共同追求。党的十八届五中全会明确提出推进健康中国建设，从“五位一体”总体布局和“四个全面”战略布局为出发点。<br>
+      绿色、有机是农业发展的方向，FG峰购坚持走中国特色绿色有机农产品发展道路，在绿色有机农产品方面进行了不懈探索。当下，食品安全问题频发，<br>
+      有机农业对促进食品安全起着重要的作用。 </p>
+  </div>
+</div>
+<div class="classify">
+  <div class="layout">
+    
+    <ul class="classifynav l txtcenter">
+      <a class="change" href="javascript:void(0);" id="98">
+      <li class="<if condition="$_GET['type'] eq 98">select_on</if>"><img src="__PUBLIC__/fghome/imgs/shuiguo.jpg"/>
+        <h6 class="f18a gary6">水果</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="99">
+      <li class="<if condition="$_GET['type'] eq 99">select_on</if>"><img src="__PUBLIC__/fghome/imgs/ganhuo.jpg"/>
+        <h6 class="f18a gary6">干货</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="104">
+      <li class="<if condition="$_GET['type'] eq 104">select_on</if>"><img src="__PUBLIC__/fghome/imgs/techan.jpg"/>
+        <h6 class="f18a gary6">特产</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="121">
+      <li class="<if condition="$_GET['type'] eq 121">select_on</if>"><img src="__PUBLIC__/fghome/imgs/shucai.jpg"/>
+        <h6 class="f18a gary6">蔬菜</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="123">
+      <li class="<if condition="$_GET['type'] eq 123">select_on</if>"><img src="__PUBLIC__/fghome/imgs/liangshi.jpg"/>
+        <h6 class="f18a gary6">粮食</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="124">
+      <li class="<if condition="$_GET['type'] eq 124">select_on</if>"><img src="__PUBLIC__/fghome/imgs/jiu.jpg"/>
+        <h6 class="f18a gary6">酒水</h6>
+      </li>
+      </a> <a class="change" href="javascript:void(0);" id="0">
+      <li class="<if condition="$_GET['type'] lt 1">select_on</if>"><img src="__PUBLIC__/fghome/imgs/gengduo.jpg"/>
+        <h6 class="f18a gary6">全部</h6>
+      </li>
+      </a>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="prod ">
+  <div class="layout">
+    <ul class="l jptjdis ">
+	  <volist name="goods_list" id="val">
+	  	 <li class="lay2 radius shadow">
+			<div class="hb">
+			  <div class="product2 radius1"  style="background-image: url({$val.goods_img});"></div>
+			  <div class="erweima2 radius1" style="background-image: url({$val.qrcode});" ></div>
+			  <h4 class="b2title2 f14a gary4">{$val.goods_name}</h4>
+			  <h4 class="price2 f20a green " >{$val.unit_price}元/kg</h4>
+			  <div class="form"> <img src="{$val.base_logo}"> <span class="f18a gary6 jidiname txtleft">{$val.base_name}</span> </div>
+			</div>
+		 </li>
+	  </volist>
+    </ul>
+  </div>
+	<div class="clearfix"></div>
+  <div class="page layout">
+  	{$page|default=''}
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="banner1 mallb">
+  <div class="layout">
+    <h2 class="fl green">打造中国最大的农业云平台</h2>
+    <div class="fl subtt gary9">解决优质农产品销路问题 <br>
+      为城市居民提供健康食材</div>
+    <div class="fl code"><img src="__PUBLIC__/fghome/imgs/code.gif"></div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+
+<include file="Public/footer"/>
+<script type="text/javascript">
+
+$(".page a").live('click',function(){
+	var url=$(this).attr('href');
+	page(url);
+	return false;     //使a标签失效
+});
+
+function page(url){
+	$.ajax({
+		type: "POST",
+		url:url,
+		dataType: 'json',
+		success:function(data){ 
+			if(data){
+				var option='';
+				var page='';
+				$.each(data, function(i, value) {
+					//this指向当前元素
+					//i表示Array当前下标
+					//value表示Array当前元素
+					option=option+'<li class="lay2 radius shadow">'
+							+'<div class="hb">'
+							+'<div class="product2 radius1"  style="background-image: url('+value.goods_img+');"></div>'
+							+'<div class="erweima2 radius1" style="background-image: url('+value.qrcode+');" ></div>'
+							+'<h4 class="b2title2 f14a gary4">'+value.goods_name+'</h4>'
+							+'<h4 class="price2 f20a green " >'+value.unit_price+'元/kg</h4>'
+							+'<div class="form"> <img src="'+value.base_logo+'"> <span class="f18a gary6 jidiname txtleft">'+value.base_name+'</span> </div>'
+							+'</div>'
+							+'</li>';
+					page=value.page;
+				});
+			$("div.prod .jptjdis").html(option);
+			$(".page").html(page);
+			}else{
+				$(".page").html('');
+				$("div.prod .jptjdis").html('');
+			}
+		}
+	});
+}
+
+$(".change").live('click',function(){
+	var type=$(this).attr('id');
+	get_more(type);
+});
+
+function get_more(type){
+	var Type=type;
+	$.ajax({
+		url: "{:U('fghome/FGShop/index')}",
+		type:'POST',
+		data: {type:Type},
+		dataType: 'json',
+		success: function(data){
+			if(data){
+				var option='';
+				var page='';
+				$.each(data, function(i, value) {
+					//this指向当前元素
+					//i表示Array当前下标
+					//value表示Array当前元素
+					option=option+'<li class="lay2 radius shadow">'
+							+'<div class="hb">'
+							+'<div class="product2 radius1"  style="background-image: url('+value.goods_img+');"></div>'
+							+'<div class="erweima2 radius1" style="background-image: url('+value.qrcode+');" ></div>'
+							+'<h4 class="b2title2 f14a gary4">'+value.goods_name+'</h4>'
+							+'<h4 class="price2 f20a green " >'+value.unit_price+'元/kg</h4>'
+							+'<div class="form"> <img src="'+value.base_logo+'"> <span class="f18a gary6 jidiname txtleft">'+value.base_name+'</span> </div>'
+							+'</div>'
+							+'</li>';
+					page=value.page;
+				});
+				$("div.prod .jptjdis").html(option);
+				$(".page").html(page);
+			}else{
+				$(".page").html('');
+				$("div.prod .jptjdis").html('');
+			}
+			$('.change li').attr('class','');
+			$('#'+Type+' li').attr('class','select_on');
+		}
+	});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/*商品展示页*/
+.head { background: none; position: absolute; z-index: 100; box-shadow: none }
+.swiper-container { max-height: 6rem }
+.maininfo { border-bottom: 1px solid #e0e0e0; padding: 0.373333rem 0.266667rem; }
+.maininfo .title { border-bottom: 1px solid #e0e0e0; padding-bottom: .4rem; position: relative; }
+.maininfo .title h2 { font-size: .42rem; line-height: .54rem; font-weight: 300; }
+.maininfo .title .share { float: right; font-size: 0.4rem; height: 1.3rem; line-height: 1.3rem; position: absolute;  text-align: center; width: 2rem; right: -0.266667rem; margin-top: 1rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  background: #f40; box-shadow: 0 0 0.4rem rgba(0,0,0,0.2); color: #fff }
+.maininfo .title .share i { margin-right: 4px; font-size: 0.5rem; line-height: 1.3rem }
+.maininfo .price { font-size: 0.4rem; margin-top: 0.4rem }
+.maininfo .price span.num { font-size: 1rem; margin: 0 6px; }
+.maininfo .oldprice { display: inline-block; font-size: 0.36rem; }
+.maininfo .oldprice span.num { font-size: 0.6rem; margin: 0 6px; text-decoration: line-through; }
+.maininfo .sales { display: inline-block; font-size: .36rem; padding-left: 0.2rem; }
+.maininfo .sales span.num { font-size: .4rem; margin: 0 .04rem; }
+.info { color: #666; padding: .4rem .4rem 80px; font-size: .4rem; line-height: .6rem }
+/*购物车弹框*/
+.md-modal { width: 96%; top: auto; bottom: 0; -webkit-transform: translateX(-50%) translateY(0); -moz-transform: translateX(-50%) translateY(0); -ms-transform: translateX(-50%) translateY(0); transform: translateX(-50%) translateY(0); }
+.md-effect-3 .cartimg { position: absolute; border: 1px solid #e0e0e0; width: 2rem; height: 2rem; left: .4rem; top: -.4rem; background: #fff }
+.md-content .title { background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); height: 2rem; }
+.md-content h3 { background: #fff; opacity: 1; box-sizing: border-box; width: 100%; color: #666; padding: .2rem 0 0 2.6rem; text-align: left; font-size: .36rem; font-weight: 300; overflow: hidden; }
+.md-content { background: #f0f0f0; opacity: 1; color: #666 }
+.md-content h3 span.num { font-size: .8rem; }
+.md-content > div { padding: 0; margin: 0; font-size: .36rem; }
+.md-content .oldprice { font-size: 0.3rem; padding-left: 2.6rem; display: inline-block }
+.md-content .oldprice span.num { font-size: .3rem; font-weight: 300; height: .9rem; line-height: 1.4; overflow: hidden; }
+.md-content .sales { font-size: 0.3rem; padding-left: .4rem; display: inline-block }
+.md-effect-3 .md-content .title .share { border-left: 1px solid #c0c0c0; float: right; text-align: center; font-size: 0.4rem; height: 1rem; line-height: 1rem; position: absolute; right: 0; text-align: center; width: 1rem; margin-top: .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem; background: #c0c0c0; color: #fff }
+.md-effect-3 .md-content .title .share i { font-size: 0.4rem; line-height: 1rem }
+.md-effect-3 .md-content .cartinfo { padding: 0 .4rem; }
+.md-effect-3 .md-content > div p { margin: 0; padding: .2rem 0; }
+.md-effect-3 .md-content .cartinfo p { border-bottom: 1px solid #e0e0e0; font-size: .4rem; margin-bottom: .2rem }
+.md-content > div ul { padding: 0; }
+.md-effect-3 .md-content .cartinfo li { display: inline-block; float: left; height: .6rem; line-height: .6rem; font-size: .4rem; min-width: 1rem; text-align: center; padding: 0 .2rem; border: 1px solid #e0e0e0; margin: 0 .2rem .1rem 0; background: #fff; }
+.md-effect-3 .md-content .cartinfo li.on { background: #f60; color: #fff; border-color: #f60 }
+.md-effect-3 .md-content .submit { padding: 0 .4rem .4rem; }
+.md-effect-3 .md-content .submit a { border-radius: 3px; background: #f60; color: #fff; height: 1.2rem; line-height: 1.2rem; display: block; text-align: center; font-size: .6rem; }
+.md-effect-3 .md-content .cartinfo .count { height: .8rem; line-height: .8rem; margin: .2rem 0 .6rem 0; }
+
+
+

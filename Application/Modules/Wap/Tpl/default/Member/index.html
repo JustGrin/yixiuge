@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员中心</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/membernew.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/component.css" />
+</head>
+<body class="member">
+<div class="top">
+	<div class="topbglay">
+		<div class="topbg bgcover" style="background:url({$data.background_image|get_member_background_default})">
+			<div class="change_back_img changebackimg"> <img  src="/Public/wap/img/member/bgicon.gif"/> </div>
+			<a href="{:U('wap/member/setup')}" class="setting"> <i class="iconfont">&#xe629;</i> </a> </div>
+	</div>
+	<div class="mall person textCer">
+		<div> <a href="{:U('wap/member/setphoto')}">
+			<div  class="bgcover avatar" style="background:url({$data.member_logo|get_member_logo_default}) #fff"></div>
+			</a> </div>
+		<div class="name green num ">{$data.member_name} </div>
+		<div class="memberid "> 会员ID：<a class="num font40 num">{$data.member_card}</a> </div>
+	</div>
+	<div class="shopinfo person">
+		<ul>
+			<li class="textCer font40"><a href="{:U('wap/member/wallet',array('type'=>1))}"><i class="iconfont ">&#xe663;</i> 积分 <span class="num orange ">{$MemberDetail.points|floor}</span> </a></li>
+			<li class="textCer font40"><a href="{:U('wap/member/wallet')}"><i class="iconfont ">&#xe641</i> 余额 <span class="num orange ">{$MemberDetail.balance|floor}</span> </a></li>
+			<li class="textCer font40 manage"><a  href="{:U('wap/collect/index')}"><i class="iconfont ">&#xe62d</i> 收藏 <span class="num orange ">{$MemberDetail.count_collect}</span> </a></li>
+		</ul>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<div class="step person">
+	<div class="field">
+		<div class="list">
+			<div class="title"> <a  href="{:U('wap/goodsorder/index')}"> <span class="green font34">我的订单</span> <span class="floatRgt gray font34">全部订单 <i class="iconfont">&#xe611</i></span> </a> </div>
+		</div>
+		<ul class="item">
+			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>0))}">
+				<if condition="$member_count.order0 gt 0"> <b>{$member_count.order0}</b> </if>
+				<img src="__PUBLIC__/wap/img/member/person-3.png"> <span class="font34">待付款</span> </a> </li>
+			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>1))}">
+				<if condition="$member_count.order1 gt 0"> <b>{$member_count.order1}</b> </if>
+				<img src="__PUBLIC__/wap/img/member/person-2.png"> <span class="font34">待发货</span> </a> </li>
+			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>2))}">
+				<if condition="$member_count.order2 gt 0"> <b>{$member_count.order2}</b> </if>
+				<img src="__PUBLIC__/wap/img/member/person-6.png"> <span class="font34">待收货</span> </a> </li>
+			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>3))}">
+				<if condition="$member_count.order3 gt 0"><b>{$member_count.order3}</b></if>
+				<img src="__PUBLIC__/wap/img/member/person-5.png"> <span class="font34">已完成</span> </a> </li>
+			<li> <a href="{:U('wap/goodsrefund/refund_list')}">
+				<if condition="$member_count.order4 gt 0"><b>{$member_count.order4}</b></if>
+				<img src="__PUBLIC__/wap/img/member/person-1.png"> <span class="font34">售后</span> </a> </li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+	<div class="list mgb20 ">
+		<if condition="$vip_i gt 0" >
+			<div class="title"> <a href="{:U('wap/member/index_vip')}"><i class="iconfont icon" style="color:#f9960f">&#xe633</i><span>店铺管理中心</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
+		</if>
+		
+		
+		
+		
+		
+
+		
+			<a class="title" href="{:U('wap/member/setup')}"><i class="iconfont icon" style="color:#0ba7e4">&#xe630</i><span>个人设置</span> <i class="iconfont floatRgt">&#xe611</i></a>
+	
+
+		<div class="title">
+			<a href="{:U('wap/address/index')}"><i class="iconfont icon" style="color:#f05a49">&#xe648</i><span>收货地址</span>  <i class="iconfont floatRgt">&#xe611</i></a>
+		</div>
+
+
+		<div class="title"> <a href="{:U('wap/activity/activity_area')}"><i class="iconfont icon" style="color:#0ba7e4">&#xe696;</i><span>活动专区</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
+		<div class="title">
+			<a href="{:U('wap/member/bank_account')}"><i class="iconfont icon" style="color:#f90">&#xe647</i><span>银行账户管理</span> <i class="iconfont floatRgt">&#xe611</i></a>
+		</div>
+		<div class="title"> <a href="{:U('wap/about/about_us')}"><i class="iconfont icon" style="color:#2ac198">&#xe659</i><span>关于我们</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
+	</div>
+</div>
+
+<include file="Public/footer_new" />
+
+<if condition="$_GET['layer'] eq 'upgrade_points'">
+	<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+	<div class="points" style="display:none;">
+		<a href="{:U('wap/index/index')}" >
+			<img width="100%"  id="u_p_img" src="__PUBLIC__/wap/img/upgrade_points.png" border="0" alt="">
+		</a>
+	</div>
+	<style>
+		.layui-layer-demo{background: none !important;box-shadow: none !important;border-radius: 0px !important;}
+	</style>
+	<script type="text/javascript">
+		$('#u_p_img').load(function () {
+			$(function(){
+				//捕获页
+				layer.open({
+					type: 1,
+					shade: 0.8,//透明度
+					title: false, //不显示标题
+					skin: 'layui-layer-demo', //样式类名
+					shadeClose: true, //开启遮罩关闭
+					area: ['90%', 'auto'],
+					content: $('.points'), //捕获的元素
+					cancel: function(index){
+
+						layer.close(index);
+						this.content.show();
+						$('.points').hide();
+						//layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构',{time: 5000});
+					}
+				});
+
+			});
+		});
+
+	</script>
+</if>
+<script type="text/javascript">
+	$(function(){
+		//点击背景获取上传背景的按钮
+		$('.mallbg').click(function () {
+			if($(".change_back_img").css("display")=="none"){
+				$(".change_back_img").show(200);
+			}else{
+				$(".change_back_img").hide();
+			}
+		});
+		//跳转至背景图上传页面
+		$(".change_back_img").click(function () {
+			window.location.href="<?php echo U('wap/member/setbackimg'); ?>"
+		});
+	});
+</script>
+</body>

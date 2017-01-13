@@ -1,0 +1,342 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content" >
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-offset-5">
+                            <h1 class="mainTitle">{$title}</h1>
+                            <span class="mainDescription">&nbsp;{$title}</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+    <form action="{:U('Admin/Goods/goods_brand_add',array('brand_id'=>$data['brand_id']))}" role="form" id="form2" novalidate="novalidate" method="post">
+         <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                 <div class="form-group">
+                     <label class="control-label">
+                         品牌名称 <span class="symbol required" aria-required="true"></span>
+                      </label>
+                         <input type="text" placeholder="填写品牌名称" class="form-control" value="{$data.brand_name}" id="brand_name" name="brand_name">
+                 </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        品牌描述 <span class="symbol required" aria-required="true"></span>
+                    </label>
+                        <input type="text" placeholder="填写品牌描述" class="form-control" value="{$data.brand_desc}" id="brand_desc" name="brand_desc">
+                </div>
+                 <div class="form-group">
+                      <label class="control-label">
+                          品牌网址 <span class="symbol required" aria-required="true"></span>
+                      </label>
+                           <input type="text" placeholder="填写品牌网址" class="form-control" value="{$data.site_url}" id="site_url" name="site_url">
+                 </div>
+                <div class="form-group">
+                    <label class="control-label">
+                         图片
+                    </label>
+                       <br>
+                        <div class="upload_file">
+                         <label>
+                            <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;">
+                         <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" id="show_photo">
+                               <img id="head_photo_src" src="{:U('wap/index/get_thumbs',array('auto'=>200))}?img={$data.brand_logo}" alt="">
+                            </div>
+                         </div>
+                              点击图片上传
+                              </label>
+                          </div>
+                                 <input type="hidden" name="brand_logo" id="image_path" value="{$data.brand_logo}">
+                          </div>
+                             <div class="clip-radio radio-primary fa-hover Primary">
+                                  品牌是否显示
+                                   <br/>
+                                  <input type="radio" value="1" name="is_show" id="id_yes" <if condition="$data.is_show eq 1">checked="checked"</if> >
+                                  <label for="id_yes">
+                                     是
+                                  </label>
+                                  <input type="radio" value="0" name="is_show" id="id_no" <if condition="$data.is_show eq 0">checked="checked"</if> >
+                                 <label for="id_no">
+                                     否
+                                 </label>
+                           </div>
+                        </div>
+                    </div>
+                 <div class="row">
+                <div class="col-md-4 col-md-offset-5">
+                    <input type="hidden"  value="{$data.brand_id}" name="id">
+                <button class="btn btn-primary btn-wide pull-left" type="submit">
+                    提交 <i class="fa fa-arrow-circle-right"></i>
+                </button>
+             </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('type_2');
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        //FormValidator.init();
+        jQuery.validator.addMethod("get_param_value", function(value) {
+            var ret =true;
+            //2 长文本
+            ret=ue.hasContents();
+            return ret;
+        });
+
+    });
+</script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script>
+    jQuery(document).ready(function() {
+        //FormValidator.init();
+
+        $("#form2").validate({
+            rules: {
+                brand_name: "required",
+            },
+            messages: {
+                brand_name: "请输入品牌名称",
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+
+    $(document).ready(function (e) {
+        ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+            var id=$(this).attr('id');
+            if(id =='head_photo'){
+                //咯go 截取
+                ajaxFileUploadview('head_photo', 'goods_image', "{:U('admin/Imagecat/upload_ajax')}");
+            }else{
+                var goods_length=$(".goods_image_count").length;
+                if(goods_length>=5){
+                    alert('图片最多上传5张');
+                    //  var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                    // art.dialog('这是php点点通的教程', function () {alert('你点击确定了')},function(){alert('你点击取消了');});
+                    // dialog.lock().time(2).content("");
+                }else{
+                    ajaxFileUpload('background',"{:U('admin/Imagecat/upload_ajax')}");
+                }
+
+                //
+            }
+
+        });
+
+        $('.goods_image_url').on('click','.delete_img', function () {
+            if(confirm('您确定删除该图片？')){
+                $(this).parents('.fileinput').remove();
+            }
+        });
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+        //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#goods_image").val(head_file);
+        //});   
+
+    }
+    //文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+            url: url,
+            secureuri: false,
+            fileElementId: imgid,
+            dataType: 'json',
+            data: {name: 'logan', id: 'id'},
+            success: function (data, status)
+            {
+
+                if (typeof (data.error) != 'undefined')
+                {
+
+                    if (data.error != '')
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                    } else {
+
+                        var resp = data.msg;
+                        if (resp != '0000') {
+                            var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                            dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            return false;
+                        } else {
+
+                            $('#head_photo_src').attr('src',data.imgurl);
+                            $('#image_path').val(data.imgurl);
+
+                            /* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                             title: '裁剪图片',
+                             width: '800px',
+                             height: '400px'
+                             });*/
+
+                            //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                        }
+
+
+
+
+                    }
+                }
+            },
+            error: function (data, status, e)
+            {
+                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                dialog.time(3).content("<div class='tips'>" + e + "</div>");
+            }
+        })
+
+        return false;
+    }
+
+    //文件上传带预览
+    function ajaxFileUpload(imgid,  url) {
+
+        $.ajaxFileUpload({
+            url: url,
+            secureuri: false,
+            fileElementId: "head_photo_"+imgid,
+            dataType: 'json',
+            data: {name: 'logan', id: 'id'},
+            success: function (data, status)
+            {
+
+                if (typeof (data.error) != 'undefined')
+                {
+
+                    if (data.error != '')
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                    } else {
+
+                        var resp = data.msg;
+                        if (resp != '0000') {
+                            var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                            dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            return false;
+                        } else {
+
+
+                            var str_img=' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                    +' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                    +'   <img  src="'+data.imgurl+'" alt="" >'
+
+                                    +' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+                                    +'	<i class="glyphicon glyphicon-trash"></i>'
+                                    +'	<span>删除</span>'
+                                    +'</button>'
+
+                                    +'</div>'
+
+                                    +'<input type="hidden" name="goods_image_url[]" id="photo_pic_background" value="'+data.imgurl+'">'
+                                    +' </div>';
+                            $('.goods_image_url').append(str_img);
+                            //  $('#photo_pic_'+imgid).val(data.imgurl);
+                            //   $("#head_photo_src_"+imgid).attr('src', );
+                            /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                             title: '裁剪图片',
+                             width: '800px',
+                             height: '400px'
+                             });*/
+
+                            //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                        }
+
+
+
+
+                    }
+                }
+            },
+            error: function (data, status, e)
+            {
+                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                dialog.time(3).content("<div class='tips'>" + e + "</div>");
+            }
+        })
+
+        return false;
+    }
+</script>
+<!-- end: JavaScript Event Handlers for this page -->
+</body>
+</html>

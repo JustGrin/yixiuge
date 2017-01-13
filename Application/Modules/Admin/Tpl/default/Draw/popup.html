@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<include file="Public/header"/>
+<body>
+<div class="row">
+    <div class="col-lg-12 col-md-12 margin-top-20">
+        <div class="panel panel-white form-inline">
+            <div class="panel-heading">
+                <h5 class="panel-title">请选择商品</h5>
+            </div>
+            <form action="" method="get">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="sr-only">
+                            商品货号
+                        </label>
+                        <input type="text" name="goods_sn" id="goods_sn" placeholder="商品货号" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="goods_name" class="sr-only">
+                            产品名称
+                        </label>
+                        <input type="text" name="goods_name" id="goods_name" placeholder="产品名称" class="form-control">
+                    </div>
+                    <div class="form-group ">
+                        <button class="btn btn-primary" type="submit">
+                            提交
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<table class="table table-hover" id="goods">
+    <thead>
+    <tr>
+        <th class="center">商品图片</th>
+        <th class="center">商品名称</th>
+        <th class="center">商品货号</th>
+        <th class="center">价格</th>
+        <th class="center">操作</th>
+    </tr>
+    </thead>
+    <tbody class="more_html">
+        <volist name="list" id="val">
+            <tr>
+                <td class="center"><img src="{$val.goods_img}" class="img-rounded" style="max-width:50px;max-height:50px;" alt="无图片"></td>
+                <td class="center">{$val.goods_name}</td>
+                <td class="center">{$val.goods_sn}</td>
+                <td class="center">{$val.shop_price}</td>
+                <td class="center">
+                        <a href="javascript:void(0)" id="goods_id_{$val.goods_id}" onclick="closeWindow({$val.goods_id})" goods_id="{$val.goods_id}" goods_img="{$val.goods_img}">选择</a></td>
+            </tr>
+        </volist>
+    </tbody>
+</table>
+<div class="b_q col-md-4 col-md-offset-5">
+    <div class="fm-footer-copyright get_more">
+        <if condition="$count gt 10 && count($list) eq 10">
+            加载更多
+            <else/>
+            无更多数据
+        </if>
+    </div>
+</div>
+<input type="hidden" name="p" data="2" value="2"/>
+<include file="Public/javascript"/>
+<script type="text/javascript">
+    function closeWindow(id){   //选择产品后关闭当前页并传值
+            var index = parent.layer.getFrameIndex(window.name);
+            var goods_img=$('#goods_id_'+id).attr('goods_img');
+            var goods_id=parseInt($('#goods_id_'+id).attr('goods_id'));
+            parent.$('#goods_img').attr('src',goods_img);
+            parent.$('#goods').val(goods_id);
+            parent.layer.close(index);
+    }
+    $(function () {
+        var load_more = 0;
+        var load_none = 0;
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight == scrollHeight) {
+                //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                if (load_none != 1) {
+                    if (load_more == 1) {
+                        var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+                        $('.get_more').html('加载中' + html);
+                    } else {
+                        get_more();
+                    }
+                }
+            }
+        })
+    });
+    function get_more() {
+        load_more = 1;
+        var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+        $('.get_more').html('加载中' + html);
+        //var p=$("input[name='p']").val();
+        var goods_name='<?php echo $_GET["goods_name"];?>';
+        var p = $("input[name='p']").attr('data');
+        $.ajax({
+            url: "{:U('admin/Draw/popup')}",
+            type: 'get',
+            data: {p: p,goods_name:goods_name},
+            dataType: 'json',
+            success: function (data) {
+//                alert(1);
+                //console.log(data);
+                var con = 1;
+                var option = '';
+                if (data) { 
+                    $.each(data, function (i, value) {
+                        option += '<tr>' +
+                                '<td class="center"><img src="' + this.goods_img + '" class="img-rounded" style="max-width:50px;max-height:50px;" alt="无图片"></td>' +
+                                '<td class="center">' + this.goods_name + '</td>' +
+                                '<td class="center">' + this.goods_sn + '</td>' +
+                                '<td class="center">' + this.shop_price + '</td>' +
+                                '<td class="center"><a href="javascript:void(0)" id="goods_id_' + this.goods_id + '" onclick="closeWindow(' + this.goods_id + ')" goods_id="' + this.goods_id + '">选择</a></td>' +
+                                '</tr>';
+                        con++;
+                    });
+                }
+                //$('.more_html').append(option);
+                if (p == 1) {
+                    $('.more_html').html(option);
+                } else {
+                    $('.more_html').append(option);
+                }
+                load_more = 0;
+                if (option) {
+                    //$("input[name='p']").val(parseInt(p)+1);
+                    $("input[name='p']").attr('data', parseInt(p) + 1);
+                }
+                if (con < 10) {
+                    load_none = 1;
+                    $('.get_more').html('无更多数据');
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

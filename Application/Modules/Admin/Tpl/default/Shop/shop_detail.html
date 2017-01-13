@@ -1,0 +1,411 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">商户信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+
+     <div class="tabbable">
+			<ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+				<li class="active">
+					<a data-toggle="tab" href="#panel_overview">
+						商户基本信息
+					</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#panel_edit_account">
+						商户折扣
+					</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#shop_img">
+						商户图片
+					</a>
+				</li>
+				
+			</ul>
+          <div class="tab-content">
+              <div id="panel_overview" class="tab-pane fade  in active">
+                    <div class="row">
+	                    <div class="col-md-8">
+
+
+ <div class="form-group">
+		<label class="control-label">
+			商户名称:
+		</label>
+		{$data.shop_name}
+		
+	</div>
+
+		  <div class="form-group">
+		<label class="control-label">
+			商户行业 :
+		</label>
+		{$data.class_name}
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			商户余额：
+		</label>
+		 {$data.balance}
+		
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			商户收入：
+		</label>
+		 {$data.income}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			注册时间：
+		</label>
+		{$data.add_time|date='Y-m-d',###}
+	</div>
+ <div class="form-group">
+		<label class="control-label">
+			人均消费：
+		</label>
+		{$data.buy}
+		
+	</div>
+    <div class="form-group">
+		<label class="control-label">
+			商户电话：
+		</label>
+		{$data.link_no}
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			qq：
+		</label>
+		{$data.qq}
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			email：
+		</label>
+		{$data.email}
+	</div>
+ <div class="form-group">
+		<label class="control-label">
+			商户网址：
+		</label>
+		{$data.website}
+	</div>
+
+	  <div class="form-group">
+		<label class="control-label">
+			省份：
+		</label>
+		{$data.provincename}-{$data.cityname}-{$data.areaname}
+	</div>
+		 
+	 <div class="form-group">
+		<label class="control-label">
+			商户地址：
+		</label>
+		{$data.addr}
+	</div>
+
+<div class="form-group">
+		<label class="control-label">
+			标注地址：
+		</label>
+		{$data.addr}
+<input  type="hidden" id="longitude" name="jingdu" size="14" value="{$data.jingdu}" readonly="" placeholder="经度" > 
+<input type="hidden" name="weidu" size="14" id="latitude" value="{$data.weidu}" readonly="" placeholder="纬度" > 
+	<a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看</a>
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			主营业务：
+		</label>
+		{$data.business}
+		
+	</div>
+
+
+	 <div class="form-group">
+		<label class="control-label">
+			商户介绍：
+		</label>
+		{$data.member_desc}
+	</div>
+<div class="form-group">
+		<label class="control-label">
+			状态：
+		</label>
+		  {$data['status']?'已冻结':'正常'}		
+	</div>
+
+		<div class="form-group">
+		<label class="control-label">
+			平台推荐 ：
+		</label>
+		   {$data['status']?'已推荐':'未推荐'}
+		 
+
+		
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			首页推荐 ：
+		</label>
+		 {$data['is_show_index']?'已推荐':'未推荐'}
+
+		
+	</div>
+
+
+
+
+                         </div>
+                     </div>
+              </div>
+
+              <div id="panel_edit_account" class="tab-pane fade">
+                    <div class="row">
+	                    <div class="col-md-8">
+
+ <div class="form-group">
+		<label class="control-label">
+			商品折扣(0.1为1折)
+		</label>
+		<br>
+		商户的消费折扣
+		:{$data.discount_consume}
+		
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			内部折扣(0.1为1折)
+		</label>
+		<br>
+		用于用户消费时的返利折扣
+		{$data.discount_rebate}
+	</div>
+
+
+                         </div>
+                     </div>
+              </div>
+
+
+ <div id="shop_img" class="tab-pane fade">
+                    <div class="row">
+	                    <div class="col-md-8">
+
+
+    <div class="form-group">
+        <label class="control-label">
+            商户logo：
+        </label> 
+        <br>
+        <div class="upload_file">
+         
+        
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <img id="head_photo_src" src="{$data.logo}" alt="">
+                </div>
+              
+
+            </div>
+         
+       
+         </div>          
+     
+    </div>
+
+        <div class="form-group">
+        <label class="control-label">
+            商户背景图片：
+        </label> 
+        <br>
+        <div class="upload_file">
+          
+       
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo_background">
+                    <img id="head_photo_src_background" src="{$data.background}" alt="">
+                </div>
+              
+
+            </div>
+
+         </div>          
+     
+    </div>
+
+
+
+
+
+                    </div>
+         </div>
+  </div>
+  	
+
+
+
+
+
+
+          </div>
+</div>
+
+	
+	
+	
+	
+
+
+
+
+
+
+</div>
+</div>
+											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+		
+
+		<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+       <script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+       <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+
+	   <script src="__PUBLIC__/js/common.js"></script>
+		<include file="Public/javascript_datepicker"/>
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   shop_name: "required",
+   class_id: "required",
+   link_no: "required",
+   provinceid: "required",
+   cityid: "required",
+   areaid: "required",
+   addr: "required",
+   business: "required",
+   member_desc: "required"
+  },
+  messages: {
+   shop_name: "请输入商户名称",
+   class_id: "请选择行业",
+   link_no: "请输入商户电话",
+   provinceid: "请选择所在省",
+   cityid: "请选择所在市",
+   areaid: "请选择所在区县",
+   addr: "请输入商户地址",
+   business: "请输入主营业务",
+   member_desc: "请输入商户介绍"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+
+<script>
+	
+   
+function setlatlng(longitude,latitude){
+	art.dialog.data('longitude', longitude);
+	art.dialog.data('latitude', latitude);
+	art.dialog.open('<?php echo U('Admin/Index/setmap'); ?>',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+
+</script>		
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

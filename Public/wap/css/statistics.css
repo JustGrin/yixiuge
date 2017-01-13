@@ -1,0 +1,98 @@
+body {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Helvetica Neue',Helvetica,'microsoft yahei',Arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background: #f2f2f2;
+}
+li, ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.wrapper {
+    position: relative;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.wrapper {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+}
+.plugin-countdown {
+    max-width: 640px;
+    margin: 0 auto;
+}
+.countdown-wrap {
+    max-width: 640px;
+    padding: 0 0 .15em;
+    margin: 0 auto;
+}
+.countdown-wrap .txt {
+    margin: 0 10px 10px;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    padding-bottom: 10px;
+    color: #000;
+    border-bottom: 1px solid #bfbfbf;
+}
+.countdown-wrap .txt em {
+    position: relative;
+    padding: 0 .13rem;
+    font-style: normal;
+}
+.countdown-wrap .txt em::before {
+    right: 100%;
+}
+.countdown-wrap .txt em::after, .countdown-wrap .txt em::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 15px;
+    height: 1px;
+    background: #e3e3e3;
+}
+.counter {
+    font-size:18px;
+    vertical-align: bottom;
+    text-align: center;
+    line-height: 22px;
+    white-space: nowrap;
+    margin-top: 15px;
+    color: #999;
+}
+.counter span{padding:4px; ddisplay: inline-block; width:10px; height: 18px; border-radius:3px; margin: 0 1px; font-size: 16px; line-height: 18px; color: rgba(255,255,255,.8); background: #0a1926; text-align: center;}
+.counter span.msec {background-color: #da1b22; color: #f8dfdf}
+.list{
+    margin-top: 15px;
+}
+.list h3{
+    font-size: 14px;
+    text-align: center;
+}
+.list ul li{float: left;width: 100%;line-height: 25px;margin-bottom: 5px;    border-bottom: 1px solid #dadada;}
+.list ul li div{
+    width: 50%;
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    color: #848689;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.list .list-c div{
+    text-align: center;
+    color: #000000;
+}
+.list-c{
+    background: #D4D4D4;
+}
+.tj{margin-top: 15px;height: 25px;}
+.tj div{width: 50%;display: inline-table;float: left;text-align: center; color: #FFFFFF;border-radius: 3px;border-radius: 15px;
+    background: #F36A0A;}
+.tj div label{color: #39393A;margin-right: 3px;font-size: 14px;}

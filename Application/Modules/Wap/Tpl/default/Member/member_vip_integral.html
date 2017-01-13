@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>我的VIP</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<style>
+    .vip_right{margin: 0 10px;}
+    .vip_right span{font-weight: bold;}
+    .vip_right p{line-height: 22px;}
+    .u-btns a{color: #fff;}
+</style>
+<body>
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="{:U('wap/member/index')}" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>我的VIP</span></div>
+    </header>
+    <div class="common-wrapper" style="    background-color: #FFFFFF;">
+        <div class="userdiv clearfix fm-userdiv money_type_0" >
+            <if condition="$member_vip_fuwu_switch gt 0">
+            <a href="{:U('wap/member/member_vip_fuwu')}">
+            <div class="totalwallet" >
+                <span>股份（万股）</span><span class="font16w">{$data.vip_i_shares}</span>
+            </div>
+            </a>
+                <else/>
+                <div class="totalwallet" >
+                    <span>股份（万股）</span><span class="font16w">{$data.vip_i_shares}</span>
+                </div>
+
+            </if>
+            <p class="walltlist">VIP等级：<span class="fr">{$vip_name}</span></p>
+            <p class="walltlist" style="border:none;">当前蜂蜜：<span class="fr">{$data.vip_i_now}</span></p>
+        </div>
+        <!--
+         <if condition="$data['vip_i_rank'] lt 1">
+            <div class="vip_right">
+                <p><span>会员级别：</span>会员级别VIP，峰蜜满100点自动升级（直接推荐一位VIP会员获得5点峰蜜，自己累计消费满200元等于1点峰蜜）</p>
+                <p><span>股权：</span>无</p>
+                <p><span>股权权利：</span>无</p>
+            </div>
+         <elseif condition="$data['vip_i_rank'] egt 1 && $data['vip_i_rank'] elt 5"/>
+                <div class="vip_right">
+                    <p><span>会员级别：</span>会员级别VIP1-5，峰蜜满100点自动升级（直接推荐一位VIP会员获得5点峰蜜，自己累计消费满200元等于1点峰蜜）</p>
+                    <p><span>股权：</span>每级配股1万股</p>
+                    <p><span>股权权利：</span>分红权</p>
+                </div>
+         <elseif condition="$data['vip_i_rank'] gt 5 && $data['vip_i_rank'] elt 10"/>
+            <div class="vip_right">
+                <p><span>会员级别：</span>会员级别银牌1-5，峰蜜满100点自动升级（直接推荐一位VIP会员获得2点峰蜜，自己累计消费满500元等于1点峰蜜）</p>
+                <p><span>股权：</span>每级配股2万股</p>
+                <p><span>股权权利：</span>分红权</p>
+            </div>
+         <elseif condition="$data['vip_i_rank'] gt 10 && $data['vip_i_rank'] elt 20"/>
+            <div class="vip_right">
+                <p><span>会员级别：</span>会员级别金牌1-10，峰蜜满100点自动升级（直接推荐一位VIP会员获得1点峰蜜，自己累计消费满1000元等于1点峰蜜）</p>
+                <p><span>股权：</span>每级配股5万股</p>
+                <p><span>股权权利：</span>分红权</p>
+            </div>
+         <else/>
+            <div class="vip_right">
+                <p><span>会员级别：</span>会员级别钻石，峰蜜满100点自动升级（直接推荐一位VIP会员获得1点峰蜜，自己累计消费满1000元等于1点峰蜜）</p>
+                <p><span>股权：</span>每级配股5万股</p>
+                <p><span>股权权利：</span>分红权</p>
+            </div>
+        </if>
+       -->
+
+       <!--  <div class="u-btns"><a href="{:U('wap/member/member_vip_fuwu')}" class="btn-h3 btn-c3">查看股权分配</a></div>-->
+       <!-- <ul class="concern-tab  m_i_switch">
+          <if condition="empty($_GET['type'])">
+            <li class="curr" data="0"><a href="javascript:void(0);">钱包</a></li>
+            <li class="" data="1"><a href="javascript:void(0);">积分</a></li>
+          <else/>
+              <li class="" data="0"><a href="javascript:void(0);">钱包</a></li>
+              <li class="curr" data="1"><a href="javascript:void(0);">积分</a></li>
+           </if>
+        </ul>-->
+        <div id="fm-mizhi">
+            <ul class="more_html">
+                <volist name="list" id="vo">
+                <li>
+                    <div class="div_leibie">{$vo.typename}</div>
+                    <div class="div_jine">{$vo.status}{$vo.money}</div>
+                    <div class="div_riqi">{$vo.des}。{$vo.add_time}</div>
+                </li>
+              </volist>
+            </ul>
+        </div>
+    </div>
+     <div class="b_q">
+        <div class="fm-footer-copyright get_more">
+            <if condition="$count gt 10 && count($list) eq 10">
+                  加载更多
+              <else/>  
+                 无更多数据
+            </if>
+        </div>
+    </div>
+
+  
+<div style="height:10px;">
+   </div> 
+     <!--end top-->
+   <include file="Public/footer" />
+<include file="Public/wap_javascript"/>
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page = 'member_wallet';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+
+<!--end top-->  
+    <input type="hidden" name="p" value="2" />
+     <input type="hidden" name="type" value="{$_GET.type}" />
+     <!--微信分享-->    
+ <include file="Public/share_weixin" />
+ 
+    <script type="text/javascript">
+   $(function(){
+     $(".get_more").click(function(){
+        get_more();
+     });
+      $(".m_i_switch li").click(function(){
+        var　__this=$(this);
+        $('.m_i_switch li').removeClass('curr');
+        __this.addClass('curr');
+        var type=__this.attr('data');
+        $("input[name='p']").val(1);
+        $("input[name='type']").val(type);
+        if(type==1){
+          $('.money_type_0').hide();
+          $('.money_type_1').show();
+        }else{
+          $('.money_type_1').hide();
+          $('.money_type_0').show();
+        }
+        get_more();
+     });
+
+   }); 
+   function get_more(){
+     var p=$("input[name='p']").val();
+     var type=$("input[name='type']").val();
+      if(p==1){
+          $('.more_html').html("");
+        }
+           $.ajax({ 
+            url: "{:U('wap/member/member_vip_integral')}",
+            type:'get',
+            data: {p:p,type:type},
+            dataType: 'json',
+            success: function(data){
+              //console.log(data);
+               var con=1;
+                 var option='';
+              if(data){
+                 $.each(data, function(i, value) {
+                //this指向当前元素
+                //i表示Array当前下标
+                //value表示Array当前元素
+                 option=option+'<li>'
+                   +' <div class="div_leibie">'+value.typename+'</div>'
+                  +'  <div class="div_jine">'+value.status+value.money+'</div>'
+                   +' <div class="div_riqi">'+value.des+'。'+value.add_time+'</div>'
+                    +' </li>';
+                    con++;
+                 });
+              }
+              if(p==1){
+                $('.more_html').html(option);
+              }else{
+                 $('.more_html').append(option);
+              }
+              $("input[name='p']").val(parseInt(p)+1);
+              if(con<10){
+                 $('.get_more').html('无更多数据');
+              }
+            }
+           });
+   }
+</script> 
+</body>
+</html>

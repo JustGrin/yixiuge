@@ -1,0 +1,196 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">菜单信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			该缺货用户的ID <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写该缺货用户的ID" class="form-control" value="{$data.user_id}" id="user_id" name="user_id">
+	</div>
+   	<div class="form-group">
+		<label class="control-label">
+			用户邮箱 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写用户邮箱" class="form-control" value="{$data.email}" id="email" name="email">
+	</div>
+ 	<div class="form-group">
+		<label class="control-label">
+			用户姓名<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写用户姓名" class="form-control" value="{$data.link_man}" id="link_man" name="link_man">
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			用户电话<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写用户电话" class="form-control" value="{$data.tel}" id="tel" name="tel">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			商品描述<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写商品描述" class="form-control" value="{$data.goods_desc}" id="goods_desc" name="goods_desc">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			商品数量<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写商品数量" class="form-control" value="{$data.goods_number}" id="goods_number" name="goods_number">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			缺货时间<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写缺货时间" class="form-control" value="{$data.booking_time}" id="booking_time" name="booking_time">
+	</div>
+	<div class="clip-radio radio-primary fa-hover Primary">
+			是否处理
+		<br/>
+		<input type="radio" value="1" name="is_dispose" id="id_yes" <if condition="$data.is_dispose eq 1">checked="checked"</if> >
+			<label for="id_yes">
+				是
+			</label>
+		<input type="radio" value="0" name="is_dispose" id="id_no" <if condition="$data.is_dispose eq 0">checked="checked"</if> >
+			<label for="id_no">
+				否
+			</label>
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			登记缺货的管理员<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写登记缺货的管理员" class="form-control" value="{$data.dispose_user}" id="dispose_user" name="dispose_user">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			处理时间<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写处理时间" class="form-control" value="{$data.dispose_time}" id="dispose_time" name="dispose_time">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			管理员的备注<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写处理时间" class="form-control" value="{$data.dispose_note}" id="dispose_note" name="dispose_note">
+	</div>
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   title: "required",
+   name: "byteRangeLength"
+  },
+  messages: {
+   title: "请输入菜单名称",
+   name: "请输入菜单地址"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

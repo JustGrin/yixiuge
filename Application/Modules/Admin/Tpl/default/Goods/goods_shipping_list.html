@@ -1,0 +1,112 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">&nbsp;&nbsp;配送管理</span>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+									<a data-hover="新增" href="{:U('admin/goods/goods_shipping_addalter')}"><span>新增</span></a>
+								</nav>
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<!-- 筛选查询 -->
+			<form role="form" class="form-inline">
+				<div class="panel-body">
+						<div class="form-group">
+								<input type="text" name="shipping_name" id="shipping_name" value="{$_GET.shipping_name}" placeholder="名称" class="form-control">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="代号" name="shipping_code" id="shipping_code" value="{$_GET.shipping_code}" class="form-control">
+						</div>
+						&nbsp;
+						<button class="btn btn-primary" type="submit">
+							提交
+						</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<table class="table table-hover" id="sample-table-1">
+
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th class="center">配送方式名称</th>
+						<th class="center">配送方式代号</th>
+						<!--<th class="hidden-xs">配送方式描述</th>-->
+						<!--<th>保价费</th>-->
+						<!--<th>货到付款</th>-->
+						<th class="center">配送方式是否禁用</th>
+						<th class="center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+
+      <volist  name="data['list']" id='vo' key='key'>
+					<tr>
+						<td class="center">#</td>
+						<td class="center">{$vo.shipping_name}</td>
+						<td class="center"> {$vo.shipping_code}</td>
+						<!--<td>{$vo.shipping_desc}</td>-->
+						<!--<td>{$vo.insure}</td>-->
+						<!--<td><if condition="$vo.support_cod eq 1">是<else/>否</if></td>-->
+						<td class="center">{$vo['enabled']?'否':'是'}</td>
+						<td class="center">
+									<a href="{:U('Admin/Goods/goods_shipping_addalter',array('shipping_id'=>$vo['shipping_id']))}"
+									   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+									   data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+
+									<a href="{:U('Admin/Goods/goods_shipping_del',array('shipping_id'=>$vo['shipping_id']))}"
+									   class="btn btn-transparent btn-xs tooltips" tooltip-placement="top"
+									   data-toggle="tooltip" data-original-title="删除"
+									   onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a>
+						</td>
+					</tr>
+				</volist>
+				</tbody>
+			</table>
+					<div class="row">
+						<div class="col-md-12 pages" align="center">{$data.page}</div>
+					</div>
+					<if condition="empty($data['page'])">暂无数据</if>
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			<!-- end: OFF-SIDEBAR -->
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

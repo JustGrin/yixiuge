@@ -1,0 +1,292 @@
+<include file="Public/header"/>
+<div id="app">
+  <!-- sidebar -->
+  <include file="Public/left"/>
+  <!-- / sidebar -->
+  <div class="app-content">
+    <!-- start: TOP NAVBAR -->
+    <include file="Public/headernav"/>
+    <!-- end: TOP NAVBAR -->
+    <div class="main-content">
+      <div class="wrap-content container" id="container">
+        <!-- start: PAGE TITLE -->
+        <section id="page-title">
+          <div class="row">
+            <div class="col-sm-8 col-md-offset-5">
+              <h1 class="mainTitle">{$msgtitle}</h1>
+              <span class="mainDescription">添加分类</span> </div>
+          </div>
+        </section>
+        <!-- end: PAGE TITLE -->
+        <!-- start: YOUR CONTENT HERE -->
+        <div class="container-fluid container-fullw bg-white">
+          <form action="" role="form" id="form2" novalidate="novalidate" method="post">
+            <div class="container-fluid container-fullw bg-white">
+              <div class="row col-md-offset-3">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="control-label"> 分类名称 <span class="symbol required" aria-required="true"></span> </label>
+                    <input type="text" placeholder="填写分类名称" class="form-control" id="cat_name"
+											   name="cat_name" value="{$data.cat_name}"/>
+                  </div>
+                  <!-- 上级分类开始 -->
+                  <div class="form-group">
+                    <label class="control-label"> 上级分类 <span class="symbol required" aria-required="true"></span> </label>
+                    <select class="form-control" id="dropdown" name="parent_id">
+                      <option value="0">顶级分类</option>
+                      <volist name="category" id="v"> <option value="{$v.cat_id}" 
+                        <if condition="$data.parent_id eq $v['cat_id']">selected</if>
+                        >{$v.cat_name}
+                        </option>
+                        <if condition="(!empty($v['tree']))">
+                          <volist name="v['tree']" id="val"> <option value="{$val.cat_id}" 
+                            <if condition="$data.parent_id eq $val['cat_id']">selected</if>
+                            >┗---{$val.cat_name}
+                            </option>
+                          </volist>
+                        </if>
+                      </volist>
+                      <!-- 这里开始循环分类 -->
+                    </select>
+                  </div>
+                  <div class="form-group" id="goods_sn_js">
+                    <label class="control-label"> 商品货号<span class="symbol required" aria-required="true"></span> </label>
+                    <input type="text" name="goods_sn" value="{$data.goods_sn}" id="goods_sn" placeholder="商品货号" class="form-control">
+                    <input type="hidden" name="is_update" id="is_update" value="{$data.cat_id}">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label"> 首页分类展示图 尺寸580*250像素 *文件不能大于40kb </label>
+                    <br>
+                    <div class="upload_file">
+                      <label>
+                      <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;">
+                      <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail" id="show_photo" style="width:400px; height:170px;"> <img id="head_photo_src" src="{$data.cat_icon}" alt=""> </div>
+                      </div>
+                      点击图片上传
+                      </label>
+                      <input type="hidden" name="cat_icon" id="photo_pic" value="{$data.cat_icon}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label"> 首页显示分类标题 </label>
+                    <input class="form-control autosize" id="cat_desc" name="cat_desc"
+												  data-autosize-on="true"
+												  style="overflow: hidden; resize: horizontal; word-wrap: break-word;" value="{$data.cat_desc}">
+                  </div>
+                  <!-- 首页显示开始 -->
+                  <div class="form-group">
+                    <label class="control-label"> 是否在首页类别导航展示 </label>
+                    <div class="clip-radio radio-primary fa-hover Primary"> <input type="radio" value="1" name="is_exhibition" id="is_exhibition_yes"
+											
+                      <if condition="(!empty($id))">{$data['is_exhibition']?'checked':''}
+                        <else/>
+                        checked </if>
+                      >
+                      <label for="is_exhibition_yes"> 显示 </label>
+                      <input type="radio" value="0" name="is_exhibition" id="is_exhibition_no"
+											
+                      <if condition="(!empty($id))">{$data['is_exhibition']?'':'checked'}</if>
+                      >
+                      <label for="is_exhibition_no"> 不显示 </label>
+                    </div>
+                  </div>
+                  <!-- 分类关键字开始 -->
+                  <div class="form-group">
+                    <label class="control-label"> 分类关键字 </label>
+                    <input type="text" placeholder="填写分类关键字" class="form-control" id="keywords"
+											   name="keywords" value="{$data.keywords}">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label"> 排序（数字越大越靠后） </label>
+                    <input type="text" placeholder="排序" class="form-control" id="sort_order"
+											   name="sort_order" value="{$data.sort_order}">
+                  </div>
+                  <!-- 排序结束 -->
+                  <!-- 首页分类展示开始 -->
+                  <div class="form-group">
+                    <label class="control-label"> 是否在前台页面显示 </label>
+                    <div class="clip-radio radio-primary fa-hover Primary"> <input type="radio" value="1" name="is_show" id="id_show_index_yes"
+											
+                      <if condition="(!empty($id))">{$data['is_show']?'checked':''}
+                        <else/>
+                        checked </if>
+                      >
+                      <label for="id_show_index_yes"> 显示 </label>
+                      <input type="radio" value="0" name="is_show" id="id_show_index_no"
+											
+                      <if condition="(!empty($id))">{$data['is_show']?'':'checked'}</if>
+                      >
+                      <label for="id_show_index_no"> 不显示 </label>
+                    </div>
+                  </div>
+                  <!-- 分类介绍结束 -->
+                </div>
+              </div>
+              <div class="row col-md-offset-5">
+                <div class="col-md-4">
+                  <button class="btn btn-primary btn-wide pull-left" type="submit" id="submit"> 提交 <i class="fa fa-arrow-circle-right"></i> </button>
+                </div>
+                <div class="col-md-8"> </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- end: YOUR CONTENT HERE -->
+      </div>
+    </div>
+  </div>
+  <!--  FOOTER and SETTINGS -->
+  <include file="Public/footer"/>
+  <!-- end: FOOTER -->
+  <!-- start: OFF-SIDEBAR -->
+  <!-- end: OFF-SIDEBAR -->
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<include file="Public/javascript"/>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	$("#form2").validate({
+	rules: {
+		cat_name: "required",
+		goods_sn:{
+			required:true,
+			remote: {
+				url: "{:U('admin/Category/cheack_goods_sn')}",
+				type: "get",
+				dataType: "json",
+				data: {
+					goods_sn: function () {
+						return $("#goods_sn").val();　　　　//这个是取要验证的字段
+					},
+					is_update: function () {
+						return $("#is_update").val();
+					}
+				},
+				dataFilter: function (msg) {　　　　//判断控制器返回的内容 (这里不能用success)
+					if (msg == "0") {
+						return true;
+					}else {
+						return false;
+					}
+				}
+			}
+		},
+
+	},
+	messages: {
+		cat_name: "请输入分类名称",
+		goods_sn:{
+			required: "请输入货号",
+			remote: "货号已存在"
+		}
+	},
+	});
+});
+
+</script>
+<script>
+	// 掩藏显示商品货号  zm修改
+jQuery(document).ready(function() {
+			$("#dropdown").change(function(){
+				var val=$("#dropdown").val();
+				if(val>0){
+						$("#goods_sn_js input").removeAttr("name");
+						$("#goods_sn_js").hide();
+						 
+				}else{
+					$("#goods_sn_js input").attr("name","goods_sn");
+					$("#goods_sn_js").show();
+				}
+				
+	});
+});
+
+</script>
+<script>
+
+    $(document).ready(function (e) {
+         ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+        ajaxFileUploadview('head_photo', 'photo_pic', "{:U('admin/Imagecat/upload_ajax')}");
+
+        });
+
+         $('.goods_image_url').on('click','.delete_img', function () {
+        	if(confirm('您确定删除该图片？')){
+              $(this).parents('.fileinput').remove();
+        	}
+        });
+
+
+    });
+
+
+
+//文件上传带预览
+	function ajaxFileUploadview(imgid, hiddenid, url) {
+
+		$.ajaxFileUpload({
+			url: url,
+			secureuri: false,
+			fileElementId: imgid,
+			dataType: 'json',
+			data: {name: 'logan', id: 'id'},
+			success: function (data, status)
+			{
+
+				if (typeof (data.error) != 'undefined')
+				{
+
+					if (data.error != '')
+					{
+						var dialog = art.dialog({title: false, fixed: true, padding: 0});
+						dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+					} else {
+
+						var resp = data.msg;
+						if (resp != '0000') {
+							var dialog = art.dialog({title: false, fixed: true, padding: 0});
+							dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+							return false;
+						} else {
+
+							$('#head_photo_src').attr('src',data.imgurl);
+							$('#photo_pic').val(data.imgurl);
+
+							/* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+							 title: '裁剪图片',
+							 width: '800px',
+							 height: '400px'
+							 });*/
+
+							//dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+						}
+					}
+				}
+			},
+			error: function (data, status, e)
+			{
+				var dialog = art.dialog({title: false, fixed: true, padding: 0});
+				dialog.time(3).content("<div class='tips'>" + e + "</div>");
+			}
+		})
+
+		return false;
+	}
+
+
+
+</script>
+<!-- end: JavaScript Event Handlers for this page -->
+</body></html>

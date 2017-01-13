@@ -1,0 +1,150 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">菜单列表</h1>
+									<span class="mainDescription">菜单管理页面 注：隐藏菜单不在左侧菜单栏显示</span>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+									<a data-hover="新增" href="{:U('admin/system/rule_add')}"><span>新增</span></a>
+								</nav>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+
+</style>
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">图标</th>
+						<th>菜单名称</th>
+						<th class="hidden-xs">菜单地址</th>
+						<th>隐藏菜单</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="menulist" id='vo' key='key'>
+					<tr class="menu_p" data="{$vo.id}" data-type="0">
+						<td class="center"><i class="{$vo.icon}"><i/></td>
+						<td class="hidden-xs">{$vo.title}
+							<i class="fa fa-angle-down  angle_down_{$vo.id}"></i><i class="fa fa-angle-up angle_up_{$vo.id} class_hidden"></i>
+						</td>
+						<td> {$vo.name}</td>
+						<td>
+						{$vo['is_hide']?'是':'否'}	
+						</td>
+						<td>
+						{$vo['status']?'有效':'无效'}	
+						</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<a href="{:U("Admin/System/rule_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							
+							<a href="{:U("Admin/System/rule_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a>
+						</div>
+						</td>
+					</tr>
+					<if condition="(!empty($vo['tree']))">
+					<volist  name="vo['tree']" id='voo'>
+					<tr class="class_hidden menu_p_c menu_p_{$vo.id}">
+						<td class="center"></td>
+						<td class="hidden-xs">┗━{$voo.title}</td>
+						<td> {$voo.name}</td>
+						<td>
+						{$voo['is_hide']?'是':'否'}	
+						</td>
+						<td>
+						{$voo['status']?'有效':'无效'}	
+						</td>
+						
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<a href="{:U("Admin/System/rule_edit",array('id'=>$voo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							
+							<a href="{:U("Admin/System/rule_del",array('id'=>$voo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除"><i class="fa fa-times fa fa-white" onclick="return confirm('确定删除该数据？')"></i></a>
+						</div>
+						</td>
+					</tr>
+            </volist>
+        </if>
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+<script type="text/javascript">
+	$(function(){
+		$(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+            	//当前展开  收起操作
+            	$(".menu_p_c").hide();
+            	$(this).attr("data-type",0);
+            	$(".angle_down_"+data).show();
+            	$(".angle_up_"+data).hide();
+            }else{
+               //当前收起 展开操作
+               $(".menu_p_c").hide();
+               $(".menu_p_"+data).show();
+               $(this).attr("data-type",1);
+               $(".angle_down_"+data).hide();
+               $(".angle_up_"+data).show();
+            }
+            
+		});
+	});
+</script>		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

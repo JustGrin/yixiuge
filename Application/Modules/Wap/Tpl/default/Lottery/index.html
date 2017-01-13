@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=320, user-scalable=no" />
+    <title>刮大奖 100%有惊喜</title>
+</head>
+<script type="text/javascript" src="/Public/wap/js/jquery-1.8.3.min.js"></script>
+<script src="/Public/wap/js/flexible.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/icons.css">
+
+<script type="text/javascript">
+    var match,
+            scale,
+            TARGET_WIDTH = 320;
+    if (match = navigator.userAgent.match(/Android (\d+\.\d+)/)) {
+        if (parseFloat(match[1]) < 4.4) {
+            if (TARGET_WIDTH == 320) TARGET_WIDTH++;
+            var scale = window.screen.width / TARGET_WIDTH;
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + TARGET_WIDTH + ', initial-scale = ' + scale + ', target-densitydpi=device-dpi');
+        }
+    } else {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + TARGET_WIDTH);
+    }
+</script>
+
+<style type="text/css">
+    html, body {  width: 100%; padding: 0; margin: 0; }
+    .layout { width: 100%; height:100%; max-width:320px; min-height:500px;  background: url(/Public/wap/img/choujiang/bg.png) top center no-repeat; background-size: cover; margin:0; padding:0; position:relative }
+    .rqq {padding:.6rem 0 0 2.5rem;}
+    .rqq img{ width:7rem; height:auto;}
+    .rqq { animation: rqq 3s infinite; }
+    @-webkit-keyframes rqq {
+        0% {
+            transform:   translate(0, 0);
+        }
+        50% {
+            transform:  translate(0, -20px);
+        }
+        100% {
+            transform:   translate(0, 0);
+        }
+    }
+    .rewardzone{ position:absolute; top:9.5rem; width:100%; text-align:center;}
+    #reward{ }
+	.info { width:90%; text-align:center; color:#444; line-height:1rem; margin:2rem auto 0 auto; font-family:'microsoft yahei'; font-size:.4rem; height:100%; display:block; padding-top:2rem;}
+	.info p{ margin-top:2rem;}
+	.info i{ font-size:4rem; color:#ccc; padding-top:2rem;}
+	
+
+</style>
+
+<body>
+
+
+
+    <div class="info" <if condition="$status eq 1 "> style='display:none'</if>>
+	<i class="iconfont">&#xe65b</i>
+        <p>亲，由于要统计奖池的金额，所以新成为店主的用户要两天后才可以抽奖喔！</p>
+        <p>【温馨提示】<br>
+
+        FG峰购为老用户赠送的标准店铺的店主无法参与抽奖，必须要升级成为高级店铺才能进行抽奖喔！</p>
+    </div>
+
+<div class="layout" <if condition="$status neq 1 "> style='display:none'</if>>
+    <div class="rqq">
+        <img src="/Public/wap/img/choujiang/rqq.png">
+    </div>
+    <div class="rewardzone">
+        <if condition="$status eq 1 and $check eq 0">
+                <div id="reward"  style="display:inline-block; position:relative; ">
+                </div>
+         <else/>
+            <div style="display:inline-block; position:relative; color:#666;">{$msg}</div>
+        </if>
+    </div>
+</div>
+<input type="hidden" value="{$img}" id="jiang"/>
+<script type="text/javascript" src="/Public/wap/js/wScratchPad.js"></script>
+<script type="text/javascript">
+    var img=$('#jiang').val();
+    var is_Scratched=0;
+    $("#reward").wScratchPad({
+        color: '#999',								  //覆盖的刮刮层的颜色
+        image: img, //刮奖结果图片
+        image2: '/Public/wap/img/choujiang/img1.png', //覆盖结果图
+        cursor: '',  								  //刮的笔刷图片
+        width: '240',							      // set width - best to match image width
+        height: 120,						              // set height - best to match image height
+        scratchMove: function(e, percent){
+            if(is_Scratched==0){
+                /*console.log(e);*/
+                is_Scratched=1;
+                go_draw();
+            }
+        }
+    });
+</script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript">
+    function go_draw(){
+        $.ajax({
+            url: "{:U('wap/lottery/get_draw')}",
+            type:'get',
+            dataType: 'json',
+            success: function(data){
+                if(data.status==1){
+                    /*layer.msg("恭喜中奖", {icon: 6,time: 1500});*/
+                }else{
+                    layer.msg(data.error, {icon: 5});
+                    //alert(data.error)
+                    is_Scratched=0;
+                }
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

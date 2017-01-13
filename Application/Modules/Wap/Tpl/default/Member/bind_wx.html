@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>绑定微信</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<body id="u-body">
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+<header id="header" class="u-header clearfix">
+    <div class="u-hd-left f-left">
+        <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+    </div>
+    <div class="u-hd-tit"><span>绑定微信</span></div>
+</header>
+<div class="new-ct" style="width: 70%;margin:40px auto;">
+        <form action="" method="post" id="form2" role="form" novalidate="novalidate" onsubmit="return false">
+            <div style="text-align:center;color:red;font-size: 14px">*确认绑定后将绑定当前登录微信号</div>
+            <div class="ui-form-item ">
+                <label>请输入密码</label>
+                <input class='ui-border-bi' name="password" id="password" type="password">
+            </div>
+            <a class="new-abtn-type new-mg-tb30 bind_wx">确认绑定</a>
+        </form>
+</div>
+<div style="height:30px;">
+</div>
+<!--end top-->
+<include file="Public/footer"/>
+<include file="Public/wap_javascript"/>
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page = 'member_bind_wx';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+<!--end 页脚-->
+<!--微信分享-->
+<include file="Public/share_weixin"/>
+<script type="text/javascript">
+$('#form2').validate({
+    rules:{
+        password:{
+            required:true,
+            remote: {
+                url: "{:U('Wap/Login/check_password')}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    password: function () {
+                        return $("#password").val();　　　　//这个是取要验证的数据
+                    }
+                },
+                dataFilter: function (msg) {　　　　//判断控制器返回的内容
+                    if (msg == "0") {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+    },
+    messages:{
+        password:{
+            required:'请输入密码',
+            remote:'密码错误,请重新输入'
+        }
+    },
+    //执行Ajax提交表单
+    focusInvalid: false,
+    success: function (label) {
+        // set  as text for IE 
+        // alert('ok'); 
+        //label.html(" ").addClass("checked"); 
+    },
+    /*执行ajaxsubmit  */
+    submitHandler: function (editform) {
+
+        var options = {
+            url: "<?php echo U('Wap/Member/bind_wx'); ?>",
+            type: "post",
+            dataType: 'json',
+            target: "#loader",
+            error: function () {
+                layer.msg("服务器没有返回数据，可能服务器忙，请重试", {icon: 5});
+            },
+            onwait: "正在处理信息，请稍候...",
+            success: function (response) {
+                alert(response.status);
+                console.log(response);
+                //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                //$('#editform').hide(2000); 
+                if (response.status == 1) {
+                    // alert("登录成功");
+                    window.location.href = '<?php echo U("wap/member/index")?>';
+                } else {
+
+                    layer.msg(response.error, {icon: 5});
+                    //alert(response.error);
+                }
+            }
+        };
+        setTimeout((function (opt) {
+            return function () {
+                $('#form2').ajaxSubmit(opt);
+            }
+        })(options), 300);
+        return false;
+    }
+})
+$('.bind_wx').click(function() {
+    $('#form2').submit();
+});
+
+</script>
+</body>
+</html>

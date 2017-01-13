@@ -1,0 +1,90 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">赠品发货列表</h1>
+                            <span class="mainDescription"></span>
+                        </div>
+                        <!-- <ol cla
+                <!-- <ol class="breadcrumb">
+                    <li>
+                        <span>Pages</span>
+                    </li>
+                    <li class="active">
+                        <span>Blank Page</span>
+                    </li>
+                </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>会员名</th>
+                        <th>会员卡号</th>
+                        <th>商品名</th>
+                        <th>收货人</th>
+                        <!--<th>收货地址</th>-->
+                        <th>手机</th>
+                        <th>发货状态</th>
+                        <th>领取时间</th>
+                        <th class="center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="data" id="val">
+                        <tr>
+                            <td>#</td>
+                            <td>{$val.member_name}</td>
+                            <td>{$val.member_card}</td>
+                            <td>{$val.goods_name}</td>
+                            <td>{$val.consignee}</td>
+                            <!--<td>{$val.address}</td>-->
+                            <td>{$val.mobile}</td>
+                            <td>{$val['status']?'已发货':'待发货'}</td>
+                            <td>{$val['add_time']|date='Y-m-d',###}</td>
+                            <td class="center">
+                                <a href="{:U('admin/Usernotice/activity_receive_detail',array('id'=>$val['activity_id']))}" class="btn btn-transparent btn-xs nondelivery" tooltip="Edit" tooltip-placement="top"
+                                   data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <div class="col-md-12 pages" align="center">{$page|default='暂无数据'}</div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+<script type="text/javascript">
+
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

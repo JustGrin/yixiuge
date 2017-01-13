@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合作协议</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+</head>
+<style>
+	body, html { margin: 0; padding: 0}
+	img.logo{ width: 2rem; height: auto; display:block; margin:.4rem auto 0 .4rem;}
+	h2{text-align: center; font-size: .8rem; line-height: 2rem;color: #444}
+	.mgb40{ margin-bottom: .4rem;}
+	.layout{width: 90%; text-align: center; margin: 0 auto;}
+	.layout span{display:block; text-align: center; font-size: .6rem;line-height: 1rem;color: #666;}
+	.layout input.name{ border-radius: 1rem; border: 1px solid #e0e0e0; background-color: #f4f4f4; font-size: .48rem; line-height: 1.2rem; margin: .4rem 0; width: 100%; text-align: center; color: #393}
+	a.next{ border-radius: 1rem; border:none; background-color: #393; font-size: .48rem; line-height: 1rem; color: #fff; text-decoration: none; padding: .2rem; margin: auto; width: 80%; display: block; margin: auto; text-align: center;}
+	.layout p{ font-size:.4rem; line-height: .8rem; text-indent: 2em; text-align: left; color: #666;}
+	.layout .ab{ text-align: left; font-size: .34rem; color: #666;}
+	.layout .ab span{ font-size: .4rem; text-align: left; display: inline; color: #444}
+	.layout .ab i{ font-size:.3rem; font-style: normal;}
+	.mgtb{ margin: 20% auto}
+	.code{ margin-top: 1rem;}
+	.code img{ width: 60%; height: auto;}
+	.code span{ font-size: .4rem; padding-bottom: 1rem;}
+	h4{font-size:.6rem; color: #444; margin-top: .6rem; color: #393;}
+	</style>
+
+<body>
+<img class="logo" src="__PUBLIC__/wap/img/logo.png"/>
+<h2>合作协议</h2>
+<div class="layout ">
+	<div class="ab">甲方：<span>重庆飞米科技</span><i>（以下简称甲方）</i></div>
+	<div class="ab mgb40">乙方：<span>{$farm_info.base_name}</span><i>（以下简称乙方）</i></div>
+	
+	<p>
+
+		重庆飞米科技有限公司与elife易乐生活签署战略合作协议，elife为星耀地产的CBD高端社区线上内部服务终端，星耀地产推出“0租金”办公写字楼模式，7栋办公房产，年饱和销售额在1.6亿元人民币，将由elife易乐生活购物抵租金的方式进行进行活动推广，由重庆飞米科技有限公司旗下FG峰购电子商务平台提供产品对接，由于elife易乐生活针对的是星耀地产办公租户，均为高端办公人群，由于此项目的特殊性，有持续循环购买能力，为确保产品品质、质量、时效、服务等，签署相关协议，协议内容如下：</p>
+
+<p>1、乙方需向甲方缴纳保证金人民币 {$farm_info.pledge_money} 元，约束与入驻产品的品质、产品质量、产品物流时效等。甲乙双方解除协议后60日内无息退还。</p>
+<p>2、缴纳方式为现金、汇款、支票、转账。</p>
+
+<p>3、乙方应当保证其所入驻的产品不存在任何知识产权的瑕疵。如乙方或其生产商因为侵犯第三方的专利权、商标专用权、着作权、肖像权、商业秘密或其他民事权利而产生争议，给甲方造成经济损失的，乙方应当承担全部责任并承担因此而发生的全部各种费用（包括但不限于律师费、公证费、保全费、诉讼费、执行费、甲方垫付的费用等）。</p>
+<p>4、乙方承诺对所供产品的质量及物全面负责。如因乙方产品出现质量问题，造成他人的人身或财产损害，第三方要求赔偿或发生诉讼的，由乙方承担全部责任。乙方除负责赔偿由此引起的一切损失外（包括但不限于物流费用、医疗费用、人身损害赔偿金、死亡赔偿金、精神损害赔偿金、辅助器具费用、被抚养人费用、差旅食宿费、律师费、公证费、保全费、诉讼费、执行费、甲方垫付的费用等）。</p>
+<p>5、乙方应确保物流时效性。如因物流原因未按照约定时间送达，并引起客户强烈不满，导致甲方客户流失，对此造成的损失由乙方承担并进行赔偿。</p>
+<p>注：综上所述，如出现以上相关问题，保证金概不退还。</p>
+<a class="next" onclick="get_weixin_pay();">微信在线支付</a>
+<h4>银行转账付款</h4>
+<p>名称：重庆飞米科技有限公司</p>
+<p>账号：11250000000511128</p>
+<p>开户行全称：华夏银行股份有限公司重庆分行营业部</p>
+<p>行号：304653002119</p>
+</p>
+
+</div>
+</body>
+<script type="text/javascript">
+	var jsApiParameters;
+	//调用微信JS api 支付
+	function jsApiCall(){
+		//var jsApiParameters=$('#jsApiParameters').val();
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',
+			{
+				"appId":jsApiParameters.appId,
+				"nonceStr":jsApiParameters.nonceStr,
+				"package":jsApiParameters.package,
+				"signType":jsApiParameters.signType,
+				"timeStamp":jsApiParameters.timeStamp,
+				"paySign":jsApiParameters.paySign
+			},
+			function(res){
+				console.log(res);
+				WeixinJSBridge.log(res.err_msg);
+				//alert(res.err_msg)
+				if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+					//window.location.href="<?php echo $success_url;?>";
+					alert('完成支付');
+				}else{
+					alert('未完成支付'+res.err_msg);
+					//window.location.href="<?php echo $return_url;?>";
+				}
+				// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+			}
+		);
+	}
+
+	function callpay(){
+		if (typeof WeixinJSBridge == "undefined"){
+			if( document.addEventListener ){
+				document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+			}else if (document.attachEvent){
+				document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+				document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+			}
+		}else{
+			jsApiCall();
+		}
+	}
+
+	function get_weixin_pay(){
+		var pay_url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/jsapi_go_pay.php?pay_sn='.$farm_pay_order['pay_sn'].'&order_pay_sn='.$farm_order['order_sn'].'&farm_id='.$farm_info['base_id']; ?>";
+		window.location.href=pay_url+"&openid=<?php echo $open_id;?>";
+		
+		/*layer.msg("正在处理信息，请稍候...",{time:100000});
+		$.ajax({
+			url: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/get_pay_jsapi.php?pay_sn='.$farm_pay_order['pay_sn'].'&openid='.$open_id.'&order_pay_sn='.$farm_order['order_sn']; ?>",
+			type:'get',
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				if(data.status==1){
+					jsApiParameters=data.payvalue;
+					layer.closeAll();
+					callpay();
+				}else{
+					// alert(data.status)
+					layer.msg(data.error, {icon: 5});
+				}
+			}
+		});*/
+	}
+</script>
+<!--<?php var_dump($_SESSION['user_info']);?>-->
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>收货地址管理-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/icons.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/component.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css?r=123" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/address.css">
+</head>
+<body class="pay" ontouchstart="" onmouseover="">
+<div class="new head"> <a class="md-close back" href="javascript:history.go(-1);"> <i class="iconfont">&#xe617</i></a>
+	<h2 >管理收货地址</h2>
+</div>
+<div class=" bggreen addlist">
+<div class="newbox">
+	<ul id="address_list">
+	<volist name="list" id="vo">
+		<li class='address_box_{$vo.address_id} <if condition="$vo.is_default gt 0">on</if> clearfix' address_id="{$vo.address_id}" consignee="{$vo.consignee}" mobile="{$vo.mobile}" address_name="{$vo.address_name}" address="{$vo.address}" zipcode="{$vo.zipcode}" area_id_str="{$vo.province},{$vo.city},{$vo.area}">
+			<div class="edit" data="off">
+				<div class="action"><i class="iconfont open">&#xe648</i><i class="iconfont off">&#xe63a</i></div>
+				<div class="change md-trigger edit_address" data-modal="modal-3" address_id="{$vo.address_id}" data-modal="modal-3"><i class="iconfont on">&#xe684</i><span>修改</span></div>
+				<div class="del" address_id="{$vo.address_id}"><i class="iconfont on">&#xe65a</i><span>删除</span></div>
+			</div>
+			<div class="addinfo">
+				<dl class="name">
+					<dt>收件人：</dt>
+					<dd class="consignee_name">{$vo.consignee}</dd>
+					<dd class="tel num consignee_mobile">{$vo.mobile}</dd>
+				</dl>
+				<dl class="add">
+					<dt>收货地址：</dt>
+					<dd class="addr_name">{$vo.address_name}</dd>
+					<dd class="addsub addr_detail"> {$vo.address}</dd>
+					<div class="clearfix"> </div>
+				</dl>
+			</div>
+		</li>
+	</volist>
+	</ul>
+</div>
+<if condition="count($list) lt 6">
+	<div class="submit"> <a href="#" class="md-trigger add_modal"  data-modal="modal-3"> 新增收货地址 </a> </div>
+</if>
+</div>
+
+
+
+<!--新增收货地址-->
+<div class="md-modal md-effect-2" id="modal-3">
+	<div class="md-content">
+		<div class="head"> <a class="md-close back" id="addr_back"><i class="iconfont">&#xe617</i></a>
+			<h2 >新增收货地址</h2>
+		</div>
+		<div class="pdt10 member">
+			<form id="form2" class="mlogin " action="" method="post" role="form" onSubmit="return false;">
+				<input type="hidden" class="form2_input" value="" name="address_id" id="address_id"/>
+				<div class="field autoClear">
+					<div class="label"> 收件人 </div>
+					<div class="field-control">
+						<input type="text" class="input-required form2_input" name="consignee" placeholder="请填写收件人的真实姓名" value="" id="consignee">
+					</div>
+				</div>
+				<div class="field autoClear">
+					<div class="label"> 手机号码 </div>
+					<div class="field-control">
+						<input type="text" class="input-required form2_input" name="mobile" placeholder="请填写收件人的手机号码" value="" id="mobile">
+					</div>
+				</div>
+				<div class="field autoClear">
+					<div class="label"> 省市地区 </div>
+					<div class="field-control">
+						<input type="text" class="input-required form2_input" readonly placeholder="请选择地区" value="" name="area_name" id="select_area">
+						<input id="area_info" type="hidden" name="area_info" />
+					</div>
+				</div>
+				<div class="field autoClear">
+					<div class="label"> 详细地址 </div>
+					<div class="field-control">
+						<input type="text" class="input-required form2_input" name="address" placeholder="请填写详细地址" value="" id="address_info">
+					</div>
+				</div>
+				<div class="field autoClear">
+					<div class="label"> 邮编 </div>
+					<div class="field-control">
+						<input type="text" class="input-required form2_input" name="zipcode" placeholder="请填写邮编" value="" id="zipcode">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="submit"> <a href="javascript:;" id="save_address"> 保存收货地址 </a> </div>
+	</div>
+</div>
+</div>
+<div class="md-overlay"> </div>
+</body>
+<script src="__PUBLIC__/wap/js/classie.js"></script>
+<script src="__PUBLIC__/wap/js/modalEffects.js"></script>
+<script src="__PUBLIC__/wap/js/address.js"></script>
+<script>
+	var province = {$city_group.province}, city = {$city_group.city}, area = {$city_group.area};
+    var area2 = new LArea();
+    area2.init({
+        'trigger': '#select_area',
+        'valueTo': '#area_info',
+        'keys': {
+            id: 'value',
+            name: 'text'
+        },
+        'type': 2,
+        'data': [province, city, area]
+    });
+jQuery(document).ready(function(){
+	//FormValidator.init();
+	jQuery.validator.addMethod("byteRangeLength", function(value) {
+		var area_info=$("#area_info").val();
+		var ret = false;
+		if(area_info > 0){
+			ret = true;
+		}
+		return ret;   
+	});
+	jQuery.validator.addMethod ("checkType",function(value){
+		var re =/^[\u4e00-\u9fa5]*$/.test($("#consignee").val());
+		var ret = false;
+		if(re){
+			ret = true;
+		}
+		return ret;
+	});
+
+	$("#form2").validate({
+		rules: {
+			consignee:{
+				required:true,
+				checkType:true
+			},
+			mobile:{
+				required:true,
+				number:true,
+				minlength:11,
+				maxlength:11
+			},
+			select_area: 'byteRangeLength',
+			address:'required'
+		},
+		messages: {
+			consignee:{
+				required:'',
+				checkType:'<span class="icon-warning icon_warning"></span>&nbsp;姓名只能输入中文'
+			},
+			mobile:{
+				required:'',
+				number:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码',
+				minlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码',
+				maxlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码'
+			},
+			select_area: '<span class="icon-warning icon_warning"></span>&nbsp;请选择完整的省市区',
+			address:''
+		},
+		focusInvalid:false,
+		success: function(label) {
+			// set  as text for IE 
+			// alert('ok'); 
+			//label.html(" ").addClass("checked"); 
+		}, 
+		/*执行ajaxsubmit  */ 
+		submitHandler: function(editform){
+			var options = {
+				url : "<?php echo U('Wap/Address/set_address'); ?>", 
+				type : "post" , 
+				dataType : 'json', 
+				target : "#loader", 
+				error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
+				onwait : "正在处理信息，请稍候...",
+				success: function(res){
+					//$("#loader").fadeIn(500).html(res.data).fadeOut(500);
+					//$('#editform').hide(2000); 
+					if(res.status==1){
+						var msg = '';
+						var data = res.save_data;
+						if($('.address_box_'+data.address_id).length > 0){
+							var ob_li = $('.address_box_'+data.address_id);
+							$('.address_box_'+data.address_id).attr('consignee', data.consignee);
+							$('.address_box_'+data.address_id).attr('mobile', data.mobile);
+							$('.address_box_'+data.address_id).attr('address_name', data.address_name);
+							$('.address_box_'+data.address_id).attr('address', data.address);
+							$('.address_box_'+data.address_id).attr('zipcode', data.zipcode);
+							$('.address_box_'+data.address_id).attr('area_id_str', data.area_id_str);
+							$('.address_box_'+data.address_id).find('.consignee_name').html(data.consignee);
+							$('.address_box_'+data.address_id).find('.consignee_mobile').html(data.mobile);
+							$('.address_box_'+data.address_id).find('.addr_name').html(data.address_name);
+							$('.address_box_'+data.address_id).find('.addr_detail').html(data.address);
+							msg = '修改成功';
+						}else{
+							var html = '';
+							html = '<li class="address_box_'+data.address_id+' on" address_id="'+data.address_id+'" consignee="'+data.consignee+'" mobile="'+data.mobile+'" address_name="'+data.address_name+'" address="'+data.address+'" zipcode="'+data.zipcode+'" area_id_str="'+data.province+','+data.city+','+data.area+'">';
+							html += '<div class="edit" data="off">';
+							html += '<div class="action"><i class="iconfont open">&#xe648</i><i class="iconfont off">&#xe63a</i></div>';
+							html += '<div class="change md-trigger edit_address" data-modal="modal-3" address_id="'+data.address_id+'" data-modal="modal-3"><i class="iconfont on">&#xe684</i><span>修改</span></div>';
+							html += '<div class="del" address_id="'+data.address_id+'"><i class="iconfont on">&#xe65a</i><span>删除</span></div>';
+							html += '</div><div class="addinfo"><dl class="name"><dt>收件人：</dt>';
+							html += '<dd class="consignee_name">'+data.consignee+'</dd>';
+							html += '<dd class="tel num consignee_mobile">'+data.mobile+'</dd></dl>';
+							html += '<dl class="add"><dt>收货地址：</dt>';
+							html += '<dd class="addr_name">'+data.address_name+'</dd>';
+							html += '<dd class="addsub addr_detail">'+data.address+'</dd>';
+							html += '<div class="clearfix"></div></dl></div></li>';
+							
+							$('#address_list li').removeClass('on');
+							$('#address_list').append(html);
+							msg = '添加成功';
+						}
+						if($('#address_list').children('li').length >= 6){
+							$('.submit').hide();
+						}
+						//$(document).on('click', '.address_box_'+data.address_id);
+						select_addr(data.consignee, data.mobile, data.address_name, data.address, data.address_id, data.zipcode, data.area_id_str);
+						layer.msg(msg, {icon:6});
+						$('#modal-3').removeClass('md-show');
+					}else{
+						layer.msg(res.error, {icon:5});
+					}
+				}
+			};
+			setTimeout((function(opt){
+				return function(){
+					$('#form2').ajaxSubmit(opt);
+				}
+			})(options), 300); 
+			return false; 
+		}
+	});
+	
+	$('#save_address').click(function(){
+		$('#form2').submit();
+	});
+	
+	$(document).on('touchstart', '.addinfo', function(){
+		var _this = $(this).parent();
+		var address_id = _this.attr('address_id');
+		$.ajax({
+			url : "<?php echo U('Wap/Address/set_default_address'); ?>", 
+			type : "get",
+			data : {address_id:address_id},
+			dataType : 'json',
+			success : function(ret){
+				if(ret.stauts){
+					$('#address_list li').removeClass('on');
+					_this.addClass('on');
+					layer.msg('设置默认地址成功', {icon:6});
+				}else{
+					layer.msg(ret.error, {icon:5});
+				}
+			}
+		});
+	});
+	
+	$(document).on('click', '.add_modal', function(){
+		$('.form2_input').val('');
+	});
+	
+	$(document).on('click', '.edit_address', function(){
+		var address_id = $(this).attr('address_id');
+		var _this = $('.address_box_'+address_id);
+		consignee = _this.attr('consignee');
+		mobile = _this.attr('mobile');
+		address_name = _this.attr('address_name');
+		address = _this.attr('address');
+		address_id = _this.attr('address_id');
+		zipcode = _this.attr('zipcode');
+		area_id_str = _this.attr('area_id_str');
+		
+		select_addr(consignee, mobile, address_name, address, address_id, zipcode, area_id_str);
+	});
+	
+	function select_addr(consignee, mobile, address_name, address, address_id, zipcode, area_id_str){
+		$('#consignee').val(consignee);
+		$('#mobile').val(mobile);
+		$('#select_area').val(address_name);
+		$('#area_info').val(area_id_str);
+		$('#address_info').val(address);
+		$('#address_id').val(address_id);
+		$('#zipcode').val(zipcode);
+	}
+	
+	/*$(document).on('click', '.edit_address', function(){
+		$.ajax({
+			url : "<?php echo U('Wap/Address/set_address'); ?>", 
+			type : "get" , 
+			dataType : 'json',
+			success : function(ret){
+				if(ret.status){
+					var data = ret.data;
+					$('#consignee').val(data.consignee);
+					$('#mobile').val(data.mobile);
+					$('#select_area').val(data.address_name);
+					$('#address_info').val(data.address);
+					$('#address_id').val(data.address_id);
+				}else{
+					layer.msg(ret.error, {icon:5});
+					return false;
+				}
+			}
+		});
+	});
+	*/
+	
+//点击编辑效果
+	$('.edit').css('right', '-3rem');
+	$('.edit').click(function(){
+		var da = $(this).attr('data');
+		if(da == 'off'){
+			$(this).animate({'right':'0'},300);
+			$(this).attr('data', 'on');
+			$(this).children('.action').addClass('on');
+		}else{
+			$(this).animate({'right':'-3rem'},300);
+			$(this).attr('data', 'off');
+			$(this).children('.action').removeClass('on');
+		}
+	});
+	
+	//删除收货地址
+	$('.del').click(function(){
+		var address_id = $(this).attr('address_id');
+		$.ajax({
+			url : "<?php echo U('Wap/Address/del_address'); ?>", 
+			data:{address_id:address_id},
+			type : "get",
+			dataType : 'json',
+			success : function(ret){
+				if(ret.status == 1){
+					$('.address_box_'+address_id).remove();
+					layer.msg(ret.msg, {icon:6});
+				}else{
+					layer.msg(ret.msg, {icon:5});
+				}
+			},
+			error : function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}
+		});
+	});
+});
+</script>
+</html>

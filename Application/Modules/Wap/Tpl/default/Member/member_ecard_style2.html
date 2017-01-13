@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>电子名片1</title>
+	<meta name="viewport" content="width=640px,initial-scale=.5, minimum-scale=.5, maximum-scale=.5">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/html2canvas.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.plugin.html2canvas.js"></script>
+</head>
+<style>
+	html, body { height: 100%;}
+	body, img { padding: 0; margin: 0; }
+	img { display: block; width: 100%; height: auto; }
+	.body { background-color: #666; height: 100%; padding: .6rem; box-sizing: border-box }
+	.card { position: relative; z-index: 1; height: 100%; box-shadow: 0 0 .6rem rgba(0,0,0,0.4); background: #fff; border-radius: .8rem; overflow: hidden; }
+	.card img { display: block; text-align: center; }
+	.avatar { border-radius: 10rem; width: 4.4rem; height: 4.4rem; top: -2rem; position: relative; overflow: hidden; display: block; z-index: 2; margin: auto; }
+	.avatar img { width: 100%; height: auto; }
+	.name { font-size: .6rem; width: 100%; text-align: center; z-index: 3; color: #4aaf59; position: relative; top: -2rem; margin: auto; font-family: 'microsoft yahei' }
+	.name b { font-weight: 400; background: #fff; padding: 0 .4rem; position: relative; z-index: 3; }
+	.name span { border-bottom: 1px solid #f4f4f4; width: 100%; height: 1px; display: block; position: relative; top: -.4rem; z-index: 2; }
+	.tel { text-align: center; margin-top: -1.6rem; color: #444; font-size: .56rem; font-family: Helvetica Neue, Helvetica, Arial, " sans-serif" }
+	.code { z-index: 2; text-align: center; width: 100%; display: block; margin-top: .2rem; }
+	.code img { width: 4.12rem; display: inline-block }
+	.info { font-size: .36rem; margin-top: .1rem; line-height: .6rem; width: 5.8rem; margin: auto; text-align: center; font-family: 'microsoft yahei'; color: #666; margin-bottom: .2rem; }
+	.logo { width: 3rem; margin: auto; }
+</style>
+
+<body>
+	<div class="body">
+		<div class="card">
+			<img src="__PUBLIC__/e_card/card-topbg.jpg" />
+			<div class="avatar">
+				<canvas id="canvas" width="216" height="216" style="width:4.4rem; height:4.4rem;"></canvas>
+			</div>
+			<div class="name"><b>{$memberinfo.member_name}</b><span></span></div>
+			<div class="tel">tel:{$memberinfo.mobile}</div>
+			<div class="code"><img src="{:thumbs_auto($qrcode_img, 200, 200)}"/></div>
+			<div class="info">
+				致力于解决农产品销路问题
+				<br>
+				为城市居民提供健康的食材
+			</div>
+			<div class="logo"><img src="__PUBLIC__/e_card/logo.png"/></div>
+		</div>
+	</div>
+</body>
+<script>
+function html_photo(){
+	html2canvas($('.body'), {
+		onrendered: function(canvas){
+			document.body.appendChild(canvas);
+			var img = canvas.toDataURL('image/jpeg');
+			$('.body').before('<img src="'+img+'" />');
+			$('.body').hide();
+			$('canvas').hide();
+		},
+		chinese:true,
+		useCORS:true,
+		timeout:0,
+	});
+}
+
+// canvas元素, 图片元素
+var canvas = document.querySelector("#canvas"), image = new Image();
+var context = canvas.getContext("2d");
+
+var draw = function(obj) {
+	var size = 108;
+	var pattern = context.createPattern(obj, "no-repeat");
+	//context.scale(50, 50);
+	context.beginPath();
+	context.lineWidth = 7;
+	context.fillStyle = pattern;
+	context.strokeStyle = "#fff";
+	context.arc(size, size, size-7, 0, 2 * Math.PI);
+	context.fill();
+	context.stroke();
+	context.closePath();
+	html_photo();
+}
+
+image.src = "{:thumbs_auto($memberinfo['member_logo'], 216, 216)}";
+image.onload = function(){
+	draw(this);
+};
+</script>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>找回密码-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+	<link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+	<style type="text/css">
+		.hidden_class{display:none}
+	</style>
+</head>
+<body class="login">
+
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<h2 id="head">找回密码</h2>
+</div>
+
+<form  class="mlogin  form1" action="" method="post" id="form2">
+	<div class="mod_forms_2">
+		<div class="other-link">
+			验证您的身份信息
+		</div>
+		<div class="field">
+			<span name="msg"></span>
+			<div class="label">
+				手机号码
+			</div>
+			<div class="field-control">
+				<input type="text" class="input-required" name="mobile" id="mobile" placeholder="请输入您的手机号码" value="" >
+			</div>
+		</div>
+		<div class="field">
+			<div class="label">
+				验证码
+			</div>
+			<div class="field-control">
+				<input type="text"  class="input-required codeinput" name="mobile_code" placeholder="请输入您收到的验证码" value="" id="mobile_code">
+			</div>
+			<a href="javascript:void(0);" class="send_sms code">
+				发送验证码
+				<span class="countdown hidden_class" >（<em class="num">60</em>S）</span>
+			</a>
+
+		</div>
+
+		<div class="submit form2_btn" >
+			<button type="submit" class="button" >下一步</button>
+		</div>
+		<div class="other-link">
+			<!--<a href="#" class="floatLft"></a> <a href="{:U('wap/login/register')}" class="floatRgt">我还不是会员，免费注册</a>-->
+		</div>
+	</div>
+</form>
+
+<form id="form3" class="mlogin " action="" method="post">
+	<div class="mod_forms_3 hidden_class">
+		<input type="hidden"  name="mobile" class="ipu_mobile" value="">
+		<input type="hidden"  name="mobile_code" class="ipu_mobile_code" value="">
+		<div class="other-link">
+		*密码必须为6-20位的英文字母或数字组成。
+		</div>
+		<div class="field">
+			<div class="label">
+				登录密码
+			</div>
+			<div class="field-control">
+				<input type="text" class="input-required" name="mem_password" placeholder="请输入您登录密码" value="" id="mem_password">
+			</div>
+		</div>
+		<div class="field">
+			<div class="label">
+				重输密码
+			</div>
+			<div class="field-control">
+				<input type="text"  class="input-required" name="rep_password" placeholder="请再次输入您的登录密码" value="" id="rep_password">
+			</div>
+		</div>
+		<div class="submit form3_btn">
+			<button type="submit" class="button">重设密码</button>
+		</div>
+		<div class="other-link">
+			<!--<a href="" class="floatLft"></a> <a href="{:U('wap/login/register')}" class="floatRgt">我还不是会员，免费注册</a>-->
+		</div>
+	</div>
+</form>
+
+<div class="refundinfo hidden_class mod_forms_4">
+	<div class="state">密码设置成功</div>
+<!--	<div class="submit">
+		<a href="{:U('wap/login/index')}"><button type="submit" class="button" >登 录</button></a>
+	</div>-->
+</div>
+
+<script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+
+<!--<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>-->
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script>
+	jQuery(document).ready(function() {
+		//FormValidator.init();
+		/*$(".form1").validate({
+			rules: {
+				mobile: {
+					required:true,
+					remote: {
+						url: "{:U('Wap/Login/cheack_mobile')}",
+						type: "get",
+						dataType: "json",
+						data: {
+							mobile: function () {
+								return $("#mobile").val();　　　　//这个是取要验证的数据
+							}
+						},
+						dataFilter: function (msg) {　　　　//判断控制器返回的内容
+							if (msg == "1") {
+								return true;
+							}else {
+								return false;
+							}
+						}
+					}
+				}
+			},
+			messages: {
+				mobile:{
+					required:"",
+					remote:''
+				}
+			},
+			focusInvalid:false,
+			success: function(label) {
+
+				// set  as text for IE 
+				// alert('ok'); 
+				//label.html(" ").addClass("checked"); 
+			},
+			/!*执行ajaxsubmit  *!/
+			submitHandler: function(editform) {
+				var mobile=$('#mobile').val();
+				$('.ipu_mobile').val(mobile);
+				//第二步
+			}
+		});*/
+
+		$("#form2").validate({
+			rules: {
+				mobile_code: {
+					required:true,
+					remote: {
+						url: "{:U('Wap/Login/check_send_reg')}",
+						type: "get",
+						dataType: "json",
+						data: {
+							mobile: function () {
+								return $("#mobile").val();　　　　//这个是取要验证的数据
+							},
+							mobile_code: function () {
+								return $("#mobile_code").val();　　　　//这个是取要验证的数据
+							}
+						},
+						dataFilter: function (msg) {　　　　//判断控制器返回的内容
+
+							if (msg == "1") {
+								return true;
+							}else {
+								return false;
+							}
+						}
+					}
+				}
+			},
+			messages: {
+				mobile_code: {
+					required:'请输入验证码',
+					remote:'验证码错误'
+				}
+			},
+			focusInvalid:false,
+			success: function(label) {
+				// set  as text for IE 
+				// alert('ok'); 
+				//label.html(" ").addClass("checked"); 
+
+			},
+			/*执行ajaxsubmit  */
+			submitHandler: function(editform) {
+				var mobile=$('#mobile').val();
+				$('.ipu_mobile').val(mobile);
+				var mobile_code=$("#mobile_code").val();
+				$('.ipu_mobile_code').val(mobile_code);
+				console.log($('.ipu_mobile_code').val());
+				//第三步
+				$('.mod_forms_2').addClass('hidden_class');
+				$('.mod_forms_3').removeClass('hidden_class');
+				$('#head').html('设置新密码');
+			}
+
+		});
+
+
+		$("#form3").validate({
+			rules: {
+				mem_password: {
+					required: true,
+					rangelength: [6, 20]
+				},
+				rep_password: {
+					required: true,
+					rangelength: [6, 20],
+					equalTo: "#mem_password"
+				}
+			},
+			messages: {
+				mem_password: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入密码',
+					rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;密码请保持6-20位'
+				},
+				rep_password: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入重复密码',
+					rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;重复密码请保持6-20位',
+					equalTo:'<span class="icon-warning icon_warning"></span>&nbsp;两次密码输入不一致'
+				}
+			},
+			focusInvalid:false,
+			success: function(label) {
+				// set  as text for IE 
+				// alert('ok'); 
+				//label.html(" ").addClass("checked"); 
+			},
+			/*执行ajaxsubmit  */
+			submitHandler: function(editform) {
+
+				var options = {
+					url :  "<?php echo U('Wap/Login/findpwd'); ?>",
+					type : "post" ,
+					dataType:'json',
+					target : "#loader",
+					error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});},
+					onwait : "正在处理信息，请稍候...",
+					success: function(response){
+						// console.log(response);
+						//$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+						//$('#editform').hide(2000); 
+						if(response.status==1){
+							$('.mod_forms_3').addClass('hidden_class');
+							$('.mod_forms_4').removeClass('hidden_class');
+							$('.mod_title_3').removeClass('color_red');
+							$('.mod_title_4').addClass('color_red');
+							setTimeout(function(){
+								window.location.href="<?php  echo U('wap/member/index');?>";
+							},2000);
+							//alert("注册成功");
+							//window.location.href="";
+						}else{
+
+							layer.msg(response.error, {icon: 5});
+							// alert(response.error);
+						}
+					}
+				};
+				setTimeout((function(opt){
+					return function(){
+						$('#form3').ajaxSubmit(opt);
+					}
+				})(options), 300);
+				return false;
+			}
+
+		});
+
+		$('#mobile').blur(function(){
+			$('.form1').submit();
+		});
+		$('.form2_btn').click(function(){
+			$('#form2').submit();
+		});
+		$('.form3_btn').click(function(){
+			$('#form3').submit();
+		});
+		$('.form4_btn').click(function(){
+			$('#form4').submit();
+		});
+
+		$('.send_sms').click(function(){
+			var is_send=$(this).hasClass('disable');
+			if(is_send){
+				return false;
+			}else{
+				//短信发送
+				$.ajax({
+					url: "{:U('Wap/Login/send_sms_findpwd')}",
+					type: "get",
+					dataType: "json",
+					data: {
+						mobile: function () {
+							return $("#mobile").val();　　　　//这个是取要验证的数据
+						}/*,
+						 verify_code: function () {
+						 return $("#verify_code").val();　　　　//这个是取要验证的数据
+						 }*/
+					},
+					success: function (msg) {　　　　//判断控制器返回的内容
+						if (msg.status == "1") {
+							//disable
+							//$('#mobile_code').val(msg.code);
+
+							layer.msg('验证码发送成功', {icon: 6});
+							//alert("验证码发送成功");
+							run_time_out();
+						}else {
+							layer.msg(msg.msg, {icon: 5});
+							// alert(msg.msg);
+						}
+					}
+				});
+			}
+		});
+
+	});
+	function run_time_out(){
+		var num=$('.num').html();
+		num=parseInt(num);
+		var is_send=$('.send_sms').hasClass('disable');
+		if(num>0){
+			$('.countdown').show();
+			num--;
+			$('.num').html(num);//显示倒计时
+			if(!is_send){
+				$('.send_sms').addClass('disable');///禁止点击
+				$('.send_sms').css('cssText','background-color: #eee;color: #666;');
+				$('.get_sms').hide();
+			}
+		}else{
+			$('.countdown').hide();
+			$('.num').html(60);//初始化倒计时
+			$('.send_sms').removeClass('disable');///可以点击
+			$('.send_sms').removeAttr('style');
+			$('.get_sms').show();
+			return false;
+		}
+		setTimeout('run_time_out()',1000);
+	}
+</script>
+</body>
+</html>

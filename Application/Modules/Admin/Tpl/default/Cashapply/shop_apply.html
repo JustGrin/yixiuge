@@ -1,0 +1,213 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">商户提现申请</h1>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+
+</style>
+
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					
+					  <label for="shop_name" class="sr-only">
+						商户名称
+					  </label>
+						<input type="text" name="shop_name" value="{$_GET.shop_name}" id="shop_name" placeholder="商户名称" class="form-control">
+					
+				</div>
+			<div class="form-group">
+					
+					  <label for="account" class="sr-only">
+						商户帐号
+					  </label>
+						<input type="text" name="account" value="{$_GET.account}" id="account" placeholder="商户帐号" class="form-control">
+					
+				</div>
+			
+				
+				
+			<div class="form-group">
+					<label for="status" class="sr-only">
+						状态
+					</label>
+					<select class="form-control" id="status" name="status">
+						<option value="all" <if condition="$_GET['status'] =='all'">selected</if>>全部状态</option>
+						<volist name="status_arr" id="vo">
+							<if condition="$key gt 0">
+								<option value="{$key}" <if condition="($_GET['status'] == $key)">selected</if>>{$vo}</option>
+						    <else/>
+                                <option value="{$key}" <if condition="(empty($_GET['status']) && $_GET['status'] == $key)">selected</if>>{$vo}</option>
+						    </if>
+						
+					    </volist>
+					    
+					</select>
+				</div>
+
+			 <button class="btn btn-primary" type="submit">
+					提交
+				</button>
+		</div>
+		<div class="panel-body">
+			
+			   
+		</div>
+		
+    </form>
+	</div>
+</div>
+		</div>	
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>商户名称</th>
+						<th>提现银行</th>
+					    <th>提现金额</th>
+						<th>申请时间</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr >
+						<td class="center"></td>
+						<td class="hidden-xs">{$vo.shop_name}
+						</td>
+						<td> {$vo.account_bank}</td>
+						<td> {$vo.money}</td>
+						<td>
+						{$vo.add_time|date="Y-m-d H:i:s",###}	
+						</td>
+						<td>
+							{//status 状态 0 拒绝提现  1提现申请中 2财务打款中 3已提现}
+
+                          <if condition="$vo['status'] eq 1">
+                          	提现申请中
+                          <elseif condition="$vo['status'] eq 2"/>
+                            财务打款中
+                          <elseif condition="$vo['status'] eq 3"/>
+                           	已提现
+                          <else />
+                                <if condition="$vo['auid_status1'] eq 2">
+                                	操作员拒绝 ({$vo.remarks1})
+                                </if>
+                                 <if condition="$vo['auid_status2'] eq 2 && $vo['auid_status2'] gt 0">
+                                	财务拒绝 ({$vo.remarks2})
+                                </if>
+                          </if>	
+						</td>
+						
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+                              <a href="{:U("Admin/Cashapply/apply_detail",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+
+                            <if condition="$_SESSION['topadmin'] gt 0">
+								  <if condition="$vo['status'] eq 1">
+	                          	<a href="{:U("Admin/Cashapply/apply_status1",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="操作员审核"><i class="fa fa-list-alt"></i></a>
+	                          <elseif condition="$vo['status'] eq 2"/>
+	                            	<a href="{:U("Admin/Cashapply/apply_status2",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="财务审核"><i class="fa fa-list-alt"></i></a>
+	                          </if>	
+                          </if>	
+                          
+                           <if condition="$vo['status'] eq 1">
+                              <!-- <a href="{:U("Admin/Cashapply/apply_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a> -->
+                           </if>
+							<!-- <a href="{:U("Admin/Ad/ad_type_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
+
+						</div>
+						</td>
+					</tr>
+</volist>
+
+
+
+
+		
+				</tbody>
+			</table>
+
+{$list.page|default='暂无数据'}
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+<script type="text/javascript">
+	$(function(){
+		$(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+            	//当前展开  收起操作
+            	$(".menu_p_c").hide();
+            	$(this).attr("data-type",0);
+            	$(".angle_down_"+data).show();
+            	$(".angle_up_"+data).hide();
+            }else{
+               //当前收起 展开操作
+               $(".menu_p_c").hide();
+               $(".menu_p_"+data).show();
+               $(this).attr("data-type",1);
+               $(".angle_down_"+data).hide();
+               $(".angle_up_"+data).show();
+            }
+            
+		});
+	});
+</script>		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

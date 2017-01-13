@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>限时特购-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/limitedpurchase.css"  rel="stylesheet">
+</head>
+<body>
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:void(0)" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>限时特购</span></div>
+    </header>
+    <div class="common-wrapper" style="    background-color: #FFFFFF;">
+        <div class="untimed">
+            <div class="u-brand-list more_html">
+                <volist name="data" id="vo">
+                <div class="u-brand">
+                    <div class="p-relative">
+                        <a href="{:U('wap/goods/Goods_detail',array('id'=>$vo['goods_id']))}" class="u-brand-pic">
+                            <img src="{$vo.promote_img}">
+                        </a>
+                    </div>
+                    <div class="u-brand-msg e-border-b clearfix">
+                        <p class="u-brand-name f-left" style="width: 60%">{$vo.goods_name}</p>
+                        <div class="u-brand-time f-right">
+                            <span class="u-brand-discount">
+                            <switch name="vo['promote_status']">
+                                <case value="-1">{$vo.is_buy_msg}</case>
+                                <case value="0"><span class="time" start_time="{$vo.start_time}" end_time="{$vo.start_time}" status="{$vo.promote_status}"></span></case>
+                                <case value="1"><span class="time" start_time="{$vo.start_time}" end_time="{$vo.end_time}" status="{$vo.promote_status}"></span></case>
+                            </switch>
+                        </span></div>
+                    </div>
+                </div>
+                </volist>
+            </div>
+            <div class="b_q">
+                <div class="fm-footer-copyright get_more">
+                    <if condition="$count gt 10 && count($list) eq 10">
+                        加载更多
+                        <else/>
+                        无更多数据
+                    </if>
+                </div>
+            </div>
+            <input type="hidden" name="p" data="2" value="2"/>
+        </div>
+    </div>
+<include file="Public/wap_javascript"/>
+
+<!--微信分享-->    
+ <include file="Public/share_weixin" />
+
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page = 'goods_limitedpurchase';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+<script type="text/javascript">
+    function showCountdown() {
+        $('.time').each(function (i, val) {
+            var span = $(this);
+            var start_time = span.attr('start_time');
+            var end_time = span.attr('end_time');
+            var timestamp = 0;
+            var status = span.attr('status');
+            if (status == '-1') {
+                span.html('已结束');
+                return true;//——跳出当前循环
+            } else if (status == '0') {
+                if (start_time <= 0) {
+                    timestamp = parseInt(end_time) - 1;
+                    span.attr('end_time', timestamp);
+                    span.attr('status', 1);
+                    status = 1;
+                } else {
+                    timestamp = parseInt(start_time) - 1;
+                    span.attr('start_time', timestamp);
+                }
+            } else if (status == '1') {
+                if (end_time <= 0) {
+                    timestamp = 0;
+                    span.attr('end_time', timestamp);
+                    span.attr('status', '-1');
+                    status = -1;
+                } else {
+                    timestamp = parseInt(end_time) - 1;
+                    span.attr('end_time', timestamp);
+                }
+
+            }
+//            alert(status);
+            var date = getCountdown(timestamp, status);
+//            alert(timestamp);
+            span.html(date);
+        })
+        setTimeout('showCountdown()', 1000);
+    }
+    function getCountdown(timestamp,status) { //获取剩余时间
+//        alert(status);
+        var n_status = '';
+        switch (status) {
+            case '0':n_status = '距开始:';
+                break;
+            default :n_status='距结束:';
+        }
+        var day = Math.floor(timestamp / 86400);  //取得剩余天数
+        var second = timestamp % 86400; //去除天数后获得剩余的小时数
+        var hour = Math.floor(second / 3600);//取得剩余小时数
+        second = second % 3600;   //去除小时数后剩余的分钟数
+        var minute = Math.floor(second / 60); //取得分钟数
+        second = second % 60; //取得秒数;
+        return n_status+day + '天' + hour + '小时' + minute + '分钟' + second + '秒';
+    }
+    var load_more = 0;
+        var load_none = 0; 
+    $(function(){
+        showCountdown();
+       
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight == scrollHeight) {
+                //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                if (load_none != 1) {
+                    if (load_more == 1) {
+                        var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+                        $('.get_more').html('加载中' + html);
+                    } else {
+                        get_more();
+                    }
+                }
+            }
+        })
+    });
+    function get_more() {
+        load_more = 1;
+        var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+        $('.get_more').html('加载中' + html);
+        //var p=$("input[name='p']").val();
+        var p = $("input[name='p']").attr('data');
+        $.ajax({
+            url: "{:U('wap/goods/limitedpurchase')}",
+            type: 'get',
+            data: {p: p},
+            dataType: 'json',
+            success: function (data) {
+                //console.log(data);
+                var con = 1;
+                var option = '';
+                if (data) {
+                    $.each(data, function (i, value) {
+                        //this指向当前元素
+                        //i表示Array当前下标
+                        //value表示Array当前元素
+//                        alert(this.start_time);
+                        var span='';
+                        switch (this.promote_status) {
+                            case -1:  span=this.is_buy_msg;
+                                break;
+                            case 0:  span='<span class="time" time="'+this.start_time+'" status="'+this.promote_status+'"></span>';
+                                break;
+                            case 1: span='<span class="time" time="'+this.end_time+'" status="' + this.promote_status + '"></span>';
+                        }
+                        option=option+'<div class="u-brand">'+
+                                        '<div class="p-relative">'+
+                                        '<a href="<?php echo U('wap/goods/Goods_detail')?>?id='+this.goods_id+'" class="u-brand-pic">'+
+                                        '<img src="'+this.promote_img+'"></a></div>'+
+                                        '<div class="u-brand-msg e-border-b clearfix">'+
+                                        '<p class="u-brand-name f-left" style="width:60%">'+this.goods_name+'</p>'+
+                                        '<div class="u-brand-time f-right">'+
+                                        '<span class="u-brand-discount">'+span+
+                                        '</span></div></div></div>'
+                        con++;
+                    });
+                }
+                //$('.more_html').append(option);
+                if (p == 1) {
+                    $('.more_html').html(option);
+                } else {
+                    $('.more_html').append(option);
+                }
+                load_more = 0;
+                if (option) {
+                    //$("input[name='p']").val(parseInt(p)+1);
+                    $("input[name='p']").attr('data', parseInt(p) + 1);
+                }
+                if (con < 10) {
+                    load_none = 1;
+                    $('.get_more').html('无更多数据');
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">订单信息</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+                    <div class="row margin-bottom-30" style="border:1px solid #e7e7e9;">
+                        <!-- 售后订单基本信息开始 -->
+                        <div class="col-md-3 no-padding border-right">
+                            <table class="table table-condensed table-hover no-margin" height="420px;">
+                                <tr>
+                                    <td class="text-bold" style="width:85px;">订单状态：</td>
+                                    <td class="text-right text-bold"><i class="text-orange fa fa-bell">&nbsp;{$msg.show_status}</i></td>
+                                </tr>
+                                <tr>
+                                    <td>订单总额：</td>
+                                    <td><b class="text-red">￥{$msg.order_amount}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>商品金额：</td>
+                                    <td><b class="text-red">￥{$msg.goods_price}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>订单编号：</td>
+                                    <td>{$msg.order_sn}</td>
+                                </tr>
+                                <tr>
+                                    <td>申请时间：</td>
+                                    <td>{$msg.add_time|date='Y-m-d H:i:s',###}</td>
+                                </tr>
+                                <tr>
+                                    <td height="60px">退货说明：</td>
+                                    <td>{$msg.refund_remark}</td>
+                                </tr>
+                                <tr class="height-155">
+                                    <td>
+                                        <img src="{$msg.goods_image}" class="img-rounded no-margin" alt="image" style="width:85px;height:85px;float:left;margin-left:10px;">
+                                    </td>
+                                    <td>
+                                        <p>{$msg.goods_name}</p>
+                                        <p>{$msg.goods_attr}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>会员号：</td>
+                                    <td>{$msg.member_card}</td>
+                                </tr>
+                                <tr>
+                                    <td>会员名：</td>
+                                    <td>{$msg.member_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>联系人：</td>
+                                    <td>{$msg.refund_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>联系电话：</td>
+                                    <td>{$msg.refund_tel}</td>
+                                </tr>
+                                <tr>
+                                    <td>成交时间：</td>
+                                    <td>{$msg.pay_time|date='Y-m-d H:i:s',###}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- 售后订单基本信息结束 -->
+                        <!-- 售后订单流程信息开始 -->
+                        <div class="col-md-8">
+                            <div class="height-230 border-bottom margin-top-30 ">
+                                <!--售后状态为待处理开始-->
+                                    <div class=" padding-left-30" style="width:70%">
+                                        <h5 class="text-bold"><i class="fa fa-exclamation-circle" style="color:#007AFF;font-size: 30px; margin-right: 10px;"></i>{$msg.show_status}</h5>
+
+                                        <div class="padding-bottom-30">
+                                            <p><b>·</b>当前售后状态为{$msg.show_status}</p>
+                                        </div>
+                                        <div style="text-align:center;" class="margin-top-30">
+
+                                                <button class="btn btn-primary" id="confirm_refund" type="button"  >
+                                                    退款
+                                                </button>
+                                                <button class="btn btn-primary" id='agree' type="button"  >
+                                                    重发货
+                                                </button>
+                                                <button class="btn btn-primary" id="Confirm_deny"  type="button" >
+                                                    继续协商
+                                                </button>
+
+                                        </div>
+                                    </div>
+                                    <!-- 其它费商家操作信息结束-->
+                            </div>
+                            <div style="height:160px;padding-top:30px">
+                                <table height="90%" width="100%" >
+                                    <tr class="border-bottom" >
+                                        <td width="10%"></td>
+                                        <td   >协商信息</td>
+                                        <td class="border-left" width="30%" >图片信息</td>
+                                    </tr>
+                                    <volist name="list" id='vo' key='key'>
+                                        <tr class="border-bottom">
+                                            <td>
+                                                <if condition="$vo.type eq 1">
+                                                    买家 :
+                                                    <else/>
+                                                    客服 :
+                                                </if>
+                                            </td>
+                                            <td>
+                                                {$vo['content']}
+                                            </td>
+                                            <td>
+                                                <if condition="!empty($vo['chat_img'])">
+                                                    <volist name="vo['chat_img']" id="v" key="k">
+                                                        <a href="{$v}">
+                                                            <div class="img-item fileinput " style="background-image:none;float: left">
+                                                                <span><img   class="img-rounded" src="{$v}" style="max-height: 100px;max-width: 100px;"></span>
+                                                            </div>
+                                                        </a>
+                                                    </volist>
+                                                </if>
+                                            </td>
+                                        </tr>
+                                    </volist>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- 售后订单流程信息结束 -->
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <h4>订单日志</h4>
+                            </label>
+                        </div>
+                        <table class="table table-hover" id="sample-table-1">
+                            <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>操作角色</th>
+                                <th>操作内容</th>
+                                <th>时间</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="order_log" id='vo' key='key'>
+                                <tr>
+                                    <td class="center">
+
+                                    </td>
+                                    <td>
+                                        {$vo.log_role}
+                                    </td>
+                                    <td>{$vo.log_msg}</td>
+                                    <td>{$vo.log_time|date="Y-m-d H:i:s",###}</td>
+                                    <td>
+                                    </td>
+                                </tr>
+
+                            </volist>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<!-- end: JavaScript Event Handlers for this page -->
+<script type="text/javascript">
+    var chat_id = {$last_chat};
+    var goods_prince = {$msg.goods_price};
+    $().ready(function(){
+//退款
+        $('#confirm_refund').click(function () {    //确认退款
+            var content = '<form class="form" method="post" action="{:U(\'admin/goodsorder/refundHandle\')}?id={$msg.ref_id}">' +
+                    '<input type="text" name="ref_price" placeholder="请输入退款金额" value="" style="display: block;width: 170px;margin: 10px auto;">' +
+                    '<button class="btn btn-primary btn-wide pull-left col-md-offset-3" type="submit" name="status" value="4">' +
+                    '提交 <i class="fa fa-arrow-circle-right"></i> </button>' +
+                    '</form>';
+            layer.open({
+                type: 1,
+                title: '请输入退款金额',
+                shadeClose: true,
+                shift: 2,
+                shadeClose: true,
+                area: ['230px', '150px'],
+                content: content
+            });
+            $('.form').validate({
+                rules:{
+                    ref_price:{
+                        required:true,
+                        max:'{$msg.goods_price}',
+                        number: true,
+                        min:0
+                    }
+                },
+                messages:{
+                    ref_price:{
+                        required:"请输入退款金额",
+                        max:'退款金额不能大于商品金额',
+                        number:'输入金额不合法',
+                        min: '输入金额不合法'
+                    }
+                }
+
+            })
+
+        });
+        /////////////////////////////////////////////////////////////
+//拒绝退货
+        $('#Confirm_deny').click(function(){    //同意退货
+            var content='<form class="form" method="post" action="{:U(\'admin/goodsorder/refundHandle\')}?id={$msg.ref_id}&chat_id='+chat_id+'">'+
+                    '<div class="form-group"><label class="control-label">继续协商</label>'+
+                    '<textarea class="form-control autosize" id="shop_remark" name="shop_remark" data-autosize-on="true" value=""></textarea></div>'+
+                    '<button class="btn btn-primary btn-wide pull-left col-md-offset-4" type="submit" name="status" value="0">'+
+                    '提交 <i class="fa fa-arrow-circle-right"></i> </button>'+
+                    '</form>';
+            layer.open({
+                type: 1,
+                title: '请填写协商内容',
+                shadeClose: true,
+                shift: 2,
+                shadeClose: true,
+                area: ['380px', '300px'],
+                content:content
+            });
+
+            $('.form').validate({
+                rules: {
+                    shop_remark: "required"
+                },
+                messages: {
+                    shop_remark:"请填写拒绝理由"
+                }
+            })
+        });
+
+
+    });
+
+</script>
+</body>
+</html>

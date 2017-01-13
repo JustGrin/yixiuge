@@ -1,0 +1,173 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">抽奖记录</h1>
+                            <span class="mainDescription"></span>
+                        </div>
+                        <!-- <ol cla
+                <!-- <ol class="breadcrumb">
+                    <li>
+                        <span>Pages</span>
+                    </li>
+                    <li class="active">
+                        <span>Blank Page</span>
+                    </li>
+                </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 margin-top-20">
+                        <div class="panel panel-white">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">筛选</h5>
+                            </div>
+                            <form role="form" class="form-inline">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="log_status" class="sr-only">
+                                            中奖状态
+                                        </label>
+                                        <select class="form-control" id="log_status" name="log_status">
+                                            <option value="10"
+                                            <if condition="$_GET['log_status'] eq 10">selected</if>>全部</option>
+                                            <option value="0"
+                                            <if condition="$_GET['log_status'] eq 0">selected</if>>无效</option>
+                                            <option value="1"
+                                            <if condition="$_GET['log_status'] eq 1">selected</if>>未到账</option>
+                                            <option value="2"
+                                            <if condition="$_GET['log_status'] eq 2">selected</if>>处理中</option>
+                                            <option value="5"
+                                            <if condition="$_GET['log_status'] eq 5">selected</if>>已到帐</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="draw_type" class="sr-only">
+                                            中奖状态
+                                        </label>
+                                        <select class="form-control" id="draw_type" name="draw_type">
+                                            <option value="0"
+                                            <if condition="$_GET['draw_type'] eq 0">selected</if>>全部</option>
+                                            <option value="1"
+                                            <if condition="$_GET['draw_type'] eq 1">selected</if>>积分</option>
+                                            <option value="2"
+                                            <if condition="$_GET['draw_type'] eq 2">selected</if>>金币</option>
+                                            <option value="3"
+                                            <if condition="$_GET['draw_type'] eq 3">selected</if>>话费</option>
+                                            <option value="4"
+                                            <if condition="$_GET['draw_type'] eq 4">selected</if>>商品折扣</option>
+                                            <option value="5"
+                                            <if condition="$_GET['draw_type'] eq 5">selected</if>>商品</option>
+                                        </select>
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="member_name" class="sr-only">-->
+                                            <!--用户名-->
+                                        <!--</label>-->
+                                        <!--<input type="text" name="member_name" value="{$_GET.member_name}" id="member_name"-->
+                                               <!--placeholder="用户名" class="form-control">-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group  ">-->
+                                        <button class="btn btn-primary" type="submit">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                            <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th class="center">用户名</th>
+                        <th class="center">奖品类型</th>
+                        <th class="center">奖品面值</th>
+                        <th class="center">中奖状态</th>
+                        <th class="center">中奖率</th>
+                        <th class="center">抽奖时间</th>
+                        <th class="center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <volist name="data['list']" id="val">
+                            <tr>
+                                <td class="center">#</td>
+                                <td class="center">{$val.member_name}</td>
+                                <td class="center">{$val.type_name}</td>
+                                <td class="center">
+                                    <if condition="$val.draw_type neq 5">
+                                        {$val.draw_value}
+                                        <else/>
+                                        <a href="{:U('wap/goods/goods_detail')}?id={$val.draw_value}">{$val.goods_msg}</a>
+                                    </if>
+                                </td>
+                                <td class="center">{$val.status}</td>
+                                <td class="center">{$val.odds}%</td>
+                                <td class="center">{$val.add_time|date='Y-m-d',###}</td>
+                                <td class="center">
+                                    <if condition="$val.draw_type eq 5 and $val.log_status neq 5">
+                                        <a href="javascript:void(0);" class="btn btn-transparent btn-xs" tooltip="Edit" id="dispose_{$val.id}" tooltip-placement="top" data-toggle="tooltip" data-original-title="奖品发放" onclick="dispose({$val.id},{$val.draw_type})">
+                                            <i class="fa fa-check-square"></i></a>
+                                    </if>
+                                    <if condition="$val.draw_type eq 3 and $val.log_status neq 5">
+                                        <a href="javascript:void(0);" class="btn btn-transparent btn-xs" tooltip="Edit"
+                                           id="dispose_{$val.id}" tooltip-placement="top" data-toggle="tooltip"
+                                           data-original-title="奖品发放" onclick="dispose({$val.id},{$val.draw_type})">
+                                            <i class="fa fa-check-square"></i></a>
+                                    </if>
+                                    <a href="{:U('admin/Draw/draw_detail')}?id={$val.id}&type={$val.draw_type}" class="btn btn-transparent btn-xs nondelivery" tooltip="Edit" tooltip-placement="top" data-toggle="tooltip" data-original-title="查看">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <div class="col-md-12 pages" align="center">{$data['page']|default='暂无数据'}</div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+<script type="text/javascript">
+    function dispose(id,type){
+        layer.open({
+            type: 2,
+            title: '奖品发放',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['50%', '50%'],
+            content: '{:U("admin/Draw/draw_dispose")}?id='+id+'&type='+type
+        });
+    }
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

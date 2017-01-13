@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>9.9元活动页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<style>
+html,body,h2,h4,h6,li,div,dl,dt,dd,div{margin:0;padding:0;}
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { *zoom:1;}	
+*{ box-sizing: border-box;margin:0;padding:0;}
+.f18{font-size:.18rem;}
+.f24{font-size:.24rem;}
+.f30{font-size:.30rem;}
+.f34{font-size:.34rem;}
+.f40{font-size:.40rem;}
+.f48{font-size:.48rem;}
+.fwbold{font-weight:600;}
+.entxt{font-family:Arial;}
+.red{color:#b10c2d;}
+.orange{color:#f90;}
+.gray3{color:#333;}
+.gray6{color:#666;}
+.gray9{color:#999;}
+.txtcenter{text-align:center;}
+html,body{background:#ff6f18 ;min-height:100%;}
+.activity .topbanner{width:100%;height:auto;display: block;}
+.activity .time{ display: -moz-box;display: box;display: -webkit-box;display: -ms-flexbox;-webkit-box-align: center;-moz-box-align: center;box-align: center;width:6.30rem;margin:0 auto;}
+.activity .time{position: relative;}
+.activity .lay{padding:.30rem;}
+.activity .product{border-radius:.2rem;background:#fff;position: relative;margin-bottom: .3rem;overflow: hidden;}
+.activity .lay .product .proimg{width:3.1rem;height:3.1rem;padding:.2rem 0 .2rem .2rem;overflow: hidden;text-align: center;}
+.activity .lay .product .proimg img{width:auto;height:100%;}
+.activity .lay .product .des{position: absolute;margin-left:3.3rem;box-sizing: border-box;top:0;padding-top:.2rem;width:4rem;}
+.activity .lay .product .des .lab{display: block;margin-bottom:.2rem}
+.activity .lay .product .des .wra{position: relative;}
+.activity .lay .product .des .sold{position: absolute;right:0;top:0;}
+.activity .lay .product .des .state1{position: absolute;left:0;top:0;}
+.activity .lay .product .name{padding:0 0 .1rem 0;height:.6rem;line-height: .6rem; overflow: hidden;}
+.activity .lay .product .progressbar{height:.3rem;position: relative;margin-top:.62rem;overflow:hidden;border-radius:.3rem;}
+.activity .lay .product .progressbar .full{width:100%;height:.28rem;border-radius:.3rem;background:#ffd200;overflow:hidden;}
+.activity .lay .product .progressbar .percent{height:.28rem;border-radius:.3rem;background:#d3264a;position: absolute;top:0;}
+.activity .lay .product .price{padding:.2rem 0 .2rem 0;position: relative;}
+.activity .lay .product .price .f30{position: absolute;top:.22rem;}
+.activity .lay .product .price .f40{position: absolute;left:.8rem;}
+.activity .lay .product .right{width:1.9rem;position: absolute;top:0;right:0;}
+.activity .lay .product .right img{width:100%;height:auto;}
+.activity .lay .product .right .purchase{background:rgba(65,3,110,0.8);height:1rem;width:100%;position: absolute;bottom:0rem;color:#fff;line-height: 1rem;text-align: center;}
+.activity .lay .product .circletop{width:.4rem;height:.4rem; border-radius: .4rem;background:#ff6f18;position: absolute;top:-.2rem;right:1.7rem;}
+.activity .lay .product .circlebottom{width:.4rem;height:.4rem; border-radius: .4rem;background:#ff6f18;position: absolute;bottom:-.2rem;right:1.7rem;}
+</style>
+</head>
+<body class="activity">
+<img class="topbanner" src="__PUBLIC__/wap/img/99activity/top.png"/>
+<div class="time txtcenter">
+  <if condition="$activity_start eq 2">
+	  <div class="f34 red" ><span class="entxt">活动已结束</span></div>
+  <elseif condition="$activity_start eq 1"/>
+	  <div class="f34 red" ><span class="entxt">活动即将开始</span></div>
+  <else />
+	  <div class="f34 red">距活动结束还有：</div>
+	  <div class="f48 red" data_endtime="{$time}"><span class="entxt hour">{$h}</span>小时<span class="entxt minute">{$i}</span>分<span class="entxt second">{$s}</span>秒</div>
+  </if>
+</div>
+<div class="lay">
+	<volist name="list" id="vo">
+	 <if condition="$activity_start eq 3">
+	 	<a class="link" href="{:U('wap/activity/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para,'activity_type'=>2))}">
+	 <else />
+	 	<a class="link" href="javascript:void(0)">
+	 </if>
+	  <div class="product">
+		<div class="proimg"><img src="{:thumbs_auto($vo['goods_img'],160,160)}"/></div>
+		<div class="des">
+		  <h4 class="f34 name gray6"> {$vo.goods_name} </h4>
+		  <span class="f34 orange lab">{$vo.feeling}</span><div class="wra"> <span class="f24 gray9 state1">销售状态</span> <span class="f24 gray9 sold">已售：<span class="entxt">{$vo.sell_count}</span>件</span>
+	  	</div>
+		  <div class="progressbar">
+			<div class="full"><div class="percent" style="width:{$vo.sell_percent}"></div>
+			</div>
+		  </div>
+		  <div class="price"> <span class="f30 gray9">原价：</span> <span class="orange f40 entxt">￥{$vo.market_price}</span> </div>
+		</div>
+		<div class="right"> <a class="link activity_by" href="javascript:void(0)"> <img src="__PUBLIC__/wap/img/99activity/right.gif"/>
+			<input type="hidden" name="goods_id" value="{$vo.goods_id}" >
+			<input type="hidden" name="share" value="{$shop_code}" >
+			<input type="hidden" name="goods_attr_id" value="" >
+			<input type="hidden" name="goods_price" value="{$vo.shop_price}" >
+			<input type="hidden" name="is_sell_out" value="{$vo.is_sell_out}" >
+			<input type="hidden" name="activity_type" value="2" >
+		  <div class="purchase f40 white">立即购买</div>
+		  </a> 
+		</div>
+		<div class="circletop"> </div>
+		<div class="circlebottom"> </div>
+	  </div>
+	  </a>
+	</volist>
+</div>
+<script type="text/javascript">
+
+	function getRTime(){
+		$('.f48').each(function () {
+			var _this = $(this);
+			var EndTime =_this.attr('data_endtime') ;
+			EndTime = EndTime *1000;
+			var NowTime = new Date();
+			if(EndTime > NowTime){
+				var t =EndTime - NowTime.getTime()+1000;
+				var h=Math.floor(t/1000/60/60);
+				var m=Math.floor(t/1000/60%60);
+				var s=Math.floor(t/1000%60);
+
+				m = m<10 ? '0'+m : m;
+				s = s<10 ? '0'+s : s;
+				var show_html =  h + ":" +  m + ":" + s;
+				$(".hour").html(h);
+				$(".minute").html(m);
+				$(".second").html(s);
+			}else{
+				var endText = "活动已结束";
+				$(".f48").html(endText);
+				$('.link').attr('href','javascript:void(0)');
+			}
+		});
+
+	}
+
+	setInterval(getRTime,1000);
+	
+	//立即购买
+	$('.activity_by').click(function(){
+		var goods_id=$(this).children('input[name="goods_id"]').val();
+		var share=$(this).children('input[name="share"]').val();
+		var goods_price=$(this).children('input[name="goods_price"]').val();
+		var is_sell_out=$(this).children('input[name="is_sell_out"]').val();
+		var activity_type=$(this).children('input[name="activity_type"]').val();
+		var goods_attr_id=$(this).children('input[name="goods_attr_id"]').val();
+		var goods_num=1;
+		if(is_sell_out == 1){
+			layer.msg("商品已售罄", {icon: 5});
+		}else{
+			$.ajax({ 
+				url: "{:U('wap/cart/add_cart')}",
+				type:'get',
+				data: {goods_id:goods_id,goods_price:goods_price,goods_num:goods_num,share:share,activity_type:activity_type,goods_attr_id:goods_attr_id},
+				dataType: 'json',
+				success: function(data){
+					//console.log(data);
+					if(data.status==1){
+						var url="<?php echo U('Wap/cart/order_add'); ?>?cart_id="+data.cart_id;
+						window.location.href=url;
+					}else{
+						layer.msg(data.error, {icon: 5});
+					}
+				}
+			});
+		}
+	});
+</script>
+</body>
+</html>

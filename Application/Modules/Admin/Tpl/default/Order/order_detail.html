@@ -1,0 +1,225 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">订单信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			订单编号
+		</label>
+		 {$data.pay_sn}
+	</div>
+    <div class="form-group">
+		<label class="control-label">
+			商户名称
+		</label>
+		 {$data.store_name}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			买家名称
+		</label>
+		 {$data.buyer_name}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			服务总价格
+		</label>
+		 {$data.goods_amount}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			订单价格
+		</label>
+		 {$data.order_amount}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			用户消费时的折扣
+		</label>
+		 {$data['discount_consume']*10}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			订单状态
+		</label>
+		{$order_state[$data['order_state']]}
+	</div>
+	<if condition="$data['order_state'] gt 10">
+   <div class="form-group">
+		<label class="control-label">
+			付款时间
+		</label>
+		 {$data.payment_time|date="Y-m-d",###}
+	</div>
+   </if>
+   <if condition="$data['order_state'] eq 30">
+   <div class="form-group">
+		<label class="control-label">
+			完成时间
+		</label>
+		 {$data.finnshed_time|date="Y-m-d",###}
+	</div>
+   </if>
+<if condition="$data['order_state'] lt 10">
+   <div class="form-group">
+		<label class="control-label">
+			是否退款
+		</label>
+		 {$refund_state[$data['refund_state']]}
+	</div>
+  <if condition="$data['order_state'] gt 0">
+	<div class="form-group">
+		<label class="control-label">
+			退款金额
+		</label>
+		 {$data.refund_amount}
+	</div>
+     </if>
+</if>
+
+
+
+</div>
+</div>
+<div class="row">
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>商品名称</th>
+						<th class="hidden-xs">价格</th>
+						<th>数量</th>
+						<th>实际成交价格（折后）</th>
+						
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="order_goods" id='vo' key='key'>
+					<tr  >
+						<td class="center">
+							<img src="__ROOT__/{$vo['goods_image']}" class="img-rounded" style="max-width:50px;max-height:50px;" alt="image">
+						</td>
+						<td> 
+							{$vo.goods_name}
+						</td>
+						<td class="hidden-xs">{$vo.goods_price}</td>
+						<td >{$vo.goods_num}</td>
+						<td>{$vo.goods_pay_price}	</td>
+					
+						<td >
+						
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   title: "required",
+   name: "byteRangeLength"
+  },
+  messages: {
+   title: "请输入菜单名称",
+   name: "请输入菜单地址"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

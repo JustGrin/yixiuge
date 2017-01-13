@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>银行账户管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="__PUBLIC__/wap/js/flexible.js"></script>
+    <link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="bankcard">
+<div class="head">
+    <a href="{:U('wap/member/index')}" class="md-close back"><i class="iconfont">&#xe617</i></a>
+    <h2 >银行账户管理</h2>
+</div>
+<div class="page">
+    <div class="cardlist">
+        <volist name="list" id="vo">
+        <div class="card acc_{$vo.id}" >
+            <div class="title">{$vo.account_name}<span class="num floatRgt">{$vo.account_no}</span></div>
+            <div class="info">
+                <span class="default">
+                                {$vo['is_default']?'<span class="new-icon"></span>默认帐号':''}
+                            </span>
+                <div class="add">{$vo.account_bank}-{$vo.account_addr}<i class="iconfont">&#xe604</i></div>
+                <div class="option">
+                    <a href="{:U('wap/member/bank_account_add',array('id'=>$vo['id']))}" class="btn1 btnsF34">编辑</a>
+                    <a href="javascript:void(0);" data="{$vo.id}" onclick="delclick(this);" class="btn2 btnsF34" >删除</a>
+                </div>
+
+            </div>
+           </div>
+        </volist>
+    </div>
+    <div class="submit submitdown">
+        <a href="{:U('wap/member/bank_account_add')}" class=" phone_log_btn">
+            <button type="button" class="button " id="submit-btn">添加账户</button>
+        </a>
+    </div>
+</div>
+<include file="Public/footer_new" />
+
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script>
+    function delclick(dom){
+        if(confirm('确定删除该提现帐号')){
+            var pv=$(dom).attr('data');
+            $.ajax({
+                url: "{:U('wap/member/bank_account_del')}",
+                type:'post',
+                data: {id:pv},
+                dataType: 'json',
+                success: function(data){
+                    //console.log(data);
+                    if(data.status==1){
+                        //成功
+                        layer.msg('删除成功', {icon: 6});
+                        $('.acc_'+pv).remove();
+                    }else{
+                        layer.msg(data.error, {icon: 5});
+                        //alert(data.error);
+                    }
+                }
+            });
+        }
+
+    }
+</script>
+
+</body>
+</html>
+
+

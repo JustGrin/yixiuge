@@ -1,0 +1,100 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">管理员分组</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+									<a data-hover="新增" href="{:U('admin/system/group_edit')}"><span>新增</span></a>
+								</nav>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>分组名称</th>
+						<th class="hidden-xs">类型</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list" id='vo' key='key'>
+					<tr>
+						<td class="center">{$key}</td>
+						<td class="hidden-xs">{$vo.title}</td>
+						
+						<td>
+						{$vo['auid']?'商家分组':'系统分组'}	
+						</td>
+						<td>
+						{$vo['status']?'有效':'无效'}	
+						</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<a href="{:U("Admin/System/group_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							
+							<!-- <a href="###" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
+						</div>
+						</td>
+					</tr>
+					
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

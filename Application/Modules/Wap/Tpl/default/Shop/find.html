@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>附近商铺-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/mnear.css"  rel="stylesheet">
+</head>
+<body>
+    <div class="viewport">
+        <header style="line-height: 44px; position: relative; background: rgb(255, 255, 255);">
+            <a class="abs" href="javascript:history.go(-1);" style="text-indent: -9999px;display:inline-block;background: url(__PUBLIC__/wap/img/return.png) no-repeat center center;background-size: 15px;padding-left: 19px;">返回</a>
+
+            <a style="position:absolute;text-indent: -9999px;display:inline-block;width: 44px;height: 44px;background:url(__PUBLIC__/wap/img/common_hd_logo.png) center no-repeat;background-size: 44px;top: 0;left:40px;"></a>
+            发现
+        </header>
+        <header id="nwd-header" class="row">
+            <img id="topbanner" class="hide" src="{$ad.image_path}" style="display: block;">
+            <div id="pos" class="hide" style="display: block;">
+                <h4>
+                    <a id="select_city" href="{:U('wap/index/set_city')}">
+                        <img src="__PUBLIC__/wap/img/pos-icon.png"> {$now_city_name}
+                    </a>
+                </h4>
+                <h5>有{$count}家米铺</h5>
+            </div>
+        </header>
+    </div>
+    <section class="mlist_nav g-box">
+        <span class="chk_click cur" data-type="all" data=""><a href="javascript:void(0);">全部</a></span>
+        <span class="chk_click" data-type="price" data=""><a href="javascript:void(0);">价格</a></span>
+        <span class="chk_click icon-list-up" data-type="zk" data=""><a href="javascript:void(0);">折扣</a></span>
+        <span ><a href="{:U('wap/index/category',array('type'=>'find'))}">筛选{$typename}</a></span>
+    </section>
+    <div style="min-height: 300px;">
+        <ul class="list_body  more_html">
+            <volist name="list" id="vo" >
+            <li>
+                <a href="{:U('wap/shop/shopdetail',array('id'=>$vo['shop_id']))}">
+                    <div class="list-thumb">
+                        <img width="85" height="85" src="{:U('wap/index/get_thumbs',array('auto'=>85))}?img={$vo.logo}">
+                    </div>
+                    <div class="list-descriptions">
+                        <div class="list-descriptions-wrapper">
+                            <div class="product-name">{$vo.shop_name}</div>
+                            <div class="price-spot">
+                               {$vo.link_no}
+                            </div>
+                            <mark> {$vo.addr}</mark>
+                            <div class="reputation">
+                                <span class="ratings">{$vo.business}</span>
+                            </div>
+                            <div class="reputation">
+                               <!--  <span class="ratings">91%好评(47人)</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+         </volist>
+        </ul>
+    </div>
+    <div class="b_q">
+        <div class="fm-footer-copyright get_more">
+            <if condition="$count gt 10 && count($list) eq 10">
+                  加载更多
+              <else/>  
+                 无更多数据
+            </if>
+        </div>
+    </div>
+    <input type="hidden" name="p" value="2" />
+    <input type="hidden" name="type" value="{$_GET['type']}" />
+     <input type="hidden" name="order" value="" />
+    <!--end 版权-->
+    <div class="bottom-to-top" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+        <img src="__PUBLIC__/wap/img/scroll-to-top-icon.png" style="width: 100%;">
+    </div>
+    <!--end top-->
+   <include file="Public/footer" />
+    <!--end 页脚-->
+ <script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript">
+   $(function(){
+     $(".get_more").click(function(){
+        get_more();
+     });
+     $(".chk_click").click(function(){
+        var __this=$(this);
+        $(".chk_click").removeClass('cur');
+        __this.addClass('cur');
+        var type=__this.attr('data-type');
+         var data=__this.attr('data');
+
+        if(type=="all"){
+          $("input[name='p']").val(1);
+          //$("input[name='type']").val("");
+        }else if(type=="price"){
+           var zk="";
+            if(data==1){
+              __this.attr('data','2')
+              zk="prices1";//倒序
+            }else{
+              __this.attr('data','1')
+               zk="prices2";//升序
+            }
+            $("input[name='p']").val(1);
+            $("input[name='order']").val(zk);
+           
+        }else if(type=="zk"){
+             var zk="";
+            if(data==1){
+              __this.attr('data','2')
+              zk="zhekou1";//倒序
+            }else{
+              __this.attr('data','1')
+               zk="zhekou2";//升序
+            }
+            $("input[name='p']").val(1);
+            $("input[name='order']").val(zk);
+        }
+        get_more();
+     });
+     $(".zhekou").click(function(){
+        var data=$(this).attr('data');
+        var zk="";
+        if(data==1){
+            $(this).attr('data','2')
+            zk="zhekou1";
+        }else{
+          $(this).attr('data','1')
+           zk="zhekou2";
+        }
+        $("input[name='p']").val(1);
+        $("input[name='order']").val(zk);
+        get_more();
+     });
+
+   }); 
+   function get_more(){
+     var p=$("input[name='p']").val();
+      var type=$("input[name='type']").val();
+     var order=$("input[name='order']").val();
+           $.ajax({ 
+            url: "{:U('Wap/shop/find')}",
+            type:'get',
+            data: {p:p,type:type,order:order},
+            dataType: 'json',
+            success: function(data){
+              //console.log(data);
+               var con=1;
+                var option='';
+              if(data){
+               
+                 $.each(data, function(i, value) {
+                //this指向当前元素
+                //i表示Array当前下标
+                //value表示Array当前元素
+                 option=option+'<li>'
+                    +'<a href="<?php echo U('wap/shop/shopdetail'); ?>?id='+value.shop_id+'">'
+                    +'    <div class="list-thumb">'
+                    +'        <img width="85" height="85" src="<?php echo U('wap/index/get_thumbs',array('auto'=>85)); ?>?img='+value.logo+'">'
+                    +'    </div>'
+                    +'    <div class="list-descriptions">'
+                    +'        <div class="list-descriptions-wrapper">'
+                    +'            <div class="product-name">'+value.shop_name+'</div>'
+                   +'             <div class="price-spot">'
+                    +value.link_no
+                    +'            </div>'
+                    +'            <mark> '+value.addr+'</mark>'
+                     +'           <div class="reputation">'
+                    +'                <span class="ratings">'+value.business+'</span>'
+                    +'            </div>'
+                    +'            <div class="reputation">'
+                                 
+                    +'            </div>'
+                    +'        </div>'
+                    +'    </div>'
+                   +' </a>'
+                    +'</li>';
+                    con++;
+                 });
+                 
+              }
+               if(p==1){
+                $('.more_html').html(option);
+                }else{
+                $('.more_html').append(option);
+                }
+                $("input[name='p']").val(parseInt(p)+1);
+              if(con<10){
+                 $('.get_more').html('无更多数据');
+              }
+            }
+           });
+   }
+</script>
+</body>
+</html>

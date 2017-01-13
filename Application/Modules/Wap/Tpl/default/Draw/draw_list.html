@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>抽奖记录</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<style type="text/css">
+  .btn-h3:hover{color: #fff;}
+</style>
+<body>
+    <!--绑定头部-->    
+ <include file="Public/binding_head"/>
+    <!--绑定头部-->
+
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="{:U('wap/member/index')}" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>抽奖记录</span></div>
+    </header>
+    <div class="common-wrapper" style="    background-color: #FFFFFF;">
+     
+  
+             <if condition="!empty($now_address)">
+             <div class="new-addr">
+               <p class="new-tit new-p-re" style="font-size: 14px;">
+                          <span class="new-txt consignee">当前中奖收货地址：</span>
+                </p>
+                <a href="{:U('wap/draw/draw_address')}">
+                 <li class="new-mu_l2 allress_chk address_box_0" data="0">
+                    <p class="new-tit new-p-re">
+                        <span class="new-txt consignee"> {$now_address.consignee}</span>
+                        <span class="new-txt-rd2 mobile">{$now_address.mobile}</span>
+                         
+                    </p>
+                  <span class="new-mu_l2a new-p-re">
+                  <span class="new-mu_l2cw address_name">{$now_address.address_name} {$now_address.address}</span>
+                                 
+                   </span>
+               </li>
+             </a>
+             </div>
+            <else/>
+        
+         <div class="u-btns"><a href="{:U('wap/draw/draw_address')}" class="btn-h3 btn-c3">设置中奖收货地址</a></div>
+      </if>
+        <div id="fm-mizhi">
+            <ul class="more_html">
+                <volist name="list" id="vo">
+                <li>
+                    <div class="div_leibie">{$vo.draw_type_name}</div>
+                    <div class="div_jine">{$vo.draw_num}{$vo.draw_value_unit}
+                    <if condition="$vo.draw_type eq 5">
+                      【{$vo.goods_name}】
+                    </if>
+                    </div>
+                    <div class="div_riqi">{$vo.add_time}
+                      <if condition="$vo.draw_type eq 5">
+                         <if condition="$vo.draw_address gt 0">
+                     <a href="{:U('wap/draw/set_draw_address',array('draw_log_id'=>$vo['id']))}"> 【查看地址】</a>
+                      <else/>
+                      <a href="{:U('wap/draw/set_draw_address',array('draw_log_id'=>$vo['id']))}"> 【设置地址】</a>
+                      </if>
+                    </if>
+                    </div>
+                </li>
+              </volist>
+            </ul>
+        </div>
+    </div>
+     <div class="b_q">
+        <div class="fm-footer-copyright get_more">
+            <if condition="$count gt 10 && count($list) eq 10">
+                  加载更多
+              <else/>  
+                 无更多数据
+            </if>
+        </div>
+    </div>
+
+  
+<div style="height:10px;">
+   </div> 
+     <!--end top-->
+   <include file="Public/footer" />
+<!--end top-->  
+    <input type="hidden" name="p" value="2" />
+
+     <include file="Public/wap_javascript" />
+     <!--微信分享-->    
+ <include file="Public/share_weixin" />
+ 
+
+
+ <script type="text/javascript">
+   var  binding_is_check=0;// 重复再次弹出 1是 0否
+   var  binding_page='draw_list';// //当前页面名称 不可重复
+</script>  
+         <!--绑定-->    
+ <include file="Public/binding_phone"/>
+    <!--绑定-->
+
+    <script type="text/javascript">
+   $(function(){
+     $(".get_more").click(function(){
+        get_more();
+     });
+
+   }); 
+   function get_more(){
+     var p=$("input[name='p']").val();
+        if(p==1){
+        //    $('.more_html').html("");
+          }
+           $.ajax({ 
+            url: "{:U('wap/draw/draw_list')}",
+            type:'get',
+            data: {p:p},
+            dataType: 'json',
+            success: function(data){
+              //console.log(data);
+               var con=1;
+                 var option='';
+              if(data){
+                 $.each(data, function(i, value) {
+                //this指向当前元素
+                //i表示Array当前下标
+                //value表示Array当前元素
+                var goods_name="";
+                var address=""
+                if(value.draw_type==5){
+                  goods_name="【"+value.goods_name+"】";
+                    if(value.draw_address >0){
+                      address='<a href="<?php echo U('wap/draw/set_draw_address');?>?draw_log_id='+value.id+'"> 【查看地址】</a>';
+                    }else{
+                      address='<a href="<?php echo U('wap/draw/set_draw_address');?>?draw_log_id='+value.id+'"> 【设置地址】</a>';
+                    }
+                  
+                }
+                 option=option+'<li>'
+                   +' <div class="div_leibie">'+value.draw_type_name+'</div>'
+                  +'  <div class="div_jine">'+value.draw_num+value.draw_value_unit+goods_name+'</div>'
+                   +' <div class="div_riqi">'+value.add_time+address+'</div>'
+                    +' </li>';
+                    con++;
+                 });
+              }
+              if(p==1){
+                $('.more_html').html(option);
+              }else{
+                 $('.more_html').append(option);
+              }
+              $("input[name='p']").val(parseInt(p)+1);
+              if(con<10){
+                 $('.get_more').html('无更多数据');
+              }
+            }
+           });
+   }
+</script> 
+</body>
+</html>

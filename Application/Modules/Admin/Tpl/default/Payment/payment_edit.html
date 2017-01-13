@@ -1,0 +1,259 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">支付方式</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			{$data.payment_name}
+		</label>
+	</div>
+
+ <if condition="$data['payment_code'] == 'offline'">
+
+ <elseif condition="$data['payment_code'] == 'chinabank'"/> 
+
+ <input type="hidden" name="config_name" value="chinabank_account,chinabank_key" />	
+   <div class="form-group">
+		<label class="control-label">
+			网银在线商户号: 
+		</label>
+		<input type="text" placeholder="填写网银在线商户号" class="form-control" value="{$data.config_array.chinabank_account}" id="chinabank_account" name="chinabank_account">
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			网银在线密钥: 
+		</label>
+		<input type="text" placeholder="填写网银在线密钥" class="form-control" value="{$data.config_array.chinabank_key}" id="chinabank_key" name="chinabank_key">
+	</div>
+
+
+
+  <elseif condition="$data['payment_code'] == 'tenpay'"/> 
+
+
+ <input type="hidden" name="config_name" value="tenpay_account,tenpay_key" />	
+   <div class="form-group">
+		<label class="control-label">
+			财付通商户号:<span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写财付通商户号" class="form-control" value="{$data.config_array.tenpay_account}" id="tenpay_account" name="tenpay_account">
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			财付通密钥: <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写财付通密钥" class="form-control" value="{$data.config_array.tenpay_key}" id="tenpay_key" name="tenpay_key">
+	</div>
+
+
+
+   <elseif condition="$data['payment_code'] == 'alipay'"/> 
+
+<input type="hidden" name="config_name" value="alipay_service,alipay_account,alipay_key,alipay_partner" />	
+	<input type="hidden" name="alipay_service" value="create_direct_pay_by_user" />
+   <div class="form-group">
+		<label class="control-label">
+			支付宝账号: 
+		</label>
+		<input type="text" placeholder="填写支付宝账号" class="form-control" value="{$data.config_array.alipay_account}" id="alipay_account" name="alipay_account">
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			交易安全校验码（key）: 
+		</label>
+		<input type="text" placeholder="填写交易安全校验码（key）" class="form-control" value="{$data.config_array.alipay_key}" id="alipay_key" name="alipay_key">
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			合作者身份（partner ID）:  
+		</label>
+		<input type="text" placeholder="填写合作者身份（partner ID）" class="form-control" value="{$data.config_array.alipay_partner}" id="alipay_partner" name="alipay_partner">
+		<a href="https://b.alipay.com/order/pidKey.htm?pid=2088001525694587&amp;product=fastpay" target="_blank">get my key and partner ID</a>
+	</div>
+
+   <elseif condition="$data['payment_code'] == 'wxpay'"/> 
+
+
+
+<input type="hidden" name="config_name" value="appid,mch_id,key,secret" />	
+   <div class="form-group">
+		<label class="control-label">
+			公众账号ID: 
+		</label>
+		<input type="text" placeholder="公众账号ID" class="form-control" value="{$data.config_array.appid}" id="alipay_account" name="appid">
+		微信分配的公众账号ID（企业号corpid即为此appId）
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			商户号: 
+		</label>
+		<input type="text" placeholder="填写商户号" class="form-control" value="{$data.config_array.mch_id}" id="mch_id" name="mch_id">
+	   微信支付分配的商户号
+	</div>
+  
+  <div class="form-group">
+		<label class="control-label">
+			KEY: 
+		</label>
+		<input type="text" placeholder="填写KEY" class="form-control" value="{$data.config_array.wx_key}" id="wx_key" name="wx_key">
+	   KEY：商户支付密钥，参考开户邮件设置（必须配置，登录商户平台自行设置）
+	   
+	   <a href="https://pay.weixin.qq.com/index.php/account/api_cert" target="_blank">设置地址</a>
+	</div>
+	  <div class="form-group">
+		<label class="control-label">
+			APPSECRET: 
+		</label>
+		<input type="text" placeholder="填写APPSECRET" class="form-control" value="{$data.config_array.appsecert}" id="appsecert" name="appsecert">
+	   公众帐号secert（仅JSAPI支付的时候需要配置， 登录公众平台，进入开发者中心可设置）
+	</div>
+
+
+ <else />
+
+   </if>
+
+
+	<div class="form-group " >
+		<label class="control-label">
+			状态 <span ></span>
+		</label>
+		<div class="clip-radio radio-primary fa-hover Primary">
+          
+			<input type="radio" value="1" name="payment_state" id="id_no" <if condition="$data.payment_state eq 1">checked="checked"</if> >
+			<label for="id_no">
+				启用
+			</label>
+
+			<input type="radio" value="0" name="payment_state" id="id_yes" <if condition="$data.payment_state eq 0">checked="checked"</if> >
+			<label for="id_yes">
+				禁用
+			</label>
+            
+
+		</div>
+	</div>	
+  
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.payment_id}" name="payment_id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   title: "required",
+   name: "byteRangeLength"
+  },
+  messages: {
+   title: "请输入菜单名称",
+   name: "请输入菜单地址"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

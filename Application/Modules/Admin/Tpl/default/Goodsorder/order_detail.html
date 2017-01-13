@@ -1,0 +1,537 @@
+<include file="Public/header"/>
+<style type="text/css">
+    .class_hidden{display:none;}
+
+</style>
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">订单信息</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    订单信息
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    会员卡号：
+                                </label>
+                                {$data.member_card}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    会员电话：
+                                </label>
+                                {$data.member_mobile}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    订单编号：
+                                </label>
+                                {$data.order_sn}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    原价总金额：
+                                </label>
+                                {$data.goods_amount}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    订单金额：
+                                </label>
+                                {$data['order_amount']+$data['shipping_fee']}
+                                [余额支付：￥{$data['surplus']};
+                                积分支付：￥{$data['integral_money']}({$data['integral']}积分);
+                                微信支付：￥{$data['order_amount']+$data['shipping_fee']-$data['surplus']-$data['integral_money']}]
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    运费：
+                                </label>
+                                {$data.shipping_fee}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    下单时间：
+                                </label>
+                                {$data.add_time|date="Y-m-d H:i:s",###}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    订单状态：
+                                </label>
+                                {$data.code_name}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    支付状态：
+                                </label>
+                                <if condition="$data.pay_status eq 2">
+                                    <if condition="$data.offline eq 1">
+                                        货到付款￥{$data.offline_money}
+                                        <else/>
+                                        {$pay_status[$data['pay_status']]}
+                                    </if>
+                                    <else/>
+                                    {$pay_status[$data['pay_status']]}
+                                </if>
+                                <if condition="$data.pay_status eq 2">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    {$data.pay_time|date="Y-m-d H:i:s",###}
+                                </if>
+                            </div>
+                            <if condition="$data.pay_status eq 2">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        确认状态：
+                                    </label>
+                                    {$order_status[$data['order_status']]}
+                                    <if condition="$data.shipping_status eq 1">
+                                        {$data.confirm_time|date="Y-m-d H:i:s",###}
+                                    </if>
+                                </div>
+                            </if>
+                            <if condition="$data.pay_status eq 2">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        商品配送情况：
+                                    </label>
+                                    {$shipping_status[$data['shipping_status']]}
+
+                                    <if condition="(in_array($data['shipping_status'],array('1','2')))">
+                                        {$data.shipping_time|date="Y-m-d H:i:s",###}
+                                    </if>
+                                </div>
+                                <if condition="(in_array($data['shipping_status'],array('1','2')))">
+                                    {//1，已发货；2，已收货}
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            物流公司：
+                                        </label>
+                                        {$data.express_name}
+                                    </div>
+									<div class="form-group">
+                                        <label class="control-label">
+                                            发货单号：
+                                        </label>
+                                        {$data.invoice_no}
+                                    </div>
+                                </if>
+                            </if>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    收货人信息
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    收货人：
+                                </label>
+                                {$data.consignee}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    联系电话：
+                                </label>
+                                {$data.mobile}&nbsp;&nbsp;&nbsp;&nbsp;{$data.tel}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    地址：
+                                </label>
+                                {$data.address}
+                            </div>
+                            <if condition="!empty($data['zipcode'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        邮编：
+                                    </label>
+                                    {$data.zipcode}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['best_time'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        最佳送货时间：
+                                    </label>
+                                    {$data.best_time}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['sign_building'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        送货地址标志性建筑：
+                                    </label>
+                                    {$data.sign_building}
+                                </div>
+                            </if>
+                            <if condition="!empty($data['email'])">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        email：
+                                    </label>
+                                    {$data.email}
+                                </div>
+                            </if>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <h4>订单商品</h4>
+                            </label>
+                        </div>
+                        <table class="table table-hover" id="sample-table-1">
+                            <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>商品名称</th>
+                                <th>属性</th>
+                                <th>数量</th>
+                                <th>成交单价</th>
+                                <th class="hidden-xs">成交总价</th>
+                                <th>运费</th>
+                                <th>分享返利</th>
+                                <th>分享总额</th>
+                                <th>分享人</th>
+                                <th>包邮快递</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="order_goods" id='vo' key='key'>
+                                <tr class="menu_p" data="{$vo.rec_id}" data-type="0">
+                                    <td class="center hidden-xs">
+                                          <i class="fa fa-angle-down  angle_down_{$vo.rec_id}"></i><i class="fa fa-angle-up angle_up_{$vo.rec_id} class_hidden"></i>
+                                        <img src="{$vo.goods_image}" class="img-rounded"
+                                             style="max-width:50px;max-height:50px;" alt="image">
+                                    </td>
+                                    <td>
+                                        {$vo.goods_name}
+                                    </td>
+                                    <td>{$vo.goods_attr}</td>
+                                    <td>{$vo.goods_number}</td>
+                                    <td>{$vo.goods_price}</td>
+                                    <td class="hidden-xs">{$vo['goods_price']*$vo['goods_number']}</td>
+                                    <td>
+										<if condition="$vo['shipping_money'] eq 0">
+											包邮
+											<else/>
+											{$vo.shipping_money}
+										</if>
+                                    </td>
+
+                                    <td>{$vo.share_money}</td>
+                                    <td>{$vo['share_money']*$vo['goods_number']}</td>
+                                    <td>{$vo.share_card}</td>
+                                    <td>
+                                        <if condition="empty($vo['goods_shipping'])">
+                                            SF顺丰快递包邮
+                                            <else/>
+                                            {$vo.goods_shipping}
+                                        </if>
+                                    </td>
+                                </tr>
+                                
+                                 <tr  class="class_hidden menu_p_c menu_p_{$vo.rec_id}" data="{$vo.id}" data-type="0">
+                                    <td  style="    text-align: right;">
+                                      ┗━
+                                    </td>
+                                   
+                                    <td class="hidden-xs" colspan="10">  商品备注：{$vo.seller_note}</td>
+                                    
+                                </tr>
+
+                            </volist>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <if condition="$data.code eq 'received'">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    <h4>订单返利：</h4>
+                                </label>
+                                <label class="control-label">
+                                    <h4>平台总收益：{$data.order_profit}，</h4>
+                                </label>
+                                <if condition="$data.profit_type eq 1">
+                                    <label class="control-label">
+                                        <h4>平台返利收益：0，</h4>
+                                    </label>
+                                    <else/>
+                                    <label class="control-label">
+                                        <h4>平台返利收益：{$discount_rebate-$data['order_rebate']}，</h4>
+                                    </label>
+                                    <label class="control-label">
+                                        <h4>会员返利总金额：{$data.order_rebate}，</h4>
+                                    </label>
+                                </if>
+                                <label class="control-label">
+                                    <h4>返利类型：
+                                        <if condition="!empty($data['profit_type'])">
+                                           <?php if($data['profit_type'] == 2){ ?>
+                                                VIP升级返利
+                                            <?php }else{ ?>
+                                                分享返利
+                                            <?php } ?>
+                                        <else/>
+                                            正常返利
+                                       </if>
+                                    </h4>
+                                </label>
+                            </div>
+                            <if condition="!empty($order_rebate_record)">
+                                <table class="table table-hover" id="sample-table-1">
+                                    <thead>
+                                    <tr>
+                                        <th class="center">#</th>
+                                        <th>用户卡号</th>
+                                        <th>返利内容</th>
+                                        <th>时间</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="order_rebate_record" id='vo' key='key'>
+                                        <tr>
+                                            <td class="center">
+
+                                            </td>
+                                            <td>
+                                                {$vo.member_card}
+                                            </td>
+                                            <td>{$vo.des}</td>
+                                            <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                                            <td>
+                                            </td>
+                                        </tr>
+
+                                    </volist>
+
+
+                                    </tbody>
+                                </table>
+                            </if>
+                        </div>
+                    </if>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <h4>订单日志</h4>
+                            </label>
+                        </div>
+                        <table class="table table-hover" id="sample-table-1">
+                            <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>操作角色</th>
+                                <th>操作内容</th>
+                                <th>时间</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="order_log" id='vo' key='key'>
+                                <tr>
+                                    <td class="center">
+
+                                    </td>
+                                    <td>
+                                        {$vo.log_role}
+                                    </td>
+                                    <td>{$vo.log_msg}</td>
+                                    <td>{$vo.log_time|date="Y-m-d H:i:s",###}</td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </volist>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <h4>配送状态</h4>
+                            </label>
+                        </div>
+                        <table class="table table-hover" >
+                            <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>状态</th>
+                                <th>时间</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="status_before_deliver" id='vo' key='key'>
+                                <eq name="key" value="6">
+                                    <tr>
+                                        <td class="center">
+
+                                        </td>
+                                        <td>备注:{$vo.0}</td>
+                                        <td></td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <else/>
+                                    <tr>
+                                        <td class="center">
+
+                                        </td>
+                                        <td>{$vo.0}</td>
+                                        <td>{$vo.1|date="Y-m-d H:i:s",###}</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </eq>
+                            </volist>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+					<div class="row">
+						<div class="form-group">
+							<label class="control-label">
+								<h4>物流信息</h4>
+							</label>
+						</div>
+						<if condition="$order_express.status eq 1">
+						{$order_express.result}
+						<else/>
+						{$order_express.msg}
+						</if>
+					</div>
+                </div>
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script>
+    jQuery(document).ready(function () {
+        //FormValidator.init();
+        jQuery.validator.addMethod("byteRangeLength", function (value) {
+            var dropdown = $("#dropdown").val();
+            var ret = true;
+            if (dropdown > 0) {
+                if (!value) {
+                    ret = false;
+                }
+            }
+            return ret;
+        });
+
+        $("#form2").validate({
+            rules: {
+                title: "required",
+                name: "byteRangeLength"
+            },
+            messages: {
+                title: "请输入菜单名称",
+                name: "请输入菜单地址"
+            }
+        });
+
+
+        $("#dropdown").change(function () {
+            var val = $(this).val();
+            if (val > 0) {
+                $(".menu_icons").hide();
+            } else {
+                $(".menu_icons").show();
+            }
+
+        });
+
+    });
+</script>
+ <script type="text/javascript">
+    $(function(){
+        $(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+                //当前展开  收起操作
+                $(".menu_p_c").hide();
+                $(this).attr("data-type",0);
+                $(".angle_down_"+data).show();
+                $(".angle_up_"+data).hide();
+            }else{
+               //当前收起 展开操作
+               $(".menu_p_c").hide();
+               $(".menu_p_"+data).show();
+               $(this).attr("data-type",1);
+               $(".angle_down_"+data).hide();
+               $(".angle_up_"+data).show();
+            }
+            
+        });
+    });
+</script> 
+<!-- end: JavaScript Event Handlers for this page -->
+</body>
+</html>

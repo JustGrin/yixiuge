@@ -1,0 +1,160 @@
+.h-hbody{background: #efefef;}
+.g-f-Header{height: 130px;width: 100%;padding-top: 50px;}
+.h-main{width: 1200px; height:80px;line-height:80px; margin:auto;}
+.logo,.logo img{width: 80px;height: 80px;}
+.nav{width: 1100px;text-align: center;}
+.nav ul li{ width: 15%; display: inline-block}
+.nav ul li a{font-size: 28px;font-weight: 400;}
+.nav ul li a:hover ,.Onnav a{color: #fa4d15;}
+.Area{width: 100%;margin-top: 50px;}
+.about,.product{margin: auto;width: 1200px;}
+.a-top{height: 70px; margin-bottom: 15px;}
+.Dividingline{height: 1px;background-color: #030303;margin-top: 34px; width: 100%;}
+.top-nav{ height: 68px;width: 68px;position: absolute;border: 1px solid #030303;margin-top: -34px; margin-left: 564px;background-color: #efefef;}
+.top-nav h2{width: 78px;margin: 18px -4px -4px; background-color: #efefef;line-height:24px;font-size: 18px;}
+.top-nav p{margin-top: 4px; margin-right: -10px;text-align: right;background-color: #efefef;line-height: 20px}
+.fl-d,.fr-d{height: 3px;background-color: #030303; width: 20px;margin-top: -1px;}
+.fl-d{margin-left: 40%;}
+.fr-d{margin-right: 40%;}
+.border_cort,.border_corl {display: inline-block;width: 0;height: 0;border-width: 6px;overflow: hidden;}
+.border_cort {border-color: #333 transparent transparent;border-style: solid dotted dotted;margin: 0 28px -15px 28px;}
+.earnings,.clearing,.convenient,.resources{width: 258px;height:258px;float: left;border: 1px solid #030303;border-radius:50%;margin: 30px 20px  auto 20px; text-align: center;}
+.earnings:hover,.clearing:hover,.convenient:hover,.resources:hover{color:#f25721;    border: 1px solid #f25721;cursor:pointer }
+.e-title,.c-title,.r-title{width: 160px;margin: -25px auto auto auto; text-align: center; background-color: #efefef;}
+.earnings h2,.clearing h2,.convenient h2,.resources h2{font-size: 20px;}
+.a-text{margin: 25px auto;font-size: 18px; line-height: 25px;}
+.about-text{ margin-top: 50px;text-align: center;width: 100%;}
+.about-text h2{background-color: #030303; color: #FFFFFF;font-size: 18px;line-height: 30px; width: 45%; margin: 10px auto 10px auto;}
+.about-text h2 span{background-color: #f25721;width: 25px;display: block;height: 8px;margin-top: 12px;}
+.about-text p{font-size: 16px;line-height: 30px;margin-top: 10px;}
+.p-nav{text-align: center; }
+.p-nav ul li{display: inline-table;margin: 5px 10px;}
+.p-nav ul li a{display: block; font-size: 14px;padding: 10px 20px;border: 1px solid #030303;}
+.p-nav ul li a:hover{color: #f25721;border: 1px solid #f25721;}
+.curr {
+    color: #f25721;
+    border: 1px solid #f25721 !important;
+}
+.p-list{margin-top: 35px;}
+.p-list li{width: 280px;padding: 0 10px;display: inline-block; float: left;margin-bottom: 15px;padding-top: 10px;}
+.p-list li:hover{/*background-color: #dfdfdf*/background-color: #5A5858;color:#FFF;}
+.height_50{height: 50px;}
+.text_center{text-align:center;}
+.p-list .p-title{
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    margin-bottom: 6px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.p-list .p-price {
+    position: relative;
+    line-height: 22px;
+    height: 22px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 0 8px;
+}
+.p-price strong {
+    float: left;
+    margin-right: 10px;
+    color: #e4393c;
+    font-size: 20px;
+}
+.p-price strong {
+    color: #e4393c;
+    font-weight: 400;
+    font-family: Verdana;
+}
+.p-price strong em {
+    font-size: 16px;
+}
+.p-price strong i {
+    font-style: normal;
+}
+.p-icons .icons {
+    margin-top: 3px;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    height: 16px;
+    padding: 0 2px;
+    margin-right: 3px;
+    background: #030303;
+    line-height: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    color: #FFF;
+}
+.y-del{
+    float: left;
+    margin-left: .5em;
+    font-size: .375em;
+    text-decoration: line-through;
+    color: #888888;
+}
+.More{width: 100%;text-align: right}
+.More a{
+    width: 150px;
+    line-height: 20px;
+    display: block;
+    float: right;
+    text-align: center;
+}
+.More a span{color: #fa4d15; font-size: 16px; font-weight: 800;}
+.More a:hover{background-color: #030303; color: #FFFFFF}
+.p-Ccontents{width: 100%;background: url(../imgs/icon/novi-bj.png) no-repeat right top;height: 1650px; background-size: 1400px;}
+.p-c-guide{width: 1200px; margin: auto}
+.p-c-guide .g-o1,.g-o2{width: 100%}
+.g-o1-img{margin-left: 120px; margin-top: 40px; width: 350px;}
+.g-o2-img{margin-right: 280px;
+    margin-top: -30px; width: 350px;}
+.g-o3-img{margin-left: 220px; margin-top: 20px; width: 350px;}
+.g-o1-text{margin-right: 220px;}
+.g-o2-text{margin-left: 120px;}
+.g-o1-text p,.g-o2-text p{font-size: 18px; line-height: 22px; margin: 20px auto;}
+.border_corl {
+    border-color: transparent transparent transparent #333;
+    border-style: dotted dotted dotted solid;
+}
+.c-contents h2{text-align: center; font-size: 16px;}
+.c-text li{width: 350px; height: 350px; display: block;text-align: center}
+.c-text-in{width: 500px!important;}
+.phone,.address{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #030303;
+    margin: 25px auto 25px auto;
+    border-radius: 50%;
+    text-align: center;
+}
+.phone span,.address span{display: block; margin-top: 40px;margin-bottom: 40px}
+.phone p,.address p{
+    font-size: 16px;
+    line-height: 22px;
+}
+.QRcode{
+}
+#footer {
+    padding: 22px 0 30px 0;
+    width: 100%;
+    background: #444444;
+    color: #CCCCCC;
+}
+.f-w{width: 1200px;margin: auto;}
+#footer a {
+    color: #CCCCCC;
+}
+.bottom-to-top {
+    position: fixed;
+    bottom: 56px;
+    right: 8px;
+    width: 35px;
+    height: 35px;
+    z-index: 20;
+    display: none;
+}

@@ -1,0 +1,243 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">抽奖设置</h1>
+                            <span class="mainDescription">{$msgtitle}</span>
+                        </div>
+                        <!-- <ol class="breadcrumb">
+                            <li>
+                                <span>Pages</span>
+                            </li>
+                            <li class="active">
+                                <span>Blank Page</span>
+                            </li>
+                        </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+                    <form action="" role="form" id="form2" novalidate="novalidate" method="post">
+                        <div class="row col-md-offset-4">
+                            <div class="col-md-8">
+                                <div class="form-group" id="draw_type">
+                                    <label class="control-label">
+                                        奖品类型 <span class="symbol required" aria-required="true"></span>
+                                    </label>
+                                    <select class="form-control" name="draw_type">
+                                        <option value="0" <if condition="$data.draw_type eq 0">selected</if>>-选择奖品类型-</option>
+                                        <option value="1" <if condition="$data.draw_type eq 1">selected</if>>积分</option>
+                                        <option value="2" <if condition="$data.draw_type eq 2">selected</if>>金币</option>
+                                        <option value="3" <if condition="$data.draw_type eq 3">selected</if>>话费</option>
+                                        <option value="4" <if condition="$data.draw_type eq 4">selected</if>>商品折扣</option>
+                                        <option value="5" <if condition="$data.draw_type eq 5">selected</if>>商品</option>
+                                    </select>
+                                </div>
+                                <!-- S 奖品设置 -->
+                                <switch name="data.draw_type">
+                                    <case value="1">
+                                        <div class="form-group" id="draw">
+                                            <label class="control-label">
+                                                金币设置 <span class="symbol required" aria-required="true"></span>
+                                            </label>
+                                            <input type="text" placeholder="金币设置" class="form-control"
+                                                   name="draw_value" value="{$data.draw_value}"/>
+                                        </div>
+                                    </case>
+                                    <case value="2">
+                                        <div class="form-group" id="draw">
+                                            <label class="control-label">
+                                                金币设置 <span class="symbol required" aria-required="true"></span>
+                                            </label>
+                                            <input type="text" placeholder="金币设置" class="form-control"
+                                                   name="draw_value" value="{$data.draw_value}"/>
+                                        </div>
+                                    </case>
+                                    <case value="3">
+                                        <div class="form-group" id="draw">
+                                            <label class="control-label">
+                                                话费设置 <span class="symbol required" aria-required="true"></span>
+                                            </label>
+                                            <input type="text" placeholder="话费设置" class="form-control"
+                                                   name="draw_value" value="{$data.draw_value}"/>
+                                        </div>
+                                    </case>
+                                    <case value="4">
+                                        <div class="form-group" id="draw">
+                                            <label class="control-label">
+                                                商品折扣设置 <span class="symbol required" aria-required="true"></span>
+                                            </label>
+                                            <input type="text" placeholder="商品折扣设置" class="form-control"
+                                                   name="draw_value" value="{$data.draw_value}"/>
+                                        </div>
+                                    </case>
+                                    <case value="5">
+                                        <div class="form-group" id="draw">
+                                            <label class="control-label">
+                                                商品设置 <span class="symbol required" aria-required="true"></span>
+                                            </label>
+                                            <input type="text" placeholder="商品设置" class="form-control"
+                                                   name="draw_value" value="{$data.draw_value}" id="goods"
+                                                   onclick="popup_goods()" readonly/>
+                                        </div>
+                                    </case>
+                                </switch>
+                                <!-- E 奖品设置 -->
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        中奖基数 <span class="symbol required" aria-required="true"><span>(当前抽奖基数/所有有效抽奖基数和=中奖概率)</span></span>
+                                    </label>
+                                    <input type="text" placeholder="填写中奖基数" class="form-control" name="draw_chances_value" value="{$data.draw_chances_value}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        是否有效
+                                    </label>
+                                    <div class="clip-radio radio-primary fa-hover Primary">
+                                        <input type="radio" value="1" name="draw_status" id="id_draw_status_yes" {$data['draw_status']?'checked':''}>
+                                        <label for="id_draw_status_yes">
+                                            有效
+                                        </label>
+                                        <input type="radio" value="0" name="draw_status" id="id_draw_status_no"
+                                               {$data['draw_status']?'':'checked'}>
+                                        <label for="id_draw_status_no">
+                                            无效
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-offset-5">
+                            <div class="col-md-4">
+                                <button class="btn btn-primary btn-wide pull-left" type="submit" id="submit">
+                                    提交 <i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<include file="Public/javascript"/>
+<include file="Public/javascript_datepicker"/>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script type="text/javascript">
+    $().ready(function(){
+        $('[name="draw_type"]').change(function(){  //根据奖品类型弹出相应的奖品设置框
+            $('#draw').remove();
+            var draw_type= parseInt($('[name="draw_type"]').val());
+//            alert(draw_type);
+            if(draw_type==1){   //积分为奖品
+                var integral = '<div class="form-group" id="draw">' +
+                        '<label class="control-label">' +
+                        ' 积分设置 <span class="symbol required" aria-required="true"></span>' +
+                        '</label>' +
+                        '<input type="text" placeholder="积分设置" class="form-control" name="draw_value" /><div>';
+                $('#draw_type').after(integral);
+            }
+            if(draw_type==2){ //金币为奖品
+                var gold = '<div class="form-group" id="draw">' +
+                        '<label class="control-label">' +
+                        ' 金币设置 <span class="symbol required" aria-required="true"></span>' +
+                        '</label>' +
+                        '<input type="text" placeholder="金币设置" class="form-control" name="draw_value" /><div>';
+                $('#draw_type').after(gold);
+            }
+            if (draw_type == 3) { //话费为奖品
+                var tel_charge = '<div class="form-group" id="draw">' +
+                        '<label class="control-label">' +
+                        ' 话费设置 <span class="symbol required" aria-required="true"></span>' +
+                        '</label>' +
+                        '<input type="text" placeholder="话费设置" class="form-control" name="draw_value" /><div>';
+                $('#draw_type').after(tel_charge);
+            }
+            if (draw_type == 4) { //商品折扣为奖品
+                var discount = '<div class="form-group" id="draw">' +
+                        '<label class="control-label">' +
+                        ' 商品折扣设置 <span class="symbol required" aria-required="true">' +
+                        '<span>(例:9折填写9，9.5折填写9.5)</span>'+
+                        '</span>' +
+                        '</label>' +
+                        '<input type="text" placeholder="商品折扣设置" class="form-control" name="draw_value" /><div>';
+                $('#draw_type').after(discount);
+            }
+            if(draw_type == 5){ //商品为奖品
+                var goods = '<div class="form-group" id="draw">' +
+                        '<label class="control-label">' +
+                        ' 商品设置 <span class="symbol required" aria-required="true"></span>' +
+                        '</label>' +
+                        '<input type="text" placeholder="商品设置" class="form-control" onclick="popup_goods()" name="draw_value" id="goods" readonly/><div>';
+                $('#draw_type').after(goods);
+            }
+        });
+        $('#form2').validate({
+            rules:{
+                draw_type:{
+                    range:[1,5]
+                },
+                draw_value:{
+                    required: true,
+                    min:1
+
+                },
+                draw_chances_value:{
+                    required: true,
+                    number: true,
+                    min:0
+                }
+            },
+            messages:{
+                draw_type: {
+                    range: '请选择奖品类型'
+                },
+                draw_value:{
+                    required:'必须设置奖品',
+                    min:'不能小于1'
+                },
+                draw_chances_value: {
+                    required: '必须设置中奖基数',
+                    number:'中奖率只能输入输入数字',
+                    min:'中奖率不能小于0'
+                }
+            }
+        })
+    })
+ function popup_goods(){   //产品类型为商品时,弹出商品选择框
+        layer.open({
+            type: 2,
+            title: '请选择商品',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['80%', '90%'],
+            content: '<?php echo U("admin/Draw/popup")?>' //iframe的url
+        });
+    }
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>
