@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>基本信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="login">
+
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<h2 >汽车查询</h2>
+</div>
+<div class="page pdt10 member">
+	<form id="form2" class="mlogin " action="{:U('Wap/Carinfo/result_list')}" method="post" role="form" >
+		<div class="field">
+			<div class="label">品牌</div>
+			<div class="field-control">
+				<input id='brand' type="text" name="brand" value=""/>
+			</div>
+		</div>
+		<div class="field">
+			<div class="label">车系</div>
+			<div class="field-control">
+				<input id='series' type="text" name="series" value=""/>
+			</div>
+		</div>
+		<div class="field">
+			<div class="label">车型</div>
+			<div class="field-control">
+				<input id="version" type="text" class="input-required" name="version" value="" />
+			</div>
+		</div>
+
+
+		<div class="submit">
+			<button type="submit" class="button" id="submit-btn">查询</button>
+		</div>
+	</form>
+</div>
+<script>
+/*	$(function(){
+		$('#submit-btn').click(function(){
+			$.ajax({
+				url:"<?php echo U('Wap/carinfo/result_list'); ?>",
+				dataType : 'JSON',
+				data:$('#form2').serialize(),
+				type : 'POST',
+				success : function(res){
+					if(res.status){
+						layer.msg('修改成功', {icon: 6});
+					}else{
+						layer.msg(res.error, {icon: 5});
+					}
+				}
+			});
+		});
+	});*/
+</script>
+</body>
+</html>

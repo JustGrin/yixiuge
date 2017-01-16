@@ -1,7 +1,7 @@
 <?php
 //网站常规配置
 $siteconfig = array(
-	'APP_GROUP_LIST'        => 'Index,Admin,Wap,Fghome,Flagship,Filiale',      // 项目分组设定,多个组之间用逗号分隔,例如'Home,Admin'
+	'APP_GROUP_LIST'        => 'Admin,Wap',      // 项目分组设定,多个组之间用逗号分隔,例如'Home,Admin'
     'APP_GROUP_MODE'        =>  1,  // 分组模式 0 普通分组 1 独立分组
     'APP_GROUP_PATH'        =>  'Modules', // 分组目录 独立分组模式下面有效
     'ACTION_SUFFIX'         =>  '', // 操作方法后缀
