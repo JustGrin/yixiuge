@@ -775,4 +775,10 @@ class GoodsAction extends BaseAction {
         $base_log->rollback();//回滚事务
       }
     }
+
+    //用户发布商品
+    public function add_goods()
+    {
+        $this->display();
+    }
 }

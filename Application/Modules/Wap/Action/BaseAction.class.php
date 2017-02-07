@@ -26,6 +26,7 @@ class BaseAction extends CommonAction {
 			$this->wap_login_return();
 			$this->get_oauth2_openid();
 		}
+        $this->check_binding();
 		$this->check_login_rember();////检查是否记住密码
 		$this->check_login_appid();///appid 检查是否记住密码
 		$this->uid=$_SESSION["member"]['uid'];
@@ -887,6 +888,14 @@ public function set_cart(){
 
 
   }
+    public function check_binding()
+    {
+        $member_info = $this->getMemberInfo();
+        if(MODULE_NAME != 'Login' && (empty($member_info['real_name']) || empty($member_info['mobile']))){
+            $this->redirect('wap/login/binding_phone');
+        }
+    }
+
     ///显示红包
     public function set_cookie_show($name='',$con){
       if($con){

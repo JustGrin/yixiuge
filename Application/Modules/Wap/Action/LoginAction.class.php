@@ -65,6 +65,7 @@ public function __construct(){
         $_SESSION['member']=$user_data;
         
         $this->set_cart();
+        $user_open_id = 0;
         if($rember){//记住密码
           $this->set_session_id();//重设 session_id 时间
           $t_data=array();
@@ -395,10 +396,8 @@ public function set_hongbao_show($login=''){
     }
     //绑定
     public function binding(){
+        $uid=$this->uid;
         $data['status']=0;
-        $code=$_POST['binding_code'];
-        $mem_password=$_POST['binding_mem_password'];
-        $rep_password=$_POST['binding_rep_password'];
         $mobile=$_POST['binding_mobile'];
           //检测 手机验证码
          $_REQUEST['mobile']=$mobile;
@@ -410,26 +409,21 @@ public function set_hongbao_show($login=''){
         }
         $openid=session('user_open_id');
         $member_info_now= M("member")->where(array('openid'=>$openid))->find();
-        if(empty($member_info_now)){
+      /*  if(empty($member_info_now)){
             $data['error']='用户信息错误';
             echo json_encode($data);die;
-        }
-        if(empty($code)){
-            $code = $member_info_now['member_card'] ;
-            if(empty($code)) {
-                $share = session('share');
-                $code = $share ? $share : INDEX_CARD;
-            }
-        }
+        }*/
+
        //绑定  手机号 已注册
-       $where=array('mobile'=>$mobile);
+       $where['mobile']=$mobile;
+        $where['id'] = array('neq',$uid);
        $member_info_mobile= M("member")->where($where)->find();
        if($member_info_mobile){
          if($member_info_mobile['id']==$member_info_now['id']){
              $data['status']=1;
             echo json_encode($data);die;
          }
-         if($member_info_mobile['openid']){
+         if($member_info_mobile['openid'] ){
             $data['error']="该手机号已被绑定";
             echo json_encode($data);die;
          }
@@ -466,21 +460,12 @@ public function set_hongbao_show($login=''){
             echo json_encode($data);die;
           }
        }
+        $data['status']=1;
+        echo json_encode($data);die;
        //注册 
        
         //注册验证 密码 是否为空 两次密码是否一致
-        if(empty($mem_password)){
-            $data['error']="密码不能为空";
-            echo json_encode($data);die;
-        }
-        if(empty($rep_password)){
-            $data['error']="重复密码不能为空";
-            echo json_encode($data);die;
-        }
-        if($rep_password != $mem_password){
-            $data['error']="两次密码不一致";
-            echo json_encode($data);die;
-        }
+
         ///手机 是否被注册
         if(empty($mobile)){
             $data['error']="手机号码不存在";
@@ -491,54 +476,22 @@ public function set_hongbao_show($login=''){
             $data['error']="手机号码已被绑定";
             return $data;
         }
-        if(!empty($code)){
-            $data_code=$this->getMemberCode($code);
-            if(!empty($data_code)){
-                 $m_data['recommend_code']=$data_code['recommend_code'];//推荐码 (推荐人的推荐码 )
-                 $m_data['indirect_recommend_code']=$data_code['indirect_recommend_code'];//间接推荐人推荐码 (推荐人的推荐人的推荐码 )
-                 $m_data['indirect2_recommend_code']=$data_code['indirect2_recommend_code'];//间接2层推荐人推荐码 (推荐人的推荐人的推荐码 )
-            }
-        }else{
-          $code=INDEX_CARD;
-           $data_code=$this->getMemberCode($code);
-           if(!empty($data_code)){
-                 $m_data['recommend_code']=$data_code['recommend_code'];//推荐码 (推荐人的推荐码 )
-                 $m_data['indirect_recommend_code']=$data_code['indirect_recommend_code'];//间接推荐人推荐码 (推荐人的推荐人的推荐码 )
-                 $m_data['indirect2_recommend_code']=$data_code['indirect2_recommend_code'];//间接2层推荐人推荐码 (推荐人的推荐人的推荐码 )
-          }
-        }
         //注册
         $m_data['mobile']=$mobile;
 		if(empty($member_info_now['member_name'])){
 			 $m_data['member_name']='FG'.substr($mobile, 0,-4);
 		}
-        $m_data['password']=md5($mem_password);
 
-/*        $register_give_money=M('sys_param')->where(array('param_code'=>'register_give_money'))->getField('param_value');//返利比例；
-        if($register_give_money>0){
-          ///随机5到XX
-            $register_give_money=$this->set_register_give_money($register_give_money);
-            $m_data_detail['balance_give']=$register_give_money;//用户扩展表赠送金额 注册赠送20块钱  米值
-        }else{
-            $m_data_detail['balance_give']=0;//用户扩展表 注册赠送20块钱  米值
-        }*/
-
-        $m_data_detail['points']=0;//用户扩展表 注册赠送10积分
-		$recommend_id=M('member')->where('member_card='.$code)->getField('id');
-		$recommend_detail=M('member_detail')->where('member_id='.$recommend_id)->find();
-		$m_data_detail['relevel']=$recommend_detail['relevel']+1;   
-		$m_data_detail['repath']=$recommend_detail['repath'].','.$this->uid;
         $member_model=M('member');
-        $member_detail_model=M('member_detail');
+
 
         $member_model->startTrans();//开起事务
-        $member_detail_model->startTrans();//开起事务
+
 
         $add=$member_model->where(array('id'=>$_SESSION["member"]['uid']))->save($m_data);
 
-        $member_detail_add=$member_detail_model->where(array('member_id'=>$_SESSION["member"]['uid']))->save($m_data_detail);
-        
-        if($add!==false && $member_detail_add!==false){
+
+        if($add!==false ){
 
               //绑定成功
             $data['status']=1;
@@ -556,12 +509,9 @@ public function set_hongbao_show($login=''){
             $_SESSION['member']=$user_data;
               //登录日志 记录
             //$this->set_member_login_log();
-          
             $member_model->commit();//提交事务
-            $member_detail_model->commit();//提交事务
         }else{
              $member_model->rollback();//回滚事务
-            $member_detail_model->rollback();//回滚事务
             $data['error']="系统错误请稍候再试";
         }
        echo json_encode($data);
@@ -625,15 +575,7 @@ public function set_hongbao_show($login=''){
 
     }
     public function binding_phone(){
-    $member_info=$this->getMemberInfo();
-    $levelinfo=M('member_level')->select();
-    $this->assign('levelinfo',$levelinfo);
-    $this->assign('member_info',$member_info);
-    $share=session('share');
-    $code = $share ? $share : $member_info['recommend_code'];
-    $code = $code ? $code :INDEX_CARD ;
-    $recommend_info=M('member')->where('member_card='.$code)->find();
-    $this->assign('recommend_info',$recommend_info);
+    $this->member_info=$this->getMemberInfo();
     $this->display();
     }
 }
