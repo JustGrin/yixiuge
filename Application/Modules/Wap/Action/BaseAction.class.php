@@ -26,7 +26,6 @@ class BaseAction extends CommonAction {
 			$this->wap_login_return();
 			$this->get_oauth2_openid();
 		}
-        $this->check_binding();
 		$this->check_login_rember();////检查是否记住密码
 		$this->check_login_appid();///appid 检查是否记住密码
 		$this->uid=$_SESSION["member"]['uid'];
@@ -35,6 +34,10 @@ class BaseAction extends CommonAction {
 		$this->member_name=$_SESSION["member"]['member_name'];
 		$this->mobile=$_SESSION["member"]['mobile'];
 		$this->binding_mobile=$_SESSION["member"]['mobile'];
+
+        $memberinfo=$this->getMemberInfo();
+        $this->check_binding($memberinfo);
+
 		$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		$is_weixin = 1;
 		if(strpos($user_agent, 'MicroMessenger') === false) {
@@ -117,6 +120,7 @@ class BaseAction extends CommonAction {
 		$share_link_arr['shar_desc']=$shar_desc;
 		$share_link_arr['shar_imgurl']=$shar_imgurl;
 		$this->assign('share_link_arr',$share_link_arr);
+
     }
 
 	//重设 session_id 时间
@@ -888,10 +892,9 @@ public function set_cart(){
 
 
   }
-    public function check_binding()
+    public function check_binding($memberinfo)
     {
-        $member_info = $this->getMemberInfo();
-        if(MODULE_NAME != 'Login' && (empty($member_info['real_name']) || empty($member_info['mobile']))){
+        if(MODULE_NAME != 'Login' && (empty($memberinfo['real_name']) || empty($memberinfo['mobile']))){
             $this->redirect('wap/login/binding_phone');
         }
     }

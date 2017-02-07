@@ -399,6 +399,7 @@ public function set_hongbao_show($login=''){
         $uid=$this->uid;
         $data['status']=0;
         $mobile=$_POST['binding_mobile'];
+        $real_name = $_POST['real_name'];
           //检测 手机验证码
          $_REQUEST['mobile']=$mobile;
          $_REQUEST['mobile_code']=$_POST['binding_mobile_code'];
@@ -460,24 +461,11 @@ public function set_hongbao_show($login=''){
             echo json_encode($data);die;
           }
        }
-        $data['status']=1;
-        echo json_encode($data);die;
-       //注册 
-       
-        //注册验证 密码 是否为空 两次密码是否一致
 
-        ///手机 是否被注册
-        if(empty($mobile)){
-            $data['error']="手机号码不存在";
-            return $data;
-        }
-        $count= M("member")->where(array('mobile'=>$mobile))->count();
-        if($count){
-            $data['error']="手机号码已被绑定";
-            return $data;
-        }
+
         //注册
         $m_data['mobile']=$mobile;
+        $m_data['real_name'] =$real_name;
 		if(empty($member_info_now['member_name'])){
 			 $m_data['member_name']='FG'.substr($mobile, 0,-4);
 		}
@@ -492,7 +480,6 @@ public function set_hongbao_show($login=''){
 
 
         if($add!==false ){
-
               //绑定成功
             $data['status']=1;
             //记录session信息
