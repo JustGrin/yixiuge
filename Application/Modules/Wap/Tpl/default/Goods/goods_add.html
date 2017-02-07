@@ -25,13 +25,13 @@
                     <input type="text" class="input-required" id="godos_name" name="godos_name" value="{$order.consignee}" placeholder="商品名称">
                 </div>
             </div>
-            <h4 class="label"> 商品简介 </h4>
+            <h4 class="label"> 商品描述 </h4>
 			<div class="field autoClear">
-				<textarea id="refund_remark" name="refund_remark" cols="" rows="" placeholder="请您在此描述商品简介" class="desarea"></textarea>
+				<textarea id="goods_desc" name="goods_desc" cols="" rows="" placeholder="请您填写商品的描述" class="desarea"></textarea>
 			</div>
 			<div  class="uploadfile">
 				<div class="uploadbtnbox" style="display: inline-block">
-					<input id="up_img_url" type="file" name="questionPic"  class="upload-btn upload_input">
+					<input id="up_img_url" type="file" name="goods_images"  class="upload-btn upload_input">
 				</div>
 				<iframe name="uploadIfrm" style="display: none"></iframe>
 			</div>
@@ -42,13 +42,11 @@
 			<div class="field autoClear">
 				<div class="label"> 商品积分 </div>
 				<div class="field-control">
-					<input type="text" class="input-required" id="refund_name" name="refund_name" value="{$order.consignee}" placeholder="商品可获得的积分">
+					<input type="text" class="input-required" id="save_integral" name="integral" value="{$order.consignee}" placeholder="商品可获得的积分">
 				</div>
 			</div>
 		</div>
-		<input type="hidden" class="fm-text al"  name="order_id"   placeholder="" value="{$data.order_id}">
-		<input type="hidden" class="fm-text al"  name="order_goods_id"   placeholder="" value="{$data.rec_id}">
-		<!--		<input type="hidden" class="fm-text al"  name="refund_type"   placeholder="" value="{$_GET.type|default='0'}">-->
+        <input type="hidden" name="goods_id" value="{$_GET['goods_id']}">
 	</form>
 	<div class="submit"> <a href="javascript:void(0);" class="refund_btn"> 提交 </a> </div>
 </div>
@@ -61,22 +59,22 @@ jQuery(document).ready(function() {
 
 $("#form2").validate({
   rules: {
-     refund_remark:'required',
-    refund_name:'required',
-    refund_tel: {
+      goods_name:'required',
+      goods_desc:'required',
+      goods_images:'required',
+      integral: {
     required:true,
-    number:true,
-    minlength:11
+    number:true
    }
   },
   messages: {
-    refund_remark:'<span class="icon-warning icon_warning"></span>&nbsp;请输入问题描述',
-       refund_name:'<span class="icon-warning icon_warning"></span>&nbsp;请输入联系人',
-       refund_tel:{
-        required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入手机号码',
-        number:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码',
-        minlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码'
-       }
+      goods_name:'<span class="icon-warning icon_warning"></span>&nbsp;请输入商品名称',
+      goods_desc:'<span class="icon-warning icon_warning"></span>&nbsp;请输入商品描述',
+      goods_images:'<span class="icon-warning icon_warning"></span>&nbsp;请上传商品图片',
+      integral: {
+          required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入商品奖励积分',
+          number:'<span class="icon-warning icon_warning"></span>&nbsp;只能输入数字'
+      }
   },
    focusInvalid:false,
   success: function(label) { 
@@ -88,19 +86,18 @@ $("#form2").validate({
         submitHandler: function(editform) { 
 
             var options = { 
-                url :  "<?php echo U('Wap/goodsrefund/refund'); ?>", 
+                url :  "<?php echo U('Wap/goods/goods_add'); ?>", 
                 type : "post" , 
                 dataType:'json', 
                 target : "#loader", 
                 error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
                 onwait : "正在处理信息，请稍候...",
                 success: function(response){ 
-                      // console.log(response);
+                      console.log(response);
                     //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
                     //$('#editform').hide(2000); 
                     if(response.status==1){
-                        //alert("注册成功");
-                        layer.msg('提交成功', {icon: 6},function(){
+                        layer.msg('编辑成功', {icon: 6},function(){
                       //关闭后的操作
                       window.location.href="<?php echo U('Wap/goodsrefund/index',array('id'=>$data['rec_id'])); ?>"; 
                       }); 
