@@ -19,23 +19,32 @@
 	<h2 >汽车查询</h2>
 </div>
 <div class="page pdt10 member">
-	<form id="form2" class="mlogin " action="{:U('Wap/Carinfo/result_list')}" method="post" role="form" >
+	<form id="form2" class="mlogin " action="{:U('Wap/Carinfo/car_detail')}" method="post" role="form" >
 		<div class="field">
 			<div class="label">品牌</div>
 			<div class="field-control">
-				<input id='brand' type="text" name="brand" value=""/>
+				<select name="brand_id" id="brand" class="car_info" data_type="brand">
+					<option value=" ">请选择品牌</option>
+					<volist name="brand_list" id="vo">
+						<option value="{$vo['brand_id']}">{$vo['brand']}</option>
+					</volist>
+				</select>
 			</div>
 		</div>
 		<div class="field">
 			<div class="label">车系</div>
 			<div class="field-control">
-				<input id='series' type="text" name="series" value=""/>
+				<select name="series_id"  id="series" class="car_info" data_type="series">
+					<option value=" ">请选择车系</option>
+				</select>
 			</div>
 		</div>
 		<div class="field">
 			<div class="label">车型</div>
 			<div class="field-control">
-				<input id="version" type="text" class="input-required" name="version" value="" />
+				<select name="version_id" id='version' style="width: 100%">
+					<option value=" ">请选择车型</option>
+				</select>
 			</div>
 		</div>
 
@@ -46,23 +55,29 @@
 	</form>
 </div>
 <script>
-/*	$(function(){
-		$('#submit-btn').click(function(){
+	$(function(){
+		$('.car_info').change(function () {
+			var _this = $(this);
+			var type = _this.attr('data_type');
+			var id = _this.val();
 			$.ajax({
-				url:"<?php echo U('Wap/carinfo/result_list'); ?>",
+				url:"<?php echo U('Wap/carinfo/get_search_list'); ?>",
 				dataType : 'JSON',
-				data:$('#form2').serialize(),
+				data:{type: type , id : id},
 				type : 'POST',
 				success : function(res){
 					if(res.status){
-						layer.msg('修改成功', {icon: 6});
+						$("#"+res.type).html(res.list);
+						//console.log(res);
 					}else{
-						layer.msg(res.error, {icon: 5});
+						layer.msg(res.msg, {icon: 5});
 					}
 				}
 			});
+
 		});
-	});*/
+
+	});
 </script>
 </body>
 </html>
