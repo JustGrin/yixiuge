@@ -20,14 +20,14 @@
 	<form id="form2" action=""  class="mlogin newbox bgwt" novalidate method="post" onSubmit="return false;">
 		<div class="describe">
             <div class="field autoClear">
-                <div class="label"> 商品名称 </div>
+                <div class="label"> 标题 </div>
                 <div class="field-control">
-                    <input type="text" class="input-required" id="godos_name" name="godos_name" value="{$order.consignee}" placeholder="商品名称">
+                    <input type="text" class="input-required" id="title" name="title" value="{$data.title}" placeholder="信息标题">
                 </div>
             </div>
-            <h4 class="label"> 商品描述 </h4>
+            <h4 class="label"> 信息内容 </h4>
 			<div class="field autoClear">
-				<textarea id="goods_desc" name="goods_desc" cols="" rows="" placeholder="请您填写商品的描述" class="desarea"></textarea>
+				<textarea id="content" name="content" cols="" rows="" placeholder="请您填写信息内容" class="desarea"></textarea>
 			</div>
 			<div  class="uploadfile">
 				<div class="uploadbtnbox" style="display: inline-block">
@@ -38,17 +38,9 @@
 			<div class="clearfix"></div>
 			<div class="msg">最多上传3张，每张不超过5M，支持JPG、BMP、PNG</div>
 		</div>
-		<div class="contact">
-			<div class="field autoClear">
-				<div class="label"> 商品积分 </div>
-				<div class="field-control">
-					<input type="text" class="input-required" id="save_integral" name="integral" value="{$order.consignee}" placeholder="商品可获得的积分">
-				</div>
-			</div>
-		</div>
         <input type="hidden" name="goods_id" value="{$_GET['goods_id']}">
 	</form>
-	<div class="submit"> <a href="javascript:void(0);" class="refund_btn"> 提交 </a> </div>
+	<div class="submit"> <a href="javascript:void(0);" class="sub_btn"> 提交 </a> </div>
 </div>
 <include file="Public/wap_javascript" /> 
 <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script> 
@@ -86,7 +78,7 @@ $("#form2").validate({
         submitHandler: function(editform) { 
 
             var options = { 
-                url :  "<?php echo U('Wap/goods/goods_add'); ?>", 
+                url :  "<?php echo U('Wap/usedcar/add_msg'); ?>", 
                 type : "post" , 
                 dataType:'json', 
                 target : "#loader", 
@@ -99,7 +91,7 @@ $("#form2").validate({
                     if(response.status==1){
                         layer.msg('编辑成功', {icon: 6},function(){
                       //关闭后的操作
-                      window.location.href="<?php echo U('Wap/goodsrefund/index',array('id'=>$data['rec_id'])); ?>"; 
+                      window.location.href="<?php echo U('Wap/usedcar/index'); ?>";
                       }); 
                     }else{
                         layer.msg(response.error, {icon: 5}); 
@@ -118,13 +110,7 @@ $("#form2").validate({
   });
 
 
-$(".refund_type li").click(function(){
-    var val=$(this).attr('data-type');
-    $('input[name="refund_type"]').val(val);
-    $(".refund_type li").removeClass('active');
-    $(this).addClass('active');
-});
-$('.refund_btn').click(function(){
+$('.sub_btn').click(function(){
     $('#form2').submit();
 });
 
@@ -135,7 +121,7 @@ $('.refund_btn').click(function(){
     $(document).ready(function (e) {
          ///上传商家logo
         $('.uploadfile').on('change','.upload_input', function () {
-                 var goods_length=$(".refund_img").length;
+                 var goods_length=$(".msg_img").length;
                 if(goods_length>=4){
                      layer.msg('图片最多上传4张', {icon: 5});
                 }else{
@@ -149,7 +135,7 @@ $('.refund_btn').click(function(){
               btn: ['确定','取消'] //按钮
              },function(){
                  __thiss.remove();
-                 var goods_length=$(".refund_img").length;
+                 var goods_length=$(".msg_img").length;
                  if(goods_length < 4){
                      $('.uploadbtnbox').show();
                  }
@@ -199,10 +185,10 @@ $('.refund_btn').click(function(){
                                     return false;
                                 } else {
                                var str_img=' <div class="img-item fileinput delete_img"><span><img   src="'+data.imgurl
-                               +'"><input type="hidden" name="refund_img[]"  class="refund_img"  value="'
+                               +'"><input type="hidden" name="msg_img[]"  class="msg_img"  value="'
                                +data.imgurl+'"></span></div>';
                                  $('.uploadfile').append(str_img);
-                                    var goods_length=$(".refund_img").length;
+                                    var goods_length=$(".msg_img").length;
                                     if(goods_length >= 4){
                                         $('.uploadbtnbox').hide();
                                     }

@@ -775,34 +775,4 @@ class GoodsAction extends BaseAction {
         $base_log->rollback();//回滚事务
       }
     }
-
-    //用户发布商品
-    public function add_goods()
-    {
-        $_GET['goods_id'] = isset($_GET['goods_id']) ? $_GET['goods_id'] : 0;
-       if($_POST){
-           $return_data['status'] = 0;
-            $data_save =$_POST;
-           $data_save['is_auditing'] = 0;
-           $model =M('g_goods');
-           if($_POST['goods_id']){
-            $res =$model->where('goods_id='.$_POST['goods_id'])->save($data_save);
-           }else{
-               $res =$model->save($data_save);
-           }
-           if($res !== false){
-               $return_data['status'] = 1;
-               echo json_encode($return_data);die;
-           }else{
-               $return_data['error'] = '编辑失败';
-               echo json_encode($return_data);die;
-           }
-       }else{
-           if($_GET['goods_id']){
-                $data=M('g_goods')->where('goods_id='.$_GET['goods_id'])->find();
-               $this->data = $data;
-           }
-       }
-        $this->display();
-    }
 }

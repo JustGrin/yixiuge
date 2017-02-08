@@ -72,7 +72,7 @@ class MemberAction extends UserAction {
         //今天第一次显示 今天已经抽了不显示
        // $this->draw_count=$this->set_cookie_show('draw_member_home');
         //var_dump($this->draw_count);
-    	$this->webtitle="FG峰购";
+    	$this->webtitle="一休哥";
         //判断是否微信浏览器
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($user_agent,'MicroMessenger') !== false) {
@@ -118,7 +118,7 @@ class MemberAction extends UserAction {
         $check_draw=A('Lottery')->check_draw();
         //今天第一次显示 今天已经抽了不显示
         $this->assign('check_draw',$check_draw);//今日 抽奖记录
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
 		
         //判断是否微信浏览器
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -141,7 +141,7 @@ class MemberAction extends UserAction {
 
         $this->member_count($memberinfo['member_card']);
         
-    	$this->webtitle="FG峰购";
+    	$this->webtitle="一休哥";
 		$this->display();
     }
      // 
@@ -241,7 +241,7 @@ class MemberAction extends UserAction {
             $memberinfo=$this->getMemberInfo();
             $this->data=$memberinfo;
         }
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //背景图设置
@@ -269,7 +269,7 @@ class MemberAction extends UserAction {
             $memberinfo=$this->getMemberInfo();
             $this->data=$memberinfo;
         }
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //基本信息
@@ -306,7 +306,7 @@ class MemberAction extends UserAction {
 
         $this->city_group = get_city_group();
 
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //基本信息 修改
@@ -375,7 +375,7 @@ class MemberAction extends UserAction {
     public function updatepwd(){
 		//$memberinfo=$this->getMemberInfo();
         //$this->data=$memberinfo;
-    	$this->webtitle="FG峰购";
+    	$this->webtitle="一休哥";
 		$this->display();
     }
     //找回密码
@@ -461,7 +461,7 @@ class MemberAction extends UserAction {
 		//统计所有粉丝
         $fans_count=get_fans_count($this->member_card);
         $this->count=$fans_count;
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //我的钱包
@@ -538,7 +538,7 @@ class MemberAction extends UserAction {
         $data['balance_all']+=$data['balance']+$data['balance_give'];
         // $data['balance_all']=sprintf("%.0f",substr(sprintf("%.3f", $data['balance_all']), 0, -3));
         $this->data=$data;
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
 
@@ -743,7 +743,7 @@ class MemberAction extends UserAction {
         }
         $this->list=$list_1;
         $this->data=$date;
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
 
@@ -797,7 +797,7 @@ class MemberAction extends UserAction {
         //提现申请比例
         $cash_fee_ratio = M('sys_param')->where(array('param_code'=>'cash_fee_ratio'))->getField('param_value');
         $this->cash_fee_ratio=($cash_fee_ratio*100).'%';
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
 	public function cashapply_detail(){
@@ -940,7 +940,7 @@ class MemberAction extends UserAction {
         $list=M('bank_account')->where($where)->select();
         $this->list=$list;
         //bank_account
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //提现帐号
@@ -1037,7 +1037,7 @@ class MemberAction extends UserAction {
         }
         $this->return_url=$url;
         //bank_account
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
 
@@ -1086,7 +1086,7 @@ class MemberAction extends UserAction {
             $data=M('bank_account')->where($where)->find();
             $this->data=$data;
         }
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
        ///提现帐号 删除
@@ -1179,7 +1179,7 @@ class MemberAction extends UserAction {
         $data['balance_all']=sprintf("%.0f",substr(sprintf("%.3f", $data['balance_all']), 0, -3));*/
         $this->member_vip_fuwu_switch=M('sys_param')->where(array('param_code'=>'member_vip_fuwu_switch'))->getField('param_value');
         $this->data=$memberinfo_de;
-        $this->webtitle="FG峰购";
+        $this->webtitle="一休哥";
         $this->display();
     }
     //股权分配
@@ -1421,7 +1421,7 @@ class MemberAction extends UserAction {
         $where['_string'] = "shipping_status=2 or (shipping_status=1 and order_status in ('2','3','4'))";//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货；
 		$where['recommend_code']=$this->member_card;
 		$this->count30 = $order_model->alias('o')->where($where)->join('db_member m on m.id=o.user_id')->count();
-        $this->webtitle = "FG峰购";
+        $this->webtitle = "一休哥";
         $this->display();
 
     }
@@ -1504,7 +1504,7 @@ class MemberAction extends UserAction {
 			$types['type_name']=$type_array[$type];
 			$this->data=$types;
 		}
-		$this->webtitle="FG峰购";
+		$this->webtitle="一休哥";
 		$this->display();
 	}
 	public function show_shop_qrcode(){

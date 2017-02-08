@@ -247,8 +247,8 @@ class BaseAction extends CommonAction {
     if($member['member_logo']=='/Uploads/avatar_default.png'){
        $save_data['member_logo']=$user_info['headimgurl'];
     }
-    $member_name='FG'.substr($member['mobile'], 0,-4);
-	$member_name_c='FG'.$member['member_card'];
+    $member_name='YX'.substr($member['mobile'], 0,-4);
+	$member_name_c='YX'.$member['member_card'];
     if($member['member_name']==$member_name || $member['member_name']==$member_name_c){
        $save_data['member_name']=$user_info['nickname'];
     }
@@ -326,7 +326,7 @@ class BaseAction extends CommonAction {
             //设置卡号
             $card=$this->getcard($add);
 			$save_data=array('member_card'=>$card);
-			$save_data['member_name']='FG'.$card;
+			$save_data['member_name']='YX'.$card;
             $s_data=M('member')->where(array('id'=>$add))->save($save_data);
 
              //记录session信息

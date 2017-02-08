@@ -9,7 +9,7 @@ public function __construct(){
 	
     public function index(){
         //$this->hongbao=$this->set_hongbao_show('login');
-    	$this->webtitle="FG峰购";
+    	$this->webtitle="一休哥";
 		  $this->display();
     }
      //验证手机号是否被存在
@@ -137,7 +137,7 @@ public function __construct(){
         $citylist = $this->get_city_return($citydata);
         $this->citylist = $citylist;
         $ShareMemberInfo=$this->getShareMemberInfo();
-        $this->member_name=$ShareMemberInfo['member_name']?$ShareMemberInfo['member_name']:'FG峰购';
+        $this->member_name=$ShareMemberInfo['member_name']?$ShareMemberInfo['member_name']:'一休哥';
         $this->member_card=$ShareMemberInfo['member_card']?$ShareMemberInfo['member_card']:INDEX_CARD;
     	//$this->hongbao=$this->set_hongbao_show('register');
 		$this->display();
@@ -218,7 +218,7 @@ public function __construct(){
         }
         //注册
         $m_data['mobile']=$mobile;
-        $m_data['member_name']='FG'.substr($mobile, 0,-4);
+        $m_data['member_name']='YX'.substr($mobile, 0,-4);
         if($_POST['member_name']){
             $m_data['member_name']=$_POST['member_name'];
         }
@@ -400,14 +400,15 @@ public function set_hongbao_show($login=''){
         $data['status']=0;
         $mobile=$_POST['binding_mobile'];
         $real_name = $_POST['real_name'];
+        $company = isset($_POST['company']) ? $_POST['company'] : null;
           //检测 手机验证码
          $_REQUEST['mobile']=$mobile;
-         $_REQUEST['mobile_code']=$_POST['binding_mobile_code'];
-        $send_return=$this->check_send_return();
+       //  $_REQUEST['mobile_code']=$_POST['binding_mobile_code'];
+ /*       $send_return=$this->check_send_return();
         if($send_return['error']){
             $data['error']=$send_return['error'];
             echo json_encode($data);die;
-        }
+        }*/
         $openid=session('user_open_id');
         $member_info_now= M("member")->where(array('openid'=>$openid))->find();
       /*  if(empty($member_info_now)){
@@ -467,7 +468,7 @@ public function set_hongbao_show($login=''){
         $m_data['mobile']=$mobile;
         $m_data['real_name'] =$real_name;
 		if(empty($member_info_now['member_name'])){
-			 $m_data['member_name']='FG'.substr($mobile, 0,-4);
+			 $m_data['member_name']='YX'.substr($mobile, 0,-4);
 		}
 
         $member_model=M('member');
@@ -482,6 +483,9 @@ public function set_hongbao_show($login=''){
         if($add!==false ){
               //绑定成功
             $data['status']=1;
+            if($company){
+                M('member_detail')->where('member_id='.$uid)->setField('company',$company);
+            }
             //记录session信息
             $user_data=array();
             $user_data['uid']=$_SESSION["member"]['uid'];
@@ -551,7 +555,7 @@ public function set_hongbao_show($login=''){
         if($list){
           foreach ($list as $key => $value) {
             if(empty($value['member_name'])){
-              $member_model->where(array('id'=>$value['id']))->save(array('member_name'=>'FG'.$value['member_card']));
+              $member_model->where(array('id'=>$value['id']))->save(array('member_name'=>'YX'.$value['member_card']));
             }
           }
           //sleep(秒)  usleep(毫秒)  让它睡上一会。
@@ -562,7 +566,11 @@ public function set_hongbao_show($login=''){
 
     }
     public function binding_phone(){
-    $this->member_info=$this->getMemberInfo();
-    $this->display();
+        $member_info = $this->getMemberInfo();
+        $member_detail = $this->getMemberDetail();
+        $data = $member_info;
+        $data['company'] = $member_detail['company'];
+        $this->data =$data ;
+        $this->display();
     }
 }
