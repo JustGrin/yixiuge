@@ -551,6 +551,8 @@ class MemberAction extends AuthAction{
 		$this->list=$members_IDcard;
 		$this->display();
 	}
+
+
 	public function binding_check()
 	{
 		$members_IDcard=M('member_id_card')->select();

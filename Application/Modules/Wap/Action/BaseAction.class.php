@@ -894,7 +894,7 @@ public function set_cart(){
   }
     public function check_binding($memberinfo)
     {
-        if(MODULE_NAME != 'Login' && (empty($memberinfo['real_name']) || empty($memberinfo['mobile']))){
+        if(MODULE_NAME != 'Login' && $memberinfo['member_status']==0){
             $this->redirect('wap/login/binding_phone');
         }
     }
