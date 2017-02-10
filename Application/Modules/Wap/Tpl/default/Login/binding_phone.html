@@ -61,11 +61,11 @@
         var status = $('#status').val();
         var count = $('#count').val();
 
-        function add_msg() {
+        function add_msg(msg,_yes,_no) {
             //询问框
-            var msg='亲 浏览商品需要审核信息<br>请完善您的姓名(必填),电话(必填),以及工作单位,待后台工作人员审核通过之后方可浏览';
+            //var msg='亲 浏览商品需要审核信息<br>请完善您的姓名(必填),电话(必填),以及工作单位,待后台工作人员审核通过之后方可浏览';
             layer.confirm(msg, {
-                btn: ['马上完善','算了不看了']//按钮
+                btn: [_yes,_no]//按钮
             }, function(){
                 layer.closeAll();
             }, function(){
@@ -73,21 +73,24 @@
             });
         }
 
-        function wait_msg() {
-            //询问框
-            var msg='亲 您所完善的信息正在审核当中<br>请耐心等待,也可在此修改！';
-            layer.confirm(msg, {
-                btn: ['我要修改','暂时不用']//按钮
-            }, function(){
-                layer.closeAll();
-            }, function(){
-                location.href="<?php  echo U('wap/member/index');?>";
-            });
-        }    
+        var msg ='';
+        var _yes = '';
+        var _no = '';
         if(count == 0){
-            add_msg();
+             msg='亲 浏览商品需要审核信息<br>请完善您的姓名(必填),电话(必填),以及工作单位,待后台工作人员审核通过之后方可浏览';
+            _yes = '马上完善';
+            _no = '算了不看了';
+            add_msg(msg,_yes,_no);
         }else if(status == 0){
-            wait_msg();
+            msg='亲 您所完善的信息正在审核当中<br>请耐心等待,也可在此修改！';
+            _yes = '我要修改';
+            _no = '暂时不用';
+            add_msg(msg,_yes,_no);
+        }else if(status == 2){
+            _yes = '好的';
+            _no = '我不';
+            msg='亲 您所完善的信息未通过审核<br/>原因:<br/>{$count ? $data["remark"] : ""}';
+            add_msg(msg,_yes,_no);
         }
 
         //FormValidator.init();

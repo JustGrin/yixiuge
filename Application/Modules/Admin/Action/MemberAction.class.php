@@ -586,5 +586,31 @@ class MemberAction extends AuthAction{
 		$this->list=$ver_list;
 		$this->display();
 	}
+	public function do_binding_check(){
+		//是否审核通过
+		if ($_GET['value'] != null) {
+			$id = $_GET["id"];
+			$type=$_GET['type'];
+			$value=$_GET["value"];
+			if ($type=='is_check'){
+				$save_date['status'] = $value;
+			}else{
+				$save_date['remark'] = $value;
+			}
+
+			$where['id'] = $id;
+
+			$res = M('member_verification')->where($where)->save($save_date);
+			if ($res !== false) {
+				//$this->redirect("Admin/Goods/index");
+				$data['status'] = 1;
+				$data['is_check'] = $value;
+				echo json_encode($data);
+			} else {
+				$data['error'] = '操作失败,请稍候再试';
+				echo json_encode($data);
+			}
+		}
+	}
 }
 ?>

@@ -55,14 +55,13 @@
                             </td>
                             <td id="check{$vo.id}">
                                 <select class="is_check" data-id="{$vo.id}" name="is_check" >
-                                    <option value="0" <if condition="$vo.is_check eq 0">selected</if>>未审核</option>
-                                    <option value="1" <if condition="$vo.is_check eq 1">selected</if>>通过</option>
-                                    <option value="2" <if condition="$vo.is_check eq 2">selected</if>>不通过</option>
+                                    <option value="0" <if condition="$vo.status eq 0">selected</if>>未审核</option>
+                                    <option value="1" <if condition="$vo.status eq 1">selected</if>>通过</option>
+                                    <option value="2" <if condition="$vo.status eq 2">selected</if>>不通过</option>
                                 </select>
                             </td>
                             <td>
-                                <textarea class="reson" data-id="{$vo.id}" name= 'reson' >{$vo.reson}
-                                </textarea>
+                                <textarea class="remark" data-id="{$vo.id}" name= 'remark' >{$vo.remark}</textarea>
                             </td>
 <!--                            <td >
                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
@@ -107,23 +106,23 @@
             var value=$(this).val();
             var id=$(this).attr('data-id');
             var type='is_check';
-            //var reson=$('.reson').val();
-           // alert(reson);
+            //var remark=$('.remark').val();
+           // alert(remark);
             changeCheck(id,value,type);
 
         });
     });
-    $('.reson').blur(function () {
+    $('.remark').change(function () {
         var value=$(this).val();
         var id=$(this).attr('data-id');
-        var type='reson';
+        var type='remark';
         changeCheck(id,value,type);
     });
     function changeCheck(id,value,type){
 
         if(confirm('确定设置?')){
             $.ajax({
-                url:'{:U("Admin/member/do_authentication")}',
+                url:'{:U("Admin/member/do_binding_check")}',
                 type:'get',
                 data:'id='+id+'&value='+value+'&type='+type,
                 dataType:'json',

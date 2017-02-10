@@ -15,37 +15,6 @@ class CarinfoAction extends BaseAction
 	//产品列表
 	public function index(){
 		$order=$_REQUEST['order'];
-		if($order){
-			switch ($order) {
-				case 'prices1':
-					//价格 倒序
-					$order="shop_price desc";
-					break;
-				case 'prices2':
-					//价格 升序
-					$order="shop_price asc";
-					break;
-				case 'browse1':
-					$order="goods_browse desc";
-					break;
-				case 'browse2':
-					$order="goods_browse asc";
-					break;
-				case 'sales1':
-					$order="goods_salesvolume desc";
-					break;
-				case 'sales2':
-					$order="goods_salesvolume asc";
-					break;
-				default:
-					unset($order);
-					$order="goods_id desc";
-					# code...
-					break;
-			}
-		}else{
-			$order="goods_id desc";
-		}
 		$cryp_cat_id=$this->get_category_child('19');//剔除 成人用品
 		$g_where['cat_id']=array('not in',$cryp_cat_id);
 		$type=$_REQUEST['type'];
@@ -132,16 +101,22 @@ class CarinfoAction extends BaseAction
 	//用户发布商品
 	public function add_msg()
 	{
-		$_GET['goods_id'] = isset($_GET['goods_id']) ? $_GET['goods_id'] : 0;
+		$_GET['id'] = isset($_GET['id']) ? $_GET['id'] : 0;
 		if($_POST){
 			$return_data['status'] = 0;
 			$data_save =$_POST;
-			$data_save['is_auditing'] = 0;
-			$model =M('g_goods');
-			if($_POST['goods_id']){
-				$res =$model->where('goods_id='.$_POST['goods_id'])->save($data_save);
+			$data_save['is_check'] = 0;
+			$data_save['member_id'] = $this->uid;
+			$time = time();
+			$data_save['change_time'] = $time;
+			$data_save['imgs_a'] = implode(',',$_POST['msg_img']);
+			$model =M('usde_cars_info');
+			if($_POST['id']){
+				$res =$model->where('id='.$_POST['id'])->save($data_save);
 			}else{
-				$res =$model->save($data_save);
+				$data_save['add_time'] = $time;
+				unset($data_save['id'] );
+				$res =$model->add($data_save);
 			}
 			if($res !== false){
 				$return_data['status'] = 1;
@@ -151,7 +126,10 @@ class CarinfoAction extends BaseAction
 				echo json_encode($return_data);die;
 			}
 		}else{
-			if($_GET['goods_id']){
+			if (!isset($_GET['id'] )){
+				$_GET['id'] = 0;
+			}
+			if($_GET['id']){
 				$data=M('g_goods')->where('goods_id='.$_GET['goods_id'])->find();
 				$this->data = $data;
 			}
