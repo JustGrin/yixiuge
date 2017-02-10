@@ -553,12 +553,6 @@ class MemberAction extends AuthAction{
 	}
 
 
-	public function binding_check()
-	{
-		$members_IDcard=M('member_id_card')->select();
-		$this->list=$members_IDcard;
-		$this->display();
-	}
 	public function  do_authentication(){
 		//是否审核通过
 		if ($_GET['value'] != null) {
@@ -585,6 +579,12 @@ class MemberAction extends AuthAction{
 			}
 		}
 	}
-
+	public function binding_check()
+	{
+		$order = " status DESC,change_time ASC ";
+		$ver_list=M('member_verification')->order($order)->select();
+		$this->list=$ver_list;
+		$this->display();
+	}
 }
 ?>

@@ -398,7 +398,7 @@ public function set_hongbao_show($login=''){
     public function binding(){
         $uid=$this->uid;
         $data['status']=0;
-        $mobile=$_POST['binding_mobile'];
+        $mobile=$_POST['mobile'];
         $real_name = $_POST['real_name'];
         $company = isset($_POST['company']) ? $_POST['company'] : null;
           //检测 手机验证码
@@ -486,6 +486,19 @@ public function set_hongbao_show($login=''){
             if($company){
                 M('member_detail')->where('member_id='.$uid)->setField('company',$company);
             }
+            //将信息存入用户审核中
+            $ver_data = $_POST;
+            $ver_data['status'] = 0;
+            $time = time();
+            $ver_data['change_time'] = $time;
+            $ver_count = M('member_verification')->where('member_id='.$uid)->count();
+            if ($ver_count){
+                $ver_res = M('member_verification')->where('member_id='.$uid)->save($ver_data);
+            }else{
+                $ver_data['member_id'] = $uid;
+                $ver_data['add_time'] = $time;
+                $ver_res = M('member_verification')->add($ver_data);
+            }
             //记录session信息
             $user_data=array();
             $user_data['uid']=$_SESSION["member"]['uid'];
@@ -566,10 +579,13 @@ public function set_hongbao_show($login=''){
 
     }
     public function binding_phone(){
-        $member_info = $this->getMemberInfo();
-        $member_detail = $this->getMemberDetail();
-        $data = $member_info;
-        $data['company'] = $member_detail['company'];
+        $uid =$this->uid;
+        $data =array();
+        $count =  M('member_verification')->where('member_id='.$uid)->count();
+        if($count){
+            @$data = M('member_verification')->where('member_id='.$uid)->find();
+        }
+        $this->count = $count;
         $this->data =$data ;
         $this->display();
     }

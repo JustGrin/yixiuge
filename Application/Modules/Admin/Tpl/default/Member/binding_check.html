@@ -14,7 +14,7 @@
                 <section id="page-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h1 class="mainTitle">会员身份验证</h1>
+                            <h1 class="mainTitle">会员信息审核</h1>
                             <span class="mainDescription"></span>
                         </div>
                         <nav id="cl-effect-10" class="links cl-effect-10">
@@ -31,11 +31,11 @@
                     <thead>
                     <tr>
                         <th>会员id</th>
-                        <th>正面照</th>
-                        <th>背面照</th>
+
                         <th>真实姓名</th>
-                        <th>身份证号</th>
+                        <th>电话</th>
                         <th>上传时间</th>
+                        <th>修改时间</th>
                         <th>是否审核</th>
                         <th>不通过理由</th>
                      <!--   <th>删除</th>-->
@@ -45,16 +45,13 @@
                     <volist  name="list" id='vo' key='key'>
                         <tr>
                             <td>{$vo.member_id}</td>
-                            <td class="center slide" >
-                                <img src="{$vo.id_card_front}" class="img-rounded" style="max-width:100px;max-height:100px;" alt="无图片">
-                            </td>
-                            <td class="center slide" >
-                                <img src="{$vo.id_card_back}" class="img-rounded" style="max-width:100px;max-height:100px;" alt="无图片">
-                            </td>
                             <td>{$vo.real_name}</td>
-                            <td >{$vo.id_number}</td>
+                            <td >{$vo.mobile}</td>
                             <td>
                                 {$vo.add_time|date="Y-m-d H:i:s",###}
+                            </td>
+                            <td>
+                                {$vo.change_time|date="Y-m-d H:i:s",###}
                             </td>
                             <td id="check{$vo.id}">
                                 <select class="is_check" data-id="{$vo.id}" name="is_check" >
