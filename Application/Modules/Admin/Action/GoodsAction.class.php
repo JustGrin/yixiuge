@@ -12,30 +12,41 @@ class GoodsAction extends AuthAction
         /*if(empty($_SESSION['topadmin'])){
             $where['store_id']=session('afid');
         }*/
-        if ($_GET['goods_name']) {
-            $where['goods_name'] = array('like', $_GET['goods_name'] . '%');
-        }
-        if ($_GET['goods_sn'] && $_GET['goodsNum'] != 0) {
+        isset($_GET['goods_name']) ? $where['goods_name'] = array('like', '%'.$_GET['goods_name'] . '%') : $_GET['goods_name'] = '';
+        if (isset($_GET['goods_sn'] ) && $_GET['goods_sn'] && isset($_GET['goodsNum'] ) && $_GET['goodsNum'] != 0) {
             $where['goods_sn'] = array('like', array('%' . $_GET['goodsNum'] . '%', '%' . $_GET['goods_sn'] . '%'), 'AND');
             //$where['_sting'] = " goods_sn like '%".$_GET['goodsNum']."%' AND goods_sn like '%".$_GET['goods_sn']."%'";
         } else {
-            if ($_GET['goods_sn']) {
+            if (isset($_GET['goods_sn'] ) && $_GET['goods_sn']) {
                 $where['goods_sn'] = array('like', '%' . $_GET['goods_sn'] . '%');
+            }else{
+                $_GET['goods_sn'] = '';
             }
-            if ($_GET['goodsNum']) {
+            if (isset($_GET['goodsNum'] ) && $_GET['goodsNum']) {
                 $where['goods_sn'] = array('like', '%' . $_GET['goodsNum'] . '%');
+            }else{
+                $_GET['goodsNum'] = '';
             }
 
         }
-        if ($_GET['cat_id']) {
-            $where['cat_id'] = array('eq', $_GET['cat_id']);
+
+        if (isset($_GET['supplier_name']) && $_GET['supplier_name']) {//查询供货商
+            $where_s['s_name'] = array('like', '%' . $_GET['supplier_name'] . '%');
+            $suppliers= M('supplier')->field('s_id')->where($where_s)->select();
+            $supplier_arr = array();
+            foreach ($suppliers as  $v){
+                $supplier_arr[] = $v['s_id'];
+            }
+            $where['supplier_id'] = array('in', $supplier_arr);
+        }else{
+            $_GET['supplier_name'] = '';
         }
-        if ($_GET['brand_id']) {
-            $where['brand_id'] = array('eq', $_GET['brand_id']);
-        }
-        if ($_GET['goods_type']) {
-            $where['goods_type'] = array('eq', $_GET['goods_type']);
-        }
+
+        isset($_GET['cat_id']) ? $where['cat_id'] = array('like', '%' . $_GET['cat_id'] . '%') : $_GET['cat_id'] = '';
+        isset($_GET['brand_id']) ?  $where['brand_id'] = array('like', '%' . $_GET['brand_id'] . '%') : $_GET['brand_id'] = '';
+
+        isset($_GET['goods_type']) ?  $where['goods_type'] = array('like', '%' . $_GET['goods_type'] . '%') : $_GET['goods_type'] = '';
+
         if (isset($_GET['order'])) {
             $order = $_GET['order'] . " desc";
         }
@@ -143,6 +154,9 @@ class GoodsAction extends AuthAction
     public function goods_edit()
     {
 //		var_dump($_POST);die;
+        $data = array();
+
+        $_GET['id'] =   isset($_GET['id']) ? $_GET['id'] : 0 ;
         if ($_POST) {
             if ($_POST['activity_start_date'] && $_POST['activity_end_date']) {   //将活动时间转换成时间戳
                 $_POST['activity_start_date'] = strtotime($_POST['activity_start_date']);
@@ -321,6 +335,7 @@ class GoodsAction extends AuthAction
                 $this->share_money = M('sys_param')->where(array('param_code' => 'share_money'))->getField('param_value');
                 $data['activity_start_date'] = time();
                 $data['activity_end_date'] = strtotime("+1 month");
+                $data['goods_id']  = 0;
                 $this->assign("data", $data);
             }
             //商品分类
@@ -329,7 +344,7 @@ class GoodsAction extends AuthAction
             $Category = $this->gettree($Category, 0, 0, 'parent_id', 'cat_id');
             $this->assign("category", $Category);
             //基地类型
-            $this->base = M('base')->where(array('is_shelves' => 1))->select();
+            $this->supplier = M('supplier')->select();
             //活动列表
             $activity_list = M('activity')->where('is_del = 0')->select();
             $this->assign("activity_list", $activity_list);
@@ -596,12 +611,10 @@ class GoodsAction extends AuthAction
     //商品品牌   zm
     public function goods_brand()
     {
-        if ($_GET["brand_name"]) {
-            $where["brand_name"] = array("like", $_GET["brand_name"] . "%");
-        }
-        if ($_GET["site_url"]) {
-            $where["site_url"] = array("like", $_GET["site_url"] . "%");
-        }
+        $where = array();
+        isset($_GET['brand_name']) ? $where["brand_name"] = array("like", '%'.$_GET["brand_name"] . "%") : $_GET['brand_name'] = '';
+        isset($_GET['site_url']) ? $where["site_url"] = array("like", '%'.$_GET["site_url"] . "%") : $_GET['site_url'] = '';
+
         $table = C("DB_PREFIX");
         $count = M()->table($table . 'g_brand')->count();
         $page = D("Common")->getPage($count);//分页
@@ -616,12 +629,13 @@ class GoodsAction extends AuthAction
     //商品品牌添加 zm  zm
     public function goods_brand_deit()
     {
-        if ($_GET["brand_id"]) {
+        if (isset($_GET["brand_id"])) {
             $brand = M("g_brand")->where(array("brand_id" => $_GET["brand_id"]))->find();
             $title = "修改品牌";
             $this->assign("title", $title);
             $this->assign("data", $brand);
         } else {
+            $_GET["brand_id"] = 0 ;
             $title = "添加品牌";
             $this->assign("title", $title);
         }
@@ -663,17 +677,21 @@ class GoodsAction extends AuthAction
     public function goods_shipping_addAlter()
     {
         //修改配送方式
-        if ($_GET["shipping_id"]) {
-            $shipping = M("g_shipping")->where(array("shipping_id" => $_GET["shipping_id"]))->find();
+        $shipping_id = isset($_GET["shipping_id"]) ? $_GET["shipping_id"] : 0;
+        if ($shipping_id) {
+            $shipping = M("g_shipping")->where(array("shipping_id" => $shipping_id))->find();
             $title = "修改配送方式";
             $this->assign("msgtitle", $title);
             $this->assign("data", $shipping);
         } else {
             //添加配送方式
+            $_GET['shipping_id'] = 0;
             $title = "添加配送方式";
             $this->assign("msgtitle", $title);
         }
         // var_dump($_GET);
+
+        $this->shipping_id = $shipping_id;
         $this->display();
     }
 
@@ -694,14 +712,10 @@ class GoodsAction extends AuthAction
 
     //配送方式 信息管理列表 zm
     public function goods_shipping_list()
-    {
-        if ($_GET["shipping_name"]) {
-            $where["shipping_name"] = array("like", $_GET["shipping_name"] . "%");
-        }
-        if ($_GET["shipping_code"]) {
-            $where["shipping_code"] = array("like", $_GET["shipping_code"] . "%");
-        }
-        $menulist = D("Common")->getPageList('g_shipping', $where, "*", "shipping_order desc");
+    {   $where =array();
+        isset($_GET['shipping_name']) ?  $where["shipping_name"] = array("like", '%'.$_GET["shipping_name"] . "%") : $_GET['shipping_name'] = '';
+        isset($_GET['shipping_code']) ?  $where["shipping_code"] = array("like", '%'.$_GET["shipping_code"] . "%") : $_GET['shipping_code'] = '';
+            $menulist = D("Common")->getPageList('g_shipping', $where, "*", "shipping_order desc");
 
         $title = "配送方式列表";
         $this->assign("msgtitle", $title);
@@ -715,6 +729,7 @@ class GoodsAction extends AuthAction
     //删除配送方式 zm
     public function goods_shipping_del()
     {
+
         $shipping = M("g_shipping")->order("shipping_order desc")->where(array("shipping_id" => $_GET["shipping_id"]))->delete();
         if ($shipping !== false) {
             $this->success("删除成功", U("Goods/goods_shipping_list"));
@@ -733,7 +748,26 @@ class GoodsAction extends AuthAction
         }
         $this->display();
     }
-
+    //修改上下架
+    public function deliver_able()
+    {
+        $data['status'] = 0;
+        if (isset($_GET['value']) ) {
+            $shipping_id = $_GET["id"];
+            $is_deliver = $_GET["value"];
+            $where['shipping_id'] = $shipping_id;
+            $save_date['is_deliver'] = $is_deliver;
+            $res = M('g_shipping')->where($where)->save($save_date);
+            if ($res !== false) {
+                //$this->redirect("Admin/Goods/index");
+                $data['status'] = 1;
+                echo json_encode($data);
+            } else {
+                $data['error'] = '操作失败,请稍候再试';
+                echo json_encode($data);
+            }
+        }
+    }
     //修改上下架
     public function is_on_sale()
     {
@@ -802,7 +836,7 @@ class GoodsAction extends AuthAction
     //基地管理
     public function base_admin()
     {
-		$where = array();
+        $where = array();
         if (!empty($_GET['base_name'])) {
             $where['base_name'] = array('like', '%'.$_GET['base_name'].'%');
         }
@@ -812,20 +846,20 @@ class GoodsAction extends AuthAction
         $count = M("base")->count();
         $page = D("Common")->getPage($count,15);//分页
         $list = M("base")->order('base_order desc,base_id asc')->where($where)->limit($page["start"] . "," . $page["pagesize"])->select();
-		$list_item = array();
-		foreach($list as $key => $val){
-			$order_info = M('g_order_info')->where(array('order_type'=>3, 'farm_id'=>$val['base_id']))->find();
-			if($order_info){
-				$val['order_id'] = $order_info['order_id'];
-				$val['order_sn'] = $order_info['order_sn'];
-				$val['show_order'] = $order_info['pay_status'] == 2 ? '已付款' : '未付款';
-			}else{
-				$val['order_id'] = 0;
-				$val['order_sn'] = '';
-				$val['show_order'] = '订单未创建';
-			}
-			$list_item[] = $val;
-		}
+        $list_item = array();
+        foreach($list as $key => $val){
+            $order_info = M('g_order_info')->where(array('order_type'=>3, 'farm_id'=>$val['base_id']))->find();
+            if($order_info){
+                $val['order_id'] = $order_info['order_id'];
+                $val['order_sn'] = $order_info['order_sn'];
+                $val['show_order'] = $order_info['pay_status'] == 2 ? '已付款' : '未付款';
+            }else{
+                $val['order_id'] = 0;
+                $val['order_sn'] = '';
+                $val['show_order'] = '订单未创建';
+            }
+            $list_item[] = $val;
+        }
         $this->assign("list", $list_item);
         $this->assign("page", $page);
         $this->display();

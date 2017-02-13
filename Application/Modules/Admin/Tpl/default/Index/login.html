@@ -33,33 +33,33 @@ Version: 1.0.0
 <!--Head Ends-->
 <!--Body-->
 <body>
-<form action="__URL__/checkLogin" method="post" / >
-    <div class="login-container animated fadeInDown">
-        <div class="loginbox bg-white">
-            <div class="loginbox-title">登陆</div>      
-            <div class="loginbox-or">
-                <div class="or-line"></div>
-                <div class="or">OR</div>
+    <form action="__URL__/checklogin" method="post"  >
+        <div class="login-container animated fadeInDown">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">登陆</div>
+                <div class="loginbox-or">
+                    <div class="or-line"></div>
+                    <div class="or">OR</div>
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="text" name='username' class="form-control" placeholder="账号" />
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="password" name='userpwd' class="form-control" placeholder="密码" />
+                </div>
+                <div class="loginbox-submit">
+                    <input type="submit" class="btn btn-primary btn-block" value="登陆">
+                </div>
             </div>
-            <div class="loginbox-textbox">
-                <input type="text" name='username' class="form-control" placeholder="账号" />
-            </div>
-            <div class="loginbox-textbox">
-                <input type="password" name='userpwd' class="form-control" placeholder="密码" />
-            </div>
-            <div class="loginbox-submit">
-                <input type="submit" class="btn btn-primary btn-block" value="登陆">
-            </div>
+
         </div>
 
-    </div>
+        <!--Basic Scripts-->
+        <script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+        <script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
 
-    <!--Basic Scripts-->
-    <script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
-    <script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
-
-    <!--Beyond Scripts-->
-    <script src="__PUBLIC__/admin/js/beyond.js"></script>
+        <!--Beyond Scripts-->
+        <script src="__PUBLIC__/admin/js/beyond.js"></script>
 
   </form> 
     

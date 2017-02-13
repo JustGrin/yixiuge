@@ -33,7 +33,7 @@
 		<label class="control-label">
 			银行名称<span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" name="blank_name" value="{$data.blank_name}" id="blank_name" placeholder="银行名称" class="form-control">
+		<input type="text" name="blank_name" value="{$data['blank_id'] ? $data['blank_name'] : ''}" id="blank_name" placeholder="银行名称" class="form-control">
 	</div>
    
  <div class="form-group">
@@ -42,8 +42,8 @@
 		</label>
 		<select class="form-control"   name="status">
 			<if condition="$data.blank_id gt 0">
-			<option value="1" <if condition="$data.status eq 1">selected</if> >有效</option>
-            <option value="0" <if condition="$data.status eq 0">selected</if> >无效</option>
+			<option value="1" <if condition="$data['status'] eq 1">selected</if> >有效</option>
+            <option value="0" <if condition="$data['status'] eq 0">selected</if> >无效</option>
             <else/>
             <option value="1">有效</option>
             <option value="0">无效</option>
@@ -57,7 +57,7 @@
 </div>
 <div class="row">
 <div class="col-md-4">
-	<input type="hidden"  value="{$data.blank_id}" name="id">
+	<input type="hidden"  value="{$data['blank_id'] ? $data['blank_id'] : ''} " name="blank_id">
 	<button class="btn btn-primary btn-wide pull-left" type="submit">
 		提交 <i class="fa fa-arrow-circle-right"></i>
 	</button>

@@ -32,7 +32,7 @@
                                             商品类型名称 <span class="symbol required" aria-required="true"></span>
                                         </label>
                                         <input type="text" placeholder="填写商品类型名称" class="form-control" id="cat_name"
-                                               name="cat_name" value="{$type.cat_name}"/>
+                                               name="cat_name" value="{$type['id'] ? $type['cat_name'] : ''}"/>
                                     </div>
                                     <!-- 状态 -->
                                     <div class="form-group">
@@ -60,7 +60,7 @@
                                     <textarea class="form-control autosize" id="attr_group" name="attr_group"
                                               data-autosize-on="true"
                                               style="overflow: hidden; resize: horizontal; word-wrap: break-word; height: 71px;"
-                                              value="{$type.attr_group}">{$type.attr_group}</textarea>
+                                              value="{$type['id'] ? $type['attr_group'] : ''}">{$type['id'] ? $type['attr_group'] : ''}</textarea>
                                     </div>
                                 </div>
                             </div>

@@ -12,11 +12,18 @@ class OrderinfoAction extends AuthAction
 	{
 //        var_dump($_GET);die;
 		$where = array();
-		if ($_GET['start_time']) {   //开始时间
+		if (isset($_GET['start_time'] )) {   //开始时间
 			$star_time = strtotime($_GET['start_time']);
+		}else{
+			$_GET['start_time']  = '';
+			$star_time = 0;
 		}
-		if ($_GET['end_time']) {   //结束时间
+
+		if (isset($_GET['end_time'])) {   //结束时间
 			$end_time = strtotime($_GET['end_time']);
+		}else{
+			$_GET['end_time'] = '' ;
+			$end_time = 0 ;
 		}
 		if ($star_time > 0 && $end_time > 0) {
 			$where['info.finnshed_time'] = array('between', array($star_time, $end_time));
@@ -32,17 +39,21 @@ class OrderinfoAction extends AuthAction
 		->count();
 		$page = D("Common")->getPage($count);//分页
 		$field = "info.*,mem.member_card";
+
 		$data = M()->table($pre . 'g_order_info info')
 			->join($pre . 'member mem on info.user_id=mem.id')//
 			->where($where)//
 			->field($field)->limit($page["start"] . "," . $page["pagesize"])->select();
-		foreach ($data as $k => $v) {
-			$data[$k]['order_amount'] = sprintf("%.2f", $v['order_amount']) + sprintf("%.2f", $v['shipping_fee']);//邮费
-			$data[$k]['order_rebate'] = sprintf("%.2f", $v['order_rebate']);
-			$data[$k]['order_profit'] = sprintf("%.2f", $v['order_profit']);
-			$data[$k]['order_profit_all'] = sprintf("%.2f", $v['order_profit_all']);
+		if ($data){
+			foreach ($data as $k => $v) {
+				$data[$k]['order_amount'] = sprintf("%.2f", $v['order_amount']) + sprintf("%.2f", $v['shipping_fee']);//邮费
+				$data[$k]['order_rebate'] = sprintf("%.2f", $v['order_rebate']);
+				$data[$k]['order_profit'] = sprintf("%.2f", $v['order_profit']);
+				$data[$k]['order_profit_all'] = sprintf("%.2f", $v['order_profit_all']);
 
+			}
 		}
+
 		$list["list"] = $data;
 		$list["page"] = $page["page"];
 		$this->assign("list", $list);
@@ -122,15 +133,11 @@ class OrderinfoAction extends AuthAction
 	public function refund_apply()
 	{
 		$where = array();
-		if ($_GET['mobile']) {
-			$where['mem.mobile'] = array('eq', $_GET['mobile']);
-		}
-		if ($_GET['member_card']) {
-			$where['mem.member_card'] = array('like', '%'.$_GET['member_card'] . '%');
-		}
-		if ($_GET['order_sn']) {
-			$where['ord.order_sn'] = array('like', '%'.$_GET['order_sn'] . '%');
-		}
+
+		isset($_GET['mobile']) ? $where['mem.mobile'] = array('eq', $_GET['mobile']) : $_GET['mobile'] = '';
+		isset($_GET['member_card']) ? $where['mem.member_card'] = array('like', '%'.$_GET['member_card'] . '%') : $_GET['member_card'] = '';
+		isset($_GET['order_sn']) ? $where['ord.order_sn'] = array('like', '%'.$_GET['order_sn'] . '%') : $_GET['order_sn'] = '';
+		isset($_GET['refund_sn']) ? $where['order_sn'] = array('like', '%'.$_GET['refund_sn'] . '%') : $_GET['refund_sn'] = '';
 		if (isset($_GET['status'])) {
 			if ($_GET['status'] != 'all') {
 				$where['ap.status'] = $_GET['status'];
@@ -157,9 +164,12 @@ class OrderinfoAction extends AuthAction
 			->join('db_member mem on mem.id = ref.member_id')
 			->where($where)->field($field)//
 			->order('ap.add_time desc')->limit($page['start'] . ',' . $page['pagesize'])->select();
-		foreach ($list as $k => $v) {
-			$list[$k]['goods_price'] = M('g_order_goods')->where('rec_id=' . $v['order_goods_id'])->getField('goods_price');
+		if($list){
+			foreach ($list as $k => $v) {
+				$list[$k]['goods_price'] = M('g_order_goods')->where('rec_id=' . $v['order_goods_id'])->getField('goods_price');
+			}
 		}
+
 		$menulist['list'] = $list;
 		$menulist['page'] = $page['page'];
 //		print_r($list);

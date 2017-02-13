@@ -1,7 +1,6 @@
 <?php
 
 class BaseAction extends CommonAction {
-
 	public function __construct(){
 		parent::__construct();
 		if(empty($_SESSION["auid"])){

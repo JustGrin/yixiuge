@@ -12,17 +12,21 @@ class DrawAction extends AuthAction{
 //        var_dump($data);die;
         $where=array('draw_status'=>1,'is_shenghe'=>1);
         $odds = M('draw_progressive')->field('sum(draw_chances_value) as odds')->where($where)->find();  //计算总中奖基数
-        foreach($data['list'] as $k => $v){
-            $data['list'][$k]['odds']= sprintf("%.1f",($v['draw_chances_value']/$odds['odds'])*100);  //获得中奖率
-            if($v['draw_type']==5){ //当奖品为商品时，获取商品信息
-                $field='goods_name';
-                $where['goods_id']= $v['draw_value'];
-                $goods_msg=M('g_goods')->field($field)->where($where)->find();
-                $data['list'][$k]['goods_msg']=$goods_msg['goods_name'];
+        if($data['list'] ){
+            foreach($data['list'] as $k => $v){
+                $data['list'][$k]['odds']= sprintf("%.1f",($v['draw_chances_value']/$odds['odds'])*100);  //获得中奖率
+                if($v['draw_type']==5){ //当奖品为商品时，获取商品信息
+                    $field='goods_name';
+                    $where['goods_id']= $v['draw_value'];
+                    $goods_msg=M('g_goods')->field($field)->where($where)->find();
+                    $data['list'][$k]['goods_msg']=$goods_msg['goods_name'];
+                }
             }
         }
+
 //        var_dump($data);die;
         $data['list']=$this->get_draw_type($data['list']);  //获取奖品类型
+        $data['page'] = isset($data['page']) ?  $data['page'] : '';
 //        var_dump($data);die;
         $this->assign('data',$data);
         $this->display();
@@ -51,15 +55,17 @@ class DrawAction extends AuthAction{
                 }
             }
         }else{   //无值代表显示当前页面
-            if($_GET['id']){   //有值代表显示编辑页面
+            $id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+            if($id){   //有值代表显示编辑页面
                 $this->msgtitle='编辑抽奖';
-                $where['id']=$_GET['id'];
+                $where['id']=$id;
                 $data=M('draw_progressive')->where($where)->find();
                 $this->data=$data;
             }else{ //无值代表显示新增页面
                 $this->msgtitle='新增抽奖';
             }
         }
+        $this->id = $id;
         $this->display();
     }
     //删除抽奖活动 gqh
@@ -75,13 +81,19 @@ class DrawAction extends AuthAction{
     }
     //抽奖记录 gqh
     public function  draw_log(){
+        $where = array();
+        $cwhere = array();
         if(!empty($_GET['log_status']) && $_GET['log_status']!=10){
             $cwhere['log.log_status']= $_GET['log_status'];
             $where['log_status']= $_GET['log_status'];
+        }else{
+            $_GET['log_status'] = '';
         }
         if(!empty($_GET['draw_type']) && $_GET['draw_type'] !=0){
             $cwhere['log.draw_type'] = $_GET['draw_type'];
             $where['draw_type'] = $_GET['draw_type'];
+        }else{
+            $_GET['draw_type'] = '';
         }
 //        var_dump($cwhere);
         $pre=C('DB_PREFIX'); //表前缀

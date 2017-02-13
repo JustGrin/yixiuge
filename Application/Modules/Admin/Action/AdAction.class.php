@@ -6,14 +6,20 @@
 class AdAction extends AuthAction{
     //分类列表
 	public function index(){
-        if($_GET['title']){
-			$where['title']=array('like',$_GET['title'].'%');
-		}
-		if($_GET['add_time']){
+		$where = array();
+		isset($_GET['title']) ? $where['title']=array('like',$_GET['title'].'%') : $_GET['title'] = '';
+
+		if(isset($_GET['add_time'])){
 			$add_time=strtotime($_GET['add_time']);
+		}else{
+			$add_time = 0 ;
+			$_GET['add_time'] = '';
 		}
-		if($_GET['end_time']){
-			$end_time=strtotime($_GET['end_time']);
+		if(isset($_GET['end_time'])){
+			$end_time = strtotime($_GET['end_time']);
+		}else{
+			$end_time = 0;
+			$_GET['end_time'] = '';
 		}
 		if($end_time>0 && $add_time>0){
 			$where['add_time']=array('between',array($add_time,$end_time));
@@ -55,15 +61,17 @@ class AdAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{
-			if($_GET["id"]){
-				$gwhere["id"] =  array("eq",$_GET["id"]);
+			$id = isset($_GET["id"]) ? $_GET["id"] : 0 ;
+			if($id){
+				$gwhere["id"] =  array("eq",$id);
 				$data = M("ad_type")->where($gwhere)->find();
+				$this->assign("data",$data);
 				$title="编辑广告位置/类型";
 			}else{
 				$title="新增广告位置/类型";
 			}
-			
-			$this->assign("data",$data);
+			$this->id = $id;
+
 			$this->assign("msgtitle",$title);
 			$this->display();
 		}
@@ -167,14 +175,13 @@ class AdAction extends AuthAction{
 
 	//首页产品展示
 	public function ad_home_list(){
-		if($_GET['title']){
-			$where['title']=array('like','%'. $_GET['title'].'%');
-		}
-		if($_GET['type']){
-			$where['type']=$_GET['type'];
-		}
+		$where = array();
+		isset($_GET['title']) ? $where['title']=array('like','%'. $_GET['title'].'%') : $_GET['title'] = '';
+		isset($_GET['type']) ? $where['type']=$_GET['type'] : $_GET['type'] = '' ;
 		if(!empty($_GET['status']) && $_GET['status'] != 'all'){
 			$where['status']=$_GET['status'];
+		}else{
+			$_GET['status'] = 'all';
 		}
 		$menulist=D("Common")->getPageList('home_ad',$where,'*','sort desc,add_time desc');
 		$this->assign("list",$menulist);
@@ -218,8 +225,9 @@ class AdAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{   //显示当前页面
-			if($_GET["id"]){
-				$where['id']=$_GET["id"];
+			$id = isset($_GET['id']) ? $_GET['id'] : 0;
+			if($id){
+				$where['id']=$id;
 				$data = M("home_ad")->where($where)->find();
 
 				if($data['type']==2){ //为关联类别的时候
@@ -244,6 +252,7 @@ class AdAction extends AuthAction{
 			if(empty($data['end_time'])){
 				$data['end_time']=strtotime('+1 month');
 			}
+			$this->id = $id;
 			$this->assign("data",$data);
 			$this->assign("msgtitle",$titles);
 			$this->display();

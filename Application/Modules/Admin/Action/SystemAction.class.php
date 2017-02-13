@@ -55,23 +55,38 @@ class SystemAction extends AuthAction{
     //新增菜单
 	public function rule_add(){
 		if($_POST){
+
 			if($_POST['name']){
 				$_POST['name']=strtolower($_POST['name']);////大写转成小写
 			}
 			$_POST['create_time']=time();
-			$res = M("admin_rule")->add($_POST);
+			if($_POST['id']){
+				$res = M("admin_rule")->where("id=".$_POST["id"])->save($_POST);
+			}else{
+				$res = M("admin_rule")->add($_POST);
+			}
+
 			if($res!==false){
 				$this->success("操作成功",U("Admin/System/index"));
 			}else{
 				$this->error("操作失败");
 			}
 		}else{
+			$id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+			if($id){
+				$menuwhere["id"] =  array("eq",$id);
+				$data = M("admin_rule")->where($menuwhere)->find();
+				$title="编辑菜单";
+				$this->assign("data",$data);
+			}else{
+				$title="添加菜单";
+			}
+			$this->id =$id;
 			$this->iconlist=$this->icon;
 			$mwhere["pid"] = array("eq",0);
 			$mwhere["status"] = array("eq",1);
 			$list = M("admin_rule")->where($mwhere)->select();
 			$this->assign("list",$list);
-			$title="添加菜单";
 			$this->assign("msgtitle",$title);
 			$this->display('rule_add');
 		}
@@ -119,8 +134,9 @@ class SystemAction extends AuthAction{
 	//分组列表
 	public function group_list(){
 		$auid=$_SESSION['auid'];
+		$where =array();
 		if($auid!=1){
-           $where=array('auid'=>$auid);
+           $where['auid'] =$auid;
 		}
 		$list=D("Common")->getAllList('admin_group',$where,'*','auid asc');
 		$this->assign("list",$list);
@@ -146,7 +162,9 @@ class SystemAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{
-			if($_GET["id"]){
+			$data = array();
+			$data['id'] = 0;
+			if(isset($_GET["id"])){
 				$gwhere["id"] =  array("eq",$_GET["id"]);
 				$data = M("admin_group")->where($gwhere)->find();
 				$menuarr = explode(",",$data["rules"]);
@@ -201,17 +219,24 @@ class SystemAction extends AuthAction{
 	
 	//后台管理员列表
 	public function manager_list(){
+		$where =array();
         if(session('afid')>1){
           $where['fid']=session('afid');
         }
-        if($_GET['account']){
+        if(isset($_GET['account'])){
 			$where['account']=array('like',$_GET['account'].'%');
+		}else{
+			$_GET['account'] ='';
 		}
-		if($_GET['name']){
+		if(isset($_GET['name'])){
 			$where['name']=array('like',$_GET['name'].'%');
+		}else{
+			$_GET['name'] ='';
 		}
-		if($_GET['mobile']){
+		if(isset($_GET['mobile'])){
 			$where['mobile']=array('like',$_GET['mobile'].'%');
+		}else{
+			$_GET['mobile'] = '';
 		}
 		if(isset($_GET['type'])){
 			if($_GET['type']!='all'){
@@ -417,26 +442,25 @@ class SystemAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{
-			if($_GET["id"]){
-				//$gwhere["id"] =  array("eq",$_GET["id"]);
-				//$data = M("sys_param")->where($gwhere)->find();
+		   $id = isset($_GET['id']) ? $_GET['id']: 0;
+			if($id){
+				$gwhere["id"] =  array("eq",$_GET["id"]);
+				$data = M("sys_param")->where($gwhere)->find();
+				$this->assign("data",$data);
 				$title="编辑数据字典";
 			}else{
 				$title="新增数据字典";
 			}
+		   $this->id = $id;
 			$this->assign("msgtitle",$title);
-			$this->assign("data",$data);
 			$this->display();
 		}
    }
     //自设数据字典 
    public  function sys_param(){
-        if($_GET['param_code']){
-			$where['param_code']=array('like',$_GET['param_code'].'%');
-		}
-		if($_GET['param_name']){
-			$where['param_name']=array('like',$_GET['param_name'].'%');
-		}
+       $where = array();
+	   isset($_GET['param_code']) ? $where['param_code']=array('like',$_GET['param_code'].'%') : $_GET['param_code'] = '';
+	   isset($_GET['param_name']) ? $where['param_name']=array('like',$_GET['param_name'].'%') : $_GET['param_name'] = '' ;
 		$where['is_key']=0;
 		$where['is_delete']=0;
 		$menulist=D("Common")->getPageList('sys_param',$where);
@@ -522,12 +546,9 @@ class SystemAction extends AuthAction{
 	}
        //自设数据字典 关键设置
    public  function sys_param_key(){
-        if($_GET['param_code']){
-			$where['param_code']=array('like',$_GET['param_code'].'%');
-		}
-		if($_GET['param_name']){
-			$where['param_name']=array('like',$_GET['param_name'].'%');
-		}
+	   $where =array();
+	   isset($_GET['param_code']) ? $where['param_code']=array('like',$_GET['param_code'].'%') : $_GET['param_code'] = '' ;
+	   isset($_GET['param_name']) ? $where['param_name']=array('like',$_GET['param_name'].'%') : $_GET['param_name'] = '';
 		$where['is_key']=1;
 		$where['is_delete']=0;
 		$menulist=D("Common")->getPageList('sys_param',$where);
@@ -619,13 +640,9 @@ class SystemAction extends AuthAction{
 
 	  //自设数据字典 
    public  function sys_notice(){
-        if($_GET['title']){
-			$where['title']=array('like',$_GET['title'].'%');
-		}
-		if($_GET['type']){
-			$where['type']=array('eq',$_GET['type']);
-		}
-		
+	   $where = array();
+	   isset($_GET['title']) ? $where['title']=array('like',$_GET['title'].'%') : $_GET['title'] = '' ;
+		isset($_GET['type']) ? $where['type']=array('eq',$_GET['type']) : $_GET['type'] = '' ;
 		$menulist=D("Common")->getPageList('sys_notice',$where,$field='*',$order='id desc');
 		$this->assign("list",$menulist);
 		$this->display();
@@ -654,15 +671,17 @@ class SystemAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{
-			if($_GET["id"]){
-				$gwhere["id"] =  array("eq",$_GET["id"]);
+		   $id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+			if($id){
+				$gwhere["id"] =  array("eq",$id);
 				$data = M("sys_notice")->where($gwhere)->find();
 				$title="编辑公告";
+				$this->assign("data",$data);
 			}else{
 				$title="新增公告";
 			}
+		   $this->id =$id;
 			$this->assign("msgtitle",$title);
-			$this->assign("data",$data);
 			$this->display();
 		}
    }

@@ -69,6 +69,12 @@
 					  </label>
 						<input type="text" name="goods_sn" value="{$_GET.goods_sn}" id="goods_sn" placeholder="商品货号" class="form-control">
 				</div>
+			<div class="form-group">
+				<label for="supplier_name" class="sr-only">
+					供货商名称
+				</label>
+				<input type="text" name="supplier_name" value="{$_GET.goods_name}" id="supplier_name" placeholder="供货商名称" class="form-control">
+			</div>
 				 <div class="form-group">
 					<label for="is_on_sale" class="sr-only">
 						
@@ -246,7 +252,7 @@
 							   data-original-title="未售罄"><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
 							</if>
 						</td>
-						<td >{$activity_names[$vo[activity_id]]}</td>
+						<td >{$vo['activity_id'] ? $activity_names[$vo['activity_id']] : '无活动'}</td>
 						<td >{$vo.goods_number}</td>
 						<td class="center">
 						<div class="visible-md visible-lg hidden-sm hidden-xs">

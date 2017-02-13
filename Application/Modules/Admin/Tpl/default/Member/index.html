@@ -92,7 +92,7 @@
 						绑定
 					</label>
 					<select class="form-control" id="binding" name="binding">
-						<option value="0" <if condition="$_GET['binding'] =='0'">selected</if>>绑定</option>
+						<option value="0" <if condition="$_GET['binding'] =='all'">selected</if>>绑定</option>
 						<option value="1" <if condition="$_GET['binding'] ==1">selected</if>>已绑定</option>
 						<option value="2" <if condition="$_GET['binding'] ==2">selected</if>>未绑定</option>
 					</select>
@@ -130,7 +130,7 @@
  <div class="panel-body">
 
 	<div class="form-group">
-		<label for="type" class="sr-only">
+		<label  class="sr-only">
 			状态
 		</label>
 	  <p class="input-group input-append datepicker date">

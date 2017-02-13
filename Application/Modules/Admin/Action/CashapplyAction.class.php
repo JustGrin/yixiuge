@@ -7,12 +7,9 @@ class CashapplyAction extends AuthAction{
 
     //会员提现申请
 	public function index(){
-        if($_GET['mobile']){
-			$where['mem.mobile']=array('eq','%'.$_GET['mobile'].'%');
-		}
-		 if($_GET['member_name']){
-			$where['mem.member_name']=array('like','%'.$_GET['member_name'].'%');
-		}
+		$where =array();
+		isset($_GET['mobile']) ? $where['mem.mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] ='';
+		isset($_GET['member_name']) ? $where['mem.member_name']=array('like','%'.$_GET['member_name'].'%') : $_GET['member_name'] ='';
 		if(isset($_GET['status'])){
 			if($_GET['status']!='all'){
 				$where['apply.status']=$_GET['status'];
@@ -20,9 +17,8 @@ class CashapplyAction extends AuthAction{
 		}else{
 			$_GET['status']='all';
 		}
-		if(isset($_GET['payment_no']) && $_GET['payment_no'] != ''){
-			$where['apply.payment_no']=array('like','%'.$_GET['payment_no'].'%');
-		}
+		isset($_GET['payment_no']) ? $where['apply.payment_no']=array('like','%'.$_GET['payment_no'].'%') : $_GET['payment_no'] ='';
+
 		//type 1商家提现 2会员提现
 		$where['apply.type']=2;
 		//$menulist=D("Common")->getPageList('cash_apply',$where);
@@ -478,8 +474,8 @@ class CashapplyAction extends AuthAction{
 	//提现银行新增 编辑
 	public function blank_edit(){
 		if($_POST){
-			if(!empty($_POST["id"])){
-				$res = M("blank")->where("blank_id=".$_POST["id"])->save($_POST);
+			if(!empty($_POST["blank_id"])){
+				$res = M("blank")->where("blank_id=".$_POST["blank_id"])->save($_POST);
 			}else{
 				$res = M("blank")->add($_POST);
 			}
@@ -489,12 +485,13 @@ class CashapplyAction extends AuthAction{
 				$this->error("操作失败");
 			}
 		}else{
-			if($_GET["id"]){
+			if(isset($_GET["id"])){
 				$gwhere["blank_id"] =  array("eq",$_GET["id"]);
 				$data = M("blank")->where($gwhere)->find();
 				$title="编辑银行";
 				$wherelist['blank_id']= array("neq",$_GET["id"]);
 			}else{
+				$data['blank_id'] = 0;
 				$title="新增银行";
 			}
 			$this->assign("data",$data);

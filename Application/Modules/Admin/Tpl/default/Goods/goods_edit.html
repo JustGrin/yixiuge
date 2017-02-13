@@ -32,11 +32,7 @@
                                                 商品基本信息
                                             </a>
                                         </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#panel_edit_account">
-                                                商品属性
-                                            </a>
-                                        </li>
+
                                         <li>
                                             <a data-toggle="tab" href="#shop_img">
                                                 商品图片
@@ -91,7 +87,7 @@
                                                             商品名称 <span class="symbol required"
                                                                        aria-required="true"></span>
                                                         </label>
-                                                        <input type="text" name="goods_name" value="{$data.goods_name}"
+                                                        <input type="text" name="goods_name" value="{$data['goods_id'] ? $data['goods_name'] : '' }"
                                                                id="goods_name" placeholder="商品名称" class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -99,7 +95,7 @@
                                                             子标题 <span class="symbol required"
                                                                        aria-required="true"></span>
                                                         </label>
-                                                        <input type="text" name="subtitle" value="{$data.subtitle}"
+                                                        <input type="text" name="subtitle" value="{$data['goods_id'] ? $data['subtitle'] : ''}"
                                                                id=" subtitle" placeholder="子标题" class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -107,7 +103,7 @@
                                                             情怀 <span class="symbol required"
                                                                       aria-required="true"></span>
                                                         </label>
-                                                        <input type="text" name="feeling" value="{$data.feeling}"
+                                                        <input type="text" name="feeling" value="{$data['goods_id'] ? $data['feeling'] : ''}"
                                                                id=" feeling" placeholder="情怀" class="form-control">
                                                     </div>
 													<div class="form-group">
@@ -115,14 +111,14 @@
                                                             基地选择 <span class="symbol required"
                                                                        aria-required="true"></span>
                                                         </label>
-                                                        <select class="form-control" id="base_id" name="base_id">
+                                                        <select class="form-control" id="supplier_id" name="supplier_id">
                                                             <option value="">请选择</option>
-                                                            <volist name="base" id="vo">
-                                                                <option value="{$vo.base_id}"
-                                                                <if condition="$data.base_id eq $vo['base_id']">
+                                                            <volist name="supplier" id="vo">
+                                                                <option value="{$vo.s_id}"
+                                                                <if condition="$data.supplier_id eq $vo['s_id']">
                                                                     selected
                                                                 </if>
-                                                                >{$vo.base_name}</option>
+                                                                >{$vo.s_name}</option>
                                                             </volist>
                                                         </select>
                                                     </div>
@@ -133,7 +129,7 @@
                                                                           aria-required="true"></span>
                                                             </label>
                                                             <input type="text" disabled name="goods_sn"
-                                                                   value="{$data.goods_sn}" id="goods_sn"
+                                                                   value="{$data['goods_id'] ? $data['goods_sn'] : '' }" id="goods_sn"
                                                                    placeholder="商品货号" class="form-control"/>
                                                         </if>
 
@@ -173,46 +169,8 @@
                                                               value="包邮"
                                                               class="form-control" readonly>
                                                     </div>-->
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            基地名称
-                                                        </label>
-                                                        <input type="text" name="base_name"
-                                                               value="{$data.base_name}" id="base_name"
-                                                               placeholder="商品基地的名称" class="form-control">
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            基地头像<span class="symbol required"
-                                                                      aria-required="true"></span>(300px*300px,图片大小不大于1M)
-                                                        </label>
-                                                        <br>
 
-                                                        <div class="upload_file">
-                                                            <label>
-                                                                <input type="file" name="base_photo"
-                                                                       class="upload_input" id="base_photo" value=""
-                                                                       style="display:none;">
-
-                                                                <div class="fileinput fileinput-new"
-                                                                     data-provides="fileinput">
-                                                                    <div class="fileinput-new thumbnail"
-                                                                         id="show_photo_base">
-                                                                        <img id="base_photo_src"
-
-                                                                            src="{$data.base_logo}"
-                                                                             alt="">
-                                                                    </div>
-
-                                                                </div>
-                                                                点击图片上传
-                                                            </label>
-                                                            <input type="hidden" name="base_logo" id="base_logo"
-                                                                   value="{$data.base_logo}">
-                                                        </div>
-
-                                                    </div>
 
 
                                                     <div class="form-group">
@@ -220,15 +178,8 @@
                                                             商品库存<span class="symbol required"
                                                                       aria-required="true"></span>
                                                         </label>
-                                                        <if condition="$data.goods_id gt 0">
                                                             <input type="text" name="goods_number"
-                                                                   value="{$data.goods_number|default=" 0z"}"
                                                             id="goods_number" placeholder="商品库存" class="form-control">
-                                                            <else/>
-                                                            <input type="text" name="goods_number"
-                                                                   value="{$data.goods_number|default=" 100"}"
-                                                            id="goods_number" placeholder="商品库存" class="form-control">
-                                                        </if>
                                                     </div>
 
                                                     <div class="form-group">
@@ -236,7 +187,7 @@
                                                             商品报警数量
                                                         </label>
                                                         <input type="text" name="warn_number"
-                                                               value="{$data.warn_number|default='0'}" id="warn_number"
+                                                               value="{$data['goods_id'] ? $data['warn_number'] : 0 }" id="warn_number"
                                                         placeholder="商品报警数量" class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -246,7 +197,7 @@
 
                                                         <div class="input-group">
                                                             <input type="text" name="goods_weight"
-                                                                   value="{$data.goods_weight|default='0'}"
+                                                                   value="{$data['goods_id'] ? $data['goods_weight'] : 0 }"
                                                             id="goods_weight" placeholder="商品重量" class="form-control">
                                                             <span class="input-group-addon">kg</span>
                                                         </div>
@@ -256,7 +207,7 @@
                                                             商品单价
                                                         </label>
                                                         <input type="text" name="unit_price"
-                                                               value="{$data.unit_price|default='0'}" id="unit_price"
+                                                               value="{$data['goods_id'] ? $data['unit_price'] : 0 }" id="unit_price"
                                                                placeholder="单位价格" class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -264,7 +215,7 @@
                                                             商品单位
                                                         </label>
                                                         <input type="text" name="units"
-                                                               value="{$data.units}" id="units"
+                                                               value="{$data['goods_id'] ?  $data['units'] : ''}" id="units"
                                                                placeholder="单位价格" class="form-control">
                                                     </div>
 
@@ -276,7 +227,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon">￥</span>
                                                             <input type="text" name="purchase_price"
-                                                                   value="{$data.purchase_price|default='0'}"
+                                                                   value="{$data['goods_id'] ? $data['purchase_price'] : 0 }"
                                                             id="purchase_price" placeholder="供货价" class="form-control">
                                                         </div>
                                                     </div>
@@ -289,7 +240,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon">￥</span>
                                                             <input type="text" name="shop_price"
-                                                                   value="{$data.shop_price}" id="shop_price"
+                                                                   value="{$data['goods_id'] ? $data['shop_price'] : ''}" id="shop_price"
                                                                    placeholder="本店售价" class="form-control">
                                                         </div>
                                                     </div>
@@ -301,7 +252,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon">￥</span>
                                                             <input type="text" name="market_price"
-                                                                   value="{$data.market_price}" id="market_price"
+                                                                   value="{$data['goods_id'] ?  $data['market_price'] : ''}" id="market_price"
                                                                    placeholder="市价" class="form-control">
                                                         </div>
                                                     </div>
@@ -315,7 +266,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon" style="background: red;    border: 1px solid red">￥</span>
                                                             <input type="text" name="vip_price"
-                                                                   value="{$data.vip_price}" id="vip_price"
+                                                                   value="{$data['goods_id'] ? $data['vip_price'] :'' }" id="vip_price"
                                                                    placeholder="VIP专享价" class="form-control">
                                                         </div>
                                                     </div>
@@ -357,7 +308,7 @@
                                                                     <div class="fileinput-new thumbnail"
                                                                          id="show_photo">
                                                                         <img id="head_photo_src"
-                                                                             src="{$data.goods_img}"
+                                                                             src="{$data['goods_id'] ? $data['goods_img'] : ''}"
                                                                              alt="">
                                                                     </div>
 
@@ -365,7 +316,7 @@
                                                                 点击图片上传
                                                             </label>
                                                             <input type="hidden" name="goods_img" id="photo_pic"
-                                                                   value="{$data.goods_img}">
+                                                                   value="{$data['goods_id'] ? $data['goods_img'] : ''}">
                                                         </div>
 
                                                     </div>
@@ -386,7 +337,7 @@
                                                                      data-provides="fileinput">
                                                                     <div class="fileinput-new thumbnail">
                                                                         <img id="long_photo_src"
-                                                                             src="{$data.long_goods_img}"
+                                                                             src="{$data['goods_id'] ? $data['long_goods_img'] : ''}"
                                                                              alt="">
                                                                     </div>
 
@@ -394,7 +345,7 @@
                                                                 点击图片上传
                                                             </label>
                                                             <input type="hidden" name="long_goods_img" id="long_goods_pic"
-                                                                   value="{$data.long_goods_img}">
+                                                                   value="{$data['goods_id'] ? $data['long_goods_img'] : ''}">
                                                         </div>
 
                                                     </div>
@@ -404,7 +355,7 @@
                                                         </label>
                                                         <textarea id="keywords" name="keywords" class=" autosize"
                                                                   data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.keywords}</textarea>
+                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['keywords'] : ''}</textarea>
                                                     </div>
 
                                                     <div class="form-group">
@@ -414,7 +365,7 @@
                                                         </label>
                                                         <textarea id="goods_brief" name="goods_brief" class=" autosize"
                                                                   data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.goods_brief}</textarea>
+                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['goods_brief'] : ''}</textarea>
                                                     </div>
 
                                                     <div class="form-group">
@@ -424,7 +375,7 @@
                                                         </label>
                                                         <textarea id="goods_desc" name="goods_desc" class=" autosize"
                                                                   data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 300px;">{$data.goods_desc}</textarea>
+                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 300px;">{$data['goods_id'] ? $data['goods_desc'] : ''}</textarea>
                                                         <input type="hidden" name="msg" id="msg" value="">
                                                     </div>
 
@@ -479,14 +430,14 @@
                                                         <div class="clip-radio radio-primary fa-hover Primary">
                                                             <input type="radio" value="1" name="is_show_index"
                                                                    id="is_show_index_yes"
-                                                            <if condition="$data.is_show_index eq 1">checked</if>
+                                                            <if condition="$data['goods_id'] && $data.is_show_index eq 1">checked</if>
                                                             />
                                                             <label for="is_show_index_yes">
                                                                 是
                                                             </label>
                                                             <input type="radio" value="0" name="is_show_index"
                                                                    id="is_show_index_no"
-                                                            <if condition="$data.is_show_index eq 0">checked</if>
+                                                            <if condition="$data['goods_id'] && $data.is_show_index eq 0">checked</if>
                                                             />
                                                             <label for="is_show_index_no">
                                                                 否
@@ -500,13 +451,13 @@
 
                                                         <div class="clip-radio radio-primary fa-hover Primary">
                                                             <input type="radio" value="1" name="offline"
-                                                                   id="offline_yes" {$data['offline']?'checked':''}
+                                                                   id="offline_yes" {$data['goods_id'] ? $data['offline']?'checked':'' : ''}
                                                             />
                                                             <label for="offline_yes">
                                                                 是
                                                             </label>
                                                             <input type="radio" value="0" name="offline" id="offline_no"
-                                                                   {$data['offline']?'':'checked'}
+                                                                   {$data['goods_id'] ? $data['offline']?'':'checked' : ''}
                                                             />
                                                             <label for="offline_no">
                                                                 否
@@ -610,8 +561,8 @@
                                                                       aria-required="true"></span>
                                                         </label>
                                                         <input type="text" name="sort_order"
-                                                               value="{$data.sort_order|default='0'}"
-                                                               id="goods_number" placeholder="商品排序"
+                                                               value="{$data['goods_id'] ? $data['sort_order'] : 0}"
+                                                               id="sort_order" placeholder="商品排序"
                                                                class="form-control">
                                                     </div>
                                                     <div class="form-group">
@@ -620,44 +571,7 @@
                                                         </label>
                                                         <textarea id="seller_note" name="seller_note" class=" autosize"
                                                                   data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.seller_note}</textarea>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="panel_edit_account" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            <span style="color: #EA0A0A;">*属性分享佣金设置后按属性佣金进行结算，多个按照最高属性佣金结算</span>
-                                                            <br>
-                                                            <br>
-                                                            <span style="color: #EA0A0A;">*属性价格设置后按属性价格进行结算，多个按照最高属性价格结算</span>
-                                                        </label>
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品类型
-                                                        </label>
-                                                        <select class="form-control" id="goods_type" name="goods_type">
-                                                            <option value="">请选择</option>
-                                                            <volist name="goods_type" id="vo">
-                                                                <option value="{$vo.cat_id}"
-                                                                <if condition="$data.goods_type eq $vo['cat_id']">
-                                                                    selected
-                                                                </if>
-                                                                >{$vo.cat_name}</option>
-                                                            </volist>
-                                                        </select>
-                                                    </div>
-                                                    <div class="goods_type_html">
-
-
+                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['seller_note'] : ''}</textarea>
                                                     </div>
 
 
@@ -688,7 +602,7 @@
                                                         <br>
 
                                                         <div class="goods_image_url">
-
+                                                            <if condition="$data['goods_id']">
                                                             <volist name="good_image_url" id='vo'>
                                                                 <div class="fileinput fileinput-new"
                                                                      data-provides="fileinput">
@@ -712,6 +626,7 @@
                                                                            value="{$vo.img_url}">
                                                                 </div>
                                                             </volist>
+                                                        </if>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -748,13 +663,13 @@
                                                         </label>
                                                         <select class="form-control" id="activity_id" name="activity_id">
                                                             <option value="0"
-                                                            <if condition="$data.activity_id eq 0">
+                                                            <if condition="$data['goods_id'] &&  $data.activity_id eq 0">
                                                                 selected
                                                             </if>
                                                             >无活动</option>
                                                             <volist name="activity_list" id="vo">
                                                                 <option value="{$vo.id}"
-                                                                <if condition="$data.activity_id eq $vo['id']">
+                                                                <if condition="$data['goods_id'] && $data.activity_id eq $vo['id']">
                                                                     selected
                                                                 </if>
                                                                 >{$vo.activity_name}</option>
@@ -877,13 +792,13 @@
                                                            </label>
                                                            <div class="clip-radio radio-primary fa-hover Primary">
                                                                <input type="radio" value="0" name="postage_unit"
-                                                                      id="unit_piece" {$data['postage_unit']?'':'checked'}
+                                                                      id="unit_piece" {$data['goods_id'] ? $data['postage_unit']?'':'checked' : 'checked'}
                                                                />
                                                                <label for="unit_piece">
                                                                    件数
                                                                </label>
                                                                <input type="radio" value="1" name="postage_unit"
-                                                                      id="unit_weight" {$data['postage_unit']?'checked':''}
+                                                                      id="unit_weight" {$data['goods_id'] ? $data['postage_unit']?'checked':'' : ''}
                                                                />
                                                                <label for="unit_weight">
                                                                    重量(kg)
@@ -898,17 +813,17 @@
                                                             <tr>
                                                                 <th style="width:50px">#</th>
                                                                 <th class="hidden-xs" style="width:80px">地区</th>
-                                                                <th style="width:50px" class="f_title">{$data['postage_unit']?'首重(kg)':'首件(件)'}</th>
-                                                                <th style="width:50px" class="f_p_title">{$data['postage_unit']?'首重价':'首件价'}</th>
-                                                                <th style="width:50px" class="a_title">{$data['postage_unit']?'续重(kg)':'续件(件)'}</th>
-                                                                <th style="width:50px" class="a_p_title">{$data['postage_unit']?'续重':'续件价'}</th>
+                                                                <th style="width:50px" class="f_title">{$data['goods_id'] ? $data['postage_unit']?'首重(kg)':'首件(件)' : '首件(件)'}</th>
+                                                                <th style="width:50px" class="f_p_title">{$data['goods_id'] ? $data['postage_unit']?'首重价':'首件价' : '首件价'}</th>
+                                                                <th style="width:50px" class="a_title">{$data['goods_id'] ? $data['postage_unit']?'续重(kg)':'续件(件)':'续件(件)'}</th>
+                                                                <th style="width:50px" class="a_p_title">{$data['goods_id'] ? $data['postage_unit']?'续重':'续件价':'续件价'}</th>
                                                                 <th style="width:100px" colspan="2" >包邮条件</th>
                                                                 <th style="width:100px">#</th>
                                                                 <th class="hidden-xs" style="width:80px">地区</th>
-                                                                <th style="width:50px" class="f_title">{$data['postage_unit']?'首重(kg)':'首件(件)'}</th>
-                                                                <th style="width:50px" class="f_p_title">{$data['postage_unit']?'首重价':'首件价'}</th>
-                                                                <th style="width:50px" class="a_title">{$data['postage_unit']?'续重(kg)':'续件(件)'}</th>
-                                                                <th style="width:50px" class="a_p_title">{$data['postage_unit']?'续重':'续件价'}</th>
+                                                                <th style="width:50px" class="f_title">{$data['goods_id'] ? $data['postage_unit']?'首重(kg)':'首件(件)':'首件(件)'}</th>
+                                                                <th style="width:50px" class="f_p_title">{$data['goods_id'] ? $data['postage_unit']?'首重价':'首件价':'首件价'}</th>
+                                                                <th style="width:50px" class="a_title">{$data['goods_id'] ? $data['postage_unit']?'续重(kg)':'续件(件)':'续件(件)'}</th>
+                                                                <th style="width:50px" class="a_p_title">{$data['goods_id'] ? $data['postage_unit']?'续重':'续件价':'续件价'}</th>
                                                                 <th style="width:150px" colspan="2" >包邮条件</th>
                                                             </tr>
                                                             </thead>

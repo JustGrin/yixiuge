@@ -78,6 +78,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">
+                                            供货商名称
+                                        </label>
+                                        <input type="text" name="supplier_name" value="{$_GET.supplier_name}" id="supplier_name" placeholder="供货商名称" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">
                                             订单类型
                                         </label>
                                         <select class="form-control" id="order_state" name="order_state">
@@ -161,7 +167,7 @@
                                 <div class="panel-body">
                                     下单时间：
                                     <div class="form-group">
-                                        <label for="type" class="sr-only">
+                                        <label  class="sr-only">
                                             下单时间
                                         </label>
 
@@ -187,7 +193,7 @@
                                     <br/>
                                     支付时间：
                                     <div class="form-group">
-                                        <label for="type" class="sr-only">
+                                        <label  class="sr-only">
                                             支付时间
                                         </label>
 
@@ -365,7 +371,7 @@
             var _to_buyer = $(this).attr('data_content');
             var _order_id = $(this).attr('data_order_id');
             var _title = '留言';
-            var content='<form class="form" method="post" action="{:U('admin/goodsorder/edit_to_buyer')}">'+
+            var content='<form class="form" method="post" action="{:U(\'admin/goodsorder/edit_to_buyer\')}">'+
                     '<div class="form-group">'+
                     '<label class="control-label">请输入留言以对该订单当前状态进行说明</label>'+
                     '<textarea class="form-control autosize" name="to_buyer" data-autosize-on="true" value="">'+_to_buyer+'</textarea></div>'+

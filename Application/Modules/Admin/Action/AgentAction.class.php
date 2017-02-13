@@ -8,18 +8,11 @@ class AgentAction extends AuthAction
     public function index()
     {
         $where = '';
-        if ($_GET['member_name']) {
-            $where['m.member_name'] = $_GET['member_name'];
-        }
-        if ($_GET['mobile']) {
-            $where['m.mobile'] = $_GET['mobile'];
-        }
-        if ($_GET['member_card']) {
-            $where['m.member_card'] = $_GET['member_card'];
-        }
-        if ($_GET['status'] !== null) {
-            $where['agent.status'] = $_GET['status'];
-        }
+
+        isset($_GET['member_name']) ? $where['m.member_name'] = $_GET['member_name'] : $_GET['member_name'] = '';
+        isset($_GET['mobile']) ?  $where['m.mobile'] = $_GET['mobile'] : $_GET['mobile'] = '' ;
+        isset($_GET['member_card']) ?  $where['m.member_card'] = $_GET['member_card'] : $_GET['member_card'] = '' ;
+        isset($_GET['status']) ?  $where['agent.status'] = $_GET['status'] : $_GET['status'] = '' ;
         $pre = C('DB_PREFIX');
         $join = $pre . 'member m on m.id=agent.member_id';
         $field = 'agent.*,m.member_name,m.mobile,m.member_card';
@@ -38,12 +31,15 @@ class AgentAction extends AuthAction
 //        echo M()->_sql();
         /*查询所有省市区*/
         $city = $this->get_all_city();
-        foreach ($list as $k => $v) {
-            $list[$k]['province'] = $city['province'][$v['provinceid']];
-            $list[$k]['city'] = $city['city'][$v['cityid']];
-            $list[$k]['area'] = $city['area'][$v['areaid']];
-            $list[$k]['agent_region'] = $list[$k]['province'] . $list[$k]['city'] . $list[$k]['area'];
+        if ($list){
+            foreach ($list as $k => $v) {
+                $list[$k]['province'] = $city['province'][$v['provinceid']];
+                $list[$k]['city'] = $city['city'][$v['cityid']];
+                $list[$k]['area'] = $city['area'][$v['areaid']];
+                $list[$k]['agent_region'] = $list[$k]['province'] . $list[$k]['city'] . $list[$k]['area'];
+            }
         }
+
 //        var_dump($list);die;
         $this->msgtitle = '代理';
         $this->page = $show;
@@ -79,7 +75,8 @@ class AgentAction extends AuthAction
                 $this->error('操作失败');
             }
         } else { //显示页面
-            if ($_GET['id']) { //编辑
+            $id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+            if ($id) { //编辑
                 $this->msgtitle = '编辑代理';
                 $where['id'] = $_GET['id'];
                 $data = M('regional_agent')->where($where)->find();
@@ -92,6 +89,7 @@ class AgentAction extends AuthAction
                 $this->msgtitle = '新增代理';
             }
             //所有省份
+            $this->id = $id;
             $province = $this->get_city_return();
             $this->province = $province['province'];
             $this->display();

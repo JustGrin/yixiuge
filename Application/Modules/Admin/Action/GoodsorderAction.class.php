@@ -10,17 +10,16 @@ class GoodsorderAction extends AuthAction{
 /*		if($_GET['is_upgrade']!=='' && $_GET['is_upgrade'] !== null ){
 			$where['is_upgrade']=$_GET['is_upgrade'];
 		}*/
+		$where =array();
 		$where['is_upgrade']=0;
 		$where['is_gift'] = 0;//去除活动订单
 		$where['activity_id'] = 0;//去除活动订单
 		$where['order_type'] = array('neq', 3);//去除基地订单
 		//下单时间
-		if ($_GET['start_time']) {
-			$start_time = strtotime($_GET['start_time']);
-		}
-		if ($_GET['end_time']) {
-			$end_time = strtotime($_GET['end_time'] . '23:59:59');
-		}
+		$start_time = 0;$end_time = -1;
+		isset($_GET['start_time']) ? $start_time = strtotime($_GET['start_time']) : $_GET['start_time'] = '' ;
+		isset($_GET['end_time']) ? $start_time = strtotime($_GET['end_time']) : $_GET['end_time'] = '' ;
+
 		if ($end_time > 0 && $start_time > 0) {
 			$where['add_time'] = array('between', array($start_time, $end_time));
 		} else {
@@ -31,13 +30,13 @@ class GoodsorderAction extends AuthAction{
 				$where['add_time'] = array('elt', $end_time);
 			}
 		}
+
 		//付费时间
-		if ($_GET['pay_start_time']) {
-			$pay_start_time = strtotime($_GET['pay_start_time']);
-		}
-		if ($_GET['pay_end_time']) {
-			$pay_end_time = strtotime($_GET['pay_end_time'] . '23:59:59');
-		}
+		$pay_start_time = 0 ; $pay_end_time = -1;
+
+		isset($_GET['pay_start_time']) ? $pay_start_time = strtotime($_GET['pay_start_time']) : $_GET['pay_start_time'] = '' ;
+		isset($_GET['pay_end_time']) ? $pay_end_time = strtotime($_GET['pay_end_time']) : $_GET['pay_end_time'] = '' ;
+
 		if ($pay_end_time > 0 && $pay_start_time > 0) {
 			$where['pay_time'] = array('between', array($pay_start_time, $pay_end_time));
 		} else {
@@ -49,36 +48,46 @@ class GoodsorderAction extends AuthAction{
 			}
 		}
 		//手机查询
-		if($_GET['mobile']){
-			$where['mobile']=array('like',$_GET['mobile'].'%');
-		}
+		isset($_GET['mobile']) ? $where['mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] = '';
 		//订单号查询
-		if($_GET['order_sn']){
-			$where['order_sn']=array('like', '%'.$_GET['order_sn'].'%');
-		}
+		isset($_GET['order_sn']) ? $where['order_sn']=array('like', '%'.$_GET['order_sn'].'%') : $_GET['order_sn'] = '';
 		//收货人查询
-		if($_GET['consignee']){
-			$where['consignee']=array('like', '%'.$_GET['consignee'].'%');
+		isset($_GET['consignee']) ? $where['consignee']=array('like', '%'.$_GET['consignee'].'%') : $_GET['consignee'] = '';
+
+
+		if (isset($_GET['supplier_name'])) {//查询供货商
+			$where_s['s_name'] = array('like', '%' . $_GET['supplier_name'] . '%');
+			$suppliers= M('supplier')->field('s_id')->where($where_s)->select();
+			$supplier_arr = array();
+			foreach ($suppliers as  $v){
+				$supplier_arr[] = $v['s_id'];
+			}
+			$where['supplier_id'] = array('in', $supplier_arr);
+		}else{
+			$_GET['supplier_name'] = '';
 		}
 		//活动查询
-		if($_GET['activity_id']){
+		if(isset($_GET['activity_id'])){
 			if ($_GET['activity_id'] != 0) {
 				$where['activity_id']=array('eq',$_GET['activity_id']);
 				$where['is_gift']=array('in',"0,1");
 			}
+		}else{
+			$_GET['activity_id'] = 0;
 		}
 
 		//如果设置可统计就使用该赛选忽略下拉框
-		$statistics=$_GET['statistics'];
-		if($statistics){
+		if(isset($_GET['statistics']) && $_GET['statistics'] == 1){
 			$where['pay_status'] = 2;//筛选代付款
 			$where['user_del'] = 0;//筛选已删除
 			$where['order_status'] = array('neq','3');//筛选无效订单
 		}else{
+			$_GET['statistics'] = 0;
 			if(!isset($_GET['order_state'])){   //未设置默认取已付款
 				$_GET['order_state']=2;
 				$_REQUEST['order_state']=2;
 			}
+
 			if (isset($_GET['order_state'])) {
 				if ($_REQUEST['order_state'] != 'all') {
 					if ($_REQUEST['order_state'] == 3) {   //已完成
@@ -122,7 +131,6 @@ class GoodsorderAction extends AuthAction{
 				$_GET['order_state'] = 'all';
 			}
 		}
-
 		if($_GET['start_time']){
 			$start_time=strtotime($_GET['start_time']);
 		}
@@ -142,7 +150,7 @@ class GoodsorderAction extends AuthAction{
 		if(isset($_GET['order'])){
 			$order=$_GET['order']." desc";
 		}
-
+		$filed = '*';
 		$menulist=D("Common")->getPageList('g_order_info',$where,$filed,'pay_time desc , order_id desc');
 		//print_r(M('g_order_info')->getlastsql());die;
 		$order=$menulist['list'];
@@ -171,15 +179,16 @@ class GoodsorderAction extends AuthAction{
 
 	//店铺订单列表
 	public function upgrade(){
+
+		$where = array();
 		$where['is_upgrade']=1;
 		$where['order_type'] = array('neq', 3);//去除基地订单
 		//下单时间
-		if ($_GET['start_time']) {
-			$start_time = strtotime($_GET['start_time']);
-		}
-		if ($_GET['end_time']) {
-			$end_time = strtotime($_GET['end_time'] . '23:59:59');
-		}
+		//下单时间
+		$start_time = 0;$end_time = -1;
+		isset($_GET['start_time']) ? $start_time = strtotime($_GET['start_time']) : $_GET['start_time'] = '' ;
+		isset($_GET['end_time']) ? $start_time = strtotime($_GET['end_time']) : $_GET['end_time'] = '' ;
+
 		if ($end_time > 0 && $start_time > 0) {
 			$where['add_time'] = array('between', array($start_time, $end_time));
 		} else {
@@ -190,13 +199,13 @@ class GoodsorderAction extends AuthAction{
 				$where['add_time'] = array('elt', $end_time);
 			}
 		}
+
 		//付费时间
-		if ($_GET['pay_start_time']) {
-			$pay_start_time = strtotime($_GET['pay_start_time']);
-		}
-		if ($_GET['pay_end_time']) {
-			$pay_end_time = strtotime($_GET['pay_end_time'] . '23:59:59');
-		}
+		$pay_start_time = 0 ; $pay_end_time = -1;
+
+		isset($_GET['pay_start_time']) ? $pay_start_time = strtotime($_GET['pay_start_time']) : $_GET['pay_start_time'] = '' ;
+		isset($_GET['pay_end_time']) ? $pay_end_time = strtotime($_GET['pay_end_time']) : $_GET['pay_end_time'] = '' ;
+
 		if ($pay_end_time > 0 && $pay_start_time > 0) {
 			$where['pay_time'] = array('between', array($pay_start_time, $pay_end_time));
 		} else {
@@ -208,29 +217,46 @@ class GoodsorderAction extends AuthAction{
 			}
 		}
 		//手机查询
-		if($_GET['mobile']){
-			$where['mobile']=array('like',$_GET['mobile'].'%');
-		}
+		isset($_GET['mobile']) ? $where['mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] = '';
 		//订单号查询
-		if($_GET['order_sn']){
-			$where['order_sn']=array('like', '%'.$_GET['order_sn'].'%');
-		}
+		isset($_GET['order_sn']) ? $where['order_sn']=array('like', '%'.$_GET['order_sn'].'%') : $_GET['order_sn'] = '';
 		//收货人查询
-		if($_GET['consignee']){
-			$where['consignee']=array('like', '%'.$_GET['consignee'].'%');
+		isset($_GET['consignee']) ? $where['consignee']=array('like', '%'.$_GET['consignee'].'%') : $_GET['consignee'] = '';
+
+
+		if (isset($_GET['supplier_name'])) {//查询供货商
+			$where_s['s_name'] = array('like', '%' . $_GET['supplier_name'] . '%');
+			$suppliers= M('supplier')->field('s_id')->where($where_s)->select();
+			$supplier_arr = array();
+			foreach ($suppliers as  $v){
+				$supplier_arr[] = $v['s_id'];
+			}
+			$where['supplier_id'] = array('in', $supplier_arr);
+		}else{
+			$_GET['supplier_name'] = '';
+		}
+		//活动查询
+		if(isset($_GET['activity_id'])){
+			if ($_GET['activity_id'] != 0) {
+				$where['activity_id']=array('eq',$_GET['activity_id']);
+				$where['is_gift']=array('in',"0,1");
+			}
+		}else{
+			$_GET['activity_id'] = 0;
 		}
 
 		//如果设置可统计就使用该赛选忽略下拉框
-		$statistics=$_GET['statistics'];
-		if($statistics){
+		if(isset($_GET['statistics']) && $_GET['statistics'] == 1){
 			$where['o.pay_status'] = 2;//筛选代付款
-			$where['o.user_del'] = 0;//筛选已删除
-			$where['o.order_status'] = array('neq','3');//筛选无效订单
-		}else {
-			if (!isset($_GET['order_state'])) {   //未设置默认取已付款
-				$_GET['order_state'] = 2;
-				$_REQUEST['order_state'] = 2;
+			$where['user_del'] = 0;//筛选已删除
+			$where['order_status'] = array('neq','3');//筛选无效订单
+		}else{
+			$_GET['statistics'] = 0;
+			if(!isset($_GET['order_state'])){   //未设置默认取已付款
+				$_GET['order_state']=2;
+				$_REQUEST['order_state']=2;
 			}
+
 			if (isset($_GET['order_state'])) {
 				if ($_REQUEST['order_state'] != 'all') {
 					if ($_REQUEST['order_state'] == 3) {   //已完成
@@ -261,6 +287,8 @@ class GoodsorderAction extends AuthAction{
 						$where['shipping_status'] = 3;//商品配送情况，0，未发货； 1，已发货；2，已收货；3，备货中
 					} elseif ($_REQUEST['order_state'] == 8) {  //无效
 						$where['order_status'] = 3;//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货；
+					} elseif ($_REQUEST['order_state'] == 9) {  //无效
+						$where['order_status'] = 5;//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货 5,售后中；
 					} else {//0 待付款
 						$where['order_status'] = 0;//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货；
 						$where['shipping_status'] = 0;//商品配送情况，0，未发货； 1，已发货；2，已收货；3，备货中
@@ -272,12 +300,9 @@ class GoodsorderAction extends AuthAction{
 				$_GET['order_state'] = 'all';
 			}
 		}
-		if($_GET['start_time']){
-			$start_time=strtotime($_GET['start_time']);
-		}
-		if($_GET['end_time']){
-			$end_time=strtotime($_GET['end_time'].'23:59:59');
-		}
+		$start_time = 0;$end_time = -1;
+		isset($_GET['start_time']) ? $start_time = strtotime($_GET['start_time']) : $_GET['start_time'] = '' ;
+		isset($_GET['end_time']) ? $start_time = strtotime($_GET['end_time']) : $_GET['end_time'] = '' ;
 		if($end_time>0 && $start_time>0){
 			$where['add_time']=array('between',array($start_time,$end_time));
 		}else{
@@ -291,10 +316,11 @@ class GoodsorderAction extends AuthAction{
 		if(isset($_GET['order'])){
 			$order=$_GET['order']." desc";
 		}
-
+		$filed = '*';
+		$having='';
 		if(isset($_GET['having'])){
 			$get_having=$_GET['having'];
-			$having='';
+
 			if($get_having == 1){
 				$where['last_level']=0;
 				$where['levelId']=1;
@@ -305,13 +331,14 @@ class GoodsorderAction extends AuthAction{
 				$where['last_level']=1;
 				$where['levelId']=2;
 			}
+		}else{
+			$_GET['having'] = '';
 		}
-
+		$pre=C('DB_PREFIX');
 		$alias='o';
-		$join='db_member_level_order as l on l.id=o.order_sn';
+		$join=$pre.'member_level_order as l on l.id=o.order_sn';
 		$filed='o.* ,l.levelId ,l.last_level';
 		$menulist=$this->getUpgradePageList('g_order_info',$alias,$join,$where,$filed,'pay_time desc',$having);
-
 		$order=$menulist['list'];
 		$remind_time = time() - 5 * 86400;
 		//print_r(M('g_order_info')->getLastSql());
@@ -346,13 +373,16 @@ class GoodsorderAction extends AuthAction{
 		if(empty($tableName)){
 			return false;
 		}
+
 		$model=M($tableName);// 实例化Data数据对象
 		// 进行分页数据查询
 		import('ORG.Util.Page');// 导入分页类
 		$count      = $model->where($where)->alias($alias)->join($join)->count();// 查询满足要求的总记录数 $map表示查询条件
+
 		if($count===false){
 			return false;
 		}
+
 		$Page       = new Page($count,$pagesize);// 实例化分页类 传入总记录数
 		$show       = $Page->show();// 分页显示输出
 		// 进行分页数据查询
@@ -362,6 +392,7 @@ class GoodsorderAction extends AuthAction{
 		}
 		$data['list']=$list;
 		$data['page']=$show;
+		;
 		return $data;
 	}
 	
@@ -688,6 +719,7 @@ class GoodsorderAction extends AuthAction{
 	public function order_refund(){
 
 		//0待确认 1已确认 2 用户已发货 换货单 3商家已收货（待发货） 4商家已发货 5用户已收货(已完成) 退货单 3商家已收货（待退款） 5已完成 10商户拒绝  6退款申请中
+		$where = array();
 		$status_arr=array(
 			0=>'待确认',
 			1=>'已确认',
@@ -696,20 +728,21 @@ class GoodsorderAction extends AuthAction{
 		);
 		$this->assign('status_arr',$status_arr);
 		if(isset($_GET['refund_type'])&&$_GET['refund_type']!=='all'){
-			$where['refund.refund_type']=array('like',$_GET['refund_type'].'%');
+			$where['refund.refund_type']=$_GET['refund_type'];
 			if(isset($_GET['refund_status'])&&$_GET['refund_status']!=='all'){
-				$where['refund.refund_status']=array('like',$_GET['refund_status'].'%');
+				$where['refund.refund_status']=$_GET['refund_status'];
+			}else{
+				$_GET['refund_status'] = 'all';
 			}
+		}else{
+			$_GET['refund_type'] = 'all';
+			$_GET['refund_status'] = 'all';
 		}
-		if($_GET['member_card']){
-			$where['member.member_card']=array('like','%'.$_GET['member_card'].'%');
-		}
-		if($_GET['order_sn']){
-			$where['ord.order_sn']=array('like', '%'.$_GET['order_sn'].'%');
-		}
-		if($_GET['refund_sn']){
-			$where['refund.refund_sn']=array('like', '%'.$_GET['refund_sn'].'%');
-		}
+		isset($_GET['member_card']) && $_GET['member_card'] != '' ? $where['member.member_card']=array('like','%'.$_GET['member_card'].'%') : $_GET['member_card'] = '';
+
+		isset($_GET['order_sn']) && $_GET['order_sn'] != '' ? $where['ord.order_sn'] = array('like', '%'.$_GET['order_sn'].'%') : $_GET['order_sn'] = '' ;
+
+		isset($_GET['refund_sn']) && $_GET['refund_sn'] != '' ? $where['refund.refund_sn'] = array('like', '%'.$_GET['refund_sn'].'%') : $_GET['refund_sn'] = '' ;
 		$pre=C('DB_PREFIX');//表前缀
 		import('ORG.Util.Page');// 导入分页类
 		$field='refund.*,ord.order_sn,member.member_card,member.member_name';
@@ -717,34 +750,38 @@ class GoodsorderAction extends AuthAction{
 		$joinTwo=$pre.'g_order_info ord on ord.order_id=refund.order_id';
 //		$joinThree=$pre.'g_order_goods goods on goods.order_id=refund.order_id';
 		$order='refund.add_time desc';
-		$count = M()->table($pre . 'g_order_refund refund')->join($joinOne)
-			->join($joinTwo)->where($where)->order($order)->count();        //获取记录总数
+		$count = M('g_order_refund')->alias('refund')->join($joinOne)
+			->join($joinTwo)->where($where)->count();        //获取记录总数
+
 		$page = new Page($count,'20');  //实例化分也类,传入数据总数及每页显示记录数量
 		$show =$page->show();  //分页显示输出
 		//进行分页数据查询 注意limit方法的参数要使用Page类的属性
-		$list=M()->table($pre.'g_order_refund refund')->field($field)->join($joinOne)
+		$list=M('g_order_refund')->table($pre.'g_order_refund refund')->field($field)->join($joinOne)
 			->join($joinTwo)->where($where)->order($order)
-			->limit($page->firstRow.','.$page->listRows)->select();
+			->limit($page->firstRow.','.$page->listRows)
+			->select();
 		$page=$show;
 		//售后商品详细信息查询
-		foreach($list as $key =>$value){
-			$gwhere['rec_id']= $list[$key]['order_goods_id'];
-			//$gwhere['order_id']=$list[$key]['order_id'];
-			$goods=M('g_order_goods')->field('goods_id,goods_image,goods_name,goods_price')
-				->where($gwhere)->find();
+		if(!empty($list)){
+			foreach($list as $key =>$value){
+				$gwhere['rec_id']= $list[$key]['order_goods_id'];
+				//$gwhere['order_id']=$list[$key]['order_id'];
+				$goods=M('g_order_goods')->field('goods_id,goods_image,goods_name,goods_price')
+					->where($gwhere)->find();
 				$where_chat=array();
 				$where_chat['refund_id'] = $value['ref_id'];
 				$where_chat['type'] = 1;
 				$where_chat['is_read'] =0;
 				$un_read=M('g_order_refund_chat')->where($where_chat)->count();
-			$list[$key]['un_read'] =$un_read;
-			$list[$key]['goods_id']=$goods['goods_id'];
-			$list[$key]['goods_name'] = $goods['goods_name'];
-			$list[$key]['goods_image'] = $goods['goods_image'];
-			$list[$key]['goods_price'] = $goods['goods_price'];
-			$list[$key]['show_status']= $this->getRefundStatus($list[$key]);
+				$list[$key]['un_read'] =$un_read;
+				$list[$key]['goods_id']=$goods['goods_id'];
+				$list[$key]['goods_name'] = $goods['goods_name'];
+				$list[$key]['goods_image'] = $goods['goods_image'];
+				$list[$key]['goods_price'] = $goods['goods_price'];
+				$list[$key]['show_status']= $this->getRefundStatus($list[$key]);
 
-		}
+			}
+		};
 //		var_dump($list);die;
 //		echo M()->_sql();
 		$this->list=$list;
@@ -1014,14 +1051,12 @@ class GoodsorderAction extends AuthAction{
 					$where['is_upgrade']=$_GET['is_upgrade'];
 				}*/
 		$where['is_upgrade']=0;
-		$where['activity_id']=array('neq','0');
+		//$where['activity_id']=array('neq','0');
+
 		//下单时间
-		if ($_GET['start_time']) {
-			$start_time = strtotime($_GET['start_time']);
-		}
-		if ($_GET['end_time']) {
-			$end_time = strtotime($_GET['end_time'] . '23:59:59');
-		}
+		$start_time = 0;$end_time = -1;
+		isset($_GET['start_time']) ? $start_time = strtotime($_GET['start_time']) : $_GET['start_time'] = '' ;
+		isset($_GET['end_time']) ? $start_time = strtotime($_GET['end_time']) : $_GET['end_time'] = '' ;
 		if ($end_time > 0 && $start_time > 0) {
 			$where['add_time'] = array('between', array($start_time, $end_time));
 		} else {
@@ -1033,12 +1068,17 @@ class GoodsorderAction extends AuthAction{
 			}
 		}
 		//付费时间
+		$pay_start_time = 0;$pay_end_time = -1;
+		isset($_GET['pay_start_time']) ? $pay_start_time = strtotime($_GET['pay_start_time']) : $_GET['pay_start_time'] = '' ;
+		isset($_GET['pay_end_time']) ? $pay_end_time = strtotime($_GET['pay_end_time']) : $_GET['pay_end_time'] = '' ;
+
 		if ($_GET['pay_start_time']) {
 			$pay_start_time = strtotime($_GET['pay_start_time']);
 		}
 		if ($_GET['pay_end_time']) {
 			$pay_end_time = strtotime($_GET['pay_end_time'] . '23:59:59');
 		}
+
 		if ($pay_end_time > 0 && $pay_start_time > 0) {
 			$where['pay_time'] = array('between', array($pay_start_time, $pay_end_time));
 		} else {
@@ -1050,21 +1090,14 @@ class GoodsorderAction extends AuthAction{
 			}
 		}
 		//手机查询
-		if($_GET['mobile']){
-			$where['mobile']=array('like',$_GET['mobile'].'%');
-		}
+		isset($_GET['mobile']) ? $where['mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] = '';
 		//订单号查询
-		if($_GET['order_sn']){
-			$where['order_sn']=array('like', '%'.$_GET['order_sn'].'%');
-		}
+		isset($_GET['order_sn']) ? $where['order_sn']=array('like','%'.$_GET['order_sn'].'%') : $_GET['order_sn'] = '';
 		//收货人查询
-		if($_GET['consignee']){
-			$where['consignee']=array('like', '%'.$_GET['consignee'].'%');
-		}
+		isset($_GET['consignee']) ? $where['consignee']=array('like','%'.$_GET['consignee'].'%') : $_GET['consignee'] = '';
 
 		//如果设置可统计就使用该赛选忽略下拉框
-		$statistics=$_GET['statistics'];
-		if($statistics){
+		if(isset($_GET['statistics']) && $_GET['statistics']){
 			$where['pay_status'] = 2;//筛选代付款
 			$where['user_del'] = 0;//筛选已删除
 			$where['order_status'] = array('neq','3');//筛选无效订单

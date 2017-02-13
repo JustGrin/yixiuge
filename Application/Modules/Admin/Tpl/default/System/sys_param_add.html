@@ -32,7 +32,7 @@
 		</label>
 		
 
-	       <input type="text" placeholder="填写字典参数" class="form-control" value="{$data.param_code}" id="param_code" name="param_code">
+	       <input type="text" placeholder="填写字典参数" class="form-control" value="{$id ? $data['param_code'] : ''}" id="param_code" name="param_code">
 	  
 	</div>
 
@@ -40,7 +40,7 @@
 		<label>
 			 参数名称
 		</label>
-		<input type="text" class="form-control" value="{$data.param_name}"  name="param_name" id="param_name" >
+		<input type="text" class="form-control" value="{$id ? $data['param_name'] : ''}"  name="param_name" id="param_name" >
 	</div>
 
 
@@ -49,7 +49,7 @@
 			值类型 <span class="symbol required" aria-required="true"></span>(类型确定后不能修改)
 		</label>
 		
-			<if condition="$data.id gt 0">
+			<if condition="$id gt 0">
 			   <if condition="$data.type eq 1">短文本<else/>长文本</if>
 			   <input type="hidden" id="type"  value="{$data.type}" name="type">
 			<else/>
@@ -65,7 +65,7 @@
 			是否是系统关键字典 <span class="symbol required" aria-required="true"></span>(系统关键字典区分例如：涉及金额部分等关键设置,设置后不能修改)
 		</label>
 		
-			<if condition="$data.id gt 0">
+			<if condition="$id gt 0">
 			   <if condition="$data.is_key eq 1">是<else/>否</if>
 			   <input type="hidden" id="is_key"  value="{$data.is_key}" name="is_key">
 			<else/>
@@ -77,18 +77,18 @@
 	</div>
      
 	<div class="form-group">
-		<div class="type_1" <if condition="$data.type eq 2">style="display:none"</if>>
+		<div class="type_1" <if condition="$id && $data.type eq 2">style="display:none"</if>>
 		<label class="control-label">
 			参数值 <span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" placeholder="填写参数值" class="form-control" value="{$data.param_value}" id="type_1" name="type_1">
+		<input type="text" placeholder="填写参数值" class="form-control" value="{$id ? $data['param_value'] : '' }" id="type_1" name="type_1">
 	   </div>
-	   <div class="type_2" <if condition="$data.type neq 2">style="display:none"</if>>
+	   <div class="type_2" <if condition="$id && $data.type neq 2">style="display:none"</if>>
 			<label class="control-label">
 				参数值： <span class="symbol required" aria-required="true"></span>
 			</label>
 			<div>
-			<textarea id="type_2" name="type_2"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 300px;">{$data.param_value}</textarea>
+			<textarea id="type_2" name="type_2"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 300px;">{$id ? $data['param_value'] : ''}</textarea>
 			 <!-- 加载编辑器的容器 -->
 		    </div>
 	     </div>
@@ -105,14 +105,14 @@
 		<label class="control-label">
 			参数描述 
 		</label>
-		<textarea class="form-control autosize" name="param_desc" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word; height: 71px;">{$data.param_desc}</textarea>
+		<textarea class="form-control autosize" name="param_desc" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word; height: 71px;">{$id ? $data['param_desc'] : ''}</textarea>
 	</div>
 
 </div>
 </div>
 <div class="row">
 <div class="col-md-4 col-md-offset-5">
-	<input type="hidden"  value="{$data.id}" name="id">
+	<input type="hidden"  value="{$id}" name="id">
 	<button class="btn btn-primary btn-wide pull-left" type="submit">
 		提交 <i class="fa fa-arrow-circle-right"></i>
 	</button>

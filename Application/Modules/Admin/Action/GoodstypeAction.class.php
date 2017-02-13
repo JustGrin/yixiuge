@@ -8,9 +8,10 @@
 class GoodstypeAction extends AuthAction{
 	//显示类型列表
 	public function index(){
-		if($_GET["cat_name"]){
-			$where['cat_name']=array('like',$_GET["cat_name"].'%');
-		}
+		$where = array();
+
+		isset($_GET["cat_name"]) ? $where['cat_name']=array('like','%'.$_GET["cat_name"].'%') : $_GET["cat_name"] = '';
+		$field = '*';
 		$typeList = D('Common')->getPageList('g_goods_type',$where,$field,'cat_id desc');
 		if($typeList !== null)
 			$page=$typeList['page'];
@@ -22,6 +23,8 @@ class GoodstypeAction extends AuthAction{
 	}
 	//新增编辑类型
 	public function type_edit(){
+		$type =array();
+		$type['id'] = 0;
 		if ($_POST) {  					//POST有值 ->执行添加或者编辑数据
 			if (isset($_GET['id'])) {   //GEI[ID]有值执行更新操作
 				$swhere['cat_id'] = $_GET['id'];
@@ -60,16 +63,12 @@ class GoodstypeAction extends AuthAction{
 	}
 	//属性列表
 	public function attrList(){
-		if($_GET["attr_name"]){
-			$cwhere["attr_name"] = array("like",$_GET["attr_name"]."%");
-		}
-		if($_GET["cat_name"]){
-			$cwhere["cat_name"] = array("like",$_GET["cat_name"]."%");
-		}
-		if($_GET['cat_id']){
-			$cwhere['attr.cat_id'] = $_GET['cat_id'];
-		}
-		$pre=C(DB_PREFIX);//获取表前缀
+		$cwhere =array();
+		isset($_GET["attr_name"]) ? $cwhere["attr_name"] = array("like",$_GET["attr_name"]."%") : $_GET["attr_name"] ='';
+		isset($_GET["cat_name"]) ? $cwhere["cat_name"] = array("like",$_GET["cat_name"]."%") : $_GET["cat_name"] ='';
+		isset($_GET["cat_id"]) ? $cwhere["cat_id"] = $_GET['cat_id'] : $_GET["cat_id"] = 0;
+
+		$pre=C('DB_PREFIX');//获取表前缀
 		import('ORG.Util.Page');// 导入数据页分类
 		$count = M()->table($pre . 'g_attribute attr')
 			->join($pre.'g_goods_type type on attr.cat_id=type.cat_id')
@@ -78,6 +77,7 @@ class GoodstypeAction extends AuthAction{
 		$page = new page($count,20);
 		$show = $page->show();   //输出分页
 		//分页数据查询
+		$list =array();
 		$list = M()->table($pre.'g_attribute attr')
 			->field('attr.*,type.cat_name')
 			->where($cwhere)
@@ -99,6 +99,8 @@ class GoodstypeAction extends AuthAction{
 	}
 	//编辑新增属性 
 	public function attrbute_edit(){
+		$data =array();
+		$data['attr_id'] = 0;
 		if($_POST){    //POST 执行-->添加更新操作
 			if(isset($_GET['id'])){    //有值 -->更新
 				$swhere['attr_id'] = $_GET['id'];
@@ -106,7 +108,7 @@ class GoodstypeAction extends AuthAction{
 			}else{			//无值-->增加
 				$re = M('g_attribute') -> add($_POST);
 			}
-			if($re !== flase){
+			if($re !== false){
 				$now_url=U('admin/goodstype/attrList');
 				if(isset($_GET['id'])){
 					$now_url=cookie('now_url_'.MODULE_NAME);
