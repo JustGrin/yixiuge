@@ -1,264 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>商品-{$webseting.web_title}</title>
-<script type="text/javascript" src="__PUBLIC__/wap/js/flexible.js"></script>
-<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.fly.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
-<script type="text/javascript" src="__PUBLIC__/wap/js/swiper.min.js"></script>
-<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/public.css" />
-<if condition="$vip_type eq 1">
-	<!-- <style>
-            .s_price{
-                display: inline-block;
-            }
-        </style>-->
-</if>
+	<meta charset="utf-8">
+	<title>订单列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/order.css" />
 
 </head>
-<body class="category" ontouchstart="" onmouseover="">
+<body class="order">
 <div class="head">
-	<a href="javascript:history.go(-1)" class="md-close back">
-		<i class="iconfont">&#xe617</i>
-	</a>
-	<h2 >分类</h2>
+	<a href="javascript:history.go(-1)" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<h2 >订单管理</h2>
+	<a href="{:U('wap/member/index')}" class="more "><span>个人中心</span><i class="iconfont">&#xe611</i></a>
 </div>
-<div class="bggreen">
-	<div class="catnav">
-		<div class="cat-container">
-			<ul class="swiper-wrapper">
-				
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 99">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=99&share={$share_para}" title="干货">
-						<img src="/Public/wap/img/caticon/ganhuo.jpg">
-					</a>
-					<h4>干货</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 104">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=104&share={$share_para}" title="特产">
-						<img src="/Public/wap/img/caticon/techan.jpg">
-					</a>
-					<h4>特产</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 121">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=121&share={$share_para}" title="零食">
-						<img src="/Public/wap/img/caticon/shucai.jpg">
-					</a>
-					<h4>蔬菜</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 123">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=123&share={$share_para}" title="粮食">
-						<img src="/Public/wap/img/caticon/liangshi.jpg">
-					</a>
-					<h4>粮食</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 124">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=124&share={$share_para}" title="酒水">
-						<img src="/Public/wap/img/caticon/jiu.jpg">
-					</a>
-					<h4>酒水</h4>
-				</li>
-				
-					<li  class="swiper-slide <if condition="$_GET['type'] eq 128">on
-						</if>
-						"
-						> <a href="{:U('wap/goods/index?type=128')}" title="茶叶"> <img src="/Public/wap/img/caticon/chaye.jpg"> </a>
-						<h4>茶叶</h4>
-					</li>
-				
-				
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 98">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=98&share={$share_para}" title="水果">
-						<img src="/Public/wap/img/caticon/shuiguo.jpg">
-					</a>
-					<h4>水果</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] lt 1">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?share={$share_para}" title="全部">
-						<!--<a href="{:U('wap/goods/index')}" title="更多">-->
-						<img src="/Public/wap/img/caticon/gengduo.jpg">
-					</a>
-					<h4>全部</h4>
-				</li>
-			</ul>
-			<div class="cat-pagination"></div>
-		</div>
-	</div>
-	<div class="screen">
-		<a href="javascript:void(0);" class=" all_chk on"  data="0" order="all_chk">
-			<i class="iconfont">&#xe601</i> 新品
-		</a>
-		<a href="javascript:void(0);" class=" browse" data="0" order="browse">
-			<i class="iconfont">&#xe653</i> 人气 <i class="iconfont scr sx" style="display: none">&#xe457</i>
-			<i class="iconfont scr xx" style="display: none">&#xe634</i>
-		</a>
-		<a href="javascript:void(0);" class=" sales" data="0" order="sales">
-			<i class="iconfont">&#xe64f</i> 销量 <i class="iconfont scr sx" style="display: none">&#xe457</i>
-			<i class="iconfont scr xx" style="display: none">&#xe634</i>
-		</a>
-		<a href="javascript:void(0);" class=" prices" data="0" order="prices">
-			<i class="iconfont">&#xe641</i> 价格 <i class="iconfont scr sx" style="display: none">&#xe457</i>
-			<i class="iconfont scr xx" style="display: none">&#xe634</i>
-		</a>
-	</div>
-
+<div class="type">
+	<ul class="oder_state_c">
+		<li data="all" class=" all_order_n <if condition="$_GET['order_state'] eq 'all'"> on</if>"  >
+		<a href="javascript:void(0);">全部</a>
+		<if condition="$count"><b>{$count}</b></if>
+		</li>
+		<li data="0" class="nopay_order_n <if condition="$_GET['order_state'] eq '0'"> on</if>" >
+		<a href="javascript:void(0);">待付款</a>
+		<if condition="$count00"> <b>{$count00}</b></if>
+		</li>
+		<li data="1" class="pay_order_n <if condition="$_GET['order_state'] eq '1'"> on</if>" >
+		<a href="javascript:void(0);">待发货</a>
+		<if condition="$count10"><b>{$count10}</b></if>
+		</li>
+		<li data="2" class="delivered <if condition="$_GET['order_state'] eq '2'"> on</if>" >
+		<a href="javascript:void(0);">待收货</a>
+		<if condition="$count20"><b>{$count20}</b></if>
+		</li>
+		<li data="3" class="f_order_n <if condition="$_GET['order_state'] eq '3'"> on</if>" >
+		<a href="javascript:void(0);">已完成</a>
+		<if condition="$count30"><b>{$count30}</b></if>
+		</li>
+	</ul>
+</div>
 <div class="page">
-<div class="list more_html">
-	<volist name="list" id="vo">
-	<if condition="$vo.is_sell_out eq 1" >
-	<div class="goods sell_out">
-		<else/>
-		<div class="goods">
-			</if>
-			<div class="item">
-				<if condition="$vo.is_sell_out eq 1" >
-					<a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}" class="is_sell_out">
-					</a>
-				</if>
+	<ul class="more_html">
+		<volist name="list" id="vo">
+			<li>
+				<div class="cartlist">
+					<div class="store">
+						标题:{$vo.title}<span class="state"></span>
+					</div>
+					<div class="user">
+						<i class="iconfont"><img style="max-width: 40px;max-height: 40px" src="{$vo['member_logo']}"></i>
+						<div class="info">
+							<dl>
+								<dt>发布者：</dt>
+								<dd class="num">{$vo.member_name}</dd>
+							</dl>
+							<div class="total"   >
+								<a class="btn1 btnsF34" href="{:U('wap/carinfo/add_msg',array('id'=>$vo['id']))}">修改</a>
+							</div>
+						</div>
+					</div>
+			<ul>
+			<li  class="goods"> <a href="{:U('Wap/goodsorder/order_detail',array('id'=>$vo['order_id']))}">
 				<div class="goodsimg imgnobg">
-					<a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
-						<img src="{$vo.goods_img} " alt="" />
-					</a>
+					<div class="img bgcover " style=" background:url({$vo.first_img})">
+					</div>
 				</div>
-				<div class="form">
-					<if condition="$vo.base_logo eq null" >暂无数据
-						<else/>
-						<img src="{$vo.base_logo}"><span>{$vo.base_name}</span>
-					</if>
+				<div class="info">
+					<div class="title">
+						{$vo.content}
+					</div>
 				</div>
-				<div class="title">
-					<a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
-						{$vo.goods_name}
-					</a>
+
+			</a>
+
+				<div class="clearfix">
 				</div>
-				<div class="pirce">
-					<span class="orange">¥<span class="num">{$vo.unit_price}</span> {$vo.units}</span>
-				</div>
-				<div class="addcart" onClick="" goods_id="{$vo.goods_id}" img_url="{$vo.goods_img}" unit_price="{$vo.unit_price}" units="{$vo.units}"goods_attr_id="{$vo.goods_attr_id}">
-					<i class="iconfont">&#xe612</i>
-				</div>
-			</div>
-		</div>
-		</volist>
+			</li>
+	</ul>
+</div>
+</li>
+</volist>
+</ul>
+<div class="loading">
+	<div class="fm-footer-copyright get_more">
+		<if condition="$count gt 10 && count($list) eq 10">
+			加载更多
+			<else/>
+			无更多数据
+		</if>
 	</div>
-	<div class="clearfix">
-	</div>
-	<div class="loading">
-		<div class="fm-footer-copyright get_more">
-			<if condition="$count gt 10 && count($list) eq 10"> 加载更多
-				<else/>
-				无更多数据 </if>
-		</div>
-	</div>
-</div></div></div>
-<input type="hidden" name="p" data="2" value="2" />
-<input type="hidden" name="type" value="{$_GET['type']?$_GET['type']:all_chk}" />
-<input type="hidden" name="order" value="" data="" />
-<include file="Public/tools"/>
-<include file="Public/footer_new"/>
-<script>
-	    var swiper = new Swiper('.cat-container', {
-        pagination: '.cat-pagination',
-        slidesPerView:5,
-        paginationClickable: true,
-    });
-	
-	
-    </script>
+</div>
+</div>
+
+
+
+<div style="height:50px;">
+</div>
+
+<include file="Public/footer_new" />
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/return-top.js"></script>
+
+<input type="hidden" name="p" value="2" />
+<input type="hidden" name="order_state" value="{$_GET['order_state']}" />
+<input type="hidden" name="order" value=""/>
+
 <script type="text/javascript">
-	var load_more=0;
-	var load_none=0;
-	$(function(){
-		//滚动加载
+	var load_more = 0;
+	var load_none = 0;
+	$(function () {
 		$(window).scroll(function () {
 			var scrollTop = $(this).scrollTop();
 			var scrollHeight = $(document).height();
 			var windowHeight = $(this).height();
 			if (scrollTop + windowHeight == scrollHeight) {
 				//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-				if(load_none!=1){
-					if(load_more==1){
-						$('.get_more').html('加载中......');
-					}else{
+				if (load_none != 1) {
+					if (load_more == 1) {
+						var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+						$('.get_more').html('加载中' + html);
+					} else {
 						get_more();
 					}
 				}
+
 			}
+		});
+	})
+	$(function(){
+		$(".get_more").click(function(){
+			get_more();
 		});
 		$(window).load(function () {
 			get_more();
 		});
+		$(".oder_state_c li").click(function(){
+			$('.oder_state_c li').removeClass('on');
+			$(this).addClass('on');
+			var data=$(this).attr('data');
+			$("input[name='order_state']").val(data);
+			$("input[name='p']").val(1);
+			get_more();
+		});
+		$('.more_html').on('click','.delete_order',function(){
+			var __this=$(this);
+			var order_id=__this.attr('data');
+			var data_type=__this.attr('data-type');
+			var types="删除";
+			var order_del_url = "{:U('wap/goodsorder/order_del')}";
+			if(data_type==1){
+				order_del_url = "{:U('wap/goodsorder/order_cancel')}";
+				types="取消";
+			}
+			layer.confirm('确定'+types+'该订单？', {
+				btn: ['确定','取消'] //按钮
+			}, function(){
+				layer.msg(types+'中请稍候....', {time: 5000});
+				$.ajax({
+					url: order_del_url,
+					type:'post',
+					data: {order_id:order_id, data_type:data_type},
+					dataType: 'json',
+					success: function(data){
+						//console.log(data);
+						if(data.status==1){
+							if( data_type == '0'){
+								var str=$('.oder_state_c .all_order_n b:eq(0)').html();
+								$('.oder_state_c .all_order_n b:eq(0)').html(parseInt(str) - 1);
+								if (parseInt(str) == 1){
+									$('.oder_state_c .all_order_n b:eq(0)').css('display','none');
+								}
+							}
+							if(data.code=='nopay'){
+								var str=$('.oder_state_c .nopay_order_n b:eq(0)').html();
+								$('.oder_state_c .nopay_order_n b:eq(0)').html(parseInt(str) - 1);
+								if (parseInt(str) == 1){
+									$('.oder_state_c .nopay_order_n b:eq(0)').css('display','none');
+								}
+								if( data_type == '1'){
+									var str_3=$('.oder_state_c .f_order_n b:eq(0)').html();
+									$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str_3) + 1);
+									$('.oder_state_c .f_order_n b:eq(0)').css('display','show');
+								}
+							}else{
+								var str=$('.oder_state_c .f_order_n b:eq(0)').html();
+								$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str) - 1);
+								if (parseInt(str) == 1){
+									$('.oder_state_c .f_order_n b:eq(0)').css('display','none');
+								}
+							}
 
-		//加入购物车
-		$(document).on('click', '.addcart', function () {
-			var goods_id = $(this).attr('goods_id');
-			var goods_attr_id = $(this).attr('goods_attr_id');
-			var img = $(this).attr('img');
-			var goods_num = 1;
-			var share = $('input[name="share"]').val();
-			$.ajax({
-				url: "{:U('wap/cart/add_cart')}",
-				type:'get',
-				data: {goods_id:goods_id,goods_attr_id:goods_attr_id,goods_num:goods_num,share:share},
-				dataType: 'json',
-				success: function(data){
-					if(data.status==1){
-						layer.msg('加入成功', {icon: 6});
-						var flyer = $('<img style="display:block;width:50px;height:50px;border-radius:50px;position: fixed;z-index: 9999;" src="' + img + '">');      //抛物体对象
-					}else{
-						layer.msg(data.error, {icon: 5});
+							layer.msg(types+'成功', {icon: 6,time: 1500},function(){
+								$("input[name='p']").val(1);
+								get_more();
+								///刷新页面
+							});
+						}else{
+							layer.msg(data.error, {icon: 5});
+						}
 					}
-				}
+				});
+			}, function(){
+
 			});
+
 		});
 	});
-
-	$(".get_more").click(function(){
-		get_more();
-	});
-
 	function get_more(){
-		load_more=1;
-		var html=' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
-		$('.get_more').html('加载中'+html);
-		//var p=$("input[name='p']").val();
-		var search='<?php echo $_GET["search"] ?>';
-		var p=$("input[name='p']").attr('data');
-		var type=$("input[name='type']").val();
-		var order=$("input[name='order']").val();
+		load_more = 1;
+		var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">';
+		$('.get_more').html('加载中' + html);
+		var p=$("input[name='p']").val();
+		var order_sta=$("input[name='order_state']").val();
 		$.ajax({
-			url: "{:U('wap/goods/index')}",
-			type:'get',
-			data: {p:p,type:type,order:order, search: search},
+			url: "{:U('wap/goodsorder/index')}",
+			type:'post',
+			data: {p:p,order_state:order_sta},
 			dataType: 'json',
 			success: function(data){
 				//console.log(data);
@@ -266,100 +229,182 @@
 				var option='';
 				if(data){
 					$.each(data, function(i, value) {
+
 						//this指向当前元素
 						//i表示Array当前下标
 						//value表示Array当前元素
-						var vip_style="";
-						if(value.vip_p_show == 1){
-							vip_style= 'style=" display: inline-block;"';
-						}
-						var base='<img src="'+value.base_logo+'"><span>'+value.base_name+'</span>';
-
-						if(value.base_name == null || value.base_logo == null){
-							base='暂无数据';
-						}
-						if(value.is_sell_out == 1){
-							option=option+'<div class="goods sell_out">'
-								+'<div class="item">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}" class="is_sell_out">'
-								+'</a>';
+						var order_state="";
+						if(value.order_state=="nopay"){
+							var pay_url = "<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn="+value.order_id;
+							if(value.is_upgrade == 1){
+								pay_url = "<?php echo U('wap/start/upgrade_pay'); ?>?order_id="+value.order_id;
+							}
+							order_state='<div class="order-button "><a  class="btn1 btnsF34" href="'+pay_url+'" >去付款</a>'
+									+' <a class="g-tui delete_order btn3 btnsF34" data-type="1" data="'+value.order_id+'" href="javascript:void(0)">取消订单</a></div>';
+						}else if(value.order_state=="delivered"){
+							var str_delivered="";
+							str_delivered= '<a class="btn1 btnsF34" href="__URL__/order_express?order_id='+value.order_id+'">查看物流</a>'
+									+' <a class="delivered_order btn2 btnsF34" data="'+value.order_id+'" href="javascript:void(0)">确认收货</a>';
+							order_state='<div class="order-button">'+str_delivered+'</div>';
+						}else if(value.order_state=="after_sale"){
+							str_delivered='' ;
+							order_state='<div class="order-button">'+str_delivered+'</div>';
+						}else if(value.order_state=="received"){
+							order_state='<div class="order-button"><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
+						}else if(value.order_state=="finish"){
+							order_state='<div class="order-button "><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
 						}else{
-							option=option+'<div class="goods">'
-								+'<div class="item">';
+							// order_state=value.order_state_name;
+							order_state = '<i class="iconfont floatLft">&#xe68c</i><span>'+ value.status_remarks+'</span>';
 						}
-						option=option+'<div class="goodsimg imgnobg">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}"><img src="'+value.goods_img+'" alt="" /></a>'
-								+'</div>'
-								+'<div class="form">'+base+'</div>'
-								+'<div class="title">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}">'+value.goods_name+'</a>'
-								+'</div>'
-								+'<div class="pirce">'
-								+'<span class="orange">¥<span class="num">'+value.unit_price+'</span>'+value.units+'</span>'
-								+'</div>'
+						var li_order_state = '<li class="typetotal">' + order_state+'</li>';
+						if((value.order_status == 0 && value.pay_status == 2) || value.order_status == 5 ){
+							li_order_state = '';
+						}
+						var goods_list = "";
+						var goods=value.goods;
+						if(goods && value.is_upgrade == 0){
+							$.each(goods, function (n, vo) {
 
-								+'<div class="addcart" onclick="" goods_id="'+value.goods_id+'" img_url="'+value.goods_img+'" unit_price="'+value.unit_price+'" units="'+value.units+'"goods_attr_id="'+value.goods_attr_id+'">'
-								+'<i class="iconfont">&#xe612</i></div></div></div>';
+								var after='';
+								if(vo.after_sale == 1){
+									after = '<a class="after_sales service type'+vo.refund_status+' "  href="<?php echo U('wap/goodsrefund/index');?>?id='+vo.rec_id+'">'+vo.refund_status_name+'</a>';
+								}
+
+								var _shipping_money = '包邮';
+								if(vo.shipping_money > 0){
+									_shipping_money = '运费:￥'+vo.shipping_money;
+								}
+								goods_list =goods_list+ ''
+										+'<li  class="goods"> '
+										+ '<a class="" href="<?php echo U('wap/goodsorder/order_detail');?>?id='+value.order_id+'">'
+								+'<div class="goodsimg imgnobg">'
+								+'<div class="img bgcover " style=" background:url('+vo.goods_image+')">'
+								+'</div>'
+								+'</div>'
+								+'<div class="info">'
+								+'<div class="title">'
+								+vo.goods_name
+								+' </div>'
+								+' <div class="pay">'
+								+'<div class="pirce num green">'
+								+'￥'+vo.goods_price
+								+'</div>'
+								+'<div class="qty">'
+								+'<span class="num">'+vo.goods_number+'</span>件&nbsp; &nbsp;'+_shipping_money
+								+after
+								+'</div>'
+								+'</div>'
+								+'</div>'
+								+'</a>'
+								+'<div class="clearfix">'
+								+'</div>'
+								+'</li>';
+
+							});
+						}
+						option=option+'<li>'
+								+'<div class="cartlist">'
+								+'<div class="store">'
+								+value.store_name+'的店铺<span class="state">'+value.order_state_name+'</span>'
+								+'</div>'
+								+'<div class="user">'
+								+'<i class="iconfont">&#xe621</i>'
+								+'<a href="<?php echo  U('Wap/goodsorder/order_detail');?>?id='+value.order_id+'"><div class="info">'
+						+'<dl>'
+						+'<dt>订单号：</dt>'
+						+'<dd class="num">'+value.order_sn+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>收件人：</dt>'
+						+'<dd>'+value.consignee+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>地址：</dt>'
+						+'<dd>'+value.address+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>手机号：</dt>'
+						+'<dd class="num">'+value.mobile+'</dd>'
+						+'</dl>'
+						+'</div></a>'
+						+'</div>'
+						+'<ul>'+goods_list+'</ul><div class="total"><ul>'
+						+'<li class="subtotal">共<span class="num black"> '+value.num+' </span>件商品 合计：<span class=" num green">¥'+value.order_amount+'</span></li>'
+						+li_order_state
+						+'</ul></li>';
 						con++;
 					});
-
-					option += '</div>';
-
 				}
-				//$('.more_html').append(option);
 				if(p==1){
 					$('.more_html').html(option);
 				}else{
 					$('.more_html').append(option);
 				}
-				load_more=0;
-				if(option){
-					//$("input[name='p']").val(parseInt(p)+1);
-					$("input[name='p']").attr('data',parseInt(p)+1);
+				load_more = 0;
+				if (option) {
+					$("input[name='p']").val(parseInt(p) + 1);
 				}
 				if(con<10){
-					load_none=1;
+					load_none = 1;
 					$('.get_more').html('无更多数据');
-
-					$('.get_more').fadeOut(3000);
+					$('.get_more').fadeOut('3000');
 				}
 			}
 		});
 	}
-	$(".screen a").click(function () {
-		var data=$(this).attr('data');
-		var order_by=$(this).attr('order');
-		var last_click=$("input[name='order']").attr('data');
-		if(last_click != order_by ){
-			data = 1;
-			if(order_by == 'prices'){
-				data = 2 ;
-			}
-		}
-		var order;
-		$('.xx').hide();
-		$('.sx').hide();
-		if(data==1){
-			$(this).attr('data','2');
-			order=order_by+"1";
-			$(this).find('.xx').show();
-			$(this).find('.xx').css('display', 'inline-block');
-		}else{
-			$(this).attr('data','1');
-			$(this).find('.sx').show();
-			$(this).find('.sx').css('display', 'inline-block');
-			order=order_by+"2";
-		}
-		$('.screen a').removeClass('on');
-		$(this).addClass('on');
-		//$("input[name='p']").val(1);
-		$("input[name='p']").attr('data',1);
-		$("input[name='order']").val(order);
-		$("input[name='order']").attr('data',order_by);
-		 load_more=0;
-		load_none=0;
-		$('.get_more').show();
-		get_more();
+
+</script>
+<script type="text/javascript">
+	$(function(){
+		//确认收货
+		$('.more_html').on('click','.delivered_order',function(){
+			var __this=$(this);
+			var order_id=__this.attr('data');
+			layer.confirm('是否确认收货？确认收货后订单不可退换！', {
+				btn: ['确定','取消'] //按钮
+			}, function(){
+				if(order_id){
+					$.ajax({
+						url: "{:U('wap/goodsorder/order_delivered')}",
+						type:'post',
+						data: {order_id:order_id},
+						dataType: 'json',
+						success: function(data){
+							console.log(data);
+							if(data.status==1){
+								var str=$('.oder_state_c .delivered b:eq(0)').html();
+								$('.oder_state_c .delivered b:eq(0)').html(parseInt(str) - 1);
+								if (parseInt(str) == 1){
+									$('.oder_state_c .delivered b:eq(0)').css('display','none');
+								}
+								var str=$('.oder_state_c .f_order_n b:eq(0)').html();
+								$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str) + 1);
+								$('.oder_state_c .f_order_n b:eq(0)').css('display','show');
+								//alert("确认收货成功");
+								layer.msg('确认收货成功', {icon: 6,time: 1500},function(){
+									$("input[name='p']").val(1);
+									get_more();
+									///刷新页面
+								});
+								//$('.delivered_html').remove();
+							}else{
+								layer.msg(data.error, {icon: 5});
+								//alert(data.error)
+							}
+						}
+					});
+				}else{
+					layer.msg('系统繁忙,请稍后再试', {icon: 5});
+					//alert('系统繁忙,请稍后再试')
+				}
+
+			}, function(){
+
+			});
+
+		});
+
 	});
 </script>
 </body>
