@@ -5,7 +5,7 @@
 **/
 class UsedcarAction extends AuthAction{
 
-    //会员列表
+    //二手车信息列表
 	public function index(){
 		set_time_limit(0);
 //        if($_GET['member_card']){
@@ -88,43 +88,31 @@ class UsedcarAction extends AuthAction{
 		$this->display();
 		//$this->display();
 	}
-	//编辑用户信息
-	public function member_edit(){
-		if($_POST){
-			if(empty($_POST['p_name'])){
-				$this->error("请填写部门名称");
-			}
-			if($_POST['id']){
-                $res = M("member")->where("id=".$_POST["id"])->save($_POST);
+	//执行审核
+	public function do_msg_check(){
+		//是否审核通过
+		if ($_GET['value'] != null) {
+			$id = $_GET["id"];
+			$type=$_GET['type'];
+			$value=$_GET["value"];
+			if ($type=='is_check'){
+				$save_date['is_check'] = $value;
 			}else{
-                $res = M("member")->add($_POST);
+				$save_date['remark'] = $value;
 			}
-			if($res!==false){
-				$this->success("操作成功",U("Admin/Member/index"));
-			}else{
-				$this->error("操作失败");
+
+			$where['id'] = $id;
+
+			$res = M('usde_cars_info')->where($where)->save($save_date);
+			if ($res !== false) {
+				//$this->redirect("Admin/Goods/index");
+				$data['status'] = 1;
+				$data['is_check'] = $value;
+				echo json_encode($data);
+			} else {
+				$data['error'] = '操作失败,请稍候再试';
+				echo json_encode($data);
 			}
-		}else{
-			if($_GET["id"]){
-				$menuwhere["id"] =  array("eq",$_GET["id"]);
-				$data = M("member")->where($menuwhere)->find();
-				$menuwhere_d["member_id"] =  array("eq",$_GET["id"]);
-				$data_d = M("member_detail")->where($menuwhere_d)->find();
-				if($data['member_vip_type']){
-					$vip=getVipRank($data_d['vip_i_rank'],$data_d['vip_i_now']);
-					$data['vip_name']='<span style="color:red;">'.$vip['vip_name'].'</span>';
-				}else{
-					$data['vip_name']='普通会员';
-				}
-			}else{
-				$where['pid']=array('eq',0);
-			}
-			$title="会员信息";
-			
-			$this->assign("data",$data);
-			
-			$this->assign("msgtitle",$title);
-			$this->display();
 		}
 	}
 }

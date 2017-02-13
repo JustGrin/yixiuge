@@ -6,7 +6,6 @@ class IndexAction extends AuthAction {
          //echo U("Admin/Index/index");die;
 		if($_SESSION["auid"]){
 			//$pre = C("DB_PREFIX");//获取表前缀
-			
 			$this->display();
 		}else{
 			$this->redirect("login");
@@ -60,12 +59,7 @@ class IndexAction extends AuthAction {
 				$data["status"] = 0;
 				$data["info"] = "用户名不存在";
 			}
-		/*
-		}else{
-			$data["status"] = 0;
-			$data["info"] = "验证码错误";
-		}
-		*/
+
 		if($data['status']==1){
 			$url=U("Admin/Index/index");
 			if(!empty($_POST['jump_url'])){

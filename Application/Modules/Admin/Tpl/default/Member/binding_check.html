@@ -14,16 +14,95 @@
                 <section id="page-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h1 class="mainTitle">会员信息审核</h1>
+                            <h1 class="mainTitle">会员列表</h1>
                             <span class="mainDescription"></span>
                         </div>
-                        <nav id="cl-effect-10" class="links cl-effect-10">
-                            <a data-hover="返回" href="javascript:history.go(-1)"><span>返回</span></a>
-                        </nav>
+                        <!-- <ol class="breadcrumb">
+							<li>
+								<span>Pages</span>
+							</li>
+							<li class="active">
+								<span>Blank Page</span>
+							</li>
+						</ol> -->
                     </div>
                 </section>
                 <!-- end: PAGE TITLE -->
                 <!-- start: YOUR CONTENT HERE -->
+                <style type="text/css">
+                    .class_hidden{display:none;}
+                    .panel-body{padding: 5px;}
+                    .panel-heading{padding: 5px;min-height: 25px;}
+                </style>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 margin-top-20" >
+                        <div class="panel panel-white">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">筛选</h5>
+                            </div>
+                            <form role="form" class="form-inline">
+                                <div class="panel-body">
+
+
+                                    <div class="form-group">
+                                        <label for="real_name" class="sr-only">
+                                            姓名
+                                        </label>
+                                        <input type="text" name="real_name" value="{$_GET.real_name}" id="real_name" placeholder="姓名" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile" class="sr-only">
+                                            电话
+                                        </label>
+                                        <input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status" class="sr-only">
+                                            状态
+                                        </label>
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="all" <if condition="$_GET['status'] =='all'">selected</if>>审核状态</option>
+                                            <option value="0" <if condition="$_GET['status'] =='0'">selected</if>>未审核</option>
+                                            <option value="1" <if condition="$_GET['status'] ==1">selected</if>>通过</option>
+                                            <option value="2" <if condition="$_GET['status'] ==2">selected</if>>不通过</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label  class="sr-only">
+                                            状态
+                                        </label>
+                                        <p class="input-group input-append datepicker date">
+                                            <input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+                                        </p>
+                                        --
+                                        <p class="input-group input-append datepicker date">
+                                            <input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+                                        </p>
+
+                                    </div>
+                                    <div class="form-group  " style="margin-top: -10px;">
+                                        <button class="btn btn-primary" type="submit">
+                                            提交
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -42,7 +121,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <volist  name="list" id='vo' key='key'>
+                    <volist  name="list['list']" id='vo' key='key'>
                         <tr>
                             <td>{$vo.member_id}</td>
                             <td>{$vo.real_name}</td>

@@ -592,12 +592,88 @@ class MemberAction extends AuthAction{
 			}
 		}
 	}
-	public function binding_check()
-	{
-		$order = " status ASC,change_time ASC ";
-		$ver_list=M('member_verification')->order($order)->select();
-		$this->list=$ver_list;
+	//用户手机绑定审核
+	public function binding_check(){
+		set_time_limit(0);
+//        if($_GET['member_card']){
+//			$where['mem.member_card']=array('like',$_GET['member_card'].'%');
+//		}
+		$where = array();
+		isset($_GET['real_name']) ? $where['ver.real_name'] = array('like', '%' . $_GET['real_name'] . '%') : $_GET['member_name'] = '';
+		if(isset($_GET['mobile'])){
+			$s_where['mem.mobile'] = array('like', '%' . $_GET['mobile'] . '%');
+			$s_where['mem.member_card'] = array('like', '%' . $_GET['mobile'] . '%');
+			$s_where['_logic'] = 'or';
+			$where['_complex'] = $s_where;
+		}else{
+			$_GET['mobile'] = '';
+		}
+
+		if(isset($_GET['status'] )&& $_GET['status'] !='all'){
+			$where['status'] = $_GET['status'];
+		}else{
+			$_GET['status'] = 'all';
+		}
+		if (isset($_GET['start_time'])){
+			$start_time = strtotime($_GET['start_time']) ;
+		}else{
+			$start_time = 0;
+			$_GET['start_time'] = '';
+		}
+
+		if (isset($_GET['end_time'])){
+			$end_time = strtotime($_GET['end_time']) ;
+		}else{
+			$end_time = -1;
+			$_GET['end_time'] = '';
+		}
+
+		if($end_time>0 && $start_time>0){
+			$where['ver.change_time']=array('between',array($start_time,$end_time));
+		}else{
+			if($start_time>0){
+				$where['ver.change_time']=array('egt',$start_time);
+			}
+			if($end_time>0){
+				$where['ver.change_time']=array('elt',$end_time);
+			}
+		}
+		$order = " ver.status ASC,ver.change_time ASC ";
+
+		$field="mem.id,mem.member_name,mem.member_card,mem.mobile";
+		$field.=",ver.*";
+		$pre=C("DB_PREFIX");//获取表前缀
+		$join = $pre.'member mem on ver.member_id=mem.id';
+		import('ORG.Util.Page');// 导入数据页分类
+		$model=M();
+		if(empty($where)){
+			$count = $model->table($pre.'member_verification ver')
+				->count();
+		}else{
+			$count = $model->table($pre.'member_verification ver')
+				//->field($field)
+				->where($where)
+				->join($join)
+				->count();
+		}
+
+
+		$page = new page($count,20);
+		$show = $page->show();   //输出分页
+		$list = $model->table($pre.'member_verification ver')
+			->field($field)
+			->where($where)
+			->join($join)
+			->order($order)
+			->limit($page->firstRow.','.$page->listRows)
+			->select();
+		$menulist['list']=$list;
+		$menulist['page']=$show;
+		$this->assign("list",$menulist);
+		$this->all_count=$count;
+
 		$this->display();
+		//$this->display();
 	}
 	public function do_binding_check(){
 		//是否审核通过

@@ -15,15 +15,16 @@ class CarinfoAction extends BaseAction
 	//产品列表
 	public function index(){
 		$where = array();
+		$where['is_check'] = 1;
+		$order = "change_time DESC";
 		$join = "db_member as mem on mem.id = cars.member_id ";
 		$field = ' cars.* ,mem.member_name,mem.member_logo';
-		$carinfo_list = M('usde_cars_info')->alias('cars')->field($field)->join($join)->where($where)->select();
+		$carinfo_list = M('usde_cars_info')->alias('cars')->field($field)->join($join)->where($where)->order($order)->select();
 		foreach ($carinfo_list as $k => $v){
 			$imgs = explode(',',$v['imgs_a']);
 			$carinfo_list[$k]['first_img'] =$imgs[0];
 		}
 		$this->list = $carinfo_list ;
-
 		$this->display();
 	}
 
@@ -72,6 +73,13 @@ class CarinfoAction extends BaseAction
 		}
 		$this->display();
 	}
-
+	//二手车信息详情
+	public function msg_detail(){
+		isset($_GET['id']) ? $id = $_GET['id'] : $this->redirect('wap/carinfo/index');
+		$data = M('usde_cars_info')->where('id='.$id)->find();
+		$data['imgs_a'] = explode(',',$data['imgs_a']);
+		$this->data = $data;
+		$this->display();
+	}
 
 }

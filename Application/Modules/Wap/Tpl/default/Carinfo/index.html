@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>订单列表</title>
+	<title>二手车信息列表</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,31 +15,24 @@
 <body class="order">
 <div class="head">
 	<a href="javascript:history.go(-1)" class="md-close back"><i class="iconfont">&#xe617</i></a>
-	<h2 >订单管理</h2>
+	<h2 >二手车信息</h2>
 	<a href="{:U('wap/member/index')}" class="more "><span>个人中心</span><i class="iconfont">&#xe611</i></a>
 </div>
 <div class="type">
 	<ul class="oder_state_c">
-		<li data="all" class=" all_order_n <if condition="$_GET['order_state'] eq 'all'"> on</if>"  >
+		<li data="all" class="on"  >
 		<a href="javascript:void(0);">全部</a>
-		<if condition="$count"><b>{$count}</b></if>
 		</li>
-		<li data="0" class="nopay_order_n <if condition="$_GET['order_state'] eq '0'"> on</if>" >
+		<li data="0" class=" " >
 		<a href="javascript:void(0);">待付款</a>
-		<if condition="$count00"> <b>{$count00}</b></if>
 		</li>
-		<li data="1" class="pay_order_n <if condition="$_GET['order_state'] eq '1'"> on</if>" >
+		<li data="1" class="" >
 		<a href="javascript:void(0);">待发货</a>
-		<if condition="$count10"><b>{$count10}</b></if>
 		</li>
-		<li data="2" class="delivered <if condition="$_GET['order_state'] eq '2'"> on</if>" >
+		<li data="2" class=" " >
 		<a href="javascript:void(0);">待收货</a>
-		<if condition="$count20"><b>{$count20}</b></if>
 		</li>
-		<li data="3" class="f_order_n <if condition="$_GET['order_state'] eq '3'"> on</if>" >
-		<a href="javascript:void(0);">已完成</a>
-		<if condition="$count30"><b>{$count30}</b></if>
-		</li>
+
 	</ul>
 </div>
 <div class="page">
@@ -58,12 +51,12 @@
 								<dd class="num">{$vo.member_name}</dd>
 							</dl>
 							<div class="total"   >
-								<a class="btn1 btnsF34" href="{:U('wap/carinfo/add_msg',array('id'=>$vo['id']))}">修改</a>
+								<a class="btn1 btnsF34" href="{:U('wap/carinfo/msg_detail',array('id'=>$vo['id']))}">修改</a>
 							</div>
 						</div>
 					</div>
 			<ul>
-			<li  class="goods"> <a href="{:U('Wap/goodsorder/order_detail',array('id'=>$vo['order_id']))}">
+			<li  class="goods"> <a href="{:U('wap/carinfo/msg_detail',array('id'=>$vo['id']))}">
 				<div class="goodsimg imgnobg">
 					<div class="img bgcover " style=" background:url({$vo.first_img})">
 					</div>

@@ -63,7 +63,7 @@
 					<select class="form-control" id="is_check" name="is_check">
 						<option value="all" <if condition="$_GET['is_check'] =='all'">selected</if>>全部状态</option>
 						<option value="0" <if condition="$_GET['is_check'] =='0'">selected</if>>未审核</option>
-						<option value="1" <if condition="$_GET['is_check'] ===1">selected</if>>通过</option>
+						<option value="1" <if condition="$_GET['is_check'] ==1">selected</if>>通过</option>
 						<option value="2" <if condition="$_GET['is_check'] ==2">selected</if>>不通过</option>
 					</select>
 				</div>
@@ -113,11 +113,11 @@
 						<th>标题</th>
 						<th>会员卡号</th>
 						<th>会员名</th>
-						<th>电话</th>
 						<th>编辑时间</th>
-						<th>状态</th>
+						<th>审核</th>
+						<th>不通过理由</th>
 						<!--<th>状态</th>-->
-						<th></th>
+						<th>查看信息</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -131,12 +131,21 @@
 						</a>
 						</td>
 						<td>{$vo.member_name}</td>
-						<td>{$vo.mobile}</td>
+
 						<td>{$vo.change_time|date="Y-m-d H:i",###}	</td>
-						<td>{$vo['is_check'] ? ($vo['is_check']==1 ? '审核通过' : '不通过') : '未审核'}</td>
+						<td id="check{$vo.id}">
+							<select class="is_check" data-id="{$vo.id}" name="is_check" >
+								<option value="0" <if condition="$vo.is_check eq 0">selected</if>>未审核</option>
+								<option value="1" <if condition="$vo.is_check eq 1">selected</if>>通过</option>
+								<option value="2" <if condition="$vo.is_check eq 2">selected</if>>不通过</option>
+							</select>
+						</td>
+						<td>
+							<textarea class="remark" data-id="{$vo.id}" name= 'remark' >{$vo.remark}</textarea>
+						</td>
 						<td class="center">
 						<div class="visible-md visible-lg hidden-sm hidden-xs">
-							<a href="{:U("Admin/Usedcar/car_msg_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-file-text-o"></i></a>
+							<a href="{:U('Wap/carinfo/msg_detail',array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
 						</div>
 						</td>
 					</tr>
@@ -169,7 +178,64 @@
 		<!-- start: MAIN JAVASCRIPTS -->
 
 <include file="Public/javascript"/>
-<include file="Public/javascript_datepicker"/>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+<script type="text/javascript">
+	$(function () {
+		$('.is_check').change(function () {
+			var value=$(this).val();
+			var id=$(this).attr('data-id');
+			var type='is_check';
+			//var remark=$('.remark').val();
+			// alert(remark);
+			changeCheck(id,value,type);
 
+		});
+	});
+	$('.remark').change(function () {
+		var value=$(this).val();
+		var id=$(this).attr('data-id');
+		var type='remark';
+		changeCheck(id,value,type);
+	});
+	function changeCheck(id,value,type){
+
+		if(confirm('确定设置?')){
+			$.ajax({
+				url:'{:U("Admin/Usedcar/do_msg_check")}',
+				type:'get',
+				data:'id='+id+'&value='+value+'&type='+type,
+				dataType:'json',
+				success : function(data){
+					console.log(data);
+					if(data.status==1){
+						layer.msg('设置成功',{icon:6},function () {
+							if (data.is_check == 2){
+								layer.msg('请填入不通过原因');
+							}
+						});
+					}else{
+						layer.msg(data.error,{icon:5});
+					}
+				}
+			})
+		}
+	}
+
+
+	$('.slide').click(function (e) {
+		$('.slide').removeAttr('style');
+		$('.slide').find('img').animate({'max-width':'100px','max-height':'100px'});
+		$(this).animate({'width':'300px','height':'300px'});
+		$(this).find('img').animate({'max-width':'300px','max-height':'300px'});
+		e.stopPropagation();
+	});
+	$(document).click(function (e) {
+		$('.slide').removeAttr('style');
+		$('.slide').find('img').animate({'max-width':'100px','max-height':'100px'});
+	});
+
+
+
+</script>
 </body>
 </html>
