@@ -126,7 +126,7 @@
 						<th></th>
 					</tr>
 				</thead>
-			<if condition="$recommend_data">
+			<if condition="(!empty($recommend_data))">
 				<tr  >
 						<td class="center"></td>
 						<td>
@@ -153,9 +153,9 @@
 </table>
 <if condition="empty($recommend_data)">
  <div class="col-md-12 pages" align="center">无数据</div>
- </if>	
+ </if>
 他推荐的
-<table class="table table-hover" id="sample-table-1">
+<table class="table table-hover" id="sample-table-2">
 				<thead>
 					<tr>
 						<th class="center">#</th>
@@ -169,33 +169,32 @@
 					</tr>
 				</thead>
 				<tbody>
-      <volist  name="list['list']" id='vo' key='key'>
-					<tr  >
-						<td class="center"></td>
-						<td> <a href="{:U("Admin/Member/member_edit",array('id'=>$vo['id']))}" >
+				<if condition="!(empty($list['list']))">
+					<volist  name="list['list']" id='vo' key='key'>
+						<tr  >
+							<td class="center"></td>
+							<td> <a href='{:U("Admin/Member/member_edit",array("id"=>$vo["id"]))}' >
 
-							{$vo.member_card}
+								{$vo.member_card}
 							</a>
-						</td>
-						<td class="hidden-xs">{$vo.member_name}
-						</td>
-						<td class="hidden-xs">{$vo.mobile}
-						</td>
-						<td>{$vo['login_count']}	</td>
-						<td>{$vo.add_time|date="Y-m-d H:i",###}	</td>
-						<td>{$vo['member_freeze']?'<span style="color:red;">已冻结</span>':'未冻结'}	</td>
-						<td class="center">
-						<div class="visible-md visible-lg hidden-sm hidden-xs">
-							<!-- <a href="{:U("Admin/Personnel/personnel_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
-							
-							<a href="{:U("Admin/Personnel/personnel_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
-						</div>
-						</td>
-					</tr>
-	
-</volist>
+							</td>
+							<td class="hidden-xs">{$vo.member_name}
+							</td>
+							<td class="hidden-xs">{$vo.mobile}
+							</td>
+							<td>{$vo['login_count']}	</td>
+							<td>{$vo.add_time|date="Y-m-d H:i",###}	</td>
+							<td>{$vo['member_freeze']?'<span style="color:red;">已冻结</span>':'未冻结'}	</td>
+							<td class="center">
+								<div class="visible-md visible-lg hidden-sm hidden-xs">
+									<!-- <a href="{:U("Admin/Personnel/personnel_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
 
-		
+                                    <a href="{:U("Admin/Personnel/personnel_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
+								</div>
+							</td>
+						</tr>
+					</volist>
+				</if>
 				</tbody>
 			</table>
 

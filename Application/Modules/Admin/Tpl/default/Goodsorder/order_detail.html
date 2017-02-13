@@ -65,7 +65,7 @@
                                 {$data['order_amount']+$data['shipping_fee']}
                                 [余额支付：￥{$data['surplus']};
                                 积分支付：￥{$data['integral_money']}({$data['integral']}积分);
-                                微信支付：￥{$data['order_amount']+$data['shipping_fee']-$data['surplus']-$data['integral_money']}]
+                                微信支付：￥{$data['order_amount']-$data['surplus']-$data['integral_money']}]
                             </div>
                             <div class="form-group">
                                 <label class="control-label">
@@ -220,7 +220,7 @@
                                 <th>数量</th>
                                 <th>成交单价</th>
                                 <th class="hidden-xs">成交总价</th>
-                                <th>运费</th>
+                                <th>货到付款</th>
                                 <th>分享返利</th>
                                 <th>分享总额</th>
                                 <th>分享人</th>
@@ -243,11 +243,15 @@
                                     <td>{$vo.goods_price}</td>
                                     <td class="hidden-xs">{$vo['goods_price']*$vo['goods_number']}</td>
                                     <td>
-										<if condition="$vo['shipping_money'] eq 0">
-											包邮
-											<else/>
-											{$vo.shipping_money}
-										</if>
+                                        <if condition="$data.pay_status eq 2">
+                                            <if condition="$data['offline'] eq 1 && $vo['offline'] eq 1">
+                                                ￥{$vo['goods_price']*$vo['goods_number']}
+                                                <else/>
+                                                --
+                                            </if>
+                                            <else/>
+                                            --
+                                        </if>
                                     </td>
 
                                     <td>{$vo.share_money}</td>

@@ -32,17 +32,17 @@
                                             属性名称 <span class="symbol required" aria-required="true"></span>
                                         </label>
                                         <input type="text" placeholder="填写属性名" class="form-control" id="attr_name"
-                                               name="attr_name" value="{$data.attr_name}"/>
+                                               name="attr_name" value="{$data['attr_id'] ? $data['attr_name'] : ''}"/>
                                     </div>
                                     <!-- 所属商品分类开始 -->
                                     <div class="form-group">
                                         <label class="control-label">
                                             所属商品类型 <span class="symbol required" aria-required="true"></span>
                                         </label>
-                                        <select class="form-control" id="dropdown" name="cat_id">
+                                        <select class="form-control" id="dropdown1" name="cat_id">
                                             <volist name="typeList" id="val">
                                                 <option value="{$val.cat_id}"
-                                                <if condition="$data.cat_id eq $val['cat_id']">selected</if>
+                                                <if condition="$data['attr_id'] && $data.cat_id eq $val['cat_id']">selected</if>
                                                 >{$val.cat_name}</option>
                                             </volist>
                                         </select>
@@ -52,15 +52,15 @@
                                         <label class="control-label">
                                             是否检索 <span class="symbol required" aria-required="true"></span>
                                         </label>
-                                        <select class="form-control" id="dropdown" name="attr_index">
+                                        <select class="form-control" id="dropdown2" name="attr_index">
                                             <option value="0"
-                                            <if condition="$data.attr_index eq 0">selected</if>
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 0">selected</if>
                                             >不需要检索</option>
                                             <option value="1"
-                                            <if condition="$data.attr_index eq 1">selected</if>
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 1">selected</if>
                                             >关键字检索</option>
                                             <option value="2"
-                                            <if condition="$data.attr_index eq 2">selected</if>
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 2">selected</if>
                                             >范围检索</option>
                                         </select>
                                     </div>
@@ -71,14 +71,14 @@
 
                                         <div class="clip-radio radio-primary fa-hover Primary">
                                             <input type="radio" value="1" name="is_linked" id="is_linked_yes"
-                                            <if condition="$data.is_linked eq 1">checked</if>
+                                            <if condition="$data['attr_id'] &&  $data.is_linked eq 1">checked</if>
                                             >
                                             <label for="is_linked_yes">
                                                 是
                                             </label>
 
                                             <input type="radio" value="0" name="is_linked" id="is_linked_no"
-                                            <if condition="$data.is_linked eq 0">checked</if>
+                                            <if condition="$data['attr_id'] &&  $data.is_linked eq 0">checked</if>
                                             >
                                             <label for="is_linked_no">
                                                 否
@@ -92,14 +92,14 @@
 
                                         <div class="clip-radio radio-primary fa-hover Primary">
                                             <input type="radio" value="1" name="is_package" id="is_package_yes"
-                                            <if condition="$data.is_package eq 1">checked</if>
+                                            <if condition="$data['attr_id'] &&  $data['is_package'] eq 1">checked</if>
                                             >
                                             <label for="is_package_yes">
                                                 是
                                             </label>
 
                                             <input type="radio" value="0" name="is_package" id="is_package_no"
-                                            <if condition="$data.is_package eq 0">checked</if>
+                                            <if condition="$data['attr_id'] &&   $data['is_package']  eq 0">checked</if>
                                             >
                                             <label for="is_package_no">
                                                 否
@@ -113,14 +113,14 @@
 
                                         <div class="clip-radio radio-primary fa-hover Primary">
                                             <input type="radio" value="1" name="attr_type" id="attr_type_yes"
-                                            <if condition="$data.attr_type eq 1">checked</if>
+                                            <if condition="$data['attr_id'] &&   $data.attr_type eq 1">checked</if>
                                             >
                                             <label for="attr_type_yes">
                                                 是
                                             </label>
 
                                             <input type="radio" value="0" name="attr_type" id="attr_type_no"
-                                            <if condition="$data.attr_type eq 0">checked</if>
+                                            <if condition="$data['attr_id'] &&   $data.attr_type eq 0">checked</if>
                                             >
                                             <label for="attr_type_no">
                                                 否
@@ -131,15 +131,15 @@
                                         <label class="control-label">
                                             属性值录入方式 <span class="symbol required" aria-required="true"></span>
                                         </label>
-                                        <select class="form-control" id="dropdown" name="attr_input_type">
+                                        <select class="form-control" id="dropdown3" name="attr_input_type">
                                             <option value="0"
-                                            <if condition="$data.attr_input_type eq 0">selected</if>
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 0">selected</if>
                                             >手工输入</option>
                                             <option value="1"
-                                            <if condition="$data.attr_input_type eq 1">selected</if>
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 1">selected</if>
                                             >选择输入</option>
                                             <option value="2"
-                                            <if condition="$data.attr_input_type eq 2">selected</if>
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 2">selected</if>
                                             >多行文本输入</option>
                                         </select>
                                     </div>
@@ -150,7 +150,7 @@
                                         </label>
                                         <textarea class="form-control autosize" id="attr_values" name="attr_values"
                                                   data-autosize-on="true"
-                                                  value="{$data.attr_values}">{$data.attr_values}</textarea>
+                                                  value="{$data['attr_id'] ? $data['attr_values'] : ''}">{$data['attr_id'] ? $data['attr_values'] : ''}</textarea>
                                     </div>
                                     <!-- 分类介绍结束 -->
                                 </div>

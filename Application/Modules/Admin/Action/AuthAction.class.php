@@ -79,6 +79,7 @@ class AuthAction extends BaseAction {
             //可设置配置项 AUTH_CONFIG, 此配置项为数组。
             $this->_config = array_merge($this->_config, C('AUTH_CONFIG'));
         }
+
         $this->check();
         $menu=$this->getmenu();
         $this->menu=$menu;
@@ -96,10 +97,10 @@ class AuthAction extends BaseAction {
     //dump($url);
      //dump($not_check);die;
       if(empty($_GET['mu_pid'])){
-         $_GET['mu_pid']=$_SESSION['mu_pid'];
+         $_GET['mu_pid']=isset($_SESSION['mu_pid']) ? $_SESSION['mu_pid'] : 0;
       }
       if(empty($_GET['mu_id'])){
-         $_GET['mu_id']=$_SESSION['mu_id'];
+         $_GET['mu_id']=isset($_SESSION['mu_id']) ? $_SESSION['mu_id'] : 0;
       }
       $_SESSION['mu_pid']=$_GET['mu_pid'];
       $_SESSION['mu_id']=$_GET['mu_id'];
@@ -292,9 +293,8 @@ class AuthAction extends BaseAction {
          $map['is_del']=0;
       }else{
           $groups=$this->getGroups(session('auid'));
-
+          $rules='';
           if($groups){
-            $rules='';
             foreach ($groups as $key => $value) {
               if($value['rules']){
                 if($rules){
@@ -305,7 +305,7 @@ class AuthAction extends BaseAction {
               }
             }
           }
-          if($rules){
+          if($rules && $rules!=''){
             $map=array('status'=>1);
             $map['is_hide']=0;
             $map['is_del']=0;

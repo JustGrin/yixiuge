@@ -30,19 +30,19 @@
                      <label class="control-label">
                          品牌名称 <span class="symbol required" aria-required="true"></span>
                       </label>
-                         <input type="text" placeholder="填写品牌名称" class="form-control" value="{$data.brand_name}" id="brand_name" name="brand_name">
+                         <input type="text" placeholder="填写品牌名称" class="form-control" value="{$_GET['brand_id'] ? $data['brand_name'] : ''}" id="brand_name" name="brand_name">
                  </div>
                 <div class="form-group">
                     <label class="control-label">
                         品牌描述 <span class="symbol required" aria-required="true"></span>
                     </label>
-                        <input type="text" placeholder="填写品牌描述" class="form-control" value="{$data.brand_desc}" id="brand_desc" name="brand_desc">
+                        <input type="text" placeholder="填写品牌描述" class="form-control" value="{$_GET['brand_id'] ? $data['brand_desc'] : ''}" id="brand_desc" name="brand_desc">
                 </div>
                  <div class="form-group">
                       <label class="control-label">
                           品牌网址 <span class="symbol required" aria-required="true"></span>
                       </label>
-                           <input type="text" placeholder="填写品牌网址" class="form-control" value="{$data.site_url}" id="site_url" name="site_url">
+                           <input type="text" placeholder="填写品牌网址" class="form-control" value="{$_GET['brand_id'] ?  $data['site_url'] : ''}" id="site_url" name="site_url">
                  </div>
                 <div class="form-group">
                     <label class="control-label">
@@ -54,22 +54,22 @@
                             <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;">
                          <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="fileinput-new thumbnail" id="show_photo">
-                               <img id="head_photo_src" src="{:U('wap/index/get_thumbs',array('auto'=>200))}?img={$data.brand_logo}" alt="">
+                               <img id="head_photo_src" src="{$_GET['brand_id'] ? $data['brand_logo'] : ''}" alt="">
                             </div>
                          </div>
                               点击图片上传
                               </label>
                           </div>
-                                 <input type="hidden" name="brand_logo" id="image_path" value="{$data.brand_logo}">
+                                 <input type="hidden" name="brand_logo" id="image_path" value="{$_GET['brand_id']  ? $data['brand_logo'] : ''}">
                           </div>
                              <div class="clip-radio radio-primary fa-hover Primary">
                                   品牌是否显示
                                    <br/>
-                                  <input type="radio" value="1" name="is_show" id="id_yes" <if condition="$data.is_show eq 1">checked="checked"</if> >
+                                  <input type="radio" value="1" name="is_show" id="id_yes" <if condition="$_GET['brand_id']  && $data.is_show eq 1">checked="checked"</if> >
                                   <label for="id_yes">
                                      是
                                   </label>
-                                  <input type="radio" value="0" name="is_show" id="id_no" <if condition="$data.is_show eq 0">checked="checked"</if> >
+                                  <input type="radio" value="0" name="is_show" id="id_no" <if condition="$_GET['brand_id']  && $data.is_show eq 0"> <else/>checked="checked"</if> >
                                  <label for="id_no">
                                      否
                                  </label>
@@ -78,7 +78,7 @@
                     </div>
                  <div class="row">
                 <div class="col-md-4 col-md-offset-5">
-                    <input type="hidden"  value="{$data.brand_id}" name="id">
+                    <input type="hidden"  value="{$_GET['brand_id'] ? $data['brand_id'] : ''}" name="id">
                 <button class="btn btn-primary btn-wide pull-left" type="submit">
                     提交 <i class="fa fa-arrow-circle-right"></i>
                 </button>

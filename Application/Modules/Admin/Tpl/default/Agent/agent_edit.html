@@ -31,9 +31,9 @@
                                         用户 <span class="symbol required" aria-required="true"></span>
                                     </label>
                                     <input type="text" placeholder="选择用户" class="form-control"
-                                           value="{$data.member_card}"
+                                           value="{$id ? $data['member_card'] : ''}"
                                            id="member_card" readonly>
-                                    <input type="hidden" value="{$data.member_id}" id="member_id" name="member_id">
+                                    <input type="hidden" value="{$id ? $data['member_id'] : '' }" id="member_id" name="member_id">
                                 </div>
 
                                 <div class="form-group">
@@ -44,7 +44,7 @@
                                         <option value="">请选择</option>
                                         <volist name="province" id="vo">
                                             <option value="{$vo.cityid}"
-                                            <if condition="$vo['cityid'] eq $data['provinceid']">selected</if>
+                                            <if condition="$vo['cityid'] eq ($id ? $data['provinceid'] : 0 )">selected</if>
                                             >{$vo.cityname}</option>
                                         </volist>
                                     </select>
@@ -54,10 +54,10 @@
                                         城市 <span class="symbol required" aria-required="true"></span>
                                     </label>
                                     <select class="form-control" name="cityid" id="city">
-                                        <if condition="empty($data['cityid'])">
+                                        <if condition=" empty($data['cityid'])">
                                             <option value="">请选择</option>
                                             <else/>
-                                            <option value="{$data.cityid}">{$data.city}</option>
+                                            <option value="{$id ? $data['cityid'] : '' }">{$id ? $data['city'] : ''}</option>
                                         </if>
                                     </select>
                                 </div>
@@ -66,10 +66,10 @@
                                         区县 <span class="symbol required" aria-required="true"></span>
                                     </label>
                                     <select class="form-control" name="areaid" id="area">
-                                        <if condition="empty($data['cityid'])">
+                                        <if condition="$id && empty($data['cityid'])">
                                             <option value="">请选择</option>
                                             <else/>
-                                            <option value="{$data['areaid']}">{$data.area}</option>
+                                            <option value="{$id ? $data['areaid'] : ''}">{$id ? $data['area'] : ''}</option>
                                         </if>
                                     </select>
                                 </div>
@@ -79,7 +79,7 @@
                                     </label>
 
                                     <div class="input-group col-md-3">
-                                        <input type="text" name="rate" value="{$data['rate']*100}" id="rate"
+                                        <input type="text" name="rate" value="{$id ? $data['rate']*100 : ''}" id="rate"
                                                placeholder="返点比例" class="form-control">
                                         <span class="input-group-addon">%</span>
                                     </div>
@@ -90,15 +90,15 @@
                                     </label>
 
                                     <div class="clip-radio radio-primary fa-hover Primary">
-                                        <if condition="$data.id gt 0">
+                                        <if condition="$id gt 0">
                                             <input type="radio" value="1" name="status" id="id_no"
-                                            <if condition="$data.status eq 1">checked="checked"</if>
+                                            <if condition="$id && $data.status eq 1">checked="checked"</if>
                                             >
                                             <label for="id_no">
                                                 有效
                                             </label>
                                             <input type="radio" value="0" name="status" id="id_yes"
-                                            <if condition="$data.status eq 0">checked="checked"</if>
+                                            <if condition="$id && $data.status eq 0">checked="checked"</if>
                                             >
                                             <label for="id_yes">
                                                 无效
@@ -119,7 +119,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-5">
-                                <input type="hidden" value="{$data.id}" name="id">
+                                <input type="hidden" value="{$id}" name="id">
                                 <button class="btn btn-primary btn-wide pull-left" type="submit">
                                     提交 <i class="fa fa-arrow-circle-right"></i>
                                 </button>

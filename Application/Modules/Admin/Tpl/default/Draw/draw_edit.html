@@ -38,23 +38,24 @@
                                         奖品类型 <span class="symbol required" aria-required="true"></span>
                                     </label>
                                     <select class="form-control" name="draw_type">
-                                        <option value="0" <if condition="$data.draw_type eq 0">selected</if>>-选择奖品类型-</option>
-                                        <option value="1" <if condition="$data.draw_type eq 1">selected</if>>积分</option>
-                                        <option value="2" <if condition="$data.draw_type eq 2">selected</if>>金币</option>
-                                        <option value="3" <if condition="$data.draw_type eq 3">selected</if>>话费</option>
-                                        <option value="4" <if condition="$data.draw_type eq 4">selected</if>>商品折扣</option>
-                                        <option value="5" <if condition="$data.draw_type eq 5">selected</if>>商品</option>
+                                        <option value="0" <if condition="$id && $data.draw_type eq 0">selected</if>>-选择奖品类型-</option>
+                                        <option value="1" <if condition="$id && $data.draw_type eq 1">selected</if>>积分</option>
+                                        <option value="2" <if condition="$id && $data.draw_type eq 2">selected</if>>金币</option>
+                                        <option value="3" <if condition="$id && $data.draw_type eq 3">selected</if>>话费</option>
+                                        <option value="4" <if condition="$id && $data.draw_type eq 4">selected</if>>商品折扣</option>
+                                        <option value="5" <if condition="$id && $data.draw_type eq 5">selected</if>>商品</option>
                                     </select>
                                 </div>
                                 <!-- S 奖品设置 -->
-                                <switch name="data.draw_type">
+                                <if condition="$id">
+                                <switch name="data['draw_type']">
                                     <case value="1">
                                         <div class="form-group" id="draw">
                                             <label class="control-label">
                                                 金币设置 <span class="symbol required" aria-required="true"></span>
                                             </label>
                                             <input type="text" placeholder="金币设置" class="form-control"
-                                                   name="draw_value" value="{$data.draw_value}"/>
+                                                   name="draw_value" value="{$id ? $data['draw_value'] : ''}"/>
                                         </div>
                                     </case>
                                     <case value="2">
@@ -63,7 +64,7 @@
                                                 金币设置 <span class="symbol required" aria-required="true"></span>
                                             </label>
                                             <input type="text" placeholder="金币设置" class="form-control"
-                                                   name="draw_value" value="{$data.draw_value}"/>
+                                                   name="draw_value" value="{$id ? $data['draw_value'] : ''}"/>
                                         </div>
                                     </case>
                                     <case value="3">
@@ -72,7 +73,7 @@
                                                 话费设置 <span class="symbol required" aria-required="true"></span>
                                             </label>
                                             <input type="text" placeholder="话费设置" class="form-control"
-                                                   name="draw_value" value="{$data.draw_value}"/>
+                                                   name="draw_value" value="{$id ? $data['draw_value'] : ''}"/>
                                         </div>
                                     </case>
                                     <case value="4">
@@ -81,7 +82,7 @@
                                                 商品折扣设置 <span class="symbol required" aria-required="true"></span>
                                             </label>
                                             <input type="text" placeholder="商品折扣设置" class="form-control"
-                                                   name="draw_value" value="{$data.draw_value}"/>
+                                                   name="draw_value" value="{$id ? $data['draw_value'] : ''}"/>
                                         </div>
                                     </case>
                                     <case value="5">
@@ -90,29 +91,30 @@
                                                 商品设置 <span class="symbol required" aria-required="true"></span>
                                             </label>
                                             <input type="text" placeholder="商品设置" class="form-control"
-                                                   name="draw_value" value="{$data.draw_value}" id="goods"
+                                                   name="draw_value" value="{$id ? $data['draw_value'] : ''}" id="goods"
                                                    onclick="popup_goods()" readonly/>
                                         </div>
                                     </case>
                                 </switch>
+                                </if>
                                 <!-- E 奖品设置 -->
                                 <div class="form-group">
                                     <label class="control-label">
                                         中奖基数 <span class="symbol required" aria-required="true"><span>(当前抽奖基数/所有有效抽奖基数和=中奖概率)</span></span>
                                     </label>
-                                    <input type="text" placeholder="填写中奖基数" class="form-control" name="draw_chances_value" value="{$data.draw_chances_value}"/>
+                                    <input type="text" placeholder="填写中奖基数" class="form-control" name="draw_chances_value" value="{$id ? $data['draw_chances_value'] : ''}"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">
                                         是否有效
                                     </label>
                                     <div class="clip-radio radio-primary fa-hover Primary">
-                                        <input type="radio" value="1" name="draw_status" id="id_draw_status_yes" {$data['draw_status']?'checked':''}>
+                                        <input type="radio" value="1" name="draw_status" id="id_draw_status_yes" {$id ? $data['draw_status']?'checked':'' : ''}>
                                         <label for="id_draw_status_yes">
                                             有效
                                         </label>
                                         <input type="radio" value="0" name="draw_status" id="id_draw_status_no"
-                                               {$data['draw_status']?'':'checked'}>
+                                               {$id ? $data['draw_status']?'':'checked' : ''}>
                                         <label for="id_draw_status_no">
                                             无效
                                         </label>

@@ -7,19 +7,14 @@
 class CategoryAction extends AuthAction{
 	//分类列表
 	public function Index(){
-		if($_GET["cat_name"]){
-			$where["cat_name"] = array("like","%".$_GET["cat_name"]."%");
-		}
-		if($_GET["goods_sn"]){
-			$where["goods_sn"] = array("like","%".$_GET["goods_sn"]."%");
-		}
-		if($_GET["keywords"]){
-			$where["keywords"] = array("like","%".$_GET["keywords"]."%");
-		}
+		$where =array();
+		isset($_GET['cat_name']) ? $where["cat_name"] = array("like","%".$_GET["cat_name"]."%") : $_GET['cat_name'] = '';
+		isset($_GET['goods_sn']) ? $where["goods_sn"] = array("like","%".$_GET["goods_sn"]."%") : $_GET['goods_sn'] = '';
+		isset($_GET['keywords']) ? $where["keywords"] = array("like","%".$_GET["keywords"]."%") : $_GET['keywords'] = '';
+
 		$order="sort_order desc";
 		$list =D('Common')->getAllList('g_category',$where,'*',$order);   //获取分页数据
         $typeList = $list;
-        $page=$list['page'];
 		$typeList = $this->gettree($typeList,0,0,'parent_id','cat_id');
        // $this->assign('page',$page);
 		$this->assign('typeList',$typeList);
@@ -28,9 +23,13 @@ class CategoryAction extends AuthAction{
 	}
 	//编辑新增商品
 	public function category_edit(){
-
+		$data = array();
+		$data['cat_id'] = 0;
+		$cwhere =array();
+		$cwhere['cat_id'] = 0;
+		$_GET['id'] = isset($_GET['id']) ? $_GET['id'] : 0;
 		if ($_POST) {  //POST有值执行添加或者更新
-			if(!empty($_GET['id'])){//编辑分类
+			if(isset($_GET['id']) && $_GET['id']){//编辑分类
 //                 $re = M('g_category')->field('cat_id')->where(array('parent_id'=>$_GET['id']))->select();
 //                 if($re){//判断是不是添加到自己的子分类
 //                     $this -> error('上级分类不能是自己的子分类');
@@ -64,13 +63,14 @@ class CategoryAction extends AuthAction{
 
 		}
 		//读取分类列表
+		$gwhere =array();
 		if((!empty($_GET['id']))){
 			$gwhere['parent_id'] = array('neq', $_GET['id']);
 		}
 		//$category =D('Common')->getAllList('g_category');
 		$category = M('g_category')->field('cat_id,cat_name,parent_id')->where($gwhere)->select();
 		$category = $this->gettree($category,0,0,'parent_id','cat_id');
-		$this->assign('id',$cwhere['cat_id']);
+		$this->assign('id',$_GET['id']);
 		$this->assign('data',$data);
 		$this->assign('msgtitle',$msgtitle);
 		$this->assign('category',$category);

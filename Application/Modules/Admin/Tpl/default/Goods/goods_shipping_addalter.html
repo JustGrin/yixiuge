@@ -23,20 +23,20 @@
 						<!-- end: PAGE TITLE -->
 						<!-- start: YOUR CONTENT HERE -->
 <div class="container-fluid container-fullw bg-white">
-<form action="{:U('Admin/Goods/goods_shipping_addSave',array('shipping_id'=>$data['shipping_id']))}" role="form" id="form2" novalidate="novalidate" method="post">
+<form action="{:U('Admin/Goods/goods_shipping_addSave',array('shipping_id'=>$shipping_id))}" role="form" id="form2" novalidate="novalidate" method="post">
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 	  <div class="form-group">
 		<label class="control-label">
 			配送方式名称 <span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" placeholder="填写配送方式名称" class="form-control" value="{$data.shipping_name}" id="shipping_name" name="shipping_name">
+		<input type="text" placeholder="填写配送方式名称" class="form-control" value="{$shipping_id ? $data['shipping_name'] : ''}" id="shipping_name" name="shipping_name">
 	</div>
 	<div class="form-group">
 		<label class="control-label">
 			配送方式的代号 <span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" placeholder="填写配送方式的代号" class="form-control" value="{$data.shipping_code}" id="shipping_code" name="shipping_code">
+		<input type="text" placeholder="填写配送方式的代号" class="form-control" value="{$shipping_id ? $data['shipping_code'] : ''}" id="shipping_code" name="shipping_code">
 	</div>
 	<!--<div class="form-group">-->
 		<!--<label class="control-label">-->
@@ -67,11 +67,11 @@
 	<div class="clip-radio radio-primary fa-hover Primary">
 			配送方式是否禁用
 		<br/>
-		<input type="radio" value="0" name="enabled" id="id_yes1" <if condition="$brand.enabled eq 1">checked</if> >
+		<input type="radio" value="0" name="enabled" id="id_yes1" <if condition="$shipping_id && $brand.enabled eq 1">checked</if> >
 			<label for="id_yes1">
 				是
 			</label>
-		<input type="radio" value="1" name="enabled" id="id_no1" <if condition="$brand.enabled eq 0">checked</if> >
+		<input type="radio" value="1" name="enabled" id="id_no1" <if condition="$shipping_id && $brand.enabled eq 0"> <else/> checked</if> >
 			<label for="id_no1">
 				否
 			</label>
@@ -81,7 +81,7 @@
 		<label class="control-label">
 			排序顺序 
 		</label>
-		<input type="text" placeholder="0" value="{$data.shipping_order}" class="form-control" id='shipping_order' name="shipping_order">
+		<input type="text" placeholder="0" value="{$shipping_id ? $data['shipping_order'] : ''}" class="form-control" id='shipping_order' name="shipping_order">
 	</div>
 	
 	
@@ -89,7 +89,7 @@
 </div>
 <div class="row">
 <div class="col-md-4 col-md-offset-5">
-	<input type="hidden"  value="{$data.id}" name="id">
+	<input type="hidden"  value="{$shipping_id}" name="id">
 	<button class="btn btn-primary btn-wide pull-left" type="submit">
 		提交 <i class="fa fa-arrow-circle-right"></i>
 	</button>

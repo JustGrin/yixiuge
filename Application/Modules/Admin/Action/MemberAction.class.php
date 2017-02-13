@@ -11,14 +11,15 @@ class MemberAction extends AuthAction{
 //        if($_GET['member_card']){
 //			$where['mem.member_card']=array('like',$_GET['member_card'].'%');
 //		}
-		if($_GET['member_name']){
-			$where['mem.name'] = array('like', '%' . $_GET['member_name'] . '%');
-		}
-		if($_GET['mobile']){
+		$where = array();
+		isset($_GET['member_name']) ? $where['mem.member_name'] = array('like', '%' . $_GET['member_name'] . '%') : $_GET['member_name'] = '';
+		if(isset($_GET['mobile'])){
 			$s_where['mem.mobile'] = array('like', '%' . $_GET['mobile'] . '%');
 			$s_where['mem.member_card'] = array('like', '%' . $_GET['mobile'] . '%');
 			$s_where['_logic'] = 'or';
 			$where['_complex'] = $s_where;
+		}else{
+			$_GET['mobile'] = '';
 		}
 		/*if(isset($_GET['member_type'])){
 			if($_GET['member_type']!='all'){
@@ -39,7 +40,7 @@ class MemberAction extends AuthAction{
 				$where['mem.member_vip_type']=$_GET['member_vip_type'];
 			}
 		}else{
-			$_GET['member_type']='all';
+			$_GET['member_vip_type']='all';
 		}
 		if(isset($_GET['member_freeze'])){
 			if($_GET['member_freeze']!='all'){
@@ -48,19 +49,29 @@ class MemberAction extends AuthAction{
 		}else{
 			$_GET['member_freeze']='all';
 		}
-		if($_GET['binding']){
+		if(isset($_GET['binding'])){
 			if($_GET['binding']=='1'){//已绑定
 				$where['_string']="( mem.mobile <>'' and mem.mobile is not null)";
 			}else if($_GET['binding']=='2'){//未绑定
 				$where['_string']="( mem.mobile ='' or mem.mobile is null)";
 			}
+		}else{
+			$_GET['binding'] = 'all';
 		}
-		if($_GET['start_time']){
-			$start_time=strtotime($_GET['start_time']);
+		if (isset($_GET['start_time'])){
+			$start_time = strtotime($_GET['start_time']) ;
+		}else{
+			$start_time = 0;
+			$_GET['start_time'] = '';
 		}
-		if($_GET['end_time']){
-			$end_time=strtotime($_GET['end_time'].'23:59:59');
+
+		if (isset($_GET['end_time'])){
+			$end_time = strtotime($_GET['end_time']) ;
+		}else{
+			$end_time = -1;
+			$_GET['end_time'] = '';
 		}
+
 		if($end_time>0 && $start_time>0){
 			$where['mem.add_time']=array('between',array($start_time,$end_time));
 		}else{
@@ -94,6 +105,7 @@ class MemberAction extends AuthAction{
 					break;
 			}
 		}else{
+			$_GET['order'] = '';
 			$order="mem.id desc";
 		}
 		//$menulist=D("Common")->getPageList('member',$where);
@@ -274,18 +286,13 @@ class MemberAction extends AuthAction{
 	
 	//会员收益记录
 	public function rebate_record(){
-        if($_GET['member_card']){
-			$where['member_card']=array('like',$_GET['member_card'].'%');
-		}
-        if($_GET['mobile']){
-			$where['mobile']=array('like',$_GET['mobile'].'%');
-		}
+		isset($_GET['member_card']) ? $where['member_card']=array('like','%'.$_GET['member_card'].'%') : $_GET['member_card'] = '' ;
+		isset($_GET['mobile']) ? $where['mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] = '' ;
+		isset($_GET['type']) ? $where['reb.type']=array('like','%'.$_GET['type'].'%') : $_GET['type'] = '' ;
+
 		/*if($_GET['status']){
 			$where['reb.status']=$_GET['status'];
 		}*/
-		if($_GET['type']){
-			$where['reb.type']=$_GET['type'];
-		}
 		$where['reb.status']=1;//状态 1用户收益 2 商家返利
 		//1消费者本身返点 2直接推荐人返点 3间接推荐人返点  
        //4 直接推荐人认证返点 5 间接推荐人认证返点 
@@ -325,7 +332,7 @@ class MemberAction extends AuthAction{
 					$member_card=$matches[1];
 					$member_id=$m_member->where(array('member_card'=>$member_card))->getField('id');
 					 if($member_id){
-						 $rep_text='(<a href="'.U("Admin/Member/member_edit",array('id'=>$data['id'])).'" >'.$member_card.'</a>)';
+						 $rep_text='(<a href="'.U("Admin/Member/member_edit",array('id'=>$val['member_id'])).'" >'.$member_card.'</a>)';
 						 $list[$key]['des']=str_replace($rep,$rep_text,$des);
 						 unset($rep_text);
 					 }
@@ -342,15 +349,20 @@ class MemberAction extends AuthAction{
 
 	//会员消费记录
 	public function member_consume_record(){
-        if($_GET['mobile']){
-			$where['mem.mobile']=array('like',$_GET['mobile']."%");
+		$where =array();
+
+		isset($_GET['mobile']) ? $where['mem.mobile']=array('like',"%".$_GET['mobile']."%") : $_GET['mobile'] ='';
+		if(isset($_GET['status'])){
+			$_GET['status'] != 'all' ? $where['reb.status']=$_GET['status'] : false ;
+		}else{
+			$_GET['status'] = 'all';
 		}
-		if($_GET['status']){
-			$where['reb.status']=$_GET['status'];
+		if(isset($_GET['type'])){
+			$_GET['type'] != 'all' ? $where['reb.type'] = $_GET['type'] : false ;
+		}else{
+			$_GET['type'] = 'all' ;
 		}
-		if($_GET['type']){
-			$where['reb.type']=$_GET['type'];
-		}
+
 			//1订单消费 2充值 3提现   4退款 5 收益 6认证消费
 			$type_array=array(
 				'1'=>'订单消费',
@@ -361,7 +373,6 @@ class MemberAction extends AuthAction{
 				//'6'=>'认证消费'
 				);
 			$this->assign("type_array",$type_array);
-
         $pre=C('DB_PREFIX');//表前缀
         $count=M()->table($pre.'member_consume_record reb')//
         ->join($pre.'member mem on reb.member_id=mem.id')//
@@ -385,7 +396,7 @@ class MemberAction extends AuthAction{
 					$member_card=$matches[1];
 					$member_id=$m_member->where(array('member_card'=>$member_card))->getField('id');
 					if($member_id){
-						$rep_text='(<a href="'.U("Admin/Member/member_edit",array('id'=>$data['id'])).'" >'.$member_card.'</a>)';
+						$rep_text='(<a href="'.U("Admin/Member/member_edit",array('id'=>$val['member_id'])).'" >'.$member_card.'</a>)';
 						$list[$key]['des']=str_replace($rep,$rep_text,$des);
 						unset($rep_text);
 					}
@@ -438,7 +449,8 @@ class MemberAction extends AuthAction{
 
 	//会员推荐查询
 	public function member_tuijian(){
-        if($_GET['mobile']){
+		$data = array();
+        if(isset($_GET['mobile'])){
 			$where['_string']='mobile='.$_GET['mobile'].' or member_card='.$_GET['mobile'];
 			 $data=M('member')->where($where)->find();
 			  //查询推荐人信息
@@ -447,8 +459,12 @@ class MemberAction extends AuthAction{
 			 	$where['member_card']=$data['recommend_code'];
 			 	$this->recommend_data=M('member')->where($where)->find();
 			 }
+		}else{
+			$_GET['mobile'] = '';
 		}
-        $this->data=$data;
+        $this->data = $data;
+		$list =array();
+		$page['page'] = '';
 	    if($data){
 	    	if($_GET['recommend']){//间接推荐人
                  $tjwhere['indirect_recommend_code']=$data['member_card'];
@@ -460,13 +476,10 @@ class MemberAction extends AuthAction{
 	        $page=D("Common")->getPage($count);//分页    
 	    	$list =M('member')->where($tjwhere)
 	    	->order('add_time desc')->limit($page['start'].','.$page['pagesize'])->select();
-	    	
-			$menulist['list']=$list;
-			$menulist['page']=$page['page'];
-			$this->list=$menulist;
-
 	    }
-		
+		$menulist['list']=$list;
+		$menulist['page']=$page['page'];
+		$this->list=$menulist;
 		$this->display();
 	}
 	//会员登录记录  ZM
@@ -528,7 +541,7 @@ class MemberAction extends AuthAction{
 			}else{
 				$res=M('member_level')->add($_POST);
 			}
-			if ($res){
+			if ($res !== false){
 				$this->success('操作成功',U('Admin/Member/level_list'));
 			}else{
 				$this->error('操作失败');
@@ -581,7 +594,7 @@ class MemberAction extends AuthAction{
 	}
 	public function binding_check()
 	{
-		$order = " status DESC,change_time ASC ";
+		$order = " status ASC,change_time ASC ";
 		$ver_list=M('member_verification')->order($order)->select();
 		$this->list=$ver_list;
 		$this->display();

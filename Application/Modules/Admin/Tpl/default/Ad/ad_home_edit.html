@@ -14,7 +14,7 @@
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">{$data.type_name}</h1>
+									<h1 class="mainTitle">{$id ? $data['type_name'] : ''}</h1>
 									<span class="mainDescription">{$msgtitle}</span>
 								</div>
 								
@@ -30,7 +30,7 @@
 		<label class="control-label">
 			展示标题<span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" name="title" value="{$data.title}" id="title" placeholder="展示标题" class="form-control">
+		<input type="text" name="title" value="{$id ? $data['title'] : ''}" id="title" placeholder="展示标题" class="form-control">
 	</div>
     <div class="form-group" id="show_type">
         <label class="control-label">
@@ -38,23 +38,23 @@
         </label>
         <select name="sel_type" class="form-control" id="sel_type">
             <option value="0">-展示类型-</option>
-            <option value="1" <if condition="$data.type eq 1">selected</if>>商品关联</option>
+            <option value="1" <if condition="$id && $data.type eq 1">selected</if>>商品关联</option>
             <option value="2"
-            <if condition="$data.type eq 2">selected</if>>类别关联</option>
+            <if condition="$id && $data.type eq 2">selected</if>>类别关联</option>
             <option value="3"
-            <if condition="$data.type eq 3">selected</if>>限时商品关联</option>
+            <if condition="$id && $data.type eq 3">selected</if>>限时商品关联</option>
         </select>
     </div>
-        <input id="value" type="hidden" name="value" value="{$data.value}">
+        <input id="value" type="hidden" name="value" value="{$id ? $data['value'] : ''}">
     <if condition="!empty($_GET['type'])">
         <div class="form-group" id="show_value">
             <label class="control-label">
                 展示内容<span class="symbol required" aria-required="true"></span>
             </label>
-            <input type="button" value="选择展示内容" onclick="setValue({$data.type})" class="btn btn-primary" />
+            <input type="button" value="选择展示内容" onclick="setValue({$id ? $data['type'] : ''})" class="btn btn-primary" />
             <br><br>
             <div style="display: block;" id="title_t">
-                <if condition="is_array($data['title_t'])">
+                <if condition="is_array($id ? $data['title_t'] : '')">
                     <volist name="data['title_t']" id="vo">
                         {$vo}<br>
                     </volist>
@@ -66,7 +66,7 @@
             <!--<input type="text" placeholder="展示内容" value="{$data.value}" onclick="setValue({$data.type})" class="form-control" readonly>-->
         </div>
     </if>
-    <div class="form-group show_time" <if condition="$data.type eq 3"> style="display:none"</if> >
+    <div class="form-group show_time" <if condition="$id && $data.type eq 3"> style="display:none"</if> >
         <label class="sr-only">
             活动时间
         </label>
@@ -84,7 +84,7 @@
             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
         </p>
     </div>
-    <if condition="$data.type eq 3">
+    <if condition="$id && $data.type eq 3">
     <div class="form-group"  >
         <label class="control-label">
                限时商品活动时间
@@ -104,13 +104,13 @@
          <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;"> 
           <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-new thumbnail" id="show_photo">
-                    <img id="head_photo_src" src="{:U('wap/index/get_thumbs',array('auto'=>300))}?img={$data.image_path}" alt="">
+                    <img id="head_photo_src" src="{$id ? $data['image_path'] : ''}" alt="">
                 </div>
             </div>
            点击图片上传
         </label>
          </div>
-          <input type="hidden" name="image_path" id="image_path" value="{$data.image_path}">
+          <input type="hidden" name="image_path" id="image_path" value="{$id ? $data['image_path'] : ''}">
     </div>
     <!--<div class="form-group">-->
         <!--<label class="control-label">-->
@@ -128,7 +128,7 @@
         <label class="control-label">
             排序（值越大越靠前）
         </label>
-        <input type="text" name="sort" value="{$data.sort|default='0'}" id="sort" placeholder="排序" class="form-control">
+        <input type="text" name="sort" value="{$id ? $data['sort'] : 0 }" id="sort" placeholder="排序" class="form-control">
     </div>
 	
  <div class="form-group">
@@ -136,7 +136,7 @@
 			状态 <span class="symbol required" aria-required="true"></span>
 		</label>
 		<select class="form-control"   name="status">
-			<if condition="$data.id gt 0">
+			<if condition="$id gt 0">
 			<option value="1" <if condition="$data.status eq 1">selected</if> >有效</option>
             <option value="0" <if condition="$data.status eq 0">selected</if> >无效</option>
             <else/>
@@ -152,8 +152,8 @@
 </div>
 <div class="row">
 <div class="col-md-4">
-	<input type="hidden"  value="{$data.id}" name="id">
-	<input type="hidden"  value="{$data.type}" name="type">
+	<input type="hidden"  value="{$id}" name="id">
+	<input type="hidden"  value="{$id ? $data['type'] : ''}" name="type">
 	<button class="btn btn-primary btn-wide pull-left" type="submit">
 		提交 <i class="fa fa-arrow-circle-right"></i>
 	</button>

@@ -5,9 +5,8 @@
  */
 class UsernoticeAction extends AuthAction{
     public function index(){
-        if($_GET['title']){
-            $where['title']=array('like','%'.$_GET['title'].'%');
-        }
+       $where = array();
+        isset($_GET['title']) ?   $where['title']=array('like','%'.$_GET['title'].'%') : $_GET['title'] = '';
         $where['status'] = 1; //状态1,代表未删除,0代表已删除
         $data = D('Common')->getPageList('user_notice', $where, '', 'add_time desc', 20);
 //        var_dump($data);die;
@@ -17,7 +16,7 @@ class UsernoticeAction extends AuthAction{
 	
     public function notice_edit(){
         if ($_POST) {  //有值时执行添加或者编辑操作
-            if (!empty($_GET['id'])) {    //get['id']有值代表更新,无值代表新增
+            if (isset($_GET['id'])) {    //get['id']有值代表更新,无值代表新增
                 $where['id'] = $_GET['id'];
                 $data = $_POST;
                 $re = M('user_notice')->where($where)->save($data);
@@ -35,17 +34,20 @@ class UsernoticeAction extends AuthAction{
                 $this->error('操作失败');
             }
         } else {   //无值时显示该页面
-            if (!empty($_GET['id'])) {    //get['id']有值代表新增,无值代表新增
-                $where['id'] = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+            if ($id) {    //get['id']有值代表新增,无值代表新增
+                $where['id'] = $id;
                 $data = M('user_notice')->where($where)->find();
+                $this->assign('data', $data);
                 $msgtitle = '编辑文章';
             } else {
                 $msgtitle = '发布文章';
             }
+            $this->id =$id;
+
+            $this->assign('msgtitle', $msgtitle);
+            $this->display();
         }
-        $this->assign('data', $data);
-        $this->assign('msgtitle', $msgtitle);
-        $this->display();
     }
     //删除通知
     public function notice_del(){
@@ -63,9 +65,8 @@ class UsernoticeAction extends AuthAction{
     }
     //推文列表
     public function tweet_list(){
-        if ($_GET['title']) {
-            $where['title'] = array('like', '%' . $_GET['title'] . '%');
-        }
+       $where = array();
+        isset($_GET['title']) ?  $where['title'] = array('like', '%' . $_GET['title'] . '%') : $_GET['title'] = '';
         $where['type'] = 2;//0普通文章 1 活动文章 2微信SEO
         $data = D('Common')->getPageList('article_tweet', $where, '', 'add_time desc', 20);
         $this->assign('data', $data);
@@ -74,7 +75,6 @@ class UsernoticeAction extends AuthAction{
 	
     //推文编辑
     public function tweet_edit(){
-        $auid=session('auid');
         if ($_POST) {  //有值时执行添加或者编辑操作
 			$imgs = array();
 			$imgs[] = $_POST['img'];
@@ -116,9 +116,11 @@ class UsernoticeAction extends AuthAction{
                 $this->error('操作失败');
             }
         } else {   //无值时显示该页面
+            $auid=session('auid');
 			$data['img_num'] = 1;
-            if (!empty($_GET['id'])) {    //get['id']有值代表新增,无值代表新增
-                $where['id'] = $_GET['id'];
+            $id  = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id) {    //get['id']有值代表新增,无值代表新增
+                $where['id'] = $id;
                 $data = M('article_tweet')->where($where)->find();
 				$data['img_num'] = 1;
 				if(isset($data['imgs_a']) && $data['imgs_a']){
@@ -131,11 +133,12 @@ class UsernoticeAction extends AuthAction{
             } else {
                 $msgtitle = '发布文章';
             }
+            $this->assign('msgtitle', $msgtitle);
+            $this->id =$id;
+            $this->assign('data', $data);
+            $this->auid=$auid;
+            $this->display();
         }
-        $this->auid=$auid;
-        $this->assign('data', $data);
-        $this->assign('msgtitle', $msgtitle);
-        $this->display();
     }
     //推文编辑 审核
     public function tweet_edit_sh(){
@@ -194,9 +197,7 @@ class UsernoticeAction extends AuthAction{
      //推文列表
     public function tweet_list_fx(){
 
-        if ($_GET['title']) {
-            $where['title'] = array('like', '%' . $_GET['title'] . '%');
-        }
+        isset($_GET['title']) ?  $where['title'] = array('like', '%' . $_GET['title'] . '%') : $_GET['title'] = '';
          $where['type']=1;//0普通文章 1 活动文章
         $data = D('Common')->getPageList('article_tweet', $where, '', 'add_time desc', 20);
 //        var_dump($data);die;

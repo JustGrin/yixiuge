@@ -10,30 +10,29 @@ class UpgradeAction extends AuthAction
         /*if(empty($_SESSION['topadmin'])){
             $where['store_id']=session('afid');
         }*/
-        if ($_GET['goods_name']) {
-            $where['goods_name'] = array('like', $_GET['goods_name'] . '%');
-        }
-        if ($_GET['goods_sn'] && $_GET['goodsNum'] != 0) {
+
+        isset($_GET['goods_name']) ? $where['goods_name'] = array('like', $_GET['goods_name'] . '%') : $_GET['goods_name'] = '' ;
+        if (isset($_GET['goods_sn']) && isset($_GET['goodsNum']) && $_GET['goods_sn'] && $_GET['goodsNum'] != 0) {
             $where['goods_sn'] = array('like', array('%' . $_GET['goodsNum'] . '%', '%' . $_GET['goods_sn'] . '%'), 'AND');
             //$where['_sting'] = " goods_sn like '%".$_GET['goodsNum']."%' AND goods_sn like '%".$_GET['goods_sn']."%'";
         } else {
-            if ($_GET['goods_sn']) {
+            if (isset($_GET['goods_sn']) && $_GET['goods_sn']) {
                 $where['goods_sn'] = array('like', '%' . $_GET['goods_sn'] . '%');
+            }else{
+                $_GET['goods_sn'] = '';
             }
-            if ($_GET['goodsNum']) {
+            if (isset($_GET['goodsNum']) && $_GET['goodsNum']) {
                 $where['goods_sn'] = array('like', '%' . $_GET['goodsNum'] . '%');
+            }else{
+                $_GET['goodsNum'] = '';
             }
 
         }
-        if ($_GET['cat_id']) {
-            $where['cat_id'] = array('eq', $_GET['cat_id']);
-        }
-        if ($_GET['brand_id']) {
-            $where['brand_id'] = array('eq', $_GET['brand_id']);
-        }
-        if ($_GET['goods_type']) {
-            $where['goods_type'] = array('eq', $_GET['goods_type']);
-        }
+
+        isset($_GET['cat_id']) ? $where['cat_id'] = array('eq', $_GET['cat_id']) : $_GET['cat_id'] = '';
+        isset($_GET['brand_id']) ? $where['brand_id'] = array('eq', $_GET['brand_id']) : $_GET['brand_id'] = '';
+        isset($_GET['goods_type']) ?  $where['goods_type'] = array('eq', $_GET['goods_type']) : $_GET['goods_type'] = '';
+
         if (isset($_GET['order'])) {
             $order = $_GET['order'] . " desc";
         }
@@ -171,7 +170,11 @@ class UpgradeAction extends AuthAction
                         }
                     }
                 }
-             
+                if ($_POST["is_refund"]) {
+                    $_POST["is_refund"] = 1;
+                } else {
+                    $_POST["is_refund"] = 0;
+                }
                 $g_where["goods_id"] = $_POST["goods_id"];
                 $topadmin = session('topadmin');
                 if ($topadmin != 1) {
@@ -230,8 +233,9 @@ class UpgradeAction extends AuthAction
                 $this->error("操作失败");
             }
         } else {
-            if ($_GET['id']) {
-                $g_where["goods_id"] = array("eq", $_GET["id"]);
+            $goods_id = isset($_GET['id']) ? $_GET['id'] : 0 ;
+            if ($goods_id) {
+                $g_where["goods_id"] = array("eq", $goods_id);
                 $data = D("Goods")->getGoodsInfo($g_where);
                 if ($data) {
                     $pre = C('DB_PREFIX');//表前缀
@@ -251,6 +255,7 @@ class UpgradeAction extends AuthAction
                 $data['promote_end_date'] = strtotime("+1 month");
                 $this->assign("data", $data);
             }
+            $this->goods_id = $goods_id;
             //商品分类
             //$Category=D('Common')->getAllList('g_category',array('is_show'=>1));
             $Category = D('Category')->getCategoryAll(array('is_show' => 1));

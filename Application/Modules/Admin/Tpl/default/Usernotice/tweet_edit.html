@@ -29,7 +29,7 @@
                                 <label class="control-label">
                                     标题 <span class="symbol required" aria-required="true"></span>
                                 </label>
-                                <input type="text" name="title" placeholder="请填写标题" value="{$data.title}" class="form-control"/>
+                                <input type="text" name="title" placeholder="请填写标题" value="{$id ? $data['title'] : ''}" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">
@@ -41,13 +41,14 @@
                                         <input type="file" name="head_photo" class="upload_input" id="head_photo_1" value="" data="1" style="display:none;">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail" id="show_photo">
-                                                <img id="head_photo_src_1" src="{:U('wap/index/get_thumbs',array('auto'=>300))}?img={$data.img}" alt="">
+                                                <img id="head_photo_src_1" src="{$id ? $data['img'] : ''}" alt="">
                                             </div>
                                         </div>
                                         点击图片上传
                                     </label>
-									<input type="hidden" name="img" id="img_1" value="{$data.img}">
+									<input type="hidden" name="img" id="img_1" value="{$id ? $data['img'] : ''}">
                                 </div>
+                                <if condition="$id">
 								<volist name="data['imgs']" id="vo">
 									<if condition="$i gt 1" >
 									<div class="upload_file" style="width: 200px; float: left;">
@@ -64,7 +65,8 @@
 									</div>
 									</if>
 								</volist>
-								<div style="display:block; width:30px; height:30px; float:left; text-align:center; line-height:30px; border:1px solid #ddd; margin:0 0 0 10px;" id="add_img" data="{$data.img_num}">+</div>
+                                </if>
+								<div style="display:block; width:30px; height:30px; float:left; text-align:center; line-height:30px; border:1px solid #ddd; margin:0 0 0 10px;" id="add_img" data="{$id ? $data['img_num'] : ''}">+</div>
 								<div style="clear:both;"></div>
 							</div>
                                 <if condition="$auid eq 1" >
@@ -73,11 +75,11 @@
                                             审核状态
                                         </label>
                                         <div class="clip-radio radio-primary fa-hover Primary">
-											<input type="radio" value="1" name="is_check" id="is_check_yes" {$data['is_check']?'checked':''}>
+											<input type="radio" value="1" name="is_check" id="is_check_yes" {$id ? $data['is_check']?'checked':'' : ''}>
 											<label for="is_check_yes">
 												已审核
 											</label>
-											<input type="radio" value="0" name="is_check" id="is_check_no" {$data['is_check']?'':'checked'}>
+											<input type="radio" value="0" name="is_check" id="is_check_no" {$id ? $data['is_check']?'':'checked' : 'checked'}>
 											<label for="is_check_no">
 												未审核
 											</label>
@@ -91,7 +93,7 @@
                                     <select class="form-control" id="brand_id" name="type">
                                         <!--<option value="0" {$data['type']?'':'selected'}>普通文章</option>
                                         <option value="1" {$data['type']?'selected':''}>活动文章</option>-->
-                                        <option value="2" {$data['type']?'selected':''}>微信SEO</option>
+                                        <option value="2" {$id ? $data['type']?'selected':'' : '' }>微信SEO</option>
                                     </select>
                                 </div>
                                 <if condition="!empty($_GET['id']) and $data['type'] eq 1">
@@ -102,16 +104,16 @@
                                         <input type="button" value="选择活动产品"
                                                class="btn btn-primary" onclick="setGoods()" style="margin-bottom:10px; " />
                                         <div class="fileinput-new thumbnail">
-                                            <img src="{:U('wap/index/get_thumbs',array('auto'=>300))}?img={$data.goods_img}" alt="" id="goods_img" />
+                                            <img src="{$id ? $data['goods_img'] : ''}" alt="" id="goods_img" />
                                         </div>
-                                        <input type="hidden" name="goods_id" id="goods" value="{$data.goods_id}">
+                                        <input type="hidden" name="goods_id" id="goods" value="{$id ? $data['goods_id'] : ''}">
                                     </div>
                                     <div class="form-group show_goods_no">
                                         <label class="control-label">
                                             商品数量 <span class="symbol required" aria-required="true"></span>
                                         </label>
                                         <input type="text" name="goods_num" placeholder="请输入商品数量"
-                                               value="{$data.goods_num}"
+                                               value="{$id ? $data['goods_num'] : ''}"
                                                class="form-control"/>
                                     </div>
                                 </if>
@@ -132,7 +134,7 @@
                                 <label class="control-label">
                                     内容 <span class="symbol required" aria-required="true"></span>
                                 </label>
-                                <textarea id="content" name="content" class="autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word; width:100%; height:800px;">{$data.content}</textarea>
+                                <textarea id="content" name="content" class="autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word; width:100%; height:800px;">{$id ? $data['content'] : ''}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-wide pull-left" type="submit">

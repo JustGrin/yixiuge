@@ -30,7 +30,7 @@
 		<label class="control-label">
 			名称 <span class="symbol required" aria-required="true"></span>
 		</label>
-		<input type="text" placeholder="填写名称" class="form-control" value="{$data.title}" id="title" name="title">
+		<input type="text" placeholder="填写名称" class="form-control" value="{$id ? $data['title'] : ''}" id="title" name="title">
 	</div>
     
    
@@ -39,7 +39,7 @@
 		<label class="control-label">
 			介绍  
 		</label>
-		<input type="text" placeholder="填写介绍" class="form-control" value="{$data.des}" id="des" name="des">
+		<input type="text" placeholder="填写介绍" class="form-control" value="{$id ? $data['des'] : ''}" id="des" name="des">
 	</div>
 
 	 <div class="form-group">
@@ -47,7 +47,7 @@
 			状态 <span class="symbol required" aria-required="true"></span>
 		</label>
 		<select class="form-control"   name="status">
-			<if condition="$data.id gt 0">
+			<if condition="$id gt 0">
 			<option value="1" <if condition="$data.status eq 1">selected</if> >有效</option>
             <option value="0" <if condition="$data.status eq 0">selected</if> >无效</option>
             <else/>
@@ -62,7 +62,7 @@
 </div>
 <div class="row">
 <div class="col-md-4 col-md-offset-5">
-	<input type="hidden"  value="{$data.id}" name="id">
+	<input type="hidden"  value="{$id}" name="id">
 	<button class="btn btn-primary btn-wide pull-left" type="submit">
 		提交 <i class="fa fa-arrow-circle-right"></i>
 	</button>

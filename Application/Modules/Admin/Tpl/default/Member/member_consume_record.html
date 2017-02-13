@@ -52,7 +52,7 @@
 						消费类型
 					</label>
 					<select class="form-control" id="type" name="type">
-						<option value="0" >全部类型</option>
+						<option value="all" >全部类型</option>
 					    <volist name="type_array" id="vo">
 						  <option value="{$key}" <if condition="$_GET['type'] == $key">selected</if> >{$vo}</option>
 		                </volist>
@@ -64,7 +64,7 @@
 						状态
 					</label>
 					<select class="form-control" id="status" name="status">
-						<option value="">全部状态</option>
+						<option value="all">全部状态</option>
 						<option value="1" <if condition="$_GET['status'] ==1">selected</if>>收益</option>
 						<option value="2" <if condition="$_GET['status'] ==2">selected</if>>支出</option>
 					</select>
