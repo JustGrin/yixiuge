@@ -44,8 +44,8 @@ class GoodsAction extends BaseAction {
         }else{
            $order="goods_id desc";
         }
-        $cryp_cat_id=$this->get_category_child('19');//剔除 成人用品
-        $g_where['cat_id']=array('not in',$cryp_cat_id);
+        //$cryp_cat_id=$this->get_category_child('19');//剔除 成人用品
+        //$g_where['cat_id']=array('not in',$cryp_cat_id);
         $type=$_REQUEST['type'];
 		$type=intval($type);
         if($type){
@@ -58,6 +58,7 @@ class GoodsAction extends BaseAction {
             }
            }
         }
+        print_r($type_str);
         $search =$_REQUEST['search'];
         if($search){  //查询关键词
             $g_where['goods_name'] =array('like','%'.$search.'%');

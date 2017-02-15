@@ -35,8 +35,8 @@ class BaseAction extends CommonAction {
 		$this->mobile=$_SESSION["member"]['mobile'];
 		$this->binding_mobile=$_SESSION["member"]['mobile'];
 
-        $memberinfo=$this->getMemberInfo();
-        $this->check_binding($memberinfo);
+        $binding_info = M('member_verification')->where('member_id='.$this->uid)->find();
+        $this->check_binding($binding_info);
 
 		$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		$is_weixin = 1;
@@ -892,10 +892,10 @@ public function set_cart(){
 
 
   }
-    public function check_binding($memberinfo)
+    public function check_binding($binding_info)
     {
         $n_b_url = array('Member','Carinfo','Login');
-        if( !in_array(MODULE_NAME,$n_b_url) && $memberinfo['member_status']==0){
+        if( !in_array(MODULE_NAME,$n_b_url) && $binding_info['status'] != 1){
             $this->redirect('wap/login/binding_phone');
         }
     }
@@ -969,6 +969,7 @@ public function set_cart(){
           }
           return $type_str;
     }
+    
     public function getShare($share){
             $last_access_time=$_SESSION["member"]['access_recommender_time']?$_SESSION["member"]['access_recommender_time']:0;
             session('share',$share);

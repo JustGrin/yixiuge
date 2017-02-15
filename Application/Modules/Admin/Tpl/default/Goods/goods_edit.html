@@ -106,22 +106,6 @@
                                                         <input type="text" name="feeling" value="{$data['goods_id'] ? $data['feeling'] : ''}"
                                                                id=" feeling" placeholder="情怀" class="form-control">
                                                     </div>
-													<div class="form-group">
-                                                        <label class="control-label">
-                                                            基地选择 <span class="symbol required"
-                                                                       aria-required="true"></span>
-                                                        </label>
-                                                        <select class="form-control" id="supplier_id" name="supplier_id">
-                                                            <option value="">请选择</option>
-                                                            <volist name="supplier" id="vo">
-                                                                <option value="{$vo.s_id}"
-                                                                <if condition="$data.supplier_id eq $vo['s_id']">
-                                                                    selected
-                                                                </if>
-                                                                >{$vo.s_name}</option>
-                                                            </volist>
-                                                        </select>
-                                                    </div>
                                                     <div class="form-group">
                                                         <if condition="(!empty($_GET['id']))">
                                                             <label class="control-label">
@@ -178,7 +162,7 @@
                                                             商品库存<span class="symbol required"
                                                                       aria-required="true"></span>
                                                         </label>
-                                                            <input type="text" name="goods_number"
+                                                            <input type="text" name="goods_number" value="{$data['goods_id'] ? $data['goods_number'] : 0 }"
                                                             id="goods_number" placeholder="商品库存" class="form-control">
                                                     </div>
 
@@ -227,7 +211,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon">￥</span>
                                                             <input type="text" name="purchase_price"
-                                                                   value="{$data['goods_id'] ? $data['purchase_price'] : 0 }"
+                                                                   value="{$data['goods_id'] ? $data['purchase_price'] : '' }"
                                                             id="purchase_price" placeholder="供货价" class="form-control">
                                                         </div>
                                                     </div>
@@ -257,35 +241,16 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group" style="display:none">
-                                                        <label class="control-label" style="color: red;">
-                                                            VIP专享价<span class="symbol required"
-                                                                      aria-required="true"></span>
+
+                                                    <div class="form-group" >
+                                                        <label class="control-label" >
+                                                            购买送积分<span class="symbol required"
+                                                                       aria-required="true"></span>
                                                         </label>
 
                                                         <div class="input-group">
-                                                            <span class="input-group-addon" style="background: red;    border: 1px solid red">￥</span>
-                                                            <input type="text" name="vip_price"
-                                                                   value="{$data['goods_id'] ? $data['vip_price'] :'' }" id="vip_price"
-                                                                   placeholder="VIP专享价" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="display: none">
-                                                        <label class="control-label">
-                                                            分享返利
-                                                        </label>
-
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">￥</span>
-                                                            <if condition="$data.goods_id gt 0">
-                                                                <input type="text" name="share_money"
-                                                                       value="{$data.share_money}" id="share_money"
-                                                                       placeholder="分享返利" class="form-control">
-                                                                <else/>
-                                                                <input type="text" name="share_money"
-                                                                       value="{$share_money}" id="share_money"
-                                                                       placeholder="分享返利" class="form-control">
-                                                            </if>
+                                                            <span class="input-group-addon">积分</span>
+                                                            <input type="text" name="gift_integral" value="{$data['goods_id'] ? $data['gift_integral'] : 0 }" id="gift_integral"  placeholder="购买送积分" class="form-control">
                                                         </div>
 
                                                     </div>

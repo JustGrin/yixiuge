@@ -784,41 +784,7 @@ echo $res;
 */
 function sendSMS($mobile,$content,$time='',$mid='')
 {
-	/*
-  $http = 'http://http.yunsms.cn/tx/';//接口地址 'http://接口地址/tx/';
-  $data = array
-    (
-    'uid'=>C('SENDUID'),          //用户账号
-    'pwd'=>strtolower(md5(C('SENDPWD'))), //MD5位32密码
-    'mobile'=>$mobile,        //号码
-    'content'=>$content,      //内容 如果对方是utf-8编码，则需转码iconv('gbk','utf-8',$content); 如果是gbk则无需转码
-    'time'=>$time,    //定时发送
-    'mid'=>$mid,           //子扩展号
-    'encode'=>'utf8'
-    );
-    $s_data['mobile']=$mobile;
-    $s_data['add_time']=time();
-    $send_data=$s_data;
-    $send_data['message']=$content;
-   
-  $re= $this->postSMS($http,$data);      //POST方式提交
-  $return_data['status']=0;
-  if( trim($re) == '100' )
-  {
-    $return_data['status']=1;
-    $send_data['status']=1;
-    M("send_log")->add($send_data);
-    
-    return $return_data;
-  }
-  else 
-  {
-    //return "发送失败! 状态：".$re;
-    $return_data['error']="短信发送失败，请稍后再试";
-     $send_data['status']=0;
-     M("send_log")->add($send_data);
-    return $return_data;
-  }*/
+    return 112233;///本网站目前没有设置短信发送功能
   $sendUrl = 'http://v.juhe.cn/sms/send'; //短信接口的URL
  
 $smsConf = array(
@@ -1121,6 +1087,7 @@ public function curl_https($url=''){
     return false;
   }
   $curl = curl_init();
+
   curl_setopt($curl, CURLOPT_URL, $url);
   curl_setopt($curl, CURLOPT_HEADER, 1);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

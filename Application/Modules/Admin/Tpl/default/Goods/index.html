@@ -151,8 +151,7 @@
 						<th class="hidden-xs">商品货号</th>
 						<th>进价</th>
 						<th>卖价</th>
-						<th>VIP专享价</th>
-						<th>分享价</th>
+						<th>购买送积分</th>
 						<th>上/下架</th>
 						<th>审核状态</th>
 						<th>套餐</th>
@@ -177,13 +176,8 @@
 						<td >{$vo.purchase_price}</td>
 						<td >{$vo.shop_price}</td>
 						<td >
-							<if condition="$vo.vip_price eq 0.00">
-								未设置
-								<else/>
-								{$vo.vip_price}
-							</if>
+							{$vo.gift_integral}
 						</td>
-						<td >{$vo.share_money}</td>
 						<td id="is_sale{$vo.goods_id}"><if condition="$vo.is_on_sale eq 1">
 						<a href="javascript:void(0)"
 							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
