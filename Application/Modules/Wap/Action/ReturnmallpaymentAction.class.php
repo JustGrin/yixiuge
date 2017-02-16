@@ -192,10 +192,10 @@ class PayNotifyCallBack extends WxPayNotify{
 
                 //购买成功  查询是否是会员 不是会员则升级为会员
                 $log=array();
-                $member=M('member')->where(array('id'=>$order_list[0]['user_id']))->field('id, member_card, member_vip_type')->find();
-                if($order_list[0]['is_upgrade']){//升级订单
+/*                $member=M('member')->where(array('id'=>$order_list['user_id']))->field('id, member_card, member_vip_type')->find();
+                if($order_list['is_upgrade']){//升级订单
                     if($member && $member['member_vip_type']<2) {
-                       // M('member')->where(array('id' => $order_list[0]['user_id']))->save(array('member_vip_type' => 1,'vip_time'=>time()));
+                       // M('member')->where(array('id' => $order_list['user_id']))->save(array('member_vip_type' => 1,'vip_time'=>time()));
                         //$upgrade_ob = A('Common');
 						$ress = $this->upgrade_level($out_trade_no);
 						Logs::DEBUG("\n 收益返回 : \n" . json_encode($ress));
@@ -204,47 +204,46 @@ class PayNotifyCallBack extends WxPayNotify{
                     }else{
                         $log['des'] = '用户使用微信支付￥'.$money;
                     }
-                }else{
+                }else{*/
                     $log['des'] = '用户使用微信支付￥'.$money;
-                }
+                //}
 
                 //计算本次需要在线支付的订单总金额
                 $time = time();
-                for ($i=0; $i<count($order_list); $i++) { 
-                    if (count($order_list)>1) {
-                        $pay_amount[$i] = 0;
-                        $pay_amount[$i] += PriceFormat(floatval($order_list[$i]['shipping_fee']));//运费
-                        ///减去余额支付部分 减去折扣部分
-                        ///折扣是否过期
-                        if ($order_list[$i]['discount_start_time'] <= $time && $order_list[$i]['discount_end_time'] >= $time) {
-                            $pay_amount[$i] += PriceFormat(floatval($order_list[$i]['order_amount']) - floatval($order_list[$i]['surplus']) - floatval($order_list[$i]['integral_money']) - floatval($order_list[$i]['discount']));
-                        } else {
-                            $pay_amount[$i] += PriceFormat(floatval($order_list[$i]['order_amount']) - floatval($order_list[$i]['surplus']) - floatval($order_list[$i]['integral_money']));
-                        }
-                        if ($order_list[$i]['offline']) {
-                            $pay_amount[$i] -= $order_list[$i]['offline_money'];//
-                        }
-                        $log['des'] = '用户使用微信支付￥'.$pay_amount[$i];
-                    }
+
+				$pay_amount = 0;
+				$pay_amount += PriceFormat(floatval($order_list['shipping_fee']));//运费
+				///减去余额支付部分 减去折扣部分
+				///折扣是否过期
+				if ($order_list['discount_start_time'] <= $time && $order_list['discount_end_time'] >= $time) {
+					$pay_amount += PriceFormat(floatval($order_list['order_amount']) - floatval($order_list['surplus']) - floatval($order_list['integral_money']) - floatval($order_list['discount']));
+				} else {
+					$pay_amount += PriceFormat(floatval($order_list['order_amount']) - floatval($order_list['surplus']) - floatval($order_list['integral_money']));
+				}
+				if ($order_list['offline']) {
+					$pay_amount -= $order_list['offline_money'];//
+				}
+				$log['des'] = '用户使用微信支付￥'.$pay_amount;
+			
                     //记录订单日志
                     $data = array();
-                    $data['order_id'] = $order_list[$i]['order_id'];
+                    $data['order_id'] = $order_list['order_id'];
                     $data['log_role'] = 'buyer';
                     $data['log_msg'] = $log['des'];
                     $data['log_orderstate'] = '20';
                     $insert = $model_order->addOrderLog($data);
-                }
+
                 //支付完成 给卖家发送微信通知
 			/*	$common_action = A("Common");
                 for ($i=0; $i<count($order_list); $i++) { 
                     $goods_msg = '';
-                    $order_goods = M("g_order_goods")->where(array('order_id' => $order_list[$i]['order_id']))->select();
+                    $order_goods = M("g_order_goods")->where(array('order_id' => $order_list['order_id']))->select();
                     for ($j=0; $j<count($order_goods); $j++) { 
                         $goods_msg = $goods_msg."，".$order_goods[$j]['goods_name'];
                     }
-                    $send_data['member_id'] = $order_list[$i]['user_id'];
+                    $send_data['member_id'] = $order_list['user_id'];
                     $send_data['goods_msg'] = substr($goods_msg, 3);
-                    $common_action->weixin_send($order_list[$i]['share_uid'], $send_data, 1);
+                    $common_action->weixin_send($order_list['share_uid'], $send_data, 1);
                 }*/
 
                 Logs::DEBUG("\n update success:订单更新成功");

@@ -44,7 +44,6 @@ $pay_sn=$_GET['pay_sn'];
 if(empty($pay_sn)){
 	echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"></head><script type="text/javascript">alert("订单号错误!");history.go(-1);</script></html>';die;
 }
-$levelId=$_GET['levelId']?$_GET['levelId']:false;
 $openid=$_GET['openid'];
 $data['pay_sn']=$pay_sn;
 $url="http://" . $_SERVER['HTTP_HOST'] . '/index.php/wap/Goodsorderquery/get_weixinpay_msg';
@@ -62,7 +61,7 @@ if(empty($re['status'])){
 }
 $data=$re['data'];
 $order_pay_info=$data;
-$order_pay_info['order_pay_sn']=$_GET['order_pay_sn'];
+$order_pay_info['order_id']=$_GET['order_id'];
 /*
 $jsApiParameters = $_GET['payvalue'];
 $order_pay_info['pay_sn']=$_GET['pay_sn'];
@@ -70,16 +69,8 @@ $order_pay_info['pay_amount']=$_GET['pay_amount'];
 if($_SESSION['pay_user_open_id']=='oupArwAl7xuME4nkXQgHxX4HRXQA'){
 	var_dump($_GET);
 }*/
-if($levelId){
-	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/start/upgrade_pay/order_id/'.$order_pay_info['order_pay_sn'];
-	$success_url="http://".$_SERVER['HTTP_HOST'].'/wap/member/index/layer/upgrade_points';
-}elseif(isset($_GET['farm_id']) && $_GET['farm_id'] > 0){
-	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/farm/farm_agreement/farm_id/'.$_GET['farm_id'];
+	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/goodsorder/order_pay/order_id/'.$order_pay_info['order_id'];
 	$success_url=$return_url;
-}else{
-	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/goodsorder/order_pay/pay_sn/'.$order_pay_info['order_pay_sn'];
-	$success_url=$return_url;
-}
 //获取共享收货地址js函数参数
 //$editAddress = $tools->GetEditAddressParameters();
 
@@ -183,7 +174,7 @@ if($levelId){
 		function get_weixin_pay_val(){
 			layer.msg("正在处理信息，请稍候...",{time:100000});
 			 $.ajax({
-			 url: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/get_pay_jsapi.php?pay_sn='.$data['pay_sn'].'&openid='.$openid.'&order_pay_sn='.$order_pay_info['order_pay_sn']; ?>",
+			 url: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/get_pay_jsapi.php?pay_sn='.$data['pay_sn'].'&openid='.$openid.'&order_id='.$order_pay_info['order_id']; ?>",
 			 type:'get',
 			 // data: {order_id:order_id},
 			 dataType: 'json',

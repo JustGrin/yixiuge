@@ -22,9 +22,9 @@
 			<if condition="$data.pay_status eq 2">
 				<if condition="$data.offline eq 1"> 货到付款
 					<else/>
-					{$pay_status[$data1[0]['pay_status']]} </if>
+					{$pay_status[$data['pay_status']]} </if>
 				<else/>
-				{$pay_status[$data1[0]['pay_status'] + 100]} </if>
+				{$pay_status[$data['pay_status'] + 100]} </if>
 		</h4>
 		<!--<p class="time">剩2天23小时自动关闭</p>-->
 	</div>
@@ -44,12 +44,12 @@
 	<div class="addinfo">
 		<dl class="name">
 			<dt>收件人：</dt>
-			<dd>{$data1[0]['consignee']}</dd>
-			<dd class="tel num">{$data1[0]['mobile']}</dd>
+			<dd>{$data['consignee']}</dd>
+			<dd class="tel num">{$data['mobile']}</dd>
 		</dl>
 		<dl class="add">
 			<dt>收货地址：</dt>
-			<dd>{$data1[0]['address']}</dd>
+			<dd>{$data['address']}</dd>
 			<dd class="addsub"><!--详细地址--></dd>
 			<div class="clearfix">
 			</div>
@@ -59,13 +59,14 @@
 	</div>
 </div>
 <div class="cartlist">
-	<volist name="data1" id="data"><div class="ordermessage clearfix font34">
+
+		<div class="ordermessage clearfix font34">
 			<span class="">订单编号：<span class="num">{$data.order_sn}</span></span>
 			<span class="floatRgt">订单时间：<span class="num">{$data.add_time|date="Y-m-d",###}</span></span>
 		</div>
 		<ul>
 			<?php $total_num = 0;?>
-			<volist name="order_goods1" id="order_goods">
+
 				<volist name="order_goods" id="vo">
 					<if condition="$vo['order_id'] eq $data['order_id']">
 						<li  class="goods">
@@ -101,7 +102,6 @@
 						</li>
 					</if>
 				</volist>
-			</volist>
 		</ul>
 		<div class="total">
 			<ul>
@@ -115,14 +115,7 @@
 			</ul>
 		</div>
 		<div class="clearfix"></div>
-		
-	</volist>
-	<div class="total">
-		<ul>
-			<li class="subtotal">共计<span class="num black"> {$data_count} </span>份订单 总计：<span class=" num orange">¥{$data_sum}</span></li>
-		</ul>
-	</div>
-	<div class="clearfix"></div>
+
 	<form action="" role="form" id="form2" novalidate method="post" onSubmit="return false;">
 		<div class="paytype mgt2">
 			<a href="javascript:get_weixin_pay();" class="wx">
@@ -165,7 +158,7 @@
 	<div class="clearfix"></div>
 </div>
 <div class="submit">
-	<a href="javascript:void(0);" id="go_pay" data="{$data1[0]['pay_record_id']}" is_pwd=0 data-tpa="GOTO_CHECKOUT" class="new-abtn-type new-mg-tb30 phone_log_btn">
+	<a href="javascript:void(0);" id="go_pay" data="{$data['pay_record_id']}" is_pwd=0 data-tpa="GOTO_CHECKOUT" class="new-abtn-type new-mg-tb30 phone_log_btn">
 		去支付
 	</a>
 </div>
@@ -182,16 +175,6 @@
 	</if>
 </div>
 <script>
-	/*function pwd_is_show(){
-		var pwd_data = $('#go_pay').attr('data');
-		if(pwd_data > 0){
-			$('.input_pwd').show();
-			$('#go_pay').attr('is_pwd', 1);
-		}else{
-			$('.input_pwd').hide();
-			$('#go_pay').attr('is_pwd', 0);
-		}
-	}*/
 	//使用余额
 	$('.use_balance').click(function(){
 		var data = parseInt($('#go_pay').attr('is_pwd'));
@@ -245,7 +228,7 @@
 	
 	function get_weixin_pay(url){
 		///需要支付
-		var pay_url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/jsapi_go_pay.php?pay_sn='.$pay_sn.'&order_pay_sn='.$order_pay_sn; ?>";
+		var pay_url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/jsapi_go_pay.php?pay_sn='.$pay_sn.'&order_id='.$order_id; ?>";
 		window.location.href=pay_url+"&openid=<?php echo $_SESSION['user_open_id'];?>";
 	}
 	

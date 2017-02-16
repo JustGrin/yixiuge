@@ -19,18 +19,18 @@
 	<div class="orderstate"  style="background:#6ab42f  url(../images/member/1.png) no-repeat 90% center;background-size: auto 100%; ">
 		<div class="state">
 			<h4>
-				<if condition="$data1[0]['pay_status'] eq 2">
-					<if condition="$data1[0]['offline'] eq 1">
+				<if condition="$data['pay_status'] eq 2">
+					<if condition="$data['offline'] eq 1">
 						货到付款
-					<elseif condition="($data1[0]['offline'] neq 1) and ($data1[0]['shipping_status'] neq 0)" />
-						{$shipping_status[$data1[0]['shipping_status']]}
+					<elseif condition="($data['offline'] neq 1) and ($data['shipping_status'] neq 0)" />
+						{$shipping_status[$data['shipping_status']]}
 					<else/>
-						{$pay_status[$data1[0]['pay_status']]}
-					</if> 
-				<elseif condition="$data1[0]['order_status'] eq 2"/>
-					{$order_status[$data1[0]['order_status']]}
+						{$pay_status[$data['pay_status']]}
+					</if>
+				<elseif condition="$data['order_status'] eq 2"/>
+					{$order_status[$data['order_status']]}
 				<else/>
-					{$pay_status[$data1[0]['pay_status'] + 100]}
+					{$pay_status[$data['pay_status'] + 100]}
 				</if>
 			</h4>
 			<!--<p class="time">剩2天23小时自动关闭</p>-->
@@ -51,12 +51,12 @@
 		<div class="addinfo">
 			<dl class="name">
 				<dt>收件人：</dt>
-				<dd>{$data1[0]['consignee']}</dd>
-				<dd class="tel num">{$data1[0]['mobile']}</dd>
+				<dd>{$data.consignee}</dd>
+				<dd class="tel num">{$data['mobile']}</dd>
 			</dl>
 			<dl class="add">
 				<dt>收货地址：</dt>
-				<dd>{$data1[0]['address']}</dd>
+				<dd>{$data['address']}</dd>
 				<dd class="addsub"><!--详细地址--></dd>
 				<div class="clearfix">
 				</div>
@@ -65,16 +65,14 @@
 		<div class="clearfix">
 		</div>
 	</div>
-	
+
 	<div class="cartlist">
-		<volist name="data1" id="data">
 			<div class="ordermessage font34">
 				<span  >订单编号：<span class="num">{$data.order_sn}</span></span>
 				<span class="floatRgt"></span>
 			</div>
-			<ul  <eq name="data1[0]['is_upgrade']" value="1"> style="display:none" </eq> >
+			<ul  <eq name="$data['is_upgrade']" value="1"> style="display:none" </eq> >
 				<?php $total_num = 0;?>
-				<volist name="order_goods1" id="order_goods">
 					<volist name="order_goods" id="vo">
 						<if condition="$vo['order_id'] eq $data['order_id']">
 							<li  class="goods"> <a href="#">
@@ -85,7 +83,7 @@
 								<div class="info">
 									<a href="{:U('Wap/goods/goods_detail',array('id'=>$vo['goods_id']))}">
 										<div class="title">
-											{$vo.goods_name} 
+											{$vo.goods_name}
 										</div>
 										<div class="type">
 											<span>{$vo.goods_attr}</span>
@@ -111,7 +109,6 @@
 							</li>
 						</if>
 					</volist>
-				</volist>
 			</ul>
 			<div class="total">
 				<ul>
@@ -121,32 +118,22 @@
 				</ul>
 			</div>
 			<div class="clearfix"></div>
-			
-		</volist>
-		<if condition="$data_count gt 1">
-			<div class="total">
-				<ul>
-					<li class="subtotal">共计<span class="num black"> {$data_count} </span>份订单 合计：<span class=" num orange">¥{$data_sum}</span></li>
-				</ul>
-			</div>
-		</if>
-		<div class="clearfix"></div>
+
 	</div>
-	<div class="clearfix"></div>
-	<div class="ordermessage mgt20">
+	<div class="ordermessage mgt2 ">
 		<p  >支付编号:<span class="num floatRgt">{$pay_sn}</span></p>
 		<!--<p  >支付宝交易号：<span class="num">2016031621001001690267754225</span></p>-->
-		<p  >订单时间:<span class="num floatRgt">{$data1[0]['add_time']|date="Y-m-d H:i:s",###}</span></p>
+		<p  >订单时间:<span class="num floatRgt">{$data['add_time']|date="Y-m-d H:i:s",###}</span></p>
 		<if condition="$data.pay_status eq 2">
-		<p  >付款时间:<span class="num floatRgt">{$data1[0]['pay_time']|date="Y-m-d H:i:s",###}</span></p>
+		<p  >付款时间:<span class="num floatRgt">{$data['pay_time']|date="Y-m-d H:i:s",###}</span></p>
 		</if>
 		<if condition="$data.pay_status eq 2 and $data.shipping_status eq 1">
-		<p  >确认时间:<span class="num floatRgt">{$data1[0]['confirm_time']|date="Y-m-d H:i:s",###}</span></p>
+		<p  >确认时间:<span class="num floatRgt">{$data['confirm_time']|date="Y-m-d H:i:s",###}</span></p>
 		</if>
 		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
-			<p  >配送时间:<span class="num floatRgt">{$data1[0]['shipping_time']|date="Y-m-d H:i:s",###}</span></p>
+			<p  >配送时间:<span class="num floatRgt">{$data['shipping_time']|date="Y-m-d H:i:s",###}</span></p>
 		</if>
-		<volist name="data1[0]['status_remarks']"  id="vo" key = "key">
+		<volist name="$data['status_remarks']"  id="vo" key = "key">
 			<eq name="key" value="6">
 				<p >备注:{$vo[0]}</p>
 				<else/>
@@ -154,26 +141,26 @@
 			</eq>
 		</volist>
 		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
-		<p  >物流公司:<span class="num floatRgt">{$data1[0]['express_name']}</span></p>
+		<p  >物流公司:<span class="num floatRgt">{$data['express_name']}</span></p>
 		</if>
 		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
-		<p  >物流单号:<span class="num floatRgt">{$data1[0]['invoice_no']}</span></p>
+		<p  >物流单号:<span class="num floatRgt">{$data['invoice_no']}</span></p>
 		</if>
 	</div>
-			<if condition="$data1[0]['pay_status'] eq 2 and (in_array($data1[0]['shipping_status'],array('1','2'))) and $express_data['status'] eq 0">
+			<if condition="$data['pay_status'] eq 2 and (in_array($data['shipping_status'],array('1','2'))) and $express_data['status'] eq 0">
 			<div class="submit">
-			<a href="__URL__/order_express?order_id={$data1[0]['order_id']}">物流信息</a>
-			
+			<a href="__URL__/order_express?order_id={$data['order_id']}">物流信息</a>
+
 			</div>
 		</if>
-	
-	<if condition="$data1[0]['order_state'] eq 'nopay'">
+
+	<if condition="$data['order_state'] eq 'nopay'">
 		
 	<div class="submit">
-		<eq name="data1[0]['is_upgrade']" value="1">
+		<eq name="$data['is_upgrade']" value="1">
 			<a href="{:U('wap/start/upgrade_pay',array('order_id'=>$order_pay_sn))}"  class="new-abtn-type new-mg-tb30">去付款</a>
 			<else/>
-			<a href="{:U('wap/goodsorder/order_pay',array('pay_sn'=>$order_pay_sn))}" class="new-abtn-type new-mg-tb30">去付款</a>
+			<a href="{:U('wap/goodsorder/order_pay',array('order_id'=>$_GET['id']))}" class="new-abtn-type new-mg-tb30">去付款</a>
 		</eq>
 	</div>
 	</if>

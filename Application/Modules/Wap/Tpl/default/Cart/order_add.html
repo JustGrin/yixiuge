@@ -378,7 +378,7 @@ var options = {
 		//$('#editform').hide(2000); 
 		if(response.status==1){
 			//alert(response.pay_sn);
-			window.location.href="<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn="+response.add_order;
+			window.location.href="<?php echo U('wap/goodsorder/order_pay'); ?>?order_id="+response.add_order;
 		}else if(response.status==2){
 			//alert(response.pay_sn);
 			//未绑定 手机

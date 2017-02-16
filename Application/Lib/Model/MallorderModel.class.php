@@ -24,13 +24,13 @@ class MallorderModel extends Model {
      * @return Ambigous <multitype:boolean Ambigous <string, mixed> , unknown>
      */
     public function getOrderList($condition, $pagesize = '', $field = '*', $order = 'order_id desc', $limit = '', $extend = array()){
-        $list = M('g_order_info')->field($field)->where($condition)->page($pagesize)->order($order)->limit($limit)->select();
+        $list = M('g_order_info')->field($field)->where($condition)->page($pagesize)->order($order)->limit($limit)->find();
         if (empty($list)) return array();
         $order_list = array();
-        foreach ($list as $order) {
-        	//$order['payment_name'] = orderPaymentName($order['payment_code']);
-        	if (!empty($extend)) $order_list[$order['order_id']] = $order;
-        }
+
+        //$order['payment_name'] = orderPaymentName($order['payment_code']);
+        if (!empty($extend)) $order_list[$list['order_id']] = $order;
+
 
         if (empty($order_list)) $order_list = $list;
 
@@ -65,10 +65,8 @@ class MallorderModel extends Model {
         //追加返回商品信息
         if (in_array('order_goods',$extend)) {
             //取商品列表
-            $order_goods_list = $this->getOrderGoodsList(array('order_id'=>array('in',array_keys($order_list))));
-            foreach ($order_goods_list as $value) {
-            	$order_list[$value['order_id']]['extend_order_goods'][] = $value;
-            }
+            $order_goods_list = $this->getOrderGoodsList(array('order_id'=>$order_list['order_id']));
+            $order_list['extend_order_goods'] = $order_goods_list;
         }
         return $order_list;
     }

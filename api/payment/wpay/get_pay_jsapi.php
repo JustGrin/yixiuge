@@ -68,7 +68,7 @@ $log = Log::Init($logHandler, 15);
 $order_pay_info['pay_sn']=$data['pay_sn'];
 $order_pay_info['pay_amount']=$data['pay_amount'];
 $order_pay_info['subject']=$data['subject'];
-$order_pay_info['order_pay_sn']=$_GET['order_pay_sn'];
+$order_pay_info['order_id']=$_GET['order_id'];
 
  $user_agent = $_SERVER['HTTP_USER_AGENT'];
 if (strpos($user_agent, 'MicroMessenger') === false) {
@@ -176,7 +176,7 @@ if($jsApiParameters){
 if(isset($_GET['farm_id']) && $_GET['farm_id'] > 0){
 	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/farm/farm_agreement/farm_id/'.$_GET['farm_id'];
 }else{
-	$return_url="http://".$_SERVER['HTTP_HOST'].'/index.php/wap/goodsorder/order_pay/pay_sn/'.$order_pay_info['order_pay_sn'];
+	$return_url="http://".$_SERVER['HTTP_HOST'].'/index.php/wap/goodsorder/order_pay/order_id/'.$order_pay_info['order_id'];
 }
 
 //获取共享收货地址js函数参数

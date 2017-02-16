@@ -188,23 +188,20 @@ class GoodsorderAction extends UserAction
         $balance = $memberinfo_de['balance'];
         $balance = sprintf("%.2f", substr(sprintf("%.3f", $balance), 0, -2));
         $this->balance = $balance;
-
-        $menuwhere["order_id"] = array("in", $_GET["id"]);
+        $menuwhere["order_id"] = $_GET["id"];
         $menuwhere['user_id'] = $this->uid;
-        $data = M("g_order_info")->where($menuwhere)->select();
-		$data_sum = '';
-		$pay_sn = '';
+        $data = M("g_order_info")->where($menuwhere)->find();
         if ($data) {
-            for ($i=0; $i<count($data); $i++) { 
-                if($data[$i]['pay_name']=='alipay'){
-                    $data[$i]['payment']='支付宝支付';
+
+                if($data['pay_name']=='alipay'){
+                    $data['payment']='支付宝支付';
                 }else{
-                    $data[$i]['payment']='微信支付';
+                    $data['payment']='微信支付';
                 }
-            
-                $order_goods[$i] = M('g_order_goods')->where(array('order_id' => $data[$i]["order_id"]))->select();
-                if ($order_goods[$i]) {
-                    foreach ($order_goods[$i] as $key => $value) {
+            $offline_money = 0;
+                $order_goods = M('g_order_goods')->where(array('order_id' => $data["order_id"]))->select();
+                if ($order_goods) {
+                    foreach ($order_goods as $key => $value) {
                         if($value['is_refund']){
                             $f_where = array();
                             $f_where['order_goods_id'] = $value['rec_id'];
@@ -212,55 +209,47 @@ class GoodsorderAction extends UserAction
 
                             if($refund){
     							$refund = $this->get_refund_status($refund);
-    							$order_goods[$i][$key]['code_name'] = $refund['code_name'];
+    							$order_goods[$key]['code_name'] = $refund['code_name'];
                             }else{
-    							$order_goods[$i][$key]['code_name'] = "退货";
+    							$order_goods[$key]['code_name'] = "退货";
                             }
                         }
-                        $order_goods[$i][$key]['goods_image'] = thumbs_auto($value['goods_image'], 180, 180);
-                    }
-                }
-                $offline_money[$i] = 0;
-                if ($order_goods[$i]) {
-                    foreach ($order_goods[$i] as $key => $value) {
+                        $order_goods[$key]['goods_image'] = thumbs_auto($value['goods_image'], 180, 180);
                         if ($value['offline']) {
-                            $offline_money[$i] = $offline_money[$i] + $value['goods_number'] * $value['goods_price'];
+                            $offline_money = $offline_money+ $value['goods_number'] * $value['goods_price'];
                         }
-						if($value['activity_id'] > 0){
-							$data[$i]['activity_end_date'] = $value['activity_end_date'];
-						}
+                        if($value['activity_id'] > 0){
+                            $data['activity_end_date'] = $value['activity_end_date'];
+                        }
                     }
                 }
 
-    			if ($data[$i]['order_amount'] == $offline_money[$i]) {
-    				$offline_money[$i] = $offline_money[$i] + $data[$i]['shipping_fee'];
+
+    			if ($data['order_amount'] == $offline_money) {
+    				$offline_money  = $offline_money + $data['shipping_fee'];
     			}
-    			$data[$i]['order_amount'] = $data[$i]['order_amount'] + $data[$i]['shipping_fee'];
-    			$online_money[$i] = $data[$i]['order_amount'] - $data[$i]['surplus'] - $offline_money[$i];
+    			$data['order_amount'] = $data['order_amount'] + $data['shipping_fee'];
+    			$online_money  = $data['order_amount'] - $data['surplus'] - $offline_money ;
     			
-    			if ($online_money[$i] < 0) {///已经支付过了 不能货到付款
-    				$offline_money[$i] = 0;
+    			if ($online_money < 0) {///已经支付过了 不能货到付款
+    				$offline_money = 0;
     			}
-			    $order_show[$i] = $this->get_order_status($data[$i]);
-    			$data[$i]['order_state'] = $order_show[$i]['code'];
-    			$data[$i]['order_state_name'] = $order_show[$i]['name'];
-    			if($data[$i]['order_state'] == "delivered"){
+			    $order_show = $this->get_order_status($data);
+    			$data['order_state'] = $order_show['code'];
+    			$data['order_state_name'] = $order_show['name'];
+    			if($data['order_state'] == "delivered"){
     				$f_where = array();
-    				$f_where['order_id'] = $data[$i]['order_id'];
+    				$f_where['order_id'] = $data['order_id'];
     				$f_where['refund_status'] = array('neq', '10');
     				$this->ref_all = M('g_order_goods_refund')->where($f_where)->count();
                 }
-                $data[$i] = $this->get_order_msg_data($data[$i]);////订单显示信息
-				$data[$i]['status_remarks']= $this->status_before_deliver_list($data[$i]);
-
-                $data_sum = $data_sum + $data[$i]['order_amount_all'] - $data[$i]['shipping_fee'];
-                $pay_sn = $pay_sn.",".$data[$i]['order_id'];
-            }
-            $this->online_money1 = $online_money;
-            $this->offline_money1 = $offline_money;
-            $this->order_goods1 = $order_goods;
+                $data = $this->get_order_msg_data($data);////订单显示信息
+				$data['status_remarks']= $this->status_before_deliver_list($data);
+            $this->online_money = $online_money;
+            $this->offline_money = $offline_money;
+            $this->order_goods = $order_goods;
         }
-        $pay_sn = substr($pay_sn, 1);
+
 		// 支付状态；0，未付款；1，付款中 ；2，已付款
 		$pay_status = array('0' => '未付款', '1' => '已支付', '2' => '已付款', '100'=>'等待买家付款', '101'=>'已支付，对账中', '102'=>'支付已完成');
 		$this->pay_status = $pay_status;
@@ -272,13 +261,10 @@ class GoodsorderAction extends UserAction
         
 		$title = "订单信息";
         $data_count = count($data);
-        $where_order_pay['pay_id'] = $data[0]['pay_record_id'];
+        $where_order_pay['pay_id'] = $data['pay_record_id'];
         $order_pay_sn = M('g_order_pay')->where($where_order_pay)->getField('pay_sn');
         $this->assign("pay_sn", $order_pay_sn);
-        $this->assign("order_pay_sn", $pay_sn);
-        $this->assign("data_count", $data_count);
-        $this->assign("data_sum", $data_sum);
-		$this->assign("data1", $data);
+		$this->assign('data',$data);
 		$this->display();
     }
 
@@ -360,96 +346,52 @@ class GoodsorderAction extends UserAction
 		$this->balance = $balance;//账户余额
 		$this->points = (int)$memberinfo_de['points']; //账户积分
 
-		$menuwhere["order_id"] = array("in", $_GET["pay_sn"]);
+		$menuwhere["order_id"] = $_GET["order_id"];
 		$menuwhere['user_id'] = $this->uid;
-		$data = M("g_order_info")->where($menuwhere)->select();
-        $data_info = M("g_order_info");
+		$data = M("g_order_info")->where($menuwhere)->find();
 		if ($data) {
-            $order_pay_where['pay_id'] = $data[0]['pay_record_id'];
-            $order_pay = M("g_order_pay")->where($order_pay_where)->find();
-            $order_sn = explode(',', $order_pay['order_sn']);
-            //如果小订单单独支付将该订单从原大订单中分离出来
-            if (count($data) == 1 && count($order_sn) > 1) {
-				$order_sn_old ='';
-                for ($i=0; $i<count($order_sn); $i++) {
-                    if ($order_sn[$i] == $data[0]['order_sn']) {
-                        $order_sn_new = $order_sn[$i];
-                    }else{
-                        $order_sn_old = $order_sn_old.','.$order_sn[$i];
-                    }
-                }
-                $order_pay['order_sn'] = substr($order_sn_old, 1);
-                $order_pay_model = M('g_order_pay');
-                $order_pay_model->startTrans();//开起事务
-                $order_pay_id = $order_pay['pay_id'];
-                unset($order_pay['pay_id']);
-                $result = $order_pay_model->where(array('pay_id' => $order_pay_id))->save($order_pay);
-                $order_pay['order_sn'] = $order_sn_new;
-                $order_pay['pay_sn'] = makePaySn($this->uid);
-                $result1 = $order_pay_model->add($order_pay);
-                $data[0]['pay_record_id'] = $result1;
-                if ($result === false || $result1 === false) {
-                    $order_pay_model->rollback();//回滚事务
-                }else{
-                    $order_pay_model->commit();//提交事务
-                    $result2 = $data_info->where(array('order_id' => $data[0]['order_id']))->save($data[0]);
-                }
-                unset($data);
-                $data = $data_info->where($menuwhere)->select();
-            }
+            $order_pay_where['pay_id'] = $data['pay_record_id'];
 			$data_sum = 0;
-            for ($i=0; $i<count($data); $i++) {
-                if($data[$i]['pay_name']=='alipay'){
-                    $data[$i]['payment']='支付宝支付';
-                }else{
-                    $data[$i]['payment']='微信支付';
-                }
-                $order_goods[$i] = M('g_order_goods')->where(array('order_id' => $data[$i]["order_id"]))->select();
-                $offline_money[$i] = 0;
-                if ($order_goods[$i]) {
-                    foreach ($order_goods[$i] as $key => $value) {
-                        if ($value['offline']) {
-                            $offline_money[$i] = $offline_money[$i] + $value['goods_number'] * $value['goods_price'];
-                        }
-						if($value['activity_id'] > 0){
-							$data[$i]['activity_end_date'] = $value['activity_end_date'];
-						}
-                        $order_goods[$i][$key]['goods_image'] = thumbs_auto($value['goods_image'], 180, 180);
-                    }
-                }
-                $order_show = $this->get_order_status($data[$i]);
-                if ($data[$i]['order_amount'] == $offline_money[$i]) {
-                    $offline_money[$i] = $offline_money[$i] + $data[$i]['shipping_fee'];
-                }
-                $data[$i]['order_amount'] = $data[$i]['order_amount'] + $data[$i]['shipping_fee'];
-//标记
-                $online_money[$i] = $data[$i]['order_amount'] - $data[$i]['surplus'] - $offline_money[$i];
-                if ($online_money[$i] < 0) {///已经支付过了 不能货到付款
-                    $offline_money[$i] = 0;
-                }
-                //如果是9.9大聚惠则判断是否允许余额积分支付
-                $member_info=$this->getMemberInfo();
-                $vip_type=$member_info['member_vip_type'];
-                if ($data[$i]['activity_id'] == 2 && $vip_type<1) {
-                    $this->assign("only_weixinpay", 1);
-                }
-
-                $data[$i]['order_state'] = $order_show['code'];
-                $data[$i]['order_state_name'] = $order_show['name'];
-                if ($data[$i]['order_state'] == "delivered") {
-                    $f_where = array();
-                    $f_where['order_id'] = $data[$i]['order_id'];
-                    $f_where['refund_status'] = array('neq', '10');
-                    $this->ref_all = M('g_order_goods_refund')->where($f_where)->count();
-                }
-                $data[$i] = $this->get_order_msg_data($data[$i]);////订单显示信息
-                $data_sum = $data_sum + $data[$i]['order_amount_all'];
+            if($data['pay_name']=='alipay'){
+                $data['payment']='支付宝支付';
+            }else{
+                $data['payment']='微信支付';
             }
-
+            $order_goods = M('g_order_goods')->where(array('order_id' => $data["order_id"]))->select();
+            $offline_money = 0;
+            if ($order_goods) {
+                foreach ($order_goods as $key => $value) {
+                    if ($value['offline']) {
+                        $offline_money= $offline_money + $value['goods_number'] * $value['goods_price'];
+                    }
+                    $order_goods[$key]['goods_image'] = thumbs_auto($value['goods_image'], 180, 180);
+                }
+            }
+            $order_show = $this->get_order_status($data);
+            if ($data['order_amount'] == $offline_money) {
+                $offline_money = $offline_money + $data['shipping_fee'];
+            }
+            $data['order_amount'] = $data['order_amount'] + $data['shipping_fee'];
+//标记
+            $online_money = $data['order_amount'] - $data['surplus'] - $offline_money;
+            if ($online_money < 0) {///已经支付过了 不能货到付款
+                $offline_money = 0;
+            }
+            $data['order_state'] = $order_show['code'];
+            $data['order_state_name'] = $order_show['name'];
+            if ($data['order_state'] == "delivered") {
+                $f_where = array();
+                $f_where['order_id'] = $data['order_id'];
+                $f_where['refund_status'] = array('neq', '10');
+                $this->ref_all = M('g_order_goods_refund')->where($f_where)->count();
+            }
+            $data = $this->get_order_msg_data($data);////订单显示信息
+            $data_sum = $data_sum + $data['order_amount_all'];
+        }
             $this->online_money1 = $online_money;
-            $this->order_goods1 = $order_goods;
+            $this->order_goods = $order_goods;
             $this->offline_money1 = $offline_money;
-		}
+		//}
 		// 支付状态；0，未付款；1，付款中 ；2，已付款
 		$pay_status = array('0' => '未付款', '1' => '已支付', '2' => '已付款', '100'=>'等待买家付款', '101'=>'已支付，对账中', '102'=>'支付已完成');
 		$this->pay_status = $pay_status;
@@ -460,14 +402,12 @@ class GoodsorderAction extends UserAction
 		$this->order_status = array('0' => '未确认', '1' => '已确认', '2' => '已取消', '3' => '无效', '4' => '退货');
 
 		$title = "订单信息";
-        $data_count = count($data);
-        $where_order_pay['pay_id'] = $data[0]['pay_record_id'];
+        $where_order_pay['pay_id'] = $data['pay_record_id'];
         $pay_sn = M('g_order_pay')->where($where_order_pay)->getField('pay_sn');
         $this->assign("pay_sn", $pay_sn);
-        $this->assign("order_pay_sn", $_GET["pay_sn"]);
-        $this->assign("data_count", $data_count);
+        $this->assign("order_id", $_GET["order_id"]);
         $this->assign("data_sum", $data_sum);
-		$this->assign("data1", $data);
+		$this->data = $data;
 		$this->display();
 	}
 
@@ -530,14 +470,14 @@ class GoodsorderAction extends UserAction
             die;
         }
         $cart_model = D('Cart');
-        if ($discount) {
+       /* if ($discount) {
             $discount_msg = $cart_model->get_member_discount_one($discount, $uid);
             if (empty($discount_msg)) {
                 $return_data['error'] = '该折扣已过期';
                 echo json_encode($return_data);
                 die;
             }
-        }
+        }*/
 
 
         //$where['session_id']=session('session_id');
@@ -558,33 +498,7 @@ class GoodsorderAction extends UserAction
             echo json_encode($return_data);
             die;
         }
-        //9.9活动商品的购买数量限制
-        $pre = C('DB_PREFIX');
-        $activity_msg = M('activity')->where("id=2")->find();
-        for ($i=0; $i<count($list); $i++) { 
-            if ($list[$i]['rec_type'] == 2 && time()>=$activity_msg['start_time'] && time()<$activity_msg['end_time']) {
-                if ($list[$i]['goods_number'] != 1) {
-                    $return_data['error'] = "亲，每个商品只能购买一件";
-                    echo json_encode($return_data);
-                    die;
-                }
-                $where_goods_list1['info.add_time'] = array("egt", $activity_msg['start_time']);
-                $where_goods_list1['info.add_time'] = array("lt", $activity_msg['end_time']);
-                $where_goods_list1['goods.goods_id'] = array("eq", $list[$i]['goods_id']);
-                $where_goods_list1['info.order_status'] = array("in", "0,1,5");
-                $where_goods_list1['info.activity_id'] = array("eq", "2");
-                $where_goods_list1['info.user_id'] = array("eq", $uid);
-                $order_goods_list1 = M()->table($pre . 'g_order_goods goods')//
-                ->join($pre . 'g_order_info info on info.order_id=goods.order_id')//
-                ->where($where_goods_list1)//
-                ->select();
-                if (!empty($order_goods_list1)) {
-                    $return_data['error'] = "亲，每个商品只能购买一件";
-                    echo json_encode($return_data);
-                    die;
-                }
-            }
-        }
+
 		$province = $address['province'] ? $address['province'] : 0;
         //计算价格
         $list = $cart_model->getCartSettlement($list,$province);
@@ -593,88 +507,6 @@ class GoodsorderAction extends UserAction
             echo json_encode($return_data);
             die;
         }
-        //判断是否夹杂着活动商品
-        foreach ($list['goods_list'] as $k) {
-            $rec_types[] = $k['rec_type'];
-        }
-        $rec_types = array_unique($rec_types);
-        $rec_types = array_merge($rec_types);
-        //分单工作
-        foreach ($list['goods_list'] as $k) {
-            $base_ids[] = $k['base_id'];
-        }
-        $base_ids = array_unique($base_ids);
-        $base_ids = array_merge($base_ids);
-		$lists =array();
-        //普通订单
-        for ($i=0; $i<count($base_ids); $i++) {
-            foreach ($list['goods_list'] as $k=>$v) {
-                if ($v['base_id'] == $base_ids[$i] && $v['rec_type'] == 0) {
-                    //var_dump($k['base_id']);
-                    $lists[$i]['all_num'] = $lists[$i]['all_num'] + $v['goods_number'];
-                    $lists[$i]['tolal'] = $lists[$i]['tolal'] + $v['all_market_price'];
-                    $lists[$i]['need_pay'] = $lists[$i]['need_pay'] + $v['all_goods_price'];
-					$lists[$i]['shipping_fee'] = $lists[$i]['shipping_fee'] + $v['shipping_money'];
-                    $lists[$i]['goods_list'][] = $v;
-                    unset($list['goods_list'][$k]);
-                }
-            }
-            $lists[$i]['error'] = $list['error'];
-            $lists[$i]['status'] = $list['status'];
-            $lists[$i]['is_gift'] =  $list['is_gift'];
-            $lists[$i]['is_upgrade'] = $list['is_upgrade'];
-            if (empty($lists[$i]['goods_list'])) {
-                unset($lists[$i]);
-            }
-        }
-        //活动订单
-        for ($i=count($lists); $i<count($lists)+count($list); $i++) { 
-            foreach ($list['goods_list'] as $k=>$v) {
-                for ($j=0; $j<count($rec_types); $j++) { 
-                    if ($v['rec_type'] == $rec_types[$j] && $v['rec_type'] != 0) {
-                        //var_dump($k['base_id']);
-                        $lists[$i]['all_num'] = $lists[$i]['all_num'] + $v['goods_number'];
-                        $lists[$i]['tolal'] = $lists[$i]['tolal'] + $v['all_market_price'];
-                        $lists[$i]['need_pay'] = $lists[$i]['need_pay'] + $v['all_goods_price'];
-                        $lists[$i]['shipping_fee'] = $lists[$i]['shipping_fee'] + $v['shipping_money'];
-                        $lists[$i]['goods_list'][] = $v;
-                        unset($list['goods_list'][$k]);
-                        break 2;
-                    }
-                }
-            }
-            $lists[$i]['error'] = $list['error'];
-            $lists[$i]['status'] = $list['status'];
-            $lists[$i]['is_gift'] =  $list['is_gift'];
-            $lists[$i]['is_upgrade'] = $list['is_upgrade'];
-            if (empty($lists[$i]['goods_list'])) {
-                unset($lists[$i]);
-            }
-        }
-        $lists = array_merge($lists);
-        $lists['all_num'] =  $list['all_num'];
-        $lists['tolal'] =  $list['tolal'];
-        $lists['need_pay'] =  $list['need_pay'];
-        $lists['error'] =  $list['error'];
-        $lists['status'] =  $list['status'];
-        $lists['is_gift'] =  $list['is_gift'];
-        $lists['is_upgrade'] =  $list['is_upgrade'];
-		$lists['shipping_fee'] = $list['shipping_fee'];
-        $goods = $list['goods_list'];
-		//若有商品活动过期
-		foreach ($goods as $key=>$value){
-			if($value['activity_id'] > 0){
-				if($value['activity_start_date'] > time()){
-					$return_data['error'] = '活动未开始';
-					echo json_encode($return_data);
-					die;
-				}elseif ($value['activity_end_date'] < time()){
-					$return_data['error'] = '活动已结束';
-					echo json_encode($return_data);
-					die;
-				}
-			}
-		}
         $time = time();
         $pay_sn = makePaySn($uid);
 		$member = $this->getMemberInfo();
@@ -690,72 +522,49 @@ class GoodsorderAction extends UserAction
         $order_model->startTrans();//开起事务
         $order_goods_model->startTrans();//开起事务
         $order_pay_model->startTrans();//开起事务
-
         //生成支付单号
         $add_order_pay = $order_pay_model->add($order_pay_data);
         $where_order_pay['pay_sn'] = $pay_sn;
         $order_pay_id = M('g_order_pay')->where($where_order_pay)->getField('pay_id');
-        $order_sns ='';
-        for ($i=0; $i<count($lists)-8; $i++) {
+
+
             if($member['member_vip_type']>0){
                 $share_uid=$this->uid;
             }else{
                 $share_uid=M('member')->where('member_card="'.$this->shop_code.'"')->getField('id');
             }
-            $order_data[$i]['order_sn'] = makeOrderSn($uid);
-            $order_sns = $order_sns.",".$order_data[$i]['order_sn'];
-            $order_data[$i]['share_uid'] =$share_uid;
-            $order_data[$i]['user_id'] = $uid;
-            $order_data[$i]['pay_record_id'] = $order_pay_id;
-            foreach ($lists[$i]['goods_list'] as $key => $value) {
-                if ($value['rec_type'] == 2) {
-                    $order_data[$i]['is_rebate'] = 1;//9.9大聚惠活动不返利
-                    $order_data[$i]['activity_id'] = $value['rec_type'];
-                }else{
-                    $order_data[$i]['is_rebate'] = 0;//订单才生成，没有执行返利操作
-                }
-            }
-            $order_data[$i]['consignee'] = $address['consignee'];
-            $order_data[$i]['province'] = $address['province'];
-            $order_data[$i]['city'] = $address['city'];//
-            $order_data[$i]['district'] = $address['area'];//
-            $order_data[$i]['address'] = $address['address_name'] . $address['address'];//用户消费时的折扣
-            $order_data[$i]['zipcode'] = $address['zipcode'];//用户消费时的返利折扣
-            $order_data[$i]['tel'] = $address['tel'];//
-            $order_data[$i]['mobile'] = $address['mobile'];//
-            $order_data[$i]['email'] = $address['email'];//
-            $order_data[$i]['best_time'] = $address['best_time'];//收货人的最佳送货时间
-            $order_data[$i]['sign_building'] = $address['sign_building'];//收货人的地址的标志性建筑
-			$order_data[$i]['order_type'] = 2;//订单类型 0未知 1店铺订单 2商品订单 3基地订单
-            $order_data[$i]['is_gift'] = $lists[$i]['is_gift'];//活动类型0 无 1 限时抢购
+            $order_data['order_sn'] = makeOrderSn($uid);
+            $order_data['share_uid'] =$share_uid;
+            $order_data['user_id'] = $uid;
+            $order_data['pay_record_id'] = $order_pay_id;
+            $order_data['consignee'] = $address['consignee'];
+            $order_data['province'] = $address['province'];
+            $order_data['city'] = $address['city'];//
+            $order_data['district'] = $address['area'];//
+            $order_data['address'] = $address['address_name'] . $address['address'];//用户消费时的折扣
+            $order_data['zipcode'] = $address['zipcode'];//用户消费时的返利折扣
+            $order_data['tel'] = $address['tel'];//
+            $order_data['mobile'] = $address['mobile'];//
+            $order_data['email'] = $address['email'];//
+            $order_data['best_time'] = $address['best_time'];//收货人的最佳送货时间
+            $order_data['sign_building'] = $address['sign_building'];//收货人的地址的标志性建筑
+			$order_data['order_type'] = 2;//订单类型 0未知 1店铺订单 2商品订单 3基地订单
+            $order_data['is_gift'] = $list['is_gift'];//活动类型0 无 1 限时抢购
 
-            $order_data[$i]['goods_amount'] = $lists[$i]['tolal'];//商品总金额
-            $order_data[$i]['order_amount'] = $lists[$i]['need_pay'];//应付款金额
+            $order_data['goods_amount'] = $list['tolal'];//商品总金额
+            $order_data['order_amount'] = $list['need_pay'];//应付款金额
 
-			$order_data[$i]['shipping_fee'] = $lists[$i]['shipping_fee'];//邮费
-            //记录折扣信息
-            if ($discount_msg && $discount_msg['discount'] > 0 && $discount_msg['discount'] < 1) {
-                $order_data[$i]['discount_type'] = $discount_msg['type'];//折扣类型 1 抽奖
-                $order_data[$i]['discount'] = $lists[$i]['need_pay'] - $lists[$i]['need_pay'] * $discount_msg['discount'];//discount 折扣金额
-                $order_data[$i]['discount_val'] = $discount_msg['discount'];//折扣
-                $order_data[$i]['discount_start_time'] = $discount_msg['start_time'];
-                $order_data[$i]['discount_end_time'] = $discount_msg['end_time'];
-            }
+			$order_data['shipping_fee'] = $list['shipping_fee'];//邮费
+
                 /*  if ($list['need_pay'] < 68) {
                     $order_data['shipping_fee'] = 10;//订单金额小于 68 须支付运费10元
                 }*/
-            $order_data[$i]['add_time'] = $time;
-        }
-        $order_sns = substr($order_sns, 1);
-        $order_pay_data1['order_sn'] = $order_sns;
+            $order_data['add_time'] = $time;
+
+        $order_pay_data1['order_sn'] = $order_data['order_sn'];
         $add_order_pay = $order_pay_model->where($order_pay_data)->save($order_pay_data1);
-
-
-		for ($i=0; $i<count($order_data); $i++) {
-            $add_order[] = $order_model->add($order_data[$i]);
-        }
-
-        if ( in_array(false, $add_order, true) === true ) {
+        $add_order = $order_model->add($order_data);
+        if ( $add_order === false ) {
             $return_data['error'] = "订单生成失败，请稍后再试.";
             $order_model->rollback();//回滚事务
             $order_goods_model->rollback();//回滚事务
@@ -763,16 +572,10 @@ class GoodsorderAction extends UserAction
             echo json_encode($return_data);
             die;
         }
-        for ($i=0; $i<count($add_order); $i++) {
-            foreach ($lists[$i]['goods_list'] as $key => $value) {
-                if ($value['rec_type'] == 1) {
-                    $value['goods_name'] = '【限时抢购】' . $value['goods_name'];
-                }elseif ($value['rec_type'] == 2) {
-                    $value['goods_name'] = '【9.9大聚惠】' . $value['goods_name'];
-                }else{
-                    $value['goods_name'] =  $value['use_vip'] . $value['goods_name'];
-                }
-                $order_good_data['order_id'] = $add_order[$i];
+       // for ($i=0; $i<count($add_order); $i++) {
+            foreach ($list['goods_list'] as $key => $value) {
+                $value['goods_name'] =  $value['use_vip'] . $value['goods_name'];
+                $order_good_data['order_id'] = $add_order;
                 $order_good_data['goods_id'] = $value['goods_id'];
                 $order_good_data['goods_name'] = $value['goods_name'];//商品名
                 $order_good_data['goods_sn'] = $value['goods_sn'];//商品的唯一货号
@@ -798,30 +601,30 @@ class GoodsorderAction extends UserAction
                 $order_good_data['activity_start_date'] = $value['activity_start_date'];
                 $order_good_data['activity_end_date'] = $value['activity_end_date'];
 				$order_good_data['shipping_money'] = $value['shipping_money'] ;//邮费
-                $add_order_goods[] = $order_goods_model->add($order_good_data);
+                $add_order_goods= $order_goods_model->add($order_good_data);
             }
-        }
+      //  }
         $add_order_goods = array_unique($add_order_goods);//去重
         //in_array如果设置该参数为 true，则检查搜索的数据与数组的值的类型是否相同。
-        if (in_array(false, $add_order, true) === false && $add_order_pay !== false && in_array(false, $add_order_goods, true) === false) {
+        if ($add_order !== false && $add_order_pay !== false && $add_order_goods !== false) {
             $return_data['status'] = 1;
             $order_model->commit();//提交事务
             $order_goods_model->commit();//提交事务
             $order_pay_model->commit();//提交事务
             //记录订单日志
-            for ($i=0; $i<count($add_order); $i++) {
+            //for ($i=0; $i<count($add_order); $i++) {
                 $data = array();
-                $data['order_id'] = $add_order[$i];
-                $data['order_amount'] = $lists[$i]['need_pay'];
+                $data['order_id'] = $add_order;
+                $data['order_amount'] = $list['need_pay'];
                 $g_pay_log = M('g_pay_log')->add($data);
                 //记录订单日志
                 $data = array();
-                $data['order_id'] = $add_order[$i];
+                $data['order_id'] = $add_order;
                 $data['log_role'] = 'buyer';
                 $data['log_msg'] = '用户下单成功';
                 $data['log_orderstate'] = '10';
                 $insert = D('Mallorder')->addOrderLog($data);
-            }
+           // }
             $return_data['add_order'] = $add_order;
             // 删除购物车
             $del_where['session_id']=session('session_id');
@@ -1388,16 +1191,16 @@ class GoodsorderAction extends UserAction
               }*/
             //记录订单日志
             for ($i=0; $i<count($order_id); $i++) {
-                $data[$i] = array();
-                $data[$i]['order_id'] = $order_id[$i];
-                $data[$i]['log_role'] = 'buyer';
-                $data[$i]['log_msg'] = $log_msg[$i];
+                $data = array();
+                $data['order_id'] = $order_id[$i];
+                $data['log_role'] = 'buyer';
+                $data['log_msg'] = $log_msg[$i];
                 if (empty($want_pay[$i])) {
-                    $data[$i]['log_orderstate'] = '20';
+                    $data['log_orderstate'] = '20';
                 } else {
-                    $data[$i]['log_orderstate'] = '10';
+                    $data['log_orderstate'] = '10';
                 }
-                $insert = D('Mallorder')->addOrderLog($data[$i]);
+                $insert = D('Mallorder')->addOrderLog($data);
             }
 
         } else {
@@ -1572,7 +1375,7 @@ class GoodsorderAction extends UserAction
             $return_data['error']="订单金额为0，不需要支付";
             echo json_encode($return_data);die;
         }
-        $pay_sn=$order_list[0]['order_sn'];
+        $pay_sn=$order_list['order_sn'];
         $get_pay_url=$this->get_pay_url($pay_sn,$pay_amount);
         $return_data['need_pay']=1;///需要支付 1  不需要支付0
         if($get_pay_url['status']==1){
