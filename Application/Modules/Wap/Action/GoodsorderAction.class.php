@@ -351,7 +351,6 @@ class GoodsorderAction extends UserAction
 		$data = M("g_order_info")->where($menuwhere)->find();
 		if ($data) {
             $order_pay_where['pay_id'] = $data['pay_record_id'];
-			$data_sum = 0;
             if($data['pay_name']=='alipay'){
                 $data['payment']='支付宝支付';
             }else{
@@ -371,12 +370,14 @@ class GoodsorderAction extends UserAction
             if ($data['order_amount'] == $offline_money) {
                 $offline_money = $offline_money + $data['shipping_fee'];
             }
+            
             $data['order_amount'] = $data['order_amount'] + $data['shipping_fee'];
 //标记
             $online_money = $data['order_amount'] - $data['surplus'] - $offline_money;
             if ($online_money < 0) {///已经支付过了 不能货到付款
                 $offline_money = 0;
             }
+
             $data['order_state'] = $order_show['code'];
             $data['order_state_name'] = $order_show['name'];
             if ($data['order_state'] == "delivered") {
@@ -386,11 +387,10 @@ class GoodsorderAction extends UserAction
                 $this->ref_all = M('g_order_goods_refund')->where($f_where)->count();
             }
             $data = $this->get_order_msg_data($data);////订单显示信息
-            $data_sum = $data_sum + $data['order_amount_all'];
+
         }
-            $this->online_money1 = $online_money;
+
             $this->order_goods = $order_goods;
-            $this->offline_money1 = $offline_money;
 		//}
 		// 支付状态；0，未付款；1，付款中 ；2，已付款
 		$pay_status = array('0' => '未付款', '1' => '已支付', '2' => '已付款', '100'=>'等待买家付款', '101'=>'已支付，对账中', '102'=>'支付已完成');
@@ -400,13 +400,11 @@ class GoodsorderAction extends UserAction
 		$this->shipping_status = $shipping_status;
 		//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货；
 		$this->order_status = array('0' => '未确认', '1' => '已确认', '2' => '已取消', '3' => '无效', '4' => '退货');
-
 		$title = "订单信息";
         $where_order_pay['pay_id'] = $data['pay_record_id'];
         $pay_sn = M('g_order_pay')->where($where_order_pay)->getField('pay_sn');
         $this->assign("pay_sn", $pay_sn);
         $this->assign("order_id", $_GET["order_id"]);
-        $this->assign("data_sum", $data_sum);
 		$this->data = $data;
 		$this->display();
 	}

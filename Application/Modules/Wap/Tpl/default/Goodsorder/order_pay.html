@@ -153,7 +153,7 @@
 			<div class="clearfix"></div>
 		</div>
 		<input name="pay_type" type="hidden" value="pay_online">
-		<input name="order_id" id="order_id" type="hidden" value="{$order_pay_sn}" placeholder="">
+		<input name="order_id" id="order_id" type="hidden" value="{$order_id}" placeholder="">
 	</form>
 	<div class="clearfix"></div>
 </div>
@@ -281,7 +281,7 @@
 								window.location.href=pay_url+"&openid=<?php echo $_SESSION['user_open_id'];?>";
 							}else{
 								layer.msg('支付成功',{icon:6,time: 1500},function(){
-									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('id'=>$order_pay_sn));?>";
+									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('id'=>$order_id));?>";
 								});
 							}
 						}else{
