@@ -121,14 +121,7 @@
 			<a href="javascript:get_weixin_pay();" class="wx">
 				<i class="hbFntWes icon ">&#xf1d7</i>微信支付
 			</a>
-			<if condition="($balance gt 0 or $points gt 0) and $only_weixinpay neq 1">
-				<if condition="$balance gt 0">
-					<div class="ye clearfix">
-						<div class="use_balance"><i class="iconfont icon">&#xe641</i>使用余额支付<span class="floatRgt"><b class="num green">￥{$balance}</b> 元</span></div>
-						<input id="use_balance" name="use_balance" type="hidden" value="0">
-						<div class="clearfix" style="border:none; display:none;"></div>
-					</div>
-				</if>
+			<if condition="( $points gt 0) and $only_weixinpay neq 1">
 				<if condition="$points gt 0">
 					<div class="jf clearfix">
 						<div class="use_integral"><i class="iconfont icon">&#xe643</i>使用积分支付<span class="floatRgt"><b class="num green">{$points}</b> 分</span></div>
@@ -272,7 +265,7 @@
 					onwait : "正在处理信息，请稍候...",
 					success: function(response){
 						$('#mem_password').val('');
-						//console.log(response);
+						console.log(response);
 						//return false;
 						if(response.status==1){
 							if(response.need_pay==1){
