@@ -36,7 +36,7 @@ class ProfitModel extends Model {
 		}
 		
 		if($order_info['is_rebate'] == 1){
-			$ret['msg'] = '订单已经成功分配';
+			$ret['msg'] = '订单已经奖励积分';
             return $ret;
 		}
 		
@@ -54,7 +54,7 @@ class ProfitModel extends Model {
         $member_tuijian_data = array();//返利记录
 		
         $order_save_data = array();//订单返利 数据
-        $order_save_data['profit_type'] = 0;//返利类型 1分享返利 0正常返利(123级返利)
+        $order_save_data['profit_type'] = 0;//返利类型 1分享返利 0正常返利(商品送积分)
         $order_save_data['order_rebate'] = 0;//订单返利金额
 		$order_save_data['order_rebate_integral'] = 0; //订单返利积分
 		
@@ -64,42 +64,7 @@ class ProfitModel extends Model {
 		$money = 0; $c_money = 0; $syb_money = 0;
 		$province_id = $city_id = $town_id = 0;
 		if($order_info['is_upgrade'] == 1){
-			$is_int_result = TRUE;
-			$is_rebate_flagship = TRUE;
-			
-			$shop_rebate_status = 2;
-			$money = $order_info['order_amount'];
-			$syb_money = $order_info['order_amount'];
-			
-			$level_order = M('member_level_order')->where(array('id'=>$order_info['order_sn']))->find();
-			if(isset($level_order['last_level']) && $level_order['last_level'] == 1){
-				$rem1_money_ratio		= array(1=>200, 2=>200, 3=>200); //订单为标准店铺升级高级店铺订单， 1=>标准店铺 与 2=>高级店铺 分别的利润
-				$rem1_integral_ratio	= array(1=>300, 2=>300, 3=>300); //订单为标准店铺升级高级店铺订单， 1=>标准店铺 与 2=>高级店铺 分别的积分				
-				$flagship_money_ratio = 0;
-				$flagship_integral_ratio = 0;
-			}else{
-				if(isset($level_order['levelId']) && $level_order['levelId'] == 1){//标准店铺
-					$rem1_money_ratio		= array(1=>130, 2=>130, 3=>130); //订单为标准店铺订单， 1=>标准店铺 与 2=>高级店铺 分别的利润
-					$rem1_integral_ratio	= array(1=>200, 2=>200, 3=>200); //订单为标准店铺订单， 1=>标准店铺 与 2=>高级店铺 分别的积分
-				}elseif(isset($level_order['levelId']) && $level_order['levelId'] == 2){//高级店铺
-					$rem1_money_ratio		= array(1=>400, 2=>600, 3=>600); //订单为高级店铺订单， 1=>标准店铺 与 2.高级店铺 分别的利润
-					$rem1_integral_ratio	= array(1=>200, 2=>500, 3=>500); //订单为高级店铺订单， 1=>标准店铺 与 2=>高级店铺 分别的积分
-				}else{
-					$ret['msg'] = '没有获取到升级店铺规格';
-					return $ret;
-				}
-				$flagship_money_ratio = 100;
-				$flagship_integral_ratio = 200;
-				
-				$flagship2_money_ratio = 30;
-				$flagship2_integral_ratio = 100;
-			}
-			
-			$province_id = $member_info['provinceid'];
-			$city_id = $member_info['cityid'];
-			$town_id = $member_info['areaid'];
-			
-			$rebate_name = '消费收益';
+
 		}else{
 			$where_goods['order_id'] = $order_info['order_id'] ;
 			$where_goods['yes_refund'] = 0;
@@ -560,4 +525,98 @@ class ProfitModel extends Model {
 		$ret['status'] = 1;
 		return $ret;
 	}
+
+/*	public function set_member_exchange($order_id = array()){
+		$time = time();
+		$ret = array();
+		$ret['status'] = 0;
+		if(!$order_id){
+			$ret['msg'] = '参数错误！';
+			$this->write_log($ret['msg']);
+			return $ret;
+		}
+		$g_order_info = M('g_order_info');
+		$g_order_goods = M('g_order_goods');
+		$g_purchases = M('g_purchases');
+		// $order_info = $g_order_info->where(array('order_id'=>409))->find();
+		$order_info = $g_order_info->where(array('order_id'=>$order_id))->find();
+		if (empty($order_info)){
+			$ret['msg'] = '没有找到订单';
+			$this->write_log($ret['msg'].'['.$order_id);
+			return $ret;
+		}
+
+		if($order_info['pay_status'] != 2){
+			$ret['msg'] = '订单没有付款';
+			$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] : '.$ret['msg']);
+			return $ret;
+		}
+
+		if($order_info['is_rebate'] == 1){
+			$ret['msg'] = '订单已经成功分配';
+			$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] : '.$ret['msg']);
+			return $ret;
+		}
+
+		// $pre = C('DB_PREFIX');//表前缀
+		$commonob = A('Common');
+		$order_profit = 0;
+
+		//订单包涵的商品
+		$order_goods = $g_order_goods->where(array('order_id'=>$order_info['order_id']))->select();
+		foreach($order_goods as $order_goods_item){
+			$purchase_info = $g_purchases->where(array( 'id'=>$order_goods_item['purchases_id']))->find();
+			if(empty($purchase_info)){
+				$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] : '.$order_goods_item['goods_id'].' 没有进货信息');
+				continue;
+			}
+			$member_arr = [$purchase_info['supplier_member_id'],$purchase_info['share_member_id'],$purchase_info['member_id']];
+			$member_arr = array_values(array_unique($member_arr));//进货单 基地-分销商-店主 id 数组；
+			$profit_arr = explode(',',$purchase_info['profit']);  //进货单 利润数组
+			if(count($member_arr) != ($purchase_info['share_degree']+1) || ($purchase_info['share_degree']+1) != count($profit_arr)){
+				$ret['msg'] = '进货单'.$purchase_info['id'].'等级出错';
+				$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] : '.$ret['msg']);
+				continue;
+			}
+			foreach ($member_arr as $m_k => $member_id){
+				$unit_profit = ($m_k == 0) ? mb_number($profit_arr[$m_k] - 1.00) : $profit_arr[$m_k] ;//供货基地 的利润平台需要扣除1元
+				$money = $unit_profit * $order_goods_item['goods_number'];
+				if ($money <= 0){
+					$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] : '.$purchase_info['id'].' 分配用户:'.$member_id.' 金额错误'.$money);
+					continue;
+				}
+				$log = array();
+				$log['type']        = 5;//消费类型 1订单消费 2充值 3提现 4退款 5 收益 6认证消费
+				$log['type5_type']  = $m_k > 0 ? 2 : 1;//收益类型  1供货商货款 2批发商差价
+				$log['order_id']    = $order_info['order_id'];
+				$log['des']         = '售出商品获得：' . $money . ' 订单号：（'.$order_info['order_sn'].'）';
+				$commonob->set_member_balance($member_id, 1, $money, $log);
+
+				//收益记录
+				$tuijian_data = array();
+				$tuijian_data['member_id'] = $member_id;
+				$tuijian_data['order_id'] = $order_info['order_id'];
+				$tuijian_data['status'] = $m_k > 0 ? 2 : 1;
+				$tuijian_data['type'] = 1;
+				$tuijian_data['money'] = $money;
+				$tuijian_data['integral'] = 0;
+				$tuijian_data['des'] = '售出商品获得：' . $money . ' （订单号：'.$order_info['order_sn'].'; 商品名称：'.$order_goods_item['goods_name'].'('.$order_goods_item['goods_id'].')）';
+				$tuijian_data['rebate_status'] = 1;
+				$member_tuijian_data[] = $tuijian_data;
+			}
+
+		}
+
+		$g_order_info->where(array('order_id' => $order_info['order_id']))->save(array('order_profit'=>$order_profit, 'is_rebate'=>1)); //完成分配标记
+
+		if(!empty($member_tuijian_data)){ //写入收益记录
+			$rebate_record_model = M('rebate_record');
+			foreach ($member_tuijian_data as $key => $value) {
+				$value['add_time'] = $time;
+				$rebate_record_model->add($value);
+			}
+		}
+		$ret['status'] = 1;
+		return $ret;
+	}*/
 }
