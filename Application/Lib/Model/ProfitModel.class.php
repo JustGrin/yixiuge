@@ -1,6 +1,18 @@
 <?php
 class ProfitModel extends Model {
-	
+
+	public function __construct(){
+		$this->log_path = './data/profit/'.date('Y').'/'.date('m').'/';
+		if (!is_dir($this->log_path)){
+			mkdir(iconv("UTF-8", "GBK", $this->log_path),0744,true);
+		}
+		$this->log_path .= date('Y_m_d').'.log';
+	}
+
+	private function write_log($msg = ''){
+		Log::write($msg, 'INFO', 3, $this->log_path);
+	}
+
     /*
 	*
 	* 利润分配
