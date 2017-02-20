@@ -23,11 +23,7 @@ class MemberAction extends UserAction {
     public function index(){
         $memberinfo=$this->getMemberInfo();
 		//如果不是通过连接进来就没有分享人，清空session('share')
-		if(empty($_GET['share']) && empty($_GET['layer']) ){
-			session('share',null);
-			$share_card = $memberinfo['member_vip_type'] > 0 ? $memberinfo['member_card'] : ($memberinfo['recommend_code'] ? $memberinfo['recommend_code'] : INDEX_CARD);
-			$this->redirect('wap/member/index',array('share'=>$share_card));
-		}
+
         $this->data=$memberinfo;
         $memberinfo_de=$this->getMemberDetail();
         $memberinfo_de['balance']+=$memberinfo_de['balance_give'];

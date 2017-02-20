@@ -8,12 +8,7 @@ class IndexAction extends BaseAction {
 
     public function index(){
         $member_info=$this->getMemberInfo();
-		//如果不是通过连接进来就没有分享人，清空session('share')
-		if(empty($_GET['share']) && !IS_AJAX){
-			session('share',null);
-			$share_para = $member_info['member_vip_type'] > 0 ? $member_info['member_card'] : ($member_info['recommend_code'] ? $member_info['recommend_code'] : INDEX_CARD);
-            $this->redirect('wap/index/index',array('share'=>$share_para,'layer'=>$_GET['layer']));
-		}
+
        //商品推荐
         $p=$_REQUEST['p'];
         $pagesize=10;

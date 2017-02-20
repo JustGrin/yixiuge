@@ -40,7 +40,7 @@ class GoodsorderAction extends UserAction
         $p = !empty($p) ? $p : 1;
         $start = ($p - 1) * $pagesize;
         $pre = C('DB_PREFIX');
-        $field = "info.order_id,info.order_sn,pay.pay_sn,info.order_status,info.shipping_status,info.pay_status,info.goods_amount,info.order_amount,info.shipping_fee,info.add_time,info.consignee,info.mobile,info.address,info.is_upgrade,info.share_uid,info.confirm_time,info.to_buyer";
+        $field = "info.order_id,info.order_sn,pay.pay_sn,info.order_status,info.shipping_status,info.pay_status,info.goods_amount,info.order_amount,info.shipping_fee,info.add_time,info.consignee,info.mobile,info.address,info.is_upgrade,info.confirm_time,info.to_buyer";
         $order_model = M();
         $list = $order_model->table($pre . 'g_order_info info')//
         ->join($pre . 'g_order_pay pay on pay.pay_id=info.pay_record_id')//
@@ -74,8 +74,6 @@ class GoodsorderAction extends UserAction
             $list[$key]['num']=$num;
             $list[$key]['order_amount'] += $list[$key]['shipping_fee'];
             $list[$key]['ref_all'] = 0;
-			$store_id=$list[$key]['share_uid'];
-			$list[$key]['store_name']=M('member')->where('id='.$store_id)->getField('member_name');
 			$list[$key]['status_remarks'] = $this->status_before_deliver( $value);
             $countgoods = 0;
 			//输出商品是否可售后
@@ -153,11 +151,7 @@ class GoodsorderAction extends UserAction
     public function order_express()
     {
         $menuwhere["order_id"] = array("eq", $_GET["order_id"]);
-        if ($_GET["is_store"] == 1) {
-            $menuwhere['share_uid'] = $this->uid;
-        }else{
-            $menuwhere['user_id'] = $this->uid;
-        }
+        $menuwhere['user_id'] = $this->uid;
         $data = M("g_order_info")->where($menuwhere)->find();
         $order_goods = M('g_order_goods')->where(array('order_id' => $data["order_id"]))->select();
         $this->order_goods = $order_goods;
@@ -515,13 +509,7 @@ class GoodsorderAction extends UserAction
         $order_pay_id = M('g_order_pay')->where($where_order_pay)->getField('pay_id');
 
 
-            if($member['member_vip_type']>0){
-                $share_uid=$this->uid;
-            }else{
-                $share_uid=M('member')->where('member_card="'.$this->shop_code.'"')->getField('id');
-            }
             $order_data['order_sn'] = makeOrderSn($uid);
-            $order_data['share_uid'] =$share_uid;
             $order_data['user_id'] = $uid;
             $order_data['pay_record_id'] = $order_pay_id;
             $order_data['consignee'] = $address['consignee'];
@@ -551,6 +539,7 @@ class GoodsorderAction extends UserAction
         $order_pay_data1['order_sn'] = $order_data['order_sn'];
         $add_order_pay = $order_pay_model->where($order_pay_data)->save($order_pay_data1);
         $add_order = $order_model->add($order_data);
+
         if ( $add_order === false ) {
             $return_data['error'] = "订单生成失败，请稍后再试.";
             $order_model->rollback();//回滚事务
@@ -560,6 +549,7 @@ class GoodsorderAction extends UserAction
             die;
         }
        // for ($i=0; $i<count($add_order); $i++) {
+        $add_order_goods =array();
             foreach ($list['goods_list'] as $key => $value) {
                 $value['goods_name'] =  $value['use_vip'] . $value['goods_name'];
                 $order_good_data['order_id'] = $add_order;
@@ -572,8 +562,6 @@ class GoodsorderAction extends UserAction
                 $order_good_data['goods_image'] = $value['goods_img'];//
                 $order_good_data['goods_attr_id'] = $value['goods_attr_id'];//商品实际成交价
                 $order_good_data['goods_attr'] = $value['goods_attr'];//商家id
-                $order_good_data['share_card'] = $value['share_card'];//分享者 card
-                $order_good_data['share_money'] = $value['share_money'];//分享返利金额
                 $order_good_data['is_refund'] = $value['is_refund'];//是否可退货 1是 0否
                 $order_good_data['goods_shipping'] = $value['goods_shipping'];//包邮方式 默认SF顺风包邮
                 $order_good_data['shipping_code'] = $value['shipping_code'];//包邮方式code
@@ -588,12 +576,12 @@ class GoodsorderAction extends UserAction
                 $order_good_data['activity_start_date'] = $value['activity_start_date'];
                 $order_good_data['activity_end_date'] = $value['activity_end_date'];
 				$order_good_data['shipping_money'] = $value['shipping_money'] ;//邮费
-                $add_order_goods= $order_goods_model->add($order_good_data);
+                $add_order_goods[]= $order_goods_model->add($order_good_data);
             }
       //  }
         $add_order_goods = array_unique($add_order_goods);//去重
         //in_array如果设置该参数为 true，则检查搜索的数据与数组的值的类型是否相同。
-        if ($add_order !== false && $add_order_pay !== false && $add_order_goods !== false) {
+        if ($add_order !== false && $add_order_pay !== false &&  in_array(false,$add_order_goods)  !== true) {
             $return_data['status'] = 1;
             $order_model->commit();//提交事务
             $order_goods_model->commit();//提交事务
@@ -694,46 +682,12 @@ class GoodsorderAction extends UserAction
         }
     }
 
-
-    //业绩   10-13修改只显示已完成的订单 gqh
-    public function share()
-    {
-        $where['member_id']=$this->uid;
-        $p=$_REQUEST['p'];
-        $pagesize=10;
-        $p=!empty($p)?$p:1;
-        $start=($p-1)*$pagesize;
-        $type=$_REQUEST['type'];//1积分 0 米值
-        $field="*";
-        $model=M('member_consume_record');
-        $arr=array('1'=>'订单消费','2'=>'充值','3'=>'提现','4'=>'退款','5'=>'收益','6'=>'认证消费','7'=>'系统赠送');
-        $where['status']=1;
-        $where['type']=5;
-        $where['type5_type']=1;//收益类型  1直接推荐人 2间接推荐人 3 间接二级推荐人 4代理区域会员
-        $list=$model->where($where)//
-        ->field($field)->limit($start,$pagesize)->order('add_time desc')->select();
-        //消费类型 1订单消费 2充值 3提现   4退款 5 收益 6认证消费
-
-        if(!empty($list)){
-            foreach ($list as $key => $value) {
-                $typename=$arr[$value['type']];
-                $typename?$typename:'-';
-                $list[$key]['typename']=$typename;
-                $list[$key]['status']=$value['status']==1?'+':'-';
-                $list[$key]['add_time']=date("Y/m/d",$value['add_time']);
-            }
-        }
-        if(IS_AJAX){
-            echo json_encode($list);die;
-        }
-        $this->list=$list;
-        $data['balance_all']=sprintf("%.0f",substr(sprintf("%.3f", $data['balance_all']), 0, -3));
-        $count=$model->where($where)->sum('money');
-        $count=sprintf("%.0f",substr(sprintf("%.3f", $count), 0, -3));
-        $this->count_share = $count;
-        $this->display();
+    public function exchange(){
+        $order_id = $_GET['id'];
+        $ress = D('Profit')->set_member_exchange($order_id);
+        print_r($ress);
     }
-
+    
     //获取订单状态
     public function get_order_share_status($order_info = array())
     {
@@ -898,7 +852,7 @@ class GoodsorderAction extends UserAction
         $condition = array();
         $condition['order_id'] = $order_id;
         $condition['pay_status'] = '0';// 支付状态；0，未付款；1，付款中 ；2，已付款
-        $file = 'order_id,pay_record_id,order_sn,user_id,order_amount,shipping_fee,is_upgrade,surplus,integral,integral_money,discount_start_time,discount_end_time,discount,offline,offline_money,share_uid';
+        $file = 'order_id,pay_record_id,order_sn,user_id,order_amount,shipping_fee,is_upgrade,surplus,integral,integral_money,discount_start_time,discount_end_time,discount,offline,offline_money';
         $order_info = $model_order->getOrderList($condition, '', $file);
         if (empty($order_info)) {
             $return_data['error'] = "该订单不存在";
@@ -1011,7 +965,6 @@ class GoodsorderAction extends UserAction
                 $goods_msg = implode(',',$order_goods);
                 $send_data['member_id'] = $_SESSION['member']['uid'];
                 $send_data['goods_msg'] =$goods_msg;
-                $this->weixin_send($order_info['share_uid'], $send_data, 1);
                 $send_data1['order_sn'] = $order_info['order_sn'];
                 $this->weixin_send($_SESSION['member']['uid'], $send_data1, 2);
             }

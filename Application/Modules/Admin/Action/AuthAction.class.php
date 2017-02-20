@@ -208,7 +208,7 @@ class AuthAction extends BaseAction {
             ->join($this->_config['AUTH_GROUP']." g on a.group_id=g.id")
             ->field('g.auid,group_id,title,rules')->select();
           //  echo M()->getlastsql();
-        $groups[$uid]=$user_groups?:array();
+        $groups[$uid]=$user_groups? $groups[$uid] :array();
         return $groups[$uid];
     }
 
