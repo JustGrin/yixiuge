@@ -132,8 +132,8 @@ class IndexAction extends BaseAction {
         //商品分类
         $where_category['is_exhibition'] = 1;
         $g_category = M("g_category")->where($where_category)->order('sort_order asc, cat_id asc')->select();
-        for ($i=0; $i<count($g_category); $i++) { 
-          $g_category[$i]['category_url'] = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/index', array('share' => $this->shop_code, 'type' => $g_category[$i]['cat_id']));//行业地址
+        foreach ($g_category as $k => $v){
+          $g_category[$k]['category_url'] = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/index', array('type' => $v['cat_id']));//行业地址
         }
         $this->g_category=$g_category;
         //判断是否完善收货地址,电话

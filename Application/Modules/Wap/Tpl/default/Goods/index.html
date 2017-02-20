@@ -35,84 +35,24 @@
 	<div class="catnav">
 		<div class="cat-container">
 			<ul class="swiper-wrapper">
-				
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 99">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=99&share={$share_para}" title="干货">
-						<img src="/Public/wap/img/caticon/ganhuo.jpg">
-					</a>
-					<h4>干货</h4>
+				<li  class="swiper-slide <if condition="$_GET['type'] eq 0">on</if>">
+				<a href="{$return_url}?type=0" title="全部">
+					<img src="/Public/wap/img/caticon/ganhuo.jpg">
+				</a>
+				<h4>全部</h4>
 				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 104">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=104&share={$share_para}" title="特产">
-						<img src="/Public/wap/img/caticon/techan.jpg">
-					</a>
-					<h4>特产</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 121">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=121&share={$share_para}" title="零食">
-						<img src="/Public/wap/img/caticon/shucai.jpg">
-					</a>
-					<h4>蔬菜</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 123">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=123&share={$share_para}" title="粮食">
-						<img src="/Public/wap/img/caticon/liangshi.jpg">
-					</a>
-					<h4>粮食</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 124">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=124&share={$share_para}" title="酒水">
-						<img src="/Public/wap/img/caticon/jiu.jpg">
-					</a>
-					<h4>酒水</h4>
-				</li>
-				
-					<li  class="swiper-slide <if condition="$_GET['type'] eq 128">on
-						</if>
-						"
-						> <a href="{:U('wap/goods/index?type=128')}" title="茶叶"> <img src="/Public/wap/img/caticon/chaye.jpg"> </a>
-						<h4>茶叶</h4>
+				<volist name="g_category" id="vo">
+
+					<li  class="swiper-slide <if condition="$_GET['type'] eq $vo['cat_id']">on</if>">
+						<a href="{$vo.category_url}" title="{$vo.cat_desc}"> <img src="{:thumbs_auto($vo['cat_icon'], 600, 255)}g" alt="{$vo.cat_desc}"> </a>
+						<h4>{$vo.cat_name}</h4>
 					</li>
-				
-				
-				<li  class="swiper-slide <if condition="$_GET['type'] eq 98">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?type=98&share={$share_para}" title="水果">
-						<img src="/Public/wap/img/caticon/shuiguo.jpg">
-					</a>
-					<h4>水果</h4>
-				</li>
-				<li  class="swiper-slide <if condition="$_GET['type'] lt 1">on
-					</if>
-					"
-					>
-					<a href="{$return_url}?share={$share_para}" title="全部">
-						<!--<a href="{:U('wap/goods/index')}" title="更多">-->
-						<img src="/Public/wap/img/caticon/gengduo.jpg">
-					</a>
-					<h4>全部</h4>
-				</li>
+				</volist>
 			</ul>
 			<div class="cat-pagination"></div>
 		</div>
 	</div>
+
 	<div class="screen">
 		<a href="javascript:void(0);" class=" all_chk on"  data="0" order="all_chk">
 			<i class="iconfont">&#xe601</i> 新品

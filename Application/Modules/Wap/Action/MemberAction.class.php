@@ -274,16 +274,9 @@ class MemberAction extends UserAction {
         $this->member=$memberinfo;
         $member=$this->getMemberDetail();
         $this->data=$member;
-        //通过推荐人会员号，得到推荐人名字
-        if(!empty($memberinfo['recommend_code'])){
-            $where['member_card']=$memberinfo['recommend_code'];
-            $recommend_name=M('member')->where($where)->getField("member_name");
-        }
+        $verification = M('member_verification')->where('member_id='.$this->uid)->find();
 
-        // $this->member['recommend_name']=$recommend_name;
-        $this->assign('recommend_name', $recommend_name);
-
-
+        $this->verification = $verification ? $verification : array();//用户信息
         //地区信息设置之后不允许修改
         if($member['provinceid'] && $member['cityid'] && $member['areaid']){
             //查询会员身份

@@ -313,36 +313,17 @@ public function __construct(){
   public function findpwd(){
     if(IS_AJAX){
          $data['status']=0;
-        $mem_password=$_POST['mem_password'];
-        $rep_password=$_POST['rep_password'];
-        $mobile=$_POST['mobile'];
-        //检测 手机验证码
-        $send_return=$this->check_send_return();
-        if($send_return['error']){
-            $data['error']=$send_return['error'];
-            echo json_encode($data);die;
-        }
-          //注册验证 密码 是否为空 两次密码是否一致
-        $password_return=$this->cheack_password_return();
-        if($password_return['error']){
-           $data['error']=$password_return['error'];
-            echo json_encode($data);die;
-        }
-         $mobile=$_REQUEST['mobile'];
-        if(empty($mobile)){
-            $data['error']="手机号码不存在";
-             echo json_encode($data);die;
-        }
-        $member= M("member")->where(array('mobile'=>$mobile))->find();
-        if(empty($member)){
+        $rep_password=isset($_POST['rep_password']) ? $_POST['rep_password'] : '';
+        if(empty($rep_password)){
             $data['error']="手机号码已不存在";
              echo json_encode($data);die;
         }
         ///手机 是否被注册
         
         //修改密码
-        $m_data['password']=md5($mem_password);
-        $res= M("member")->where(array('mobile'=>$mobile))->save($m_data);
+        $m_data =array();
+        $m_data['password']=md5($rep_password);
+        $res= M("member")->where(array('id'=>$this->uid))->save($m_data);
         if($res!==false){
               $data['status']=1;
         }else{

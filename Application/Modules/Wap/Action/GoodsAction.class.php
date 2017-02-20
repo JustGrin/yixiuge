@@ -44,9 +44,8 @@ class GoodsAction extends BaseAction {
         }else{
            $order="goods_id desc";
         }
-        //$cryp_cat_id=$this->get_category_child('19');//剔除 成人用品
-        //$g_where['cat_id']=array('not in',$cryp_cat_id);
-        $type=$_REQUEST['type'];
+
+        $type=isset($_REQUEST['type']) ? $type = $_REQUEST['type'] : $_REQUEST['type'] = 0;
 		$type=intval($type);
         if($type){
            $pid=M('g_category')->where(array('cat_id'=>$type))->getField('cat_id');
@@ -58,11 +57,19 @@ class GoodsAction extends BaseAction {
             }
            }
         }
-        print_r($type_str);
         $search =$_REQUEST['search'];
         if($search){  //查询关键词
             $g_where['goods_name'] =array('like','%'.$search.'%');
         }
+        //菜单列表 start
+		$where_category = array();
+        $where_category['is_exhibition'] = 1;
+        $g_category = M("g_category")->where($where_category)->order('sort_order asc, cat_id asc')->select();
+        foreach($g_category as $k => $v) {
+            $g_category[$k]['category_url'] = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/index', array( 'type' => $v['cat_id']));//行业地址
+        }
+        $this->g_category=$g_category;
+        //菜单列表  end
 
         //商家推荐
         $p=$_REQUEST['p'];
