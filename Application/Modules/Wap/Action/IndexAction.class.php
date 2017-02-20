@@ -144,17 +144,6 @@ class IndexAction extends BaseAction {
         //判断是否完善收货地址,电话
 		$add_address=array();
 		$add_address['need_add']=0;
-		if($member_info['member_vip_type']>0){
-			$add_where['is_upgrade']=1;
-			$add_where['user_id']=$this->uid;
-			$add_where['pay_status']=2;
-			$upgrade_order=M('g_order_info')->where($add_where)->order('order_id desc')->find();
-			if(!empty($upgrade_order) && empty($upgrade_order['mobile']) && $upgrade_order['pay_time'] > 1480326842 ){
-				$add_address['need_add']=1;
-				$add_address['order_sn']=$upgrade_order['order_sn'];
-			}
-		}
-		$this->assign('add_address',$add_address);
         $this->hongbao=$this->set_hongbao_show();
         $this->now_menu='home';////菜单
         $shar_title = $shop_info['member_name'].'的店铺';//C('SHAR_TITLE');//分享标题
