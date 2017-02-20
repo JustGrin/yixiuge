@@ -121,14 +121,7 @@
 			<a href="javascript:get_weixin_pay();" class="wx">
 				<i class="hbFntWes icon ">&#xf1d7</i>微信支付
 			</a>
-			<if condition="($balance gt 0 or $points gt 0) and $only_weixinpay neq 1">
-				<if condition="$balance gt 0">
-					<div class="ye clearfix">
-						<div class="use_balance"><i class="iconfont icon">&#xe641</i>使用余额支付<span class="floatRgt"><b class="num green">￥{$balance}</b> 元</span></div>
-						<input id="use_balance" name="use_balance" type="hidden" value="0">
-						<div class="clearfix" style="border:none; display:none;"></div>
-					</div>
-				</if>
+			<if condition="( $points gt 0) and $only_weixinpay neq 1">
 				<if condition="$points gt 0">
 					<div class="jf clearfix">
 						<div class="use_integral"><i class="iconfont icon">&#xe643</i>使用积分支付<span class="floatRgt"><b class="num green">{$points}</b> 分</span></div>
@@ -136,12 +129,7 @@
 						<div class="clearfix" style="border:none; display:none;"></div>
 					</div>
 				</if>
-				<!--<div class="field input_pwd" style="display:none;" data=0>
-					<div class="label"> 密码 </div>
-					<div class="field-control autoclear">
-						<input type="hidden"  class="input-required green" name="mem_password" placeholder="请输入您的密码" value="" id="mem_password">
-					</div>
-				</div>-->
+
 				<input type="hidden"  class="input-required green" name="mem_password" placeholder="请输入您的密码" value="" id="mem_password">
 				<script>
 				
@@ -153,7 +141,7 @@
 			<div class="clearfix"></div>
 		</div>
 		<input name="pay_type" type="hidden" value="pay_online">
-		<input name="order_id" id="order_id" type="hidden" value="{$order_pay_sn}" placeholder="">
+		<input name="order_id" id="order_id" type="hidden" value="{$order_id}" placeholder="">
 	</form>
 	<div class="clearfix"></div>
 </div>
@@ -272,7 +260,7 @@
 					onwait : "正在处理信息，请稍候...",
 					success: function(response){
 						$('#mem_password').val('');
-						//console.log(response);
+						console.log(response);
 						//return false;
 						if(response.status==1){
 							if(response.need_pay==1){
@@ -281,7 +269,7 @@
 								window.location.href=pay_url+"&openid=<?php echo $_SESSION['user_open_id'];?>";
 							}else{
 								layer.msg('支付成功',{icon:6,time: 1500},function(){
-									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('id'=>$order_pay_sn));?>";
+									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('id'=>$order_id));?>";
 								});
 							}
 						}else{

@@ -42,6 +42,10 @@ public function __construct(){
        var_dump(S('access_token'));
        
     }
+   public function  productBuy(){
+       $order_id = $_GET['order_id'];
+       $member_id = $_GET['member_id'];
+   }
 
      
 }

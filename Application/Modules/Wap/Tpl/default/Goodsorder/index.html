@@ -120,7 +120,7 @@
                                     <if condition="$vo.is_upgrade eq 1">
                                         <a class="btn1 btnsF34" href="{:U('wap/start/upgrade_pay',array('order_id'=>$vo['order_id']))}">去付款</a>
                                         <else/>
-                                        <a class="btn1 btnsF34" href="{:U('wap/goodsorder/order_pay',array('pay_sn'=>$vo['order_id']))}">去付款</a>
+                                        <a class="btn1 btnsF34" href="{:U('wap/goodsorder/order_pay',array('order_id'=>$vo['order_id']))}">去付款</a>
                                     </if>
                                     <a class="g-tui delete_order btn3 btnsF34" data-type="1"  data="{$vo.order_id}" href="javascript:void(0)">取消订单</a>
 								<elseif condition="$vo.order_state eq 'delivered' "/>

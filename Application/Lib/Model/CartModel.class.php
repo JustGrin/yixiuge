@@ -238,7 +238,7 @@ class CartModel extends Model {
         $return_arr['shipping_fee'] = $shipping_money_total;
         $return_arr['all_num']=$all_num;
         $return_arr['tolal']=$tolal;
-        $return_arr['need_pay']=$need_pay + $shipping_money_total;
+        $return_arr['need_pay']=$need_pay ;
         $return_arr['goods_list']=$ret_good_data;
         $return_arr['cart_id']=$cart_str;
         $return_arr['error']=$error;

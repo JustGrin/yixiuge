@@ -1,4 +1,5 @@
-<?php 
+<?php
+header("Content-type: text/html; charset=utf-8");
 ini_set('date.timezone','Asia/Shanghai');
 error_reporting(E_ERROR);
 function post_go($url,$data='')

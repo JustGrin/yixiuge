@@ -111,7 +111,7 @@ class MallpaymentModel extends Model {
         $condition = array();
         $condition['pay_record_id'] = $order_pay_id;
         $condition['pay_status'] = '0';// 支付状态；0，未付款；1，付款中 ；2，已付款
-        $order_list = $model_order->getOrderList($condition,'','order_id,order_sn,order_amount,shipping_fee,surplus,integral_money,integral,discount_start_time,discount_end_time,discount,offline,offline_money');
+		$order_info = $model_order->getOrderList($condition,'','order_id,order_sn,order_amount,shipping_fee,surplus,integral_money,integral,discount_start_time,discount_end_time,discount,offline,offline_money');
         if (empty($order_list)) {
             return array('error' => $order_pay_id);
         }
@@ -122,11 +122,11 @@ class MallpaymentModel extends Model {
         $offline=0;
         $time=time();
         $fee_offline_money=0;//加运费的货到付款总额 
-        foreach ($order_list as $order_info) {
+
         	 $pay_amount += PriceFormat(floatval($order_info['shipping_fee']));//运费
                  ///减去余额支付部分 减去折扣部分
                  ///折扣是否过期
-        	if($order_info['discount']>0){
+        	if($order_info['discount']> 0){
                if($order_info['discount_start_time']<=$time && $order_info['discount_end_time']>=$time){
                     $pay_amount += PriceFormat(floatval($order_info['order_amount']) - floatval($order_info['surplus']) - floatval($order_info['integral_money']) - floatval($order_info['discount']));
                  }else{
@@ -151,7 +151,7 @@ class MallpaymentModel extends Model {
               $fee_offline_money+=PriceFormat(floatval($offline_money)+floatval($order_info['shipping_fee']));
              } 
                  
-        }
+
         //如果为空，说明已经都支付过了或已经取消或者是价格为0的商品订单，全部返回
         if (empty($pay_amount)) {
             return array('error' => '订单金额为0，不需要支付');

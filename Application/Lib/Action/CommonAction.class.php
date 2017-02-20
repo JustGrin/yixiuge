@@ -729,8 +729,10 @@ class CommonAction extends Action {
        if(empty($member_id) || !in_array($status, array(1,2,15))|| empty($integral) || $integral<0 || empty($log)){
          return false;
         }
+
         $member_integral=M('member_integral');
         $member_detail_model=M('member_detail');
+        $consume_record_model=M('member_consume_record');
         $field="member_id,points,balance";
         $where['member_id']=$member_id;
         $memberinfo=$member_detail_model->Where($where)->field($field)->find();
@@ -749,18 +751,20 @@ class CommonAction extends Action {
         $log['integral']=$integral;
         $member_detail_model->startTrans();//开起事务
         $member_integral->startTrans();//开起事务
+        $consume_record_model->startTrans();//开起事务
 
         $m_res=$member_detail_model->where($where)->save($m_s_data);
         $c_res=$member_integral->add($log);
+        $r_res=$consume_record_model->add($log);
         if($c_res!==false && $m_res!==false){
+            $consume_record_model->commit();//提交事务
             $member_integral->commit();//提交事务
             $member_detail_model->commit();//提交事务
-
             return true;
         }else{
             $member_detail_model->rollback();//回滚事务
             $member_integral->rollback();//回滚事务
-            
+            $consume_record_model->rollback();//回滚事务
             return false;
         }
     }
