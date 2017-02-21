@@ -130,10 +130,13 @@ class IndexAction extends BaseAction {
         $goods_list=M("g_goods")->where($g_where)->field($g_field)->order($g_order)->limit(6)->select();
         $this->goods_list=$goods_list;*/
         //商品分类
+        $company_check = M('member_verification')->where('member_id='.$this->uid)->getField('status_c');
         $where_category['is_exhibition'] = 1;
         $g_category = M("g_category")->where($where_category)->order('sort_order asc, cat_id asc')->select();
         foreach ($g_category as $k => $v){
-          $g_category[$k]['category_url'] = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/index', array('type' => $v['cat_id']));//行业地址
+            $g_category[$k]['check_cc'] = ( $company_check != 1 && $v['need_check'] == 1) ? 1 : 0;
+            $category_url =   $g_category[$k]['check_cc'] ? U('wap/goods/index', array( 'type' => 0)) : U('wap/goods/index', array( 'type' => $v['cat_id']))  ;
+            $g_category[$k]['category_url'] =$category_url;
         }
         $this->g_category=$g_category;
         //判断是否完善收货地址,电话

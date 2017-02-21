@@ -600,6 +600,7 @@ class MemberAction extends AuthAction{
 //		}
 		$where = array();
 		isset($_GET['real_name']) ? $where['ver.real_name'] = array('like', '%' . $_GET['real_name'] . '%') : $_GET['member_name'] = '';
+		isset($_GET['company']) ? $where['ver.company'] = array('like', '%' . $_GET['company'] . '%') : $_GET['company'] = '';
 		if(isset($_GET['mobile'])){
 			$s_where['mem.mobile'] = array('like', '%' . $_GET['mobile'] . '%');
 			$s_where['mem.member_card'] = array('like', '%' . $_GET['mobile'] . '%');
@@ -683,6 +684,8 @@ class MemberAction extends AuthAction{
 			$value=$_GET["value"];
 			if ($type=='is_check'){
 				$save_date['status'] = $value;
+			}elseif ($type=='is_check_c'){
+				$save_date['status_c'] = $value;
 			}else{
 				$save_date['remark'] = $value;
 			}

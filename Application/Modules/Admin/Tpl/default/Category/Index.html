@@ -72,6 +72,7 @@
                         <th>分类描述</th>
                         <!--<th>显示顺序</th>-->
                         <!--<th>计量单位</th>-->
+                        <th>是否需要审核公司</th>
                         <th>是否在首页显示</th>
 						<th>是否首页分类导航</th>
                         <!--<th>是否在导航显示</th>-->
@@ -90,6 +91,7 @@
                             <td>{$val.cat_desc}</td>
                             <!--<td>{$val.sort_order}</td>-->
                             <!--<td>{$val.measure_unit}</td>-->
+                            <td>{$val['need_check']?'是':'否'}</td>
                             <td>{$val['is_show']?'是':'否'}</td>
 							<td>{$val['is_exhibition']?'是':'否'}</td>
                             <!--<td>{$val['show_in_nav']?'是':'否'}</td>-->

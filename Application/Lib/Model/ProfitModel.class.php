@@ -65,10 +65,11 @@ class ProfitModel extends Model {
 			$order_profit += $unit_profit * $order_goods_item['goods_number'];
 			$goods_names []= $order_goods_item['goods_name'];
 			$goods_ids[] =$order_goods_item['goods_id'];
-				if ($order_profit <= 0){
-					$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] :  分配用户:'.$order_info['user_id'].' 积分错误'.$order_profit);
-					continue;
-				}
+			if ($order_profit <= 0){
+				$this->write_log($order_info['order_sn'].'['.$order_info['order_id'].'] :  分配用户:'.$order_info['user_id'].' 积分错误'.$order_profit);
+				continue;
+			}
+			M('g_goods')->where('goods_id='.$order_goods_item['goods_id'])->setInc('goods_salesvolume',$order_goods_item['goods_number']);
 		}
 		$log = array();
 		$log['type']        = 5;//消费类型 1订单消费 2充值 3提现 4退款 5 收益 6认证消费

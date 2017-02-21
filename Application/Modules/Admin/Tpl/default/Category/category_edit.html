@@ -91,6 +91,24 @@
                       <label for="is_exhibition_no"> 不显示 </label>
                     </div>
                   </div>
+
+                    <!-- 审核公司开始 -->
+                    <div class="form-group">
+                        <label class="control-label"> 是否需要审核用户公司 </label>
+                        <div class="clip-radio radio-primary fa-hover Primary"> <input type="radio" value="1" name="need_check" id="need_check_yes"
+
+                            <if condition="(!empty($id))">{$data['need_check']?'checked':''}
+                                <else/>
+                                checked </if>
+                            >
+                            <label for="need_check_yes"> 是 </label>
+                            <input type="radio" value="0" name="need_check" id="need_check_no"
+
+                            <if condition="(!empty($id))">{$data['need_check']?'':'checked'}</if>
+                            >
+                            <label for="need_check_no"> 否 </label>
+                        </div>
+                    </div>
                   <!-- 分类关键字开始 -->
                   <div class="form-group">
                     <label class="control-label"> 分类关键字 </label>

@@ -62,11 +62,14 @@ class GoodsAction extends BaseAction {
             $g_where['goods_name'] =array('like','%'.$search.'%');
         }
         //菜单列表 start
+        $company_check = M('member_verification')->where('member_id='.$this->uid)->getField('status_c');
 		$where_category = array();
-        $where_category['is_exhibition'] = 1;
-        $g_category = M("g_category")->where($where_category)->order('sort_order asc, cat_id asc')->select();
+        $where_category['parent_id'] = 0;//只显示初级分类
+        $g_category = M("g_category")->where($where_category)->order(' need_check asc ,sort_order asc, cat_id asc')->select();
         foreach($g_category as $k => $v) {
-            $g_category[$k]['category_url'] = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/index', array( 'type' => $v['cat_id']));//行业地址
+            $g_category[$k]['check_cc'] = ( $company_check != 1 && $v['need_check'] == 1) ? 1 : 0;
+            $category_url =   $g_category[$k]['check_cc'] ?'javascript:company_check()' : U('wap/goods/index', array( 'type' => $v['cat_id']))  ;
+            $g_category[$k]['category_url'] =$category_url;
         }
         $this->g_category=$g_category;
         //菜单列表  end
@@ -132,111 +135,6 @@ class GoodsAction extends BaseAction {
         $this->return_url = U('wap/goods/index');
 
         $this->webtitle="峰购-商品列表";
-        $this->display();
-    }
-    //赚取佣金
-     public function made(){
-       $order=$_REQUEST['order'];
-        if($order){
-           switch ($order) {
-               case 'prices1':
-                   //价格 倒序
-                    $order="share_money desc";
-                     break;
-               case 'prices2':
-                   //价格 升序
-                    $order="share_money asc";
-                   break;
-               case 'browse1':
-				   //浏览量 倒序
-				   $order="goods_browse desc";
-				   break;
-			   case 'browse2':
-				   //浏览量 顺序
-				   $order="goods_browse asc";
-				   break;
-               default:
-               unset($order);
-                   # code...
-                   $order="goods_id desc";
-                   break;
-           }
-        }else{
-           $order="goods_id desc";
-        }
-        $cryp_cat_id=$this->get_category_child('19');//剔除 成人用品
-        $g_where['cat_id']=array('not in',$cryp_cat_id);
-
-        $type=$_REQUEST['type'];
-        if($type){
-           $pid=M('g_category')->where(array('cat_id'=>$type))->getField('cat_id');
-
-           if($pid){
-            $type_str=$this->get_category_child($pid);
-            if($type_str){
-              $g_where['cat_id']=array('in',$type_str);
-            }
-           }
-        }
-        $search =$_REQUEST['search'];
-        if($search){
-            $g_where['goods_name'] =array('like',$search.'%');
-        }
-        $g_where['share_money']=array('gt',0);
-        //商家推荐
-        $p=$_REQUEST['p'];
-        $pagesize=10;
-        $p=!empty($p)?$p:1;
-        $start=($p-1)*$pagesize;
-        $g_where['is_on_sale']=1;//该商品是否开放销售，1，是；0， 否
-        $g_where['is_delete']=0;//商品是否已经删除，0，否；1，已 删除
-        $g_where['is_auditing']=1;//商品是否通过审核  1是0 否
-        $g_field="goods_id,goods_name,share_money,shop_price,market_price,goods_brief,goods_img,goods_browse";
-        $goods_list=M("g_goods")->where($g_where)->field($g_field)
-        ->limit($start,$pagesize)->order($order)->select();
-//         var_dump($goods_list);die;
-		 print_r($goods_list);
-         foreach($goods_list as $k => $v){  //取佣金区间价
-             $money = M('g_goods_attr')->field('attr_share_money')->where(array('goods_id' => $v['goods_id']))->select();
-//             var_dump($money);die;
-             $share_money=array();
-             foreach($money as $key => $val){
-                 if($val['attr_share_money']){
-                     $share_money[] = $val['attr_share_money'];
-                 }
-             }
-             $share_money= array_filter($share_money);
-             if ($v['share_money']) {
-                 $share_money[] = (int)$v['share_money'];
-             }
-             $share_money=array_unique($share_money);
-             if(count($share_money)>1){
-                 $low_money = min($share_money);
-                 $high_money = max($share_money);
-                 $goods_list[$k]['low_money'] = $low_money;
-                 $goods_list[$k]['high_money'] = $high_money;
-             }
-         }
-        if(IS_AJAX){
-            echo json_encode($goods_list);die;
-        }
-        $this->list=$goods_list;
-
-        $this->count=M("g_goods")->where($g_where)->count();
-
-         $typename=M('g_category')->where(array('cat_id'=>$type))->getField('cat_name');
-         $this->typename=$typename?'-'.$typename:'';
-         $this->now_menu = 'member';
-
-          $shar_title=$this->webseting['web_title'].C('SHAR_TITLE');
-            $this->shar_url= $url="http://".$_SERVER['HTTP_HOST'].U('wap/goods/index',array('share'=>$this->member_card));
-            $this->shar_title=$shar_title;
-            $this->shar_desc=C('SHAR_DESC');
-            $this->shar_imgurl="http://".$_SERVER['HTTP_HOST'].'/Public/wap/img/logg.png';///分享图片地址
-            $this->get_weixin();///获取微信 信息
-
-
-        $this->webtitle="FG峰购";
         $this->display();
     }
 
@@ -506,281 +404,28 @@ class GoodsAction extends BaseAction {
         }
          echo json_encode($data);die;
     }
-    //限时抢购
-    public function limitedpurchase(){
-        $field='is_on_sale,is_auditing,is_promote,goods_id,goods_name,promote_img,promote_start_date,promote_end_date';
-        $where['is_on_sale']=1;  //是否开放销售,
-        $where['is_promote']=1;
-        $where['is_auditing']=1;
-        $where['is_delete']=0;
-        $order['sort_order']='desc';
-        $p = $_REQUEST['p'];
-        $pagesize = 10;
-        $p = !empty($p) ? $p : 1;
-        $start = ($p - 1) * $pagesize;
-        $data=M('g_goods')->field($field)->where($where)->order($order)->limit($start,$pagesize)->select();
-//        var_dump($data);die;
-        foreach($data as $k=>$v){    //获得活动状态
-            $data[$k] = D('Goods')->getGoodsPrice($v);
-            if($data[$k]['promote_status'] != 1){
-                unset($data[$k]);
+
+    /**
+     * @return string
+     */
+    public function company_check()
+    {
+        $uid = $this->uid;
+        $ver_mod = M('member_verification')->where('member_id='.$uid);
+        if (IS_AJAX){
+            $return_d['status'] = 0;
+            $return_d['error'] = '';
+            if (isset($_POST['company'])){
+                $res = $ver_mod->save($_POST);
+                $res===false ? $return_d['error'] = '提交失败' :  $return_d['status'] = 1;
+            }else{
+                $return_d['error'] = '请输入公司名称';
             }
+            echo  json_encode($return_d);die();
         }
-//        var_dump($data);die;
-        $this->count = M("g_goods")->where($where)->count();
-        if(IS_AJAX){
-            echo json_encode($data);die;
-        }
-        $this->data=$data;
-
-        $shar_title=$this->webseting['web_title'].'商城--限时抢购';
-            $this->shar_url= $url="http://".$_SERVER['HTTP_HOST'].U('wap/goods/limitedpurchase',array('share'=>$this->member_card));
-            $this->shar_title=$shar_title;
-            $this->shar_desc=C('SHAR_DESC');
-            $this->shar_imgurl="http://".$_SERVER['HTTP_HOST'].'/Public/wap/img/logg.png';///分享图片地址
-            $this->get_weixin();///获取微信 信息
-
-        $this->display();
-    }
-    //关联商品详细页
-    public function goods_relative(){
-        if($_GET['id']){
-            $where['id']=$_GET['id'];
-        }
-        $ad=M('home_ad')->field('value')->where($where)->find();
-        $value=explode(',',$ad['value']);
-        $p = $_REQUEST['p'];
-        $pagesize = 4;
-        $p = !empty($p) ? $p : 1;
-        $start = ($p - 1) * $pagesize;
-        $field='goods_id,goods_name,goods_img,shop_price,market_price';
-        $where['goods_id']=array('in',$value);
-        $data=M('g_goods')->field($field)->where($where)->limit($start,$pagesize)->select();
-//        var_dump($data);die;
-        if(IS_AJAX){
-            echo json_encode($data);die;
-        }
-        $this->data=$data;
-
-              $shar_title=$this->webseting['web_title'].C('SHAR_TITLE');
-            $this->shar_url= $url="http://".$_SERVER['HTTP_HOST'].U('wap/goods/goods_relative',array('id'=>$_GET['id'],'share'=>$this->member_card));
-            $this->shar_title=$shar_title;
-            $this->shar_desc=C('SHAR_DESC');
-            $this->shar_imgurl="http://".$_SERVER['HTTP_HOST'].'/Public/wap/img/logg.png';///分享图片地址
-            $this->get_weixin();///获取微信 信息
-
-//        var_dump($data);
-        $this->display();
-    }
-    //商品佣金赚取详细页
-    public function promo_detail(){
-        //微信分享后得回调  zm
-        if ($_POST["goods_id"]) {
-            $goods = M("g_goods")->where(array("goods_id" => $_POST["goods_id"]))->setInc("goods_share");
-            // echo M()->getLastSql();
-            if ($goods == true) {
-                $re["status"] = 1;
-                echo json_encode($re);
-                die;
-            }
-            $re["status"] = 0;
-            echo json_encode($re);
-            die;
-        }
-        //浏览量 zm
-        $browse = M("g_goods")->where(array("goods_id" => $_GET['id']))->setInc("goods_browse");
-        //
-        $g_where["goods_id"] = array("eq", $_GET["id"]);
-        $g_where['is_delete'] = 0;
-        //$g_where['is_show']=1;//上架
-        $data = D("Goods")->getGoodsInfo($g_where);
-        //图片
-        if ($data) {
-            $data = D('goods')->getGoodsPrice($data);//计算商品价格 限时抢购等
-            // var_dump($data);die;
-            $this->good_image_url = M('g_goods_gallery')->where(array('goods_id' => $data['goods_id']))->select();
-            //商品属性
-            $goods_type = $data['goods_type'];
-            if (!empty($goods_type)) {
-                $goods_id = $data['goods_id'];
-                $pre = C('DB_PREFIX');//表前缀
-                $goods_attr = M()->table($pre . 'g_goods_attr goods_attr')//
-                ->join($pre . 'g_attribute attr on attr.attr_id=goods_attr.attr_id')//
-                ->where(array('goods_attr.goods_id' => $goods_id))//
-                ->field('goods_attr.*,attr.attr_name,attr.attr_input_type,attr.attr_type')
-                    ->order('attr.sort_order desc')->select();
-                //attr_type 属性是否多选；0，否；1，是；如 果可以多选，则可以自定义属性，并且可以根据值的不同定不同的价
-                //attr_input_type当添加商品时，该属性的添 加类别；0，为手工输入；1，为选择输入；2，为多行文本输入
-                if ($goods_attr) {
-                    $goods_attr1 = array();
-                    foreach ($goods_attr as $key => $value) {
-                        if ($value['attr_type']) {
-                            $goods_attr1[] = $value;
-                            unset($goods_attr[$key]);
-                        }
-                    }
-                    if ($goods_attr1) {
-                        $arr = array();
-                        foreach ($goods_attr1 as $key => $value) {
-                            $arr[$value['attr_id']][] = $value;
-                        }
-                        if ($arr) {
-                            $goods_attr1 = array();
-                            foreach ($arr as $key => $value) {
-                                $tree = array();
-                                foreach ($value as $keys => $val) {
-                                   if($val['attr_value']){
-                                     $tree[] = $val;
-                                   }
-                                }
-                                if($tree){
-                                   $data_arr = array();
-                                   $data_arr['attr_name'] = $value[0]['attr_name'];
-                                   $data_arr['tree'] = $tree;
-                                   $goods_attr1[] = $data_arr;
-                                }
-                            }
-                        }
-                    }
-
-                }
-                $this->goods_attr = $goods_attr;
-                $this->goods_attr1 = $goods_attr1;
-                foreach($goods_attr1 as $k =>$v){
-                    if(!empty($v)){
-                        foreach($v['tree'] as $k =>$v){
-                            $money[]=$v['attr_share_money'];
-                        }
-                    }
-                }
-            }
-        }
-        $money= array_filter($money);
-        $money[]=(int)$data['share_money'];
-        $money=array_unique($money);
-        if(count($money)>1){
-            $low_money = min($money);
-            $high_money = max($money);
-            $data['low_money'] = $low_money;
-            $data['high_money'] = $high_money;
-        }
-        if ($data['shipping_id'] == 0) {
-            $data['shipping_name'] = 'SF顺丰快递';
-        } else {
-            $shipping_name = M('g_shipping')->field('shipping_name')->where(array('shipping_id' => $data['shipping_id']))->find();
-            $data['shipping_name'] = $shipping_name['shipping_name'];
-            if(empty($data['shipping_name'])){
-             $data['shipping_name']='SF顺丰快递';
-            }elseif($data['shipping_name'] == '包邮'){
-            $data['shipping_name']='';
-           }
-        }
+        $data = $ver_mod->find();
         $this->data = $data;
-        //收藏信息
-        if ($this->uid) {
-            $c_where['goods_id'] = $data['goods_id'];
-            $c_where['user_id'] = $this->uid;
-            $c_where['is_attention'] = 1;
-            $c_count = M('g_collect_goods')->where($c_where)->count();
-            $this->collect = $c_count;
-        }
-        $shar_title = $this->webseting['web_title'] . '-' . $data['goods_name'];
-        $shar_len = mb_strlen($shar_title, 'utf-8');
-        $rep = ceil($shar_len / 13);
-
-        $replen = $rep * 13 - $shar_len;
-        $shar_title_desc = $shar_title;
-        if ($replen > 0) {
-            $shar_title_desc .= str_repeat('    ', $replen);
-        }
-        //str_repeat
-        $this->shar_url = $url = "http://" . $_SERVER['HTTP_HOST'] . U('wap/goods/goods_detail', array('id' => $_GET["id"], 'share' => $this->member_card));
-        $this->shar_title = $shar_title;
-        $this->shar_desc = $shar_title_desc . "￥" . $data['shop_price'];
-        $this->shar_imgurl = "http://" . $_SERVER['HTTP_HOST'] . $data['goods_img'];
-        $this->get_weixin();///获取微信 信息
-        $this->webtitle = "FG峰购";
-        $this->now_menu = 'member';
-        $this->display();
+        return $this->display();
     }
 
-    //基地积分赠送
-    public function base_points(){
-      $data['status'] = 0;
-      $where_goods['goods_id'] = $_POST['goods_id'];
-      $where_goods['base_id'] = $_POST['base_id'];
-      $where_base['base_id'] = $_POST['base_id'];
-      $where_base_log['base_id'] = $_POST['base_id'];
-      $where_base_log['member_id'] = $_SESSION['member']['uid'];
-      $where_base_log['is_shelves'] = 1;
-
-      $base = M("base");
-      $member_detail = M("member_detail");
-      $base_log = M("base_log");
-
-      $goods_data = M("g_goods")->where($where_goods)->find();
-      $base_data = $base->where($where_base)->find();
-      $base_log_time = $base_log->where($where_base_log)->order("add_time desc")->find();
-
-      if ($goods_data == false) {
-        $data['error'] = "产品信息错误无法获得积分";
-        echo json_encode($data);
-        die;
-      }
-      if ($base_data['base_points'] <= 0) {
-        $data['error'] = "基地积分已用完";
-        echo json_encode($data);
-        die;
-      }
-      //判断是否是当天领取
-      if (!empty($base_log_time)) {
-        if (strtotime(date('Y-m-d', $base_log_time['add_time'])) >= strtotime(date('Y-m-d', time()))) {
-          $data['error'] = "当天已经领取过积分了";
-          echo json_encode($data);
-          die;
-        }
-      }
-
-      $uid = $_SESSION['member']['uid'];
-      //基地积分大于等于5时扣除随机积分，小于5时全部扣完
-      $point_add = rand(1,5);
-      if ($base_data['base_points']>=5) {
-        $base_data['base_points'] = $base_data['base_points'] - $point_add;
-      }else{
-        $point_add = $base_data['base_points'];
-        $base_data['base_points'] = 0;
-      }
-      $base_log_data['base_id'] = $base_data['base_id'];
-      $base_log_data['member_id'] = $uid;
-      $base_log_data['integral'] = $point_add;
-      $base_log_data['add_time'] = time();
-
-      $base->startTrans();//开启事务
-      $base_log->startTrans();//开启事务
-
-      $base_result = $base->where($where_base)->save($base_data);
-      $base_log_result = $base_log->add($base_log_data);
-
-      if ($base_result != false && $base_log_result != false) {
-        $log['integral'] = $point_add;
-        $log['des']="《".$base_data['base_name']."》赠送浏览用户：".$point_add."积分";
-        $member_result = $this->set_member_points($uid,1,$point_add,$log);
-        if ($member_result == true) {
-          $base->commit();//提交事务
-          $base_log->commit();//提交事务
-          $data['status'] = 1;
-          $data['msg'] = $point_add;
-          echo json_encode($data);
-        }else{
-          $base->rollback();//回滚事务
-          $base_log->rollback();//回滚事务
-          $data['error'] = "积分添加错误";
-          echo json_encode($data);
-          die;
-        }
-      }else{
-        $base->rollback();//回滚事务
-        $base_log->rollback();//回滚事务
-      }
-    }
 }
