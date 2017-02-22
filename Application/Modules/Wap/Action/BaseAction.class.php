@@ -4,11 +4,7 @@ class BaseAction extends CommonAction {
 
 	public function __construct(){
 		parent::__construct();
-		$share=$_GET['share'];
-		if($share){
-			$this->getShare($share);
-		}
-		
+
 		$cook_time="604800";//7天 7*24*60*60
 		$s_session_id=session('session_id');
 		$c_session_id=cookie('session_id');
@@ -34,10 +30,6 @@ class BaseAction extends CommonAction {
 		$this->member_name=$_SESSION["member"]['member_name'];
 		$this->mobile=$_SESSION["member"]['mobile'];
 		$this->binding_mobile=$_SESSION["member"]['mobile'];
-
-        $binding_info = M('member_verification')->where('member_id='.$this->uid)->find();
-        $this->check_binding($binding_info);
-
 		$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		$is_weixin = 1;
 		if(strpos($user_agent, 'MicroMessenger') === false) {
@@ -83,31 +75,10 @@ class BaseAction extends CommonAction {
 		$this->assign('member_logo',$memberinfo['member_logo']);
 		$this->assign('member_level',$member_level);
 		$this->assign('level_name',$level_names[$member_level]);
-		if($memberinfo['member_vip_type']){
-			$share_para=$memberinfo['member_card'];
-			$shop_info=$memberinfo;
-		}else{
-			$share_para=session('share');
-			if($share_para){
-				$share_info=M('member')->where('member_card="'.$share_para.'"')->find();
-				if(empty($share_info) ){
-					$share_para=$memberinfo['recommend_code'];
-				}elseif ($share_info['member_vip_type']==0){
-					$share_para=$share_info['recommend_code'];
-				}
-			}else{
-				$share_para=$memberinfo['recommend_code'];
-			}
-			$share_info=M('member')->where('member_card="'.$share_para.'"')->find();
-			$shop_info=$share_info;
-		}
-		if(empty($share_para)){
-			$share_para=INDEX_CARD;
-		}
-		$this->shop_info=$shop_info;
+
 		//$this->assign('shop_info',$shop_info);
-		$this->shop_code=$share_para;
-		$this->assign('share_para',$share_para);
+
+
 		//点开二维码开店分享的信息
 		$share_link_arr=array();
 		$shar_title=$this->member_name.'邀请您开店';//C('SHAR_TITLE');
@@ -120,7 +91,8 @@ class BaseAction extends CommonAction {
 		$share_link_arr['shar_desc']=$shar_desc;
 		$share_link_arr['shar_imgurl']=$shar_imgurl;
 		$this->assign('share_link_arr',$share_link_arr);
-
+		$binding_info = M('member_verification')->where('member_id='.$this->uid)->find();
+		$this->check_binding($binding_info);
     }
 
 	//重设 session_id 时间
@@ -655,6 +627,7 @@ public function set_cart(){
    ///获取用户 openid
   public function get_oauth2_openid(){
       $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
     if (strpos($user_agent, 'MicroMessenger') === false) {
         // 非微信浏览器 不调取用户的 openid
         //session('user_open_error',1);

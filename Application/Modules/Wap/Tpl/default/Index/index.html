@@ -16,8 +16,8 @@
 </head>
 <body class="index" ontouchstart="" onmouseover="">
 <div class="page">
-	<div class="avatar"> <span><img src="{:thumbs_auto($shop_info['member_logo'], 150, 150)}" alt=""></span>
-		<div class="name"> {$shop_info.member_name}的店铺 </div>
+	<div class="avatar"> <span><img src="{:thumbs_auto($member_info['member_logo'], 150, 150)}" alt=""></span>
+		<div class="name"> {$member_info.member_name} </div>
 	</div>
 	<div class="swiper-container goodsshow">
 		<div class="swiper-wrapper">
@@ -26,11 +26,6 @@
 					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"> </div>
 				</div>
 			</volist>
-			<if condition="$shop_info.has_slide_image eq 1">
-				<div class="swiper-slide"> <img data-src="{$shop_info.slide_image}" class="swiper-lazy">
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"> </div>
-				</div>
-			</if>
 		</div>
 		<div class="swiper-pagination swiper-pagination-white"> </div>
 	</div>
@@ -71,17 +66,7 @@
 		
 		
 	</div>
-	<div class="storelink clearfix">
 
-		<eq name="vip_type" value="0">
-			<a href="{:U('wap/start/shopkeeper_area',array('level'=>'1'))}" class="type"><img src="/Public/wap/img/guide/599.jpg"/></a>
-			<a href="{:U('wap/start/shopkeeper_area',array('level'=>'2'))}" class="type"><img src="/Public/wap/img/guide/1599.jpg"/></a>
-		</eq>
-		<eq name="vip_type" value="1">
-			<a href="{:U('wap/start/shopkeeper_area',array('level'=>'2'))}"><img src="/Public/wap/img/guide/up.jpg"/></a>
-		</eq>
-
-	</div>
 	<div class="goodslist">
 			<div class="goods"> <a href="{:U('Wap/Goods/index', array('type'=>128,'share'=>$share_para))}"> <img src="/Public/wap/img/goods/chaye.jpg"> </a> <a href="{:U('Wap/Goods/index', array('type'=>128,'share'=>$share_para))}" class="title">十年专注  手工茶道</a> </div>
 		<div class="goods"> <a href="{:U('Wap/Goods/index', array('type'=>105,'share'=>$share_para))}"> <img src="/Public/wap/img/goods/niruntang.jpg"> </a> <a href="{:U('Wap/Goods/index', array('type'=>105,'share'=>$share_para))}" class="title"> 【梨润堂】山东特产莱阳秋梨膏系列 </a> </div>

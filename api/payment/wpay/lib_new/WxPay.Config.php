@@ -21,10 +21,10 @@ class WxPayConfig
 	const KEY = 'e10adc3949ba59abbe56e057f20f883e';
 	const APPSECRET = '01c6d59a3f9024db6336662ac95c8e74';*/
 	
-	const APPID = 'wx616b535f3b09f5b2';
-	const MCHID = '1275534001';
+	const APPID = 'wx53feaf0edf3b068c';
+	const MCHID = '1437531502';
 	const KEY = '9154cccb9d26cc2b6a02cd19ef2ed783';
-	const APPSECRET = 'a5ebac4c891f01a92f032399ef963ed9';
+	const APPSECRET = '8fad3a28eb342a654eb0a5dff1de02c5';
 	//=======【证书路径设置】=====================================
 	/**
 	 * 

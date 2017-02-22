@@ -416,7 +416,10 @@ class GoodsAction extends BaseAction {
             $return_d['status'] = 0;
             $return_d['error'] = '';
             if (isset($_POST['company'])){
-                $res = $ver_mod->save($_POST);
+                $save_data = array();
+                $save_data['company'] = $_POST['company'];
+                $save_data['change_time'] = time();
+                $res = $ver_mod->save($save_data);
                 $res===false ? $return_d['error'] = '提交失败' :  $return_d['status'] = 1;
             }else{
                 $return_d['error'] = '请输入公司名称';

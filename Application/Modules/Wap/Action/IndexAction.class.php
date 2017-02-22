@@ -29,22 +29,8 @@ class IndexAction extends BaseAction {
     			$goods_list[$k]['goods_img'] = thumbs_auto($item['goods_img'], 200, 200);
     			$goods_list[$k]['base_logo'] = thumbs_auto($item['base_logo'], 60, 60);
     		}
-        //判断是否会员
-        $vip_type =$member_info['member_vip_type'];
-        $this->vip_type=$vip_type;
-        if ($vip_type>0){
-            $shop_info=$member_info;
-        }else{
-            $shop_info=$this->shop_info;
-        }
 
-		$where_slide_image['member_id']=$shop_info['id'];
-		$where_slide_image['is_check']=1;
-    	$shop_info['slide_image']=M('member_gallery')->where($where_slide_image)->getField('img_url');
-		if (!empty($shop_info['slide_image'])){
-			$shop_info['has_slide_image']=1;
-		}
-        $this->assign('shop_info',$shop_info);
+        $this->member_info=$member_info;
 
          if(IS_AJAX){
             echo json_encode($goods_list);die;
