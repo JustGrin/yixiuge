@@ -112,7 +112,7 @@ class MallpaymentModel extends Model {
         $condition['pay_record_id'] = $order_pay_id;
         $condition['pay_status'] = '0';// 支付状态；0，未付款；1，付款中 ；2，已付款
 		$order_info = $model_order->getOrderList($condition,'','order_id,order_sn,order_amount,shipping_fee,surplus,integral_money,integral,discount_start_time,discount_end_time,discount,offline,offline_money');
-        if (empty($order_list)) {
+        if (empty($order_info)) {
             return array('error' => $order_pay_id);
         }
 
@@ -156,7 +156,7 @@ class MallpaymentModel extends Model {
         if (empty($pay_amount)) {
             return array('error' => '订单金额为0，不需要支付');
         }
-        if($order_list[0]['offline']){
+        if($order_info['offline']){
         	 if($offline==1  && $offline_money<$pay_amount){
 	         	$pay_amount-=PriceFormat(floatval($offline_money));
 	         }else{
