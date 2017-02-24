@@ -158,7 +158,8 @@ if(!array_key_exists("appid", $order)
 	|| !array_key_exists("prepay_id", $order)
 	|| $order['prepay_id'] == "")
 	{
-		$return_data['error']='参数错误，请刷新页面重试';
+
+		$return_data['error']= $order['err_code_des'] ? $order['err_code_des']  : '参数错误，请刷新页面重试';
 		//print_r($return_data);
         echo json_encode($return_data);die;
 	}
@@ -174,11 +175,9 @@ if($jsApiParameters){
 	//print_r($return_data);
     echo json_encode($return_data);die;
 }
-if(isset($_GET['farm_id']) && $_GET['farm_id'] > 0){
-	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/farm/farm_agreement/farm_id/'.$_GET['farm_id'];
-}else{
+
 	$return_url="http://".$_SERVER['HTTP_HOST'].'/index.php/wap/goodsorder/order_pay/order_id/'.$order_pay_info['order_id'];
-}
+
 
 //获取共享收货地址js函数参数
 //$editAddress = $tools->GetEditAddressParameters();
