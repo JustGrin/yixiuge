@@ -125,12 +125,9 @@ class IndexAction extends BaseAction {
             $g_category[$k]['category_url'] =$category_url;
         }
         $this->g_category=$g_category;
-        //判断是否完善收货地址,电话
-		$add_address=array();
-		$add_address['need_add']=0;
-        $this->hongbao=$this->set_hongbao_show();
+
         $this->now_menu='home';////菜单
-        $shar_title = $shop_info['member_name'].'的店铺';//C('SHAR_TITLE');//分享标题
+        $shar_title = $shop_info['member_name'];//C('SHAR_TITLE');//分享标题
         $this->shar_url = $url = "http://" . $_SERVER['HTTP_HOST'] . U('wap/index/index', array('share' => $this->shop_code));//分享地址
         $this->shar_title = $shar_title;///分享标题
         $this->shar_desc = C('SHAR_DESC');///分享内容

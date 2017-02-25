@@ -201,7 +201,8 @@ class MallpaymentModel extends Model {
 	            throw new Exception('更新订单状态失败');
 	        }
 
-            foreach($order_list as $order_info) {
+
+				$order_info = $order_list;
                 //如果有预存款支付的，彻底扣除冻结的预存款
                 /*$pd_amount = floatval($order_info['pd_amount']);
                 if ($pd_amount > 0) {
@@ -229,7 +230,7 @@ class MallpaymentModel extends Model {
                 if (!$insert) {
                     throw new Exception('记录订单日志出现错误');
                 }
-            }
+
 	        $model_order->commit();
             return array('success' => true);
 	    } catch (Exception $e) {

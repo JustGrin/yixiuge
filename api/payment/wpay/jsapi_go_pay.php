@@ -71,7 +71,7 @@ if($_SESSION['pay_user_open_id']=='oupArwAl7xuME4nkXQgHxX4HRXQA'){
 	var_dump($_GET);
 }*/
 	$return_url="http://".$_SERVER['HTTP_HOST'].'/wap/goodsorder/order_pay/order_id/'.$order_pay_info['order_id'];
-	$success_url=$return_url;
+	$success_url="http://".$_SERVER['HTTP_HOST'].'/wap/goodsorder/order_detail/order_id/'.$order_pay_info['order_id'];
 //获取共享收货地址js函数参数
 //$editAddress = $tools->GetEditAddressParameters();
 

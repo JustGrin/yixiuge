@@ -5,8 +5,8 @@
  *
  */
 
-require_once "./api/payment/wpay/lib/WxPay.Api.php";
-require_once './api/payment/wpay/lib/WxPay.Notify.php';
+require_once "./api/payment/wpay/lib_new/WxPay.Api.php";
+require_once './api/payment/wpay/lib_new/WxPay.Notify.php';
 //require_once './api/payment/wpay/log.php';
 
 
@@ -25,7 +25,7 @@ class ReturnmallpaymentAction extends Action{
 	*/
 	public function index() {
 		//初始化日志
-		$logHandler= new CLogFileHandler("./api/payment/wpay/logs/".date('Y-m-d').'.log');
+		$logHandler= new CLogFileHandler("./api/payment/wpay/logs/".date('Y-m-d').'retun.log');
 		$log = Logs::Init($logHandler, 15);
 
 		Logs::DEBUG("\n begin notify :");
@@ -184,8 +184,9 @@ class PayNotifyCallBack extends WxPayNotify{
             $pay_record_id = M("g_order_pay")->where(array('pay_sn'=>$out_trade_no))->getField('pay_id');
         //pay_status 支付状态；0，未付款；1，付款中 ；2，已付款
             $order_list = $model_order->getOrderList(array('pay_record_id'=>$pay_record_id,'pay_status'=>'0'));
-
-            $result = $model_payment->updateProductBuy($out_trade_no, $payment_code, $order_list, $trade_no,$pay_arr);
+			//$str = '$out_trade_no:'.$out_trade_no.'$payment_code:'.$payment_code.'$order_list:'.json_encode($order_list).'$trade_no:'.$trade_no.'$pay_arr:'.json_encode($pay_arr,true).'$pay_record_id:'.$pay_record_id;
+        	//Logs::DEBUG('test:'.$str);
+		$result = $model_payment->updateProductBuy($out_trade_no, $payment_code, $order_list, $trade_no,$pay_arr);
             if(empty($result['error'])) {
                 $money=$data["cash_fee"]/100;
 
@@ -213,13 +214,8 @@ class PayNotifyCallBack extends WxPayNotify{
 
 				$pay_amount = 0;
 				$pay_amount += PriceFormat(floatval($order_list['shipping_fee']));//运费
-				///减去余额支付部分 减去折扣部分
-				///折扣是否过期
-				if ($order_list['discount_start_time'] <= $time && $order_list['discount_end_time'] >= $time) {
-					$pay_amount += PriceFormat(floatval($order_list['order_amount']) - floatval($order_list['surplus']) - floatval($order_list['integral_money']) - floatval($order_list['discount']));
-				} else {
-					$pay_amount += PriceFormat(floatval($order_list['order_amount']) - floatval($order_list['surplus']) - floatval($order_list['integral_money']));
-				}
+				///减去余额支付部分
+				$pay_amount += PriceFormat(floatval($order_list['order_amount'])  - floatval($order_list['integral_money']));
 				if ($order_list['offline']) {
 					$pay_amount -= $order_list['offline_money'];//
 				}
