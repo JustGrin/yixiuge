@@ -17,6 +17,16 @@
 	<h2 >发布信息</h2>
  </div>
 <div class="bggreen">
+    <if condition="$_GET['id'] neq 0 and $data['is_check'] eq 2">
+
+    <div class="newbox cartlist bgwt">
+        <h4 class="red">未通过原因</h4>
+        <div class="field autoClear">
+                {$data['remark']}
+        </div>
+    </div>
+
+    </if>
 	<form id="form2" action=""  class="mlogin newbox bgwt" novalidate method="post" onSubmit="return false;">
 		<div class="describe">
             <div class="field autoClear">
@@ -25,8 +35,9 @@
                     <input type="text" class="input-required" id="title" name="title" value="{$_GET['id'] ? $data['title'] : null}" placeholder="信息标题">
                 </div>
             </div>
+
             <h4 class="label"> 信息内容 </h4>
-			<div class="field autoClear">
+			<div class="field ">
 				<textarea id="content" name="content" cols="" rows="" placeholder="请您填写信息内容" class="desarea">{$_GET['id'] ? $data['content'] : null }</textarea>
 			</div>
 			<div  class="uploadfile">

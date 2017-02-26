@@ -8,14 +8,16 @@ class CarinfoAction extends BaseAction
 		parent::__construct();
 
 		if(!IS_AJAX){
-			$this->now_menu='shop';
+			$this->now_menu='';
 		}
 	}
 
 	//产品列表
 	public function index(){
 		$where = array();
-		$where['is_check'] = 1;
+
+		$_REQUEST['type'] = isset($_REQUEST['type']) ? $_REQUEST['type'] : 1;
+		$_REQUEST['type'] == 1 ? $where['is_check'] = 1 : $where['cars.member_id'] = $this->uid;
 		$order = "change_time DESC";
 		$join = "db_member as mem on mem.id = cars.member_id ";
 		$field = ' cars.* ,mem.member_name,mem.member_logo';
@@ -24,6 +26,9 @@ class CarinfoAction extends BaseAction
 			$imgs = explode(',',$v['imgs_a']);
 			$carinfo_list[$k]['first_img'] =$imgs[0];
 		}
+		$this->type =  $_REQUEST['type'] ;
+		$this->status_names = array('未审核','通过','审核未通过');
+		$this->is_ajax = IS_AJAX;
 		$this->list = $carinfo_list ;
 		$this->display();
 	}

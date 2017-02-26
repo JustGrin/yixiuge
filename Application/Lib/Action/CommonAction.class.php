@@ -756,7 +756,8 @@ class CommonAction extends Action {
         $m_res=$member_detail_model->where($where)->save($m_s_data);
         $c_res=$member_integral->add($log);
         $r_res=$consume_record_model->add($log);
-        if($c_res!==false && $m_res!==false){
+
+        if($c_res!==false && $m_res!==false ){
             $consume_record_model->commit();//提交事务
             $member_integral->commit();//提交事务
             $member_detail_model->commit();//提交事务

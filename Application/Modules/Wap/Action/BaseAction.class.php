@@ -4,7 +4,7 @@ class BaseAction extends CommonAction {
 
 	public function __construct(){
 		parent::__construct();
-
+		$this->webtitle="一休哥";
 		$cook_time="604800";//7天 7*24*60*60
 		$s_session_id=session('session_id');
 		$c_session_id=cookie('session_id');

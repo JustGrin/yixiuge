@@ -30,17 +30,7 @@ class GoodsAction extends AuthAction
 
         }
 
-        if (isset($_GET['supplier_name']) && $_GET['supplier_name']) {//查询供货商
-            $where_s['s_name'] = array('like', '%' . $_GET['supplier_name'] . '%');
-            $suppliers= M('supplier')->field('s_id')->where($where_s)->select();
-            $supplier_arr = array();
-            foreach ($suppliers as  $v){
-                $supplier_arr[] = $v['s_id'];
-            }
-            $where['supplier_id'] = array('in', $supplier_arr);
-        }else{
-            $_GET['supplier_name'] = '';
-        }
+
 
         isset($_GET['cat_id']) ? $where['cat_id'] = array('like', '%' . $_GET['cat_id'] . '%') : $_GET['cat_id'] = '';
         isset($_GET['brand_id']) ?  $where['brand_id'] = array('like', '%' . $_GET['brand_id'] . '%') : $_GET['brand_id'] = '';
@@ -57,13 +47,7 @@ class GoodsAction extends AuthAction
         } else {
             $_GET['is_on_sale'] = 'all';
         }
-        if (isset($_GET['offline'])) {
-            if ($_GET['offline'] != 'all') {
-                $where['offline'] = $_GET['offline'];
-            }
-        } else {
-            $_GET['offline'] = 'all';
-        }
+
 
         if (isset($_GET['is_auditing'])) {
             if ($_GET['is_auditing'] != 'all') {
@@ -72,13 +56,7 @@ class GoodsAction extends AuthAction
         } else {
             $_GET['is_auditing'] = 'all';
         }
-        if(isset($_GET['activity_id'])){
-            if ($_GET['activity_id'] != 'all') {
-                $where['activity_id'] = $_GET['activity_id'];
-            }
-        } else {
-            $_GET['activity_id'] = 'all';
-        }
+
         $where['is_delete'] = 0;
         $where['is_upgrade']=0;//剔除升级产品
         $goodsNumList = M('g_category')->where(array('parent_id' => 0))->field('goods_sn')->select();
@@ -90,8 +68,7 @@ class GoodsAction extends AuthAction
 //		echo M()->_sql();die;
         $this->assign("list", $menulist);
 //订单状态：0(已取消)10(默认):未付款;20:已付款;30:已发货;40:已收货;
-        $activity_names=array('0'=>'无活动','1'=>'一元购','2'=>'9.9大聚惠');
-        $this->assign("activity_names", $activity_names);
+
         $order_state = array('0' => '已取消', '10' => '待付款', '20' => '已付款', '30' => '已完成');
         $this->order_state = $order_state;
         $this->display();
@@ -158,10 +135,6 @@ class GoodsAction extends AuthAction
 
         $_GET['id'] =   isset($_GET['id']) ? $_GET['id'] : 0 ;
         if ($_POST) {
-            if ($_POST['activity_start_date'] && $_POST['activity_end_date']) {   //将活动时间转换成时间戳
-                $_POST['activity_start_date'] = strtotime($_POST['activity_start_date']);
-                $_POST['activity_end_date'] = strtotime($_POST['activity_end_date']);
-            }
             if ($_POST['goods_id']) {
                 $goods_type = M('g_goods')->where(array('goods_id' => $_POST["goods_id"]))->getField('cat_id');
                 if ($goods_type != $_POST['cat_id']) {
@@ -194,33 +167,7 @@ class GoodsAction extends AuthAction
                         }
                     }
                 }
-                //判断是否是9.9大聚惠,如果是则改变其中的参数
-                $activity99 = M("activity")->where("id=2")->find();
-                $param_arr = json_decode($activity99['param']);
-                if ($_POST["activity_id"] == 2) {
-                    foreach ($param_arr->activity_goods_msg as $k => $v) {
-                        if ($k == $_POST["goods_id"]) {
-                            $v = explode(",", $v);
-                            $v[0] = $_POST["activity_want_sell"];
-                            $v[1] = $_POST["activity_max_sell"];
-                            $param_arr->activity_goods_msg->$k = $v[0].",".$v[1];
-                            $param_arr_set = 1;
-                        }
-                    }
-                    if ($param_arr_set != 1) {
-                        $param_arr->activity_goods_msg->$_POST["goods_id"] = $_POST["activity_want_sell"].",".$_POST["activity_max_sell"];
-                    }
-                    $activity_save_data['param'] = json_encode($param_arr);
-                    M("activity")->where("id=2")->save($activity_save_data);
-                }else{
-                    foreach ($param_arr->activity_goods_msg as $k => $v) {
-                        if ($k == $_POST["goods_id"]) {
-                            unset($param_arr->activity_goods_msg->$k);
-                        }
-                    }
-                    $activity_save_data['param'] = json_encode($param_arr);
-                    M("activity")->where("id=2")->save($activity_save_data);
-                }
+
 				//邮费信息 转换成json
 				if($_POST['provinceid']){
 					$postage_json = postage_trans($_POST,1);
@@ -240,6 +187,7 @@ class GoodsAction extends AuthAction
                 if($number<500){
                     $_POST['goods_browse']= rand(500, 1000);
                 }
+
                 $res = D("Goods")->editGoods($_POST, $g_where);
             } else {
                 //$goods_sn=M('g_category')->field('goods_sn')->where($g_where)->find();
@@ -271,23 +219,11 @@ class GoodsAction extends AuthAction
                 } else {
                     $_POST["is_refund"] = 0;
                 }
-                $g_where["base_id"] = $_POST["base_id"];
+
                 $_POST['add_time'] = time();
                 //12.2 随机生成浏览量===>销量读取浏览量
                 $_POST['goods_browse'] = rand(500, 1000);
                 $res = D("Goods")->addGoods($_POST);
-                //判断是否是9.9大聚惠,如果是则添加其中的参数
-                if ($res !== false) {
-                    if ($_POST["activity_id"] == 2) {
-                        $activity99 = M("activity")->where("id=2")->find();
-                        $param_arr = json_decode($activity99['param']);
-                        $v[0] = $_POST["activity_want_sell"];
-                        $v[1] = $_POST["activity_max_sell"];
-                        $param_arr->activity_goods_msg->$res = $v[0].",".$v[1];
-                        $activity_save_data['param'] = json_encode($param_arr);
-                        M("activity")->where("id=2")->save($activity_save_data);
-                    }
-                }
             }
             $cookie = $_COOKIE['url'];
             if ($res !== false) {
@@ -833,107 +769,7 @@ class GoodsAction extends AuthAction
         }
     }
 
-    //基地管理
-    public function base_admin()
-    {
-        $where = array();
-        if (!empty($_GET['base_name'])) {
-            $where['base_name'] = array('like', '%'.$_GET['base_name'].'%');
-        }
-        if ($_GET['is_shelves'] == '1' || $_GET['is_shelves'] == '0') {
-            $where['is_shelves'] = $_GET['is_shelves'];
-        }
-        $count = M("base")->count();
-        $page = D("Common")->getPage($count,15);//分页
-        $list = M("base")->order('base_order desc,base_id asc')->where($where)->limit($page["start"] . "," . $page["pagesize"])->select();
-        $list_item = array();
-        foreach($list as $key => $val){
-            $order_info = M('g_order_info')->where(array('order_type'=>3, 'farm_id'=>$val['base_id']))->find();
-            if($order_info){
-                $val['order_id'] = $order_info['order_id'];
-                $val['order_sn'] = $order_info['order_sn'];
-                $val['show_order'] = $order_info['pay_status'] == 2 ? '已付款' : '未付款';
-            }else{
-                $val['order_id'] = 0;
-                $val['order_sn'] = '';
-                $val['show_order'] = '订单未创建';
-            }
-            $list_item[] = $val;
-        }
-        $this->assign("list", $list_item);
-        $this->assign("page", $page);
-        $this->display();
-    }
 
-    //基地编辑
-    public function base_edit()
-    {
-        $base_id = I("base_id");
-        $where['base_id'] = $base_id;
-        $base = M("base")->where($where)->find();
-        $this->assign("data", $base);
-        $this->display();
-    }
-
-    //基地上下架
-    public function is_shelves()
-    {
-        $data['status'] = 0;
-        if (empty($_POST["value"])) {
-            $is_shelves = 0;
-        }else{
-            $is_shelves = $_POST["value"];
-        }
-        $save_date['is_shelves'] = $is_shelves;
-        $where['base_id'] = $_POST["id"];
-        $res = M('base')->where($where)->save($save_date);
-        if ($res != false) {
-            $data['status'] = 1;
-            echo json_encode($data);
-        } else {
-            $data['error'] = $is_shelves;
-            echo json_encode($data);
-        }
-    }
-
-    //基地删除
-    public function base_del()
-    {
-        $where['base_id'] = $_GET['base_id'];
-        $res = M('base')->where($where)->delete();
-        if ($res !== false) {
-            $this->success('操作成功');
-        } else {
-            $this->error('操作失败');
-        }
-    }
-
-    //基地增加和修改
-    public function base_add()
-    {
-        $where['base_id'] = $_POST['base_id'];
-        $data['base_name'] = $_POST['base_name'];
-        $data['base_order'] = $_POST['base_order'];
-        $data['base_logo'] = $_POST['base_logo'];
-        $data['is_shelves'] = $_POST['is_shelves'];
-        $data['pledge_money'] = $_POST['pledge_money'];
-        $data['base_points'] = $_POST['base_points'];
-        if (empty($_POST['base_id'])) {
-            $res = M('base')->add($data);
-            if ($res != false) {
-                $this->success('操作成功',"base_admin");
-            }else{
-                $this->error('操作失败');
-            }
-        }else{
-            $res = M('base')->where($where)->save($data);
-            if ($res != false) {
-                $this->success('操作成功',"base_admin");
-            }else{
-                $this->error('操作失败');
-            }
-        }
-    }
 
 }
 

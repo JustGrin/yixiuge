@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<if condition ="$is_ajax neq 1">
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,7 +17,9 @@
 <div class="head">
     <a href="javascript:history.go(-1)" class="md-close back"><i class="iconfont">&#xe617</i></a>
     <h2 >订单管理</h2>
-	<a href="{:U('wap/goodsrefund/refund_list')}" class="more "><span>售后订单</span><i class="iconfont">&#xe611</i></a> 
+<!--
+	<a href="{:U('wap/goodsrefund/refund_list')}" class="more "><span>售后订单</span><i class="iconfont">&#xe611</i></a>
+-->
 </div>
 <div class="type">
     <ul class="oder_state_c">
@@ -44,6 +47,7 @@
 </div>
 <div class="page">
     <ul class="more_html">
+</if>
         <volist name="list" id="vo">
             <li>
                 <div class="cartlist">
@@ -52,7 +56,7 @@
                     </div>
                     <div class="user">
                         <i class="iconfont">&#xe621</i>
-                        <a href="{:U('Wap/goodsorder/order_detail',array('id'=>$vo['order_id']))}"><div class="info">
+                        <a href="{:U('Wap/goodsorder/order_detail',array('order_id'=>$vo['order_id']))}"><div class="info">
                             <dl>
                                 <dt>订单号：</dt>
                                 <dd class="num">{$vo.order_sn}</dd>
@@ -73,7 +77,7 @@
                     </div>
                     <ul  <eq name="vo['is_upgrade']" value="1">  style='display:none' </eq>  >
                         <volist name="vo['goods']" id="v">
-                            <li  class="goods"> <a href="{:U('Wap/goodsorder/order_detail',array('id'=>$vo['order_id']))}">
+                            <li  class="goods"> <a href="{:U('Wap/goodsorder/order_detail',array('order_id'=>$vo['order_id']))}">
                                 <div class="goodsimg imgnobg">
                                     <div class="img bgcover " style=" background:url({$v.goods_image})">
                                     </div>
@@ -99,9 +103,9 @@
                                 </div>
 
                             </a>
-							<if condition="$v.after_sale eq 1" >
+							<!--<if condition="$v.after_sale eq 1" >
                                 <a class="after_sales service type{$v.refund_status}"  href="{:U('wap/goodsrefund/index',array('id'=>$v['rec_id']))}">{$v.refund_status_name}</a>
-                            </if>
+                            </if>-->
                                 <div class="clearfix">
                                 </div>
                             </li>
@@ -144,7 +148,8 @@
                 </div>
             </li>
         </volist>
-    </ul>
+<if condition ="$is_ajax neq 1">
+</ul>
     <div class="loading">
         <div class="fm-footer-copyright get_more">
             <if condition="$count gt 10 && count($list) eq 10">
@@ -283,120 +288,15 @@
             url: "{:U('wap/goodsorder/index')}",
             type:'post',
             data: {p:p,order_state:order_sta},
-            dataType: 'json',
+            dataType: 'html',
             success: function(data){
                 //console.log(data);
                 var con=1;
-                var option='';
-                if(data){
-                    $.each(data, function(i, value) {
-
-                        //this指向当前元素
-                        //i表示Array当前下标
-                        //value表示Array当前元素
-                        var order_state="";
-                        if(value.order_state=="nopay"){
-                            var pay_url = "<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn="+value.order_id;
-                            if(value.is_upgrade == 1){
-                                pay_url = "<?php echo U('wap/start/upgrade_pay'); ?>?order_id="+value.order_id;
-                            }
-                            order_state='<div class="order-button "><a  class="btn1 btnsF34" href="'+pay_url+'" >去付款</a>'
-                                    +' <a class="g-tui delete_order btn3 btnsF34" data-type="1" data="'+value.order_id+'" href="javascript:void(0)">取消订单</a></div>';
-                        }else if(value.order_state=="delivered"){
-                            var str_delivered="";
-                            str_delivered= '<a class="btn1 btnsF34" href="__URL__/order_express?order_id='+value.order_id+'">查看物流</a>'
-                                    +' <a class="delivered_order btn2 btnsF34" data="'+value.order_id+'" href="javascript:void(0)">确认收货</a>';
-                            order_state='<div class="order-button">'+str_delivered+'</div>';
-                        }else if(value.order_state=="after_sale"){
-                            str_delivered='' ;
-                            order_state='<div class="order-button">'+str_delivered+'</div>';
-                        }else if(value.order_state=="received"){
-                            order_state='<div class="order-button"><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
-                        }else if(value.order_state=="finish"){
-                            order_state='<div class="order-button "><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
-                        }else{
-                           // order_state=value.order_state_name;
-                            order_state = '<i class="iconfont floatLft">&#xe68c</i><span>'+ value.status_remarks+'</span>';
-                        }
-                        var li_order_state = '<li class="typetotal">' + order_state+'</li>';
-                        if((value.order_status == 0 && value.pay_status == 2) || value.order_status == 5 ){
-                            li_order_state = '';
-                        }
-                        var goods_list = "";
-                        var goods=value.goods;
-                        if(goods && value.is_upgrade == 0){
-                            $.each(goods, function (n, vo) {
-
-                                var after='';
-                                if(vo.after_sale == 1){
-                                    after = '<a class="after_sales service type'+vo.refund_status+' "  href="<?php echo U('wap/goodsrefund/index');?>?id='+vo.rec_id+'">'+vo.refund_status_name+'</a>';
-                                }
-
-                                var _shipping_money = '包邮';
-                                if(vo.shipping_money > 0){
-                                    _shipping_money = '运费:￥'+vo.shipping_money;
-                                }
-                                goods_list =goods_list+ ''
-                                        +'<li  class="goods"> '
-                                        + '<a class="" href="<?php echo U('wap/goodsorder/order_detail');?>?id='+value.order_id+'">'
-                                +'<div class="goodsimg imgnobg">'
-                                +'<div class="img bgcover " style=" background:url('+vo.goods_image+')">'
-                                +'</div>'
-                                +'</div>'
-                                +'<div class="info">'
-                                +'<div class="title">'
-                                +vo.goods_name
-                                +' </div>'
-                                +' <div class="pay">'
-                                +'<div class="pirce num green">'
-                                +'￥'+vo.goods_price
-                                +'</div>'
-                                +'<div class="qty">'
-                                +'<span class="num">'+vo.goods_number+'</span>件&nbsp; &nbsp;'+_shipping_money
-                                +after
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</a>'
-                                +'<div class="clearfix">'
-                                +'</div>'
-                                +'</li>';
-
-                            });
-                        }
-                        option=option+'<li>'
-                                +'<div class="cartlist">'
-                                +'<div class="store">'
-                                +value.store_name+'的店铺<span class="state">'+value.order_state_name+'</span>'
-                                +'</div>'
-                                +'<div class="user">'
-                                +'<i class="iconfont">&#xe621</i>'
-                                +'<a href="<?php echo  U('Wap/goodsorder/order_detail');?>?id='+value.order_id+'"><div class="info">'
-                        +'<dl>'
-                        +'<dt>订单号：</dt>'
-                        +'<dd class="num">'+value.order_sn+'</dd>'
-                        +'</dl>'
-                        +'<dl>'
-                        +'<dt>收件人：</dt>'
-                        +'<dd>'+value.consignee+'</dd>'
-                        +'</dl>'
-                        +'<dl>'
-                        +'<dt>地址：</dt>'
-                        +'<dd>'+value.address+'</dd>'
-                        +'</dl>'
-                        +'<dl>'
-                        +'<dt>手机号：</dt>'
-                        +'<dd class="num">'+value.mobile+'</dd>'
-                        +'</dl>'
-                        +'</div></a>'
-                        +'</div>'
-                        +'<ul>'+goods_list+'</ul><div class="total"><ul>'
-                        +'<li class="subtotal">共<span class="num black"> '+value.num+' </span>件商品 合计：<span class=" num green">¥'+value.order_amount+'</span></li>'
-                        +li_order_state
-                        +'</ul></li>';
-                        con++;
-                    });
+                var option = '';
+                if (data != undefined || data != null){
+                    option = data;
                 }
+
                 if(p==1){
                     $('.more_html').html(option);
                 }else{
@@ -470,3 +370,4 @@
 </script>
 </body>
 </html>
+</if>

@@ -1,3 +1,4 @@
+<if condition="$is_ajax neq 1">
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,30 +19,30 @@
 	<h2 >二手车信息</h2>
 	<a href="{:U('wap/member/index')}" class="more "><span>个人中心</span><i class="iconfont">&#xe611</i></a>
 </div>
-<div class="type">
+<div class="type car">
 	<ul class="oder_state_c">
-		<li data="all" class="on"  >
-		<a href="javascript:void(0);">全部</a>
+		<li data="1" class="on"  >
+		<a href="javascript:void(0);">全部信息</a>
 		</li>
 		<li data="0" class=" " >
-		<a href="javascript:void(0);">待付款</a>
-		</li>
-		<li data="1" class="" >
-		<a href="javascript:void(0);">待发货</a>
-		</li>
-		<li data="2" class=" " >
-		<a href="javascript:void(0);">待收货</a>
+		<a href="javascript:void(0);">我的信息</a>
 		</li>
 
 	</ul>
 </div>
 <div class="page">
 	<ul class="more_html">
+</if>
 		<volist name="list" id="vo">
 			<li>
 				<div class="cartlist">
 					<div class="store">
-						标题:{$vo.title}<span class="state"></span>
+						标题:{$vo.title}
+						<span class="state">
+							<eq name="type" value="0">
+								{$status_names[$vo['is_check']]}
+							</eq>
+						</span>
 					</div>
 					<div class="user">
 						<i class="iconfont"><img style="max-width: 40px;max-height: 40px" src="{$vo['member_logo']}"></i>
@@ -50,9 +51,11 @@
 								<dt>发布者：</dt>
 								<dd class="num">{$vo.member_name}</dd>
 							</dl>
-							<div class="total"   >
-								<a class="btn1 btnsF34" href="{:U('wap/carinfo/msg_detail',array('id'=>$vo['id']))}">修改</a>
-							</div>
+							 <eq name="type" value="0">
+								 <div class="total"   >
+									 <a class="btn1 btnsF34" href="{:U('wap/carinfo/add_msg',array('id'=>$vo['id']))}">修改</a>
+								 </div>
+							 </eq>
 						</div>
 					</div>
 			<ul>
@@ -76,6 +79,7 @@
 </div>
 </li>
 </volist>
+<if condition="$is_ajax neq 1">
 </ul>
 <div class="loading">
 	<div class="fm-footer-copyright get_more">
@@ -100,8 +104,8 @@
 <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/return-top.js"></script>
 
-<input type="hidden" name="p" value="2" />
-<input type="hidden" name="order_state" value="{$_GET['order_state']}" />
+<input type="hidden" name="p" value="1" />
+<input type="hidden" name="type" value="{$type}" />
 <input type="hidden" name="order" value=""/>
 
 <script type="text/javascript">
@@ -125,7 +129,7 @@
 
 			}
 		});
-	})
+	});
 	$(function(){
 		$(".get_more").click(function(){
 			get_more();
@@ -137,198 +141,31 @@
 			$('.oder_state_c li').removeClass('on');
 			$(this).addClass('on');
 			var data=$(this).attr('data');
-			$("input[name='order_state']").val(data);
+			$("input[name='type']").val(data);
 			$("input[name='p']").val(1);
 			get_more();
 		});
-		$('.more_html').on('click','.delete_order',function(){
-			var __this=$(this);
-			var order_id=__this.attr('data');
-			var data_type=__this.attr('data-type');
-			var types="删除";
-			var order_del_url = "{:U('wap/goodsorder/order_del')}";
-			if(data_type==1){
-				order_del_url = "{:U('wap/goodsorder/order_cancel')}";
-				types="取消";
-			}
-			layer.confirm('确定'+types+'该订单？', {
-				btn: ['确定','取消'] //按钮
-			}, function(){
-				layer.msg(types+'中请稍候....', {time: 5000});
-				$.ajax({
-					url: order_del_url,
-					type:'post',
-					data: {order_id:order_id, data_type:data_type},
-					dataType: 'json',
-					success: function(data){
-						//console.log(data);
-						if(data.status==1){
-							if( data_type == '0'){
-								var str=$('.oder_state_c .all_order_n b:eq(0)').html();
-								$('.oder_state_c .all_order_n b:eq(0)').html(parseInt(str) - 1);
-								if (parseInt(str) == 1){
-									$('.oder_state_c .all_order_n b:eq(0)').css('display','none');
-								}
-							}
-							if(data.code=='nopay'){
-								var str=$('.oder_state_c .nopay_order_n b:eq(0)').html();
-								$('.oder_state_c .nopay_order_n b:eq(0)').html(parseInt(str) - 1);
-								if (parseInt(str) == 1){
-									$('.oder_state_c .nopay_order_n b:eq(0)').css('display','none');
-								}
-								if( data_type == '1'){
-									var str_3=$('.oder_state_c .f_order_n b:eq(0)').html();
-									$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str_3) + 1);
-									$('.oder_state_c .f_order_n b:eq(0)').css('display','show');
-								}
-							}else{
-								var str=$('.oder_state_c .f_order_n b:eq(0)').html();
-								$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str) - 1);
-								if (parseInt(str) == 1){
-									$('.oder_state_c .f_order_n b:eq(0)').css('display','none');
-								}
-							}
 
-							layer.msg(types+'成功', {icon: 6,time: 1500},function(){
-								$("input[name='p']").val(1);
-								get_more();
-								///刷新页面
-							});
-						}else{
-							layer.msg(data.error, {icon: 5});
-						}
-					}
-				});
-			}, function(){
-
-			});
-
-		});
 	});
 	function get_more(){
 		load_more = 1;
 		var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">';
 		$('.get_more').html('加载中' + html);
 		var p=$("input[name='p']").val();
-		var order_sta=$("input[name='order_state']").val();
+		var order_sta=$("input[name='type']").val();
 		$.ajax({
-			url: "{:U('wap/goodsorder/index')}",
+			url: "{:U('wap/carinfo/index')}",
 			type:'post',
-			data: {p:p,order_state:order_sta},
-			dataType: 'json',
+			data: {p:p,type:order_sta},
+			dataType: 'html',
 			success: function(data){
 				//console.log(data);
 				var con=1;
-				var option='';
-				if(data){
-					$.each(data, function(i, value) {
-
-						//this指向当前元素
-						//i表示Array当前下标
-						//value表示Array当前元素
-						var order_state="";
-						if(value.order_state=="nopay"){
-							var pay_url = "<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn="+value.order_id;
-							if(value.is_upgrade == 1){
-								pay_url = "<?php echo U('wap/start/upgrade_pay'); ?>?order_id="+value.order_id;
-							}
-							order_state='<div class="order-button "><a  class="btn1 btnsF34" href="'+pay_url+'" >去付款</a>'
-									+' <a class="g-tui delete_order btn3 btnsF34" data-type="1" data="'+value.order_id+'" href="javascript:void(0)">取消订单</a></div>';
-						}else if(value.order_state=="delivered"){
-							var str_delivered="";
-							str_delivered= '<a class="btn1 btnsF34" href="__URL__/order_express?order_id='+value.order_id+'">查看物流</a>'
-									+' <a class="delivered_order btn2 btnsF34" data="'+value.order_id+'" href="javascript:void(0)">确认收货</a>';
-							order_state='<div class="order-button">'+str_delivered+'</div>';
-						}else if(value.order_state=="after_sale"){
-							str_delivered='' ;
-							order_state='<div class="order-button">'+str_delivered+'</div>';
-						}else if(value.order_state=="received"){
-							order_state='<div class="order-button"><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
-						}else if(value.order_state=="finish"){
-							order_state='<div class="order-button "><a class="g-tui delete_order btn3 btnsF34" data-type="0" data="'+value.order_id+'" href="javascript:void(0)">删除</a></div>';
-						}else{
-							// order_state=value.order_state_name;
-							order_state = '<i class="iconfont floatLft">&#xe68c</i><span>'+ value.status_remarks+'</span>';
-						}
-						var li_order_state = '<li class="typetotal">' + order_state+'</li>';
-						if((value.order_status == 0 && value.pay_status == 2) || value.order_status == 5 ){
-							li_order_state = '';
-						}
-						var goods_list = "";
-						var goods=value.goods;
-						if(goods && value.is_upgrade == 0){
-							$.each(goods, function (n, vo) {
-
-								var after='';
-								if(vo.after_sale == 1){
-									after = '<a class="after_sales service type'+vo.refund_status+' "  href="<?php echo U('wap/goodsrefund/index');?>?id='+vo.rec_id+'">'+vo.refund_status_name+'</a>';
-								}
-
-								var _shipping_money = '包邮';
-								if(vo.shipping_money > 0){
-									_shipping_money = '运费:￥'+vo.shipping_money;
-								}
-								goods_list =goods_list+ ''
-										+'<li  class="goods"> '
-										+ '<a class="" href="<?php echo U('wap/goodsorder/order_detail');?>?id='+value.order_id+'">'
-								+'<div class="goodsimg imgnobg">'
-								+'<div class="img bgcover " style=" background:url('+vo.goods_image+')">'
-								+'</div>'
-								+'</div>'
-								+'<div class="info">'
-								+'<div class="title">'
-								+vo.goods_name
-								+' </div>'
-								+' <div class="pay">'
-								+'<div class="pirce num green">'
-								+'￥'+vo.goods_price
-								+'</div>'
-								+'<div class="qty">'
-								+'<span class="num">'+vo.goods_number+'</span>件&nbsp; &nbsp;'+_shipping_money
-								+after
-								+'</div>'
-								+'</div>'
-								+'</div>'
-								+'</a>'
-								+'<div class="clearfix">'
-								+'</div>'
-								+'</li>';
-
-							});
-						}
-						option=option+'<li>'
-								+'<div class="cartlist">'
-								+'<div class="store">'
-								+value.store_name+'的店铺<span class="state">'+value.order_state_name+'</span>'
-								+'</div>'
-								+'<div class="user">'
-								+'<i class="iconfont">&#xe621</i>'
-								+'<a href="<?php echo  U('Wap/goodsorder/order_detail');?>?id='+value.order_id+'"><div class="info">'
-						+'<dl>'
-						+'<dt>订单号：</dt>'
-						+'<dd class="num">'+value.order_sn+'</dd>'
-						+'</dl>'
-						+'<dl>'
-						+'<dt>收件人：</dt>'
-						+'<dd>'+value.consignee+'</dd>'
-						+'</dl>'
-						+'<dl>'
-						+'<dt>地址：</dt>'
-						+'<dd>'+value.address+'</dd>'
-						+'</dl>'
-						+'<dl>'
-						+'<dt>手机号：</dt>'
-						+'<dd class="num">'+value.mobile+'</dd>'
-						+'</dl>'
-						+'</div></a>'
-						+'</div>'
-						+'<ul>'+goods_list+'</ul><div class="total"><ul>'
-						+'<li class="subtotal">共<span class="num black"> '+value.num+' </span>件商品 合计：<span class=" num green">¥'+value.order_amount+'</span></li>'
-						+li_order_state
-						+'</ul></li>';
-						con++;
-					});
+				var option = '';
+				if (data != undefined || data != null){
+					option = data;
 				}
+
 				if(p==1){
 					$('.more_html').html(option);
 				}else{
@@ -348,57 +185,6 @@
 	}
 
 </script>
-<script type="text/javascript">
-	$(function(){
-		//确认收货
-		$('.more_html').on('click','.delivered_order',function(){
-			var __this=$(this);
-			var order_id=__this.attr('data');
-			layer.confirm('是否确认收货？确认收货后订单不可退换！', {
-				btn: ['确定','取消'] //按钮
-			}, function(){
-				if(order_id){
-					$.ajax({
-						url: "{:U('wap/goodsorder/order_delivered')}",
-						type:'post',
-						data: {order_id:order_id},
-						dataType: 'json',
-						success: function(data){
-							console.log(data);
-							if(data.status==1){
-								var str=$('.oder_state_c .delivered b:eq(0)').html();
-								$('.oder_state_c .delivered b:eq(0)').html(parseInt(str) - 1);
-								if (parseInt(str) == 1){
-									$('.oder_state_c .delivered b:eq(0)').css('display','none');
-								}
-								var str=$('.oder_state_c .f_order_n b:eq(0)').html();
-								$('.oder_state_c .f_order_n b:eq(0)').html(parseInt(str) + 1);
-								$('.oder_state_c .f_order_n b:eq(0)').css('display','show');
-								//alert("确认收货成功");
-								layer.msg('确认收货成功', {icon: 6,time: 1500},function(){
-									$("input[name='p']").val(1);
-									get_more();
-									///刷新页面
-								});
-								//$('.delivered_html').remove();
-							}else{
-								layer.msg(data.error, {icon: 5});
-								//alert(data.error)
-							}
-						}
-					});
-				}else{
-					layer.msg('系统繁忙,请稍后再试', {icon: 5});
-					//alert('系统繁忙,请稍后再试')
-				}
-
-			}, function(){
-
-			});
-
-		});
-
-	});
-</script>
 </body>
 </html>
+</if>

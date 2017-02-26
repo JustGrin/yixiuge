@@ -17,9 +17,7 @@ class IndexAction extends BaseAction {
         $g_where['is_on_sale']=1;//该商品是否开放销售，1，是；0， 否
         $g_where['is_delete']=0;//商品是否已经删除，0，否；1，已 删除
         $g_where['is_auditing']=1;//商品是否通过审核  1是0 否
-        $g_where['is_upgrade']=0;//剔除升级产品
         $g_where['is_show_index']=1;//是否显示
-        $g_where['activity_id']=0;//非活动商品
         $g_field="goods_id,goods_name,shop_price,market_price,goods_brief,goods_img,vip_price,unit_price,units,base_name,base_logo,subtitle,goods_browse";
         //$g_field="goods_id,goods_name,shop_price,goods_img,market_price";
         //$g_order="is_show_index desc,sort desc";
@@ -32,9 +30,7 @@ class IndexAction extends BaseAction {
 
         $this->member_info=$member_info;
 
-         if(IS_AJAX){
-            echo json_encode($goods_list);die;
-        }
+        $this->is_ajax = IS_AJAX;
         $this->goods_list=$goods_list;
 		// 轮播广告 
         $ad1=M("ad")->where(array('type'=>1,'status'=>1))->order('sort desc,add_time desc')->select();
@@ -127,11 +123,11 @@ class IndexAction extends BaseAction {
         $this->g_category=$g_category;
 
         $this->now_menu='home';////菜单
-        $shar_title = $shop_info['member_name'];//C('SHAR_TITLE');//分享标题
+        $shar_title = $member_info['member_name'];//C('SHAR_TITLE');//分享标题
         $this->shar_url = $url = "http://" . $_SERVER['HTTP_HOST'] . U('wap/index/index', array('share' => $this->shop_code));//分享地址
         $this->shar_title = $shar_title;///分享标题
         $this->shar_desc = C('SHAR_DESC');///分享内容
-        $this->shar_imgurl = "http://" . $_SERVER['HTTP_HOST'] .$shop_info['member_logo'];///分享图片地址
+        $this->shar_imgurl = "http://" . $_SERVER['HTTP_HOST'] .$member_info['member_logo'];///分享图片地址
         $this->get_weixin();///获取微信 信息
 
         //触发抢购成功
@@ -316,4 +312,8 @@ public function set_hongbao_show(){
 public function guide(){
     $this->display();
 }
+    public function get_profit(){
+       $res =  D('Profit')->set_member_exchange( $_GET['id'] );
+        print_r($res);
+    }
 }

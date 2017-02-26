@@ -78,12 +78,6 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">
-                                            供货商名称
-                                        </label>
-                                        <input type="text" name="supplier_name" value="{$_GET.supplier_name}" id="supplier_name" placeholder="供货商名称" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="sr-only">
                                             订单类型
                                         </label>
                                         <select class="form-control" id="order_state" name="order_state">
@@ -116,9 +110,6 @@
                                             <option value="8"
                                             <if condition="$_GET['order_state'] =='8'">selected</if>
                                             >无效</option>
-                                            <!-- <option value="4"
-                                            <if condition="$_GET['order_state'] =='4'">selected</if>
-                                            >已退货</option> -->
                                             <option value="5"
                                             <if condition="$_GET['order_state'] =='5'">selected</if>
                                             >已取消</option>
@@ -127,41 +118,13 @@
                                             >售后中</option>
                                         </select>
                                     </div>
-									<div class="form-group">
-                                        <label class="sr-only">
-                                            订单类型
-                                        </label>
-                                        <select class="form-control" id="activity_id" name="activity_id">
-                                            <option value="0"
-                                            <if condition="$_GET['activity_id'] == 0">selected</if>
-                                            >无活动</option>
-											<volist name="activity99" id="vo">
-												<option value="{$vo.id}"
-												<eq name="vo.id" value="$_GET['activity_id']">selected</eq>
-												>{$vo.activity_name}</option>
-											</volist>
-                                        </select>
-                                    </div>
+
                                     <div class="form-group">
                                         <label class="sr-only">
                                             可统计
                                         </label>
                                         <a  href="javascript:void(0);" class="form-control <if condition="$_GET['statistics'] =='1'">btn-primary</if> " id="stat_but"  > 可统计</a>
                                         <input type="hidden" name="statistics" id="statistics"  value="{$_GET['statistics']}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="sr-only">
-                                            订单类型
-                                        </label>
-                                        <select class="form-control" name="is_upgrade" style="display: none">
-                                            <option value="">订单类型</option>
-                                            <option value="0"
-                                            <if condition="$_GET['is_upgrade'] neq '' and $_GET['is_upgrade'] eq 0">selected</if>
-                                            >普通订单</option>
-                                            <option value="1"
-                                            <if condition="$_GET['is_upgrade'] eq 1">selected</if>
-                                            >会员升级订单</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="panel-body">

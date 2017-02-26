@@ -21,20 +21,7 @@ class MemberAction extends AuthAction{
 		}else{
 			$_GET['mobile'] = '';
 		}
-		/*if(isset($_GET['member_type'])){
-			if($_GET['member_type']!='all'){
-				$where['mem.member_type']=$_GET['member_type'];
-			}
-		}else{
-			$_GET['member_type']='all';
-		}
-		if(isset($_GET['member_status'])){
-			if($_GET['member_status']!='all'){
-				$where['mem.member_status']=$_GET['member_status'];
-			}
-		}else{
-			$_GET['member_status']='all';
-		}*/
+
 		if(isset($_GET['member_vip_type'])){
 			if($_GET['member_vip_type']!='all'){
 				$where['mem.member_vip_type']=$_GET['member_vip_type'];
@@ -290,9 +277,7 @@ class MemberAction extends AuthAction{
 		isset($_GET['mobile']) ? $where['mobile']=array('like','%'.$_GET['mobile'].'%') : $_GET['mobile'] = '' ;
 		isset($_GET['type']) ? $where['reb.type']=array('like','%'.$_GET['type'].'%') : $_GET['type'] = '' ;
 
-		/*if($_GET['status']){
-			$where['reb.status']=$_GET['status'];
-		}*/
+
 		$where['reb.status']=1;//状态 1用户收益 2 商家返利
 		//1消费者本身返点 2直接推荐人返点 3间接推荐人返点  
        //4 直接推荐人认证返点 5 间接推荐人认证返点 
@@ -559,7 +544,7 @@ class MemberAction extends AuthAction{
 		}
 	}
 
-	public function member_authentication()
+/*	public function member_authentication()
 	{	$members_IDcard=M('member_id_card')->select();
 		$this->list=$members_IDcard;
 		$this->display();
@@ -591,7 +576,7 @@ class MemberAction extends AuthAction{
 				echo json_encode($data);
 			}
 		}
-	}
+	}*/
 	//用户手机绑定审核
 	public function binding_check(){
 		set_time_limit(0);

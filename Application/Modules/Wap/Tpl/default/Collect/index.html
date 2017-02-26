@@ -1,3 +1,4 @@
+<if condition="$is_ajax neq 1">
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,7 @@
 </div>
 <div class="cartlist">
 		<ul class=" more_html">
+</if>
 			<volist name="list" id="vo" >
 				<li class="goods goods_{$vo.rec_id}">
 					<a class="" href="{:U('wap/Goods/goods_detail',array('id'=>$vo['goods_id']))}">
@@ -51,6 +53,7 @@
 
 				</li>
 			</volist>
+<if condition="$is_ajax neq 1">
 		</ul>
 </div>
 <div class="">
@@ -128,47 +131,28 @@ s
 			url: "{:U('wap/collect/index')}",
 			type:'post',
 			data: {p:p},
-			dataType: 'json',
+			dataType: 'html',
 			success: function(data){
 				//console.log(data);
 				var con=1;
-				if(data){
-					var option='';
-					$.each(data, function(i, value) {
-						//this指向当前元素
-						//i表示Array当前下标
-						//value表示Array当前元素
-						option=option+'<li class="goods">'
-						+'<a class="" href="<?php echo U('wap/Goods/goods_detail'); ?>?id='+value.goods_id+'">'
-						+'<div class="goodsimg">'
-						+'<div class="img bgcover " style=" background: url('+value.goods_img+')">'
-						+'</div>'
-						+'</div>'
-						+'</a>'
-						+'<div class="info">'
-						+'<div class="title">'
-						+value.goods_name
-						+'</div>'
-						+'<div class="titlesub">	'
-						+value.goods_brief
-						+'</div>'
-						+'<div class="pay">'
-						+'<div class="pirce">'
-						+'<span class="num orange">￥'+value.shop_price+' </span> <span class="subpirce num gray textline">¥'+value.market_price+'</span>'
-						+'</div>'
-						+'</div>'
-						+'</div>'
-						+'<div class="clearfix">'
-						+'</div>'
-						+'</li>';
-						con++;
-					});
+				var option = '';
+				if (data != undefined || data != null){
+					option = data;
+				}
+
+				if(p==1){
+					$('.more_html').html(option);
+				}else{
 					$('.more_html').append(option);
-					$("input[name='p']").val(parseInt(p)+1);
+				}
+				load_more = 0;
+				if (option) {
+					$("input[name='p']").val(parseInt(p) + 1);
 				}
 				if(con<10){
+					load_none = 1;
 					$('.get_more').html('无更多数据');
-					$('.get_more').fadeOut(3000);
+					$('.get_more').fadeOut('3000');
 				}
 			}
 		});
@@ -178,3 +162,4 @@ s
 </script>
 </body>
 </html>
+</if>

@@ -269,7 +269,7 @@
 								window.location.href=pay_url+"&openid=<?php echo $_SESSION['user_open_id'];?>";
 							}else{
 								layer.msg('支付成功',{icon:6,time: 1500},function(){
-									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('id'=>$order_id));?>";
+									window.location.href="<?php  echo U('wap/goodsorder/order_detail',array('order_id'=>$order_id));?>";
 								});
 							}
 						}else{

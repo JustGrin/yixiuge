@@ -1,3 +1,4 @@
+<if condition ="$is_ajax neq 1">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +67,7 @@
 
 <div class="page">
 <div class="list more_html">
+</if>
 	<volist name="list" id="vo">
 	<if condition="$vo.is_sell_out eq 1" >
 	<div class="goods sell_out">
@@ -102,6 +104,7 @@
 			</div>
 		</div>
 		</volist>
+<if condition ="$is_ajax neq 1">
 	</div>
 	<div class="clearfix">
 	</div>
@@ -204,69 +207,27 @@
 			url: "{:U('wap/goods/index')}",
 			type:'get',
 			data: {p:p,type:type,order:order, search: search},
-			dataType: 'json',
+			dataType: 'html',
 			success: function(data){
 				//console.log(data);
 				var con=1;
-				var option='';
-				if(data){
-					$.each(data, function(i, value) {
-						//this指向当前元素
-						//i表示Array当前下标
-						//value表示Array当前元素
-						var vip_style="";
-						if(value.vip_p_show == 1){
-							vip_style= 'style=" display: inline-block;"';
-						}
-						var base='<img src="'+value.base_logo+'"><span>'+value.base_name+'</span>';
-
-						if(value.base_name == null || value.base_logo == null){
-							base='暂无数据';
-						}
-						if(value.is_sell_out == 1){
-							option=option+'<div class="goods sell_out">'
-								+'<div class="item">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}" class="is_sell_out">'
-								+'</a>';
-						}else{
-							option=option+'<div class="goods">'
-								+'<div class="item">';
-						}
-						option=option+'<div class="goodsimg imgnobg">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}"><img src="'+value.goods_img+'" alt="" /></a>'
-								+'</div>'
-								+'<div class="form">'+base+'</div>'
-								+'<div class="title">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}">'+value.goods_name+'</a>'
-								+'</div>'
-								+'<div class="pirce">'
-								+'<span class="orange">¥<span class="num">'+value.unit_price+'</span>'+value.units+'</span>'
-								+'</div>'
-
-								+'<div class="addcart" onclick="" goods_id="'+value.goods_id+'" img_url="'+value.goods_img+'" unit_price="'+value.unit_price+'" units="'+value.units+'"goods_attr_id="'+value.goods_attr_id+'">'
-								+'<i class="iconfont">&#xe612</i></div></div></div>';
-						con++;
-					});
-
-					option += '</div>';
-
+				if (data != undefined || data != null){
+					option = data;
 				}
-				//$('.more_html').append(option);
+
 				if(p==1){
 					$('.more_html').html(option);
 				}else{
 					$('.more_html').append(option);
 				}
-				load_more=0;
-				if(option){
-					//$("input[name='p']").val(parseInt(p)+1);
-					$("input[name='p']").attr('data',parseInt(p)+1);
+				load_more = 0;
+				if (option) {
+					$("input[name='p']").val(parseInt(p) + 1);
 				}
 				if(con<10){
-					load_none=1;
+					load_none = 1;
 					$('.get_more').html('无更多数据');
-
-					$('.get_more').fadeOut(3000);
+					$('.get_more').fadeOut('3000');
 				}
 			}
 		});
@@ -309,3 +270,4 @@
 </script>
 </body>
 </html>
+</if>

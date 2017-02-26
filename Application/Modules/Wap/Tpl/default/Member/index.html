@@ -30,7 +30,6 @@
 	<div class="shopinfo person">
 		<ul>
 			<li class="textCer font40"><a href="{:U('wap/member/wallet',array('type'=>1))}"><i class="iconfont ">&#xe663;</i> 积分 <span class="num orange ">{$MemberDetail.points|floor}</span> </a></li>
-			<li class="textCer font40"><a href="{:U('wap/member/wallet')}"><i class="iconfont ">&#xe641</i> 余额 <span class="num orange ">{$MemberDetail.balance|floor}</span> </a></li>
 			<li class="textCer font40 manage"><a  href="{:U('wap/collect/index')}"><i class="iconfont ">&#xe62d</i> 收藏 <span class="num orange ">{$MemberDetail.count_collect}</span> </a></li>
 		</ul>
 		<div class="clearfix"> </div>
@@ -54,9 +53,7 @@
 			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>3))}">
 				<if condition="$member_count.order3 gt 0"><b>{$member_count.order3}</b></if>
 				<img src="__PUBLIC__/wap/img/member/person-5.png"> <span class="font34">已完成</span> </a> </li>
-			<li> <a href="{:U('wap/goodsrefund/refund_list')}">
-				<if condition="$member_count.order4 gt 0"><b>{$member_count.order4}</b></if>
-				<img src="__PUBLIC__/wap/img/member/person-1.png"> <span class="font34">售后</span> </a> </li>
+
 		</ul>
 		<div class="clearfix"></div>
 	</div>
@@ -64,27 +61,17 @@
 		<if condition="$vip_i gt 0" >
 			<div class="title"> <a href="{:U('wap/member/index_vip')}"><i class="iconfont icon" style="color:#f9960f">&#xe633</i><span>店铺管理中心</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
 		</if>
-		
-		
-		
-		
-		
-
-		
 			<a class="title" href="{:U('wap/member/setup')}"><i class="iconfont icon" style="color:#0ba7e4">&#xe630</i><span>个人设置</span> <i class="iconfont floatRgt">&#xe611</i></a>
-	
-
 		<div class="title">
 			<a href="{:U('wap/address/index')}"><i class="iconfont icon" style="color:#f05a49">&#xe648</i><span>收货地址</span>  <i class="iconfont floatRgt">&#xe611</i></a>
 		</div>
 		<div class="title">
 			<a href="{:U('wap/carinfo/add_msg')}"><i class="iconfont icon" style="color:#f05a49">&#xe644</i><span>发布二手车信息</span>  <i class="iconfont floatRgt">&#xe611</i></a>
 		</div>
-
-		<div class="title"> <a href="{:U('wap/activity/activity_area')}"><i class="iconfont icon" style="color:#0ba7e4">&#xe696;</i><span>活动专区</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
 		<div class="title">
-			<a href="{:U('wap/member/bank_account')}"><i class="iconfont icon" style="color:#f90">&#xe647</i><span>银行账户管理</span> <i class="iconfont floatRgt">&#xe611</i></a>
+			<a href="{:U('wap/carinfo/index')}"><i class="iconfont icon" style="color:#f05a49">&#xe644</i><span>二手车信息中心</span>  <i class="iconfont floatRgt">&#xe611</i></a>
 		</div>
+
 		<div class="title"> <a href="{:U('wap/about/about_us')}"><i class="iconfont icon" style="color:#2ac198">&#xe659</i><span>关于我们</span> <i class="iconfont floatRgt">&#xe611</i></a> </div>
 	</div>
 </div>

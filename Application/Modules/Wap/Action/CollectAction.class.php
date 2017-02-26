@@ -25,9 +25,7 @@ public function __construct(){
         foreach ($list as $key => $value) {
             $list[$key]['goods_img'] = thumbs_auto($value['goods_img'], 300, 300);
         }
-        if(IS_AJAX){
-            echo json_encode($list);die;
-        }
+        $this->is_ajax = IS_AJAX;
         $this->list=$list;
 //        var_dump($list);die;
         $count['goods']=M()->table($pre.'g_collect_goods coll')//

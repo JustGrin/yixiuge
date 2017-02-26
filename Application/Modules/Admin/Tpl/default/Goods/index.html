@@ -69,12 +69,7 @@
 					  </label>
 						<input type="text" name="goods_sn" value="{$_GET.goods_sn}" id="goods_sn" placeholder="商品货号" class="form-control">
 				</div>
-			<div class="form-group">
-				<label for="supplier_name" class="sr-only">
-					供货商名称
-				</label>
-				<input type="text" name="supplier_name" value="{$_GET.goods_name}" id="supplier_name" placeholder="供货商名称" class="form-control">
-			</div>
+
 				 <div class="form-group">
 					<label for="is_on_sale" class="sr-only">
 						
@@ -88,19 +83,7 @@
 
 					</select>
 				</div>
-				 <div class="form-group">
-					<label for="is_on_sale" class="sr-only">
-						
-					</label>
-					
-					<select class="form-control" id="offline" name="offline">
-<option value="all" <if condition="$_GET['offline'] =='all'">selected</if>>全部</option>
-<option value="1" <if condition="$_GET['offline'] =='1'">selected</if>>货到付款</option>
-<option value="0" <if condition="$_GET['offline'] ==='0'">selected</if>>非货到付款</option>
 
-
-					</select>
-				</div>		
 				 <div class="form-group">
 					<label for="is_on_sale" class="sr-only">
 						
@@ -114,17 +97,6 @@
 
 					</select>
 				</div>
-			<div class="form-group">
-				<label for="activity_id" class="sr-only">
-					活动类型
-				</label>
-
-				<select class="form-control" id="activity_id" name="activity_id">
-					<option value="all" <if condition="$_GET['activity_id'] =='all'">selected</if>>全部</option>
-					<option value="1" <if condition="$_GET['activity_id'] =='1'">selected</if>>1元购</option>
-					<option value="0" <if condition="$_GET['activity_id'] ==='0'">selected</if>>无活动</option>
-				</select>
-			</div>
 				<div class="form-group  ">
 			        <button class="btn btn-primary" type="submit">
 					 提交
@@ -154,13 +126,11 @@
 						<th>购买送积分</th>
 						<th>上/下架</th>
 						<th>审核状态</th>
-						<th>套餐</th>
-						<th>货到付款</th>
+
 						<!--<th>新品</th>-->
 						<!--<th>热销</th>-->
 						<th>首页显示</th>
 						<th>是否售罄</th>
-						<th>活动类型</th>
 						<th>库存</th>
 						<th class="center">操作</th>
 					</tr>
@@ -191,32 +161,7 @@
 							</if>
 							</td>
 						<td >{$vo['is_auditing']?'已审核':'未审核'}</td>
-						<td >
-							<if condition="$vo.is_package eq 1">
-							<a href="javascript:void(0)"
-							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
-							   data-toggle="tooltip" 
-							  ><i class="fa fa-check-circle"></i></a>
-							  <else/>
-							  <a href="javascript:void(0)"
-							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
-							   data-toggle="tooltip" 
-							  ><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
-                               </if>
-							</td>
-							<td >
-							<if condition="$vo.offline eq 1">
-							<a href="javascript:void(0)"
-							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
-							   data-toggle="tooltip" 
-							  ><i class="fa fa-check-circle"></i></a>
-							  <else/>
-							  <a href="javascript:void(0)"
-							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
-							   data-toggle="tooltip" 
-							  ><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
-                               </if>
-							</td>
+
 						<!--<td >{$vo['is_new']?'<i class="fa fa-check-circle"></i>':'<i class="fa fa-minus-circle"></i>'}</td>-->
 						<!--<td >{$vo['is_hot']?'<i class="fa fa-check-circle"></i>':'<i class="fa fa-minus-circle"></i>'}</td>-->
 						<td id="show{$vo.goods_id}">
@@ -246,7 +191,6 @@
 							   data-original-title="未售罄"><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
 							</if>
 						</td>
-						<td >{$vo['activity_id'] ? $activity_names[$vo['activity_id']] : '无活动'}</td>
 						<td >{$vo.goods_number}</td>
 						<td class="center">
 						<div class="visible-md visible-lg hidden-sm hidden-xs">

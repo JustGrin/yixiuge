@@ -316,7 +316,7 @@ li i.on { display: block; font-size: .6rem; }
 .wallet .more_html li .time { font-size: .34rem; padding: .2rem 0 }
 .wallet .col5 { padding: 0 !important; vertical-align: bottom; overflow: hidden; }
 .wallet .col5 ul { width: 100%; }
-.wallet .col5 li { width: 20%; padding: .5rem 0 .3rem 0; float: left; text-align: center; font-size: .34rem; box-sizing: border-box; border-right: 1px solid #e0e0e0; }
+.wallet .col5 li { width:33%; padding: .5rem 0 .3rem 0; float: left; text-align: center; font-size: .34rem; box-sizing: border-box; border-right: 1px solid #e0e0e0; }
 .wallet .col5 li.on { background: #6ab42f }
 .wallet .col5 li:last-child { border: none }
 .wallet .col5 li.on a { color: #fff; }

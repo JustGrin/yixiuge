@@ -25,7 +25,14 @@ class GoodsorderAction extends UserAction
                     $where['shipping_status'] = 1;//商品配送情况，0，未发货； 1，已发货；2，已收货；3，备货中
                     $where['order_status'] = array('in', '1,5');//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货; 5,售后中；
                     //$where['shipping_status'] =1;//商品配送情况，0，未发货； 1，已发货；2，已收货；3，备货中
-                } else {
+                }else if($_REQUEST['order_state'] == 1 ){
+					$where['user_del'] = 0;
+					$where['user_id'] = $this->uid;
+					$where['pay_status'] = '2';//待发货
+					$where['shipping_status'] = array('in', '0,3');
+					$where['order_status'] = array('in', '1,0');//订单状态。0，未确认；1，已确 认；2，已取消；3，无效；4，退货；
+
+				} else {
                     $where['pay_status'] = $_REQUEST['order_state'];
 					$where['order_status'] = 0;
 					$where['shipping_status'] = 0;
@@ -105,10 +112,7 @@ class GoodsorderAction extends UserAction
                 $list[$key]['ref_all'] = M('g_order_refund')->where($f_where)->count();*/
             }
         }
-        if (IS_AJAX) {
-            echo json_encode($list);
-            die;
-        }
+		$this->is_ajax = IS_AJAX;
         $this->list = $list;
         $where = array();
         $where['user_del'] = 0;
@@ -171,7 +175,7 @@ class GoodsorderAction extends UserAction
         $balance = $memberinfo_de['balance'];
         $balance = sprintf("%.2f", substr(sprintf("%.3f", $balance), 0, -2));
         $this->balance = $balance;
-        $menuwhere["order_id"] = $_GET["id"];
+        $menuwhere["order_id"] = $_GET["order_id"];
         $menuwhere['user_id'] = $this->uid;
         $data = M("g_order_info")->where($menuwhere)->find();
         if ($data) {
@@ -569,6 +573,7 @@ class GoodsorderAction extends UserAction
 				$order_good_data['order_type'] = 2;//订单类型 0未知 1店铺订单 2商品订单 3基地订单
                 $order_good_data['is_exchange'] = $value['is_exchange'];////是否可退货 1是 0否
                 $order_good_data['is_gift'] = $value['rec_type'];//活动类型0 无 1 限时抢购
+				$order_good_data['gift_integral'] = $value['gift_integral'];
                 $order_good_data['promote_start_date'] = $value['promote_start_date'];
                 $order_good_data['promote_end_date'] = $value['promote_end_date'];
                 $order_good_data['activity_id'] = $value['rec_type'] ;//活动类型0 无 1、1元嗨购 2、9.9大聚惠
@@ -895,7 +900,7 @@ class GoodsorderAction extends UserAction
             $integral_to_money = ($points/$money_to_integral);
         }
 
-        $log_des  = $points ? ('用户使用余额支付：￥'.$money.'；积分支付：￥'.$integral_to_money.'（'.$points.'积分）') : '';
+        $log_des  = $points ? ('用户使用积分支付：￥'.$integral_to_money.'（'.$points.'积分）') : '';
 
         if($left_pay_money == 0){
             $need_pay = 0;
@@ -1065,18 +1070,10 @@ class GoodsorderAction extends UserAction
 		$order_res = M("g_order_info")->where($o_where)->save(array('order_status' => 2));
         //记录商家日志
         if ($order_res !== false) {
-            if ($order_show['code'] == 'nopay' && ($data_info['surplus'] > 0 || $data_info['integral'] > 0)) {//未付款 已支付的订单退款 （余额支付）
+            if ($order_show['code'] == 'nopay' &&  $data_info['integral'] > 0) {//未付款 已支付的订单退款 （积分支付）
 				$log_integral = $log = array();
 
 				$log_msg = '取消订单退款 ';
-				if($data_info['surplus'] > 0){
-					$log['type'] = 4;//消费类型 1订单消费 2充值 3提现   4退款 5 收益 6认证消费
-					$log['order_id'] = $data_info['order_id'];
-					$log['des'] = '取消订单退余额支付金额：￥' . $data_info['surplus'];
-					//加减用户 记录日志  状态 1收入 2支出  如果有赠送余额支付 扣除赠送余额
-					$return_data['user_b'] = $this->set_member_balance($data_info['user_id'], 1, $data_info['surplus'], $log, $data_info['surplus_give']);
-					$log_msg .= '余额支付金额：￥' . $data_info['surplus'] .'；';
-				}
 				if($data_info['integral'] > 0){
 					$log_integral['type'] = 4;//消费类型 1订单消费 2充值 3提现   4退款 5 收益 6认证消费
 					$log_integral['order_id'] = $data_info['order_id'];
@@ -1152,7 +1149,7 @@ class GoodsorderAction extends UserAction
             ///减去余额支付部分 减去折扣部分
             ///折扣是否过期
             if($order_info['discount_start_time']<=$time && $order_info['discount_end_time']>=$time){
-                $pay_amount += PriceFormat(floatval($order_info['order_amount']) - floatval($order_info['first_discount'])  - floatval($order_info['surplus']) - floatval($order_info['discount']));
+                $pay_amount += PriceFormat(floatval($order_info['order_amount']) - floatval($order_info['first_discount'])  - floatval($order_info['surplus']) );
             }else{
                 $pay_amount += PriceFormat(floatval($order_info['order_amount']) - floatval($order_info['first_discount']) - floatval($order_info['surplus']));
             }

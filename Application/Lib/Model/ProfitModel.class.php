@@ -93,9 +93,12 @@ class ProfitModel extends Model {
 		if(!empty($tuijian_data)){ //写入收益记录
 			$rebate_record_model = M('rebate_record');
 			$tuijian_data['add_time'] = $time;
-			$rebate_record_model->add($tuijian_data);
+			 $rebate_record_model->add($tuijian_data);
 		}
 		$ret['status'] = 1;
+		$ret['$tuijian_data'] =$tuijian_data;
+		$ret['$order_goods'] =$order_goods;
+		$ret['sql'] =$c_res;
 		return $ret;
 	}
 

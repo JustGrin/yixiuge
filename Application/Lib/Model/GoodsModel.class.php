@@ -205,19 +205,7 @@ class GoodsModel extends Model {
                   }
               }
             }
-            //判断是否删除9.9大聚惠的商品，如果是则删除活动数据里的参数
-            $activity99_id = M('g_goods')->where($condition)->getField("activity_id");
-            if ($activity99_id == 2 && $data['is_delete'] == 1) {
-                $activity99 = M('activity')->where('id=2')->find();
-                $param_arr = json_decode($activity99['param']);
-                foreach ($param_arr->activity_goods_msg as $k => $v) {
-                    if ($k == $goods_id) {
-                        unset($param_arr->activity_goods_msg->$k);
-                    }
-                }
-                $activity_save_data['param'] = json_encode($param_arr);
-                M("activity")->where("id=2")->save($activity_save_data);
-            }
+          
             //删除不存在的 并新增
             if($data['good_image_url']){
                 $del_where=array();

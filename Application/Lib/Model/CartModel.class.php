@@ -220,6 +220,7 @@ class CartModel extends Model {
                 $value['is_refund']=$goods['is_refund'];//是否可退货 1是 0否
                 $value['is_exchange']=$goods['is_exchange'];//是否可退货 1是 0否
                 $value['goods_weight']=$goods['goods_weight'];//是否可退货 1是 0否
+                $value['gift_integral'] = $goods['gift_integral'];//购买送积分
                 $value['shipping_money']=$shipping_money;//该商品邮费
                 $value['base_id']=$goods['base_id'];
                 $value['all_goods_price']=$pay_price*$num;//总价 商铺价

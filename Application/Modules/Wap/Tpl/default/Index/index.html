@@ -1,3 +1,4 @@
+<if condition="$is_ajax neq 1">
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,6 +76,8 @@
 		<div class="goods"> <a href="{:U('Wap/Goods/index', array('type'=>127,'share'=>$share_para))}"> <img src="/Public/wap/img/goods/banya.jpg"> </a> <a href="{:U('Wap/Goods/index', array('type'=>127,'share'=>$share_para))}" class="title">重庆特产 传统烟熏工艺</a> </div>			</div>
 	<h4 class="title"><span class="line"></span> 精品推荐<span class="line"></span></h4>
 	<div class="indexlist more_html newbox">
+
+</if>
 		<volist name="goods_list" id="vo">
 			<div class="goods"> <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
 				<div class="item">
@@ -103,6 +106,7 @@
 				<div class="addcart" onClick="" goods_id="{$vo.goods_id}" img_url="{:thumbs_auto($vo['goods_img'], 200, 200)}" goods_price="{$vo.shop_price}" goods_attr_id="{$vo.goods_attr_id}"> <i class="iconfont">&#xe612</i> </div>
 			</div>
 		</volist>
+<if condition="$is_ajax neq 1">
 	</div>
 	<div class="clearfix"> </div>
 	<div class="loading">
@@ -192,77 +196,31 @@ var load_more=0;
 				url: "{:U('wap/index/index')}",
 				type:'get',
 				data: {p:p},
-				dataType: 'json',
+				dataType: 'html',
 				success: function(data){
 					//console.log(data);
 					var con=1;
-					var option='';
-					if(data){
-						$.each(data, function(i, value) {
-							//this指向当前元素
-							//i表示Array当前下标
-							//value表示Array当前元素
-							var vip_style="";
-							if(value.vip_p_show == 1){
-								vip_style= 'style=" display: inline-block;"';
-							}
-							var base='<img src="'+value.base_logo+'"><span>'+value.base_name+'</span>';
-
-							if(value.base_name == null || value.base_logo == null){
-								base='暂无数据';
-							}
-							if(value.subtitle == null){
-								value.subtitle='';
-							}
-						option = option+'<div class="goods">'
-								+'<a href="<?php echo U("wap/goods/goods_detail"); ?>?id='+value.goods_id+'&share={$share_para}">'
-								+'<div class="item">'
-								+'<div class="goodsimg imgnobg">'
-								+'<img src="'+value.goods_img+'" alt="" />'
-								+'</div>'
-								+'<div class="info">'
-								+'<div class="title">'+value.goods_name+'</div>';
-							if(value.subtitle != ''){
-						option = option+'<div class="subname clearfix">'
-								+'<div class="snleftbg">'+value.subtitle+'</div>'
-								+'<div class="snrightbg"></div></div>'
-							}
-										
-							option += '<div class="form">'
-								+base
-								+'</div>'
-								+'<div class="pirce">'
-								+'<span class="orange">¥<span class="num">'+value.unit_price+'</span>'+value.units+'</span>'
-								+'<div class="browse">已售:<span class="num">'+value.goods_browse+'</span>件</div>'
-								+'</div></div></div></a>'
-								+'<div class="addcart" onclick="" goods_id="'+value.goods_id+'" img_url="'+value.goods_img+'" goods_price="'+value.shop_price+'" goods_attr_id="'+value.goods_attr_id+'">'
-								+'<i class="iconfont">&#xe612</i>'
-								+'</div></div>';
-							con++;
-
-						});
-
-						option += '</div>';
+					if (data != undefined || data != null){
+						option = data;
 					}
-					//$('.more_html').append(option);
+
 					if(p==1){
 						$('.more_html').html(option);
 					}else{
 						$('.more_html').append(option);
 					}
-					load_more=0;
-					if(option){
-						//$("input[name='p']").val(parseInt(p)+1);
-						$("input[name='p']").attr('data',parseInt(p)+1);
+					load_more = 0;
+					if (option) {
+						$("input[name='p']").val(parseInt(p) + 1);
 					}
 					if(con<10){
-						load_none=1;
+						load_none = 1;
 						$('.get_more').html('无更多数据');
-						$('.get_more').fadeOut(3000);
+						$('.get_more').fadeOut('3000');
 					}
 				}
 			});
-		};
+		}
 	});
 	//加入购物车
 	$(document).on('click', '.addcart', function () {
@@ -289,3 +247,4 @@ var load_more=0;
 </script>
 </body>
 </html>
+</if>

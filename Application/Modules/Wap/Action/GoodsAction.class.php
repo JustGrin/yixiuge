@@ -82,8 +82,6 @@ class GoodsAction extends BaseAction {
         $g_where['is_on_sale']=1;//该商品是否开放销售，1，是；0， 否
         $g_where['is_delete']=0;//商品是否已经删除，0，否；1，已 删除
         $g_where['is_auditing']=1;//商品是否通过审核  1是0 否
-        $g_where['is_upgrade']=0;//剔除升级产品
-        $g_where['activity_id']=0;//非活动商品
         $order = "is_sell_out asc,".$order;//将售罄商品排在最后
         $g_field="goods_id,goods_name,shop_price,market_price,goods_brief,goods_img,vip_price,unit_price,units,goods_browse,goods_salesvolume,base_name,base_logo,is_sell_out";
         $goods_list=M("g_goods")->where($g_where)->field($g_field)->limit($start,$pagesize)->order($order)->select();
@@ -111,9 +109,7 @@ class GoodsAction extends BaseAction {
                 $goods_list[$k]['base_logo'] = thumbs_auto($v['base_logo'], 60, 60);
             }
         }
-        if(IS_AJAX){
-            echo json_encode($goods_list);die;
-        }
+        $this->is_ajax = IS_AJAX;
         $this->list=$goods_list;
         $this->count=M("g_goods")->where($g_where)->count();
 

@@ -160,7 +160,7 @@
 		<eq name="$data['is_upgrade']" value="1">
 			<a href="{:U('wap/start/upgrade_pay',array('order_id'=>$order_pay_sn))}"  class="new-abtn-type new-mg-tb30">去付款</a>
 			<else/>
-			<a href="{:U('wap/goodsorder/order_pay',array('order_id'=>$_GET['id']))}" class="new-abtn-type new-mg-tb30">去付款</a>
+			<a href="{:U('wap/goodsorder/order_pay',array('order_id'=>$_GET['order_id']))}" class="new-abtn-type new-mg-tb30">去付款</a>
 		</eq>
 	</div>
 	</if>
