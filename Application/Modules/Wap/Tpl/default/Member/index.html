@@ -53,6 +53,9 @@
 			<li> <a href="{:U('wap/goodsorder/index',array('order_state'=>3))}">
 				<if condition="$member_count.order3 gt 0"><b>{$member_count.order3}</b></if>
 				<img src="__PUBLIC__/wap/img/member/person-5.png"> <span class="font34">已完成</span> </a> </li>
+			<li> <a href="{:U('wap/goodsrefund/refund_list')}">
+				<if condition="$member_count.order4 gt 0"><b>{$member_count.order4}</b></if>
+				<img src="__PUBLIC__/wap/img/member/person-1.png"> <span class="font34">售后</span> </a> </li>
 
 		</ul>
 		<div class="clearfix"></div>
