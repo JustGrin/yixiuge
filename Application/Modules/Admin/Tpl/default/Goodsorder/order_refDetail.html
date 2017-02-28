@@ -360,10 +360,10 @@
                     '<div class="form-group">'+
                     '<label class="control-label">微信退款:</label>'+
                     '<input type="text" name="wx_refund"  id="wx_refund" placeholder="请输入返还的微信金额" value=""/>'+
-                    '<input type="hidden" name="total"  id="total" placeholder="返还总金额" value=""/>'+
                     '<input type="hidden" name="is_refund"  id="is_refund" placeholder="是否需退货" value="{$msg.is_refund}"/></div>'+
                     '<div> *返还积分和余额的总价值不能超过订单总额</div>'+
                     '<div> 10积分=1元</div>'+
+                    '<input type="hidden" name="total"  id="total" placeholder="返还总金额" value=""/>'+
                     '<div class="form-group">'+
                     '<label class="control-label">备注:</label>'+
                     '<input type="text" name="remarks1"  id="remarks1" placeholder="向财务说明退款信息" value=""/></div>'+
@@ -409,7 +409,7 @@
                         required:true,
                         max:goods_prince,
                         number: true,
-                        min:0.1
+                        min:0.01
                     },
                     remarks:{
                         required:true

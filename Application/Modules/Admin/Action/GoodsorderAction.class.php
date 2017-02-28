@@ -599,7 +599,6 @@ class GoodsorderAction extends AuthAction{
 
 	//操作售后订单 10-13 gqh
 	public function refundHandle(){
-//		var_dump($_POST['status']);die;
 		if($_GET['id']){
 			$where['ref_id']=$_GET['id'];
 			$status['refund_status']='';

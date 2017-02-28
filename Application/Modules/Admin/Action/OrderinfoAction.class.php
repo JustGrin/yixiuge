@@ -182,7 +182,6 @@ class OrderinfoAction extends AuthAction
 
 	public function refund_apply_detail()
 	{
-
 		$field = "ap.*,ref.refund_sn,ref.order_id,ref.member_id,ref.order_goods_id";
 		$where['id'] = $_GET['id'];
 		$data = M()->table('db_g_order_refund_apply ap')
@@ -198,9 +197,7 @@ class OrderinfoAction extends AuthAction
 			$this->error('退款订单不存在！');
 		}
 		$order_trade_no = M('g_order_pay')->where('pay_id = ' . $order_info['pay_record_id'])->getField('trade_no');
-		if(empty($order_trade_no)){
-			$this->error('支付信息未找到！');
-		}
+		$is_weix = empty($order_trade_no) ? 0 : 1 ;
 		$wx_refund_data['transaction_id'] = $order_trade_no;
 		$wx_refund_data['out_trade_no'] = $order_info['order_sn'];
 		$wx_refund_data['out_refund_no'] = $data['wx_refund_id'];
@@ -209,7 +206,7 @@ class OrderinfoAction extends AuthAction
 		$list['member'] = $member_info;
 		$list['order'] = $order_info;
 		$list['order_goods'] = $order_goods;
-		
+		$this->is_wx = $is_weix;
 		$this->list = $list;
 		//print_r($list);
 		$this->data = $data;
