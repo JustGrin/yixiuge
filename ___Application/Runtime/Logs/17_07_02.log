@@ -1,0 +1,1426 @@
+[ 2017-07-02T13:50:24+08:00 ] 127.0.0.1 /
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001561s ]
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'yixiuge'@'localhost' (using password: YES) D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+ERR: Access denied for user 'yixiuge'@'localhost' (using password: YES)
+
+[ 2017-07-02T13:51:37+08:00 ] 127.0.0.1 /
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000674s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000741s ]
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'yixiuge'@'localhost' (using password: YES) D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+ERR: Access denied for user 'yixiuge'@'localhost' (using password: YES)
+
+[ 2017-07-02T13:52:21+08:00 ] 127.0.0.1 /
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000887s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000992s ]
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'yixiuge'@'localhost' (using password: YES) D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+ERR: Access denied for user 'yixiuge'@'localhost' (using password: YES)
+
+[ 2017-07-02T13:52:48+08:00 ] 127.0.0.1 /
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000792s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000869s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.106071s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.004281s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001716s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.079593s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765168 ) LIMIT 1   [ RunTime:0.002251s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.027753s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.001317s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.001723s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.001408s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.018922s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.001286s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:52:50+08:00 ] 127.0.0.1 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001693s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001822s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001301s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001397s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.011299s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001094s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000972s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.012131s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765169 ) LIMIT 1   [ RunTime:0.001045s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012069s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000873s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.001044s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000767s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012468s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000844s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.005250s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010554s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010636s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000852s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000632s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000576s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000668s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002874s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002396s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002509s ]
+
+[ 2017-07-02T13:52:56+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000747s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000815s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000483s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.016265s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001878s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001297s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.014195s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765176 ) LIMIT 1   [ RunTime:0.001175s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.014181s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.001287s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.001047s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.001150s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.014073s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.001213s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:52:57+08:00 ] 127.0.0.1 /wap/login/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000772s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000853s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000550s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000618s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012885s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000800s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000885s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011917s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765177 ) LIMIT 1   [ RunTime:0.000750s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.013204s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000517s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000861s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000740s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011251s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000729s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008879s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008959s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000583s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000544s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000426s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000554s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002257s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000660s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000708s ]
+
+[ 2017-07-02T13:53:07+08:00 ] 127.0.0.1 /wap/
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000647s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000721s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000463s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000516s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.013126s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001061s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000936s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011911s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765186 ) LIMIT 1   [ RunTime:0.001123s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012181s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.001277s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000931s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.001054s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012371s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000957s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:53:08+08:00 ] 127.0.0.1 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000788s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000876s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000502s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.010737s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000581s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000461s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011845s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765188 ) LIMIT 1   [ RunTime:0.000628s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.014554s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000699s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000686s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000869s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011086s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000742s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000720s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008272s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008345s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000661s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000617s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000426s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000616s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002473s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002325s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002752s ]
+
+[ 2017-07-02T13:53:13+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000682s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000760s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000443s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000496s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012670s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000929s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000779s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.013048s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765193 ) LIMIT 1   [ RunTime:0.001114s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012153s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.001008s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000978s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000965s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.013648s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000833s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:53:14+08:00 ] 127.0.0.1 /wap/login/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000745s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000918s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000720s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012969s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000352s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000349s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011866s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765194 ) LIMIT 1   [ RunTime:0.000642s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.011289s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000470s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000520s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000277s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.015706s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000279s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010334s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010442s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000595s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000538s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000423s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000577s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002274s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000677s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000738s ]
+
+[ 2017-07-02T13:53:24+08:00 ] 127.0.0.1 /wap/
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001664s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001782s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000505s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.011389s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000690s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000571s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011180s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765204 ) LIMIT 1   [ RunTime:0.000939s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012557s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000632s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000531s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000691s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.010997s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000879s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:53:25+08:00 ] 127.0.0.1 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001749s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001863s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000669s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012379s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000873s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000879s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011137s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765205 ) LIMIT 1   [ RunTime:0.000760s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.013231s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000688s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000895s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000582s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011566s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000940s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000926s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.009287s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009388s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000603s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000527s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000418s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000580s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002262s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001036s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001132s ]
+
+[ 2017-07-02T13:53:34+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000880s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000949s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000577s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012817s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000404s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000395s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.013242s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765214 ) LIMIT 1   [ RunTime:0.000325s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.014105s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000403s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000368s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000336s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012498s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000226s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T13:53:35+08:00 ] 127.0.0.1 /wap/login/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000693s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000814s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000499s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.011679s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000525s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000381s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.012188s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765215 ) LIMIT 1   [ RunTime:0.000566s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.011741s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000602s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000641s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000486s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012226s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000332s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010126s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010197s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000772s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000579s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000990s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000666s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003180s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000637s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000684s ]
+
+[ 2017-07-02T13:59:44+08:00 ] 127.0.0.1 /wap/login/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001775s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001915s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001754s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001878s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.022618s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001035s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001058s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.023150s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497765583 ) LIMIT 1   [ RunTime:0.000853s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.021938s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000494s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000971s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000376s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.017931s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000748s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.016522s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016660s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.001242s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002201s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001025s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001110s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.023020s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001152s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001244s ]
+
+[ 2017-07-02T15:35:28+08:00 ] 127.0.0.1 /wap/
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002022s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003528s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001197s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001298s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.022766s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.004878s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000540s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.015507s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771328 ) LIMIT 1   [ RunTime:0.000583s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.017688s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000823s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000631s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000713s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.013958s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000430s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T15:35:29+08:00 ] 127.0.0.1 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000717s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000796s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000455s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000506s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.011733s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000474s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000338s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011463s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771329 ) LIMIT 1   [ RunTime:0.000380s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012172s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000436s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000304s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000358s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011137s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000324s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.001507s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012249s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012321s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000945s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000938s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000732s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000871s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003656s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001534s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001653s ]
+
+[ 2017-07-02T15:35:33+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000737s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000819s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000628s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.010956s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000779s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000490s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011457s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771333 ) LIMIT 1   [ RunTime:0.000686s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012608s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000633s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000494s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000737s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.013899s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000906s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-07-02T15:35:34+08:00 ] 127.0.0.1 /wap/login/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000839s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000919s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000669s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012948s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000717s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000794s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.012966s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771334 ) LIMIT 1   [ RunTime:0.000849s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.014321s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000518s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000838s ]
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000507s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011137s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000972s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.011039s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011129s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000605s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000549s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000447s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000591s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002325s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000725s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000772s ]
+
+[ 2017-07-02T15:35:48+08:00 ] 127.0.0.1 /wap/login/cheack_account.shtml?mobile=18202322320
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000912s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000983s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000628s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000678s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011654s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771346 ) LIMIT 1   [ RunTime:0.000444s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.011818s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000295s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012310s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000312s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member` WHERE ( `mobile` = '18202322320' ) OR ( `member_card` = '18202322320' ) LIMIT 1   [ RunTime:0.007112s ]
+
+[ 2017-07-02T15:35:50+08:00 ] 127.0.0.1 /wap/login/dologin.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000682s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000750s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000463s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000510s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.011081s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) AND ( `add_time` > 1497771349 ) LIMIT 1   [ RunTime:0.000456s ]
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: member_card D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 971 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.013592s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000204s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012602s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000217s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+NOTIC: [8] Undefined index: mobile_code D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\LoginAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: rember D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\LoginAction.class.php 第 33 行.
+SQL: SELECT * FROM `db_member` WHERE ( `mobile` = '18202322320' ) OR ( `member_card` = '18202322320' ) LIMIT 1   [ RunTime:0.000616s ]
+SQL: SHOW COLUMNS FROM `db_g_cart` [ RunTime:0.015502s ]
+SQL: UPDATE `db_g_cart` SET `user_id`=2 WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) [ RunTime:0.003497s ]
+SQL: DELETE FROM `db_member_rember_token` WHERE ( `session_id` = '833fff162cbb48779189b11f43806f02' ) [ RunTime:0.000837s ]
+SQL: UPDATE `db_member` SET `last_login_ip`=null,`last_login_time`=null,`login_ip`='127.0.0.1',`login_time`=1498980950,`login_count`=1 WHERE ( `id` = null ) [ RunTime:0.001143s ]
+SQL: SHOW COLUMNS FROM `db_member_login_log` [ RunTime:0.013539s ]
+SQL: INSERT INTO `db_member_login_log` (`member_id`,`login_ip`,`login_time`,`type`) VALUES (2,'127.0.0.1',1498980950,1) [ RunTime:0.002928s ]
+
+[ 2017-07-02T15:35:53+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000656s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000730s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000438s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000491s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.012053s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000767s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000662s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012062s ]
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000621s ]
+NOTIC: [8] Undefined index: user_info D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 897 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001469s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001147s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000888s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011376s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000842s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Undefined variable: ch D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined variable: ch D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1101 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001812s ]
+SQL: SHOW COLUMNS FROM `db_member_detail` [ RunTime:0.016541s ]
+SQL: SELECT * FROM `db_member_detail` WHERE ( `member_id` = '2' ) LIMIT 1   [ RunTime:0.001474s ]
+SQL: SELECT COUNT(*) AS tp_count FROM db_g_collect_goods coll LEFT JOIN db_g_goods goods on goods.goods_id=coll.goods_id WHERE ( coll.user_id = '2' ) AND ( `is_attention` = 1 ) LIMIT 1   [ RunTime:0.012222s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012975s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member` WHERE ( recommend_code='00000002' or indirect_recommend_code='00000002' or indirect2_recommend_code='00000002' ) LIMIT 1   [ RunTime:0.000816s ]
+SQL: SELECT COUNT(*) AS tp_count FROM db_member_good_collect coll LEFT JOIN db_group_goods goods on goods.id=coll.goods_id WHERE ( coll.member_id = '2' ) LIMIT 1   [ RunTime:0.005939s ]
+SQL: SHOW COLUMNS FROM `db_member_consume_record` [ RunTime:0.015383s ]
+SQL: SELECT SUM(money) AS tp_sum FROM `db_member_consume_record` WHERE ( `member_id` = 2 ) AND ( `status` = 1 ) AND ( `type` = 5 ) AND ( `type5_type` = 1 ) LIMIT 1   [ RunTime:0.000754s ]
+SQL: SHOW COLUMNS FROM `db_g_order_info` [ RunTime:0.020578s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.001025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 0 ) AND ( `order_status` = 0 ) AND ( `shipping_status` = 0 ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.000995s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 2 ) AND ( `shipping_status` IN ('0','3') ) AND ( `order_status` IN ('1','0') ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.002268s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 2 ) AND ( `shipping_status` = 1 ) AND ( `order_status` IN ('1','5') ) LIMIT 1   [ RunTime:0.000755s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( ((pay_status = 2 and shipping_status=2 ) or (pay_status = 2 and shipping_status=1 and order_status in ('2','3','4')) or (pay_status = 0 and order_status = 2 )) and (activity_id = 0 or (activity_id > 0 and activity_status = 1)) ) LIMIT 1   [ RunTime:0.000970s ]
+SQL: SHOW COLUMNS FROM `db_g_order_refund_chat` [ RunTime:0.013884s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_refund_chat` WHERE ( `is_read` = 0 ) AND ( `member_id` = 2 ) AND ( `type` = 2 ) LIMIT 1   [ RunTime:0.000759s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: vip_i D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 64 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 103 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 107 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 110 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 111 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 223 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 262 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.021438s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021502s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000551s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000445s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000422s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000497s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002050s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001113s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001231s ]
+
+[ 2017-07-02T15:35:57+08:00 ] 127.0.0.1 /wap/index/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000648s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000718s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000585s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000646s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.016634s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001082s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001038s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.015765s ]
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001054s ]
+NOTIC: [8] Undefined index: user_info D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 897 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001556s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001643s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.001101s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012980s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000866s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001248s ]
+NOTIC: [8] Undefined index: p D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.014084s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 0,10   [ RunTime:0.016295s ]
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.014592s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000819s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.001259s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.013781s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1498980957 ) AND ( `end_time` > 1498980957 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000898s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000809s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000790s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.014202s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.001866s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=7XscKap5fUh3H0EYO5U5Fb1n0fBMT8IFnITY0C1ZXH1sVEf1giATWP2qNLUnOQjZKmNacylFmSQt6WyUGCTn34gjc5xEr3OYJ7SWtZTr6CGwhOWM3XrC4pir45wvRie9TQQfAFAEBB) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Trying to get property of non-object D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: count D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined index: type D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 126 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 130 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 133 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 134 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 246 行.
+NOTIC: [8] Undefined variable: add_address D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 292 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024988s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025062s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000708s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000739s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000604s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000698s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002933s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001328s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001603s ]
+
+[ 2017-07-02T15:35:57+08:00 ] 127.0.0.1 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001199s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001313s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000978s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-07-02T15:35:58+08:00 ] 127.0.0.1 /wap/index/index.shtml?p=2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001367s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001498s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001374s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001480s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.013876s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001501s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001261s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000659s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.017254s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.001125s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001645s ]
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.019060s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 10,10   [ RunTime:0.002426s ]
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.012560s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000744s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000694s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.013818s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1498980958 ) AND ( `end_time` > 1498980958 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000602s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000842s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000777s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.014706s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.001794s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=7XscKap5fUh3H0EYO5U5Fb1n0fBMT8IFnITY0C1ZXH1sVEf1giATWP2qNLUnOQjZKmNacylFmSQt6WyUGCTn34gjc5xEr3OYJ7SWtZTr6CGwhOWM3XrC4pir45wvRie9TQQfAFAEBB) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Trying to get property of non-object D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.037301s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037445s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.002051s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000680s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000538s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000620s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004134s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000590s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000652s ]
+
+[ 2017-07-02T15:36:06+08:00 ] 127.0.0.1 /wap/index/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000681s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000748s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000492s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.014177s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001094s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001072s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.014261s ]
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000937s ]
+NOTIC: [8] Undefined index: user_info D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 897 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.002071s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001663s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.013432s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.001159s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001725s ]
+NOTIC: [8] Undefined index: p D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.013985s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 0,10   [ RunTime:0.002474s ]
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.011734s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.001025s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000871s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.012034s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1498980966 ) AND ( `end_time` > 1498980966 ) ORDER BY sort desc,add_time desc  [ RunTime:0.001524s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.001037s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000928s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.011711s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.002046s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=7XscKap5fUh3H0EYO5U5Fb1n0fBMT8IFnITY0C1ZXH1sVEf1giATWP2qNLUnOQjZKmNacylFmSQt6WyUGCTn34gjc5xEr3OYJ7SWtZTr6CGwhOWM3XrC4pir45wvRie9TQQfAFAEBB) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Trying to get property of non-object D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: count D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined index: type D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 126 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 130 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 133 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 134 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 246 行.
+NOTIC: [8] Undefined variable: add_address D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 292 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.021790s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021864s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000536s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000347s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000293s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000391s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001698s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000860s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000951s ]
+
+[ 2017-07-02T15:36:07+08:00 ] 127.0.0.1 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001790s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001957s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001294s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001404s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-07-02T15:36:08+08:00 ] 127.0.0.1 /wap/index/index.shtml?p=2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001056s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001179s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000990s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001161s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.016150s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000957s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000715s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000798s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.012135s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.001113s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001702s ]
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.017178s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 10,10   [ RunTime:0.001656s ]
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.013392s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000827s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000722s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.015277s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1498980968 ) AND ( `end_time` > 1498980968 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000695s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000643s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000539s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.013517s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000978s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=7XscKap5fUh3H0EYO5U5Fb1n0fBMT8IFnITY0C1ZXH1sVEf1giATWP2qNLUnOQjZKmNacylFmSQt6WyUGCTn34gjc5xEr3OYJ7SWtZTr6CGwhOWM3XrC4pir45wvRie9TQQfAFAEBB) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Trying to get property of non-object D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 50 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference D:\xampp\htdocs\yixiuge\Application\Common\common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\38f68afc7ecea78893812e4a4976b3ef.php 第 63 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024284s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024376s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000485s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000345s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000266s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000403s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001615s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000464s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000505s ]
+
+[ 2017-07-02T15:36:55+08:00 ] 127.0.0.1 /wap/member/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000705s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000779s ]
+NOTIC: [8] Constant __APP__ already defined D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Core\Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000488s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000543s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.013375s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000874s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012701s ]
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000904s ]
+NOTIC: [8] Undefined index: user_info D:\xampp\htdocs\yixiuge\Application\Modules\Wap\Action\BaseAction.class.php 第 897 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000944s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000804s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.011559s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000724s ]
+NOTIC: [2] file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Unable to find the wrapper &quot;https&quot; - did you forget to enable it when you configured PHP? D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [2] file_get_contents(https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=7XscKap5fUh3H0EYO5U5Fb1n0fBMT8IFnITY0C1ZXH1sVEf1giATWP2qNLUnOQjZKmNacylFmSQt6WyUGCTn34gjc5xEr3OYJ7SWtZTr6CGwhOWM3XrC4pir45wvRie9TQQfAFAEBB) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1069 行.
+NOTIC: [8] Trying to get property of non-object D:\xampp\htdocs\yixiuge\Application\Lib\Action\CommonAction.class.php 第 1070 行.
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001058s ]
+SQL: SHOW COLUMNS FROM `db_member_detail` [ RunTime:0.012314s ]
+SQL: SELECT * FROM `db_member_detail` WHERE ( `member_id` = '2' ) LIMIT 1   [ RunTime:0.000974s ]
+SQL: SELECT COUNT(*) AS tp_count FROM db_g_collect_goods coll LEFT JOIN db_g_goods goods on goods.goods_id=coll.goods_id WHERE ( coll.user_id = '2' ) AND ( `is_attention` = 1 ) LIMIT 1   [ RunTime:0.000613s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.012380s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member` WHERE ( recommend_code='00000002' or indirect_recommend_code='00000002' or indirect2_recommend_code='00000002' ) LIMIT 1   [ RunTime:0.000757s ]
+SQL: SELECT COUNT(*) AS tp_count FROM db_member_good_collect coll LEFT JOIN db_group_goods goods on goods.id=coll.goods_id WHERE ( coll.member_id = '2' ) LIMIT 1   [ RunTime:0.000669s ]
+SQL: SHOW COLUMNS FROM `db_member_consume_record` [ RunTime:0.012187s ]
+SQL: SELECT SUM(money) AS tp_sum FROM `db_member_consume_record` WHERE ( `member_id` = 2 ) AND ( `status` = 1 ) AND ( `type` = 5 ) AND ( `type5_type` = 1 ) LIMIT 1   [ RunTime:0.000814s ]
+SQL: SHOW COLUMNS FROM `db_g_order_info` [ RunTime:0.012521s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.000950s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 0 ) AND ( `order_status` = 0 ) AND ( `shipping_status` = 0 ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.000825s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 2 ) AND ( `shipping_status` IN ('0','3') ) AND ( `order_status` IN ('1','0') ) AND ( activity_id = 0 or (activity_id > 0 and activity_status = 1) ) LIMIT 1   [ RunTime:0.000799s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( `pay_status` = 2 ) AND ( `shipping_status` = 1 ) AND ( `order_status` IN ('1','5') ) LIMIT 1   [ RunTime:0.000704s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_info` WHERE ( `user_del` = 0 ) AND ( `user_id` = 2 ) AND ( ((pay_status = 2 and shipping_status=2 ) or (pay_status = 2 and shipping_status=1 and order_status in ('2','3','4')) or (pay_status = 0 and order_status = 2 )) and (activity_id = 0 or (activity_id > 0 and activity_status = 1)) ) LIMIT 1   [ RunTime:0.000768s ]
+SQL: SHOW COLUMNS FROM `db_g_order_refund_chat` [ RunTime:0.012325s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_order_refund_chat` WHERE ( `is_read` = 0 ) AND ( `member_id` = 2 ) AND ( `type` = 2 ) LIMIT 1   [ RunTime:0.000757s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: vip_i D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 64 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 103 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 107 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 110 行.
+NOTIC: [8] Undefined variable: share_para D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 111 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 223 行.
+NOTIC: [8] Undefined index: layer D:\xampp\htdocs\yixiuge\Application\Runtime\Cache\Wap\84365976067c7ee7078aff0bc6738c10.php 第 262 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014117s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014186s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' D:\xampp\htdocs\yixiuge\extend\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000462s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000344s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000262s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000400s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001609s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000688s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000773s ]
+

@@ -1,0 +1,186 @@
+[ 2017-02-18T01:34:09+08:00 ] 61.139.126.52 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000577s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001617s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000330s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000275s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001032s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '20538bfa60db13ce9e0f367ab34fc5bc' ) AND ( `add_time` > 1486143249 ) LIMIT 1   [ RunTime:0.000334s ]
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 33 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 34 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 35 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 36 行.
+NOTIC: [8] Undefined index:  member_status /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 898 行.
+
+[ 2017-02-18T01:34:09+08:00 ] 61.139.126.52 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000960s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001112s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000531s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000680s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000087s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000113s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000415s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '20538bfa60db13ce9e0f367ab34fc5bc' ) AND ( `add_time` > 1486143249 ) LIMIT 1   [ RunTime:0.000089s ]
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 33 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 34 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 35 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 36 行.
+NOTIC: [8] Undefined index:  tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 56 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.003190s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000370s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000456s ]
+NOTIC: [8] Undefined index:  member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 994 行.
+NOTIC: [8] Undefined index:  member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 995 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000415s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index:  member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 82 行.
+NOTIC: [8] Undefined index:  member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 83 行.
+NOTIC: [8] Undefined index:   /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 85 行.
+NOTIC: [8] Undefined index:  member_vip_type /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 86 行.
+NOTIC: [8] Undefined index:  recommend_code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 99 行.
+SQL: SELECT * FROM `db_member` WHERE ( member_card="" ) LIMIT 1   [ RunTime:0.000811s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001833s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000228s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.011946s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012076s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000474s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000400s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000296s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000465s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001872s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000688s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000782s ]
+
+[ 2017-02-18T12:25:33+08:00 ] 14.104.86.16 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000610s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000735s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000719s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000503s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000232s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:25:42+08:00 ] 101.226.125.105 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000650s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000086s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000081s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:25:42+08:00 ] 101.226.66.174 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000666s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000758s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000092s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000082s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:25:42+08:00 ] 101.226.65.108 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000790s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000512s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000123s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000085s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:25:43+08:00 ] 140.207.185.107 /wap/index/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000960s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001147s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000592s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000679s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000948s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000118s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000114s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:25:49+08:00 ] 101.226.51.226 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000573s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000695s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000628s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000105s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000081s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:26:54+08:00 ] 14.104.86.16 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000631s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000756s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000677s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000116s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined index:  code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 700 行.
+
+[ 2017-02-18T12:26:54+08:00 ] 175.155.112.40 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000583s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000708s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000656s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000090s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000085s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000451s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '8dbcf4ac03ba174d74c396397b5ee571' ) AND ( `add_time` > 1486182414 ) LIMIT 1   [ RunTime:0.000376s ]
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 33 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 34 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 35 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 36 行.
+NOTIC: [8] Undefined index:  member_status /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 898 行.
+
+[ 2017-02-18T12:26:55+08:00 ] 117.175.88.50 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000599s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000731s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000665s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000082s ]
+NOTIC: [8] Undefined index:  share /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 7 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000433s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4f4fa14bd8532287604778341c41b33a' ) AND ( `add_time` > 1486182415 ) LIMIT 1   [ RunTime:0.000365s ]
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 33 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 34 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 35 行.
+NOTIC: [8] Undefined index:  member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 36 行.
+NOTIC: [8] Undefined index:  member_status /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 898 行.
+

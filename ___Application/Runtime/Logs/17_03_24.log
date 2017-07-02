@@ -1,0 +1,145 @@
+[ 2017-03-24T00:55:42+08:00 ] 178.154.200.24 /robots.txt
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002175s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002387s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001396s ]
+NOTIC: [8] Undefined variable: group /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:Robots.txt
+
+[ 2017-03-24T11:13:19+08:00 ] 120.92.32.244 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001176s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001308s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.046569s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.004278s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.001013s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.004286s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '8d8494ff7b2fbeadaf69f7541d5b894c' ) AND ( `add_time` > 1489115599 ) LIMIT 1   [ RunTime:0.000638s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.002320s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000533s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.001377s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000294s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001968s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000177s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-03-24T11:13:20+08:00 ] 120.92.32.244 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.714798s ]
+INFO: [ route_check ] --END-- [ RunTime:0.715079s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000706s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000798s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001263s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000151s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000121s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000857s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '8d8494ff7b2fbeadaf69f7541d5b894c' ) AND ( `add_time` > 1489115599 ) LIMIT 1   [ RunTime:0.000204s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001231s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000107s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000098s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000268s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000920s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000128s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000129s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.020219s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020395s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.001502s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000881s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000640s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.007389s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010721s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001387s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001497s ]
+
+[ 2017-03-24T11:13:20+08:00 ] 120.92.32.244 /wap/login/binding_phone.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001197s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001468s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000793s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001741s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000129s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000144s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001096s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '8d8494ff7b2fbeadaf69f7541d5b894c' ) AND ( `add_time` > 1489115600 ) LIMIT 1   [ RunTime:0.000712s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001278s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000148s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000114s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000366s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001271s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000185s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+SQL: SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000184s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014894s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015022s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000618s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000442s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000337s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000537s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002167s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000814s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000913s ]
+

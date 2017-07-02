@@ -1,0 +1,68 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
+<!--
+Beyond Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3
+Version: 1.0.0
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title><?php echo ($webseting["web_title"]); ?>-网站后台管理</title>
+
+    <meta name="description" content="login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="__PUBLIC__/admin/img/favicon.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="__PUBLIC__/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="__PUBLIC__/admin/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!--Beyond styles-->
+    <link  href="__PUBLIC__/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="__PUBLIC__/admin/js/skins.min.js"></script>
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body>
+    <form action="__URL__/checkLogin" method="post"  >
+        <div class="login-container animated fadeInDown">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">登陆</div>
+                <div class="loginbox-or">
+                    <div class="or-line"></div>
+                    <div class="or">OR</div>
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="text" name='username' class="form-control" placeholder="账号" />
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="password" name='userpwd' class="form-control" placeholder="密码" />
+                </div>
+                <div class="loginbox-submit">
+                    <input type="submit" class="btn btn-primary btn-block" value="登陆">
+                </div>
+            </div>
+
+        </div>
+
+        <!--Basic Scripts-->
+        <script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+        <script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+
+        <!--Beyond Scripts-->
+        <script src="__PUBLIC__/admin/js/beyond.js"></script>
+
+  </form> 
+    
+</body>
+<!--Body Ends-->
+</html>

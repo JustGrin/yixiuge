@@ -1,0 +1,784 @@
+[ 2017-03-21T16:14:54+08:00 ] 223.104.9.4 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003633s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001800s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001812s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000571s ]
+NOTIC: [8] Undefined index: code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 673 行.
+
+[ 2017-03-21T16:14:55+08:00 ] 223.85.132.34 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000947s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001052s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000126s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000113s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001726s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = 'b6f86f6bdcfe1db43e76803e8b99bc6d' ) AND ( `add_time` > 1488874495 ) LIMIT 1   [ RunTime:0.000826s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.002141s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000632s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.001948s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000275s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001185s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000117s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-03-21T16:14:55+08:00 ] 124.161.23.11 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000755s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000908s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001066s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000141s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000123s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001268s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '06990c16650d57df19478c803a07b3a4' ) AND ( `add_time` > 1488874495 ) LIMIT 1   [ RunTime:0.000522s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001532s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000123s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000181s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000308s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001360s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000188s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-03-21T16:14:57+08:00 ] 223.104.9.4 /wap/index/index.shtml?code=011c0tbJ1iaqC704eMdJ1RQIbJ1c0tbL&state=123
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001852s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002041s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000563s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001089s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000124s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000122s ]
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 698 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001546s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4aea399e63cc75a998278a6daa0837d8' ) AND ( `add_time` > 1488874495 ) LIMIT 1   [ RunTime:0.000541s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001487s ]
+SQL: SELECT * FROM `db_member` WHERE ( `openid` = 'o1dgTv_J5HoZb_RwI9DY-2dkmfxk' ) LIMIT 1   [ RunTime:0.000563s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000457s ]
+NOTIC: [8] Undefined index: user_info /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 208 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000816s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000153s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000918s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000653s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000182s ]
+NOTIC: [8] Undefined index: p /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.002863s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 0,10   [ RunTime:0.005029s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.001333s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000556s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000247s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.001065s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1490084096 ) AND ( `end_time` > 1490084096 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000395s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000326s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000239s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.001125s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000372s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2] file_exists(): Unable to find the wrapper ".http" - did you forget to enable it when you configured PHP? /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 230 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 57 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: count /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 103 行.
+NOTIC: [8] Undefined index: type /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 108 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 161 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 165 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 173 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 174 行.
+NOTIC: [8] Undefined index: layer /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 286 行.
+NOTIC: [8] Undefined variable: add_address /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 332 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.040775s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040900s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.001391s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001307s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000724s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000947s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004539s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001039s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001132s ]
+
+[ 2017-03-21T16:14:58+08:00 ] 223.104.9.4 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000711s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000890s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000420s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000477s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-03-21T16:15:26+08:00 ] 223.104.9.4 /wap/goods/index/type/128.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001077s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001319s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000633s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001431s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000119s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000108s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000801s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4aea399e63cc75a998278a6daa0837d8' ) AND ( `member_id` = 2 ) LIMIT 1   [ RunTime:0.000382s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001071s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000218s ]
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000163s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000127s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000126s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000161s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001250s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000151s ]
+NOTIC: [8] Undefined index: order /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.000990s ]
+SQL: SELECT `cat_id` FROM `db_g_category` WHERE ( `cat_id` = 128 ) LIMIT 1   [ RunTime:0.000529s ]
+SQL: SELECT `cat_id` FROM `db_g_category` WHERE ( `parent_id` = 128 ) AND ( `is_show` = 1 )  [ RunTime:0.000250s ]
+NOTIC: [8] Undefined index: search /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 60 行.
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000105s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `parent_id` = 0 ) ORDER BY  need_check asc ,sort_order asc, cat_id asc  [ RunTime:0.000441s ]
+NOTIC: [8] Undefined index: p /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 78 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.001055s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`goods_browse`,`goods_salesvolume`,`base_name`,`base_logo`,`is_sell_out` FROM `db_g_goods` WHERE ( `cat_id` IN ('128') ) AND ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) ORDER BY is_sell_out asc,goods_id desc LIMIT 0,10   [ RunTime:0.002595s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000357s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_goods` WHERE ( `cat_id` IN ('128') ) AND ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) LIMIT 1   [ RunTime:0.000374s ]
+SQL: SELECT `cat_name` FROM `db_g_category` WHERE ( `cat_id` = 128 ) LIMIT 1   [ RunTime:0.000260s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 132 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 136 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 144 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 145 行.
+NOTIC: [8] Undefined index: layer /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 257 行.
+NOTIC: [8] Undefined index: search /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 374 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.030464s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030549s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000531s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000320s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000213s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000423s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001662s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000735s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000811s ]
+
+[ 2017-03-21T16:15:28+08:00 ] 223.104.9.4 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000729s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000885s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000515s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000579s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-03-21T16:15:30+08:00 ] 223.104.9.4 /wap/goods/index/type/99.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000724s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000872s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000422s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000481s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001165s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000090s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000673s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4aea399e63cc75a998278a6daa0837d8' ) AND ( `member_id` = 2 ) LIMIT 1   [ RunTime:0.000097s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000984s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000126s ]
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000160s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000108s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000113s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000167s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000804s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000096s ]
+NOTIC: [8] Undefined index: order /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 15 行.
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.000559s ]
+SQL: SELECT `cat_id` FROM `db_g_category` WHERE ( `cat_id` = 99 ) LIMIT 1   [ RunTime:0.000289s ]
+SQL: SELECT `cat_id` FROM `db_g_category` WHERE ( `parent_id` = 99 ) AND ( `is_show` = 1 )  [ RunTime:0.000312s ]
+NOTIC: [8] Undefined index: search /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 60 行.
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000096s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `parent_id` = 0 ) ORDER BY  need_check asc ,sort_order asc, cat_id asc  [ RunTime:0.000095s ]
+NOTIC: [8] Undefined index: p /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/GoodsAction.class.php 第 78 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.001082s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`goods_browse`,`goods_salesvolume`,`base_name`,`base_logo`,`is_sell_out` FROM `db_g_goods` WHERE ( `cat_id` IN ('99') ) AND ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) ORDER BY is_sell_out asc,goods_id desc LIMIT 0,10   [ RunTime:0.000669s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000097s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `db_g_goods` WHERE ( `cat_id` IN ('99') ) AND ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) LIMIT 1   [ RunTime:0.000355s ]
+SQL: SELECT `cat_name` FROM `db_g_category` WHERE ( `cat_id` = 99 ) LIMIT 1   [ RunTime:0.000276s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 73 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 83 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 90 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 132 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 136 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 144 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 145 行.
+NOTIC: [8] Undefined index: layer /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 257 行.
+NOTIC: [8] Undefined index: search /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/594cb8561d90c2da179f9a7323b73d72.php 第 374 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.023964s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024047s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000526s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000321s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000198s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000394s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001584s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000500s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000552s ]
+
+[ 2017-03-21T16:15:31+08:00 ] 223.104.9.4 /wap/index/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000740s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000905s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000420s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000476s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.002927s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000119s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000712s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4aea399e63cc75a998278a6daa0837d8' ) AND ( `member_id` = 2 ) LIMIT 1   [ RunTime:0.000180s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001162s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000196s ]
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000125s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000177s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000159s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000136s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000663s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000193s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000581s ]
+NOTIC: [8] Undefined index: p /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.002472s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 0,10   [ RunTime:0.000191s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.001337s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000156s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000114s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.001055s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1490084131 ) AND ( `end_time` > 1490084131 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000437s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000088s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000115s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.000994s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000113s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2] file_exists(): Unable to find the wrapper ".http" - did you forget to enable it when you configured PHP? /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 230 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 57 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: count /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 103 行.
+NOTIC: [8] Undefined index: type /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 108 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 161 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 165 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 173 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 174 行.
+NOTIC: [8] Undefined index: layer /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 286 行.
+NOTIC: [8] Undefined variable: add_address /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 332 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.039517s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039732s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000695s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000356s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000206s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000457s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001902s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000516s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000570s ]
+
+[ 2017-03-21T16:15:32+08:00 ] 223.104.9.4 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000761s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000940s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000529s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-03-21T16:15:33+08:00 ] 223.104.9.4 /wap/index/index.shtml?p=2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000704s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000878s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000466s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.005556s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000267s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000146s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000192s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001363s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000147s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000162s ]
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.001995s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 10,10   [ RunTime:0.001584s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.001092s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000122s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000136s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.000920s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1490084132 ) AND ( `end_time` > 1490084132 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000402s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000115s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000102s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.001063s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000128s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.034653s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034779s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000533s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000347s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000234s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000370s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001624s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000527s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000606s ]
+

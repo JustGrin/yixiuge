@@ -1,0 +1,267 @@
+<if condition ="$is_ajax neq 1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>商品-{$webseting.web_title}</title>
+<script type="text/javascript" src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.fly.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/swiper.min.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/public.css" />
+</head>
+
+<body class="category" ontouchstart="" onmouseover="">
+<div class="head">
+	<a href="javascript:history.go(-1)" class="md-close back">
+		<i class="iconfont">&#xe617</i>
+	</a>
+	<h2 >分类</h2>
+</div>
+<div class="catnav">
+	<div class="cat-container">
+		<ul class="swiper-wrapper">
+			<li  class="swiper-slide <if condition="$_GET['type'] eq 0">on</if>">
+			<a href="{$return_url}?type=0" title="全部">
+				<img src="/Public/wap/img/caticon/ganhuo.jpg">
+			</a>
+			<h4>全部</h4>
+			</li>
+			<volist name="g_category" id="vo">
+
+				<li  class="swiper-slide <if condition="$_GET['type'] eq $vo['cat_id']">on</if>">
+					<a href="{$vo.category_url}" title="{$vo.cat_desc}"> <img src="{:thumbs_auto($vo['cat_icon'], 600, 255)}g" alt="{$vo.cat_desc}"> </a>
+					<h4>{$vo.cat_name}</h4>
+			    </li>
+		    </volist>
+	    </ul>
+		<div class="cat-pagination"></div>
+    </div>
+  </div>
+
+  <div class="screen">
+	  <a href="javascript:void(0);" class=" all_chk on"  data="0" order="all_chk">
+		  <i class="iconfont">&#xe601</i> 新品
+	  </a>
+	  <a href="javascript:void(0);" class=" browse" data="0" order="browse">
+		  <i class="iconfont">&#xe653</i> 人气 <i class="iconfont scr sx" style="display: none">&#xe457</i>
+		  <i class="iconfont scr xx" style="display: none">&#xe634</i>
+	  </a>
+	  <a href="javascript:void(0);" class=" sales" data="0" order="sales">
+		  <i class="iconfont">&#xe64f</i> 销量 <i class="iconfont scr sx" style="display: none">&#xe457</i>
+		  <i class="iconfont scr xx" style="display: none">&#xe634</i>
+	  </a>
+	  <a href="javascript:void(0);" class=" prices" data="0" order="prices">
+		  <i class="iconfont">&#xe641</i> 价格 <i class="iconfont scr sx" style="display: none">&#xe457</i>
+		  <i class="iconfont scr xx" style="display: none">&#xe634</i>
+	  </a>
+  </div>
+
+<div class="page">
+  <div class="list more_html">
+  </if>
+    <volist name="list" id="vo">
+    <if condition="$vo.is_sell_out eq 1" >
+    <div class="goods sell_out">
+      <else/>
+      <div class="goods">
+        </if>
+        <div class="item">
+          <if condition="$vo.is_sell_out eq 1" >
+            <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}" class="is_sell_out">
+            </a>
+            </if>
+          <div class="goodsimg imgnobg">
+            <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
+              <img src="{$vo.goods_img} " alt="" />
+            </a>
+            </div>
+          <div class="title">
+            <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
+              {$vo.goods_name}
+              </a>
+            </div>
+          <div class="pirce">
+            <span class="blue">¥<span class="num">{$vo.shop_price}</span></span>
+            <!--<div class="browse">已售:<span class="num">{$vo.goods_browse}</span>件</div>-->
+            </div>
+          <div class="addcart" onClick="" goods_id="{$vo.goods_id}" img_url="{$vo.goods_img}" unit_price="{$vo.unit_price}" units="{$vo.units}"goods_attr_id="{$vo.goods_attr_id}">
+            <i class="iconfont">&#xe612</i>
+            </div>
+          </div>
+      </div>
+      </volist>
+  <if condition ="$is_ajax neq 1">
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="loading">
+      <div class="fm-footer-copyright get_more">
+        <if condition="$count gt 10 && count($list) eq 10"> 加载更多
+          <else/>
+          无更多数据 </if>
+      </div>
+    </div>
+</div></div>
+<input type="hidden" name="p" data="2" value="2" />
+<input type="hidden" name="type" value="{$_GET['type']?$_GET['type']:all_chk}" />
+<input type="hidden" name="order" value="" data="" />
+<include file="Public/footer_new"/>
+<script>
+	    var swiper = new Swiper('.cat-container', {
+        pagination: '.cat-pagination',
+        slidesPerView:5,
+        paginationClickable: true,
+    });
+	
+	
+    </script>
+<script type="text/javascript">
+	var load_more=0;
+	var load_none=0;
+	$(function(){
+		//滚动加载
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight) {
+				//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+				if(load_none!=1){
+					if(load_more==1){
+						$('.get_more').html('加载中......');
+					}else{
+						get_more();
+					}
+				}
+			}
+		});
+		$(window).load(function () {
+			get_more();
+		});
+
+		//加入购物车
+		$(document).on('click', '.addcart', function () {
+			var goods_id = $(this).attr('goods_id');
+			var goods_attr_id = $(this).attr('goods_attr_id');
+			var img = $(this).attr('img');
+			var goods_num = 1;
+			var share = $('input[name="share"]').val();
+			$.ajax({
+				url: "{:U('wap/cart/add_cart')}",
+				type:'get',
+				data: {goods_id:goods_id,goods_attr_id:goods_attr_id,goods_num:goods_num,share:share},
+				dataType: 'json',
+				success: function(data){
+					if(data.status==1){
+						layer.msg('加入成功', {icon: 6});
+						var flyer = $('<img style="display:block;width:50px;height:50px;border-radius:50px;position: fixed;z-index: 9999;" src="' + img + '">');      //抛物体对象
+					}else{
+						layer.msg(data.error, {icon: 5});
+					}
+				}
+			});
+		});
+	});
+	function company_check() {
+		var msg = '浏览该商品分类需要完善公司信息<br>并审核通过方可进行';
+			//询问框
+			//var msg='亲 浏览商品需要审核信息<br>请完善您的姓名(必填),电话(必填),以及工作单位,待后台工作人员审核通过之后方可浏览';
+			layer.confirm(msg, {
+				btn: ['好的去完善','不用了']//按钮
+			}, function(){
+				location.href="<?php  echo U('wap/goods/company_check');?>";
+			}, function(){
+				layer.closeAll();
+			});
+
+	}
+
+	$(".get_more").click(function(){
+		get_more();
+	});
+
+	function get_more(){
+		load_more=1;
+		var html=' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+		$('.get_more').html('加载中'+html);
+		//var p=$("input[name='p']").val();
+		var search='<?php echo $_GET["search"] ?>';
+		var p=$("input[name='p']").attr('data');
+		var type=$("input[name='type']").val();
+		var order=$("input[name='order']").val();
+		$.ajax({
+			url: "{:U('wap/goods/index')}",
+			type:'get',
+			data: {p:p,type:type,order:order, search: search},
+			dataType: 'html',
+			success: function(data){
+				//console.log(data);
+				var con=1;
+				if (data != undefined || data != null){
+					option = data;
+				}
+
+				if(p==1){
+					$('.more_html').html(option);
+				}else{
+					$('.more_html').append(option);
+				}
+				load_more = 0;
+				if (option) {
+					$("input[name='p']").val(parseInt(p) + 1);
+				}
+				if(con<10){
+					load_none = 1;
+					$('.get_more').html('无更多数据');
+					$('.get_more').fadeOut('3000');
+				}
+			}
+		});
+	}
+	$(".screen a").click(function () {
+		var data=$(this).attr('data');
+		var order_by=$(this).attr('order');
+		var last_click=$("input[name='order']").attr('data');
+		if(last_click != order_by ){
+			data = 1;
+			if(order_by == 'prices'){
+				data = 2 ;
+			}
+		}
+		var order;
+		$('.xx').hide();
+		$('.sx').hide();
+		if(data==1){
+			$(this).attr('data','2');
+			order=order_by+"1";
+			$(this).find('.xx').show();
+			$(this).find('.xx').css('display', 'inline-block');
+		}else{
+			$(this).attr('data','1');
+			$(this).find('.sx').show();
+			$(this).find('.sx').css('display', 'inline-block');
+			order=order_by+"2";
+		}
+		$('.screen a').removeClass('on');
+		$(this).addClass('on');
+		//$("input[name='p']").val(1);
+		$("input[name='p']").attr('data',1);
+		$("input[name='order']").val(order);
+		$("input[name='order']").attr('data',order_by);
+		 load_more=0;
+		load_none=0;
+		$('.get_more').show();
+		get_more();
+	});
+</script>
+</body>
+</html>
+</if>

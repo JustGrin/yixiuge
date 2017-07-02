@@ -1,0 +1,790 @@
+[ 2017-04-16T17:53:45+08:00 ] 223.104.9.12 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001420s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001563s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001827s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001346s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000236s ]
+NOTIC: [8] Undefined index: code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 673 行.
+
+[ 2017-04-16T17:53:48+08:00 ] 223.104.9.12 /wap/index/index.shtml?code=021UEJfr1oTvrp0PJWer1uDmfr1UEJfh&state=123
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002232s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002376s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000528s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000982s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000082s ]
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 698 行.
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001785s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '118db2880f533577d96c82687415fbe5' ) AND ( `add_time` > 1491126826 ) LIMIT 1   [ RunTime:0.000602s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001200s ]
+SQL: SELECT * FROM `db_member` WHERE ( `openid` = 'o1dgTv_J5HoZb_RwI9DY-2dkmfxk' ) LIMIT 1   [ RunTime:0.000501s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000337s ]
+NOTIC: [8] Undefined index: user_info /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 208 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 767 行.
+SQL: SELECT `is_guanzhu` FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000751s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000144s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000589s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001310s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000449s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000111s ]
+NOTIC: [8] Undefined index: p /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.001602s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 0,10   [ RunTime:0.003941s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.001326s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000518s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000283s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.001419s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1492336427 ) AND ( `end_time` > 1492336427 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000397s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000270s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000285s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.005024s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000849s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1100 行.
+NOTIC: [8] Undefined variable: ch /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+NOTIC: [2] curl_setopt() expects parameter 1 to be resource, null given /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1101 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2] file_exists(): Unable to find the wrapper ".http" - did you forget to enable it when you configured PHP? /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 230 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 57 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 67 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 68 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 69 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 70 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 71 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: count /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 103 行.
+NOTIC: [8] Undefined index: type /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 108 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 161 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 165 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 173 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 174 行.
+NOTIC: [8] Undefined index: layer /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 286 行.
+NOTIC: [8] Undefined variable: add_address /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 332 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.035103s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035201s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000974s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000944s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000665s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000721s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003467s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000900s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000953s ]
+
+[ 2017-04-16T17:53:48+08:00 ] 223.104.9.12 /Uploads/default.jpgg
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000688s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000825s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000477s ]
+ERR: 无法加载模块:Uploads
+
+[ 2017-04-16T17:53:48+08:00 ] 124.161.23.60 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000583s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000761s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000092s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000665s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '0ce856b44e234c960dd26c93726d7d19' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000631s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000761s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000299s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.027497s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000342s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000909s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000135s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 124.161.23.11 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000704s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000702s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000469s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = 'c49d1c2e5e6a32a5752a1f9220825ccc' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000502s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001155s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000121s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.015755s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000195s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000971s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000126s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 175.155.112.40 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000573s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001051s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000142s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000090s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001026s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '53a1e6f0caf7c1f15deb3be73a587b43' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000706s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001051s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000093s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.023828s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000363s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000981s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000138s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 223.85.132.34 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000465s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000580s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000677s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000152s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000634s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '4b4933e7af809b519f7a5acbadc7e1c6' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000400s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000717s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000080s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000170s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000775s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000192s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 223.85.132.34 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000464s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000588s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000648s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000096s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000505s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '508680fc3f13d2f24c307131acd1fd81' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000398s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000754s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000099s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000227s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000950s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000165s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 117.175.88.50 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000560s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000921s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000120s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000108s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000767s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '55f4e00d18055abcf49eb2fbadc49707' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000522s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000923s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000104s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000082s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000200s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000862s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000199s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 175.155.112.40 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000461s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000566s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000573s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000517s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '61bb1f54c2d3838027e2a4a6a1acbc73' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000452s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000738s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000098s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000111s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000211s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000722s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000119s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 124.161.23.11 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000455s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000562s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000626s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000087s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000119s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000440s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = 'd2f45ef2ef5f1e9de00e6348bdd74250' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000346s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000737s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000082s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000191s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000606s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000120s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 175.155.112.40 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000679s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000779s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000105s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000454s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = 'e11b05cecc8d64c954db9c3f65e1e58d' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000396s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000742s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000107s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000081s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000225s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000672s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000120s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 223.85.132.24 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000442s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000590s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000601s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000087s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000483s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = 'c14a1c8c4efc2c47ed7430505d116dc9' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000404s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000774s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000079s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000133s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000548s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000118s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 223.85.132.23 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000580s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000579s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000469s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '7fcf39b5f4ceecf37eec9ce9ae023ed1' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000417s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000740s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000102s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000181s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000574s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000137s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:48+08:00 ] 223.85.132.23 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000566s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000779s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000103s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000085s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000518s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '7857b12dc42542eb3a7d24a0707f7264' ) AND ( `add_time` > 1491126828 ) LIMIT 1   [ RunTime:0.000475s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000815s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000099s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000270s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000773s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000121s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T17:53:50+08:00 ] 223.104.9.12 /wap/index/index.shtml?p=2
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000728s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000874s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000504s ]
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001306s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000101s ]
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000152s ]
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001059s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000099s ]
+SQL: SELECT * FROM `db_member` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.000114s ]
+SQL: SHOW COLUMNS FROM `db_g_goods` [ RunTime:0.001232s ]
+SQL: SELECT `goods_id`,`goods_name`,`shop_price`,`market_price`,`goods_brief`,`goods_img`,`vip_price`,`unit_price`,`units`,`base_name`,`base_logo`,`subtitle`,`goods_browse` FROM `db_g_goods` WHERE ( `is_on_sale` = 1 ) AND ( `is_delete` = 0 ) AND ( `is_auditing` = 1 ) AND ( `is_show_index` = 1 ) ORDER BY is_sell_out asc,sort_order desc,goods_id desc LIMIT 10,10   [ RunTime:0.000978s ]
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+SQL: SHOW COLUMNS FROM `db_ad` [ RunTime:0.000753s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 1 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000091s ]
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 2 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc LIMIT 1   [ RunTime:0.000086s ]
+SQL: SHOW COLUMNS FROM `db_home_ad` [ RunTime:0.000669s ]
+SQL: SELECT `id`,`type`,`end_time`,`value`,`title`,`image_path` FROM `db_home_ad` WHERE ( `status` = 1 ) AND ( `start_time` <= 1492336430 ) AND ( `end_time` > 1492336430 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000314s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/IndexAction.class.php 第 50 行.
+SQL: SELECT * FROM `db_ad` WHERE ( `type` = 9 ) AND ( `status` = 1 ) ORDER BY sort desc,add_time desc  [ RunTime:0.000086s ]
+SQL: SELECT `status_c` FROM `db_member_verification` WHERE ( member_id=2 ) LIMIT 1   [ RunTime:0.000081s ]
+SQL: SHOW COLUMNS FROM `db_g_category` [ RunTime:0.000759s ]
+SQL: SELECT * FROM `db_g_category` WHERE ( `is_exhibition` = 1 ) ORDER BY sort_order asc, cat_id asc  [ RunTime:0.000092s ]
+NOTIC: [8] Undefined property: stdClass::$errcode /home/yixiugegygi4xtigudgge/wwwroot/Application/Lib/Action/CommonAction.class.php 第 1070 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+NOTIC: [8] Undefined variable: share_para /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 74 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [2048] Only variables should be passed by reference /home/yixiugegygi4xtigudgge/wwwroot/Application/Common/common.php 第 224 行.
+NOTIC: [8] Undefined index: goods_attr_id /home/yixiugegygi4xtigudgge/wwwroot/Application/Runtime/Cache/Wap/38f68afc7ecea78893812e4a4976b3ef.php 第 97 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024347s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024420s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000395s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000311s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000198s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001410s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000492s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000548s ]
+
+[ 2017-04-16T17:53:55+08:00 ] 101.226.33.238 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000556s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000671s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000133s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000086s ]
+NOTIC: [8] Undefined index: code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 673 行.
+
+[ 2017-04-16T17:53:56+08:00 ] 180.163.2.117 /wap/index/index.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000613s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000746s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000364s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000413s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000709s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000100s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000104s ]
+NOTIC: [8] Undefined index: code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 673 行.
+
+[ 2017-04-16T18:41:38+08:00 ] 223.104.9.12 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000467s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000572s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.002341s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000437s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000414s ]
+NOTIC: [8] Undefined index: code /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 673 行.
+
+[ 2017-04-16T18:41:38+08:00 ] 182.131.11.251 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000471s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000575s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001117s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000110s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.001425s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '7668ba3eec01523e168ecaf893749a88' ) AND ( `add_time` > 1491129698 ) LIMIT 1   [ RunTime:0.000384s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.001437s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000284s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000242s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000230s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.001521s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000120s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+
+[ 2017-04-16T18:41:38+08:00 ] 223.85.132.35 /
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000466s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000579s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.001140s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000092s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SHOW COLUMNS FROM `db_member_rember_token` [ RunTime:0.000665s ]
+SQL: SELECT * FROM `db_member_rember_token` WHERE ( `session_id` = '9f7a3e26517cd79f099a34f110afd300' ) AND ( `add_time` > 1491129698 ) LIMIT 1   [ RunTime:0.000392s ]
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 27 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 29 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 30 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 31 行.
+NOTIC: [8] Undefined index: member /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 32 行.
+NOTIC: [8] Undefined index: tuijian_user /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 48 行.
+SQL: SHOW COLUMNS FROM `db_member` [ RunTime:0.000932s ]
+SQL: SELECT `recommend_code` FROM `db_member` WHERE ( `id` = 0 ) LIMIT 1   [ RunTime:0.000111s ]
+SQL: SELECT `member_name`,`member_logo` FROM `db_member` WHERE ( `member_card` = 'yixiuge' ) LIMIT 1   [ RunTime:0.000080s ]
+NOTIC: [8] Undefined index: member_card /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 970 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 971 行.
+SQL: SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1   [ RunTime:0.000234s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `member_vip_type` FROM `db_member` WHERE ( id= ) LIMIT 1  
+NOTIC: [8] Undefined index: member_name /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 74 行.
+NOTIC: [8] Undefined index: member_logo /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 75 行.
+NOTIC: [8] Undefined index:  /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Wap/Action/BaseAction.class.php 第 77 行.
+SQL: SHOW COLUMNS FROM `db_member_verification` [ RunTime:0.000977s ]
+SQL: SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1   [ RunTime:0.000117s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `db_member_verification` WHERE ( member_id= ) LIMIT 1  
+

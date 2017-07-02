@@ -1,0 +1,214 @@
+<if condition="$is_ajax neq 1">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/icons.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/public.css" />
+</head>
+<body class="index" ontouchstart="" onmouseover="">
+<div class="swiper-container goodsshow">
+	<div class="swiper-wrapper">
+		<volist name="ad1" id='vo'>
+			<div class="swiper-slide"> <a href="<if condition="$vo['link'] neq ''">{:U($vo['link'])}<else/>javascript:void(0)</if>"> <img data-src="{$vo.image_path}" class="swiper-lazy"> </a>
+				<div class="swiper-lazy-preloader swiper-lazy-preloader-white"> </div>
+		    </div>
+	    </volist>
+    </div>
+	<div class="swiper-pagination swiper-pagination-white"> </div>
+  </div>
+  <div class="bggreen">
+	  <div class="catnav">
+		  <div class="cat-container">
+			  <ul class="swiper-wrapper">
+				  <volist name="g_category" id="vo">
+					  <li  class="swiper-slide ">
+						  <a href="{$vo.category_url}" title="{$vo.cat_desc}"> <img src="{:thumbs_auto($vo['cat_icon'], 600, 255)}g"> </a>
+						  <h4>{$vo.cat_name}</h4>
+					  </li>
+				  </volist>
+			  </ul>
+			  <div class="cat-pagination"></div>
+		  </div>
+	  </div>
+  </div>
+  <div class="rec clearfix">
+	  <div class="col2 brdr" style="height:5rem"> <a href="<if condition="$ad4[0]['link'] neq ''">{$ad4[0]['link']}<else/>javascript:void(0)</if>"> <img src="{:thumbs_auto($ad4[0]['image_path'], 250, 310)}"> </a> </div>
+	  <div class="col3">
+		  <div class="col100 brdb" style="height:2rem"> <a href="<if condition="$ad4[1]['link'] neq ''">{$ad4[1]['link']}<else/>javascript:void(0)</if>"> <img src="{:thumbs_auto($ad4[1]['image_path'], 372, 123)}"> </a> </div>
+		  <div class="clearfix"> </div>
+		  <div class="col50 brdr" style="height:3rem"> <a href="<if condition="$ad4[2]['link'] neq ''">{$ad4[2]['link']}<else/>javascript:void(0)</if>"><img src="{:thumbs_auto($ad4[2]['image_path'], 186, 186)}"></a></div>
+		  <div class="col50 " style="height:3rem"> <a href="<if condition="$ad4[3]['link'] neq ''">{$ad4[3]['link']}<else/>javascript:void(0)</if>"> <img src="{:thumbs_auto($ad4[3]['image_path'], 186, 186)}"> </a> </div>
+		  <div class="clearfix"> </div>
+	  </div>
+  </div>
+  <div class="indexlist more_html">
+	  
+  </if>
+	  <volist name="goods_list" id="vo">
+	    <div class="goods"> <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}">
+	      <div class="item">
+	        <div class="goodsimg imgnobg">
+	          <img src="{:thumbs_auto($vo['goods_img'], 200, 200)}" alt="" /> </div>
+	        <div class="info">
+	          
+	          <div class="title"> {$vo.goods_name} </div>
+	          <div class="pirce"> 	            
+	            <span class="blue">¥<span class="num">{$vo.shop_price}</span></span>
+	            <!--<div class="browse">已售:<span class="num">{$vo.goods_browse}</span>件</div>--> </div>
+	          </div>
+	        </div>
+	      </a>
+	      <div class="addcart" onClick="" goods_id="{$vo.goods_id}" img_url="{:thumbs_auto($vo['goods_img'], 200, 200)}" goods_price="{$vo.shop_price}" goods_attr_id="{$vo.goods_attr_id}"> <i class="iconfont">&#xe612</i> </div>
+	      </div>
+      </volist>
+  <if condition="$is_ajax neq 1">
+  </div>
+  <div class="clearfix"> </div>
+  <div class="loading">
+	  <div class="fm-footer-copyright get_more">
+		  <if condition="$count gt 10 && count($list) eq 10"> 加载更多
+			  <else/>
+			  无更多数据 </if>
+	  </div>
+  </div>
+  <input type="hidden" name="type" value="{$_GET['type']}" />
+  <input type="hidden" name="order" value="" />
+  <input type="hidden" name="goods_attr_id" value="" >
+  <input type="hidden" name="p" data="2" value="2" />
+<include file="Public/tools"/> <include file="Public/footer_new"/> 
+<script src="__PUBLIC__/wap/js/swiper.min.js"></script> 
+<script>
+	function add_adress() {
+		//询问框
+		var msg='亲 您已成功升级为{$level_name}<br>属于你的峰购大礼包迷路了，请完善你的收货地址，大礼包即时送货上门喔！';
+		layer.confirm(msg, {
+			btn: ['马上领取','暂时不用']//按钮
+		}, function(){
+			location.href="<?php  echo U('wap/start/gift_address',array('order_sn'=>$add_address['order_sn']));?>";
+		}, function(){
+
+		});
+	}
+
+
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		preloadImages: false,
+		lazyLoading: true,
+		autoplay: 3000
+	});
+
+
+
+	var swiper = new Swiper('.cat-container', {
+		pagination: '.cat-pagination',
+		slidesPerView:5,
+		paginationClickable: true
+	});
+	
+	
+	    var swiper = new Swiper('.swiper-book', {
+		autoplay: 3000,
+        spaceBetween: 30,
+        effect: 'fade'
+    });
+	
+	
+var load_more=0;
+	var load_none=0;
+	$(function(){
+		//滚动加载
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight) {
+				//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+				if(load_none!=1){
+					if(load_more==1){
+						$('.get_more').html('加载中......');
+					}else{
+						get_more();
+					}
+				}
+			}
+		});
+		$(window).load(function () {
+			get_more();
+		});
+
+		$(".get_more").click(function(){
+			get_more();
+		});
+
+		function get_more(){
+			load_more=1;
+			var html=' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">';
+			$('.get_more').html('加载中'+html);
+			var p=$("input[name='p']").attr('data');
+			$.ajax({
+				url: "{:U('wap/index/index')}",
+				type:'get',
+				data: {p:p},
+				dataType: 'html',
+				success: function(data){
+					//console.log(data);
+					var con=1;
+					if (data != undefined || data != null){
+						option = data;
+					}
+
+					if(p==1){
+						$('.more_html').html(option);
+					}else{
+						$('.more_html').append(option);
+					}
+					load_more = 0;
+					if (option) {
+						$("input[name='p']").val(parseInt(p) + 1);
+					}
+					if(con<10){
+						load_none = 1;
+						$('.get_more').html('无更多数据');
+						$('.get_more').fadeOut('3000');
+					}
+				}
+			});
+		}
+	});
+	//加入购物车
+	$(document).on('click', '.addcart', function () {
+		var goods_id = $(this).attr('goods_id');
+		var goods_attr_id = $(this).attr('goods_attr_id');
+		var img = $(this).attr('img');
+		var goods_num = 1;
+		var share = $('input[name="share"]').val();
+		$.ajax({
+			url: "{:U('wap/cart/add_cart')}",
+			type:'get',
+			data: {goods_id:goods_id,goods_attr_id:goods_attr_id,goods_num:goods_num,share:share},
+			dataType: 'json',
+			success: function(data){
+				if(data.status==1){
+					layer.msg('加入成功', {icon: 6});
+					var flyer = $('<img style="display:block;width:50px;height:50px;border-radius:50px;position: fixed;z-index: 9999;" src="' + img + '">');      //抛物体对象
+				}else{
+					layer.msg(data.error, {icon: 5});
+				}
+			}
+		});
+	}); 
+</script>
+</body>
+</html>
+</if>

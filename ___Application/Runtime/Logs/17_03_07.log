@@ -1,0 +1,63 @@
+[ 2017-03-07T03:59:00+08:00 ] 188.35.22.19 /admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001535s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001723s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001276s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001337s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000817s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.001066s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000222s ]
+NOTIC: [8] Undefined offset: 2 /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Admin/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined offset: 2 /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Admin/Action/BaseAction.class.php 第 7 行.
+NOTIC: [8] Undefined offset: 2 /home/yixiugegygi4xtigudgge/wwwroot/Application/Modules/Admin/Action/BaseAction.class.php 第 7 行.
+
+[ 2017-03-07T03:59:02+08:00 ] 188.35.22.19 /Admin/Index/login.shtml
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000770s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000928s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000510s ]
+SQL: SHOW COLUMNS FROM `db_sys_param` [ RunTime:0.000672s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_title' ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT `param_value` FROM `db_sys_param` WHERE ( `param_code` = 'web_copyright' ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SELECT g.auid,`group_id`,`title`,`rules` FROM db_admin_group_access a LEFT JOIN db_admin_group g on a.group_id=g.id WHERE ( a.auid='' and g.status='1' )  [ RunTime:0.000359s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`icon`,`icon_style` FROM `db_admin_rule` WHERE ( `type` = 0 ) AND ( `status` = 1 ) AND ( `is_hide` = 0 ) AND ( `is_del` = 0 )  [ RunTime:0.000928s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.019563s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019687s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_GROUP_PATH - assumed 'APP_GROUP_PATH' /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Behavior/ContentReplaceBehavior.class.php 第 49 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000888s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000704s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000598s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000891s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003379s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001108s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001199s ]
+
+[ 2017-03-07T03:59:11+08:00 ] 188.35.22.19 /Public/admin/css/demo.min.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000718s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000945s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000454s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000515s ]
+ERR: 无法加载模块:Public
+
+[ 2017-03-07T05:44:33+08:00 ] 130.193.37.23 /robots.txt
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000719s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000872s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000430s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000491s ]
+NOTIC: [8] Undefined variable: group /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:Robots.txt
+

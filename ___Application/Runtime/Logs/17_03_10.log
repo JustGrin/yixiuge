@@ -1,0 +1,11 @@
+[ 2017-03-10T06:57:05+08:00 ] 130.193.37.23 /robots.txt
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001863s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002106s ]
+NOTIC: [8] Constant __APP__ already defined /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/Dispatcher.class.php 第 143 行.
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001182s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001248s ]
+NOTIC: [8] Undefined variable: group /home/yixiugegygi4xtigudgge/wwwroot/extend/ThinkPHP/Lib/Core/App.class.php 第 95 行.
+ERR: 无法加载模块:Robots.txt
+
