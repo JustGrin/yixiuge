@@ -1,0 +1,241 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									 <h1 class="mainTitle">会员列表</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					  <label for="member_name" class="sr-only">
+						姓名
+					  </label>
+						<input type="text" name="member_name" value="{$_GET.member_name}" id="member_name" placeholder="姓名" class="form-control">
+				</div>
+				<div class="form-group">
+					  <label for="mobile" class="sr-only">
+						电话
+					  </label>
+						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="is_check" class="sr-only">
+						冻结
+					</label>
+					<select class="form-control" id="is_check" name="is_check">
+						<option value="all" <if condition="$_GET['is_check'] =='all'">selected</if>>全部状态</option>
+						<option value="0" <if condition="$_GET['is_check'] =='0'">selected</if>>未审核</option>
+						<option value="1" <if condition="$_GET['is_check'] ==1">selected</if>>通过</option>
+						<option value="2" <if condition="$_GET['is_check'] ==2">selected</if>>不通过</option>
+					</select>
+				</div>
+		</div>
+ <div class="panel-body">
+
+	<div class="form-group">
+		<label  class="sr-only">
+			状态
+		</label>
+	  <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+		--
+		 <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}" placeholder="注册时间"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		</p>
+
+	</div>
+<div class="form-group  " style="margin-top: -10px;">
+    <button class="btn btn-primary" type="submit">
+		提交
+	</button>
+	</div>
+
+
+ </div>
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>标题</th>
+						<th>会员卡号</th>
+						<th>会员名</th>
+						<th>编辑时间</th>
+						<th>审核</th>
+						<th>不通过理由</th>
+						<!--<th>状态</th>-->
+						<th>查看信息</th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"></td>
+						<td>{$vo.title}</td>
+						<td> 
+							<a href="{:U('Admin/Member/member_edit',array('id'=>$vo['id']))}" >
+							{$vo.member_card}
+						</a>
+						</td>
+						<td>{$vo.member_name}</td>
+
+						<td>{$vo.change_time|date="Y-m-d H:i",###}	</td>
+						<td id="check{$vo.id}">
+							<select class="is_check" data-id="{$vo.id}" name="is_check" >
+								<option value="0" <if condition="$vo.is_check eq 0">selected</if>>未审核</option>
+								<option value="1" <if condition="$vo.is_check eq 1">selected</if>>通过</option>
+								<option value="2" <if condition="$vo.is_check eq 2">selected</if>>不通过</option>
+							</select>
+						</td>
+						<td>
+							<textarea class="remark" data-id="{$vo.id}" name= 'remark' >{$vo.remark}</textarea>
+						</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							<a href="{:U('Wap/carinfo/msg_detail',array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" target="view_window" tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+<script type="text/javascript">
+	$(function () {
+		$('.is_check').change(function () {
+			var value=$(this).val();
+			var id=$(this).attr('data-id');
+			var type='is_check';
+			//var remark=$('.remark').val();
+			// alert(remark);
+			changeCheck(id,value,type);
+
+		});
+	});
+	$('.remark').change(function () {
+		var value=$(this).val();
+		var id=$(this).attr('data-id');
+		var type='remark';
+		changeCheck(id,value,type);
+	});
+	function changeCheck(id,value,type){
+
+		if(confirm('确定设置?')){
+			$.ajax({
+				url:'{:U("Admin/Usedcar/do_msg_check")}',
+				type:'get',
+				data:'id='+id+'&value='+value+'&type='+type,
+				dataType:'json',
+				success : function(data){
+					console.log(data);
+					if(data.status==1){
+						layer.msg('设置成功',{icon:6},function () {
+							if (data.is_check == 2){
+								layer.msg('请填入不通过原因');
+							}
+						});
+					}else{
+						layer.msg(data.error,{icon:5});
+					}
+				}
+			})
+		}
+	}
+
+
+	$('.slide').click(function (e) {
+		$('.slide').removeAttr('style');
+		$('.slide').find('img').animate({'max-width':'100px','max-height':'100px'});
+		$(this).animate({'width':'300px','height':'300px'});
+		$(this).find('img').animate({'max-width':'300px','max-height':'300px'});
+		e.stopPropagation();
+	});
+	$(document).click(function (e) {
+		$('.slide').removeAttr('style');
+		$('.slide').find('img').animate({'max-width':'100px','max-height':'100px'});
+	});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>订单详情-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/order.css" />
+</head>
+<body class="orderinfo">
+	<div class="orderstate"  style="background:#4183d7  url(../images/member/1.png) no-repeat 90% center;background-size: auto 100%; ">
+		<div class="state">
+			<h4>
+				<if condition="$data['pay_status'] eq 2">
+					<if condition="$data['offline'] eq 1">
+						货到付款
+					<elseif condition="($data['offline'] neq 1) and ($data['shipping_status'] neq 0)" />
+						{$shipping_status[$data['shipping_status']]}
+					<else/>
+						{$pay_status[$data['pay_status']]}
+					</if>
+				<elseif condition="$data['order_status'] eq 2"/>
+					{$order_status[$data['order_status']]}
+				<else/>
+					{$pay_status[$data['pay_status'] + 100]}
+				</if>
+			</h4>
+			<!--<p class="time">剩2天23小时自动关闭</p>-->
+		</div>
+	</div>
+	<!--<a href="#">
+		<div class="shiping">
+			<i class="iconfont icon">&#xe632</i>
+			<div class="shipinfo">
+				<h4>您的商品已经通过快递发送给您</h4>
+				<p><span class="num">2016-03-16 11:00:24</span></p>
+			</div>
+			<i class="iconfont more">&#xe618</i>
+		</div>
+	</a>-->
+	<div class="address">
+		<i class="iconfont icon">&#xe621</i>
+		<div class="addinfo">
+			<dl class="name">
+				<dt>收件人：</dt>
+				<dd>{$data.consignee}</dd>
+				<dd class="tel num">{$data['mobile']}</dd>
+			</dl>
+			<dl class="add">
+				<dt>收货地址：</dt>
+				<dd>{$data['address']}</dd>
+				<dd class="addsub"><!--详细地址--></dd>
+				<div class="clearfix">
+				</div>
+			</dl>
+		</div>
+		<div class="clearfix">
+		</div>
+	</div>
+
+	<div class="cartlist">
+			<div class="ordermessage font34">
+				<span  >订单编号：<span class="num">{$data.order_sn}</span></span>
+				<span class="floatRgt"></span>
+			</div>
+			<ul  <eq name="$data['is_upgrade']" value="1"> style="display:none" </eq> >
+				<?php $total_num = 0;?>
+					<volist name="order_goods" id="vo">
+						<if condition="$vo['order_id'] eq $data['order_id']">
+							<li  class="goods"> <a href="#">
+								<div class="goodsimg imgnobg">
+									<img src="{$vo.goods_image}" class="img" alt="{$vo.goods_name}" />
+								</div>
+								</a>
+								<div class="info">
+									<a href="{:U('Wap/goods/goods_detail',array('id'=>$vo['goods_id']))}">
+										<div class="title">
+											{$vo.goods_name}
+										</div>
+										<div class="type">
+											<span>{$vo.goods_attr}</span>
+										</div>
+									</a>
+									<div class="pay">
+										<div class="pirce num orange"> ¥{$vo.goods_price} </div>
+										<div class="qty">
+											<span class="num">{$vo.goods_number}</span>件
+											<?php $total_num += $vo['goods_number'];?>
+										</div>
+										<div class="pirce ">
+											<eq name="vo['shipping_money']" value="0">
+												包邮
+												<else/>
+												运费:<span class="num orange">¥{$vo.shipping_money}</span>
+											</eq>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</li>
+						</if>
+					</volist>
+			</ul>
+			<div class="total">
+				<ul>
+					<li class="subtotal">
+						共<span class="num black"> {$total_num} </span>件商品 合计：<span class=" num orange">¥{$data['order_amount_all']|PriceFormat}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+
+	</div>
+	<div class="ordermessage mgt2 ">
+		<p  >支付编号:<span class="num floatRgt">{$pay_sn}</span></p>
+		<!--<p  >支付宝交易号：<span class="num">2016031621001001690267754225</span></p>-->
+		<p  >订单时间:<span class="num floatRgt">{$data['add_time']|date="Y-m-d H:i:s",###}</span></p>
+		<if condition="$data.pay_status eq 2">
+		<p  >付款时间:<span class="num floatRgt">{$data['pay_time']|date="Y-m-d H:i:s",###}</span></p>
+		</if>
+		<if condition="$data.pay_status eq 2 and $data.shipping_status eq 1">
+		<p  >确认时间:<span class="num floatRgt">{$data['confirm_time']|date="Y-m-d H:i:s",###}</span></p>
+		</if>
+		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
+			<p  >配送时间:<span class="num floatRgt">{$data['shipping_time']|date="Y-m-d H:i:s",###}</span></p>
+		</if>
+		<volist name="$data['status_remarks']"  id="vo" key = "key">
+			<eq name="key" value="6">
+				<p >备注:{$vo[0]}</p>
+				<else/>
+				<p >{$vo[0]}<span class="num floatRgt">{$vo[1]|date="Y-m-d H:i:s",###}</span></p><div class="clearfix"></div>
+			</eq>
+		</volist>
+		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
+		<p  >物流公司:<span class="num floatRgt">{$data['express_name']}</span></p>
+		</if>
+		<if condition="$data.pay_status eq 2 and (in_array($data['shipping_status'],array('1','2')))">
+		<p  >物流单号:<span class="num floatRgt">{$data['invoice_no']}</span></p>
+		</if>
+	</div>
+			<if condition="$data['pay_status'] eq 2 and (in_array($data['shipping_status'],array('1','2'))) and $express_data['status'] eq 0">
+			<div class="submit" style="margin-bottom: 2rem;">
+			<a href="__URL__/order_express?order_id={$data['order_id']}">物流信息</a>
+
+			</div>
+		</if>
+
+	<if condition="$data['order_state'] eq 'nopay'">
+		
+	<div class="submit">
+		<eq name="$data['is_upgrade']" value="1">
+			<a href="{:U('wap/start/upgrade_pay',array('order_id'=>$order_pay_sn))}"  class="new-abtn-type new-mg-tb30">去付款</a>
+			<else/>
+			<a href="{:U('wap/goodsorder/order_pay',array('order_id'=>$_GET['order_id']))}" class="new-abtn-type new-mg-tb30">去付款</a>
+		</eq>
+	</div>
+	</if>
+
+<include file="Public/footer_new" />
+</body>
+</html>

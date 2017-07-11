@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{$data.title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/pop.css"  rel="stylesheet">
+     <if condition="$data['type'] eq 1">  
+    <link href="__PUBLIC__/wap/css/article.css"  rel="stylesheet">
+    </if>
+    <style>
+        #body{
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+<!--绑定头部-->
+    <!--
+	<header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        峰购趣闻
+    </header>
+	-->
+    <if condition="$data['type'] neq 1">  
+<include file="Public/binding_head"/>
+</if>
+    <div class="article-contents a-text" style="width: 90%;min-width: 300px;">
+	<!--绑定头部-->
+        <div class="a-top">
+            <h2 class="a-title">
+                {$data.title}
+            </h2>
+            <div class="rich_media_meta_list">
+                <em class="">{$data.add_time|date='Y-m-d',###}</em>
+                 <if condition="$data['type'] neq 1"> 
+                <a class="" href="http://mp.weixin.qq.com/s?__biz=MzIyNDA4MDU3MA==&mid=209638640&idx=1&sn=a81bb52e6e014d2f28b17cf3b78436c4&scene=18#wechat_redirect">FG峰购</a>
+                </if>
+            </div>
+        </div>
+        <div class="a-in">
+            {$data.content}
+        </div>
+        <!--
+             <div style="margin-top:10px; "><span style="color:#999;">浏览量:{$data.page_view}</span></div>
+         -->
+        
+    </div>
+ <div class="main main_goods_share" style="display:none;">
+            <div class="content">
+                <div class="share">
+                    <div class="share_top">
+                        <div class="share_left">
+                            <label>参与方法：</label>
+                        </div>
+                        <div class="share_right">
+                            <p>点击右上角<i><img src="__PUBLIC__/wap/img/shar.png"/></i>图标</p>
+                         
+                            <p>点击<i class="img_margin"><img src="__PUBLIC__/wap/img/py.png"/></i>分享到朋友圈</p>
+                            <p>即可参与活动</p>
+                        </div>
+                    </div>
+                    <!--  <div class="share_footer">
+                     <div class="share_left">
+                         <label>方法二：</label>
+                     </div>
+                     <div class="share_right">
+                         <p>邀请好友免费注册，分享可赚取佣金哦！</p>
+                     </div>
+                                      </div>  -->
+                </div>
+
+                <div class="footer">
+                  <img src="__PUBLIC__/wap/img/goods_share_know.png" class="main_goods_share_close layui-layer-close " style="position: static;"/>
+                     
+                   <!--  <input type="button" value="知道了" class="main_goods_share_close layui-layer-close layui-layer-close1" /> -->
+                </div>
+            </div>
+        </div>
+   <if condition="$data['type'] eq 1">
+         <a href="javascript:void(0);" class="new-abtn-type new-mg-tb30 main_goods_share_open" style="width: 100px;margin: 0 auto;">参与活动</a>
+          </if>
+
+<if condition="!empty($ad) && $data['type'] neq 1">
+    <div class="a-advertising">
+        <ul class="i_ul rel more_html">
+            <volist name="ad" id="vo">
+                <li>
+                    <a href="{$vo.link}"><img src="{$vo.image_path}" alt="" title=""/></a>
+                </li>
+            </volist>
+        </ul>
+        <if condition="$count gt 3 && count($ad) eq 3">
+            <p><a href="javascript:void(0)" class="get_more">了解更多活动</a></p>
+            <else/>
+            <p><a href="javascript:void(0)" class="get_more">无更多活动</a></p>
+        </if>
+    </div>
+</if>
+    <!--<if condition="!empty($data['tweet_msg'])">-->
+        <!--<div style="width: 80%;margin:auto;">-->
+            <!--<ul>-->
+                <!--<volist name="data['tweet_msg']" id="vo">-->
+                    <!--<li>-->
+                        <!--<a href="{:U('wap/Usernotice/tweet_detail')}?id={$vo.id}">{$vo.title}</a>-->
+                    <!--</li>-->
+                <!--</volist>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</if>-->
+        <div class="bottom-to-top" style="display: block; bottom: 56px;transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+        <img src="__PUBLIC__/wap/img/scroll-to-top-icon.png" style="width: 100%;">
+    </div>
+   
+    <div style="height: 50px;"></div>
+    <input type="hidden" name="p" data="2" value="2"/>
+    <input type="hidden" name="article_id" value="{$_GET['id']}" />
+     <!--end top-->
+      <if condition="$data['type'] neq 1">
+   <include file="Public/footer" />
+</if>
+<include file="Public/wap_javascript"/>
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page ='tweet_detail';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+<!-- S微信分享-->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    $(function () {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '<?php echo $appid; ?>', // 必填，公众号的唯一标识
+            timestamp: '<?php echo $time; ?>', // 必填，生成签名的时间戳
+            nonceStr: '<?php echo $noncestr; ?>', // 必填，生成签名的随机串
+            signature: '<?php echo $signature; ?>',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    });
+
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            title: '<?php echo $shar_title; ?>', // 分享标题
+            link: '<?php echo $shar_url; ?>', // 分享链接
+            imgUrl: '<?php echo $shar_imgurl; ?>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                activity_share();
+
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '<?php echo $shar_title; ?>', // 分享标题
+            desc: '<?php echo $shar_desc; ?>', // 分享描述
+            link: '<?php echo $shar_url; ?>', // 分享链接
+            imgUrl: '<?php echo $shar_imgurl; ?>', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: '<?php echo $data['goods_name']; ?>', // 分享标题
+            desc: '<?php echo $shar_desc; ?>', // 分享描述
+            link: '<?php echo $shar_url; ?>', // 分享链接
+            imgUrl: '<?php echo $shar_imgurl; ?>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: '<?php echo $shar_title; ?>', // 分享标题
+            desc: '<?php echo $shar_desc; ?>', // 分享描述
+            link: '<?php echo $shar_url; ?>', // 分享链接
+            imgUrl: '<?php echo $shar_imgurl; ?>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+            title: '<?php echo $shar_title; ?>', // 分享标题
+            desc: '<?php echo $shar_desc; ?>', // 分享描述
+            link: '<?php echo $shar_url; ?>', // 分享链接
+            imgUrl: '<?php echo $shar_imgurl; ?>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+
+    });
+    $(function () {
+        $('.choice_option').each(function (index, e) {
+            $(e).find('a:eq(0)').click();
+        });
+    });
+    //分享量计次
+    function activity_share() {
+        var type="<?php echo $data['type']; ?>";
+        if(type==1){
+            var article_id = $('input[name="article_id"]').val();
+            $.ajax({
+                url: "{:U('wap/activity/set_activity_share')}",
+                type: 'post',
+                data: {article_id: article_id},
+                dataType: 'json',
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status == '1') {
+                        window.location.href = "{:U('wap/activity/index')}?article_id="+article_id;//;
+                    } else {
+
+                    }
+                }
+            });
+        }
+    }
+</script>
+<!--E微信分享-->
+<script type="text/javascript" >
+    //浏览量计次
+    $().ready(function(){
+        var id='<?php echo $_GET["id"];?>';
+        $.ajax({
+            url:'{:U("wap/Usernotice/browse_stat")}',
+            type:'post',
+            data:{id:id},
+        })
+    })
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/js/jQuery.autoIMG.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".article-contents").autoIMG();
+});
+$(function () {
+    //获取更多活动
+    var load_more = 0;
+    var load_none = 0;
+    $('.get_more').click(function () {
+        if (load_none != 1) {
+            if (load_more == 1) {
+                var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px !important;">'
+                $('.get_more').html('加载中' + html);
+            } else {
+                get_more();
+            }
+        }
+    });
+});
+function get_more() {
+    load_more = 1;
+    var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px !important;">'
+    $('.get_more').html('加载中' + html);
+    //var p=$("input[name='p']").val();
+    var p = $("input[name='p']").attr('data');
+    $.ajax({
+        url: "{:U('wap/Usernotice/tweet_detail')}",
+        type: 'get',
+        data: {p: p},
+        dataType: 'json',
+        success: function (data) {
+            //console.log(data);
+            var con = 1;
+            var option = '';
+            if (data) {
+                $.each(data, function () {
+                    //this指向当前元素
+                    //i表示Array当前下标
+                    //value表示Array当前元素
+                    option +='<li>'+
+                                '<a href="'+this.link+'"><img src="'+this.image_path+'" alt="" title=""/></a>'+
+                            '</li>';
+                    con++;
+                });
+            }
+            //$('.more_html').append(option);
+            if (p == 1) {
+                $('.more_html').html(option);
+            } else {
+                $('.more_html').append(option);
+            }
+            load_more = 0;
+            if (option) {
+                //$("input[name='p']").val(parseInt(p)+1);
+                $("input[name='p']").attr('data', parseInt(p) + 1);
+            }
+            if (con < 3) {
+                load_none = 1;
+                $('.get_more').html('无更多活动');
+            } else {
+                $('.get_more').html('了解更多活动');
+            }
+        }
+    });
+}
+</script>
+</script>
+   <style>
+.layui-layer-demo{background: none !important;box-shadow: none !important;border-radius: 0px !important;}
+</style>  
+
+<script type="text/javascript">
+var close_index;
+var close_index_this;
+  $(function(){
+
+$('.main_goods_share_open').click(function(){
+   //捕获页
+layer.open({
+    type: 1,
+    shade: 0.8,//透明度
+    title: false, //不显示标题
+    closeBtn: false, //不显示关闭按钮
+    skin: 'layui-layer-demo', //样式类名
+    shadeClose: true, //开启遮罩关闭
+    area: ['100%', '100%'],
+    content: $('.main_goods_share'), //捕获的元素
+    cancel: function(index){
+          close_index=index;
+          close_index_this=this;
+        layer.close(index);
+        this.content.show();
+        $('.main_goods_share').hide();
+        //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构',{time: 5000});
+    }
+});
+});    
+/*$('.main_goods_share_clase').click(function(){
+   layer.close(close_index);
+    $('.main_goods_share').hide();
+}); 
+*/
+});
+</script>
+</body>
+</html>

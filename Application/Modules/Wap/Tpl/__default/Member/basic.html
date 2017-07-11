@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>基本信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="login">
+
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+		<h2 >基本信息设置</h2>
+</div>
+<div class="page pdt10 member">
+<form id="form2" class="mlogin " action="" method="post" role="form" onSubmit="return false;">
+	<div class="field">
+		<div class="label">会员ID</div>
+		<div class="field-control">
+			<span class="num">{$member.member_card}</span>
+		</div>
+	</div>
+
+		<div class="field">
+			<div class="label">姓 名</div>
+			<div class="field-control">
+				<input class='input-required' name="real_name"   id="real_name" type="text" value="{$verification.real_name}" readonly>
+				<div class="need">
+					<empty name="verification">
+						<a href="{:U('wap/login/binding_phone')}" class="btn1 btnsF34">去认证</a>
+						<else/>
+						<if condition="$verification.status eq 0">
+							<a href="{:U('wap/login/binding_phone')}" class="btn3 btnsF34">审核中。。</a>
+							<elseif condition="$verification.status eq 1" />
+							<a href="{:U('wap/login/binding_phone')}" class="btn1 btnsF34">修改</a>
+							<else/>
+							<a href="{:U('wap/login/binding_phone')}" class="btn2 btnsF34">审核未通过</a>
+						</if>
+					</empty>
+				</div>
+			</div>
+		</div>
+	<div class="field">
+		<div class="label">手机号码</div>
+		<div class="field-control">
+			<span class="num">{$member.mobile}</span>
+			<div class="need">
+				<a href="{:U('wap/login/binding_phone')}" class="btn1 btnsF34">修改</a>
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="label">公司</div>
+		<div class="field-control">
+			<span class="num">{$verification.company}</span>
+			<div class="need">
+				<a href="{:U('wap/login/binding_phone')}" class="btn1 btnsF34">修改</a>
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="label">昵称</div>
+		<div class="field-control">
+			<input id="member_name" type="text" class="input-required" name="member_name" value="{$member.member_name}" />
+		</div>
+	</div>
+
+	<if condition="$city">
+	<div class="field">
+		<div class="label">省市地区</div>
+		<div class="moreline">
+			<span class="zone">{$city.province.province} {$city.city.city} {$city.area.area}</span>
+		</div>
+	</div>
+	<div class="field">
+		<div class="label">详细地址</div>
+		<div class="moreline">
+			<span class="zone">{$data.addr}</span>
+		</div>
+	</div>
+	<else/>
+	<div class="field">
+		<div class="label"> 省市地区 </div>
+		<div class="field-control">
+			<input type="text" class="input-required" readonly placeholder="请选择地区" value="" name="area_name" id="select_area">
+			<input id="area_info" type="hidden" name="area_info" />
+		</div>
+	</div>
+	<div class="field">
+		<div class="label"> 详细地址 </div>
+		<div class="field-control">
+			<input type="text" class="input-required" name="addr" placeholder="请填写详细地址" value="">
+		</div>
+	</div>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/address.css" />
+	<script src="__PUBLIC__/wap/js/address.js"></script>
+	<script>
+		var province = {$city_group.province}, city = {$city_group.city}, area = {$city_group.area};
+		var area2 = new LArea();
+		area2.init({
+			'trigger': '#select_area',
+			'valueTo': '#area_info',
+			'keys': {
+				id: 'value',
+				name: 'text'
+			},
+			'type': 2,
+			'data': [province, city, area]
+		});
+	</script>
+	</if>
+	<div class="submit">
+		<button type="submit" class="button" id="submit-btn">提 交</button>
+	</div>
+</form>
+</div>
+<script>
+$(function(){
+	$('#submit-btn').click(function(){
+		$.ajax({
+			url:'<?php echo U('Wap/member/basic_set'); ?>',
+			dataType : 'JSON',
+			data:$('#form2').serialize(),
+			type : 'POST',
+			success : function(res){
+				if(res.status){
+					layer.msg('修改成功', {icon: 6});
+				}else{
+					layer.msg(res.error, {icon: 5});
+				}
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

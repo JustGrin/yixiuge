@@ -1,0 +1,85 @@
+<!-- start: JavaScript -->
+<script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/modernizr/modernizr.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/jquery-cookie/jquery.cookie.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/switchery/switchery.min.js"></script>
+        <!-- end: MAIN JAVASCRIPTS -->
+        <!-- start: CLIP-TWO JAVASCRIPTS -->
+        <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+        <!-- start: JavaScript Event Handlers for this page -->
+        <script>
+            jQuery(document).ready(function() {
+                Main.init();
+            });
+        </script>
+        <!--以下是新订单消息提醒-->
+<script type="text/javascript">
+    var newCount = '';   //付款新订单
+    var refCount = '';   //退款新订单
+	    var s_time=5*60*1000;///毫秒  //5分钟
+    //付款订单提示
+  jQuery(document).ready(function() {
+     setTimeout("getNewOrderRemind()", 1000)  //触发新订单提醒
+    setTimeout("getRefOrderRemind()", 1000)  //出发新退款订单提醒
+});
+      
+
+    function getNewOrderRemind() {
+        var status = 1;    //订单状态
+        $.ajax({
+            url: '<?php echo U("admin/Goodsorder/OrderRemind") ?>',
+            data: 'status=' + status,
+            type: 'post',
+            dataType: 'json',
+            success: function (re) {
+                if (newCount) {
+                    if (re > newCount) {    //产生新付款订单
+                        $('#nsound').remove();
+                        var content = '<audio src="__PUBLIC__/admin/sound/newOrder.wav" id="nsound" autoplay></audio>'
+                        $('body').append(content);
+                        setTimeout("getNewOrderRemind()", s_time);
+                        newCount = re;
+                    } else {
+                        setTimeout("getNewOrderRemind()", s_time);
+                    }
+                }
+                else {
+                    newCount = re;
+                    setTimeout("getNewOrderRemind()", s_time);
+                }
+            }
+        })
+    }
+    //退货订单提示
+    function getRefOrderRemind() {
+        var status = 0;
+        $.ajax({
+            url: '<?php echo U("admin/Goodsorder/OrderRemind") ?>',
+            data: 'status=' + status,
+            type: 'post',
+            dataType: 'json',
+            success: function (re) {
+                if (refCount) {
+                    if (re > refCount) {    //产生新付款订单
+                        $('#rsound').remove();
+                        var content = '<audio src="__PUBLIC__/admin/sound/refOrder.wav" id="rsound" autoplay></audio>'
+                        $('body').append(content);
+                        setTimeout("getRefOrderRemind()", s_time);
+                        refCount = re;
+                    } else {
+                        setTimeout("getRefOrderRemind()", s_time);
+                    }
+                }
+                else {
+                    refCount = re;
+                    setTimeout("getRefOrderRemind()", s_time);
+                }
+            }
+        })
+    }
+</script>
+        <!-- end: JavaScript Event Handlers for this page -->
+  

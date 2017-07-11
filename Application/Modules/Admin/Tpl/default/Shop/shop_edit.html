@@ -1,0 +1,911 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">商户信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-10">
+
+     <div class="tabbable">
+			<ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+				<li class="active">
+					<a data-toggle="tab" href="#panel_overview">
+						商户基本信息
+					</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#panel_edit_account">
+						商户折扣
+					</a>
+				</li>
+				<li>
+					<a data-toggle="tab" href="#shop_img">
+						商户图片
+					</a>
+				</li>
+				
+			</ul>
+          <div class="tab-content">
+              <div id="panel_overview" class="tab-pane fade  in active">
+                    <div class="row">
+	                    <div class="col-md-10">
+
+<if condition="$_SESSION['topadmin'] gt 0 && empty($data['id'])">
+		<if condition="($data['shop_id'])">
+	    <input type="hidden"  value="{$data.shop_id}" name="shop_id">
+        <else/>
+		<input type="hidden" value="1" name="add_adm" />
+	    <div class="form-group">
+
+		<label class="control-label">
+			登录帐号
+		</label>
+		<input type="text" class="form-control" name="account" id="account" />
+	    </div>
+	     <div class="form-group">
+
+		<label class="control-label">
+			登录密码
+		</label>
+		<input type="password" class="form-control" name="password"  id="password" />
+	    </div>
+
+      </if>
+
+</if>
+ <div class="form-group">
+		<label class="control-label">
+			商户名称:
+		</label>
+		<if condition="$_SESSION['topadmin'] gt 0">
+		<input type="text" name="shop_name" value="{$data.shop_name}" id="shop_name" placeholder="商户名称" class="form-control">
+		<else/>
+		  <if condition="$data.id gt 0">
+		  	{$data.shop_name}
+		   <input type="hidden" name="shop_name" value="{$data.shop_name}" id="shop_name" placeholder="商户名称" class="form-control">
+		   <else/>
+             <input type="text" name="shop_name" value="{$data.shop_name}" id="shop_name" placeholder="商户名称" class="form-control">
+            </if>
+	    </if>
+		
+	</div>
+
+		  <div class="form-group">
+		<label class="control-label">
+			商户行业 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control" id="class_id" name="class_id">
+			<option value="">请选择</option>
+            <volist name="list" id="vo">
+			<option value="{$vo.id}" <if condition="$data.class_id eq $vo['id']">selected</if> >{$vo.class_name}</option>
+				<volist  name="vo['tree']" id='voo'>
+				<option value="{$voo.id}" <if condition="$data.class_id eq $voo['id']">selected</if> >┗━{$voo.class_name}</option>
+			    </volist>
+		    </volist>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			商户余额
+		</label>
+		 {$data.balance}
+		
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			商户收入
+		</label>
+		 {$data.income}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			注册时间
+		</label>
+		<if condition="($_SESSION['topadmin'] gt 0 )">
+			{//管理员}
+		       <p class="input-group input-append datepicker date">
+			<input type="text" class="form-control" name="add_time" value="{$data.add_time|date='Y-m-d',###}"/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button> </span>
+		    </p>
+		 <else/>
+          {$data.add_time|date='Y-m-d',###}
+		</if>
+	</div>
+ <div class="form-group">
+		<label class="control-label">
+			人均消费
+		</label>
+		<input type="text" name="buy" value="{$data.buy}" id="buy" placeholder="人均消费" class="form-control">
+	</div>
+    <div class="form-group">
+		<label class="control-label">
+			商户电话
+		</label>
+		<input type="text" name="link_no" value="{$data.link_no}" id="link_no" placeholder="商户电话" class="form-control">
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			qq
+		</label>
+		<input type="text" name="qq" value="{$data.qq}" id="qq" placeholder="qq" class="form-control">
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			email
+		</label>
+		<input type="text" name="email" value="{$data.email}" id="email" placeholder="email" class="form-control">
+	</div>
+ <div class="form-group">
+		<label class="control-label">
+			商户网址
+		</label>
+		<input type="text" name="website" value="{$data.website}" id="website" placeholder="商户网址" class="form-control">
+	</div>
+
+	  <div class="form-group">
+		<label class="control-label">
+			省 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control city_p" id="provinceid" name="provinceid" onchange="choice_province('city')">
+<option value="">请选择</option>
+<volist name="citylist['province']" id="vo">
+<option value="{$vo.cityid}"  <if condition="$data['provinceid']==$vo['cityid']">selected</if> >{$vo.cityname}</option>
+</volist>  
+		</select>
+	</div>
+		  <div class="form-group">
+		<label class="control-label">
+			市 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control city_c" id="cityid" name="cityid"  onchange="choice_city('city')">
+<option value="">请选择</option>
+<volist name="citylist['city']" id="vo">
+<option value="{$vo.cityid}"  <if condition="$data['cityid']==$vo['cityid']">selected</if> >{$vo.cityname}</option>
+</volist>    
+		</select>
+	</div>
+		  <div class="form-group">
+		<label class="control-label">
+			区 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control city_a" id="areaid" name="areaid" >
+<option value="">请选择</option>
+<volist name="citylist['area']" id="vo">
+<option value="{$vo.cityid}"  <if condition="$data['areaid']==$vo['cityid']">selected</if> >{$vo.cityname}</option>
+</volist>
+		</select>
+	</div>	
+	 <div class="form-group">
+		<label class="control-label">
+			商户地址
+		</label>
+		<input type="text" name="addr" value="{$data.addr}" id="addr" placeholder="商户地址" class="form-control">
+	</div>
+
+<div class="form-group">
+		<label class="control-label">
+			标注地址
+		</label>
+<input  type="hidden" id="longitude" name="jingdu" size="14" value="{$data.jingdu}" readonly="" placeholder="经度" > 
+<input type="hidden" name="weidu" size="14" id="latitude" value="{$data.weidu}" readonly="" placeholder="纬度" > 
+	<a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			主营业务
+		</label>
+		<textarea id="business" name="business"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.business}</textarea>
+	</div>
+
+
+	 <div class="form-group">
+		<label class="control-label">
+			商户介绍
+		</label>
+		<textarea id="member_desc" name="member_desc"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.member_desc}</textarea>
+	</div>
+<div class="form-group">
+		<label class="control-label">
+			状态
+		</label>
+		 <?php if($_SESSION['topadmin'] > 0){?>
+		 	<div class="clip-radio radio-primary fa-hover Primary">
+           <if condition="$data.id gt 0">
+			<input type="radio" value="1" name="status" id="id_no" <if condition="$data.status eq 1">checked="checked"</if> >
+			<label for="id_no">
+				正常
+			</label>
+
+			<input type="radio" value="0" name="status" id="id_yes" <if condition="$data.status eq 0">checked="checked"</if> >
+			<label for="id_yes">
+				冻结
+			</label>
+             <else/>
+             <input type="radio" value="1" name="status" id="id_no" checked="checked" >
+			<label for="id_no">
+				正常
+			</label>
+
+			<input type="radio" value="0" name="status" id="id_yes"  >
+			<label for="id_yes">
+				冻结
+			</label>
+
+			</if>
+		</div>	
+		  <?php }else{ ?>
+		    {$data['status']?'已冻结':'正常'}
+		  <?php } ?>
+
+		
+	</div>
+
+		<div class="form-group">
+		<label class="control-label">
+			平台推荐 
+		</label>
+		 <?php if($_SESSION['topadmin'] > 0){?>
+		 	<div class="clip-radio radio-primary fa-hover Primary">
+           <if condition="$data.id gt 0">
+			<input type="radio" value="1" name="recommend_status" id="id_no1" <if condition="$data.recommend_status eq 1">checked="checked"</if> >
+			<label for="id_no1">
+				已推荐
+			</label>
+
+			<input type="radio" value="0" name="recommend_status" id="id_yes1" <if condition="$data.recommend_status eq 0">checked="checked"</if> >
+			<label for="id_yes1">
+				未推荐
+			</label>
+             <else/>
+             <input type="radio" value="1" name="recommend_status" id="id_no1">
+			<label for="id_no1">
+				已推荐
+			</label>
+
+			<input type="radio" value="0" name="recommend_status" id="id_yes1" checked="checked"  >
+			<label for="id_yes1">
+				未推荐
+			</label>
+
+			</if>
+			</div>
+			<?php }else{ ?>
+		   {$data['status']?'已推荐':'未推荐'}
+		  <?php } ?>
+		 
+
+		
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">
+			首页推荐 
+		</label>
+		 <?php if($_SESSION['topadmin'] > 0){?>
+		 	<div class="clip-radio radio-primary fa-hover Primary">
+           <if condition="$data.id gt 0">
+			<input type="radio" value="1" name="is_show_index" id="is_show_index_no1" <if condition="$data.is_show_index eq 1">checked="checked"</if> >
+			<label for="is_show_index_no1">
+				已推荐
+			</label>
+
+			<input type="radio" value="0" name="is_show_index" id="is_show_index_yes1" <if condition="$data.is_show_index eq 0">checked="checked"</if> >
+			<label for="is_show_index_yes1">
+				未推荐
+			</label>
+             <else/>
+             <input type="radio" value="1" name="is_show_index" id="is_show_index_no1">
+			<label for="is_show_index_no1">
+				已推荐
+			</label>
+
+			<input type="radio" value="0" name="is_show_index" id="is_show_index_yes1" checked="checked"  >
+			<label for="is_show_index_yes1">
+				未推荐
+			</label>
+
+			</if>
+			</div>
+			<?php }else{ ?>
+		   {$data['is_show_index']?'已推荐':'未推荐'}
+		  <?php } ?>
+		 
+
+		
+	</div>
+
+
+
+
+                         </div>
+                     </div>
+              </div>
+
+              <div id="panel_edit_account" class="tab-pane fade">
+                    <div class="row">
+	                    <div class="col-md-8">
+
+ <div class="form-group">
+		<label class="control-label">
+			商品折扣(0.1为1折)
+		</label>
+		商户的消费折扣
+		<if condition="$_SESSION['topadmin'] gt 0">
+		<input type="text" name="discount_consume" value="{$data.discount_consume}" id="discount_consume" placeholder="商品折扣" class="form-control">
+		<else/>
+            {$data.discount_consume}
+	    </if>
+		
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			内部折扣(0.1为1折)
+		</label>
+		用于用户消费时的返利折扣
+		<if condition="$_SESSION['topadmin'] gt 0">
+		<input type="text" name="discount_rebate" value="{$data.discount_rebate}" id="discount_rebate" placeholder="内部折扣" class="form-control">
+		<else/>
+            {$data.discount_rebate}
+	    </if>
+	</div>
+
+
+                         </div>
+                     </div>
+              </div>
+
+
+ <div id="shop_img" class="tab-pane fade">
+                    <div class="row">
+	                    <div class="col-md-8">
+
+
+    <div class="form-group">
+        <label class="control-label">
+            商户logo
+        </label> 
+        <br>
+        <div class="upload_file">
+           <label>
+         <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;"> 
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <img id="head_photo_src" src="{:U('wap/index/get_thumbs',array('auto'=>300))}?img={$data.logo}" alt="">
+                </div>
+              
+
+            </div>
+           点击图片上传
+        </label>  
+                 <input type="hidden" name="logo" id="photo_pic" value="{$data.logo}">
+         </div>          
+     
+    </div>
+
+        <div class="form-group">
+        <label class="control-label">
+            商户背景图片
+        </label> 
+        <br>
+        <div class="upload_file">
+           <label>
+         <input type="file" name="head_photo" class="upload_input"  id="head_photo_background" value="" style="display:none;"> 
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo_background">
+                    <img id="head_photo_src_background" src="{:U('wap/index/get_thumbs',array('auto'=>300))}?img={$data.background}" alt="">
+                </div>
+              
+
+            </div>
+           点击图片上传
+        </label>  
+                 <input type="hidden" name="background" id="photo_pic_background" value="{$data.logo}">
+         </div>          
+     
+    </div>
+     <div class="form-group">
+ 	
+<span class="btn btn-success fileinput-button upload_file">
+ <i class="glyphicon glyphicon-plus"></i> <span>上传文件...</span>
+	<input type="file" name="files[]" class="upload_input"  id="head_photo_url"  multiple="">
+</span>
+
+  </div>
+        <div class="form-group">
+       
+        <br>
+        <div class="goods_image_url">
+          
+       <volist name="data['shop_image_url']" id='vo'>
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" >
+                    <img id="head_photo_src_background" src="{$vo}" alt="" >
+                     <button type="button" class="btn btn-danger delete delete_img" style="float: left;margin-top: -40px;margin-left: 200px;">
+					<i class="glyphicon glyphicon-trash"></i>
+					<span>删除</span>
+				 </button>
+                </div>
+
+				<input type="hidden" name="shop_image_url[]"  class="goods_image_count" value="{$vo}">
+          </div>
+       </volist>
+                 
+         </div>          
+     
+    </div>
+
+
+
+
+
+
+                    </div>
+         </div>
+  </div>
+  	
+
+
+
+
+
+
+          </div>
+</div>
+
+	
+	
+	
+	
+
+
+
+
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+		
+
+		<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+       <script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+       <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+    <script>
+    var get_city_url="{:U('wap/index/get_city')}";
+    </script>   
+	   <script src="__PUBLIC__/js/common.js"></script>
+		<include file="Public/javascript_datepicker"/>
+<if condition="$_SESSION['topadmin'] gt 0 && empty($data['id']) && empty($data['shop_id'])">
+	{//添加账户}
+<script>
+	jQuery(document).ready(function() {
+      
+$("#form2").validate({
+  rules: {
+  	 account: {
+	   	required:true,
+	   	remote: {
+                        url: "{:U('admin/System/cheack_admin')}",
+                        type: "get",
+                        dataType: "json",
+                        data: {
+                            account: function () {
+                                return $("#account").val();　　　　//这个是取要验证的密码
+                            }
+                        },
+                        dataFilter: function (msg) {　　　　//判断控制器返回的内容
+                            if (msg == "0") {
+                                return true;
+                            }else {
+                                return false;
+                            }
+                        }
+                    }
+	   },
+  	  password: "required",
+   shop_name: "required",
+   class_id: "required",
+   link_no: "required",
+   provinceid: "required",
+   cityid: "required",
+   areaid: "required",
+   addr: "required",
+   business: "required",
+   member_desc: "required"
+  },
+  messages: {
+  	 account: {
+	   	required:"请输入登录帐号",
+	   	remote:"该账户已被占用"
+	   },
+  	  password: "请输入登录密码",
+   shop_name: "请输入商户名称",
+   class_id: "请选择行业",
+   link_no: "请输入商户电话",
+   provinceid: "请选择所在省",
+   cityid: "请选择所在市",
+   areaid: "请选择所在区县",
+   addr: "请输入商户地址",
+   business: "请输入主营业务",
+   member_desc: "请输入商户介绍"
+  }
+  });
+
+	});
+</script>
+<else/>
+<script>
+	jQuery(document).ready(function() {
+       
+$("#form2").validate({
+  rules: {
+   shop_name: "required",
+   class_id: "required",
+   link_no: "required",
+   provinceid: "required",
+   cityid: "required",
+   areaid: "required",
+   addr: "required",
+   business: "required",
+   member_desc: "required"
+  },
+  messages: {
+   shop_name: "请输入商户名称",
+   class_id: "请选择行业",
+   link_no: "请输入商户电话",
+   provinceid: "请选择所在省",
+   cityid: "请选择所在市",
+   areaid: "请选择所在区县",
+   addr: "请输入商户地址",
+   business: "请输入主营业务",
+   member_desc: "请输入商户介绍"
+  }
+  });   
+		
+	});
+</script>
+</if>		
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+
+<script>
+	
+    $(document).ready(function (e) {
+         ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+        	var id=$(this).attr('id');
+        	if(id =='head_photo'){
+        		//咯go 截取
+        		 ajaxFileUploadview('head_photo', 'photo_pic', "{:U('admin/Imagecat/upload_ajax')}");
+        	}else if(id=='head_photo_background'){
+        		ajaxFileUpload('background',"{:U('admin/Imagecat/upload_ajax')}");
+        	}else{
+        		var goods_length=$(".goods_image_count").length;
+        		if(goods_length>=5){
+        			alert('图片最多上传5张');
+                //  var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                 // art.dialog('这是php点点通的教程', function () {alert('你点击确定了')},function(){alert('你点击取消了');});
+                   // dialog.lock().time(2).content("");
+        		}else{
+        			ajaxFileUploadMore('url',"{:U('admin/Imagecat/upload_ajax')}");
+        		}
+
+        	}
+           
+        });
+
+         $('.goods_image_url').on('click','.delete_img', function () {
+        	if(confirm('您确定删除该图片？')){
+              $(this).parents('.fileinput').remove();
+        	}
+        });
+
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+      //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#photo_pic").val(head_file);
+        //});   
+
+    }
+//文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#photo_pic').val(data.imgurl);
+
+                                    art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+  
+//文件上传带预览
+    function ajaxFileUpload(imgid,  url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: "head_photo_"+imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#photo_pic_'+imgid).val(data.imgurl);
+                                     $("#head_photo_src_"+imgid).attr('src', data.imgurl);
+                                  /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+//多文件上传带预览
+    function ajaxFileUploadMore(imgid,  url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: "head_photo_"+imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+
+                               var str_img=' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                 +' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                 +'   <img  src="'+data.imgurl+'" alt="" >'
+
+                                  +' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+				                 +'	<i class="glyphicon glyphicon-trash"></i>'
+				                 +'	<span>删除</span>'
+				                 +'</button>'
+
+                                 +'</div>'
+	                            
+				                 +'<input type="hidden" name="shop_image_url[]"   value="'+data.imgurl+'">'
+                                 +' </div>';
+                                 $('.goods_image_url').append(str_img);
+                                  //  $('#photo_pic_'+imgid).val(data.imgurl);
+                                  //   $("#head_photo_src_"+imgid).attr('src', );
+                                  /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+                                      
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+function setlatlng(longitude,latitude){
+	art.dialog.data('longitude', longitude);
+	art.dialog.data('latitude', latitude);
+	art.dialog.open('<?php echo U('Admin/Index/setmap'); ?>',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+
+</script>		
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

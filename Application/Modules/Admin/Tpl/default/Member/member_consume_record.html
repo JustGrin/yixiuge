@@ -1,0 +1,147 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">会员消费记录</h1>
+									<span class="mainDescription"></span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+				<div class="form-group">
+					
+					  <label for="mobile" class="sr-only">
+						电话
+					  </label>
+						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
+					
+				</div>
+				 <div class="form-group">
+					<label for="type" class="sr-only">
+						消费类型
+					</label>
+					<select class="form-control" id="type" name="type">
+						<option value="all" >全部类型</option>
+					    <volist name="type_array" id="vo">
+						  <option value="{$key}" <if condition="$_GET['type'] == $key">selected</if> >{$vo}</option>
+		                </volist>
+					</select>
+				</div>
+
+				 <div class="form-group">
+					<label for="status" class="sr-only">
+						状态
+					</label>
+					<select class="form-control" id="status" name="status">
+						<option value="all">全部状态</option>
+						<option value="1" <if condition="$_GET['status'] ==1">selected</if>>收益</option>
+						<option value="2" <if condition="$_GET['status'] ==2">selected</if>>支出</option>
+					</select>
+				</div>
+
+			    <button class="btn btn-primary" type="submit">
+					提交
+				</button>
+				
+				
+				
+			
+		</div>
+    </form>
+	</div>
+</div>
+		</div>								
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">昵称</th>
+						<th>金额</th>
+						<th class="hidden-xs">电话</th>
+						<th>消费状态</th>
+						<th>消费类型</th>
+						<th>备注</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr>
+						<td class="center">{$vo.member_name}<i/></td>
+						<td> {$vo.money}</td>
+						<td class="hidden-xs">{$vo.mobile}</td>
+						<td>{$vo['status']==1?'收益':'支出'}</td>
+						<td>{$type_array[$vo['type']]}</td>
+						<td>{$vo.des}</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+	                  
+						</div>
+						</td>
+					</tr>
+					
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

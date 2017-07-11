@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>售后服务-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/order.css" />
+<link href="__PUBLIC__/wap/css/service.css"  rel="stylesheet">
+</head>
+<body class="order">
+<div class="head">
+	<a href="javascript:history.go(-1)" class="md-close back">
+		<i class="iconfont">&#xe617</i>
+	</a>
+	<h2 >售后服务</h2>
+		<a href="{:U('wap/goodsorder/index')}" class="more "><span>所有订单</span><i class="iconfont">&#xe611</i></a>
+
+</div>
+<div>
+	<volist name="list" id="vo">
+        <a class="" href="{:U('Wap/goodsrefund/index',array('id'=>$vo['order_goods_id']))}">
+            <div class="refundlist newbox bgwt">
+                <div class="refundtitle clearfix">
+                    <span class="floatLft">售后编号:<span class="num green">{$vo.refund_sn}</span></span>
+                    <span class="floatRgt">申请时间:<span class="num gray"></span>{$vo.add_time}</span>
+                </div>
+                <div class="cartlist">
+                    <ul>
+                        <li  class="goods">
+                            <div class="goodsimg imgnobg">
+                                <div class="img bgcover " style=" background:url({$vo.goods_image})">
+                                   <!-- <img src="{$vo.goods_image}"/>-->
+                                </div>
+                            </div>
+                            <div class="info">
+                                <div class="title">
+                                    {$vo.goods_name}
+                                </div>
+                                <div class="pay">
+                                    <div class="pirce num green">
+                                        ￥{$vo.goods_price}
+                                    </div>
+                                    <div class="qty">
+                                        <span class="num">{$vo.goods_number}</span>件
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="newbox2"><div class="refundinfo"> {$vo.code_name}
+                    <if condition="$vo.un_read neq 0"> {$vo.un_read} </if>
+                </div>
+            </div>
+		</a>
+    </volist>
+  </div>
+  <div class="clearfix">
+  </div>
+
+  <div class="loading">
+	  <div class="fm-footer-copyright get_more">
+
+	  </div>
+  </div>
+<include file="Public/footer_new" />
+<input type="hidden" name="p" value="2" />
+<input type="hidden" name="order_state" value="{$_GET['order_state']}" />
+<input type="hidden" name="order" value=""/>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript">
+     var load_more = 0;
+     var load_none = 0;
+     $(function () {
+
+         $(window).scroll(function () {
+             var scrollTop = $(this).scrollTop();
+             var scrollHeight = $(document).height();
+             var windowHeight = $(this).height();
+             if (scrollTop + windowHeight == scrollHeight) {
+                 //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                 if (load_none != 1) {
+                     if (load_more == 1) {
+                         var html = '';
+                         $('.get_more').html('加载中' + html);
+                     } else {
+                         get_more();
+                     }
+                 }
+
+             }
+         });
+     })
+   $(function(){
+     $(".get_more").click(function(){
+        get_more();
+     });
+     $(".oder_state_c li").click(function(){
+        
+        $('.oder_state_c li').removeClass('curr');
+        $(this).addClass('curr');
+        var data=$(this).attr('data');
+        $("input[name='order_state']").val(data);
+        $("input[name='p']").val(1);
+        get_more();
+     });
+     
+   }); 
+   function get_more(){
+       load_more = 1;
+       var html = '';
+       $('.get_more').html('加载中' + html);
+     var p=$("input[name='p']").val();
+      var order_sta=$("input[name='order_state']").val();
+           $.ajax({ 
+            url: "{:U('wap/goodsrefund/refund_list')}",
+            type:'post',
+            data: {p:p,order_state:order_sta},
+            dataType: 'json',
+            success: function(data){
+              //console.log(data);
+               var con=1;
+                var option='';
+                if(data){
+                      $.each(data, function(i, value) {
+                        var order_list ='<a href="<?php echo U('Wap/goodsrefund/index');?>?id=' +value.order_goods_id+'>'
+                          +'<div class="refundlist newbox bgwt">'
+                          +'<div class="refundtitle clearfix">'
+                          +'<span class="floatLft">售后编号:<span class="num green">'+value.refund_sn+'</span></span>'
+                          +'<span class="floatRgt">申请时间:<span class="num gray"></span>'+add_time+'</span>'
+                          +'</div>'
+                          +'<div class="cartlist"> <ul> <li  class="goods"> <div class="goodsimg imgnobg">'
+                          +'<div class="img bgcover " style=" background:url('+value.goods_image+')">'
+                          +'<img src="'+value.goods_image+'"/> </div> </div> <div class="info"> <div class="title">'
+                          +value.goods_name+'</div><div class="pay"> <div class="pirce num green">￥'+value.goodspr
+                          +'</div> <div class="qty"> <span class="num">'+value.goods_number+'</span>件'
+                          +'</div> </div> </div> <div class="clearfix"> </div> </li> </ul> </div> </div>
+                          +'<div class="newbox2"><div class="refundinfo"> '+value.code_name
+                          +is_read+'</div> </div> </a>'
+                          option +=order_list;
+                        con++;
+                     });
+                }
+                 $('.more_html').append(option);
+               /* if(p==1){
+                  $('.more_html').html(option);
+                }else{
+                 
+                }*/
+                load_more = 0;
+                if (option) {
+                    $("input[name='p']").val(parseInt(p) + 1);
+                }
+              if(con<10){
+                  load_none = 1;
+                 $('.get_more').html('无更多数据');
+                  $('.get_more').fadeOut('3000');
+              }
+            }
+           });
+   }
+
+</script>
+<script type="text/javascript">
+   $(function(){
+    //确认收货
+   /* $('.more_html').on('click','.delivered_order',function(){
+      var __this=$(this);
+       var order_id=__this.attr('data');
+       alert(order_id);
+       layer.confirm('是否确认收货？确认收货后订单不可退换！', {
+            btn: ['确定','取消'] //按钮
+      }, function(){
+          if(order_id){
+            $.ajax({
+                url: "{:U('wap/goodsorder/order_delivered')}",
+                type:'post',
+                data: {order_id:order_id},
+                dataType: 'json',
+                success: function(data){
+                  if(data.status==1){
+                     var str=$('.oder_state_c .pay_order_n p:eq(0)').html();
+                   $('.oder_state_c .pay_order_n p:eq(0)').html(parseInt(str) - 1);
+                    var str=$('.oder_state_c .f_order_n p:eq(0)').html();
+                     $('.oder_state_c .f_order_n p:eq(0)').html(parseInt(str) + 1);
+                    //alert("确认收货成功");
+                    layer.msg('确认收货成功', {icon: 6,time: 1500},function(){
+                    $("input[name='p']").val(1);
+                    get_more();
+                    ///刷新页面
+                     });
+                    //$('.delivered_html').remove();
+                  }else{
+                    layer.msg(data.error, {icon: 5});
+                    //alert(data.error)
+                  }
+                }
+               });
+          }else{
+             layer.msg('系统繁忙,请稍后再试', {icon: 5});
+            //alert('系统繁忙,请稍后再试')
+          }
+
+      }, function(){
+          
+      });
+
+     });*/
+
+});
+ </script>
+</body>
+</html>

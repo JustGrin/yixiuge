@@ -1,0 +1,111 @@
+body{
+    font-family: 'Microsoft YaHei',Verdana,Arial,Helvetica,sans-serif;
+}
+body ,img,  p{
+    margin:0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+.draw_frame{
+    width: 100%;
+    float: left;
+    background:#ca2c3a;
+    display: block;
+}
+.draw_main{
+    min-width: 250px;
+    max-width: 640px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+.draw_frame .draw_main .draw_main_top{
+    width: 100%;
+    height: 200px;
+    margin: 10px auto;
+}
+.draw_frame .draw_main .draw_main_top img{
+    width: 250px;
+    height: 180px;
+    vertical-align: middle;
+}
+.draw_frame .draw_main .draw_main_top p{
+    font-weight: 500;
+    color: #581b16;
+}
+.draw{
+    position: relative;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.border1{
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    height: 200%;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition:1s all ease;
+    transition:1s all ease;
+}
+.front1{
+    width: 100%;
+    height: 50%;
+    transform: translate(0px,30px);
+    text-align: center;
+    position: relative;
+}
+.draw_title {position: absolute;}
+.draw_title p{color: #DE1D38;margin: 10px 0 0 20px;padding: 0;text-align: left;padding-left: 10px;}
+.draw_title .draw_title_type_data{margin-left: 60px;padding: 0;width: 100px; text-align: center;}
+.back1{
+    width: 100%;
+    height: 30px;
+    background: red;
+    border-radius: 5px;
+    border: 0px;
+    position: absolute;
+    z-index: 999;
+}
+.move{
+    transform: translateY(50%);
+    -ms-transform:translateY(50%);     /* IE 9 */
+    -moz-transform:translateY(50%);    /* Firefox */
+    -webkit-transform:translateY(50%); /* Safari 和 Chrome */
+    -o-transform:translateY(50%);  /* Opera */
+    transition:1s all ease;
+    -moz-transition:1s all ease; /* Firefox 4 */
+    -webkit-transition:1s all ease; /* Safari 和 Chrome */
+    -o-transition:1s all ease; /* Opera */
+}
+.draw_frame .draw_main .draw  img{
+    width: 100%;
+    height: 180px;
+}
+.draw_frame .draw_main .draw .back1 img{
+    width: 100%;
+    height: 30px;
+}
+.draw_frame .draw_main .sign{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+}
+.draw_frame .draw_main .sign a{
+    width: 250px;
+    height: 40px;
+    background-color: #FEE32B;
+    color: #760715;
+    font-weight: bolder;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+}

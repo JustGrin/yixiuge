@@ -1,0 +1,177 @@
+<include file="Public/header"/>
+
+ <script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+<script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+
+
+        <!-- end: CLIP-TWO CSS -->
+        <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+      
+    </head>
+    <!-- end: HEAD -->
+    <body>
+ 
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+
+<div class="col-md-6">
+     <div  style="width:50px;height:50px;font-size:12px;word-wrap:break-word;letter-spacing:20px;">
+        会员名称会员名称会员名称会员名称会员名称
+     </div>
+    <div class="form-group">
+        <label class="control-label"  >
+            会员名称
+        </label> 
+        <br>
+        <div class="upload_file">
+           <label>
+         <input type="file" name="head_photo" id="head_photo" value="" style="display:none;"> 
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <img id="head_photo_src" src="__PUBLIC__/bootstrap/assets/images/avatar-1-xl.jpg" alt="">
+                </div>
+              
+
+            </div>
+             &nbsp;<br>点击上传图片
+        </label>  
+                 <input type="hidden" name="logo" id="photo_pic" value="14423054440881.jpg">
+         </div>          
+     
+    </div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+</div>
+
+
+
+    	 <p class="buttons"> 请输入测试文字：
+      <input id="demoInput04-3" title="demoInput04-3" type="text" value="精于心，简于形" style="padding:4px; width:16em; margin-right:10px" />
+      <button class="runCode" name="demoCode04-3">运行&raquo;</button>
+
+      <button class="runCode2" name="demoCode04-3">运行2&raquo;</button>
+    </p>
+ <script type="text/javascript">
+ $(function(){
+
+$(".runCode").click(function(){
+var dialog = art.dialog({
+    title: '欢迎',
+	content: '欢迎使用artDialog对话框组件！',
+	icon: 'succeed',
+    follow: document.getElementById('btn2'),
+    ok: function(){
+        this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
+        return false;
+    }
+});
+
+});
+
+$(".runCode2").click(function(){
+art.dialog.open("{:U('admin/Imagecat/index')}", {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });
+
+});
+
+
+ });
+
+
+
+
+    $(document).ready(function (e) {
+
+        $('.upload_file').on('change','#head_photo', function () {
+            ajaxFileUploadview('head_photo', 'photo_pic', "{:U('admin/Imagecat/upload_ajax')}");
+        });
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+        var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#photo_pic").val(file);
+        //});   
+
+    }
+//文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#photo_pic').val(data.imgurl);
+
+                                    art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+  
+
+ </script>   
+	</body>
+</html>

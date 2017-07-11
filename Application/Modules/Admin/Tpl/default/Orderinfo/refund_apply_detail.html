@@ -1,0 +1,316 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content" >
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">售后退款申请</h1>
+                            <span class="mainDescription">退款申请信息</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">
+                                商品信息
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                订单编号：
+                            </label>
+                            {$list['order']['order_sn']}
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                商品名：
+                            </label>
+                            {$list['order_goods']['goods_name']}
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                订单金额：
+                            </label>
+                            ￥{$list['order']['order_amount']}
+                        </div>
+                        <div class="form-group" style="color: #ff0000!important">
+                            <label class="control-label">
+                                退单商品价格：
+                            </label>
+                            ￥{$list['order_goods']['goods_price']}
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                下单时间：
+                            </label>
+                            {$list['order']['add_time']|date="Y-m-d H:i:s",###}
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                支付金额：
+                            </label>
+                            {$list['order']['order_amount']+$list['order']['shipping_fee']}[
+                                余额:￥{$list['order']['surplus']}
+                                积分:￥{$list['order']['integral_money']}({$list['order']['integral']}积分)
+                                微信:￥{$list['order']['order_amount']+$vo['shipping_fee'] - $list['order']['surplus'] - $list['order']['integral_money']}
+                            ]
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                会员信息
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                会员名：
+                            </label>
+                            {$list['member']['member_name']}
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                会员卡号：
+                            </label>
+                            {$list['member']['member_card']}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container-fluid container-fullw bg-white">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    申请时间：
+                                </label>
+                                {$data.add_time|date="Y-m-d H:i",###}
+                            </div>
+                            <div class="form-group" style="color: #ff0000!important">
+                                <label class="control-label">
+                                    申请退款金额：
+                                </label>
+                                <ul style="list-style-type:none">
+                                    <li>
+                                        <label class="control-label">
+                                            积分：
+                                        </label>
+                                        ￥{$data['integral']/10}(积分{$data['integral']})
+                                    </li>
+                                    <li>
+                                        <label class="control-label">
+                                            余额：
+                                        </label>
+                                        ￥{$data.balance}
+                                    </li>
+                                    <li>
+                                        <label class="control-label">
+                                            微信钱包：
+                                        </label>
+                                        ￥{$data.wx_refund}
+                                    </li>
+                                    <li>
+                                        <label class="control-label">
+                                            总金额：
+                                        </label>
+                                        ￥{$data.total}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    客服备注：
+                                </label>
+                                {$data.remarks1}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">
+                                    当前状态：
+                                </label>
+                                <if condition="$data['status'] eq 0">
+                                    待审核
+                                    <elseif condition="$data['status'] eq 1"/>
+                                    已退款
+                                    <elseif condition="$data['status'] eq 2"/>
+                                    拒绝退款:({$data.remarks})
+                                </if>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 wx_refund_info">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    微信退单信息
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <if condition="$_GET['open'] eq handle and $data['status'] eq 0" >
+                                <form action="{:U('admin/orderinfo/do_refund')}" role="form" id="form2" novalidate="novalidate" method="post" >
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            审核操作：
+                                        </label>
+                                        <div class="clip-radio radio-primary fa-hover Primary">
+                                            <input type="radio" value="1" name="auid_status" id="id_yes" >
+                                            <label for="id_yes">
+                                                同意退款
+                                            </label>
+                                            <input type="radio" value="2" name="auid_status" id="id_no"  checked="checked" >
+                                            <label for="id_no">
+                                                审核不通过
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" value="{$data.id}" name="id" >
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            审核(不通过)意见：
+                                        </label>
+                                        <div>
+                                            <textarea id="remarks" name="remarks"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.remarks1}</textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary  btn-wide btn-sub" >
+                                            提交 <i class="fa fa-arrow-circle-right"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <p>
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <else/>
+								<if condition="$data['status'] eq 1 and $data['wx_refund'] gt 0" >
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary  btn-wide refund_query" >
+                                            查看微信退款信息 <i class="fa fa-arrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+								</if>
+                            </if>
+                        </div>
+                </div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script>
+    function check(auid_status) {
+        //询问框
+        var stat_name='';
+        if(auid_status == 1){
+            stat_name='同意退款';
+        }else if(auid_status == 2){
+            stat_name='拒绝退款';
+        }
+        var msg='确认'+stat_name+'？确认之后不能更改';
+        layer.confirm(msg, {
+            btn: ['是的,我'+stat_name,'再考虑一下']//按钮
+        }, function(){
+            $('#form2').submit();
+        }, function(){
+
+        });
+    }
+    jQuery(document).ready(function() {
+        //FormValidator.init();
+        $('.btn-sub').click(function(){
+            var auid_status=$("input:radio[name='auid_status']:checked").val();
+            check(auid_status);
+        });
+
+        var		transaction_id="{$list['wx_refund_data']['transaction_id']}";
+        var     out_trade_no="{$list['wx_refund_data']['out_trade_no']}";
+        var     out_refund_no="{$list['wx_refund_data']['out_refund_no']}";
+        var     refund_id="{$list['wx_refund_data']['refund_id']}";
+        $('.refund_query').click(function () {
+            $.ajax({
+                url: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/refundquery.php'; ?>",
+                type:'post',
+                data: {transaction_id:transaction_id,out_trade_no:out_trade_no,out_refund_no:out_refund_no,refund_id:refund_id},
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    var option = '';
+                    option+='<div class="form-group"><label class="control-label">申请金额：</label>'
+                            +parseFloat(parseFloat(data.cash_fee)/100)+'元</div>';
+                    option+='<div class="form-group"><label class="control-label">商品退单号：</label>'
+                            +data.out_refund_no_0+'</div>';
+                    option+='<div class="form-group"><label class="control-label">微信退单号：</label>'
+                            +data.refund_id_0+'</div>';
+                    option+='<div class="form-group"><label class="control-label">商品订单号：</label>'
+                            +data.out_trade_no+'</div>';
+                    option+='<div class="form-group"><label class="control-label">微信订单号：</label>'
+                            +data.transaction_id+'</div>';
+                    if(data.refund_status_0 == 'SUCCESS'){
+                       var  refund_status_0 ='退单到账';
+                    }else {
+                        var  refund_status_0 ='退单未到账';
+                    }
+                    option+='<div class="form-group"><label class="control-label">微信退单状态：</label>'
+                            +refund_status_0+'</div>';
+
+                    $('.wx_refund_info').html( option );
+                }
+            });
+        });
+
+    });
+//可查询到的数据
+/*    cash_fee:"100"
+    out_refund_no_0:"R16110912155751"
+    out_trade_no:"614691497415"
+    refund_count:"1"
+    refund_fee:"100"
+    refund_fee_0:"100"
+    refund_id_0:"2001492001201611090574626720"
+    refund_recv_accout_0:"支付用户的零钱"
+    refund_status_0:"SUCCESS"
+    result_code:"SUCCESS"
+    return_code:"SUCCESS"
+    return_msg:"OK"
+    total_fee:"100"
+    transaction_id:"4001492001201611089158196001"*/
+
+    //若返回签名错误 可能是total_fee 为空
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>订单列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/order.css" />
+
+</head>
+<body class="storeorder">
+<div class="head">
+	<a href="javascript:history.go(-1)" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<h2 >店铺订单管理</h2>
+</div>
+<div class="type">
+	<ul class="oder_state_c">
+		<li data="all" class=" all_order_n <if condition="$_GET['order_state'] eq 'all'"> on</if>"  >
+		<a href="javascript:void(0);">全部</a>
+		<if condition="$count"></if>
+		</li>
+		<li data="1" class="pay_order_n <if condition="$_GET['order_state'] eq '1'"> on</if>" >
+		<a href="javascript:void(0);">待发货</a>
+		<if condition="$count10"></if>
+		</li>
+		<li data="2" class="delivered <if condition="$_GET['order_state'] eq '2'"> on</if>" >
+		<a href="javascript:void(0);">待收货</a>
+		<if condition="$count20"></if>
+		</li>
+		<li data="3" class="f_order_n <if condition="$_GET['order_state'] eq '3'"> on</if>" >
+		<a href="javascript:void(0);">已确认</a>
+		<if condition="$count30"></if>
+		</li>
+	</ul>
+</div>
+<div class="page">
+	<ul class="more_html">
+		<volist name="list" id="vo">
+			<li>
+				<div class="cartlist">
+					<div class="store">
+						{$vo.member_name}<span class="state">{$vo.order_state_name}</span>
+					</div>
+					<div class="user">
+						<i class="iconfont">&#xe621</i>
+						<div class="info">
+							<dl>
+								<dt>订单号：</dt>
+								<dd class="num">{$vo.order_sn}</dd>
+							</dl>
+							<dl>
+								<dt>收件人：</dt>
+								<dd>{$vo.consignee}</dd>
+							</dl>
+							<dl>
+								<dt>地址：</dt>
+								<dd>{$vo.address}</dd>
+							</dl>
+							<dl>
+								<dt>手机号：</dt>
+								<dd class="num">{$vo.mobile}</dd>
+							</dl>
+						</div>
+					</div>
+					<ul>
+						<volist name="vo['goods']" id="v">
+							<li  class="goods">
+								<div class="goodsimg imgnobg">
+									<div class="img bgcover " style=" background:url({$v.goods_image})">
+									</div>
+								</div>
+								<div class="info">
+									<div class="title">
+										{$v.goods_name}
+									</div>
+									<div class="pay">
+										<div class="pirce num green">
+											￥{$v.goods_price}
+										</div>
+										<div class="qty">
+											<span class="num">{$v.goods_number}</span>件
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix">
+								</div>
+							</li>
+						</volist>
+					</ul>
+					<div class="total">
+						<ul>
+							<li>
+								订单时间：{$vo.add_time}
+								<if condition="$vo.invoice_no and $vo.express_code">
+								<a class="btn1 btnsF34" href="{:U('wap/goodsorder/order_express',array('order_id'=>$vo['order_id'], 'is_show_all'=>2, 'is_store'=>1))}">查看物流</a>
+								</if>
+							</li>
+							<li class="subtotal">共<span class="num green"> {$vo.num} </span>件商品{$vo.invoice_no} 合计：<span class=" num green">¥{$vo.order_amount}</span></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</volist>
+	</ul>
+	<div class="loading">
+		<div class="fm-footer-copyright get_more">
+			<if condition="$count gt 10 && count($list) eq 10">
+				加载更多
+				<else/>
+				无更多数据
+			</if>
+		</div>
+	</div>
+</div>
+
+
+
+<div style="height:50px;">
+</div>
+
+<include file="Public/footer_new" />
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/return-top.js"></script>
+
+<input type="hidden" name="p" value="2" />
+<input type="hidden" name="order_state" value="{$_GET['order_state']}" />
+<input type="hidden" name="order" value=""/>
+
+<script type="text/javascript">
+	var load_more = 0;
+	var load_none = 0;
+	$(function () {
+
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight) {
+				//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+				if (load_none != 1) {
+					if (load_more == 1) {
+						var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+						$('.get_more').html('加载中' + html);
+					} else {
+						get_more();
+					}
+				}
+
+			}
+		});
+	})
+	$(function(){
+		$(".get_more").click(function(){
+			get_more();
+		});
+		$(".oder_state_c li").click(function(){
+			$('.oder_state_c li').removeClass('on');
+			$(this).addClass('on');
+			var data=$(this).attr('data');
+			$("input[name='order_state']").val(data);
+			$("input[name='p']").val(1);
+			get_more();
+		});
+	});
+	function get_more(){
+		load_more = 1;
+		var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">';
+		$('.get_more').html('加载中' + html);
+		var p=$("input[name='p']").val();
+		var order_sta=$("input[name='order_state']").val();
+		$.ajax({
+			url: "{:U('wap/member/store_order')}",
+			type:'post',
+			data: {p:p,order_state:order_sta},
+			dataType: 'json',
+			success: function(data){
+				//console.log(data);
+				var con=1;
+				var option='';
+				if(data){
+					$.each(data, function(i, value) {
+
+						//this指向当前元素
+						//i表示Array当前下标
+						//value表示Array当前元素
+						var goods_list = "";
+						var goods=value.goods;
+						if(goods){
+							$.each(goods, function (n, vo) {
+								goods_list =goods_list+ ''
+										+'<li  class="goods"> '
+								+'<div class="goodsimg imgnobg">'
+								+'<div class="img bgcover " style=" background:url('+vo.goods_image+')">'
+								+'</div>'
+								+'</div>'
+								+'<div class="info">'
+								+'<div class="title">'
+								+vo.goods_name
+								+' </div>'
+								+' <div class="pay">'
+								+'<div class="pirce num green">'
+								+'￥'+vo.goods_price
+								+'</div>'
+								+'<div class="qty">'
+								+'<span class="num">'+vo.goods_number+'</span>件'
+								+'</div>'
+								+'</div>'
+								+'</div>'
+								+'</a>'
+								+'<div class="clearfix">'
+								+'</div>'
+								+'</li>';
+							});
+						}
+						option=option+'<li>'
+								+'<div class="cartlist">'
+								+'<div class="store">'
+								+ value.member_name+'<span class="state">'+value.order_state_name+'</span>'
+								+'</div>'
+								+'<div class="user">'
+								+'<i class="iconfont">&#xe621</i>'
+								+'<div class="info">'
+						+'<dl>'
+						+'<dt>订单号：</dt>'
+						+'<dd class="num">'+value.order_sn+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>收件人：</dt>'
+						+'<dd>'+value.consignee+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>地址：</dt>'
+						+'<dd>'+value.address+'</dd>'
+						+'</dl>'
+						+'<dl>'
+						+'<dt>手机号：</dt>'
+						+'<dd class="num">'+value.mobile+'</dd>'
+						+'</dl>'
+						+'</div></a>'
+						+'</div>'
+						+'<ul>'+goods_list+'</ul><div class="total"><ul>'
+						+'<li class="subtotal">共<span class="num black"> '+value.num+' </span>件商品 合计：<span class=" num green">¥'+value.order_amount+'</span></li>'
+						+'</ul></li>';
+						con++;
+					});
+				}
+				if(p==1){
+					$('.more_html').html(option);
+				}else{
+					$('.more_html').append(option);
+				}
+				load_more = 0;
+				if (option) {
+					$("input[name='p']").val(parseInt(p) + 1);
+				}
+				if(con<10){
+					load_none = 1;
+					$('.get_more').html('无更多数据');
+					$('.get_more').fadeOut(3000);
+				}
+			}
+		});
+	}
+
+</script>
+
+</body>
+</html>

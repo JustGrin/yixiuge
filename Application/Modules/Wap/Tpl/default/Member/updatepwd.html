@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>修改密码</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<body id="u-body">
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="{:U('wap/member/setup')}" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>修改密码</span></div>
+    </header>
+     <form action="" role="form" id="form2" novalidate="novalidate" method="post" onSubmit="return false;">
+    <div class="ui-form ui-border-b">
+        <div class="ui-form-item ">
+            <label>当前密码</label>
+            <input class="ui-border-bi" name="mem_password" id="mem_password" type="password" value="" >
+        </div>
+        <div class="ui-form-item ">
+            <label>新密码</label>
+            <input class="ui-border-bi" name="new_mem_password" id="new_mem_password" type="password" value="" >
+        </div>
+        <div class="ui-form-item ">
+            <label>确认密码</label>
+            <input class="ui-border-bi" name="res_mem_password" id="res_mem_password"  type="password" value="" >
+        </div>
+    </div>
+    <a href="javascript:void(0);" class="new-abtn-type new-mg-tb30  phone_log_btn">确认修改</a>
+</form>
+
+<div style="height:30px;">
+   </div> 
+     <!--end top-->
+   <include file="Public/footer" />
+ <include file="Public/wap_javascript" />  
+       <!--微信分享-->    
+ <include file="Public/share_weixin" />
+ 
+        <script>
+jQuery(document).ready(function() {
+                //FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+    var dropdown=$("#dropdown").val();
+    var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   mem_password: {
+                    required: true,
+                    rangelength: [6, 20]
+                },
+    new_mem_password: {
+                    required: true,
+                    rangelength: [6, 20]
+                },
+    res_mem_password: {
+        required: true,
+        rangelength: [6, 20],
+        equalTo: "#new_mem_password"
+    }                         
+  },
+  messages: {
+       mem_password:{
+        required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入当前密码',
+        rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;密码请保持6-20位'
+       },
+       new_mem_password: {
+        required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入密码',
+        rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;密码请保持6-20位'
+       },
+       res_mem_password: {
+        required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入密码',
+        rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;密码请保持6-20位',
+        equalTo:'<span class="icon-warning icon_warning"></span>&nbsp;新密码两次输入不一致'
+       }
+  },
+   focusInvalid:false,
+  success: function(label) { 
+            // set  as text for IE 
+           // alert('ok'); 
+            //label.html(" ").addClass("checked"); 
+        }, 
+        /*执行ajaxsubmit  */ 
+        submitHandler: function(editform) { 
+
+            var options = { 
+                url :  "<?php echo U('Wap/Member/changepwd'); ?>", 
+                type : "post" , 
+                dataType:'json', 
+                target : "#loader", 
+                error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});}, 
+                onwait : "正在处理信息，请稍候...",
+                success: function(response){ 
+                      // console.log(response);
+                    //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                    //$('#editform').hide(2000); 
+                    if(response.status==1){
+                        layer.msg("修改成功，请重新登录。",{icon:6},function(){
+                          window.location.href="<?php echo U('Wap/Login/loginout'); ?>"; 
+                        });
+                       
+                    }else{
+                        layer.msg(response.error,{icon:5});
+                    }
+                }
+            };
+            setTimeout((function(opt){
+                return function(){
+                    $('#form2').ajaxSubmit(opt);
+                }
+            })(options), 300); 
+            return false; 
+        }
+
+  });
+
+$('.phone_log_btn').click(function(){
+    $('#form2').submit();
+});
+
+
+
+});
+
+        </script> 
+</body>
+</html>

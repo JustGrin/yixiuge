@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>关于FG峰购-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<body id="body">
+       <!--绑定头部-->    
+ <include file="Public/binding_head"/>
+    <!--绑定头部-->
+
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>关于美通商贸</span></div>
+    </header>
+    <ul class="couponIn-list">
+        <li>
+            <a  href="{:U('wap/about/introduction')}">
+                <div class="couponIn-item">
+                    <div class="couponIn-item-info">
+                        <span class="info-title">功能介绍</span>
+                        <span class="info-hint"></span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a  href="{:U('wap/about/notice')}">
+                <div class="couponIn-item">
+                    <div class="couponIn-item-info">
+                        <span class="info-title">系统通知</span>
+                        <span class="info-hint"></span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a  href="###">
+                <div class="couponIn-item">
+                    <div class="couponIn-item-info">
+                        <span class="info-title">帮助与反馈</span>
+                        <span class="info-hint"></span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+   
+<div style="height:50px;">
+   </div> 
+     <!--end top-->
+   <include file="Public/footer" /> 
+     <include file="Public/wap_javascript" />
+
+     <!--微信分享-->    
+ <include file="Public/share_weixin" />
+
+      <script type="text/javascript">
+   var  binding_is_check=0;// 重复再次弹出 1是 0否
+   var  binding_page='about';// //当前页面名称 不可重复
+</script>  
+         <!--绑定-->    
+ <include file="Public/binding_phone"/>
+    <!--绑定-->
+</body>
+</html>

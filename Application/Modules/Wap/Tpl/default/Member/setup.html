@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+</head>
+<body class="login">
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back">
+		<i class="iconfont">&#xe617</i>
+	</a>
+	<a href="#" class="md-login floatRgt">
+		登录
+	</a>
+	<h2 >个人设置</h2>
+</div>
+<div class="page pdt10 member">
+	<form id="loginForm" class="mlogin " action="" method="post">
+		<div class="list">
+			<div class="title">
+				<a  href="{:U('wap/member/basic')}">
+					<i class="iconfont icon" style="color:#f9960f">&#xe606</i><span>个人基本信息</span>
+					<i class="iconfont floatRgt">&#xe618</i>
+				</a>
+			</div>
+			<div class="title">
+				<a  href="{:U('wap/member/setphoto')}">
+					<i class="iconfont icon" style="color:#0ba7e4">&#xe609</i><span>设置个人头象</span>
+					<i class="iconfont floatRgt">&#xe618</i>
+				</a>
+			</div >
+			<div class="title">
+				<a href="{:U('wap/login/findpwd')}">
+					<i class="iconfont icon" style="color:#0ba7e4">&#xe62f</i><span> 修改密码</span>
+					<i class="iconfont floatRgt">&#xe618</i>
+				</a>
+			</div>
+		</div>
+	</form>
+</div>
+<include file="Public/footer_new" />
+</body>
+</html>

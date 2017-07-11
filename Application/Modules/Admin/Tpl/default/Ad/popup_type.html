@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<include file="Public/header"/>
+<body>
+<!--S 类型为商品-->
+<if condition="$type eq 1">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 margin-top-20">
+            <div class="panel panel-white form-inline">
+                <div class="panel-heading">
+                    <h5 class="panel-title">请选择商品</h5>
+                </div>
+                <form action="" method="get">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="sr-only">
+                                商品货号
+                            </label>
+                            <input type="text" name="goods_sn" id="goods_sn" placeholder="商品货号" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="goods_name" class="sr-only">
+                                产品名称
+                            </label>
+                            <input type="text" name="goods_name" id="goods_name" placeholder="产品名称"
+                                   class="form-control">
+                        </div>
+                        <input type="hidden" name="value" value="{$_GET['value']}"/>
+                        <input type="hidden" name="type" value="1"/>
+                        <div class="form-group ">
+                            <button class="btn btn-primary" type="submit">
+                                提交
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover" id="goods">
+        <thead>
+        <tr>
+            <th class="center">商品图片</th>
+            <th class="center">商品名称</th>
+            <th class="center">商品货号</th>
+            <th class="center">价格</th>
+            <th class="center">操作</th>
+        </tr>
+        </thead>
+        <tbody class="more_html">
+        <volist name="list" id="val">
+            <tr>
+                <td class="center"><img src="{$val.goods_img}" class="img-rounded"
+                                        style="max-width:50px;max-height:50px;" alt="无图片"></td>
+                <td class="center">{$val.goods_name}</td>
+                <td class="center">{$val.goods_sn}</td>
+                <td class="center">{$val.shop_price}</td>
+                <td class="center">
+                    <if condition="in_array($val['goods_id'],$value)">
+                            <input type="checkbox" checked  name="choose" goods_id="{$val.goods_id}" title="{$val.goods_name}" />
+                        <else/>
+                            <input type="checkbox" name="choose" goods_id="{$val.goods_id}" title="{$val.goods_name}"/>
+                    </if>
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+    <div class="b_q col-md-2 col-md-offset-11">
+        <button class="btn btn-primary" id="close_goods">
+            确定
+        </button>
+    </div>
+    <div class="b_q col-md-4 col-md-offset-5">
+        <div class="fm-footer-copyright get_more">
+            <if condition="$count gt 10 && count($list) eq 10">
+                点击加载更多
+                <else/>
+                无更多数据
+            </if>
+        </div>
+    </div>
+    <input type="hidden" name="p" data="2" value="2"/>
+</if>
+<!--E 类型为商品-->
+<!--S 类型为类别-->
+<if condition="$type eq 2">
+    <table class="table table-hover" id="sample-table-1">
+        <thead>
+        <tr>
+            <th class="center">#</th>
+            <th>分类名称</th>
+            <th>关键字</th>
+            <th>分类描述</th>
+            <!--<th>显示顺序</th>-->
+            <!--<th>计量单位</th>-->
+            <th>是否在首页显示</th>
+            <!--<th>是否在导航显示</th>-->
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="data" id="val">
+            <tr class="menu_p" data="{$val.cat_id}" data-type="0">
+                <td>#</td>
+                <td calss="hidden-xs">{$val.cat_name}
+                    <i class="fa fa-angle-down  angle_down_{$val.cat_id}"></i>
+                    <i class="fa fa-angle-up angle_up_{$val.cat_id} class_hidden"></i>
+                </td>
+                <td>{$val.keywords}</td>
+                <td>{$val.cat_desc}</td>
+                <!--<td>{$val.sort_order}</td>-->
+                <!--<td>{$val.measure_unit}</td>-->
+                <td>{$val['is_show']?'是':'否'}</td>
+                <!--<td>{$val['show_in_nav']?'是':'否'}</td>-->
+                <td><a href="javascript:void(0)" onclick="closeWindow({$val.cat_id},'{$val.cat_name}')">选择</a>
+                </td>
+            </tr>
+            <!-- 二级分类开始-->
+            <if condition="(!empty($val['tree']))">
+                <volist name="val['tree']" id="va">
+                    <tr class="class_hidden menu_p_c menu_p_{$val.cat_id}" data_p_c="{$val.cat_id}"
+                        data_c="{$va.cat_id}" data-type_c="0">
+                        <td>#</td>
+                        <td calss="hidden-xs">&nbsp;┗━{$va.cat_name}
+                            <i class="fa fa-angle-down angle_down_c_{$val.cat_id}  angle_down_c{$va.cat_id}"></i>
+                            <i class="fa fa-angle-up angle_up_c_{$val.cat_id} angle_up_c{$va.cat_id} class_hidden"></i>
+                        </td>
+                        <td>{$va.keywords}</td>
+                        <!--<td>{$va.cat_desc}</td>-->
+                        <!--<td>{$va.sort_order}</td>-->
+                        <td>{$va.measure_unit}</td>
+                        <td>{$va['is_show']?'是':'否'}</td>
+                        <!--<td>{$va['show_in_nav']?'是':'否'}</td>-->
+                        <td><a href="javascript:void(0)" onclick="closeWindow({$va.cat_id},'{$va.cat_name}')">选择</a></td>
+                    </tr>
+                    <!-- 三级分类开始-->
+                    <if condition="(!empty($va['tree']))">
+                        <volist name="va['tree']" id="v">
+                            <tr class="class_hidden menu_p_c_s  menu_p_c{$va.cat_id}">
+                                <td>#</td>
+                                <td calss="hidden-xs">&nbsp;&nbsp;&nbsp;&nbsp;┗━━{$v.cat_name}</td>
+                                <td>{$v.keywords}</td>
+                                <!--<td>{$v.cat_desc}</td>-->
+                                <!--<td>{$v.sort_order}</td>-->
+                                <td>{$v.measure_unit}</td>
+                                <td>{$v['is_show']?'是':'否'}</td>
+                                <!--<td>{$v['show_in_nav']?'是':'否'}</td>-->
+                                <td><a href="javascript:void(0)" onclick="closeWindow({$v.cat_id},'{$v.cat_name}')">选择</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </if>
+                    <!-- 三级分类结束-->
+                </volist>
+            </if>
+            <!-- 二级分类结束-->
+        </volist>
+        </tbody>
+    </table>
+</if>
+<!--E 类型为类别-->
+<!--S 类型为显示抢购-->
+<if condition="$type eq 3">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="center">#</th>
+            <th class="center">商品名称</th>
+            <th class="center">活动状态</th>
+            <th class="center">开始时间</th>
+            <th class="center">结束时间</th>
+            <th class="center">价格</th>
+            <th class="center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="data" id="val">
+            <tr>
+            <td class="center"><img src="{$val.goods_img}" class="img-rounded"
+                                    style="max-width:50px;max-height:50px;" alt="无图片"></td>
+            <td class="center">{$val.goods_name}</td>
+            <td class="center">{$val.promote_msg}</td>
+            <td class="center">{$val.promote_start_date|date='Y-m-d H:i:s',###}</td>
+            <td class="center">{$val.promote_end_date|date='Y-m-d H:i:s',###}</td>
+            <td class="center">{$val.promote_price}</td>
+            <td class="center"><a href="javascropt:void(0)" onclick="closeWindow({$val.goods_id},'{$val.goods_name}')">选择</a></td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+    <div class="col-md-12 pages" align="center">{$page|default='暂无数据'}</div>
+</if>
+<!--E 类型为显示抢购-->
+<include file="Public/javascript"/>
+<!--S 展示为商品的JS-->
+<script type="text/javascript">
+    var load_more = 0;
+    var load_none = 0;
+    $().ready(function () {
+        $('.get_more').click(function () {  //点击获取更多商品
+            if (load_none != 1) {
+                if (load_more == 1) {
+                    var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+                    $('.get_more').html('加载中' + html);
+                } else {
+                    get_more();
+                }
+            }
+        })
+    });
+    function get_more() {
+        load_more = 1;
+        var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">'
+        $('.get_more').html('加载中' + html);
+        //var p=$("input[name='p']").val();
+        var p = $("input[name='p']").attr('data');
+        var goods_name='<?php echo $_GET["goods_name"] ?>';
+        $.ajax({
+            url: "{:U('admin/Ad/popup_type')}",
+            type: 'get',
+            data: {p: p,type: '1',goods_name:goods_name},
+            dataType: 'json',
+            success: function (data) {
+                var str = '<?php echo $_GET["value"] ?>';
+                var val = str.split(',');
+                var con = 1;
+                var option = '';
+                if (data) {
+                    $.each(data, function (i, value) {
+                        var re = $.inArray(this.goods_id,val);
+                        var checked='';
+                        if(re != -1){
+                            checked='checked';
+                        }
+//                        alert(checked);
+                        option += '<tr>' +
+                                '<td class="center"><img src="' + this.goods_img + '" class="img-rounded" style="max-width:50px;max-height:50px;" alt="无图片"></td>' +
+                                '<td class="center">' + this.goods_name + '</td>' +
+                                '<td class="center">' + this.goods_sn + '</td>' +
+                                '<td class="center">' + this.shop_price + '</td>' +
+                                '<td class="center"><input type="checkbox" name="choose" class="checkboxAll" goods_id="' + this.goods_id +'" title="'+this.goods_name+'"'+checked+'></td>' +
+                                '</tr>';
+                        con++;
+                    });
+                }
+                if (p == 1) {
+                    $('.more_html').html(option);
+                } else {
+                    $('.more_html').append(option);
+                }
+                load_more = 0;
+                if (option) {
+                    //$("input[name='p']").val(parseInt(p)+1);
+                    $("input[name='p']").attr('data', parseInt(p) + 1);
+                }
+                if (con < 10) {
+                    load_none = 1;
+                    $('.get_more').html('无更多数据');
+                }
+            }
+        });
+    }
+    $('#close_goods').click(function () {   //获得商品选中值并关闭该页面
+        var index = parent.layer.getFrameIndex(window.name);
+        var goods_id = "";
+        var title="";
+        $('[name="choose"]:checked').each(function () {
+            if ($(this).is(":checked")) {
+                if (goods_id == '') {
+                    goods_id = $(this).attr('goods_id');
+                } else {
+                    goods_id += ',' + $(this).attr('goods_id');
+                }
+                if(title == ''){
+                    title = $(this).attr('title');
+                }else{
+                    title = title + '<br/>'+$(this).attr('title');
+                }
+            }
+        })
+        parent.$('#title_t').html(title)
+        parent.$('#value').val(goods_id);
+        parent.layer.close(index);
+    });
+</script>
+<!--E 展示为商品的JS-->
+<!--S 展示为类别的JS-->
+<script type="text/javascript">
+    function closeWindow(id,title) {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.$('#title_t').html(title)
+        parent.$('#value').val(id);
+        parent.layer.close(index);
+    }
+    $(function () {
+        $(".menu_p").click(function () {
+            var data = $(this).attr("data");
+            var data_type = $(this).attr("data-type");
+            if (data_type == 1) {
+                //当前展开  收起操作
+                $(".menu_p_c").hide();
+                $(this).attr("data-type", 0);
+                //$(".angle_down_" + data).show();
+                // $(".angle_up_" + data).hide();
+
+                $(".fa-angle-up").hide();
+                $(".fa-angle-down").show();
+                $('.menu_p_c_s').hide();
+            } else {
+                //当前收起 展开操作
+                $(".menu_p_c").hide();
+                $(".menu_p_" + data).show();
+                $(".menu_p_c").attr("data-type", 0);
+                $(".menu_p").attr("data-type", 0);
+                $(this).attr("data-type", 1);
+                //$(".fa-angle-up").show();
+                // $(".fa-angle-down").hide();
+                $(".fa-angle-up").hide();
+                $(".fa-angle-down").show();
+                $(".angle_down_" + data).hide();
+                $(".angle_up_" + data).show();
+
+            }
+        });
+        $('.menu_p_c').click(function () {
+            var data_c = $(this).attr("data_c");
+            var data_p_c = $(this).attr("data_p_c");
+            var data_type_c = $(this).attr('data-type');
+            if (data_type_c == 1) {
+                //二级分类当前展开-->收起操作
+
+                $('.angle_down_c_' + data_p_c).show();
+                $(".angle_up_c_" + data_p_c).hide();
+                $(this).attr('data-type', 0);
+                $(".angle_down_c" + data_c).show();
+                $(".angle_up_c" + data_c).hide();
+                $('.menu_p_c_s').hide();
+            } else {
+                //二级分类当前收起-->展开操作
+
+                $(".menu_p_c_s").hide();
+                $(".menu_p_c" + data_c).show();
+                $(".menu_p_c").attr("data-type", 0);
+                $(this).attr("data-type", 1);
+                $('.angle_down_c_' + data_p_c).show();
+                $(".angle_up_c_" + data_p_c).hide();
+                $(".angle_down_c" + data_c).hide();
+                $(".angle_up_c" + data_c).show();
+            }
+        });
+    });
+</script>
+<!--E 展示为类别的JS-->
+<!--S 展示为显示抢购的JS-->
+<script type="text/javascript">
+    function closeWindow(id,title) {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.$('#title_t').html(title);
+        parent.$('#value').val(id);
+        parent.layer.close(index);
+    }
+</script>
+<!--E 展示为显示抢购的JS-->
+</body>
+</html>

@@ -1,0 +1,340 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									 <h1 class="mainTitle">产品管理列表</h1>
+									<span class="mainDescription">&nbsp;&nbsp;产品管理 </span>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+								<a data-hover="新增" href="{:U('admin/goods/goods_edit')}"><span>新增</span></a>
+
+								</nav>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="goodsNumList" class="sr-only">
+					商品货号
+				</label>
+				<select class="form-control" id="goodsNumList" name="goodsNum">
+					<option value="0">-全部货号-</option>
+					<volist name="goodsNumList" id="val">
+						<option value="{$val.goods_sn}" <if condition="$_GET['goodsNum'] eq $val['goods_sn']">selected</if>>{$val.goods_sn}</option>
+					</volist>
+				</select>
+			</div>
+				<div class="form-group">
+					  <label for="goods_name" class="sr-only">
+						产品名称
+					  </label>
+						<input type="text" name="goods_name" value="{$_GET.goods_name}" id="goods_name" placeholder="产品名称" class="form-control">
+				</div>
+			    <div class="form-group">
+					  <label for="goods_sn" class="sr-only">
+						商品货号
+					  </label>
+						<input type="text" name="goods_sn" value="{$_GET.goods_sn}" id="goods_sn" placeholder="商品货号" class="form-control">
+				</div>
+
+				 <div class="form-group">
+					<label for="is_on_sale" class="sr-only">
+						
+					</label>
+					
+					<select class="form-control" id="is_on_sale" name="is_on_sale">
+<option value="all" <if condition="$_GET['is_on_sale'] =='all'">selected</if>>全部</option>
+<option value="1" <if condition="$_GET['is_on_sale'] =='1'">selected</if>>上架</option>
+<option value="0" <if condition="$_GET['is_on_sale'] ==='0'">selected</if>>下架</option>
+
+
+					</select>
+				</div>
+
+				 <div class="form-group">
+					<label for="is_on_sale" class="sr-only">
+						
+					</label>
+					
+					<select class="form-control" id="is_auditing" name="is_auditing">
+<option value="all" <if condition="$_GET['is_auditing'] =='all'">selected</if>>全部</option>
+<option value="1" <if condition="$_GET['is_auditing'] =='1'">selected</if>>已审核</option>
+<option value="0" <if condition="$_GET['is_auditing'] ==='0'">selected</if>>未审核</option>
+
+
+					</select>
+				</div>
+				<div class="form-group  ">
+			        <button class="btn btn-primary" type="submit">
+					 提交
+				    </button>
+			    </div>
+
+
+
+		</div>
+
+
+    </form>
+	</div>
+</div>
+		</div>	
+
+
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>商品名称</th>
+						<th class="hidden-xs">商品货号</th>
+						<th>进价</th>
+						<th>卖价</th>
+						<th>购买送积分</th>
+						<th>上/下架</th>
+						<th>审核状态</th>
+
+						<!--<th>新品</th>-->
+						<!--<th>热销</th>-->
+						<th>首页显示</th>
+						<th>是否售罄</th>
+						<th>库存</th>
+						<th class="center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+        <volist  name="list['list']" id='vo' key='key'>
+					<tr  >
+						<td class="center"><img src="{$vo.goods_img}" class="img-rounded" style="max-width:50px;max-height:50px;" alt="无图片"></td>
+						<td> 
+							{$vo.goods_name}
+						</td>
+						<td class="hidden-xs">{$vo.goods_sn}</td>
+						<td >{$vo.purchase_price}</td>
+						<td >{$vo.shop_price}</td>
+						<td >
+							{$vo.gift_integral}
+						</td>
+						<td id="is_sale{$vo.goods_id}"><if condition="$vo.is_on_sale eq 1">
+						<a href="javascript:void(0)"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" onclick="changeStatus({$vo.goods_id},{$vo.is_on_sale})"
+							data-original-title="下架"><i class="fa fa-check-circle" ></i></a>
+							<else/>
+							<a href="javascript:void(0)"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" onclick="changeStatus({$vo.goods_id},{$vo.is_on_sale})"
+							data-original-title="上架"><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
+							</if>
+							</td>
+						<td >{$vo['is_auditing']?'已审核':'未审核'}</td>
+
+						<!--<td >{$vo['is_new']?'<i class="fa fa-check-circle"></i>':'<i class="fa fa-minus-circle"></i>'}</td>-->
+						<!--<td >{$vo['is_hot']?'<i class="fa fa-check-circle"></i>':'<i class="fa fa-minus-circle"></i>'}</td>-->
+						<td id="show{$vo.goods_id}">
+							<if condition="$vo.is_show_index  eq 1">
+							<a href="javascript:void(0)"
+							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							   data-toggle="tooltip" onclick="changeShow({$vo.goods_id},{$vo.is_show_index })"
+							   data-original-title="不显示首页"><i class="fa fa-check-circle" ></i></a>
+							<else/>
+							<a href="javascript:void(0)"
+							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							   data-toggle="tooltip" onclick="changeShow({$vo.goods_id},{$vo.is_show_index })"
+							   data-original-title="显示首页"><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
+							</if>
+						</td>
+						
+						<td id="sell{$vo.goods_id}">
+							<if condition="$vo.is_sell_out eq 1">
+							<a href="javascript:void(0)"
+							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							   data-toggle="tooltip" onclick="changeSell({$vo.goods_id},{$vo.is_sell_out })"
+							   data-original-title="售罄"><i class="fa fa-check-circle" ></i></a>
+							<else/>
+							<a href="javascript:void(0)"
+							   class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							   data-toggle="tooltip" onclick="changeSell({$vo.goods_id},{$vo.is_sell_out })"
+							   data-original-title="未售罄"><i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>
+							</if>
+						</td>
+						<td >{$vo.goods_number}</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+                           	<a href="{:U("Wap/Goods/Goods_detail",array('id'=>$vo['goods_id']))}"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" data-original-title="查看" target="_blank">
+							<i class="fa fa-file-text-o"></i></a>
+
+                            <a href="{:U("Admin/Goods/Goods_edit",array('id'=>$vo['goods_id']))}"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" data-original-title="编辑">
+							<i class="fa fa-pencil"></i></a>
+
+                            <a href="{:U("Admin/Goods/Goods_del",array('id'=>$vo['goods_id']))}"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" onclick="return confirm('确取删除该商品？')"
+							data-original-title="删除"><i class="fa fa-trash-o"></i></a>
+						</div>
+						</td>
+					</tr>
+	
+</volist>
+
+		
+				</tbody>
+			</table>
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+         <include file="Public/javascript_datepicker"/>
+        
+	</body>
+<script type="text/javascript">
+	function changeStatus(id,value){
+		if(value==0){
+			value =1;
+			var sale='上架';
+		}else{
+			value=0;
+			var sale='下架';
+		}
+		if(confirm('确定'+sale+'?')){
+			$.ajax({
+				url:'{:U("Admin/goods/is_on_sale")}',
+				type:'get',
+				data:'id='+id+'&value='+value,
+				dataType:'json',
+				success:function(data){
+					if(data.status==1){
+						$('#is_sale'+id).empty();
+						if(value){
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeStatus('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" ></i></a>'
+						}else{
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeStatus('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>'
+						}
+						$('#is_sale'+id).append(content);
+						layer.msg(sale+'成功',{icon:6});
+					}else{
+						layer.msg(data.error,{icon:5});
+					}
+				}
+			})
+		}
+	}
+	function changeShow(id,value){
+		if(value==0){
+			value =1;
+			var sale='显示';
+		}else{
+			value=0;
+			var sale='不显示';
+		}
+		if(confirm('确定'+sale+'?')){
+			$.ajax({
+				url:'{:U("Admin/goods/is_show_index")}',
+				type:'get',
+				data:'id='+id+'&value='+value,
+				dataType:'json',
+				success:function(data){
+					if(data.status==1){
+						$('#show'+id).empty();
+						if(value){
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeShow('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" ></i></a>'
+						}else{
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeShow('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>'
+						}
+						$('#show'+id).append(content);
+						layer.msg(sale+'成功',{icon:6});
+					}else{
+						layer.msg(data.error,{icon:5});
+					}
+				}
+			})
+		}
+	}
+	
+	function changeSell(id,value){
+		if(value==0){
+			value =1;
+			var sale='售罄';
+		}else{
+			value=0;
+			var sale='未售罄';
+		}
+		if(confirm('确定'+sale+'?')){
+			$.ajax({
+				url:'{:U("Admin/goods/is_sell_out")}',
+				type:'get',
+				data:'id='+id+'&value='+value,
+				dataType:'json',
+				success:function(data){
+					if(data.status==1){
+						$('#sell'+id).empty();
+						if(value){
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeSell('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" ></i></a>'
+						}else{
+							var content = '<a href="javascript:void(0)" class="btn btn-transparent btn-xs" tooltip = "Edit" tooltip - placement = "top" data - toggle = "tooltip" onclick = "changeSell('+id+','+value+')" data - original - title = "'+sale+'" > <i class="fa fa-check-circle" style="color:#ccc;"  value="1"></i></a>'
+						}
+						$('#sell'+id).append(content);
+						layer.msg(sale+'确认成功',{icon:6});
+					}else{
+						layer.msg(data.error,{icon:5});
+					}
+				}
+			})
+		}
+	}
+</script>
+</html>

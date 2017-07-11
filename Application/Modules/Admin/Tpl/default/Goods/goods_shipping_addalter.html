@@ -1,0 +1,167 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8 col-md-offset-5">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">&nbsp;&nbsp;配送信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="{:U('Admin/Goods/goods_shipping_addSave',array('shipping_id'=>$shipping_id))}" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	  <div class="form-group">
+		<label class="control-label">
+			配送方式名称 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写配送方式名称" class="form-control" value="{$shipping_id ? $data['shipping_name'] : ''}" id="shipping_name" name="shipping_name">
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			配送方式的代号 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写配送方式的代号" class="form-control" value="{$shipping_id ? $data['shipping_code'] : ''}" id="shipping_code" name="shipping_code">
+	</div>
+	<!--<div class="form-group">-->
+		<!--<label class="control-label">-->
+			<!--配送方式描述 <span class="symbol required" aria-required="true"></span>-->
+		<!--</label>-->
+		<!--<input type="text" placeholder="填写配送方式描述" value="{$data.shipping_desc}" class="form-control" id='shipping_desc' name="shipping_desc">-->
+	<!--</div>-->
+	<!--<div class="form-group">-->
+		<!--<label class="control-label">-->
+			<!--保价费用 <span class="symbol required" aria-required="true"></span>-->
+		<!--</label>-->
+		<!--<input type="text" placeholder="填写保价费用" value="{$data.insure}" class="form-control" id='insure' name="insure">-->
+	<!--</div>-->
+
+	<!--<div class="clip-radio radio-primary fa-hover Primary">-->
+			<!--是否支持货到付款-->
+		<!--<br/>-->
+		<!--<input type="radio" value="1" name="support_cod" id="id_yes" <if condition="$data.support_cod eq 1">checked="checked"</if> >-->
+			<!--<label for="id_yes">-->
+				<!--是-->
+			<!--</label>-->
+		<!--<input type="radio" value="0" name="support_cod" id="id_no" <if condition="$data.support_cod eq 0">checked="checked"</if> >-->
+			<!--<label for="id_no">-->
+				<!--否-->
+			<!--</label>-->
+	<!--</div>-->
+
+	<div class="clip-radio radio-primary fa-hover Primary">
+			配送方式是否禁用
+		<br/>
+		<input type="radio" value="0" name="enabled" id="id_yes1" <if condition="$shipping_id && $brand.enabled eq 1">checked</if> >
+			<label for="id_yes1">
+				是
+			</label>
+		<input type="radio" value="1" name="enabled" id="id_no1" <if condition="$shipping_id && $brand.enabled eq 0"> <else/> checked</if> >
+			<label for="id_no1">
+				否
+			</label>
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			排序顺序 
+		</label>
+		<input type="text" placeholder="0" value="{$shipping_id ? $data['shipping_order'] : ''}" class="form-control" id='shipping_order' name="shipping_order">
+	</div>
+	
+	
+</div>
+</div>
+<div class="row">
+<div class="col-md-4 col-md-offset-5">
+	<input type="hidden"  value="{$shipping_id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+</div>											
+</form>
+</div>
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+
+			<include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+
+			<!-- end: OFF-SIDEBAR -->
+
+		</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script type="text/javascript">
+// 验证数字及小数点
+jQuery.validator.addMethod("insure", function(value, element) {
+    return this.optional(element) || /^[0-9]+\.{0,1}[0-9]{0,2}$/.test(value);
+},"保价费用由数字或小数点");
+
+// 验证配送公司代码
+jQuery.validator.addMethod("shipping_code", function(value, element) {
+	return this.optional(element) || /^[A-Z]+$/.test(value);
+},"公司代码必须是A-Z的大写字母");
+
+$().ready(function() {
+	$("#form2").validate({
+		rules:{
+			shipping_name: "required",
+			shipping_desc:"required",			
+			shipping_order : "digits",
+			insure:{
+				required:true,
+				insure:true
+			},
+			shipping_code: {
+				shipping_code:true,
+				required :true
+			} 
+			
+		},
+		messages:{
+			shipping_name: "配送方式必须填写",
+			shipping_desc: "配送描述必须填写",
+			shipping_order : "必须输入整数",
+			insure : {
+				required:"保价费用必须填写"
+			},		
+			shipping_code:{
+				required : "配送方式的代号必须填写"				
+			} 
+		
+		}
+	});
+});
+</script>

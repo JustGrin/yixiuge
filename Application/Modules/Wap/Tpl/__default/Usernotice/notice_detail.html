@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>公告-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+    <style>
+        #body{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body id="body">
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+
+<header id="header" class="u-header clearfix">
+    <div class="u-hd-left f-left">
+        <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+    </div>
+    {$data.title}
+</header>
+<div class="g-cn">
+{$data.content}
+</div>
+<include file="Public/wap_javascript"/>
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page ='notice_detail';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+<include file="Public/share_weixin"/>
+</body>
+</html>

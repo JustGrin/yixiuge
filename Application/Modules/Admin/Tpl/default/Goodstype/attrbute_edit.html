@@ -1,0 +1,214 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-offset-5">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">&nbsp;添加分类</span>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <div class="container-fluid container-fullw bg-white">
+                    <form action="" role="form" id="form2" novalidate="novalidate" method="post">
+                        <div class="container-fluid container-fullw bg-white">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            属性名称 <span class="symbol required" aria-required="true"></span>
+                                        </label>
+                                        <input type="text" placeholder="填写属性名" class="form-control" id="attr_name"
+                                               name="attr_name" value="{$data['attr_id'] ? $data['attr_name'] : ''}"/>
+                                    </div>
+                                    <!-- 所属商品分类开始 -->
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            所属商品类型 <span class="symbol required" aria-required="true"></span>
+                                        </label>
+                                        <select class="form-control" id="dropdown1" name="cat_id">
+                                            <volist name="typeList" id="val">
+                                                <option value="{$val.cat_id}"
+                                                <if condition="$data['attr_id'] && $data.cat_id eq $val['cat_id']">selected</if>
+                                                >{$val.cat_name}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <!-- 所属商品分类结束 -->
+                                    <div class="form-group" style="display:none;">
+                                        <label class="control-label">
+                                            是否检索 <span class="symbol required" aria-required="true"></span>
+                                        </label>
+                                        <select class="form-control" id="dropdown2" name="attr_index">
+                                            <option value="0"
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 0">selected</if>
+                                            >不需要检索</option>
+                                            <option value="1"
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 1">selected</if>
+                                            >关键字检索</option>
+                                            <option value="2"
+                                            <if condition="$data['attr_id'] &&  $data.attr_index eq 2">selected</if>
+                                            >范围检索</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="display:none;">
+                                        <label class="control-label">
+                                            相关属性是否关联
+                                        </label>
+
+                                        <div class="clip-radio radio-primary fa-hover Primary">
+                                            <input type="radio" value="1" name="is_linked" id="is_linked_yes"
+                                            <if condition="$data['attr_id'] &&  $data.is_linked eq 1">checked</if>
+                                            >
+                                            <label for="is_linked_yes">
+                                                是
+                                            </label>
+
+                                            <input type="radio" value="0" name="is_linked" id="is_linked_no"
+                                            <if condition="$data['attr_id'] &&  $data.is_linked eq 0">checked</if>
+                                            >
+                                            <label for="is_linked_no">
+                                                否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="control-label">
+                                            套餐属性
+                                        </label>
+
+                                        <div class="clip-radio radio-primary fa-hover Primary">
+                                            <input type="radio" value="1" name="is_package" id="is_package_yes"
+                                            <if condition="$data['attr_id'] &&  $data['is_package'] eq 1">checked</if>
+                                            >
+                                            <label for="is_package_yes">
+                                                是
+                                            </label>
+
+                                            <input type="radio" value="0" name="is_package" id="is_package_no"
+                                            <if condition="$data['attr_id'] &&   $data['is_package']  eq 0">checked</if>
+                                            >
+                                            <label for="is_package_no">
+                                                否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            属性是否多选(*如果可以多选，则可以自定义属性，并且可以根据值的不同定不同的价)
+                                        </label>
+
+                                        <div class="clip-radio radio-primary fa-hover Primary">
+                                            <input type="radio" value="1" name="attr_type" id="attr_type_yes"
+                                            <if condition="$data['attr_id'] &&   $data.attr_type eq 1">checked</if>
+                                            >
+                                            <label for="attr_type_yes">
+                                                是
+                                            </label>
+
+                                            <input type="radio" value="0" name="attr_type" id="attr_type_no"
+                                            <if condition="$data['attr_id'] &&   $data.attr_type eq 0">checked</if>
+                                            >
+                                            <label for="attr_type_no">
+                                                否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            属性值录入方式 <span class="symbol required" aria-required="true"></span>
+                                        </label>
+                                        <select class="form-control" id="dropdown3" name="attr_input_type">
+                                            <option value="0"
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 0">selected</if>
+                                            >手工输入</option>
+                                            <option value="1"
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 1">selected</if>
+                                            >选择输入</option>
+                                            <option value="2"
+                                            <if condition="$data['attr_id'] &&   $data.attr_input_type eq 2">selected</if>
+                                            >多行文本输入</option>
+                                        </select>
+                                    </div>
+                                    <!-- 分类介绍开始 -->
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            可选值列表
+                                        </label>
+                                        <textarea class="form-control autosize" id="attr_values" name="attr_values"
+                                                  data-autosize-on="true"
+                                                  value="{$data['attr_id'] ? $data['attr_values'] : ''}">{$data['attr_id'] ? $data['attr_values'] : ''}</textarea>
+                                    </div>
+                                    <!-- 分类介绍结束 -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-5">
+                                    <button class="btn btn-primary btn-wide pull-left" type="submit" id="submit">
+                                        提交 <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                </div>
+
+                                <div class="col-md-8">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script type="text/javascript">
+    $().ready(function () {
+        $('#form2').validate({
+            rules: {    //需要验证的内容
+                attr_name: "required"
+            },
+            messages: {
+                attr_name: "必须填写属性"
+            }
+        });
+    });
+</script>
+<!-- end: JavaScript Event Handlers for this page -->
+</body>
+</html>

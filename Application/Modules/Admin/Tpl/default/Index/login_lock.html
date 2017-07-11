@@ -1,0 +1,36 @@
+<include file="Public/header"/>
+
+
+
+
+<div class="row">
+			<div class="lock-screen">
+				<div class="box-ls">
+					<img alt="" src="__PUBLIC__/bootstrap/assets/images/avatar-1-xl.jpg" class="img-rounded"/>
+					<div class="user-info">
+						<h4>{$_GET.username}</h4>
+						<span>{$_GET.name}</span>
+						<form action="__URL__/checkLogin" method="post">
+							<input type="hidden" name="username" value="{$_GET.username}">
+							<input type="hidden" name="jump_url" value="{$_GET.jump_url}">
+							<div class="input-group">
+								<input type="password" name="userpwd" placeholder="请输入密码" class="form-control">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="submit">
+										解锁
+									</button> </span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

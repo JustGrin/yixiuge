@@ -1,0 +1,35 @@
+<link href="__PUBLIC__/wap/css/article.css"  rel="stylesheet">
+  
+  <if condition="empty($binding_mobile)">
+     <div class="pu-tip-binding  binding_phone_head_all">
+        <div class="u-download-bar">
+            <span class="u-download-close binding_phone_close"></span>
+            <div class="u-download-enter">
+                <span class="u-download-text binding_phone_go">立即绑定</span>
+                <span class=" i-vip"></span>
+                <p class="u-download-zh binding_phone_go">绑定手机<br>收益优惠享不停！</p>
+            </div>
+        </div>
+    </div>
+</if>
+
+ <if condition="empty($is_guanzhu)">
+    <div class="pub-tip-background is_guanzhu_all">
+    </div>
+     <div class="pub-tip-recommend is_guanzhu_all">
+         <div class="r-lf-img">
+             <img src="{$tuijian_user.member_logo|get_member_logo_default}" width="50" alt="" title=""/>
+         </div>
+         <div class="r-lf-user">
+             <p>{$tuijian_user.member_name}</p>
+             <span>推荐</span>
+         </div>
+         <div class="r-welcome">
+             <a href="http://mp.weixin.qq.com/s?__biz=MzIyNDA4MDU3MA==&mid=209638640&idx=1&sn=a81bb52e6e014d2f28b17cf3b78436c4&scene=18#wechat_redirect">欢迎光临</a>
+         </div>
+         <span class="u-download-close is_guanzhu_close"></span>
+
+     </div>
+</if>
+   
+   

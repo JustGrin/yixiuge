@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>找回密码-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+	<script src="__PUBLIC__/wap/js/flexible.js"></script>
+	<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+	<link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+	<style type="text/css">
+		.hidden_class{display:none}
+	</style>
+</head>
+<body class="login">
+
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<h2 id="head">修改密码</h2>
+</div>
+
+<form id="form3" class="mlogin " action="" method="post">
+	<div class="mod_forms_3 ">
+		<input type="hidden"  name="mobile" class="ipu_mobile" value="">
+		<input type="hidden"  name="mobile_code" class="ipu_mobile_code" value="">
+		<div class="other-link">
+		*密码必须为6-20位的英文字母或数字组成。
+		</div>
+		<div class="field">
+			<div class="label">
+				重输密码
+			</div>
+			<div class="field-control">
+				<input type="text"  class="input-required" name="rep_password" placeholder="在此输入新密码,初始密码为123456" value="" id="rep_password">
+			</div>
+		</div>
+		<div class="submit form3_btn">
+			<button type="submit" class="button">重设密码</button>
+		</div>
+		<div class="other-link">
+			<!--<a href="" class="floatLft"></a> <a href="{:U('wap/login/register')}" class="floatRgt">我还不是会员，免费注册</a>-->
+		</div>
+	</div>
+</form>
+
+<div class="refundinfo hidden_class mod_forms_4">
+	<div class="state">密码设置成功</div>
+</div>
+
+<script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+
+<!--<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>-->
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script>
+	jQuery(document).ready(function() {
+
+		$("#form3").validate({
+			rules: {
+				rep_password: {
+					required: true,
+					rangelength: [6, 20]
+				}
+			},
+			messages: {
+
+				rep_password: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入新密码',
+					rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;重复密码请保持6-20位',
+				}
+			},
+			focusInvalid:false,
+			success: function(label) {
+			},
+			/*执行ajaxsubmit  */
+			submitHandler: function(editform) {
+
+				var options = {
+					url :  "<?php echo U('Wap/Login/findpwd'); ?>",
+					type : "post" ,
+					dataType:'json',
+					target : "#loader",
+					error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});},
+					onwait : "正在处理信息，请稍候...",
+					success: function(response){
+						// console.log(response);
+						//$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+						//$('#editform').hide(2000); 
+						if(response.status==1){
+							$('.mod_forms_3').addClass('hidden_class');
+							$('.mod_forms_4').removeClass('hidden_class');
+							$('.mod_title_3').removeClass('color_red');
+							$('.mod_title_4').addClass('color_red');
+							setTimeout(function(){
+								window.location.href="<?php  echo U('wap/member/index');?>";
+							},2000);
+
+						}else{
+
+							layer.msg(response.error, {icon: 5});
+							// alert(response.error);
+						}
+					}
+				};
+				setTimeout((function(opt){
+					return function(){
+						$('#form3').ajaxSubmit(opt);
+					}
+				})(options), 300);
+				return false;
+			}
+
+		});
+
+		$('.form3_btn').click(function(){
+			$('#form3').submit();
+		});
+	});
+</script>
+</body>
+</html>

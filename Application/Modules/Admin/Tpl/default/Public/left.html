@@ -1,0 +1,102 @@
+ <!-- start: left -->            
+<div class="sidebar app-aside" id="sidebar">
+        <div class="sidebar-container perfect-scrollbar">
+            <nav>
+                <!-- start: SEARCH FORM -->
+               <!--  <div class="search-form">
+                   <a class="s-open" href="#">
+                       <i class="ti-search"></i>
+                   </a>
+                   <form class="navbar-form" role="search">
+                       <a class="s-remove" href="#" target=".navbar-form">
+                           <i class="ti-close"></i>
+                       </a>
+                       <div class="form-group">
+                           <input type="text" class="form-control" placeholder="Search...">
+                           <button class="btn search-button" type="submit">
+                               <i class="ti-search"></i>
+                           </button>
+                       </div>
+                   </form>
+               </div> -->
+                <!-- end: SEARCH FORM -->
+                <!-- start: MAIN NAVIGATION MENU -->
+                <div class="navbar-title">
+                    <span>主导航</span>
+                </div>
+                <ul class="main-navigation-menu">
+                    <li>
+                        <a href="{:U("Admin/index/index")}">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="ti-home"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <span class="title"> 首页 </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+             <volist name="menu" id='vo'>
+                    <li <if condition="$_GET.mu_pid eq $vo['id']">class="active open" </if>>
+                         <if condition="(empty($vo['tree']))">
+                           <a href="javascript:void(0)">
+                            <div class="item-content">
+                                <div class="item-media">
+                                    <i class="ti-layout-grid2"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <span class="title"> {$vo.title} </span>
+                                </div>
+                            </div>
+                        <else/>
+
+                             <a href="javascript:void(0)">
+                                <div class="item-content">
+                                <div class="item-media">
+                                    <i class="{$vo.icon_style}"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <span class="title"> {$vo.title} </span>
+                                 <i class="icon-arrow"></i>
+                                </div>
+                            </div>
+                        </if>
+                            
+                        </a>
+                        <if condition="(!empty($vo['tree']))">
+                        <ul class="sub-menu">
+                             <volist name="vo['tree']"   id='voo'>
+                            <li <if condition="$_GET.mu_id eq $voo['id']">class="active" </if> >
+                                <a href="{:U($voo['name'],array('mu_pid'=>$vo['id'],'mu_id'=>$voo['id']))}">
+                                    <span class="title"> {$voo.title} </span>
+                                </a>
+                            </li>
+                            </volist>
+                            
+                        </ul>
+                       </if>
+                    </li>
+</volist>
+
+                   
+                  
+                </ul>
+                <!-- end: MAIN NAVIGATION MENU -->
+                <!-- start: CORE FEATURES -->
+                
+                
+                <!-- end: CORE FEATURES -->
+                <!-- start: DOCUMENTATION BUTTON -->
+               <!--  <div class="wrapper">
+                   <a href="documentation.html" class="button-o">
+                       <i class="ti-help"></i>
+                       <span>Documentation</span>
+                   </a>
+               </div> -->
+                <!-- end: DOCUMENTATION BUTTON -->
+            </nav>
+        </div>
+    </div>
+ <!-- end: left -->            

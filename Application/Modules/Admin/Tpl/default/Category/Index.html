@@ -1,0 +1,248 @@
+﻿<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content">
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">{$msgtitle}</h1>
+                            <span class="mainDescription">&nbsp;分类管理</span>
+                        </div>
+                        <nav id="cl-effect-10" class="links cl-effect-10">
+                            <a data-hover="新增" href="{:U('admin/category/category_edit')}"><span>新增</span></a>
+                        </nav>
+                        <!-- <ol class="breadcrumb">
+                            <li>
+                                <span>Pages</span>
+                            </li>
+                            <li class="active">
+                                <span>Blank Page</span>
+                            </li>
+                        </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <style type="text/css">
+                    .class_hidden {
+                        display: none;
+                    }
+
+                </style>
+                <!-- 搜索类型开始-->
+<div class="row">
+   <div class="col-lg-12 col-md-12 margin-top-20" >
+       <div class="panel panel-white">
+            <div class="panel-heading">
+                 <h5 class="panel-title">筛选</h5>
+              </div>
+        <!-- 筛选查询 -->
+        <form role="form" class="form-inline">
+              <div class="panel-body">
+                     <div class="form-group">
+                        <input type="text" name="cat_name" id="cat_name" value="{$_GET.cat_name}" placeholder="分类名称" class="form-control">
+                     </div>
+                      <div class="form-group">
+                        <input type="text" name="keywords" id="keywprds" value="{$_GET.keywords}" placeholder="关键字" class="form-control">
+                      </div>
+                       &nbsp;
+                        <button class="btn btn-primary" type="submit">
+                           提交
+                         </button>
+                    </div>
+              </form>
+          </div>
+      </div>
+  </div>
+                <!-- start: YOUR CONTENT HERE -->
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>分类名称</th>
+                        <th>关键字</th>
+                        <th>分类描述</th>
+                        <!--<th>显示顺序</th>-->
+                        <!--<th>计量单位</th>-->
+                        <th>是否需要审核公司</th>
+                        <th>是否在首页显示</th>
+						<th>是否首页分类导航</th>
+                        <!--<th>是否在导航显示</th>-->
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="typeList" id="val">
+                        <tr class="menu_p" data="{$val.cat_id}" data-type="0">
+                            <td>#</td>
+                            <td calss="hidden-xs">{$val.cat_name}
+                                <i class="fa fa-angle-down  angle_down_{$val.cat_id}"></i>
+                                <i class="fa fa-angle-up angle_up_{$val.cat_id} class_hidden"></i>
+                            </td>
+                            <td>{$val.keywords}</td>
+                            <td>{$val.cat_desc}</td>
+                            <!--<td>{$val.sort_order}</td>-->
+                            <!--<td>{$val.measure_unit}</td>-->
+                            <td>{$val['need_check']?'是':'否'}</td>
+                            <td>{$val['is_show']?'是':'否'}</td>
+							<td>{$val['is_exhibition']?'是':'否'}</td>
+                            <!--<td>{$val['show_in_nav']?'是':'否'}</td>-->
+                            <td>
+                                <a href="{:U("Admin/category/category_edit",array('id'=>$val['cat_id']))}"
+                                class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip"
+                                data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                <a href="{:U("Admin/category/category_del",array('id'=>$val['cat_id']))}" class="btn
+                                btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip"
+                                data-original-title="删除"><i class="fa fa-times fa fa-white" onclick="return confirm('确定删除该数据？')"></i></a>
+                            </td>
+                        </tr>
+                        <!-- 二级分类开始-->
+                        <if condition="(!empty($val['tree']))">
+                            <volist name="val['tree']" id="va">
+                                <tr class="class_hidden menu_p_c menu_p_{$val.cat_id}" data_p_c="{$val.cat_id}"  data_c="{$va.cat_id}" data-type_c="0">
+                                    <td>#</td>
+                                    <td calss="hidden-xs">&nbsp;┗━{$va.cat_name}
+                                        <i class="fa fa-angle-down angle_down_c_{$val.cat_id}  angle_down_c{$va.cat_id}"></i>
+                                        <i class="fa fa-angle-up angle_up_c_{$val.cat_id} angle_up_c{$va.cat_id} class_hidden"></i>
+                                    </td>
+                                    <td>{$va.keywords}</td>
+                                    <td>{$va.cat_desc}</td>
+                                    <!--<td>{$va.sort_order}</td>-->
+                                    <!--<td>{$va.measure_unit}</td>-->
+                                    <td>{$va['is_show']?'是':'否'}</td>
+									<td>{$va['is_exhibition']?'是':'否'}</td>
+                                    <!--<td>{$va['show_in_nav']?'是':'否'}</td>-->
+                                    <td>
+                                        <a href="{:U("Admin/category/category_edit",array('id'=>$va['cat_id']))}"
+                                        class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip"
+                                        data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                        <a href="{:U("Admin/category/category_del",array('id'=>$va['cat_id']))}"
+                                        class="btn
+                                        btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip"
+                                        data-original-title="删除"><i class="fa fa-times fa fa-white"
+                                                                    onclick="return confirm('确定删除该数据？')"></i></a>
+                                    </td>
+                                </tr>
+                                <!-- 三级分类开始-->
+                                <if condition="(!empty($va['tree']))">
+                                    <volist name="va['tree']" id="v">
+                                        <tr class="class_hidden menu_p_c_s  menu_p_c{$va.cat_id}">
+                                            <td>#</td>
+                                            <td calss="hidden-xs">&nbsp;&nbsp;&nbsp;&nbsp;┗━━{$v.cat_name}</td>
+                                            <td>{$v.keywords}</td>
+                                            <!--<td>{$v.cat_desc}</td>-->
+                                            <!--<td>{$v.sort_order}</td>-->
+                                            <td>{$v.measure_unit}</td>
+                                            <td>{$v['is_show']?'是':'否'}</td>
+											<td>{$v['is_exhibition']?'是':'否'}</td>
+                                            <!--<td>{$v['show_in_nav']?'是':'否'}</td>-->
+                                            <td>
+                                                <a href="{:U("Admin/category/category_edit",array('id'=>$v['cat_id']))}"
+                                                class="btn btn-transparent btn-xs" tooltip-placement="top"
+                                                data-toggle="tooltip"
+                                                data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+                                                <a href="{:U("Admin/category/category_del",array('id'=>$v['cat_id']))}"
+                                                class="btn
+                                                btn-transparent btn-xs tooltips" tooltip-placement="top"
+                                                data-toggle="tooltip"
+                                                data-original-title="删除"><i class="fa fa-times fa fa-white"
+                                                                            onclick="return confirm('确定删除该数据？')"></i></a>
+                                            </td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                <!-- 三级分类结束-->
+                            </volist>
+                        </if>
+                        <!-- 二级分类结束-->
+                    </volist>
+                   
+                    </tbody>
+
+                </table>
+              <div class="col-md-12 pages" align="center">'暂无数据'</div>
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<include file="Public/javascript"/>
+<script type="text/javascript">
+    $(function () {
+        $(".menu_p").click(function () {
+            var data = $(this).attr("data");
+            var data_type = $(this).attr("data-type");
+            if (data_type == 1) {
+                //当前展开  收起操作
+                $(".menu_p_c").hide();
+                $(this).attr("data-type", 0);
+                //$(".angle_down_" + data).show();
+               // $(".angle_up_" + data).hide();
+                
+                 $(".fa-angle-up").hide();
+                 $(".fa-angle-down").show();
+                 $('.menu_p_c_s').hide();
+            } else {
+                //当前收起 展开操作
+                $(".menu_p_c").hide();
+                $(".menu_p_" + data).show();
+                 $(".menu_p_c").attr("data-type",0);
+                  $(".menu_p").attr("data-type",0);
+                $(this).attr("data-type", 1);
+                 //$(".fa-angle-up").show();
+                // $(".fa-angle-down").hide();
+                $(".fa-angle-up").hide();
+                 $(".fa-angle-down").show();
+                $(".angle_down_" + data).hide();
+                $(".angle_up_" + data).show();
+               
+            }
+        });
+        $('.menu_p_c').click(function(){
+            var data_c = $(this).attr("data_c");
+             var data_p_c = $(this).attr("data_p_c");
+            var data_type_c = $(this).attr('data-type');
+            if (data_type_c == 1){
+                //二级分类当前展开-->收起操作
+                
+                  $('.angle_down_c_'+data_p_c).show();
+                $(".angle_up_c_" + data_p_c).hide();
+                $(this).attr('data-type',0);
+                $(".angle_down_c" + data_c).show();
+                $(".angle_up_c" + data_c).hide();
+                $('.menu_p_c_s').hide();
+            }else{
+                //二级分类当前收起-->展开操作
+                
+                $(".menu_p_c_s").hide();
+                $(".menu_p_c" + data_c).show();
+                $(".menu_p_c").attr("data-type",0);
+                $(this).attr("data-type", 1);
+                 $('.angle_down_c_'+data_p_c).show();
+                $(".angle_up_c_" + data_p_c).hide();
+                $(".angle_down_c" + data_c).hide();
+                $(".angle_up_c" + data_c).show();
+            }
+        });
+    });
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

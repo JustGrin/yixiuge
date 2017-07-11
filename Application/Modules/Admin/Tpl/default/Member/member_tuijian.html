@@ -1,0 +1,226 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<!-- <h1 class="mainTitle">会员列表</h1> -->
+									<span class="mainDescription">会员推荐查询 </span>
+								</div>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+   .panel-body{padding: 5px;}
+   .panel-heading{padding: 5px;min-height: 25px;}
+</style>						
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+		<br/>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+				<div class="form-group">
+					  <label for="account" class="sr-only">
+						电话
+					  </label>
+						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话/卡号" class="form-control">
+				</div>
+					
+              <button class="btn btn-primary" type="submit">
+				查询
+			</button>
+
+		</div>
+<if condition="(!empty($data))">
+ <div class="panel-body">
+   <div class="form-group">
+					  <label for="account" class="sr-only">
+						会员名称
+					  </label>
+					  会员名称:{$data.member_name}
+						
+	</div>
+	 <div class="form-group">
+		 <label for="account" class="sr-only">
+			 会员卡号
+		 </label>
+		 会员卡号:<a href="{:U("Admin/Member/member_edit",array('id'=>$data['id']))}" >
+		 {$data.member_card}
+		 </a>
+
+	 </div>
+	 <div class="form-group">
+					  <label for="account" class="sr-only">
+						是否认证
+					  </label>
+					  是否认证:{$data['member_status']?'已认证':'未认证'}
+						
+	</div>
+	 <div class="form-group">
+					  <label for="account" class="sr-only">
+						是否冻结
+					  </label>
+					  是否冻结:{$data['member_freeze']?'已冻结':'未冻结'}
+						
+	</div>
+
+	 <div class="form-group">
+					  <label for="account" class="sr-only">
+						登录次数
+					  </label>
+					  登录次数:{$data['login_count']}
+						
+	</div>
+	
+
+
+ </div>
+ <else/>
+ 
+ <if condition="(!empty($_GET['mobile']))">
+ 	 <div class="form-group">
+    未找到相关会员信息
+	</div>
+ </if>	
+</if>
+
+    </form>
+	</div>
+</div>
+		</div>	
+他的推荐人
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>会员卡号</th>
+						<th class="hidden-xs">会员名称</th>
+						<th>电话</th>
+						<th>登录次数</th>
+						<th>注册时间</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+			<if condition="(!empty($recommend_data))">
+				<tr  >
+						<td class="center"></td>
+						<td>
+							<a href="{:U("Admin/Member/member_edit",array('id'=>$recommend_data['id']))}" >
+
+							{$recommend_data.member_card}
+							</a>
+						</td>
+						<td class="hidden-xs">{$recommend_data.member_name}
+						</td>
+						<td class="hidden-xs">{$recommend_data.mobile}
+						</td>
+						<td>{$recommend_data['login_count']}	</td>
+						<td>{$recommend_data.add_time|date="Y-m-d H:i",###}	</td>
+						<td>{$recommend_data['member_freeze']?'<span style="color:red;">已冻结</span>':'未冻结'}	</td>
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							
+						</div>
+						</td>
+					</tr>
+		
+			</if>		
+</table>
+<if condition="empty($recommend_data)">
+ <div class="col-md-12 pages" align="center">无数据</div>
+ </if>
+他推荐的
+<table class="table table-hover" id="sample-table-2">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>会员卡号</th>
+						<th class="hidden-xs">会员名称</th>
+						<th>电话</th>
+						<th>登录次数</th>
+						<th>注册时间</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				<if condition="!(empty($list['list']))">
+					<volist  name="list['list']" id='vo' key='key'>
+						<tr  >
+							<td class="center"></td>
+							<td> <a href='{:U("Admin/Member/member_edit",array("id"=>$vo["id"]))}' >
+
+								{$vo.member_card}
+							</a>
+							</td>
+							<td class="hidden-xs">{$vo.member_name}
+							</td>
+							<td class="hidden-xs">{$vo.mobile}
+							</td>
+							<td>{$vo['login_count']}	</td>
+							<td>{$vo.add_time|date="Y-m-d H:i",###}	</td>
+							<td>{$vo['member_freeze']?'<span style="color:red;">已冻结</span>':'未冻结'}	</td>
+							<td class="center">
+								<div class="visible-md visible-lg hidden-sm hidden-xs">
+									<!-- <a href="{:U("Admin/Personnel/personnel_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+
+                                    <a href="{:U("Admin/Personnel/personnel_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
+								</div>
+							</td>
+						</tr>
+					</volist>
+				</if>
+				</tbody>
+			</table>
+
+
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+         <include file="Public/javascript_datepicker"/>
+        
+	</body>
+</html>

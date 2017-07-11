@@ -1,0 +1,41 @@
+/* CSS Document */
+.member { background: #f6f6f6!important; }
+.member .top { background: #fff; padding-bottom: 2.4rem }
+.member .top .topbglay { width: 100%; height: 3.6rem; overflow: hidden; position: absolute; }
+.member .top .topbglay .topbg { width: 100%; padding: 0 10%; height: 7.2rem; border-radius: 50%/1.8rem; position: relative; top: -3.6rem; left: -10%; z-index: 1; }
+.member .top .changebackimg { width: .8rem; height: .8rem; position: relative; left: 0; top: 3.6rem; z-index: 3; padding: 0 .4rem .4rem 0 }
+.member .top .changebackimg img { width: 100%; height: 100%; }
+.member .top .setting { margin: .4rem .2rem 0 0; background-color: rgba(0, 0, 0, 0.4); border-radius: 1rem; height: 1rem; line-height: 1rem; position: absolute; right: 10%; text-align: center; top: 3.6rem; width: 1rem; z-index: 4; }
+.member .top .setting i { color: #fff; font-size: .6rem; }
+.member .top .mall.person .avatar { width: 3rem; height: 3rem; border: solid .1rem #fff; border-radius: 50%; position: relative; z-index: 2; margin: 0 auto; top: 1.8rem; box-shadow: 0 0 .2rem rgba(0,0,0,.2) }
+.member .top .mall.person .name { position: relative; top: 2rem; font-size: .6rem; }
+.member .top .mall.person .memberid { position: relative; top: 2rem; font-size: .4rem; }
+.member .top .shopinfo.person { position: relative; top: 2.4rem; border-top: solid 1px #f4f4f4; padding: .2rem .4rem; width: 100%; z-index: 5; box-sizing: border-box }
+.member .top .shopinfo li { float: left; width: 50%; box-sizing: border-box; border-right: solid 1px #f4f4fa; line-height: .54rem; padding: .124rem; }
+.member .top .shopinfo .manage, .member .top .shopinfo .cus { border: none; }
+.member .top .shopinfo .iconfont { font-size: .4rem; }
+.member .top .shopinfo li span { display: block; font-size: .6rem; line-height: .8rem; height: .8rem; overflow: hidden }
+.member .list { margin-top: .2rem }
+.member .step .field { margin-top: .2rem; background: #fff; }
+.member .step .field .list .title { height: 1.2rem; line-height: 1.2rem; }
+.member .step .field li { float: left; width: 20%; text-align: center; }
+.member .step .field .item span { display: block; }
+.member .step .item img { width: 1.8rem; height: auto; }
+.member .step .item img.gray { -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%); filter: grayscale(100%); filter: gray; }
+.step li a { width: 100%; padding: .2rem 0; display: block; text-align: center; position: relative; color: #666 }
+.step li a b { border-radius: .4rem; font-size: .3rem; background: #f60; position: absolute; top: .2rem; font-weight: 300; color: #fff; padding: 0 0.12rem; left: 1.2rem; }
+.member .top .shopinfo .num, .member .top .shopinfo .grayc { padding-top: .1rem; }
+/*vip*/
+.member .top .mall .upgrade { position: relative; top: 2.6rem; left: .34rem; z-index: 6 }
+.member .top .mall a.btn2 { background: #ffa842; z-index: 7; }
+.member .top .mall a.btn1 { background: #ff6f00; position: relative; z-index: 8; left: -.70rem; }
+.member .top .shopinfo .shopinfovip { top: 2.350rem; padding: .8rem 0 .6rem 0; }
+.member .top .shopinfo .shopinfovip span { display: block; }
+.member .top .shopinfo .grayc { padding-right: .2rem; }
+.member .page .step { background: #fff; margin-top: .2rem; }
+.member .page .step .pdt2 li { width: 25%; float: left; padding: .2rem 0; }
+.member .page .step .pdt2 { padding-top: 0!important; }
+.member .page .step .pdt2 span { display: block; font-size: .34rem; }
+.member .page .all { background: #fff; }
+.member .page .upgradeto { margin: .2rem 0; }
+.member .page .step .pdt2 li img { width: 1.2rem; height: auto; }

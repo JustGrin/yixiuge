@@ -1,0 +1,311 @@
+.visible-desktop {display: inherit !important;}
+.visible-tablet {display: none !important;}
+.visible-phablet {display: none !important;}
+.visible-phone {display: none !important;}
+.visible-desktab {display: inherit !important;}
+.visible-phabphone {display: none !important;}
+.hidden-desktop {display: none !important;}
+.hidden-tablet {display: inherit !important;}
+.hidden-phablet {display: inherit !important;}
+.hidden-phone {display: inherit !important;}
+.hidden-desktab {display: none !important;}
+.hidden-phabphone {display: inherit !important;}
+
+
+@media only screen and (min-width: 980px) and (max-width: 1079px) {
+	.container,
+	.revel_container,
+	.revel_team_member_modal .revel_container{
+		width: 960px;
+	}
+
+	.revelance-small-with-lines:before{
+		left: -175px;
+		width: 150px;
+	}
+
+	.revelance-small-with-lines:after{
+		right: -175px;
+		width: 150px;
+	}
+
+	.portfolio_item_4 {
+		width: 33.3%;
+	}
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+	.visible-desktop {display: none !important;}
+	.visible-tablet {display: inherit !important;}
+	.visible-phablet {display: none !important;}
+	.visible-phone {display: none !important;}
+	.visible-desktab {display: inherit !important;}
+	.visible-phabphone {display: none !important;}
+	.hidden-desktop {display: inherit !important;}
+	.hidden-tablet {display: none !important;}
+	.hidden-phablet {display: inherit !important;}
+	.hidden-phone {display: inherit !important;}
+	.hidden-desktab {display: none !important;}
+	.hidden-phabphone {display: inherit !important;}
+
+	.container,
+	.revel_container,
+	.revel_team_member_modal .revel_container{
+		width: 748px;
+	}
+
+	#abdev_main_header{
+		text-align: center;
+	}
+
+	#logo{
+		display: inline-block;
+		float: none;
+	}
+
+	nav .menu_social{
+		float: none;
+		display: inline-block;
+		margin: 20px 3px !important;
+	}
+
+	nav > ul{
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+
+	nav > ul > li{
+		float: none;
+		display: inline-block;
+	}
+
+	nav > ul ul{
+		margin-top: 22px;
+	}
+
+	nav > ul > li > ul:before{
+		height: 22px;
+		top: -22px;
+	}
+
+	nav > ul > li > a {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	section.page_main_section:first-of-type {
+		margin-top: 0px;
+	}
+
+	.revelance-small-with-lines:before,
+	.revelance-small-with-lines:after{
+		display: none;
+	}
+
+	.portfolio_item_4 {
+		width: 49.99%;
+	}
+
+	.revel_team_member_style_2 .revel_overlayed .revel_overlay p {
+		top: 30%;
+	}
+
+	.revel_pricebox_monthly{
+		display: block;
+		padding-top: 0;
+		padding-bottom: 20px;
+	}
+
+}
+
+@media only screen and (max-width: 767px) {
+	.visible-desktab {display: none !important;}
+	.visible-phabphone {display: inherit !important;}
+	.hidden-desktab {display: inherit !important;}
+	.hidden-phabphone {display: none !important;}
+
+	.revel_column_dd_span12,
+	.revel_column_dd_span11,
+	.revel_column_dd_span10,
+	.revel_column_dd_span9,
+	.revel_column_dd_span8,
+	.revel_column_dd_span7,
+	.revel_column_dd_span6,
+	.revel_column_dd_span5,
+	.revel_column_dd_span4,
+	.revel_column_dd_span3,
+	.revel_column_dd_span2,
+	.revel_column_dd_span1{
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.revel_container [class*="column_dd_span"]{
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.revel_pricing-table-1,
+	.revel_pricing-table-2{
+		margin-bottom: 20px;
+	} 
+
+	.revel_meter {
+		margin-left: 0px;
+	}
+
+	.revel_meter_label{
+		float: none;
+		display: block;
+	}
+	
+	.container,
+	.revel_container,
+	.revel_team_member_modal .revel_container{
+		width: 95%;
+	}
+
+	.row > [class*="span"]{
+		width: 100%;
+		margin-bottom: 20px;
+		margin-left: 0;
+	}
+
+	#abdev_main_header{
+		text-align: center;
+	}
+
+	#logo{
+		display: inline-block;
+		float: none;
+	}
+
+	#ABdev_menu_toggle{
+		display: block;
+		height: 50px;
+		width: 50px;
+		position: fixed;
+		right: 5px;
+		top: 5px;
+		z-index: 9999999;
+		color: #fff;
+		font-size: 30px;
+		line-height: 50px;
+		text-align: center;
+		background: rgba(0,0,0,0.5);
+	}
+
+	#abdev_main_header nav{
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background: #222;
+		z-index: 100000;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		display: none;
+	}
+
+	#abdev_main_header nav .menu_social{
+		display: none;
+	}
+
+	#abdev_main_header nav > ul{
+		clear: both;
+		padding-left: 30px;
+	}
+
+	#abdev_main_header nav > ul > li{
+		display: block;
+		float: none;
+		text-align: left;
+	}
+
+	#abdev_main_header nav > ul ul{
+		display: block;
+		background: #222;
+		position: static;
+		border: none;
+		margin: 0;
+		padding: 0 0 0 15px;
+	}
+
+	#abdev_main_header nav > ul ul:before{
+		display: none;
+	}
+
+	#abdev_main_header nav li:hover{
+		background: none;
+	}
+
+	#abdev_main_header nav a{
+		color: #fff;
+		margin: 0;
+		padding: 5px 0 5px 0;
+	}
+
+	#abdev_main_header nav a:hover,
+	#abdev_main_header nav .current-menu-item > a{
+		color: #e42382;
+		background: none;
+	}
+
+	aside.sidebar_right,
+	aside.sidebar_left{
+		padding: 0px;
+		margin: 0;
+	}
+
+	.revel_section_dd header p {
+		padding: 0px;
+	}
+
+	.revelance-small-with-lines:before,
+	.revelance-small-with-lines:after{
+		display: none;
+	}
+
+	.portfolio_item_4 {
+		width: 100%;
+	}
+
+	.revel_pricing-table-1.revel_popular-plan{
+		top: 0;
+		margin-bottom: 20px;
+	}
+
+	section.page_main_section:first-of-type {
+		margin-top: 0;
+	}
+
+	#page404 .big_404 {
+		font-size: 100px;
+		line-height: 100px;
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.visible-desktop {display: none !important;}
+	.visible-tablet {display: none !important;}
+	.visible-phablet {display: inherit !important;}
+	.visible-phone {display: none !important;}
+	.hidden-desktop {display: inherit !important;}
+	.hidden-tablet {display: inherit !important;}
+	.hidden-phablet {display: none !important;}
+	.hidden-phone {display: inherit !important;}
+}
+
+@media only screen and (max-width: 479px) {	
+	.visible-desktop {display: none !important;}
+	.visible-tablet {display: none !important;}
+	.visible-phablet {display: none !important;}
+	.visible-phone {display: inherit !important;}
+	.hidden-desktop {display: inherit !important;}
+	.hidden-tablet {display: inherit !important;}
+	.hidden-phablet {display: inherit !important;}
+	.hidden-phone {display: none !important;}
+
+}

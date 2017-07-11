@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>业绩</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+</head>
+<body>
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="{:U('wap/member/index')}" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>业绩({$count_share})</span></div>
+    </header>
+    <div class="common-wrapper" style="    background-color: #FFFFFF;">
+     
+        <div id="fm-mizhi">
+            <ul class="more_html">
+                <volist name="list" id="vo">
+                <li>
+                    <div class="div_leibie">{$vo.typename}</div>
+                    <div class="div_jine">{$vo.status}{$vo.money}</div>
+                    <div class="div_riqi">{$vo.des}。{$vo.add_time}</div>
+                </li>
+              </volist>
+            </ul>
+        </div>
+    </div>
+     <div class="b_q">
+        <div class="fm-footer-copyright get_more">
+            <if condition="$count gt 10 && count($list) eq 10">
+                  加载更多
+              <else/>  
+                 无更多数据
+            </if>
+        </div>
+    </div>
+
+  
+<div style="height:10px;">
+   </div> 
+     <!--end top-->
+   <include file="Public/footer" />
+<include file="Public/wap_javascript"/>
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page = 'member_wallet';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+
+<!--end top-->  
+    <input type="hidden" name="p" value="2" />
+     <!--微信分享-->    
+ <include file="Public/share_weixin" />
+ 
+    <script type="text/javascript">
+   $(function(){
+     $(".get_more").click(function(){
+        get_more();
+     });
+      $(".m_i_switch li").click(function(){
+        var　__this=$(this);
+        $('.m_i_switch li').removeClass('curr');
+        __this.addClass('curr');
+        var type=__this.attr('data');
+        $("input[name='p']").val(1);
+        $("input[name='type']").val(type);
+        if(type==1){
+          $('.money_type_0').hide();
+          $('.money_type_1').show();
+        }else{
+          $('.money_type_1').hide();
+          $('.money_type_0').show();
+        }
+        get_more();
+     });
+
+   }); 
+   function get_more(){
+     var p=$("input[name='p']").val();
+    // var type=$("input[name='type']").val();
+      if(p==1){
+          $('.more_html').html("");
+        }
+           $.ajax({ 
+            url: "{:U('wap/goodsorder/share')}",
+            type:'get',
+            data: {p:p},
+            dataType: 'json',
+            success: function(data){
+              //console.log(data);
+               var con=1;
+                 var option='';
+              if(data){
+                 $.each(data, function(i, value) {
+                //this指向当前元素
+                //i表示Array当前下标
+                //value表示Array当前元素
+                 option=option+'<li>'
+                   +' <div class="div_leibie">'+value.typename+'</div>'
+                  +'  <div class="div_jine">'+value.status+value.money+'</div>'
+                   +' <div class="div_riqi">'+value.des+'。'+value.add_time+'</div>'
+                    +' </li>';
+                    con++;
+                 });
+              }
+              if(p==1){
+                $('.more_html').html(option);
+              }else{
+                 $('.more_html').append(option);
+              }
+              $("input[name='p']").val(parseInt(p)+1);
+              if(con<10){
+                 $('.get_more').html('无更多数据');
+              }
+            }
+           });
+   }
+</script> 
+</body>
+</html>

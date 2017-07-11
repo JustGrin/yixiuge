@@ -1,0 +1,216 @@
+<include file="Public/header"/>
+
+<div id="app">
+    <!-- sidebar -->
+    <include file="Public/left"/>
+    <!-- / sidebar -->
+    <div class="app-content">
+        <!-- start: TOP NAVBAR -->
+        <include file="Public/headernav"/>
+        <!-- end: TOP NAVBAR -->
+        <div class="main-content" >
+            <div class="wrap-content container" id="container">
+                <!-- start: PAGE TITLE -->
+                <section id="page-title">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h1 class="mainTitle">售后退款申请</h1>
+                        </div>
+                        <!-- <ol class="breadcrumb">
+                            <li>
+                                <span>Pages</span>
+                            </li>
+                            <li class="active">
+                                <span>Blank Page</span>
+                            </li>
+                        </ol> -->
+                    </div>
+                </section>
+                <!-- end: PAGE TITLE -->
+                <!-- start: YOUR CONTENT HERE -->
+                <style type="text/css">
+                    .class_hidden{display:none;}
+
+                </style>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 margin-top-20" >
+                        <div class="panel panel-white">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">筛选</h5>
+                            </div>
+                            <form role="form" class="form-inline">
+                                <div class="panel-body">
+
+
+                                    <div class="form-group">
+
+                                        <label for="member_card" class="sr-only">
+                                            会员名称
+                                        </label>
+                                        <input type="text" name="member_card" value="{$_GET.member_card}" id="member_card" placeholder="会员名称" class="form-control">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="order_sn" class="sr-only">
+                                            订单号
+                                        </label>
+
+                                        <input type="text" name="order_sn" value="{$_GET.order_sn}" id="order_sn"
+                                               placeholder="订单号" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="refund_sn" class="sr-only">
+                                            退单号
+                                        </label>
+                                        <input type="text" name="refund_sn" value="{$_GET.refund_sn}" id="refund_sn"
+                                               placeholder="退单号" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status" class="sr-only">
+                                            状态
+                                        </label>
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="all" <if condition="$_GET['status'] =='all'">selected</if>>全部状态</option>
+                                            <volist name="status_arr" id="vo">
+                                                <if condition="$key gt 0">
+                                                    <option value="{$key}" <if condition="($_GET['status'] == $key)">selected</if>>{$vo}</option>
+                                                    <else/>
+                                                    <option value="{$key}" <if condition="(empty($_GET['status']) && $_GET['status'] == $key)">selected</if>>{$vo}</option>
+                                                </if>
+
+                                            </volist>
+
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-primary" type="submit">
+                                        提交
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover" id="sample-table-1">
+                    <thead>
+                    <tr>
+                        <th class="center">#</th>
+                        <th>会员号</th>
+                        <th class="hidden-xs">订单号</th>
+                        <th>订单金额(商品金额)</th>
+                        <th class="hidden-xs">退单号</th>
+                        <th>退积分</th>
+                        <th>退余额</th>
+                        <th>退微信</th>
+                        <th>退款总额</th>
+                        <th>申请时间</th>
+                        <th>状态</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist  name="list['list']" id='vo' key='key'>
+                        <tr >
+                            <td class="center"></td>
+                            <td>{$vo.member_card}</td>
+                            <td class="hidden-xs">{$vo.order_sn}
+                            </td>
+                            <td>
+                                {$vo.order_amount}({$vo.goods_price})
+                            </td>
+                            <td class="hidden-xs">{$vo.refund_sn}
+                            </td>
+                            <td> {$vo.integral}</td>
+                            <td> {$vo.balance}</td>
+                            <td> {$vo.wx_refund}</td>
+                            <td style="color: #ff0000!important"> {$vo.total}</td>
+                            <td>
+                                {$vo.add_time|date="Y-m-d H:i:s",###}
+                            </td>
+                            <td>
+                                {//status 状态 0 退款申请中  1已退款 2已拒绝}
+
+                                <if condition="$vo['status'] eq 0">
+                                    退款申请中
+                                    <elseif condition="$vo['status'] eq 1"/>
+                                    已退款
+                                    <elseif condition="$vo['status'] eq 2"/>
+                                    已拒绝({$vo.remarks})
+                                </if>
+
+                            </td>
+
+                            <td class="center">
+                                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                    <a href="{:U("Admin/Orderinfo/refund_apply_detail",array('id'=>$vo['id'],'open'=>'check'))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="查看"><i class="fa fa-file-text-o"></i></a>
+
+                                    <if condition="$vo['status'] eq 0">
+                                        <a href="{:U("Admin/Orderinfo/refund_apply_detail",array('id'=>$vo['id'],'open'=>'handle'))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="财务审核"><i class="fa fa-list-alt"></i></a>
+                                    </if>
+
+                                    <!-- <a href="{:U("Admin/Ad/ad_type_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a> -->
+
+                                </div>
+                            </td>
+                        </tr>
+                    </volist>
+
+
+
+
+
+                    </tbody>
+                </table>
+
+                <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+                <!-- end: YOUR CONTENT HERE -->
+            </div>
+        </div>
+    </div>
+    <!--  FOOTER and SETTINGS -->
+
+    <include file="Public/footer"/>
+    <!-- end: FOOTER -->
+    <!-- start: OFF-SIDEBAR -->
+
+    <!-- end: OFF-SIDEBAR -->
+
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+
+<include file="Public/javascript"/>
+<script type="text/javascript">
+    $(function(){
+        $(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+                //当前展开  收起操作
+                $(".menu_p_c").hide();
+                $(this).attr("data-type",0);
+                $(".angle_down_"+data).show();
+                $(".angle_up_"+data).hide();
+            }else{
+                //当前收起 展开操作
+                $(".menu_p_c").hide();
+                $(".menu_p_"+data).show();
+                $(this).attr("data-type",1);
+                $(".angle_down_"+data).hide();
+                $(".angle_up_"+data).show();
+            }
+
+        });
+    });
+</script>
+<!-- end: CLIP-TWO JAVASCRIPTS -->
+</body>
+</html>

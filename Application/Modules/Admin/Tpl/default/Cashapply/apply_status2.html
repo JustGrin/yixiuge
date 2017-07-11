@@ -1,0 +1,598 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">提现申请信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+    <div class="form-group">     
+{//1商家提现 2会员提现}
+        <label class="control-label">
+            申请类型：
+        </label>
+         <if condition="$data['type'] eq 1">
+            商家提现
+        <elseif condition="$data['type'] eq 2" />
+        会员提现
+        </if>
+       
+    </div>
+ <if condition="$data['type'] eq 2">
+  <div class="form-group">
+        <label class="control-label">
+            会员名：
+        </label>
+        {$member.member_name}
+    </div>
+     <div class="form-group">
+        <label class="control-label">
+            电话：
+        </label>
+        {$member.mobile}
+    </div>
+     <div class="form-group">
+         <label class="control-label">
+             提现openid：
+         </label>
+         {$data.openid}
+     </div>
+<elseif condition="$data['type'] eq 1" />
+        {//会员提现}
+   <div class="form-group">
+        <label class="control-label">
+            商户名称：
+        </label>
+        {$shop.shop_name}
+    </div>
+    <div class="form-group">
+        <label class="control-label">
+            商户帐号:
+        </label>
+        {$shop.account}
+    </div>
+</if>
+        <div class="form-group">
+            <label class="control-label">
+                提现单号：
+            </label>
+            {$data.cash_sn}
+        </div>
+ <div class="form-group">
+        <label class="control-label">
+            开户行：
+        </label>
+        {$data.account_bank}
+    </div>
+        <if condition="$data.blank_id eq 0">
+            <div class="form-group">
+                <label class="control-label">
+                    微信名
+                </label>
+                {$data.account_addr}
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    开户名：
+                </label>
+                {$data.account_name}
+            </div>
+            <else/>
+            <div class="form-group">
+                <label class="control-label">
+                    开户行地址
+                </label>
+                {$data.account_addr}
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    开户名：
+                </label>
+                {$data.account_name}
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">
+                    银行卡号：
+                </label>
+                {$data.account_no}
+            </div>
+        </if>
+
+    <div class="form-group" style="color: #ff0000!important">
+        <label class="control-label">
+            提现金额：
+        </label>
+            {$data['money'] - $data['cash_fee']}
+    </div>
+     <div class="form-group">
+        <label class="control-label">
+            申请时间：
+        </label>
+        {$data.add_time|date="Y-m-d H:i",###}
+     </div>
+        <if condition="!empty($data['op_time1'])  ">
+            <div class="form-group">
+                <label class="control-label">
+                    审核时间：
+                </label>
+                {$data.op_time1|date="Y-m-d H:i",###}
+            </div>
+        </if>
+<div class="form-group">
+        <label class="control-label">
+            当前状态：  
+        </label>
+          <if condition="$data['status'] eq 1">
+                待审核
+         <elseif condition="$data['status'] eq 2"/>
+                操作员已审核，财务打款中
+         <elseif condition="$data['status'] eq 3"/>
+                已提现
+         <else />
+            <if condition="$data['auid_status1'] neq 1">
+                操作员拒绝
+                <br>
+                拒绝原因：{$data.remarks1}
+             </if>
+             <if condition="$data['auid_status2'] neq 1">
+                财务拒绝
+                 <br>
+                拒绝原因：{$data.remarks2}
+             </if>
+         </if> 
+    </div>
+<if condition="($data['status']==3 && !empty($data['imgpath']))  "> 
+     <div class="form-group">
+        <label class="control-label">
+            打款凭证
+        </label> 
+        <br>
+       
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" >
+                    <a href="{$data.imgpath}">
+                        <img src="{$data.imgpath}" alt="">
+                    </a>
+                </div>
+            </div>
+          
+         
+    </div>
+  </if>  
+
+   <if condition="$_SESSION['topadmin'] gt 0"> 
+ <if condition="$data['status'] eq 2">
+        <div class="form-group">
+        <label class="control-label">
+            审核状态：   
+        </label>
+        
+            <div class="clip-radio radio-primary fa-hover Primary">
+
+
+             <input type="radio" value="1" name="auid_status2" id="id_no1" checked="checked">
+            <label for="id_no1">
+                同意提现
+            </label>
+
+            <input type="radio" value="2" name="auid_status2" id="id_yes1"   >
+            <label for="id_yes1">
+                审核不通过
+            </label>
+
+          
+            </div>
+             
+    </div>
+  <div class="form-group">
+        <label class="control-label">
+            打款凭证
+        </label> 
+        <br>
+        <div class="upload_file">
+           <label>
+         <input type="file" name="head_photo" class="upload_input" id="head_photo" value="" style="display:none;"> 
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <img id="head_photo_src" src="{$data.imgpath}" alt="">
+                </div>
+            </div>
+           点击图片上传
+        </label>  
+                
+         </div>          
+          <input type="hidden" name="imgpath" id="imgpath" value="{$data.imgpath}">
+    </div>
+
+     <div class="form-group">
+        <label class="control-label">
+            审核不通过意见：  
+        </label>
+        <div>
+            <textarea id="remarks2" name="remarks2"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.remarks2}</textarea>
+        </div>
+    </div>
+
+  </if>  
+ </if>  
+
+
+
+
+ 
+
+  
+   
+
+
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+    <if condition="$data.blank_id eq 0">
+        <input type="hidden" name="payment_no" id="payment_no" value="">
+        <button class="btn btn-primary btn-wide pull-left btn-sub" type="button" >
+            提交 <i class="fa fa-arrow-circle-right"></i>
+        </button>
+        <else/>
+        <button class="btn btn-primary btn-wide pull-left" type="submit">
+            提交 <i class="fa fa-arrow-circle-right"></i>
+        </button>
+    </if>
+
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/artDialog/artDialog.source.js?skin=default"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/artDialog/plugins/iframeTools.source.js"></script>
+        <script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+    <!-- 配置文件 -->
+        <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+        <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+{//新增}
+
+
+<script>
+	
+    $(document).ready(function (e) {
+         ///上传商家logo
+        $('.upload_file').on('change','.upload_input', function () {
+
+            ajaxFileUpload_one('head_photo','imgpath',"{:U('admin/Imagecat/upload_ajax')}");
+        });
+
+        $('.goods_image_url').on('click','.delete_img', function () {
+        	if(confirm('您确定删除该图片？')){
+              $(this).parents('.fileinput').remove();
+        	}
+        });
+
+    });
+
+
+    function show_head(head_file) {
+
+        //插入数据库
+    
+        $("#head_photo_src").attr('src', head_file);
+        var img = head_file.split('/');
+      //  var file = '/' + img[3] + '/' + img[4] + '/' + img[5] + '/' + img[6];
+        $("#goods_image").val(head_file);
+        //});   
+
+    }
+//文件上传带预览
+    function ajaxFileUploadview(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+                                    
+                                    $('#head_photo_src').attr('src',data.imgurl);
+                                    $('#image_path').val(data.imgurl);
+
+                                   /* art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+  
+//文件上传带预览
+    function ajaxFileUpload(imgid,  url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: "head_photo_"+imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+
+                               var str_img=' <div class="fileinput fileinput-new" data-provides="fileinput">'
+                                 +' <div class="fileinput-new thumbnail" id="show_photo_background">'
+                                 +'   <img  src="'+data.imgurl+'" alt="" >'
+
+                                  +' <button type="button" class="btn btn-danger delete delete_img"  style="float: left;margin-top: -40px;margin-left: 200px;">'
+				                 +'	<i class="glyphicon glyphicon-trash"></i>'
+				                 +'	<span>删除</span>'
+				                 +'</button>'
+
+                                 +'</div>'
+	                            
+				                 +'<input type="hidden" name="goods_image_url[]" id="photo_pic_background" value="'+data.imgurl+'">'
+                                 +' </div>';
+                                 $('.goods_image_url').append(str_img);
+                                  //  $('#photo_pic_'+imgid).val(data.imgurl);
+                                  //   $("#head_photo_src_"+imgid).attr('src', );
+                                  /*  art.dialog.open("{:U('admin/Imagecat/index')}?img=" + data.imgurl, {
+                                        title: '裁剪图片',
+                                        width: '800px',
+                                        height: '400px'
+                                    });*/
+                                      
+                                    //dialog.time(3).content("<div class='msg-all-succeed'>上传成功！</div>");
+                                }
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+    //文件上传带预览
+    function ajaxFileUpload_one(imgid, hiddenid, url) {
+
+        $.ajaxFileUpload({
+                    url: url,
+                    secureuri: false,
+                    fileElementId: imgid,
+                    dataType: 'json',
+                    data: {name: 'logan', id: 'id'},
+                    success: function (data, status)
+                    {
+                      
+                        if (typeof (data.error) != 'undefined')
+                        {
+                              
+                            if (data.error != '')
+                            {
+                                var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                            } else {
+
+                                var resp = data.msg;
+                                if (resp != '0000') {
+                                    var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                                    dialog.time(2).content("<div class='tips'>" + data.error + "</div>");
+                                    return false;
+                                } else {
+
+                                 $('#'+hiddenid).val(data.imgurl);
+                                 $('#'+imgid+'_src').attr('src',data.imgurl);
+                                }
+
+
+
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        var dialog = art.dialog({title: false, fixed: true, padding: 0});
+                        dialog.time(3).content("<div class='tips'>" + e + "</div>");
+                    }
+                })
+
+        return false;
+    }
+</script>
+<script>
+    $('.btn-sub').click(function(){
+        var auid_status=$("input:radio[name='auid_status2']:checked").val();
+        check(auid_status);
+    });
+    function check(auid_status) {
+        //询问框
+        var stat_name='';
+        if(auid_status == 1){
+            stat_name='同意提现';
+        }else if(auid_status == 2){
+            stat_name='拒绝提现';
+        }
+        var msg='确认'+stat_name+'？确认之后不能更改';
+        layer.confirm(msg, {
+            btn: ['是的,我'+stat_name,'再考虑一下']//按钮
+        }, function(){
+            if(auid_status ==1){
+                do_wx_cash();
+            }else {
+                $('#form2').submit();
+            }
+
+        }, function(){
+           /* $('#form2').submit();*/
+        });
+    }
+
+    function do_wx_cash() {
+        $.ajax({
+            url: "<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/api/payment/wpay/transfers.php'; ?>",
+            type:'post',
+            data: {
+                partner_trade_no: '{$data.cash_sn}' ,
+                amount:' {$data["money"] - $data["cash_fee"]}',
+                openid:'{$data.openid}',
+                rel_user_name:'{$data.account_name}'
+            },
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                if(data.return_code == 'SUCCESS'){
+                    if(data.result_code == 'SUCCESS'){
+                        $('#payment_no').val(data.payment_no);
+                            $('#form2').submit();
+                    }else {
+                        layer.msg(data.err_code_des);
+                        if(data.err_code == 'OPENID_ERROR'){
+                            $('#remarks2').val('请在微信环境下提现');
+                        }else if(data.err_code == 'NAME_MISMATCH'){
+                            $('#remarks2').val('提现姓名与微信绑定姓名不一致');
+                        }else{
+                            $('#remarks2').val(data.err_code_des);
+                        }
+                        $('#id_yes1').click();
+                    }
+                }else {
+                    layer.msg(data.return_msg);
+                    if(data.err_code == 'OPENID_ERROR'){
+                        $('#remarks2').val('请在微信环境下提现');
+                    }else if(data.err_code == 'NAME_MISMATCH'){
+                        $('#remarks2').val('提现姓名与微信绑定姓名不一致');
+                    }else {
+                        $('#remarks2').val(data.return_msg);
+                    }
+                    $('#id_yes1').click();
+                }
+            }
+        });
+    }
+</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+
+	</body>
+</html>

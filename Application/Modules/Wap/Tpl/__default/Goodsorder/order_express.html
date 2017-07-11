@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>物流信息</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/order.css" />
+</head>
+<body class="order">
+<div class="new head">
+	<a href="javascript:history.go(-1)" class="md-close back">
+		<i class="iconfont">&#xe617</i>
+	</a>
+	<h2>物流查询</h2>
+</div>
+
+<div class="bggreen">
+	<div class="newbox">
+		<div class="goodslist">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<?php $total_num = 0;?>
+					<volist name="order_goods" id="vo">
+						<li  class="swiper-slide">
+							<div class="goodsimg imgnobg">
+								<img src="{$vo.goods_image}" class="img" alt="{$vo.goods_name}" />
+							</div>
+						</li>
+					</volist>
+				</ul>
+				<div class="swiper-pagination"></div><div class="clearfix"></div>
+			</div>
+		
+		</div>
+		<if condition="$is_show_all eq 1">
+		<div class="address">
+			<i class="iconfont icon">&#xe621</i>
+			<div class="addinfo">
+				<dl class="name">
+					<dt>收件人：</dt>
+					<dd>{$data.consignee}</dd>
+					<dd class="tel num">{$data.mobile}</dd>
+				</dl>
+				<dl class="add">
+					<dt>收货地址：</dt>
+					<dd>{$data.address}</dd>
+					<dd class="addsub"><!--详细地址--></dd>
+					<div class="clearfix">
+					</div>
+				</dl>
+			</div> 
+			<div class="clearfix">
+			</div>
+		</div>
+		<if condition="$data['invoice_no']">
+		<div class="address">
+			<div class="addinfo">
+				<dl class="add">
+					<dt>快递名称：</dt>
+					<dd>{$data['express_name']}</dd>
+				</dl>
+				<dl class="add">
+					<dt>快递单号：</dt>
+					<dd>{$data['invoice_no']}</dd>
+				</dl>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		</if>
+		</if>
+	</div>
+<if condition="$express_data['status'] eq 1">
+{$express_data.result}
+<else/>
+
+<div class="expresstip">{$express_data.msg}</div>
+</if>
+
+</div>
+<script src="__PUBLIC__/wap/js/swiper.min.js"></script>
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		slidesPerView:4,
+		paginationClickable: true
+	});
+</script>
+</body>
+</html>

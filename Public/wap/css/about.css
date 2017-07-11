@@ -1,0 +1,33 @@
+body{background: #fff;}
+.head { background: #fff; color: #4183d7; box-shadow: none; border: none; height: 1rem; line-height: 1rem }
+.head a.back { line-height: 1rem; height: 1rem; color: #4183d7; }
+.about { background: #fff;font-size: .36rem; line-height: .6rem; }
+.about .back { border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; text-align: center; line-height: 1rem; font-size: .6rem; position: absolute; top: .2rem; left: .2rem; width: 1rem; height: 1rem; z-index: 999999 }
+
+.page{ position:relative;background: #f1ffcd; background:url(../img/caticonbg.png) top left repeat-x; padding-bottom:0 }
+.about .company{ border-radius:.2rem; margin:.2rem; padding:.4rem; background:#fff; position:relative; z-index:2; box-shadow:0 0 .4rem rgba(0,0,0,0.2); }
+.about .item{ border-bottom-right-radius:.2rem; border-bottom-left-radius:.2rem;margin:-.4rem .2rem .2rem; padding:.4rem; background:#f4f4f4; z-index:1;box-shadow:0 0 .4rem rgba(0,0,0,0.2)}
+.about .page .logo img{ height:1rem;}
+.about .company .info,.about .item .info{ font-size:.34rem; line-height:.62rem; border-top:1px solid #e0e0e0; padding-top:.4rem; margin-top:.4rem;}
+.about .company .more,.about .item .more{ display:block; line-height:.6rem; color:#6ab42f; text-align:right; border-top:1px solid #f4f4f4; padding-top:.2rem; margin-top:.2rem;}
+.about .company .logo i{ margin-top:.24rem; font-size:.42rem;}
+.about .item .logo i{ margin-top:.36rem; font-size:.42rem;}
+.about .company .info{ font-size:.36rem;max-height:11.2rem; overflow-y:scroll}
+.about .company h4{ font-size:.48rem; line-height:.62rem; padding-bottom:.2rem; border-bottom:1px solid #f2f2f2; margin-bottom:.2rem;}
+.about .version{ text-align:center; font-size:.4rem; text-shadow:0 0 1px rgba(0,0,0,0.2); margin-top:1rem; color:#6ab42f;}
+
+.seo .item{ margin:.2rem; border-radius:.2rem; box-shadow:0 0 .4rem rgba(0,0,0,0.2); overflow:hidden; background:#fff; padding:.4rem; box-sizing:border-box}
+.seo .item .pic{ width:100%; height:auto; overflow:hidden;}
+.seo .item .pic span{ width:32%; height:2.4rem; display:block; overflow:hidden; margin-right:2%; float:left; margin-bottom:.2rem;box-sizing:border-box; border:1px solid #f2f2f2;}
+.seo .item .pic span:nth-child(3n+0){ margin-right:0}
+.seo .item .pic span img{width:100%; height:auto; min-height:2.4rem; display:block;}
+.seo .item .pic.solo{ width:100%; height:4rem; overflow:hidden;margin-bottom:.2rem;}
+.seo .item .pic.solo img{ width:100%; height:auto;}
+.seo .item .info{ font-size:.36rem; text-align:left}
+.seo .item .ctrl{ border-top:1px solid #f4f4f4; padding-top:.2rem; margin-top:.2rem; font-size:.32rem;}
+.about .info{font-size: .36rem; line-height: .6rem; padding: .4rem; }
+.about .banner{ background:url(../img/about.jpg);background-size: cover; background-position: center;height: 6rem;}
+.about.wenhua .banner{ background:url(../img/wenhua.jpg);background-size: cover; background-position: center;height: 6rem;}
+
+.about .banner .title{ position: absolute; top: 5.2rem;left: .4rem; font-size: 1rem; font-weight: 700; color: #fff;}
+.about .info p{text-indent: 2em;}

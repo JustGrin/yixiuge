@@ -1,0 +1,133 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">网站常规设置列表</h1>
+									<span class="mainDescription"></span>
+								</div>
+							<!-- 	<nav id="cl-effect-10" class="links cl-effect-10">
+								<a data-hover="新增" href="{:U('admin/system/sys_param_edit')}"><span>新增</span></a>
+							</nav> -->
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="row">
+<div class="col-lg-12 col-md-12 margin-top-20" >
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h5 class="panel-title">筛选</h5>
+		</div>
+	<form role="form" class="form-inline">	
+		<div class="panel-body">
+			
+			
+			<!-- 	<div class="form-group">
+				
+				  <label for="account" class="sr-only">
+					字典参数code
+				  </label>
+					<input type="text" name="param_code" value="{$_GET.param_code}" id="param_code" placeholder="字典参数code" class="form-control">
+				
+			</div> -->
+				<div class="form-group">
+					<label for="name" class="sr-only">
+						字典参数名称
+					</label>
+					<input type="text" placeholder="字典参数名称" value="{$_GET.param_name}"  name="param_name" id="param_name" class="form-control">
+				</div>
+				
+				
+				 <button class="btn btn-primary" type="submit">
+					提交
+				</button>
+			
+		</div>
+		
+    </form>
+	</div>
+</div>
+		</div>								
+
+<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<!-- <th class="center">字典参数code</th> -->
+						<th>名称</th>
+						<th class="hidden-xs">参数值</th>
+						<th>参数描述</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr>
+						<!-- <td class="center">{$vo.param_code}<i/></td> -->
+						<td class="hidden-xs">{$vo.param_name}</td>
+						<td>{$vo.param_value|mbubstr_html=0,10}</td>
+						<td>
+						 {$vo.param_desc|mbubstr_html=0,15}
+						</td>
+					
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+							     <a href="{:U("Admin/System/sys_param_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							     
+							      
+						</div>
+						</td>
+					</tr>
+					
+</volist>
+
+
+
+		
+				</tbody>
+			</table>
+
+
+ <div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+	</body>
+</html>

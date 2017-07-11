@@ -1,0 +1,185 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">留言信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			昵称
+		</label>
+		 {$data.title}
+	</div>
+    <div class="form-group">
+		<label class="control-label">
+			邮箱
+		</label>
+		 {$data.email}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			电话
+		</label>
+		 {$data.phone}
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			留言内容
+		</label>
+		<br>
+		 {$data.message}
+	</div>
+	
+	<div class="form-group">
+		<label class="control-label">
+			状态
+		</label>
+		{$status[$data['status']]}
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			留言时间
+		</label>
+		 {$data.add_time|date="Y-m-d",###}
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			留言ip
+		</label>
+		 {$data.add_ip}
+	</div>
+  <div class="form-group">
+		<label class="control-label">
+			处理意见
+		</label>
+		<br>
+		 {$data.remark}
+	</div>
+
+
+
+</div>
+</div>
+<if condition="$data.status lt 1">
+<div class="row">
+<div class="col-md-4">
+
+<div class="form-group">
+		<label class="control-label">
+				内容： <span class="symbol required" aria-required="true"></span>
+		</label>
+		<div>
+		<textarea id="remark" name="remark"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.content}</textarea>
+		 <!-- 加载编辑器的容器 -->
+	    </div>
+	    
+	</div>
+
+
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+</div>	
+</if>
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+		<script>
+jQuery(document).ready(function() {
+				//FormValidator.init();
+jQuery.validator.addMethod("byteRangeLength", function(value) {
+	var dropdown=$("#dropdown").val();
+	var ret=true;
+    if(dropdown>0){
+       if(!value){
+        ret=false;
+       }
+    }
+  return ret;   
+});
+
+$("#form2").validate({
+  rules: {
+   remark: "required"
+  },
+  messages: {
+   remark: "请输入处理意见"
+  }
+  });
+
+
+$("#dropdown").change(function(){
+	var val=$(this).val();
+	if(val>0){
+		$(".menu_icons").hide();
+	}else{
+		$(".menu_icons").show();
+	}
+
+});
+
+});
+		</script>
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

@@ -1,0 +1,264 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">提现申请信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+ <div class="form-group">
+    {//1商家提现 2会员提现}
+        <label class="control-label">
+            申请类型：
+        </label>
+         <if condition="$data['type'] eq 1">
+            商家提现
+        <elseif condition="$data['type'] eq 2" />
+        会员提现
+        </if>
+       
+    </div>
+ <if condition="$data['type'] eq 2">
+  <div class="form-group">
+        <label class="control-label">
+            会员名：
+        </label>
+        {$member.member_name}
+    </div>
+     <div class="form-group">
+        <label class="control-label">
+            电话：
+        </label>
+        {$member.mobile}
+    </div>
+     <div class="form-group">
+         <label class="control-label">
+             会员openid：
+         </label>
+         {$data.openid}
+     </div>
+<elseif condition="$data['type'] eq 1" />
+        {//会员提现}
+   <div class="form-group">
+        <label class="control-label">
+            商户名称：
+        </label>
+        {$shop.shop_name}
+    </div>
+    <div class="form-group">
+        <label class="control-label">
+            商户帐号:
+        </label>
+        {$shop.account}
+    </div>
+</if>
+        <div class="form-group">
+            <label class="control-label">
+                提现单号：
+            </label>
+            {$data.cash_sn}
+        </div>
+ <div class="form-group">
+        <label class="control-label">
+            开户行：
+        </label>
+        {$data.account_bank}
+    </div>
+        <if condition="$data.blank_id eq 0">
+            <div class="form-group">
+                <label class="control-label">
+                    微信名
+                </label>
+                {$data.account_addr}
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    开户名：
+                </label>
+                {$data.account_name}
+            </div>
+            <else/>
+            <div class="form-group">
+                <label class="control-label">
+                    开户行地址
+                </label>
+                {$data.account_addr}
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    开户名：
+                </label>
+                {$data.account_name}
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">
+                    银行卡号：
+                </label>
+                {$data.account_no}
+            </div>
+        </if>
+   <div class="form-group" style="color: #ff0000!important">
+        <label class="control-label">
+            提现金额：
+        </label>
+       {$data['money'] - $data['cash_fee']}
+    </div>
+     <div class="form-group">
+        <label class="control-label">
+            申请时间：
+        </label>
+        {$data.add_time|date="Y-m-d H:i",###}
+    </div>
+        
+<div class="form-group">
+        <label class="control-label">
+            当前状态：  
+        </label>
+          <if condition="$data['status'] eq 1">
+                待审核
+         <elseif condition="$data['status'] eq 2"/>
+                操作员已审核，财务打款中
+         <elseif condition="$data['status'] eq 3"/>
+                已提现
+         <else />
+            <if condition="$data['auid_status1'] neq 1">
+                操作员拒绝
+                <br>
+                拒绝原因：{$data.remarks1}
+             </if>
+             <if condition="$data['auid_status2'] neq 1">
+                财务拒绝
+                 <br>
+                拒绝原因：{$data.remarks2}
+             </if>
+         </if> 
+    </div>
+    <if condition="($data['status']==3 && !empty($data['imgpath']))  "> 
+     <div class="form-group">
+        <label class="control-label">
+            打款凭证
+        </label> 
+        <br>
+        <div class="upload_file">
+         
+        
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" id="show_photo">
+                    <a href="{$data.imgpath}">
+                        <img id="head_photo_src" src="{$data.imgpath}" alt="">
+                        </a>
+                </div>
+            </div>
+        
+         </div>          
+         
+    </div>
+  </if>    
+
+  
+  <if condition="$_SESSION['topadmin'] gt 0"> 
+ <if condition="$data['status'] eq 1">
+        <div class="form-group">
+        <label class="control-label">
+            审核状态：   
+        </label>
+        
+            <div class="clip-radio radio-primary fa-hover Primary">
+
+
+             <input type="radio" value="1" name="auid_status1" id="id_no1" checked="checked">
+            <label for="id_no1">
+                同意提现
+            </label>
+
+            <input type="radio" value="2" name="auid_status1" id="id_yes1"   >
+            <label for="id_yes1">
+                审核不通过
+            </label>
+
+          
+            </div>
+             
+    </div>
+
+
+     <div class="form-group">
+        <label class="control-label">
+            审核意见：  
+        </label>
+        <div>
+            <textarea id="remarks1" name="remarks1"  class=" autosize" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data.remarks1}</textarea>
+         </div>
+    </div>
+  </if>  
+  </if> 
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+
+
+	</body>
+</html>

@@ -1,0 +1,303 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">账号信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+		<label class="control-label">
+			帐号 :{$data.account}
+		</label>
+	</div>
+	 <div class="form-group">
+		<label class="control-label">
+			帐号类型:  <if condition="$data.type eq 1">管理员<else/>商家</if>
+		</label>
+		
+	</div>
+	<div class="form-group">
+		<label class="control-label">
+			状态：  <if condition="$data.status eq 1">正常<else/>冻结</if>
+		</label>
+		
+	</div>
+     <div class="form-group">
+			<label class="control-label">
+				权限分组 <span class="symbol required" aria-required="true"></span>
+			</label>
+    </div>
+
+	<div class="form-group">
+		<label class="control-label">
+			昵称 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写昵称" class="form-control" value="{$data.name}" id="name" name="name">
+	</div>
+    
+
+    <div class="form-group">
+		<label class="control-label">
+			电话 
+		</label>
+		<input type="text" placeholder="填写电话" class="form-control" value="{$data.mobile}" id="mobile" name="mobile">
+	</div>
+
+	 <div class="form-group">
+		<label class="control-label">
+			邮箱  
+		</label>
+		<input type="text" placeholder="填写邮箱" class="form-control" value="{$data.email}" id="email" name="email">
+	</div>
+
+   
+ <div class="form-group check_pwd_a hide">
+		<label>
+			 原密码
+		</label>
+		<input type="password" class="form-control" name="oldpass" id="oldpass">
+	</div>
+     <div class="form-group check_pwd_a hide">
+		<label>
+			 新密码
+		</label>
+		<input type="password" class="form-control" name="newapass" id="newapass">
+	</div>
+	<div class="form-group check_pwd_a hide">
+		<label>
+			 重复新密码
+		</label>
+		<input type="password" class="form-control" name="newapass2" id="newapass2">
+	</div>
+  	<div class="form-group">
+ <div class="checkbox clip-check check-primary ">
+		<input type="checkbox" id="check_pwd" value="1" name="check_pwd">
+		<label for="check_pwd">
+			修改密码
+		</label>
+	</div>
+	</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+
+	
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+		<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+		<!-- start: JavaScript Event Handlers for this page -->
+		<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+
+{//新增}
+	<script>
+jQuery(document).ready(function() {
+
+	//一级菜单取消 取消下面的所有二级菜单
+$("#check_pwd").change(function(){
+	var check=$(this).prop("checked");
+	//$("[name = chkItem]:checkbox").attr("checked", true);
+	if(check){
+	    //选中
+		$(".check_pwd_a").removeClass("hide");
+	}else{
+		//取消选中
+		$(".check_pwd_a").addClass("hide");
+	}
+});
+				//FormValidator.init();
+///修改密码时原密码不能为空
+jQuery.validator.addMethod("oldpassrequired", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var ret=true;
+	//选中
+    if(check){
+       if(value){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+///修改密码时新密码不能为空
+jQuery.validator.addMethod("newapassrequired", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var ret=true;
+	//选中
+    if(check){
+       if(value){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+///修改密码时新密码6-12位
+jQuery.validator.addMethod("newapassrangelength", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var ret=true;
+	//选中
+    if(check){
+       if(value.length>=6 && value.length<=12){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+
+///修改密码时重复新密码不能为空
+jQuery.validator.addMethod("newapass2required", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var ret=true;
+	//选中
+    if(check){
+       if(value){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+///修改密码时重复新密码6-12位
+jQuery.validator.addMethod("newapass2rangelength", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var ret=true;
+	//选中
+    if(check){
+       if(value.length>=6 && value.length<=12){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+//修改密码时重复新密码和新密码一致
+jQuery.validator.addMethod("newapass2equalTo", function(value) {
+	var check=$("#check_pwd").prop("checked");
+	var newapassval=$("#newapass").val();
+	var ret=true;
+	//选中
+    if(check){
+       if(value==newapassval){
+        ret=true;
+       }else{
+       	//不能为空
+       	ret=false;
+       }
+    }
+  return ret;   
+});
+
+
+	$("#form2").validate({
+	  rules: {
+	   oldpass: "oldpassrequired",
+	   newapass: {
+                    newapassrequired: true,
+                    newapassrangelength: true
+                },
+        newapass2: {
+            newapass2required: true,
+            newapass2rangelength: true,
+            newapass2equalTo: true
+        },        
+	   name: "required"
+	  },
+	  messages: {
+	   oldpass:"请输入原密码",
+	   newapass: {
+                    newapassrequired: "请填写新密码",
+                    newapassrangelength: "密码长度在6-12位之间！"
+                },
+        newapass2: {
+            newapass2required: "请填写确认新密码！",
+            newapass2rangelength: "密码长度在6-12位之间！",
+            newapass2equalTo: "两次输入密码不一致！"
+        },
+	   name: "请输入昵称"
+	  }
+	  });
+	});
+	</script>
+
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

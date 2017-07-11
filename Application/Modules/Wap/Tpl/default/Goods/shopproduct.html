@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <title>商铺商品列表-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/product.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/shopproduct.css"  rel="stylesheet">
+</head>
+<body id="body">
+    <header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>商铺商品列表</span></div>
+    </header>
+    <div class="shop-group-item">
+        <ul class="shp-cart-list">
+            <volist name="list" id="vo">
+            <li >
+                <div class="items">
+                    <div class="shp-cart-item-core  ">
+                        <div class="cart-product-cell-3">
+                            <span class="shp-cart-item-price" >￥{$vo.goods_price}</span>
+                        </div>
+                        <a class="cart-product-cell-1" href="{:U('wap/group/goods_detail',array('id'=>$vo['id']))}">
+                            <img class="cart-photo-thumb" alt="" src="{:U('wap/index/get_thumbs',array('auto'=>64))}?img={$vo.goods_image}" onerror="http://misc.360buyimg.com/lib/skin/e/i/error-jd.gif">
+                        </a>
+                        <div class="cart-product-cell-2">
+                            <div class="cart-product-name">
+                                <a href="javascript:beWareDetail('1311029')"><span>{$vo.goods_name}</span></a>
+                            </div>
+                            <div class="shp-cart-opt  ">
+                                <div class="quantity-wrapper">
+<input type="hidden" class="good_price_{$vo.id}" size="4" value="{$vo.goods_price}" name="good_price" data="{$vo.id}">
+<a class="quantity-decrease save_good save_good_{$vo.id}" data="{$vo.id}" style="display:none" href="javascript:void(0);">-</a>
+<input type="text" class="quantity good_num good_num_{$vo.id}" size="4" value="0" name="num" data="{$vo.id}" style="display:none">
+<a class="quantity-increase add_good add_good_{$vo.id}" data="{$vo.id}" href="javascript:void(0);">+</a>
+                                </div>
+                                <div class="wastebin-container del_good del_good_{$vo.id}" data="{$vo.id}" style="display:none">
+                                    <div class="wastebin">
+                                        <i class="wastebin-up"></i>
+                                        <i class="wastebin-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           </volist>
+        </ul>
+    </div>
+    <input type="hidden" name="discount_consume" value="{$data.discount_consume}"/>
+    <input type="hidden" name="goods_id" value=""/>
+    <input type="hidden" name="shop_id" value="{$data.shop_id}"/>
+    <input type="hidden" name="shop_status" value="{$data.status}"/>
+    <!-- goods_id=商品id |数量   -->
+
+    <div id="payment_p" style="display:block">
+        <div class="payment-total-bar payment-total-bar-new">
+            <div class="shp-chk shp-chk-new">
+                <span class="cart-checkbox checked"></span>
+                <span class="cart-checkbox-text">全选</span>
+            </div>
+            <div class="shp-cart-info shp-cart-info-new">
+                <strong class="shp-cart-total">合计:<span class="bottom-bar-price all_price" style="font-size: 16px;">￥00.00</span></strong>
+                <span class="sale-off sale-off-new  bottom-total-price" style="font-size: 10px;">
+                  <!-- 总额:￥ --><span class="total" style="font-size: 10px;display:none;">00.00</span> 折扣价:￥<span class="discount_consume_price" style="font-size: 10px;">00.00</span></span>
+            </div>
+            <if condition="$data['status'] eq 1">
+                <a class="btn-right-block btn-right-block-new  go_pay" style="background-color: #ABA8A8 !important;">去结算(<span class="all_num">0</span>)</a>
+            <else/>
+                <a class="btn-right-block btn-right-block-new" style="background-color:#ABA8A8 !important;">去结算(<span class="all_num">0</span>)</a>
+            </if>    
+            
+        </div>
+    </div>
+    </div>
+   <script src="__PUBLIC__/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+   $(function(){
+    
+    //增加数量
+     $(".add_good").click(function(){
+        var _this_add=$(this);
+         var good_id=_this_add.attr('data');
+
+          var _this_save=$(".save_good_"+good_id);
+          var _this_del=$(".del_good_"+good_id);
+          var _this_num=$(".good_num_"+good_id);
+          var goods_num=_this_num.val();
+          if(goods_num==0){
+            _this_save.show();
+            _this_del.css("display",'inline-block');
+            _this_num.show();
+          }
+          goods_num++;
+          _this_num.val(goods_num)
+            //计算商品价格  
+         get_goods_price();
+     });
+     //减少数量
+     $(".save_good").click(function(){
+        var _this_save=$(this);
+         var good_id=_this_save.attr('data');
+          var _this_del=$(".del_good_"+good_id);
+          var _this_num=$(".good_num_"+good_id);
+          var goods_num=_this_num.val();
+          goods_num--;
+          if(goods_num<=0){
+            _this_num.val(goods_num)
+            _this_save.hide();
+            _this_del.hide();
+            _this_num.hide();
+          }else{
+             _this_num.val(goods_num)
+          }
+          //计算商品价格  
+         get_goods_price();
+     }); 
+     //删除数量
+     $(".del_good").click(function(){
+          var _this_del=$(this);
+          var good_id=_this_del.attr('data');
+          var _this_save=$(".save_good_"+good_id);
+          var _this_num=$(".good_num_"+good_id);
+          _this_num.val(0)
+          _this_save.hide();
+          _this_num.hide();
+          _this_del.hide();
+          //计算商品价格  
+         get_goods_price();
+     }); 
+
+    $(".go_pay").click(function(){
+          var all_num=$(".all_num").html();
+          all_num=parseInt(all_num);
+          if(all_num>0){
+            var good_id=$("input[name='goods_id']").val();
+            var shop_id=$("input[name='shop_id']").val();
+            var url="<?php echo U('Wap/order/order_add'); ?>?good_id="+good_id+"&shop_id="+shop_id;
+            window.location.href=url;
+          }
+     }); 
+
+   }); 
+ //计算商品价格  
+function get_goods_price(){
+    var discount_consume=$('input[name="discount_consume"]').val();
+    discount_consume=parseFloat(discount_consume);
+    if(discount_consume<=0){
+        discount_consume=1;
+    }
+    var total=parseFloat(0);
+    var all_num=0;
+    var goods_id_str='';
+    $(".good_num").each(function(){
+        var num=$(this).val();
+        num=parseInt(num);
+        if(num>0){
+            var goods_id=$(this).attr('data');
+            var good_price=$(".good_price_"+goods_id).val();
+            good_price=parseFloat(good_price);
+            total=total+good_price*num;
+            goods_id_str=goods_id_str+','+goods_id+'|'+num;
+            all_num=all_num+num;
+        }
+    });
+    if(goods_id_str){
+        goods_id_str=goods_id_str.substr(1);
+    }
+    if(total>0){
+        $('.go_pay').removeAttr('style');
+    }else{
+        $('.go_pay').css('cssText','background-color:rgb(171, 168, 168) !important;');
+    }
+    $('.all_price').html('￥'+total);
+    $('.total').html(total);
+    var discount_price=discount_consume*total;
+    discount_price=discount_price.toFixed(2);
+    $('.discount_consume_price').html(discount_price);
+    $('input[name="goods_id"]').val(goods_id_str);
+    $('.all_num').html(all_num);
+}
+</script>    
+</body>
+</html>

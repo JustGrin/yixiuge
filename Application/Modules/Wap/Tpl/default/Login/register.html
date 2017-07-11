@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员注册-{$webseting.web_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/member.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/address.css" />
+</head>
+<body class="login">
+<div class="head">
+	<a href="javascript:history.go(-1);" class="md-close back"><i class="iconfont">&#xe617</i></a>
+	<a href="#" class="md-login floatRgt">登录-{$webseting.web_title}</a>
+	<h2 >{$webseting.web_title}会员注册</h2>
+</div>
+
+<form  class="mlogin" action="" method="post" id="form2" role="form" novalidate onSubmit="return false;">
+	<div class="field"style="">
+		<div class="label">
+			推荐人
+		</div>
+		<div class="field-control">
+		<input type="text" name="code" id="code"  value="{$member_card}"
+			   style="display: none;" placeholder="请输入推荐人会员号" maxlength="11">
+		<input type="text"   placeholder="{$member_name}" readonly maxlength="11">
+		</div>
+	</div>
+	<div class="field">
+		<div class="label">
+			店铺名称
+		</div>
+		<div class="field-control">
+			<input type="text" class="input-required" name="member_name" placeholder="请输入您的店铺名称" value="" id="shopname">
+		</div>
+	
+	</div>
+	<div class="field mgt2">
+		<div class="label">
+			手机号
+		</div>
+		<div class="field-control">
+			<input type="text"  class="input-required" name="mobile" placeholder="请输入您的手机号码" value="" id="mobile">
+		</div>
+		
+	</div>
+	<div class="field">
+		<div class="label">
+			验证码
+		</div>
+		<div class="field-control">
+			<input type="text"  class="input-required codeinput" name="mobile_code" id="mobile_code" placeholder="请输入您收到的验证码" value="" >
+		</div>
+		
+		
+		
+		<a href="javascript:;" class="code again_message send_sms">发送验证码<span style="display: none" class="countdown">（<em class="num">60</em>S）</span>
+		</a>
+	</div>
+
+	<div class="field mgt2">
+		<div class="label">
+			密码
+		</div>
+		<div class="field-control">
+			<input   class="input-required" type="password" name="mem_password" id="mem_password" placeholder="请设置您的密码" value="" >
+		</div>
+	
+	</div>
+	<div class="field ">
+		<div class="label">
+			重复密码
+		</div>
+		<div class="field-control">
+			<input class="input-required" type="password" name="rep_password" id="rep_password" placeholder="请再次输入您的密码" value="">
+		</div>
+		
+	</div>
+
+	<div class="field mgt2">
+			<!-- <label class="icon-cell_phone" for="mobile_code"></label> -->
+		<div class="label">
+			省份
+		</div>
+		<div class="field-control ui-select  disabled">
+			<select id="provinceid" name="provinceid" class="city_p" {$disable}
+					onchange="choice_province('city')" emptymsg="请选择" datatype="*">
+				<option value="0">请选择</option>
+				<volist name="citylist['province']" id="vo">
+					<option value="{$vo.cityid}">{$vo.cityname}</option>
+				</volist>
+			</select>
+		</div>
+		<div class="need">
+			<i class="iconfont">&#xe617</i>
+		</div>
+	</div>
+
+	<div class="field ">
+		<!-- <label class="icon-cell_phone" for="mobile_code"></label> -->
+		<div class="label">
+			城市
+		</div>
+		<div class="field-control ui-select  disabled">
+			<select id="cityid" name="cityid" class="city_c" {$disable} onChange="choice_city('city')"
+					emptymsg="请选择" datatype="*">
+				<option value="0">请选择</option>
+				<volist name="citylist['city']" id="vo">
+					<option value="{$vo.cityid}">{$vo.cityname}</option>
+				</volist>
+			</select>
+		</div>
+		<div class="need">
+			<i class="iconfont">&#xe617</i>
+		</div>
+	</div>
+	<div class="field">
+		<!-- <label class="icon-cell_phone" for="mobile_code"></label> -->
+		<div class="label">
+			区县
+		</div>
+		<div class="field-control ui-select  disabled">
+				<select id="areaid" name="areaid" class="city_a" {$disable} emptymsg="请选择" datatype="*">
+					<option value="0">请选择</option>
+					<volist name="citylist['area']" id="vo">
+						<option value="{$vo.cityid}">{$vo.cityname}</option>
+					</volist>
+				</select>
+		</div>
+		<div class="need">
+			<i class="iconfont">&#xe617</i>
+		</div>
+	</div>
+	<div class="field" style="">
+		<div class="label">
+			地址
+		</div>
+		<div class="field-control">
+			<input type="text"  class="input-required" name="address" placeholder="请输入您的详细地址" value="" id="address">
+		</div>
+	</div>
+		
+	<div class="other-link">
+		<label class="floatLft">注册即同意 <a href="{:U('wap/Login/fuwu')}"  class="license-terms">《FG峰购网络店铺加盟协议》</a> </label>
+	</div>
+	<div class="submit">
+		<button type="submit" class="button" id="submit-btn">注 册</button>
+	</div>
+	<div class="other-link">
+		<a href="#" class="floatLft"></a> <a href="{:U('wap/Login/index')}" class="floatRgt">我是会员，直接登录</a>
+	</div>
+</form>
+
+
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+
+<!--<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>-->
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script>
+<script src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<!--start 红包弹窗-->
+<include file="Public/hongbao" />
+<!--end 红包弹窗-->
+<script>
+	jQuery(document).ready(function() {
+		var code_msg="";
+		jQuery.validator.addMethod("checkcodetrue", function(value) {
+			var mobileval=$("#mobile").val();
+			var ret=true;
+			var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/
+			if(value){
+				if(!re.test(value)){
+					code_msg="请输入正确的手机号/推荐码";
+					ret=false;
+				}
+			}
+			return ret;
+		});
+		jQuery.validator.addMethod("checkcode", function(value) {
+			var mobileval=$("#mobile").val();
+			var ret=true;
+			var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/
+			if(value){
+				if(!re.test(value)){
+
+				}else{
+					if(value==mobileval){
+						ret=false;
+						code_msg="推荐人手机号不能和注册手机号一致";
+					}
+				}
+			}
+			return ret;
+		});
+
+
+		$("#form2").validate({
+			rules: {
+				code:{
+					checkcodetrue:true,
+					checkcode:true,
+					remote: {
+						url: "{:U('Wap/Login/chk_member_code')}",
+						type: "get",
+						dataType: "json",
+						data: {
+							code: function () {
+								return $("#code").val();　　　　//这个是取要验证的数据
+							}
+						},
+						dataFilter: function (msg) {　　　　//判断控制器返回的内容
+							if (msg== '1') {
+								return true;
+							}else {
+								return false;
+							}
+						}
+					}
+				},
+				mobile: {
+					required:true,
+					number:true,
+					minlength:11,
+					remote: {
+						url: "{:U('Wap/Login/cheack_mobile')}",
+						type: "get",
+						dataType: "json",
+						data: {
+							mobile: function () {
+								return $("#mobile").val();　　　　//这个是取要验证的数据
+							}
+						},
+						dataFilter: function (msg) {　　　　//判断控制器返回的内容
+							if (msg == "0") {
+								return true;
+							}else {
+								return false;
+							}
+						}
+					}
+				},
+
+				mobile_code: {
+					required:true,
+					remote: {
+						url: "{:U('Wap/Login/check_send_reg')}",
+						type: "get",
+						dataType: "json",
+						data: {
+							mobile: function () {
+								return $("#mobile").val();　　　　//这个是取要验证的数据
+							},
+							mobile_code: function () {
+								return $("#mobile_code").val();　　　　//这个是取要验证的数据
+							}
+						},
+						dataFilter: function (msg) {　　　　//判断控制器返回的内容
+							if (msg == "1") {
+								return true;
+							}else {
+								return false;
+							}
+						}
+					}
+				},
+				mem_password: {
+					required: true,
+					rangelength: [6, 20]
+				},
+				rep_password: {
+					required: true,
+					rangelength: [6, 20],
+					equalTo: "#mem_password"
+				},
+				fuwu:'required'
+			},
+			messages: {
+				code:{
+					checkcodetrue:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号/推荐码',
+					checkcode:'<span class="icon-warning icon_warning"></span>&nbsp;推荐人手机号不能和注册手机号一致',
+					remote:'<span class="icon-warning icon_warning"></span>&nbsp;没有找到该推荐人'
+				},
+				mobile:{
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入手机号码',
+					number:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码',
+					minlength:'<span class="icon-warning icon_warning"></span>&nbsp;请输入正确的手机号码',
+					remote:'<span class="icon-warning icon_warning"></span>&nbsp;手机号码已注册'
+				},
+				mobile_code: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入手机验证码',
+					remote:'<span class="icon-warning icon_warning"></span>&nbsp;手机验证码不正确'
+				},
+				mem_password: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入密码',
+					rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;密码请保持6-20位'
+				},
+				rep_password: {
+					required:'<span class="icon-warning icon_warning"></span>&nbsp;请输入重复密码',
+					rangelength:'<span class="icon-warning icon_warning"></span>&nbsp;重复密码请保持6-20位',
+					equalTo:'<span class="icon-warning icon_warning"></span>&nbsp;两次密码输入不一致'
+				},
+				fuwu:'<span class="icon-warning icon_warning"></span>&nbsp;不同意服务协议不能注册'
+			},
+			focusInvalid:false,
+			success: function(label) {
+				// set  as text for IE 
+				// alert('ok'); 
+				//label.html(" ").addClass("checked"); 
+			},
+			/*执行ajaxsubmit  */
+			submitHandler: function(editform) {
+
+				var options = {
+					url :  "<?php echo U('Wap/Login/doregister'); ?>",
+					type : "post" ,
+					dataType:'json',
+					target : "#loader",
+					error: function(){layer.msg("服务器没有返回数据，可能服务器忙，请重试",{icon:5});},
+					onwait : "正在处理信息，请稍候...",
+					success: function(response){
+						// console.log(response);
+						//$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+						//$('#editform').hide(2000); 
+						if(response.status==1){
+							//alert("注册成功");
+							layer.msg('注册成功', {icon: 6},function(){
+								//关闭后的操作
+								window.location.href="<?php echo U('Wap/member/index'); ?>";
+							});
+						}else{
+							layer.msg(response.error, {icon: 5});
+							// alert(response.error);
+						}
+					}
+				};
+				setTimeout((function(opt){
+					return function(){
+						$('#form2').ajaxSubmit(opt);
+					}
+				})(options), 300);
+				return false;
+			}
+
+		});
+
+
+		$("#dropdown").change(function(){
+			var val=$(this).val();
+			if(val>0){
+				$(".menu_icons").hide();
+			}else{
+				$(".menu_icons").show();
+			}
+		});
+
+
+		$('.phone_reg_btn').click(function(){
+			$('#form2').submit();
+		});
+
+		$('.send_sms').click(function(){
+			var is_send=$(this).hasClass('disable');
+			if(is_send){
+				return false;
+			}else{
+				//短信发送
+				$.ajax({
+					url: "{:U('Wap/Login/send_sms')}",
+					type: "get",
+					dataType: "json",
+					data: {
+						mobile: function () {
+							return $("#mobile").val();　　　　//这个是取要验证的数据
+						}/*,
+						 verify_code: function () {
+						 return $("#verify_code").val();　　　　//这个是取要验证的数据
+						 }*/
+					},
+					success: function (msg) {　　　　//判断控制器返回的内容
+						if (msg.status == "1") {
+							//disable
+							// $('#mobile_code').val(msg.code);
+							// alert("验证码发送成功");
+							layer.msg('验证码发送成功', {icon: 6});
+							run_time_out();
+						}else {
+							// alert(msg.msg);
+							layer.msg(msg.msg, {icon: 5});
+						}
+					}
+				});
+			}
+		});
+
+	});
+	function run_time_out(){
+		var num=$('.num').html();
+		num=parseInt(num);
+		var is_send=$('.send_sms').hasClass('disable');
+		if(num>0){
+			$('.get_sms').hide();
+			$('.countdown').show();
+			$('.send_sms').css('cssText','background-color: #eee;color: #666;-webkit-appearance: none;');
+			num--;
+			$('.num').html(num);//显示倒计时
+			if(!is_send){
+				$('.send_sms').addClass('disable');///禁止点击
+			}
+		}else{
+			$('.countdown').hide();
+			$('.get_sms').show();
+			$('.num').html(60);//初始化倒计时
+			$('.send_sms').removeClass('disable');///可以点击
+			$('.send_sms').removeAttr('style');
+			return false;
+		}
+		setTimeout('run_time_out()',1000);
+	}
+</script>
+<!--address end-->
+
+<script>
+	var get_city_url="{:U('wap/index/get_city')}";
+</script>
+<script src="__PUBLIC__/js/common.js"></script>
+<script>
+	jQuery(document).ready(function () {
+		//FormValidator.init();
+
+		jQuery.validator.addMethod("byteRangeLength", function (value) {
+			var areaid = $("#areaid").val();
+			var cityid = $("#cityid").val();
+			var provinceid = $("#provinceid").val();
+			var ret = false;
+			if (areaid > 0 && cityid > 0 && provinceid > 0) {
+				ret = true;
+			}
+			return ret;
+		});
+
+		$("#form2").validate({
+			rules: {
+				/*member_name: 'required',*/
+				areaid: 'byteRangeLength',
+				/*addr: 'required'*/
+			},
+			messages: {
+				/*member_name: '<span class="icon-warning icon_warning"></span>&nbsp;请输入昵称',*/
+				areaid: '<span class="icon-warning icon_warning"></span>&nbsp;请选择完整的省市区',
+			},
+			focusInvalid: false,
+			success: function (label) {
+				// set  as text for IE 
+				// alert('ok'); 
+				//label.html(" ").addClass("checked"); 
+			},
+			/*执行ajaxsubmit  */
+
+			setTimeout((function (opt) {
+			return function () {
+				$('#form2').ajaxSubmit(opt);
+			}
+		})(options), 300);
+		return false;
+	}
+
+	});
+	});
+</script>
+<!--address end-->
+</body>
+</html>

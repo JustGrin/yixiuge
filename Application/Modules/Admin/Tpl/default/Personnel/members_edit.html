@@ -1,0 +1,176 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8 col-md-offset-5">
+									<h1 class="mainTitle">{$msgtitle}</h1>
+									<span class="mainDescription">&nbsp;&nbsp;员工信息</span>
+								</div>
+								
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<div class="container-fluid container-fullw bg-white">
+<form action="" role="form" id="form2" novalidate="novalidate" method="post">
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<div class="form-group">
+		<label class="control-label">
+			姓名 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<input type="text" placeholder="填写姓名" class="form-control" value="{$data.name}" id="name" name="name">
+	</div>
+    
+    <div class="form-group">
+		<label class="control-label">
+			所在部门 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control" id="dropdown" name="p_id">
+			<option value="">最上级</option>
+            <volist name="list" id="vo">
+			  <option value="{$vo.id}" <if condition="$data.p_id eq $vo['id']">selected</if> >{$vo.p_name}</option>
+				<volist name="vo['tree']" id="voo">
+				  <option value="{$voo.id}" <if condition="$data.p_id eq $voo['id']">selected</if> >┗━{$voo.p_name}</option>
+				</volist>
+		    </volist>
+		</select>
+	</div>
+
+ <div class="form-group">
+		<label class="control-label">
+			关联操作员 <span class="symbol required" aria-required="true"></span>
+		</label>
+		<select class="form-control" id="dropdown" name="auid">
+			<option value="0">不关联</option>
+            <volist name="adminlist" id="vo">
+			  <option value="{$vo.id}" <if condition="$data.auid eq $vo['id']">selected</if> >{$vo.name}</option>
+		    </volist>
+		</select>
+	</div>
+
+	<div class="form-group " >
+		<label class="control-label">
+			状态 <span ></span>
+		</label>
+		<div class="clip-radio radio-primary fa-hover Primary">
+           <if condition="$data.id gt 0">
+			<input type="radio" value="1" name="status" id="id_no" <if condition="$data.status eq 1">checked="checked"</if> >
+			<label for="id_no">
+				有效
+			</label>
+
+			<input type="radio" value="0" name="status" id="id_yes" <if condition="$data.status eq 0">checked="checked"</if> >
+			<label for="id_yes">
+				无效
+			</label>
+             <else/>
+             <input type="radio" value="1" name="status" id="id_no" checked="checked" >
+			<label for="id_no">
+				有效
+			</label>
+
+			<input type="radio" value="0" name="status" id="id_yes" >
+			<label for="id_yes">
+				无效
+			</label>
+
+			</if>
+
+		</div>
+	</div>	
+     
+    <div class="form-group">
+		<label class="control-label">
+			员工介绍
+		</label>
+		<textarea class="form-control autosize" name="m_des" data-autosize-on="true" style="overflow: hidden; resize: horizontal; word-wrap: break-word; height: 71px;">{$data.m_des}</textarea>
+	</div>
+
+
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-4 col-md-offset-5">
+	<input type="hidden"  value="{$data.id}" name="id">
+	<button class="btn btn-primary btn-wide pull-left" type="submit">
+		提交 <i class="fa fa-arrow-circle-right"></i>
+	</button>
+</div>
+
+<div class="col-md-8">
+	<p>
+		
+	</p>
+</div>
+
+</div>											
+</form>
+</div>	
+
+
+                  
+
+
+
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/ckeditor/adapters/jquery.js"></script>
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- <script src="__PUBLIC__/bootstrap/assets/js/main.js"></script> -->
+<!-- start: JavaScript Event Handlers for this page -->
+<!--<script src="__PUBLIC__/bootstrap/assets/js/form-validation.js"></script>-->
+<script>
+	$().ready(function() {
+		$("#form2").validate({
+			rules:{
+				name: "required",
+
+
+			},
+			messages:{
+				name: "请输入员工姓名",
+			}
+		});
+	});
+
+</script>
+
+		<!-- end: JavaScript Event Handlers for this page -->
+	</body>
+</html>

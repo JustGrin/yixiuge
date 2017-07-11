@@ -1,0 +1,144 @@
+<link href="__PUBLIC__/wap/css/draw.css" rel="stylesheet" type="text/css" />
+<style>
+  .layui-layer-setwin .layui-layer-close2{
+    right: 0px;
+    top: 0px;
+  }
+</style>
+<div class="draw_frame" id="draw_frame" style="display:none;">
+    <div class="draw_main">
+        <div class="draw_main_top">
+            <img src="__PUBLIC__/wap/img/a.png" />
+            <p>积分、话费、金币、折扣、商品等你免费来抽</p>
+        </div>
+
+        <div class="draw" >
+            <div class="back1" />
+                <img src="__PUBLIC__/wap/img/b.png" />
+            </div>
+            <div class="border1">
+                <div class="front1">
+                    <if condition="!empty($draw_data)">
+                     <div class="draw_title">
+                       <p class="draw_title_type draw_type_name" >{$draw_data.draw_type_name}</p>
+                       <p class="draw_title_type_data"  style="" > <span class="draw_num" style="font-size: 45px;">{$draw_data.draw_num}</span>
+                        <span class="draw_value_unit">{$draw_data.draw_value_unit}</span></p>
+                    </div>
+                    <else/>
+                      <div class="draw_title">
+                       <p class="draw_title_type draw_type_name" >--</p>
+                       <p class="draw_title_type_data"  style="" > <span class="draw_num" style="font-size: 45px;">--</span>
+                        <span class="draw_value_unit">--</span></p>
+                      </div>
+                    </if>
+                    <img src="__PUBLIC__/wap/img/c.png" />
+                </div>
+            </div>
+        </div>
+
+        <div class="sign">
+          <if condition="!empty($draw_data)">
+            <a href="javascript:void(0)" id="target" style="background-color: #999;"  ><i>已签到</i></a>
+         <else/>
+            <a href="javascript:void(0)" id="target"  onclick="go_draw()" ><i>我要签到</i></a>
+            </if>
+        </div>
+    </div>
+</div>
+<style>
+.layui-layer-demo{background: #ca2c3a !important;box-shadow: none !important;border-radius: 0px !important;}
+</style>  
+ <if condition="empty($draw_count) && !empty($switch_draw)">
+ <script type="text/javascript">
+    $(function(){
+  //捕获页 自动弹窗
+    $.ajax({
+        url: "{:U('wap/draw/check_draw')}",
+        type:'get',
+        dataType: 'json',
+        success: function(data){
+          if(data.status==1){
+             get_draw()
+          }else if(data.status==2){
+             //$('.member_draw_btn').hide();
+          }else{
+           // layer.msg(data.error, {icon: 5});
+            //alert(data.error)
+            $('.member_draw_btn').hide();
+          }
+        }
+       });
+   
+    });
+    </script>
+  </if>  
+ <if condition="!empty($draw_data)">
+    <script type="text/javascript">
+    $(function(){
+        $("#target").click();
+       })
+        function go_draw(){
+           $(".border1").addClass('move');
+       }
+    </script>
+<else/>
+<script type="text/javascript">
+        function go_draw(){
+          layer.msg('正在抽奖....',{time: 100000});
+                    $.ajax({
+                      url: "{:U('wap/draw/get_draw')}",
+                      type:'get',
+                      dataType: 'json',
+                      success: function(data){
+                        if(data.status==1){
+                          layer.msg('正在抽奖....',{time: 100});
+                            //layer.msg("签到成功", {icon: 6,time: 1500});
+                            $('.draw_type_name').html(data.draw.draw_type_name);
+                            $('.draw_num').html(data.draw.draw_num);
+                            $('.draw_value_unit').html(data.draw.draw_value_unit);
+                            $(".border1").addClass('move');
+                            $('#target').css('cssText','background-color: #999;');
+                            $('#target').removeAttr("onclick");
+                            $('#target i').html('已签到');
+                            $('.member_draw_btn').empty();
+
+                        }else{
+                          layer.msg(data.error, {icon: 5});
+                          //alert(data.error)
+                        }
+                      }
+                     });
+       }
+</script>
+  </if>  
+    <script type="text/javascript">
+        window.onload = function ()
+                {
+                    var h = $(window).height();//获取页面的高度
+                    document.getElementById("draw_frame").style.height = (h-20) + "px"
+                }
+
+    </script>
+  <script type="text/javascript">
+function get_draw(){
+   var h = $(window).height();//获取页面的高度
+  h=(h-20)+"px";
+  layer.open({
+    type: 1,
+    shade: 0.8,//透明度
+    title: false, //不显示标题
+    skin: 'layui-layer-demo', //样式类名
+    shadeClose: true, //开启遮罩关闭
+    area: ['90%', h],
+    scrollbar: false,//浏览器滚动锁定
+    content: $('.draw_frame'), //捕获的元素
+    cancel: function(index){
+
+        layer.close(index);
+        this.content.show();
+        $('.draw_frame').hide();
+        //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构',{time: 5000});
+    }
+});
+}
+</script>  

@@ -1,0 +1,196 @@
+<include file="Public/header"/>
+
+		<div id="app">
+			<!-- sidebar -->
+			<include file="Public/left"/>
+			<!-- / sidebar -->
+			<div class="app-content">
+				<!-- start: TOP NAVBAR -->
+				<include file="Public/headernav"/>
+				<!-- end: TOP NAVBAR -->
+				<div class="main-content" >
+					<div class="wrap-content container" id="container">
+						<!-- start: PAGE TITLE -->
+						<section id="page-title">
+							<div class="row">
+								<div class="col-sm-8">
+									<h1 class="mainTitle">广告位置/类型</h1>
+								</div>
+								<nav id="cl-effect-10" class="links cl-effect-10">
+									<a data-hover="新增" href="{:U('admin/Ad/ad_type_edit')}"><span>新增</span></a>
+								</nav>
+								<!-- <ol class="breadcrumb">
+									<li>
+										<span>Pages</span>
+									</li>
+									<li class="active">
+										<span>Blank Page</span>
+									</li>
+								</ol> -->
+							</div>
+						</section>
+						<!-- end: PAGE TITLE -->
+						<!-- start: YOUR CONTENT HERE -->
+<style type="text/css">
+	.class_hidden{display:none;}
+
+</style>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 margin-top-20" >
+								<div class="panel panel-white">
+									<div class="panel-heading">
+										<h5 class="panel-title">筛选</h5>
+									</div>
+									<form role="success" class="form-inline">
+										<div class="panel-body">
+
+
+											<div class="form-group">
+												<label for="account" class="sr-only">
+													广告标题
+												</label>
+												广告标题:
+												<input type="text" name="title" value="{$_GET.title}" id="title" placeholder="广告标题" class="form-control">
+											</div>
+											<!--<div class="form-group">
+												<label for="type" class="sr-only">
+													状态
+												</label>
+												注册时间：
+												<p class="input-group input-append datepicker date">
+													<input type="text" class="form-control" name="start_time" value="{$_GET['start_time']}"/>
+			                                        <span class="input-group-btn">
+				                                      <button type="button" class="btn btn-default">
+					                                     <i class="glyphicon glyphicon-calendar"></i>
+													  </button> </span>
+												</p>
+												-
+												<p class="input-group input-append datepicker date">
+													   <input type="text" class="form-control" name="end_time" value="{$_GET['end_time']}"/>
+			                                      <span class="input-group-btn">
+				                                   <button type="button" class="btn btn-default">
+													   <i class="glyphicon glyphicon-calendar"></i>
+												   </button> </span>
+												</p>
+
+											</div>-->
+											<div class="form-group  " >
+												<button class="btn btn-primary" type="submit">
+													提交
+												</button>
+											</div>
+
+
+										</div>
+
+
+									</form>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<table class="table table-hover" id="sample-table-1">
+				<thead>
+					<tr>
+						<th class="center">#</th>
+						<th>名称</th>
+						<th class="hidden-xs">介绍</th>
+						<th>添加时间</th>
+						<th>状态</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+      <volist  name="list['list']" id='vo' key='key'>
+					<tr >
+						<td class="center"></td>
+						<td class="hidden-xs">{$vo.title}
+						</td>
+						<td> {$vo.des}</td>
+						<td>
+						{$vo.add_time|date="Y-m-d H:i:s",###}	
+						</td>
+						<td>
+						{$vo['status']?'有效':'无效'}	
+						</td>
+						
+						<td class="center">
+						<div class="visible-md visible-lg hidden-sm hidden-xs">
+
+							
+							<a href="{:U("Admin/Ad/ad_list",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="广告设置"><i class="fa fa-list-alt"></i></a>
+
+
+							<a href="{:U("Admin/Ad/ad_type_edit",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs" tooltip-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-pencil"></i></a>
+							
+							<a href="{:U("Admin/Ad/ad_type_del",array('id'=>$vo['id']))}" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" data-toggle="tooltip" data-original-title="删除" onclick="return confirm('确定删除该数据？')"><i class="fa fa-times fa fa-white"></i></a>
+
+						</div>
+						</td>
+					</tr>
+</volist>
+
+
+
+
+		
+				</tbody>
+			</table>
+
+
+
+						<div class="row">
+							<div class="col-md-12 pages" align="center">{$list['page']|default='暂无数据'}</div>
+							
+						</div>
+
+
+						<!-- end: YOUR CONTENT HERE -->
+					</div>
+				</div>
+			</div>
+			<!--  FOOTER and SETTINGS -->
+			
+           <include file="Public/footer"/>
+			<!-- end: FOOTER -->
+			<!-- start: OFF-SIDEBAR -->
+			
+			<!-- end: OFF-SIDEBAR -->
+			
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+
+         <include file="Public/javascript"/>
+<script type="text/javascript">
+	$(function(){
+		$(".menu_p").click(function(){
+            var data=$(this).attr("data");
+            var data_type=$(this).attr("data-type");
+            if(data_type==1){
+            	//当前展开  收起操作
+            	$(".menu_p_c").hide();
+            	$(this).attr("data-type",0);
+            	$(".angle_down_"+data).show();
+            	$(".angle_up_"+data).hide();
+            }else{
+               //当前收起 展开操作
+               $(".menu_p_c").hide();
+               $(".menu_p_"+data).show();
+               $(this).attr("data-type",1);
+               $(".angle_down_"+data).hide();
+               $(".angle_up_"+data).show();
+            }
+            
+		});
+	});
+</script>		
+		<!-- end: CLIP-TWO JAVASCRIPTS -->
+<!-- start: MAIN JAVASCRIPTS -->
+
+
+<include file="Public/javascript_datepicker"/>
+	</body>
+</html>

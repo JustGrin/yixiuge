@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>商品分类-{$webseting.web_title}</title>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/classification.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/product.css"  rel="stylesheet">
+</head>
+<style type="text/css">
+    .layout{
+    width: 100%;
+    display: block;
+}
+.layout h5{
+    color: #999999;
+}
+.ify{
+   /*  max-width: 590px; */
+    min-width: 250px;
+   /*  height: 900px; */
+    overflow: hidden;
+}
+.ify li{
+    width:30%;
+    min-width: 70px;
+    height: 90px;
+    margin-top: 10px;
+    float: left;
+}
+.ify li a {
+    display: block;
+}
+.ify li a span {
+    width:100%;
+    height: 70px;
+    display: inline-block;
+    text-align: center;
+}
+.ify li a span img {
+    height: 70px;
+}
+</style>
+<body>
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+<header id="header" class="u-header clearfix">
+        <div class="u-hd-left f-left">
+            <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+        </div>
+        <div class="u-hd-tit"><span>商品分类</span></div>
+    </header>
+
+    <div class="category-viewport">
+        <div class="fm-category-tab">
+            <div class="fm-category-tab-all" style=" height: 480px;">
+                <ul class="category_click" style="transform: translateY(0px);">
+                    <li class="cur" data="all">
+                        <a class="J_ping" href="javascript:void(0);">热门推荐</a>
+                    </li>
+                    <volist name="group_class" id="vo">
+                     <li class=""  data="{$vo.cat_id}">
+                        <a class="J_ping" href="javascript:void(0);">{$vo.cat_name}</a>
+                    </li>
+                   </volist>
+                </ul>
+            </div>
+        </div>
+        <!---end / left-->
+        <div class="fm-category-content">
+            <div class="fm-category-content-wrapper" style="overflow-y: auto;">
+                <div id="list" style="overflow-x: hidden; height: 480px;">
+
+                    <div class="list_box  list_box_all">
+                        <a href="#" class="title" title="">
+                            <h3>
+                                热门推荐
+                            </h3>
+                        </a>
+                         <!-- <div class="box"> -->
+                          <div style="display: block;">
+                        <div class="layout">
+                                <ul class="ify">
+                                   
+                            <volist name="tuijian" id="vo">
+                                 <li>
+                            <a href="{$return_url}?type={$vo.cat_id}" class=" " title="{$vo.cat_name}">
+                                 <span>
+                                      <img src="{:U('wap/index/get_thumbs',array('auto'=>100))}?img={$vo.cat_icon}"/>
+                                 </span>
+                                <span style="height: 20px;">{$vo.cat_name}</span>
+                            </a>
+                             </li>
+                           </volist>
+                       </ul>
+                        </div>
+                        </div>
+                    </div>
+                   <volist name="group_class" id="vo">
+                        <div class="list_box list_box_{$vo.cat_id}" style="display:none">
+                        <a href="{$return_url}?type={$vo.cat_id}" class="title" title="{$vo.cat_name}">
+                            <h3>
+                                {$vo.cat_name}
+                            </h3>
+                        </a>
+                         <div style="display: block;">
+                       <!--  <div class="box"> -->
+                         <div class="layout">
+                                <ul class="ify">
+                                   
+                             <volist name="vo['tree']" id="voo">
+                                    <li>
+                                <a href="{$return_url}?type={$voo.cat_id}" class=" " title="{$voo.cat_name}">
+                                    <span>
+                                                <img src="{:U('wap/index/get_thumbs',array('auto'=>100))}?img={$voo.cat_icon}"/>
+                                            </span>
+                                    <span style="height: 20px;"> {$voo.cat_name}</span>
+                                </a>
+                                  </li>
+                            </volist>
+                            </ul>
+                             </div>
+                        </div>
+                       </div>
+                      
+                   </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+<include file="Public/wap_javascript"/>
+
+ <!--微信分享-->    
+ <include file="Public/share_weixin" />
+
+<script type="text/javascript">
+    var binding_is_check = 0;// 重复再次弹出 1是 0否
+    var binding_page = 'goods_category';// //当前页面名称 不可重复
+</script>
+<!--绑定-->
+<include file="Public/binding_phone"/>
+<!--绑定-->
+   <script type="text/javascript">
+$(function(){
+
+$(".category_click li").click(function(){
+    var __this=$(this);
+   var class_id=__this.attr("data");
+    $(".list_box").hide();
+    $(".list_box_"+class_id).show();
+    $(".category_click li").removeClass("cur");
+    __this.addClass("cur");
+});
+// var winW=$(window).width()+ $('#height').height() / 2;   //抛物体终点横坐标偏移所需像素
+var winH=$(window).height()- $('#header').height(); 
+$('.fm-category-tab-all').css('height',winH)-10;  
+$('#list').css('height',winH); 
+});
+   </script>   
+</body>
+</html>

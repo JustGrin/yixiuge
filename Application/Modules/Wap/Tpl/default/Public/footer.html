@@ -1,0 +1,14 @@
+    <footer class="index_nav hide" style="display: block;">
+        <a href="{:U('Wap/Start/index')}"> <div class="store_button"><img src="__PUBLIC__/wap/img/woyaokaidian.png" width="130px" height="80xp" alt="我要开店" title="我要开店" ></div> </a>
+
+        <ul class="wd_nav">
+
+           <a href="{:U('Wap/Index/index')}" > <li   class="classify <if condition="$now_menu eq 'home'">classify_2<else/>classify_1</if>">首页</li></a>
+             <a href="{:U('Wap/Goods/index')}" ><li   class="dynamic <if condition="$now_menu eq 'shop'">dynamic_2<else/>dynamic_1</if>">商城</li></a>
+
+
+            <a href="{:U('Wap/Member/index')}"   ><li class="store <if condition="$now_menu eq 'member'">store_2<else/>store_1</if>" >个人中心</li></a>
+            <a href="{:U('Wap/Cart/index')}"  > <li class="contact <if condition="$now_menu eq 'cart'">contact_2<else/>contact_1</if>">购物车</li></a>
+
+        </ul>
+    </footer>

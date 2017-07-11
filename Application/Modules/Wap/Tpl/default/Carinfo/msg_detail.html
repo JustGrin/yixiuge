@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>二手车信息-{$webseting.web_title}</title>
+<script src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/car2.css" />
+</head>
+
+<body class="car2info">
+
+
+<div class="swiper-container goodsshow"><a href="javascript:history.go(-1)" class="md-close back"> <i class="iconfont">&#xe617</i> </a>
+	<div class="swiper-wrapper">
+
+		<volist name="data.imgs_a" id="vo">
+			<div class="swiper-slide" style="background-image: url({$vo})"> </div>
+		</volist>
+	</div>
+	<div class="swiper-pagination swiper-pagination-white"> </div>
+</div>
+
+	
+	
+<div class="pd2">
+	<div class="titlebox">
+	<h6 class="title">{$data.title}</h6>
+		<div class="pirce"><span class="now">现价：<b class="num">321.22</b></span> <span class="old">原价：<b class="num">123.21</b></span></div>
+		<div class="time">购买日期：<b class="num">2016-4-5</b></div>
+		<div class="km">行驶历程：<b class="num">56156KM</b></div>
+		<a href="tel:1321321" class="lx"><i class="iconfont">&#xe65f</i><span>联系车主</span></a>
+	
+	</div>
+	<div class="goods-apply-report">
+		<div class="detailsinfo">
+			<div class="contact clearfix"> {$data.content} </div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        preloadImages: false,
+        lazyLoading: true,
+				autoplay: 3000
+
+	});</script> 
+<include file="Public/wap_javascript" /> 
+<script src="__PUBLIC__/bootstrap/vendor/jquery-validation/jquery.validate.wap.js"></script> 
+<script src="__PUBLIC__/bootstrap/vendor/ajaxfileupload/ajaxfileupload.js"></script>
+</body>
+</html>

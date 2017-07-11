@@ -1,0 +1,89 @@
+body { background: #f0f0f0 }
+.address { position: relative; border-bottom: 1px solid#e0e0e0; background: #6ab42f; padding: .2rem; color: #fff; }
+.address .icon { float: left; font-size: 1rem; margin-top: 0.4rem; padding-right: 0.2rem; text-align: center; width: 1rem; }
+.address .addinfo { padding-right: 2rem; box-sizing: content-box; }
+.address .addedit { position: absolute; right: 0; top: .8rem; }
+.address .addedit a { background: #390 none repeat scroll 0 0; border-bottom-left-radius: 1rem; border-top-left-radius: 1rem; color: #fff; display: block; font-size: 0.34rem; padding: 0.2rem; }
+.address dt { font-weight: 300 }
+.address .addinfo dl.name { height: .6rem; line-height: .6rem; font-size: .4rem; position: relative }
+.address .addinfo dl.name dt { width: 3rem; }
+.address .addinfo dl.name dd { position: absolute; left: 2.46rem; margin-top: -.6rem; }
+.address .addinfo dl.name dd.tel { right: 0; left: auto }
+.address .addinfo dl.add { line-height: .5rem; font-size: .34rem; margin-left: 1.2rem; }
+.address .addinfo dl.add dt { float: left; width: 1.72rem }
+.address .addinfo dl.add dd.addsub { float: left; font-size: .34rem; }
+.cartlist { margin-top: .2rem; }
+.cartlist .store { height: 1rem; line-height: 1rem; background: #fff; font-size: .4rem; padding: 0 .2rem }
+.cartlist li { background: #f5f5f5; position: relative; padding: .4rem .2rem; border-bottom: 1px solid #fff }
+.cartlist li .goodsimg { width: 2rem; height: 2rem; float: left; border: 1px solid #ddd }
+.cartlist li .goodsimg .img { width: 2rem; height: 2rem; }
+.cartlist li .info { box-sizing: border-box; display: block; height: 2rem; left: 0; padding: 0 .2rem 0 2.4rem; position: absolute; width: 100%; }
+.cartlist li.goods div.info .title { font-size: .4rem; color: #666; padding-right: .2rem; }
+.cartlist li.goods div.info .type { font-size: .34rem; color: #999; line-height: .4rem; margin: .02rem 0 .04rem 0; }
+.cartlist li.goods div.info .type span { margin-right: .2rem; }
+.cartlist li.goods div.info .discount { position: absolute; bottom: 0; border-radius: 2px; background: #f60; color: #fff; font-size: .3rem; padding: 0 .1rem; }
+.cartlist li.goods div.info .pay { position: absolute; right: 0; font-size: .4rem; padding-right: .2rem; margin-top: -.4rem; }
+.cartlist li.goods div.info .pay .qty { font-size: .34rem; }
+.payinfo { background: #fff; }
+.payinfo dl { height: 1.2rem; border-bottom: 1px solid #f0f0f0; line-height: 1.2rem; font-size: .4rem; position: relative; padding: 0 .2rem; font-weight: 300; }
+.payinfo .title { height: 1.2rem; border-bottom: 1px solid #e0e0e0; line-height: 1.2rem; font-size: .4rem; position: relative; padding: 0 .2rem; font-weight: 300; }
+.payinfo .pirce { padding: .4rem .2rem; }
+.payinfo .pirce p { height: .6rem; text-align: right; line-height: .6rem; font-size: .34rem; color: #666 }
+.payinfo .pirce p .num { font-size: .4rem; }
+.payinfo .pirce p.total { border-top: 1px solid#e0e0e0; margin-top: .4rem; padding-top: .4rem; font-size: .4rem; color: #333; }
+.payinfo .pirce p.total .num { font-size: .6rem; }
+.payinfo dl dt { width: 3rem; color: #999; }
+.payinfo dl dd { position: absolute; right: .2rem; margin-top: -1.2rem; color: #666 }
+.payinfo dl dd input { height: .8rem; width: 1.2rem; border: 1px solid #e0e0e0; -webkit-appearance: none; border-radius: 2px; padding: 0 .2rem; }
+.payment { height: 1.4rem; padding: 0 .2rem; }
+.payment div { width: 40%; text-align: center; line-height: 1.4rem; float: left; }
+.payment i { font-size: .8rem; }
+.bottomside { position: fixed; bottom: 0; background: rgba(0,0,0,0.8); height: 50px; width: 100%; }
+.bottomside .buy { width: 3rem; position: absolute; right: 0; text-align: center; color: #fff; line-height: 50px; }
+.bottomside .select { width: 15%; float: left; text-align: center; color: #fff; line-height: 50px; }
+.bottomside .total { width: 100%; float: left; box-sizing: border-box; text-align: right; padding-right: 2.4rem; color: #fff; line-height: 50px; font-size: .4rem; }
+.bottomside .total .num { font-size: .6rem; }
+.md-effect-2 .md-content { -webkit-transform: translateX(100%); -moz-transform: translateX(100%); -ms-transform: translateX(100%); transform: translateX(100%); opacity: 0; -webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); -moz-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); }
+.md-show.md-effect-2 .md-content { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); opacity: 1; }
+.md-modal { width: 100%; height: 100%; top: 0; left: 0; -webkit-transform: translateX(0) translateY(0); -moz-transform: translateX(0) translateY(0); -ms-transform: translateX(0) translateY(0); transform: translateX(0) translateY(0); }
+.md-content > div{ padding:0}
+.md-effect-2 .md-content { background: #f0f0f0; opacity: 1; color: #666; height: 100%; border-radius: 0 }
+.md-effect-2 .md-content .addlist { padding: 0; }
+.md-effect-2 .md-content .submit { padding: 0 .4rem .4rem; position: absolute; bottom: .4rem; width: 100%; box-sizing: border-box; }
+.md-effect-2 .md-content .submit a { border-radius: 3px; background: #6ab42f; color: #fff; height: 1.2rem; line-height: 1.2rem; display: block; text-align: center; font-size: .4rem; }
+.md-effect-2 .md-content ul { padding: 0; margin-top: .2rem; }
+.md-effect-2 .md-content li { padding: .2rem; background: #fff; border-bottom: 1px solid #e0e0e0; position:relative; }
+.md-effect-2 .md-content li i.on{ position:absolute; right:.4rem; top:.5rem; color:#fff; font-size:1rem;}
+.md-effect-2 .md-content li.on { background: #6ab42f; color: #fff !important }
+.md-effect-2 .md-content li.on dt { color: #fff !important }
+.md-effect-2 .md-content dt { color: #999; font-weight: 300 }
+.md-effect-2 .md-content .addinfo { padding-right: 1.6rem; }
+.md-effect-2 .md-content .addinfo dl.name { height: .6rem; line-height: .6rem; font-size: .4rem; position: relative }
+.md-effect-2 .md-content .addinfo dl.name dt { width: 2rem; }
+.md-effect-2 .md-content .addinfo dl.name dd { position: absolute; left: 1.6rem; margin-top: -.6rem; }
+.md-effect-2 .md-content .addinfo dl.name dd.tel { right: 0; left: auto }
+.md-effect-2 .md-content .addinfo dl.add { line-height: .5rem; font-size: .34rem; }
+.md-effect-2 .md-content .addinfo dl.add dt { float: left; width: 1.72rem }
+.md-effect-2 .md-content .addinfo dl.add dd.addsub { float: left; font-size: .34rem; }
+.paylast { height: 200px; }
+.bottomside .buy { width: 2rem; float: right; }
+.submit { margin: .48rem .266667rem 0 }
+.submit button { width: 100%; height: 1.26rem;  border-radius: 5px; color: #fff; background-color: #6ab42f; text-align: center; font-size: .4rem }
+.field { font-size: .4rem; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; border-bottom: 1px solid #DDD; padding: .36rem .26rem; color: #6C6C6C; background-color: #fff; text-align: left }
+.field .label { width: 2rem }
+.field .field-control { -webkit-box-flex: 1; -webkit-flex: 1; flex-grow: 1; }
+.field .field-control input { -webkit-appearance: none; width: 100%; padding: 0; border: 0; background-color: transparent }
+.field .field-control input:placeholder {
+text-align:right;
+}
+
+    /* webkit 浏览器*/
+    .input-required::-webkit-input-placeholder {
+ text-align:right;
+font-size:.36rem;
+}
+    /* 火狐浏览器 */
+    .input-required::-moz-placeholder {
+ text-align:right;
+font-size:.36rem;
+}

@@ -1,0 +1,37 @@
+.type li { width: 50%; }
+.cartlist .total { margin: .2rem .2rem 0 0 }
+.cartlist .user .info { border: none; }
+.pd2 { padding: .2rem; }
+.car2info { background: #fff }
+.cartlist li .goodsimg { width: 25%; background-color: none; }
+.car2info h6.title { font-size: .46rem; color: #444; line-height: .6rem; padding: .4rem 0; text-align: left }
+.car2info .titlebox { border-bottom: 1px solid #e0e0e0; font-size: .36rem; line-height: .6rem; padding-bottom: .2rem; color: #999; position: relative }
+.car2info .titlebox b { color: #666 }
+.car2info .titlebox a { border-bottom-left-radius: 1rem; border-top-left-radius: 1rem; padding: .2rem .2rem; height: .8rem; background: #4183d7; color: #fff; text-align: center; display: inline-block; position: absolute; right: -.2rem; bottom: .2rem; }
+.car2info .titlebox a i { font-size: .8rem; height: .8rem; vertical-align: middle }
+.car2info .titlebox a span { font-size: .4rem; height: .8rem; line-height: .8rem; display: inline-block; vertical-align: middle; }
+.car2info .pirce .old { color: #ccc; font-size: .36rem; text-decoration: line-through }
+.car2info .pirce .now { font-size: .36rem; color: #666; margin-right: .4rem; }
+.car2info .pirce .now b { font-size: .8rem; color: #f60 }
+.car2info .swiper-pagination { bottom: .2rem; width: 100%; }
+.car2info .swiper-pagination .swiper-pagination-bullet { width: .2rem; height: .2rem; margin: .1rem; }
+.car2info .detailsinfo img { width: 100%; height: auto; display: block; margin: .2rem auto }
+.car2info .contact { font-size: .36rem; color: #666; line-height: .6rem; padding-top: .4rem; }
+.car2info .swiper-slide { height: 7.6rem; width: 100%; background-size: cover; background-position: center; }
+.car2info .back { border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; text-align: center; line-height: 1rem; font-size: .6rem; position: absolute; top: .2rem; left: .2rem; width: 1rem; height: 1rem; z-index: 999999 }
+.car2 .cartlist { border-bottom: 1px solid #f2f2f2; position: relative; }
+.car2 .carimg { width: 3rem; height: 2rem; margin: .2rem; }
+.car2 .info { position: absolute; font-size: .36rem; box-sizing: border-box; top: 0; width: 100%; height: 100%; padding-left: 3.4rem; padding-right: .2rem; }
+.car2 .info .title { font-size: .4rem; color: #444; line-height: .5rem; max-height: 1rem; overflow: hidden }
+.car2 .info .time { font-size: .32rem; color: #999; font-weight: 400; position: absolute; bottom: .7rem }
+.car2 .pirce { position: absolute; bottom: .1rem; }
+.car2 .pirce .old { color: #ccc; font-size: .32rem; text-decoration: line-through }
+.car2 .pirce .now { font-size: .32rem; color: #666; margin-right: .2rem; }
+.car2 .pirce .now b { font-size: .46rem; color: #f60 }
+.car2 .ctlbox { position: absolute; left: 0; top: 0; width: 100%; height: 2rem; }
+.typetip { position: absolute; left: .2rem; bottom: 0; background: rgba(0,0,0,.6); width: 3rem; height: .6rem; line-height: .6rem; text-align: center; color: #fff; font-size: .34rem; }
+a.btn1 { position: absolute; right: .2rem; top: 1.2rem; }
+.car2 .tip { background: #f6f6f6; border-bottom: 2px solid #f60 }
+.car2 h4.red { line-height: .8rem; font-size: .4rem; padding: 0 .2rem; }
+.car2 .titleinfo { font-size: .36rem; line-height: .5rem; padding: .2rem; }
+.car2 .desarea { height: 6rem; }
