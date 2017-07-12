@@ -226,7 +226,6 @@ function thumbs_auto($imgurl='', $width='120', $height='120', $type = 'path'){
 		$imgurl='.'.$imgurl;
 	}
 	$sys_img = array('avatar_default.png', 'default.jpg', 'default.png', 'logg.png', 'logg_m.png', 'logo.png', 'codelogo.png');
-	
 	if(!file_exists($imgurl)){//文件不存在
 		$file_path ='./Uploads/default'.$filename;
 		if(!file_exists($file_path)){//文件不存在
@@ -234,6 +233,7 @@ function thumbs_auto($imgurl='', $width='120', $height='120', $type = 'path'){
 		}
 	}elseif(in_array(basename($imgurl), $sys_img)){
 		$file_path = $imgurl;
+
 	}else{
 		$md5file = md5_file($imgurl);//获取文件的 md5散列
 		$file_path='./Uploads/Cache/'.$md5file.$filename;
@@ -243,7 +243,7 @@ function thumbs_auto($imgurl='', $width='120', $height='120', $type = 'path'){
 			$file_path=$image->thumb_auto($imgurl, $file_path, '', $width, $height, true);
 		}
 	}
-	
+
 	if($type == 'path'){
 		return substr($file_path, 1);
 	}else{

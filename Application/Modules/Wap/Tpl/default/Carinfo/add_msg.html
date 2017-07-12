@@ -35,7 +35,36 @@
                 <input type="text" class="input-required" id="title" name="title" value="{$_GET['id'] ? $data['title'] : null}" placeholder="信息标题">
             </div>
         </div>
-
+        <div class="field autoClear">
+            <div class="label"> 现价</div>
+            <div class="field-control">
+                <input type="number" class="input-required" id="selling_price" name="selling_price" value="{$_GET['id'] ? $data['selling_price'] : null}" dir="rtl" placeholder="现价:万元">
+            </div>
+        </div>
+        <div class="field autoClear">
+            <div class="label"> 原价</div>
+            <div class="field-control">
+                <input type="number" class="input-required" id="original_price" name="original_price" value="{$_GET['id'] ? $data['original_price'] : null}" dir="rtl"  placeholder="原价:万元 ">
+			</div>
+        </div>
+		<div class="field autoClear">
+			<div class="label"> 购买日期 </div>
+			<div class="field-control">
+				<input type="text" class="input-required" id="acquisition_date" name="acquisition_date" value="{$_GET['id'] ? $data['acquisition_date'] : null}" placeholder="购买日期">
+			</div>
+		</div>
+		<div class="field autoClear">
+			<div class="label"> 行驶历程</div>
+			<div class="field-control">
+				<input type="number" class="input-required" id="odometer" name="odometer" value="{$_GET['id'] ? $data['odometer'] : null}" dir="rtl"  placeholder="行驶里程:km">
+			</div>
+		</div>
+		<div class="field autoClear">
+			<div class="label"> 联系电话</div>
+			<div class="field-control">
+				<input type="number" class="input-required" id="phone_number" name="phone_number" value="{$_GET['id'] ? $data['odometer'] : null}" dir="rtl"  placeholder="联系电话">
+			</div>
+		</div>
         <h4 class="label"> 信息内容 </h4>
 		<div class="field ">
 			<textarea id="content" name="content" cols="" rows="" placeholder="请您填写信息内容" class="desarea">{$_GET['id'] ? $data['content'] : null }</textarea>

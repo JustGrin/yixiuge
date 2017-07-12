@@ -32,10 +32,10 @@
 <div class="pd2">
 	<div class="titlebox">
 	<h6 class="title">{$data.title}</h6>
-		<div class="pirce"><span class="now">现价：<b class="num">321.22</b></span> <span class="old">原价：<b class="num">123.21</b></span></div>
-		<div class="time">购买日期：<b class="num">2016-4-5</b></div>
-		<div class="km">行驶历程：<b class="num">56156KM</b></div>
-		<a href="tel:1321321" class="lx"><i class="iconfont">&#xe65f</i><span>联系车主</span></a>
+		<div class="pirce"><span class="now">现价：<b class="num">{$data.selling_price}</b>万元</span> <span class="old">原价：<b class="num">{$data.original_price}万元</b></span></div>
+		<div class="time">购买日期：<b class="num">{$data.acquisition_date}</b></div>
+		<div class="km">行驶历程：<b class="num">{$data.odometer}KM</b></div>
+		<a href="tel:{$data.phone_number}" class="lx"><i class="iconfont">&#xe65f</i><span>联系车主</span></a>
 	
 	</div>
 	<div class="goods-apply-report">

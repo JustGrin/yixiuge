@@ -14,14 +14,16 @@ class CarinfoAction extends BaseAction
 
 	//产品列表
 	public function index(){
+		$p = $_REQUEST['p'];
+		$pagesize = 10;
+		$p = !empty($p) ? $p : 1;
+		$start = ($p - 1) * $pagesize;
 		$where = array();
-
-		$_REQUEST['type'] = isset($_REQUEST['type']) ? $_REQUEST['type'] : 1;
-		$_REQUEST['type'] == 1 ? $where['is_check'] = 1 : $where['cars.member_id'] = $this->uid;
+		$where['is_check'] = 1;
 		$order = "change_time DESC";
 		$join = "db_member as mem on mem.id = cars.member_id ";
 		$field = ' cars.* ,mem.member_name,mem.member_logo';
-		$carinfo_list = M('usde_cars_info')->alias('cars')->field($field)->join($join)->where($where)->order($order)->select();
+		$carinfo_list = M('usde_cars_info')->alias('cars')->field($field)->join($join)->where($where)->limit($start, $pagesize)->order($order)->select();
 		foreach ($carinfo_list as $k => $v){
 			$imgs = explode(',',$v['imgs_a']);
 			$carinfo_list[$k]['first_img'] =$imgs[0];
@@ -32,7 +34,27 @@ class CarinfoAction extends BaseAction
 		$this->list = $carinfo_list ;
 		$this->display();
 	}
-
+	public  function  mine_msg() {
+		$p = $_REQUEST['p'];
+		$pagesize = 10;
+		$p = !empty($p) ? $p : 1;
+		$start = ($p - 1) * $pagesize;
+		$where = array();
+		$where['cars.member_id'] = $this->uid;
+		$order = "change_time DESC";
+		$join = "db_member as mem on mem.id = cars.member_id ";
+		$field = ' cars.* ,mem.member_name,mem.member_logo';
+		$carinfo_list = M('usde_cars_info')->alias('cars')->field($field)->join($join)->where($where)->limit($start, $pagesize)->order($order)->select();
+		foreach ($carinfo_list as $k => $v){
+			$imgs = explode(',',$v['imgs_a']);
+			$carinfo_list[$k]['first_img'] =$imgs[0];
+		}
+		$this->type =  $_REQUEST['type'] ;
+		$this->status_names = array('未审核','通过','审核未通过');
+		$this->is_ajax = IS_AJAX;
+		$this->list = $carinfo_list ;
+		$this->display();
+	}
 	//用户发布商品
 	public function add_msg()
 	{

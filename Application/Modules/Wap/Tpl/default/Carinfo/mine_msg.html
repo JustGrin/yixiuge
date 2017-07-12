@@ -15,7 +15,7 @@
 </head>
 <body class="car2">
 <div class="head"> <a href="javascript:history.go(-1)" class="md-close back"><i class="iconfont">&#xe617</i></a>
-	<h2 >二手车信息</h2>
+	<h2 >我的信息</h2>
 	<a href="{:U('wap/member/index')}" class="more "><span>个人中心</span><i class="iconfont">&#xe618</i></a> </div>
 <div class="page">
 	<ul class="more_html">
@@ -31,8 +31,10 @@
 						<div class="time"><b class="num">{$vo.acquisition_date}</b> <b class="num">{$vo.odometer}KM</b></div>
 						<div class="pirce"><span class="now">现价：<b class="num">{$vo.selling_price}</b></span> <span class="old">原价：<b class="num">{$vo.original_price}</b></span></div>
 					</div></a>
-					<ul>
-					</ul>
+					 <div class="ctlbox">
+						 <div class="typetip">{$status_names[$vo['is_check']]}</div>
+						 <a class="btn1 btnsF34" href="{:U('wap/carinfo/add_msg',array('id'=>$vo['id']))}">编辑</a>
+					 </div>
 				</div>
 			</li>
 		</volist>
@@ -54,7 +56,6 @@
 <script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script> 
 <script type="text/javascript" src="__PUBLIC__/js/return-top.js"></script>
 <input type="hidden" name="p" value="1" />
-<input type="hidden" name="type" value="{$type}" />
 <input type="hidden" name="order" value=""/>
 <script type="text/javascript">
 	var load_more = 0;
@@ -91,14 +92,12 @@
 		var html = ' <img src="__PUBLIC__/wap/img/icon_zhuan.gif" style="max-width:15px;">';
 		$('.get_more').html('加载中' + html);
 		var p=$("input[name='p']").val();
-		var order_sta=$("input[name='type']").val();
 		$.ajax({
-			url: "{:U('wap/carinfo/index')}",
+			url: "{:U('wap/carinfo/mine_msg')}",
 			type:'post',
-			data: {p:p,type:order_sta},
+			data: {p:p},
 			dataType: 'html',
 			success: function(data){
-				//console.log(data);
 				var con=1;
 				var option = '';
 				if (data != undefined || data != null){

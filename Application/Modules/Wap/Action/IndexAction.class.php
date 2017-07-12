@@ -36,7 +36,7 @@ class IndexAction extends BaseAction {
         $ad1=M("ad")->where(array('type'=>1,'status'=>1))->order('sort desc,add_time desc')->select();
         $this->ad1=$ad1;
         // 分类下的广告 
-        $ad2=M("ad")->where(array('type'=>2,'status'=>1))->order('sort desc,add_time desc')->find();
+        $ad2=M("ad")->where(array('type'=>2,'status'=>1))->order('sort desc,add_time desc')->select();
         $this->ad2=$ad2;
         //关联展示
         $field='id,type,end_time,value,title,image_path';
