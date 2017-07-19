@@ -1,0 +1,32 @@
+ <if condition="empty($hongbao)">
+   <div class="hongbao" style="display:none;">
+            <a href="{:U('wap/login/register')}" >
+                <img width="100%" src="__PUBLIC__/wap/img/hongbao.png" border="0" alt="">
+            </a>
+    </div>  
+   <style>
+.layui-layer-demo{background: none !important;box-shadow: none !important;border-radius: 0px !important;}
+</style>      
+<script type="text/javascript">
+  $(function(){
+  //捕获页
+layer.open({
+    type: 1,
+    shade: 0.8,//透明度
+    title: false, //不显示标题
+    skin: 'layui-layer-demo', //样式类名
+    shadeClose: true, //开启遮罩关闭
+    area: ['250px', '260px'],
+    content: $('.hongbao'), //捕获的元素
+    cancel: function(index){
+
+        layer.close(index);
+        this.content.show();
+        $('.hongbao').hide();
+        //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构',{time: 5000});
+    }
+});
+
+});
+</script>
+ </if>   

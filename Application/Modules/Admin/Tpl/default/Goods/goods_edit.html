@@ -85,22 +85,22 @@
                                                         <input type="text" name="goods_name" value="{$data['goods_id'] ? $data['goods_name'] : '' }"
                                                                id="goods_name" placeholder="商品名称" class="form-control">
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            子标题 <span class="symbol required"
-                                                                       aria-required="true"></span>
-                                                        </label>
-                                                        <input type="text" name="subtitle" value="{$data['goods_id'] ? $data['subtitle'] : ''}"
-                                                               id=" subtitle" placeholder="子标题" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            情怀 <span class="symbol required"
-                                                                      aria-required="true"></span>
-                                                        </label>
-                                                        <input type="text" name="feeling" value="{$data['goods_id'] ? $data['feeling'] : ''}"
-                                                               id=" feeling" placeholder="情怀" class="form-control">
-                                                    </div>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--子标题 <span class="symbol required"-->
+                                                                       <!--aria-required="true"></span>-->
+                                                        <!--</label>-->
+                                                        <!--<input type="text" name="subtitle" value="{$data['goods_id'] ? $data['subtitle'] : ''}"-->
+                                                               <!--id=" subtitle" placeholder="子标题" class="form-control">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--情怀 <span class="symbol required"-->
+                                                                      <!--aria-required="true"></span>-->
+                                                        <!--</label>-->
+                                                        <!--<input type="text" name="feeling" value="{$data['goods_id'] ? $data['feeling'] : ''}"-->
+                                                               <!--id=" feeling" placeholder="情怀" class="form-control">-->
+                                                    <!--</div>-->
                                                     <div class="form-group">
                                                         <if condition="(!empty($_GET['id']))">
                                                             <label class="control-label">
@@ -113,21 +113,21 @@
                                                         </if>
 
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            品牌
-                                                        </label>
-                                                        <select class="form-control" id="brand_id" name="brand_id">
-                                                            <option value="">请选择</option>
-                                                            <volist name="brand" id="vo">
-                                                                <option value="{$vo.brand_id}"
-                                                                <if condition="$data.brand_id eq $vo['brand_id']">
-                                                                    selected
-                                                                </if>
-                                                                >{$vo.brand_name}</option>
-                                                            </volist>
-                                                        </select>
-                                                    </div>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--品牌-->
+                                                        <!--</label>-->
+                                                        <!--<select class="form-control" id="brand_id" name="brand_id">-->
+                                                            <!--<option value="">请选择</option>-->
+                                                            <!--<volist name="brand" id="vo">-->
+                                                                <!--<option value="{$vo.brand_id}"-->
+                                                                <!--<if condition="$data.brand_id eq $vo['brand_id']">-->
+                                                                    <!--selected-->
+                                                                <!--</if>-->
+                                                                <!--&gt;{$vo.brand_name}</option>-->
+                                                            <!--</volist>-->
+                                                        <!--</select>-->
+                                                    <!--</div>-->
 
 <!--                                                   <div class="form-group">
                                                         <label class="control-label">
@@ -161,55 +161,55 @@
                                                             id="goods_number" placeholder="商品库存" class="form-control">
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品报警数量
-                                                        </label>
-                                                        <input type="text" name="warn_number"
-                                                               value="{$data['goods_id'] ? $data['warn_number'] : 0 }" id="warn_number"
-                                                        placeholder="商品报警数量" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品重量
-                                                        </label>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品报警数量-->
+                                                        <!--</label>-->
+                                                        <!--<input type="text" name="warn_number"-->
+                                                               <!--value="{$data['goods_id'] ? $data['warn_number'] : 0 }" id="warn_number"-->
+                                                        <!--placeholder="商品报警数量" class="form-control">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品重量-->
+                                                        <!--</label>-->
 
-                                                        <div class="input-group">
-                                                            <input type="text" name="goods_weight"
-                                                                   value="{$data['goods_id'] ? $data['goods_weight'] : 0 }"
-                                                            id="goods_weight" placeholder="商品重量" class="form-control">
-                                                            <span class="input-group-addon">kg</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品单价
-                                                        </label>
-                                                        <input type="text" name="unit_price"
-                                                               value="{$data['goods_id'] ? $data['unit_price'] : 0 }" id="unit_price"
-                                                               placeholder="单位价格" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品单位
-                                                        </label>
-                                                        <input type="text" name="units"
-                                                               value="{$data['goods_id'] ?  $data['units'] : ''}" id="units"
-                                                               placeholder="单位价格" class="form-control">
-                                                    </div>
+                                                        <!--<div class="input-group">-->
+                                                            <!--<input type="text" name="goods_weight"-->
+                                                                   <!--value="{$data['goods_id'] ? $data['goods_weight'] : 0 }"-->
+                                                            <!--id="goods_weight" placeholder="商品重量" class="form-control">-->
+                                                            <!--<span class="input-group-addon">kg</span>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品单价-->
+                                                        <!--</label>-->
+                                                        <!--<input type="text" name="unit_price"-->
+                                                               <!--value="{$data['goods_id'] ? $data['unit_price'] : 0 }" id="unit_price"-->
+                                                               <!--placeholder="单位价格" class="form-control">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品单位-->
+                                                        <!--</label>-->
+                                                        <!--<input type="text" name="units"-->
+                                                               <!--value="{$data['goods_id'] ?  $data['units'] : ''}" id="units"-->
+                                                               <!--placeholder="单位价格" class="form-control">-->
+                                                    <!--</div>-->
 
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            供货价<span class="symbol required" aria-required="true"></span>
-                                                        </label>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--供货价<span class="symbol required" aria-required="true"></span>-->
+                                                        <!--</label>-->
 
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">￥</span>
-                                                            <input type="text" name="purchase_price"
-                                                                   value="{$data['goods_id'] ? $data['purchase_price'] : '' }"
-                                                            id="purchase_price" placeholder="供货价" class="form-control">
-                                                        </div>
-                                                    </div>
+                                                        <!--<div class="input-group">-->
+                                                            <!--<span class="input-group-addon">￥</span>-->
+                                                            <!--<input type="text" name="purchase_price"-->
+                                                                   <!--value="{$data['goods_id'] ? $data['purchase_price'] : '' }"-->
+                                                            <!--id="purchase_price" placeholder="供货价" class="form-control">-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             本店售价<span class="symbol required"
@@ -234,7 +234,7 @@
                                                                    value="{$data['goods_id'] ?  $data['market_price'] : ''}" id="market_price"
                                                                    placeholder="市价" class="form-control">
                                                         </div>
-                                                    </div>
+                                                    </div>s
 
 
                                                     <div class="form-group" >
@@ -280,53 +280,53 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品首页展示图<span class="symbol required"
-                                                                      aria-required="true"></span>(245px*160px,图片大小不大于30kb)
-                                                        </label>
-                                                        <br>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品首页展示图<span class="symbol required"-->
+                                                                      <!--aria-required="true"></span>(245px*160px,图片大小不大于30kb)-->
+                                                        <!--</label>-->
+                                                        <!--<br>-->
 
-                                                        <div class="upload_file">
-                                                            <label>
-                                                                <input type="file" name="long_photo"
-                                                                       class="upload_input" id="long_photo" value=""
-                                                                       style="display:none;">
+                                                        <!--<div class="upload_file">-->
+                                                            <!--<label>-->
+                                                                <!--<input type="file" name="long_photo"-->
+                                                                       <!--class="upload_input" id="long_photo" value=""-->
+                                                                       <!--style="display:none;">-->
 
-                                                                <div class="fileinput fileinput-new"
-                                                                     data-provides="fileinput">
-                                                                    <div class="fileinput-new thumbnail">
-                                                                        <img id="long_photo_src"
-                                                                             src="{$data['goods_id'] ? $data['long_goods_img'] : ''}"
-                                                                             alt="">
-                                                                    </div>
+                                                                <!--<div class="fileinput fileinput-new"-->
+                                                                     <!--data-provides="fileinput">-->
+                                                                    <!--<div class="fileinput-new thumbnail">-->
+                                                                        <!--<img id="long_photo_src"-->
+                                                                             <!--src="{$data['goods_id'] ? $data['long_goods_img'] : ''}"-->
+                                                                             <!--alt="">-->
+                                                                    <!--</div>-->
 
-                                                                </div>
-                                                                点击图片上传
-                                                            </label>
-                                                            <input type="hidden" name="long_goods_img" id="long_goods_pic"
-                                                                   value="{$data['goods_id'] ? $data['long_goods_img'] : ''}">
-                                                        </div>
+                                                                <!--</div>-->
+                                                                <!--点击图片上传-->
+                                                            <!--</label>-->
+                                                            <!--<input type="hidden" name="long_goods_img" id="long_goods_pic"-->
+                                                                   <!--value="{$data['goods_id'] ? $data['long_goods_img'] : ''}">-->
+                                                        <!--</div>-->
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品关键字
-                                                        </label>
-                                                        <textarea id="keywords" name="keywords" class=" autosize"
-                                                                  data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['keywords'] : ''}</textarea>
-                                                    </div>
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品关键字-->
+                                                        <!--</label>-->
+                                                        <!--<textarea id="keywords" name="keywords" class=" autosize"-->
+                                                                  <!--data-autosize-on="true"-->
+                                                                  <!--style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['keywords'] : ''}</textarea>-->
+                                                    <!--</div>-->
 
-                                                    <div class="form-group">
-                                                        <label class="control-label">
-                                                            商品的简短描述<span class="symbol required"
-                                                                         aria-required="true"></span>
-                                                        </label>
-                                                        <textarea id="goods_brief" name="goods_brief" class=" autosize"
-                                                                  data-autosize-on="true"
-                                                                  style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['goods_brief'] : ''}</textarea>
-                                                    </div>
+                                                    <!--<div class="form-group">-->
+                                                        <!--<label class="control-label">-->
+                                                            <!--商品的简短描述<span class="symbol required"-->
+                                                                         <!--aria-required="true"></span>-->
+                                                        <!--</label>-->
+                                                        <!--<textarea id="goods_brief" name="goods_brief" class=" autosize"-->
+                                                                  <!--data-autosize-on="true"-->
+                                                                  <!--style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['goods_brief'] : ''}</textarea>-->
+                                                    <!--</div>-->
 
                                                     <div class="form-group">
                                                         <label class="control-label">
@@ -798,9 +798,9 @@
     var get_city_url = "{:U('wap/index/get_city')}";
 </script>
 <script src="__PUBLIC__/js/common.js"></script>
-<include file="Public/javascript_datepicker"/>
 <script>
     jQuery(document).ready(function () {
+        console.log(111)
         $('#is_promote_yes').click(function () {  //参加促销
             $('#promote_msg_set').removeClass('hidden');
         });
@@ -1065,6 +1065,7 @@
 </script>
 <script>
     $(document).ready(function (e) {
+
         ///上传商家logo
         $('.upload_file').on('change', '.upload_input', function () {
             var id = $(this).attr('id');

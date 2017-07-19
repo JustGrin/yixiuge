@@ -112,6 +112,9 @@ if($_SESSION['pay_user_open_id']=='oupArwAl7xuME4nkXQgHxX4HRXQA'){
 			function(res){
 				WeixinJSBridge.log(res.err_msg);
 				//alert(res.err_msg)
+//				for (let i in res) {
+//					alert(res[i], i)
+//				}
 				if(res.err_msg == "get_brand_wcpay_request:ok" ) {
 					 window.location.href="<?php echo $success_url;?>";
 				}else{
@@ -204,7 +207,7 @@ h2.title { width:100%; height:60px; background:#6ab42f; color:#fff; line-height:
 .pirce{ font-size:30px; font-family:Arial; color:#6ab42f;}
 </style>
 <body class="payBoy">
-            <h2 class="title">Fg峰购 - 收银台</h2>
+            <h2 class="title">汽车易修哥 - 收银台</h2>
         <div class="pay_V-nei">
 			<input type="hidden" id="jsApiParameters" value="">
             <ul>

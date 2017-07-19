@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认订单-{$webseting.web_title}</title>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable = no"/>
+    <link href="__PUBLIC__/wap/css/rest.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/user.css"  rel="stylesheet">
+    <link href="__PUBLIC__/wap/css/product.css"  rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/tip.css" >
+</head>
+<body>
+<!--绑定头部-->
+<include file="Public/binding_head"/>
+<!--绑定头部-->
+<header id="header" class="u-header clearfix">
+    <div class="u-hd-left f-left">
+        <a href="javascript:history.go(-1);" class="J_backToPrev"><span class="u-icon-px i-hd-back"></span></a>
+    </div>
+    <div class="u-hd-tit"><span>确认订单</span></div>
+</header>
+
+<div class="layout_body">
+    <div class="touchweb_page-shopCart">
+        <div class="goods_box">
+            <div class="goods_box-body">
+                <div class="product_list">
+                    <div class="product_list_wrap">
+                        <!-- <input type="checkbox" class="check_box" id="32387504_0-2" checked=""> -->
+                        <div class="product_content">
+                            <div class="product_box">
+                                <div class="product_pic" data-tpa="GOTO_PRODUCT_DETAIL">
+                                    <img data-tpa="GOTO_PRODUCT_DETAIL"
+                                         src="{:U('wap/index/get_thumbs',array('auto'=>64))}?img={$data.goods_img}">
+                                </div>
+                                <a class="product_con" href="javascript:void(0);">
+                                        <span class="product_title" data-tpa="GOTO_PRODUCT_DETAIL">
+                                        {$data.goods_name}  {$data.goods_attr}</span>
+
+                                    <p class="cell_price">
+                                            <span class="sale_price">
+                                               ¥{$data.shop_price}
+                                            </span>
+                                    </p>
+
+                                    <p style="color: #999;font-size: 12px;"> X{$data.goods_num}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <form action="" role="form" id="form2" novalidate="novalidate" method="post" onSubmit="return false;">
+        <if condition="count($address) gt 0">
+            <div class="ui-form ui-border-b">
+                <!--   <div class="ui-form-item ">
+                    <label>选择地址</label>
+                    <div class="ui-select disabled ">
+                        <select id="address_id" name="address_id" class='ui-border-bi' style="padding-top: 12px;padding-bottom: 12px;">
+                            <volist name="address" id="vo">
+                            <option value="{$vo.address_id}"  data-user="{$vo.consignee}"
+                               data-no="{$vo.mobile}" data-name="{$vo.address_name}"  data-address="{$vo.address}"
+                           >{$vo.consignee}({$vo.mobile})-[{$vo.address}]</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div> -->
+                <div class="new-ct" style="min-height: 50px;">
+                    <div class="new-addr">
+                        <ul class="new-mu_l2w">
+                            <volist name="address" id="vo">
+                                <li class="new-mu_l2 allress_chk address_box_{$vo.address_id}" data="{$vo.address_id}">
+                                    <p class="new-tit new-p-re">
+                                        <span class="new-txt consignee"> {$vo.consignee}</span>
+                                        <span class="new-txt-rd2 mobile">{$vo.mobile}</span>
+                                        <if condition="$key eq 0">
+                                            <span class="new-txt-rd2 new-option-r address_show add_show_{$vo.address_id}"><span
+                                                    class="new-icon"></span></span>
+                                            <else/>
+                                            <span class="new-txt-rd2 new-option-r address_show add_show_{$vo.address_id}"
+                                                  style="display:none;"><span class="new-icon"></span></span>
+                                        </if>
+                                    </p>
+                <span class="new-mu_l2a new-p-re">
+                <span class="new-mu_l2cw address_name">{$vo.address_name} {$vo.address}</span>
+                 </span>
+                                </li>
+                            </volist>
+                        </ul>
+                        <input type="hidden" name="address_id" id="address_id" value="{$address[0]['address_id']}"/>
+                        <if condition="count($address) lt 5">
+                            <a href="{:U('wap/address/address_add',array('type'=>'ucart'))}?uri={$uri}"
+                               class="new-abtn-type new-mg-tb30 phone_log_btn">添加新地址</a>
+                        </if>
+                    </div>
+                </div>
+
+                <!--   <div class="ui-form-item" style="line-height: 38px;">
+                    <label>联系人</label>
+                    <input class='ui-border-bi' name="consignee" id="consignee" type="text" value="" disabled>
+                </div>
+                <div class="ui-form-item " style="line-height: 38px;">
+                    <label>电话</label>
+                    <input class='ui-border-bi' name="mobile" id="mobile" type="text" value="" disabled>
+                </div>
+                <div class="ui-form-item " style="line-height: 38px;">
+                    <label>地址</label>
+                     <input class='ui-border-bi' name="address_name" id="address_name" type="text" value="" disabled>
+                </div>
+                 <div class="ui-form-item " style="line-height: 38px;">
+                    <label>详细地址</label>
+                     <input class='ui-border-bi' name="address" id="address" type="text" value="" >
+                </div> -->
+            </div>
+            <else/>
+            <if condition="$uid gt 0">
+                <a href="{:U('wap/address/address_add',array('type'=>'ucart'))}?uri={$uri}"
+                   class="new-abtn-type new-mg-tb30 phone_log_bt">添加收货地址</a>
+            </if>
+
+        </if>
+        <if condition="!empty($discount)  && !empty($data)">
+            <div class="new-addr">
+                <p class="new-tit new-p-re" style="font-size: 14px;">
+                    <span class="new-txt consignee">使用折扣：</span>
+                </p>
+                <volist name="discount" id="vo">
+                    <li class="new-mu_l2 " data="0">
+                        <p class="new-tit new-p-re" style="font-size: 14px;border:none;">
+                            <input id="discount_{$vo.id}" name="discount_val" type="checkbox" value="{$vo.id}"
+                            <if condition="$_GET['discount'] eq $vo['id']">checked="checked"</if>
+                            data="{$vo.discount}" >
+                            <label for="discount_{$vo.id}">{$vo.type_name}折扣{$vo.discount_val}</label>
+                        </p>
+                    </li>
+                </volist>
+            </div>
+        </if>
+
+        <input type="hidden" name="goods_num" value="{$_GET['goods_num']}">
+        <input type="hidden" name="goods_attr_id" value="{$_GET['goods_attr_id']}">
+        <input type="hidden" name="goods_id" value="{$_GET['goods_id']}">
+        <input type="hidden" name="need_pay" value="{$data.need_pay}">
+        <input type="hidden" name="discount" value="{$_GET['discount']}">
+    </form>
+</div>
+<div style="height:80px;">
+</div>
+
+<if condition="$uid gt 0">
+    <div style="height:50px;">
+    </div>
+
+    <div style="    position: fixed;bottom: 100px;width: 100%;height: 30px;z-index: 100;box-shadow: 0 1px 1px #676666;color: #fff;    background-color: #000;opacity: 0.7;filter: alpha(opacity=70);text-align: center;">
+    <span style="margin-left:15px;">全场满68元包邮</span></div>
+
+    <div class="layout_footer">
+        <div class="normal">
+            <!--  <label class="all_check" checked="true">
+                <input type="checkbox" class="all_check check_box" checked="true">
+                <br>
+                <span>
+                全选
+                </span>
+            </label> -->
+            <div class="checkout_info">
+               <span>
+                    <span class="price all_price">¥{$data.need_pay}</span>
+                    <br>
+                    <em>折后价</em>
+                </span>
+                <span class="plus discount_price" style="padding:0;">/</span>
+                <span class="discount_price">
+                    <span class="price"><s class="all_old_price" style="text-decoration: line-through; color:#999;">¥{$data.need_pay}</s></span>
+                    <br>
+                    <em>总价</em>
+                </span>
+
+                <span class="plus shipping_fee">+</span>
+               <span class="shipping_fee">
+                   <span class="price  shipping_fee_price">¥ 10</span>
+                   <br>
+                   <em>运费</em>
+               </span>
+            </div>
+            <a onclick="javascript:void(0);" data-tpa="GOTO_CHECKOUT" class="btn_checkout">
+                提交
+            </a>
+        </div>
+
+
+    </div>
+    <!--end top-->
+    <include file="Public/footer"/>
+    <!--end 页脚-->
+    <else/>
+    <div style="    position: fixed;bottom: 45px;width: 100%;height: 30px;z-index: 100;box-shadow: 0 1px 1px #676666;color: #fff;    background-color: #000;opacity: 0.7;filter: alpha(opacity=70);text-align: center;">
+        <span style="margin-left:15px;">全场满68元包邮</span></div>
+
+    <div class="pay-tip" style=" position: fixed;bottom: 0px;">
+        <ul>
+            <li class="reg">
+                <a href="{:U('wap/login/index')}">
+                    登陆
+                </a>
+            </li>
+            <li class="log">
+                <a href="{:U('wap/login/register')}">
+                    注册
+                </a>
+            </li>
+           <!-- <li class="fast">
+                <a href="{:U('wap/cart/fastbuy',array('goods_id'=>$_GET['goods_id'],'goods_attr_id'=>$_GET['goods_attr_id'],'goods_num'=>$_GET['goods_num']))}">
+                    快速购买
+                </a>
+            </li>-->
+        </ul>
+    </div>
+</if>
+<include file="Public/wap_javascript"/>
+<if condition="$uid gt 0">
+    <script type="text/javascript">
+        var binding_is_check = 0;// 重复再次弹出 1是 0否
+        var binding_page = 'order_add';// //绑定验证页面
+    </script>
+    <!--绑定-->
+    <include file="Public/binding_phone"/>
+    <!--绑定-->
+</if>
+
+<!--微信分享-->
+<include file="Public/share_weixin"/>
+<script>
+
+    jQuery(document).ready(function () {
+        $('.allress_chk').click(function () {
+            var _this = $(this);
+            var address_id = _this.attr('data');
+            $('input[name="address_id"]').val(address_id);
+            $('.address_show').hide();
+            $('.add_show_' + address_id).show();
+        });
+
+        //FormValidator.init();
+        var options = {
+            url: "<?php echo U('wap/upgrade/set_order'); ?>",
+            type: "post",
+            dataType: 'json',
+            target: "#loader",
+            error: function () {
+                layer.msg("服务器没有返回数据，可能服务器忙，请重试", {icon: 5});
+            },
+            onwait: "正在处理信息，请稍候...",
+            success: function (response) {
+                console.log(response);
+                //$("#loader").fadeIn(500).html(response.data).fadeOut(500); 
+                //$('#editform').hide(2000); 
+                if (response.status == 1) {
+                    //alert(response.pay_sn);
+
+                    window.location.href = "<?php echo U('wap/goodsorder/order_pay'); ?>?pay_sn=" + response.pay_sn;
+                } else if (response.status == 2) {
+                    //alert(response.pay_sn);
+                    //未绑定 手机
+                    layer.msg(response.error, {icon: 5, time: 2000}, function () {
+                        get_binding();
+                    });
+
+                } else {
+                    //alert(response.error);
+                    if (response.error) {
+                        layer.msg(response.error, {icon: 5});
+                    } else {
+                        layer.msg('该订单已提交', {icon: 5});
+                    }
+
+                }
+            }
+        };
+
+        $(".btn_checkout").click(function () {
+            var goods_id = $("input[name='goods_id']").val();
+            var address_id = $("#address_id").val();
+
+            if (!goods_id) {
+                layer.msg('商品信息错误', {icon: 5});
+                //alert("商品信息错误");
+            } else {
+                binding_is_check = 1;
+                setTimeout((function (opt) {
+                    return function () {
+                        $('#form2').ajaxSubmit(opt);
+                    }
+                })(options), 300);
+                /*if(!address_id){
+                 // alert("请选择收货地址");
+                 layer.msg('请选择收货地址', {icon: 5});
+                 }else{
+                 setTimeout((function(opt){
+                                 return function(){
+                                     $('#form2').ajaxSubmit(opt);
+                                 }
+                             })(options), 300); 
+                 }*/
+            }
+        });
+
+        $('#address_id').change(function () {
+            var data_no = $("#address_id").find("option:selected").attr("data-no");
+            var data_name = $("#address_id").find("option:selected").attr("data-name");
+            var data_address = $("#address_id").find("option:selected").attr("data-address");
+            var data_user = $("#address_id").find("option:selected").attr("data-user");
+            $(".consignee").html(data_user);
+            $(".mobile").html(data_no);
+            $(".address_name").html(data_name + data_address);
+
+        });
+
+
+        var add_id = $('input[name="address_id"]').val();
+        if (add_id) {
+            $('.address_show').hide();
+            $('.add_show_' + add_id).show();
+        }
+    });
+    //计算商品价格
+    function get_goods_price() {
+        var total = $('input[name="need_pay"]').val();
+        total = parseFloat(total);
+        total = total.toFixed(2);
+        var discount = get_discount();//折扣
+        if (discount) {
+            $('.all_old_price').html('¥' + total);
+            $('.discount_price').show();
+            discount = parseFloat(discount);
+            total = total * discount;
+            total = total.toFixed(2);
+        } else {
+            $('.discount_price').hide();
+        }
+        if (total > 0) {
+            if (total < 68) {
+                $('.shipping_fee').show();
+            } else {
+                $('.shipping_fee').hide();
+            }
+        } else {
+            $('.shipping_fee').hide();
+        }
+        $('.all_price').html('¥' + total);
+    }
+    function get_discount() {
+        _this = $('input[name="discount_val"]:checked');
+        if (_this.length) {
+            $('input[name="discount"]').val(_this.val());
+            return _this.attr('data');
+        } else {
+            $('input[name="discount"]').val(0);
+            return 0;
+        }
+    }
+
+    $(function () {
+        get_goods_price();
+        $('input[name="discount_val"]').change(function () {
+            var _this = $(this);
+            var check = _this.prop('checked');
+            if (check) {
+                $('input[name="discount_val"]').prop('checked', false);
+                _this.prop('checked', true);
+            }
+            get_goods_price();
+        });
+    });
+</script>
+</body>
+</html>

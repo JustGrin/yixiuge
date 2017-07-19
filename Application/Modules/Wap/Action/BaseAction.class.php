@@ -867,7 +867,7 @@ public function set_cart(){
   }
     public function check_binding($binding_info)
     {
-        $n_b_url = array('Member','Carinfo','Login');
+        $n_b_url = array('Member','Carinfo','Login','About');
         if( !in_array(MODULE_NAME,$n_b_url) && $binding_info['status'] != 1){
             $this->redirect('wap/login/binding_phone');
         }

@@ -95,21 +95,9 @@ class MemberAction extends AuthAction{
 			$_GET['order'] = '';
 			$order="mem.id desc";
 		}
-		//$menulist=D("Common")->getPageList('member',$where);
-		/*$list=$menulist['list'];
-		if($list){
-			$mdetail=M('member_detail');
-			foreach ($list as $key => $value) {
-				$detail=$mdetail->where(array('member_id'=>$value['id']))->field('balance,points,balance_give')->find();
-				$list[$key]['balance']=$detail['balance'];
-				$list[$key]['balance_give']=$detail['balance_give'];
-				$list[$key]['points']=$detail['points'];
-			}
-		}*/
-		//分页数据查询
-		//$field="mem.*,detail.balance,detail.balance_give,detail.points";
+
 		$field="mem.id,mem.member_name,mem.member_id,mem.member_card,mem.mobile,mem.login_count,mem.add_time,mem.member_freeze,mem.member_vip_type,mem.member_vip_order";
-		$field.=",detail.balance,detail.balance_give,detail.points";
+		$field.=",detail.points";
 		$pre=C("DB_PREFIX");//获取表前缀
 		import('ORG.Util.Page');// 导入数据页分类
 		$model=M();
@@ -134,16 +122,6 @@ class MemberAction extends AuthAction{
 			->order($order)
 			->limit($page->firstRow.','.$page->listRows)
 			->select();
-		$vip_names=array('0'=>'普通会员','1'=>'标准店铺','2'=>'高级店铺','3'=>'旗舰店');
-		$this->assign('vip_names',$vip_names);
-/*		foreach($list as $key=>$val){
-			if($val['member_vip_type']){
-				$vip=getVipRank($val['vip_i_rank'],$val['vip_i_now']);
-				$list[$key]['vip_name']='<span style="color:red;">'.$vip['vip_name'].'</span>';
-			}else{
-				$list[$key]['vip_name']='普通会员';
-			}
-		}*/
 		$menulist['list']=$list;
 			$menulist['page']=$show;
 		$this->assign("list",$menulist);

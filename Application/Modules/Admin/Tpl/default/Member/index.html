@@ -56,27 +56,6 @@
 					  </label>
 						<input type="text" name="mobile" value="{$_GET.mobile}" id="mobile" placeholder="电话" class="form-control">
 				</div>
-				<!--  <div class="form-group">
-									<label for="member_type" class="sr-only">
-										会员类型
-									</label>
-									<select class="form-control" id="member_type" name="member_type">
-										<option value="all" <if condition="$_GET['member_type'] =='all'">selected</if>>会员全部类型</option>
-										<option value="1" <if condition="$_GET['member_type'] ==1">selected</if>>商户会员</option>
-										<option value="0" <if condition="$_GET['member_type'] ==='0'">selected</if>>普通会员</option>
-									</select>
-								</div>	
-				
-								<div class="form-group">
-									<label for="member_status" class="sr-only">
-										认证
-									</label>
-									<select class="form-control" id="member_status" name="member_status">
-										<option value="all" <if condition="$_GET['member_status'] =='all'">selected</if>>全部认证</option>
-										<option value="1" <if condition="$_GET['member_status'] ==1">selected</if>>已认证</option>
-										<option value="0" <if condition="$_GET['member_status'] ==='0'">selected</if>>未认证</option>
-									</select>
-								</div> -->
 				<div class="form-group">
 					<label for="member_freeze" class="sr-only">
 						冻结
@@ -97,18 +76,18 @@
 						<option value="2" <if condition="$_GET['binding'] ==2">selected</if>>未绑定</option>
 					</select>
 				</div>
-			<div class="form-group">
-				<label for="member_freeze" class="sr-only">
-					VIP
-				</label>
-				<select class="form-control" id="member_vip_type" name="member_vip_type">
-					<option value="all" <if condition="$_GET['member_vip_type'] =='all'">selected</if>>全部会员</option>
-					<option value="0" <if condition="$_GET['member_vip_type'] ==='0'">selected</if>>普通会员</option>
-					<option value="1" <if condition="$_GET['member_vip_type'] ==1">selected</if>>标准店铺</option>
-					<option value="2" <if condition="$_GET['member_vip_type'] ==2">selected</if>>高级店铺</option>
-					<option value="3" <if condition="$_GET['member_vip_type'] ==3">selected</if>>旗舰店</option>
-				</select>
-			</div>
+			<!--<div class="form-group">-->
+				<!--<label for="member_freeze" class="sr-only">-->
+					<!--VIP-->
+				<!--</label>-->
+				<!--<select class="form-control" id="member_vip_type" name="member_vip_type">-->
+					<!--<option value="all" <if condition="$_GET['member_vip_type'] =='all'">selected</if>>全部会员</option>-->
+					<!--<option value="0" <if condition="$_GET['member_vip_type'] ==='0'">selected</if>>普通会员</option>-->
+					<!--<option value="1" <if condition="$_GET['member_vip_type'] ==1">selected</if>>标准店铺</option>-->
+					<!--<option value="2" <if condition="$_GET['member_vip_type'] ==2">selected</if>>高级店铺</option>-->
+					<!--<option value="3" <if condition="$_GET['member_vip_type'] ==3">selected</if>>旗舰店</option>-->
+				<!--</select>-->
+			<!--</div>-->
 
 			<div class="form-group">
 					<label for="order" class="sr-only">
@@ -116,8 +95,8 @@
 					</label>
 					<select class="form-control" id="order" name="order">
 						<option value="" >排序</option>
-						<option value="balance" <if condition="$_GET['order'] =='balance'">selected</if>>余额</option>
-						<option value="balance_give" <if condition="$_GET['order'] =='balance_give'">selected</if>>赠送余额</option>
+						<!--<option value="balance" <if condition="$_GET['order'] =='balance'">selected</if>>余额</option>-->
+						<!--<option value="balance_give" <if condition="$_GET['order'] =='balance_give'">selected</if>>赠送余额</option>-->
 						<option value="points" <if condition="$_GET['order'] =='points'">selected</if>>积分</option>
 						<option value="login_count" <if condition="$_GET['order'] =='login_count'">selected</if>>登录次数</option>
 						<option value="id" <if condition="$_GET['order'] =='id'">selected</if>>注册时间</option>
@@ -210,8 +189,6 @@
 						<th>会员名</th>
 						<th>等级</th>
 						<th>电话</th>
-						<th>余额</th>
-						<th>赠送余额</th>
 						<th>积分</th>
 						<th>登录次数</th>
 						<th>注册时间</th>
@@ -232,8 +209,6 @@
 						<td>{$vo.member_name}</td>
 						<td>{$vip_names[$vo['member_vip_type']]}</td>
 						<td>{$vo.mobile}</td>
-						<td>￥{$vo.balance|default='0'}	</td>
-						<td>￥{$vo.balance_give|default='0'}	</td>
 						<td>{$vo.points|default='0'}	</td>
 							<td>{$vo.login_count|default='0'}	</td>
 						
