@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>商品-{$webseting.web_title}</title>
+<script type="text/javascript" src="__PUBLIC__/wap/js/flexible.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/jquery.fly.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/wap/js/swiper.min.js"></script>
+<link href="__PUBLIC__/wap/css/icons.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/css/public.css" />
+</head>
+<body class="category" ontouchstart="" onmouseover="">
+<div class="head"> <a href="javascript:history.go(-1)" class="md-close back"> <i class="iconfont">&#xe617</i> </a>
+	<h2 >品牌</h2>
+</div>
+<div class="page">
+	<ul class="list more_html">
+		<volist name="brands" id="i_brand">
+			<li>
+				<div>
+					<a href="{$i_brand['brand_url']}">
+					<span>{$i_brand.cat_name}</span>
+					更多</a>
+				</div>
+				<volist name="i_brand['goods']" id="vo">
+					<div class="goods">
+						<div class="item">
+							<div class="goodsimg imgnobg"> <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}"> <img src="{$vo.goods_img} " alt="" /> </a> </div>
+							<div class="title"> <a href="{:U('wap/goods/goods_detail',array('id'=>$vo['goods_id'],'share'=>$share_para))}"> {$vo.goods_name} </a> </div>
+							<div class="pirce"> <span class="blue">¥<span class="num">{$vo.shop_price}</span></span>
+								<!--<div class="browse">已售:<span class="num">{$vo.goods_browse}</span>件</div>-->
+							</div>
+							<div class="addcart" onClick="" goods_id="{$vo.goods_id}" img_url="{$vo.goods_img}" unit_price="{$vo.unit_price}" units="{$vo.units}"goods_attr_id="{$vo.goods_attr_id}"> <i class="iconfont">&#xe6e1</i> </div>
+						</div>
+					</div>
+				</volist>
+			</li>
+
+		</volist>
+	</ul>
+	<div class="clearfix"> </div>
+	</div>
+</div>
+<include file="Public/footer_new"/> 
+<script>
+	    var swiper = new Swiper('.cat-container', {
+        pagination: '.cat-pagination',
+        slidesPerView:5,
+        paginationClickable: true,
+    });
+    </script>
+</body>
+</html>

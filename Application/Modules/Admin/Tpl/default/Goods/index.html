@@ -120,6 +120,8 @@
 					<tr>
 						<th class="center">#</th>
 						<th>商品名称</th>
+						<th>商品简称</th>
+						<th>添加同类商品</th>
 						<th class="hidden-xs">商品货号</th>
 						<th>进价</th>
 						<th>卖价</th>
@@ -141,6 +143,15 @@
 						<td class="center"><img src="{$vo.goods_img}" class="img-rounded" style="max-width:50px;max-height:50px;" alt="无图片"></td>
 						<td> 
 							{$vo.goods_name}
+						</td>
+						<td>
+							{$vo.same_goods_type}
+						</td>
+						<td class="center">
+							<a href="{:U("admin/goods/add_same_goods",array('same_id'=>$vo['goods_id']))}"
+							class="btn btn-transparent btn-xs"  tooltip="Edit"  tooltip-placement="top"
+							data-toggle="tooltip" data-original-title="添加同类商品" >
+							<i class="glyphicon glyphicon-plus"></i></a>
 						</td>
 						<td class="hidden-xs">{$vo.goods_sn}</td>
 						<td >{$vo.purchase_price}</td>

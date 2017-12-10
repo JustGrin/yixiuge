@@ -53,7 +53,7 @@
                                                             商品分类 <span class="symbol required"
                                                                        aria-required="true"></span>
                                                         </label>
-                                                        <select class="form-control" id="cat_id" name="cat_id">
+                                                        <select class="form-control" id="cat_id" name="cat_id" disabled>
                                                             <option value="">请选择</option>
                                                             <volist name="category" id="vo">
                                                                 <option value="{$vo.cat_id}"
@@ -83,44 +83,17 @@
                                                                        aria-required="true"></span>
                                                         </label>
                                                         <input type="text" name="goods_name" value="{$data['goods_id'] ? $data['goods_name'] : '' }"
-                                                               id="goods_name" placeholder="商品名称" class="form-control">
+                                                               id="goods_name" placeholder="商品名称" class="form-control" disabled>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             该商品简称: <span class="symbol required"
                                                                        aria-required="true"></span>
                                                         </label>
-                                                        <input type="text" name="same_goods_type" value="{$data['goods_id'] ? $data['same_goods_type'] : '' }"
-                                                               id="same_goods_type" placeholder="简称" class="form-control">
+                                                        <input type="text" name="same_goods_type" value=""
+                                                               id="same_goods_type" placeholder="商品简称" class="form-control">
                                                     </div>
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--子标题 <span class="symbol required"-->
-                                                                       <!--aria-required="true"></span>-->
-                                                        <!--</label>-->
-                                                        <!--<input type="text" name="subtitle" value="{$data['goods_id'] ? $data['subtitle'] : ''}"-->
-                                                               <!--id=" subtitle" placeholder="子标题" class="form-control">-->
-                                                    <!--</div>-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--情怀 <span class="symbol required"-->
-                                                                      <!--aria-required="true"></span>-->
-                                                        <!--</label>-->
-                                                        <!--<input type="text" name="feeling" value="{$data['goods_id'] ? $data['feeling'] : ''}"-->
-                                                               <!--id=" feeling" placeholder="情怀" class="form-control">-->
-                                                    <!--</div>-->
-                                                    <div class="form-group">
-                                                        <if condition="(!empty($_GET['id']))">
-                                                            <label class="control-label">
-                                                                商品货号<span class="symbol required"
-                                                                          aria-required="true"></span>
-                                                            </label>
-                                                            <input type="text" disabled name="goods_sn"
-                                                                   value="{$data['goods_id'] ? $data['goods_sn'] : '' }" id="goods_sn"
-                                                                   placeholder="商品货号" class="form-control"/>
-                                                        </if>
 
-                                                    </div>
                                                     <!--<div class="form-group">-->
                                                         <!--<label class="control-label">-->
                                                             <!--品牌-->
@@ -137,87 +110,15 @@
                                                         <!--</select>-->
                                                     <!--</div>-->
 
-<!--                                                   <div class="form-group">
-                                                        <label class="control-label">
-                                                            包邮方式
-                                                        </label>
-                                                        <select class="form-control" id="shipping_id"
-                                                                name="shipping_id">
-                                                            <option value="0">顺丰快递</option>
-                                                            <volist name="shipping" id="vo">
-                                                                <option value="{$vo.shipping_id}"
-                                                                <if condition="$vo['shipping_id'] eq $data['shipping_id']">
-                                                                    selected
-                                                                </if>
-                                                                >{$vo.shipping_name}</option>
-                                                            </volist>
-                                                        </select>
-                                                       <input type="text"
-                                                              value="包邮"
-                                                              class="form-control" readonly>
-                                                    </div>-->
-
-
-
-
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             商品库存<span class="symbol required"
                                                                       aria-required="true"></span>
                                                         </label>
-                                                            <input type="text" name="goods_number" value="{$data['goods_id'] ? $data['goods_number'] : 0 }"
+                                                            <input type="text" name="goods_number" value="0"
                                                             id="goods_number" placeholder="商品库存" class="form-control">
                                                     </div>
 
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品报警数量-->
-                                                        <!--</label>-->
-                                                        <!--<input type="text" name="warn_number"-->
-                                                               <!--value="{$data['goods_id'] ? $data['warn_number'] : 0 }" id="warn_number"-->
-                                                        <!--placeholder="商品报警数量" class="form-control">-->
-                                                    <!--</div>-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品重量-->
-                                                        <!--</label>-->
-
-                                                        <!--<div class="input-group">-->
-                                                            <!--<input type="text" name="goods_weight"-->
-                                                                   <!--value="{$data['goods_id'] ? $data['goods_weight'] : 0 }"-->
-                                                            <!--id="goods_weight" placeholder="商品重量" class="form-control">-->
-                                                            <!--<span class="input-group-addon">kg</span>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品单价-->
-                                                        <!--</label>-->
-                                                        <!--<input type="text" name="unit_price"-->
-                                                               <!--value="{$data['goods_id'] ? $data['unit_price'] : 0 }" id="unit_price"-->
-                                                               <!--placeholder="单位价格" class="form-control">-->
-                                                    <!--</div>-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品单位-->
-                                                        <!--</label>-->
-                                                        <!--<input type="text" name="units"-->
-                                                               <!--value="{$data['goods_id'] ?  $data['units'] : ''}" id="units"-->
-                                                               <!--placeholder="单位价格" class="form-control">-->
-                                                    <!--</div>-->
-
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--供货价<span class="symbol required" aria-required="true"></span>-->
-                                                        <!--</label>-->
-
-                                                        <!--<div class="input-group">-->
-                                                            <!--<span class="input-group-addon">￥</span>-->
-                                                            <!--<input type="text" name="purchase_price"-->
-                                                                   <!--value="{$data['goods_id'] ? $data['purchase_price'] : '' }"-->
-                                                            <!--id="purchase_price" placeholder="供货价" class="form-control">-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             本店售价<span class="symbol required"
@@ -288,53 +189,6 @@
                                                         </div>
 
                                                     </div>
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品首页展示图<span class="symbol required"-->
-                                                                      <!--aria-required="true"></span>(245px*160px,图片大小不大于30kb)-->
-                                                        <!--</label>-->
-                                                        <!--<br>-->
-
-                                                        <!--<div class="upload_file">-->
-                                                            <!--<label>-->
-                                                                <!--<input type="file" name="long_photo"-->
-                                                                       <!--class="upload_input" id="long_photo" value=""-->
-                                                                       <!--style="display:none;">-->
-
-                                                                <!--<div class="fileinput fileinput-new"-->
-                                                                     <!--data-provides="fileinput">-->
-                                                                    <!--<div class="fileinput-new thumbnail">-->
-                                                                        <!--<img id="long_photo_src"-->
-                                                                             <!--src="{$data['goods_id'] ? $data['long_goods_img'] : ''}"-->
-                                                                             <!--alt="">-->
-                                                                    <!--</div>-->
-
-                                                                <!--</div>-->
-                                                                <!--点击图片上传-->
-                                                            <!--</label>-->
-                                                            <!--<input type="hidden" name="long_goods_img" id="long_goods_pic"-->
-                                                                   <!--value="{$data['goods_id'] ? $data['long_goods_img'] : ''}">-->
-                                                        <!--</div>-->
-
-                                                    <!--</div>-->
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品关键字-->
-                                                        <!--</label>-->
-                                                        <!--<textarea id="keywords" name="keywords" class=" autosize"-->
-                                                                  <!--data-autosize-on="true"-->
-                                                                  <!--style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['keywords'] : ''}</textarea>-->
-                                                    <!--</div>-->
-
-                                                    <!--<div class="form-group">-->
-                                                        <!--<label class="control-label">-->
-                                                            <!--商品的简短描述<span class="symbol required"-->
-                                                                         <!--aria-required="true"></span>-->
-                                                        <!--</label>-->
-                                                        <!--<textarea id="goods_brief" name="goods_brief" class=" autosize"-->
-                                                                  <!--data-autosize-on="true"-->
-                                                                  <!--style="overflow: hidden; resize: horizontal; word-wrap: break-word;  width: 100%;  height: 100px;">{$data['goods_id'] ? $data['goods_brief'] : ''}</textarea>-->
-                                                    <!--</div>-->
 
                                                     <div class="form-group">
                                                         <label class="control-label">
@@ -353,7 +207,6 @@
                                                         </label>
 
                                                         <div class="clip-radio radio-primary fa-hover Primary">
-                                                            <if condition="$data.goods_id gt 0">
                                                                 <input type="radio" value="1" name="is_on_sale"
                                                                        id="id_no"
                                                                 <if condition="$data.is_on_sale eq 1">
@@ -374,20 +227,6 @@
                                                                 <label for="id_yes">
                                                                     下架
                                                                 </label>
-                                                                <else/>
-                                                                <input type="radio" value="1" name="is_on_sale"
-                                                                       id="id_no" checked="checked">
-                                                                <label for="id_no">
-                                                                    上架
-                                                                </label>
-
-                                                                <input type="radio" value="0" name="is_on_sale"
-                                                                       id="id_yes">
-                                                                <label for="id_yes">
-                                                                    下架
-                                                                </label>
-
-                                                            </if>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -397,16 +236,12 @@
 
                                                         <div class="clip-radio radio-primary fa-hover Primary">
                                                             <input type="radio" value="1" name="is_show_index"
-                                                                   id="is_show_index_yes"
-                                                            <if condition="$data['goods_id'] && $data.is_show_index eq 1">checked</if>
-                                                            />
+                                                                   id="is_show_index_yes" />
                                                             <label for="is_show_index_yes">
                                                                 是
                                                             </label>
                                                             <input type="radio" value="0" name="is_show_index"
-                                                                   id="is_show_index_no"
-                                                            <if condition="$data['goods_id'] && $data.is_show_index eq 0">checked</if>
-                                                            />
+                                                                   id="is_show_index_no" checked />
                                                             <label for="is_show_index_no">
                                                                 否
                                                             </label>
@@ -416,7 +251,6 @@
                                                         <label class="control-label">
                                                             是否支持货到付款
                                                         </label>
-
                                                         <div class="clip-radio radio-primary fa-hover Primary">
                                                             <input type="radio" value="1" name="offline"
                                                                    id="offline_yes" {$data['goods_id'] ? $data['offline']?'checked':'' : ''}
@@ -439,28 +273,6 @@
                                                         </label>
 
                                                         <div class="clip-radio radio-primary fa-hover Primary">
-                                                            <if condition="$data.goods_id gt 0">
-                                                                <input type="radio" value="1" name="is_auditing"
-                                                                       id="id_nois_auditing"
-                                                                <if condition="$data.is_auditing eq 1">
-                                                                    checked="checked"
-                                                                </if>
-                                                                >
-                                                                <label for="id_nois_auditing">
-                                                                    已审核
-                                                                </label>
-
-
-                                                                <input type="radio" value="0" name="is_auditing"
-                                                                       id="id_yesis_auditing"
-                                                                <if condition="$data.is_auditing eq 0">
-                                                                    checked="checked"
-                                                                </if>
-                                                                >
-                                                                <label for="id_yesis_auditing">
-                                                                    未审核
-                                                                </label>
-                                                                <else/>
                                                                 <input type="radio" value="1" name="is_auditing"
                                                                        id="id_nois_auditing" checked="checked">
                                                                 <label for="id_nois_auditing">
@@ -472,57 +284,12 @@
                                                                 <label for="id_yesis_auditing">
                                                                     未审核
                                                                 </label>
-
-                                                            </if>
                                                         </div>
                                                     </div>
                                                     <?php  }else{  ?>
                                                     <input type="hidden" value="0" name="is_auditing" id="is_auditing">
                                                     <?php  }  ?>
 
-
-                                                    <div class="form-group">
-                                                        <!--    <div class="checkbox clip-check check-primary">
-                                                          <input <if condition="$data['is_best'] eq 1">checked="" </if> type="checkbox" value="1" name="is_best" id="is_best" >
-                                                           <label for="is_best" class="control-label">
-                                                               精品
-                                                           </label>
-                                                          </div>
-                                                          <div class="checkbox clip-check check-primary">
-                                                          <input <if condition="$data['is_new'] eq 1">checked="" </if> type="checkbox" value="1" name="is_new" id="is_new" >
-                                                           <label for="is_new" class="control-label">
-                                                               新品
-                                                           </label>
-                                                          </div>
-                                                          <div class="checkbox clip-check check-primary">
-                                                          <input <if condition="$data['is_hot'] eq 1">checked="" </if> type="checkbox" value="1" name="is_hot" id="is_hot" >
-                                                           <label for="is_hot" class="control-label">
-                                                               热销
-                                                           </label>
-                                                          </div> -->
-<!--                                                        <div class="checkbox clip-check check-primary">
-                                                            <if condition="$data.goods_id gt 0">
-                                                                <input
-                                                                <if condition="$data['is_refund'] eq 1">checked=""</if>
-                                                                type="checkbox" value="1" name="is_refund"
-                                                                id="is_refund" >
-                                                                <else/>
-                                                                <input checked="checked" type="checkbox" value="1"
-                                                                       name="is_refund" id="is_refund">
-                                                            </if>
-                                                            <label for="is_refund" class="control-label">
-                                                                是否支持退货售后服务
-                                                            </label>
-                                                        </div>-->
-                                                        <!--
-                                                          <div class="checkbox clip-check check-primary">
-                                                          <input <if condition="$data['is_exchange'] eq 1">checked="" </if> type="checkbox" value="1" name="is_exchange" id="is_exchange" >
-                                                              <label for="is_exchange" class="control-label">
-                                                                  换货返修(售后服务换货/返修)
-                                                              </label>
-                                                          </div>
-                                                        -->
-                                                    </div>
                                                     <div class="form-group">
                                                         <label class="control-label">
                                                             商品排序<span class="symbol required"
@@ -744,7 +511,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="hidden" value="{$id}" name="goods_id" />
+								<input type="text" value="{$same_id}" name="same_id" />
                                 <button class="btn btn-primary btn-wide pull-left" type="submit">
                                     提交 <i class="fa fa-arrow-circle-right"></i>
                                 </button>

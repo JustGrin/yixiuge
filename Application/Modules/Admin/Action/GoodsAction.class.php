@@ -132,8 +132,7 @@ class GoodsAction extends AuthAction
     {
 //		var_dump($_POST);die;
         $data = array();
-
-        $_GET['id'] =   isset($_GET['id']) ? $_GET['id'] : 0 ;
+		$goods_id = isset($_GET['id']) ? $_GET['id'] : 0 ;
         if ($_POST) {
             if ($_POST['goods_id']) {
                 $goods_type = M('g_goods')->where(array('goods_id' => $_POST["goods_id"]))->getField('cat_id');
@@ -241,8 +240,8 @@ class GoodsAction extends AuthAction
                 $this->error("操作失败");
             }
         } else {
-            if ($_GET['id']) {
-                $g_where["goods_id"] = array("eq", $_GET["id"]);
+            if ($goods_id) {
+                $g_where["goods_id"] = array("eq", $goods_id);
                 $data = D("Goods")->getGoodsInfo($g_where);
                 if ($data) {
                     $pre = C('DB_PREFIX');//表前缀
@@ -255,17 +254,6 @@ class GoodsAction extends AuthAction
                     $data['activity_end_date'] = strtotime("+1 month");
                 }
 //				var_dump($data);die;
-                if ($data['activity_id'] == 2) {
-                    $activity99 = M('activity')->where('id=2')->find();
-                    $param_arr = json_decode($activity99['param']);
-                    foreach ($param_arr->activity_goods_msg as $k => $v) {
-                        if ($k == $_GET["id"]) {
-                            $v = explode(',', $v);
-                            $data['activity_want_sell'] = $v[0];
-                            $data['activity_max_sell'] = $v[1];
-                        }
-                    }
-                }
                 $this->assign("data", $data);
             } else {
                 $this->share_money = M('sys_param')->where(array('param_code' => 'share_money'))->getField('param_value');
@@ -274,6 +262,7 @@ class GoodsAction extends AuthAction
                 $data['goods_id']  = 0;
                 $this->assign("data", $data);
             }
+			$this->id = $goods_id;
             //商品分类
             //$Category=D('Common')->getAllList('g_category',array('is_show'=>1));
             $Category = D('Category')->getCategoryAll(array('is_show' => 1));
@@ -317,7 +306,83 @@ class GoodsAction extends AuthAction
             $this->display();
         }
     }
+	public function add_same_goods()     {
+//		var_dump($_POST);die;
+		$data = array();
+		$goods_id = isset($_REQUEST['same_id']) ? $_REQUEST['same_id'] : 0 ;
+		$g_where["goods_id"] = array("eq", $goods_id);
+		$data = D("Goods")->getGoodsInfo($g_where);
+		if ($_POST) {
+			$_POST['goods_sn'] = $data['goods_sn'];
+			$_POST['cat_id'] = $data['cat_id'];
+			$_POST['goods_name'] = $data['goods_name'];
+			$_POST['add_time'] = time();
+			//12.2 随机生成浏览量===>销量读取浏览量
+			$_POST['goods_browse'] = rand(500, 1000);
+			$res = D("Goods")->addGoods($_POST);
+			$cookie = $_COOKIE['url'];
 
+			if ($res !== false) {
+				if (empty($_POST['goods_id'])) {///新增
+					$this->success("操作成功", U('admin/goods/index'));
+				} else {
+
+					$topadmin = session('topadmin');
+					if ($topadmin != 1 && $res > 0) {//不是超级 管理员 修改商品 商品待审核
+						M("g_goods")->where(array('goods_id' => $_POST['goods_id']))->save(array('is_auditing' => 0));
+					}
+					$this->success("操作成功", cookie('now_url'));
+				}
+			} else {
+				$this->error("操作失败");
+			}
+		} else {
+			if ($data) {
+				$pre = C('DB_PREFIX');//表前缀
+				$this->good_image_url = M('g_goods_gallery')->where(array('goods_id' => $data['goods_id']))->order('img_order desc')->select();
+			}
+//				var_dump($data);die;
+			$this->assign("data", $data);
+
+			$this->same_id = $goods_id;
+			//商品分类
+			$Category = D('Category')->getCategoryAll(array('is_show' => 1));
+			$Category = $this->gettree($Category, 0, 0, 'parent_id', 'cat_id');
+			$this->assign("category", $Category);
+
+			//商品品牌
+			$brand = D('Brand')->getBrandAll(array('is_show' => 1));
+			$this->assign("brand", $brand);
+			//商品类型
+			$this->goods_type = M('g_goods_type')->where(array('enabled' => 1))->select();
+			$title = "商品信息";
+			$this->assign("msgtitle", $title);
+			//获取配送方式
+			$field = 'shipping_id,shipping_name';
+			$s_where['enabled'] = 1;
+			$shipping = M('g_shipping')->field($field)->where($s_where)->select();
+			$this->assign('shipping', $shipping);
+			//获取地区数据   邮费信息
+			$provinces= M('city_province')->select();
+			$postage_info = array();
+			if(empty($data['postage_json'])){
+				foreach ($provinces as $k =>$v){
+					$postage_info[$k]['provinceid']= $v['provinceid'];
+					$postage_info[$k]['province'] = $v['province'];
+					$postage_info[$k]['first'] = 1;
+					$postage_info[$k]['first_price'] = 0;
+					$postage_info[$k]['add'] = 1;
+					$postage_info[$k]['add_price'] = 0;
+					$postage_info[$k]['by_condition'] = 0;
+					$postage_info[$k]['by_unit'] = 3; //包邮 单位 -1不包邮 0 件， 1 kg， 2 元 ,3 完全包邮
+				}
+			}else{
+				$postage_info = postage_trans($data['postage_json']);
+			}
+			$this->assign('postage_info', $postage_info);
+			$this->display();
+		}
+	}
     ///删除商品
     public function Goods_del()
     {

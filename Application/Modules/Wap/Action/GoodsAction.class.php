@@ -49,7 +49,6 @@ class GoodsAction extends BaseAction {
 		$type=intval($type);
         if($type){
            $pid=M('g_category')->where(array('cat_id'=>$type))->getField('cat_id');
-
            if($pid){
             $type_str=$this->get_category_child($pid);
             if($type_str){
@@ -130,7 +129,7 @@ class GoodsAction extends BaseAction {
         // }
         $this->return_url = U('wap/goods/index');
 
-        $this->webtitle="峰购-商品列表";
+        $this->webtitle="易修哥-商品列表";
         $this->display();
     }
 
@@ -347,8 +346,8 @@ class GoodsAction extends BaseAction {
         $this->shar_title=$shar_title;
         $this->shar_desc=$shar_title_desc."￥".$data['shop_price'];
         $this->shar_imgurl="http://".$_SERVER['HTTP_HOST'].$data['goods_img'];
-      $this->get_weixin();///获取微信 信息
-    	$this->webtitle="FG峰购";
+        $this->get_weixin();///获取微信 信息
+    	$this->webtitle="易修哥";
 		$this->display();
     }
 
@@ -404,8 +403,7 @@ class GoodsAction extends BaseAction {
     /**
      * @return string
      */
-    public function company_check()
-    {
+    public function company_check() {
         $uid = $this->uid;
         $ver_mod = M('member_verification')->where('member_id='.$uid);
         if (IS_AJAX){
@@ -426,5 +424,73 @@ class GoodsAction extends BaseAction {
         $this->data = $data;
         return $this->display();
     }
+    public function brands() {
+		$where = array();
+		$where['parent_id'] = 129; // 润滑油的子分类
+		$brandsInfo = M('g_category')->where($where)->select();
+		foreach ($brandsInfo as $k => $v) {
+			$goodsList = M('g_goods')->where("cat_id={$v['cat_id']}")->limit(0,4)->select();
+			$brandsInfo[$k]['brand_url'] = U('wap/goods/brand_goods',array('type'=>$v['cat_id']));
+			$brandsInfo[$k]['goods'] = $goodsList;
+		}
+		$this->brands = $brandsInfo;
+        $this->display();
+    }
+	//产品品牌列表
+	public function brand_goods(){
+		$type=isset($_REQUEST['type']) ? $type = $_REQUEST['type'] : $_REQUEST['type'] = 0;
+		$type=intval($type);
+		if($type){
+			$pid=M('g_category')->where(array('cat_id'=>$type))->getField('cat_id');
 
+			if($pid){
+				$type_str=$this->get_category_child($pid);
+				if($type_str){
+					$g_where['cat_id']=array('in',$type_str);
+				}
+			}
+		}
+		$search =$_REQUEST['search'];
+		if($search){  //查询关键词
+			$g_where['goods_name'] =array('like','%'.$search.'%');
+		}
+		//菜单列表 start
+		$company_check = M('member_verification')->where('member_id='.$this->uid)->getField('status_c');
+		$where_category = array();
+		$where_category['parent_id'] = 0;//只显示初级分类
+		$g_category = M("g_category")->where($where_category)->order(' need_check asc ,sort_order asc, cat_id asc')->select();
+		foreach($g_category as $k => $v) {
+			$g_category[$k]['check_cc'] = ( $company_check != 1 && $v['need_check'] == 1) ? 1 : 0;
+			$category_url =   $g_category[$k]['check_cc'] ?'javascript:company_check()' : U('wap/goods/index', array( 'type' => $v['cat_id']))  ;
+			$g_category[$k]['category_url'] =$category_url;
+		}
+		$this->g_category=$g_category;
+		//菜单列表  end
+
+		//商家推荐
+		$p=$_REQUEST['p'];
+		$pagesize=10;
+		$p=!empty($p)?$p:1;
+		$start=($p-1)*$pagesize;
+		$g_where['is_on_sale']=1;//该商品是否开放销售，1，是；0， 否
+		$g_where['is_delete']=0;//商品是否已经删除，0，否；1，已 删除
+		$g_where['is_auditing']=1;//商品是否通过审核  1是0 否
+		$g_field="goods_id,goods_name,shop_price,market_price,goods_brief,goods_img,vip_price,unit_price,units,goods_browse,goods_salesvolume,base_name,base_logo,is_sell_out";
+		$goods_list=M("g_goods")->where($g_where)->field($g_field)->limit($start,$pagesize)->select();
+		$u_where['id']=$_SESSION['member']['uid'];
+		foreach ($goods_list as $k => $v) {
+			$goods_list[$k]['goods_img'] = thumbs_auto($v['goods_img'], 300, 300);
+			$goods_list[$k]['base_logo'] = thumbs_auto($v['base_logo'], 60, 60);
+		}
+		$this->is_ajax = IS_AJAX;
+		$this->list=$goods_list;
+		$this->count=M("g_goods")->where($g_where)->count();
+		
+		$typename=M('g_category')->where(array('cat_id'=>$type))->getField('cat_name');
+		$this->typename=$typename?'-'.$typename:'';
+		$this->return_url = U('wap/goods/index');
+
+		$this->webtitle="易修哥-商品列表";
+		$this->display();
+	}
 }
